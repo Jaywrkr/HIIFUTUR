@@ -1,0 +1,49 @@
+"use client";
+
+import { useFormState, useFormStatus } from "react-dom";
+import Link from "next/link";
+import { registerUser, type RegisterState } from "@/lib/auth-actions";
+
+const initialState: RegisterState = {};
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" disabled={pending} className="btn-primary w-full mt-6">
+      {pending ? "CREANDO CUENTA..." : "CREAR CUENTA"}
+    </button>
+  );
+}
+
+export default function RegisterPage() {
+  const [state, formAction] = useFormState(registerUser, initialState);
+
+  return (
+    <div className="auth-shell">
+      <div className="auth-card">
+        <p className="kicker">EJECUTA</p>
+        <h1 className="auth-title">CREA TU CUENTA</h1>
+        <p className="auth-sub">Un sistema, no una promesa. Empieza aqui.</p>
+
+        <form action={formAction} className="auth-form">
+          <label className="field-label" htmlFor="name">NOMBRE</label>
+          <input id="name" name="name" type="text" required className="field-input" placeholder="Tu nombre" />
+
+          <label className="field-label" htmlFor="email">EMAIL</label>
+          <input id="email" name="email" type="email" required className="field-input" placeholder="tu@email.com" />
+
+          <label className="field-label" htmlFor="password">CONTRASENA</label>
+          <input id="password" name="password" type="password" required minLength={8} className="field-input" placeholder="Minimo 8 caracteres" />
+
+          {state.error ? <p className="form-error">{state.error}</p> : null}
+
+          <SubmitButton />
+        </form>
+
+        <p className="auth-footer">
+          Ya tienes cuenta? <Link href="/login" className="link-accent">Inicia sesion</Link>
+        </p>
+      </div>
+    </div>
+  );
+}

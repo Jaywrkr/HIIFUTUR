@@ -1,0 +1,40 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { signOut } from "next-auth/react";
+
+const links = [
+  { href: "/dashboard", label: "DASHBOARD" },
+  { href: "/modules", label: "MODULOS" },
+  { href: "/habits", label: "HABITOS" },
+  { href: "/wheel", label: "WHEEL OF LIFE" },
+];
+
+export function Nav() {
+  const pathname = usePathname();
+
+  return (
+    <nav className="app-nav">
+      <div className="app-nav-inner">
+        <Link href="/dashboard" className="app-logo">
+          EJECUTA
+        </Link>
+        <div className="app-nav-links">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`app-nav-link ${pathname.startsWith(l.href) ? "app-nav-link-active" : ""}`}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <button onClick={() => signOut({ callbackUrl: "/login" })} className="app-nav-link">
+            SALIR
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+}

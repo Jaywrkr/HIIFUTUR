@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html,
+body {
+  background-color: #000000;
+  color: #f5f5f5;
+  font-family: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.kicker {
+  @apply text-accent text-xs tracking-[0.3em] uppercase mb-2;
+}
+
+/* --- Auth --- */
+.auth-shell {
+  @apply min-h-screen flex items-center justify-center px-4 py-12 bg-black;
+}
+.auth-card {
+  @apply w-full max-w-sm border border-line p-8 bg-surface;
+}
+.auth-title {
+  @apply text-2xl uppercase tracking-wide font-bold mb-1;
+}
+.auth-sub {
+  @apply text-sm text-neutral-400 mb-6;
+}
+.auth-form {
+  @apply flex flex-col gap-1;
+}
+.auth-footer {
+  @apply text-sm text-neutral-500 mt-6 text-center;
+}
+.field-label {
+  @apply text-xs uppercase tracking-widest text-neutral-400 mt-4 mb-1;
+}
+.field-input {
+  @apply bg-black border border-line px-3 py-2 text-sm text-white outline-none focus:border-accent transition-colors;
+}
+.form-error {
+  @apply text-xs text-red-500 mt-3;
+}
+.form-success {
+  @apply text-xs text-accent mb-4;
+}
+.link-accent {
+  @apply text-accent underline underline-offset-2;
+}
+
+.btn-primary {
+  @apply inline-block bg-accent text-black font-bold uppercase tracking-widest text-sm py-3 px-4 text-center hover:opacity-90 transition-opacity disabled:opacity-50;
+}
+.btn-secondary {
+  @apply border border-line text-white uppercase tracking-widest text-xs py-2 px-4 hover:border-accent transition-colors disabled:opacity-40;
+}
+.w-full {
+  width: 100%;
+}
+
+/* --- App shell --- */
+.app-nav {
+  @apply border-b border-line sticky top-0 bg-black z-10;
+}
+.app-nav-inner {
+  @apply max-w-4xl mx-auto flex items-center justify-between px-4 py-4;
+}
+.app-logo {
+  @apply text-sm font-bold tracking-[0.3em] text-white;
+}
+.app-nav-links {
+  @apply flex items-center gap-5 text-xs uppercase tracking-widest text-neutral-500;
+}
+.app-nav-link {
+  @apply hover:text-white transition-colors;
+}
+.app-nav-link-active {
+  @apply text-accent;
+}
+.app-main {
+  @apply max-w-4xl mx-auto px-4 py-10;
+}
+
+.card {
+  @apply border border-line bg-surface p-6;
+}
+.section-title {
+  @apply text-lg uppercase tracking-wide font-bold mb-4;
+}
+.muted {
+  @apply text-neutral-500 text-sm;
+}

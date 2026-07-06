@@ -1,0 +1,98 @@
+import { redirect } from "next/navigation";
+import { Nav } from "@/components/Nav";
+import { WheelRadarChart } from "@/components/WheelRadarChart";
+import { WheelMeasurementForm } from "@/components/WheelMeasurementForm";
+import { requireUser } from "@/lib/session";
+import { getUserPreferences, getWheelMeasurements, getHabitsForUser } from "@/lib/queries";
+import { addDays } from "@/lib/habit-utils";
+import { DAYS_BETWEEN_WHEEL_MEASUREMENTS, WHEEL_AREAS, WHEEL_AREA_TO_CATEGORY } from "@/lib/constants";
+
+function buildInsight(
+  current: Record<string, number>,
+  previous: Record<string, number>,
+  activeHabitCategories: Set<string>
+): string | null {
+  let bestArea: string | null = null;
+  let bestDelta = 0;
+
+  for (const area of WHEEL_AREAS) {
+    const delta = (current[area.id] ?? 0) - (previous[area.id] ?? 0);
+    if (delta > bestDelta) {
+      bestDelta = delta;
+      bestArea = area.id;
+    }
+  }
+
+  if (!bestArea || bestDelta <= 0) return null;
+
+  const areaLabel = WHEEL_AREAS.find((a) => a.id === bestArea)?.label;
+  const relatedCategory = WHEEL_AREA_TO_CATEGORY[bestArea];
+  const hasMatchingHabit = activeHabitCategories.has(relatedCategory);
+
+  if (hasMatchingHabit) {
+    return `Este mes mejoraste en ${areaLabel} (+${bestDelta}). Eso correlaciona con tus habitos activos. El sistema funciona.`;
+  }
+  return `Este mes mejoraste en ${areaLabel} (+${bestDelta}). Sigue sosteniendo el sistema.`;
+}
+
+export default async function WheelPage() {
+  const user = await requireUser();
+  const prefs = await getUserPreferences(user.id);
+  if (!prefs) redirect("/onboarding");
+
+  const measurements = await getWheelMeasurements(user.id);
+  const habits = await getHabitsForUser(user.id);
+  const activeHabitCategories = new Set(
+    habits.filter((h) => h.status === "active").map((h) => h.category)
+  );
+
+  const latest = measurements[0];
+  const previous = measurements[1];
+
+  const nextAllowed = latest
+    ? addDays(latest.measurementDate, DAYS_BETWEEN_WHEEL_MEASUREMENTS)
+    : null;
+  const canMeasure = !nextAllowed || new Date() >= nextAllowed;
+
+  const insight =
+    latest && previous
+      ? buildInsight(
+          latest.areaScores as Record<string, number>,
+          previous.areaScores as Record<string, number>,
+          activeHabitCategories
+        )
+      : null;
+
+  return (
+    <>
+      <Nav />
+      <main className="app-main">
+        <p className="kicker">MEDICION</p>
+        <h1 className="section-title text-2xl mb-1">WHEEL OF LIFE</h1>
+        <p className="muted mb-8">
+          Cada {DAYS_BETWEEN_WHEEL_MEASUREMENTS} dias mides donde estas. Sin drama, solo la realidad.
+        </p>
+
+        {latest ? (
+          <div className="card mb-8">
+            <WheelRadarChart
+              current={latest.areaScores as Record<string, number>}
+              previous={previous ? (previous.areaScores as Record<string, number>) : undefined}
+            />
+            {insight ? <p className="text-sm text-accent mt-4">{insight}</p> : null}
+          </div>
+        ) : (
+          <p className="muted mb-8">Aun no tienes mediciones.</p>
+        )}
+
+        {canMeasure ? (
+          <WheelMeasurementForm lastScores={latest?.areaScores as Record<string, number> | undefined} />
+        ) : (
+          <p className="muted">
+            Tu siguiente medicion esta disponible el {nextAllowed?.toLocaleDateString("es-MX")}.
+          </p>
+        )}
+      </main>
+    </>
+  );
+}
