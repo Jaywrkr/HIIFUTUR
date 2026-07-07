@@ -14,6 +14,7 @@ import { addDays, computeStreak, daysBetween, todayKey } from "@/lib/habit-utils
 import { MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT, DAYS_BETWEEN_WHEEL_MEASUREMENTS } from "@/lib/constants";
 import { MODULES } from "@/lib/modules-content";
 import { getMantraOfTheDay } from "@/lib/mantras";
+import { ArrivalRitual } from "@/components/ArrivalRitual";
 
 export default async function DashboardPage() {
   const user = await requireUser();
@@ -53,17 +54,10 @@ export default async function DashboardPage() {
 
   return (
     <>
+      <ArrivalRitual mantra={getMantraOfTheDay()} />
       <Nav />
       <main className="app-main">
         <p className="kicker">HOY</p>
-
-        <div className="mb-10">
-          <p className="text-xs uppercase tracking-widest text-accent mb-2">Mantra de hoy</p>
-          <p className="text-lg font-bold leading-snug max-w-xl">
-            &ldquo;{getMantraOfTheDay()}&rdquo;
-          </p>
-          <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
-        </div>
 
         {habitsWithData.length === 0 ? (
           <div className="mb-10">
