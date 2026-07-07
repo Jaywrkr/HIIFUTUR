@@ -98,3 +98,13 @@ body {
 .muted {
   @apply text-neutral-500 text-sm;
 }
+
+/* Repeated rows in a list (habits, modules): a divider, not a box. Cards are
+   reserved for isolated widgets (forms, charts) — a list of ten items each
+   in their own bordered box reads as an admin panel, not a page. */
+.list-row {
+  @apply flex items-center justify-between border-b border-line py-4;
+}
+.list-row:last-child {
+  @apply border-b-0;
+}

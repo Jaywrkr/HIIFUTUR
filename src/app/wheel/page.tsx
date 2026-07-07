@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
+import { PageHeader } from "@/components/PageHeader";
 import { WheelRadarChart } from "@/components/WheelRadarChart";
 import { WheelMeasurementForm } from "@/components/WheelMeasurementForm";
 import { requireUser } from "@/lib/session";
@@ -67,11 +68,11 @@ export default async function WheelPage() {
     <>
       <Nav />
       <main className="app-main">
-        <p className="kicker">MEDICION</p>
-        <h1 className="section-title text-2xl mb-1">WHEEL OF LIFE</h1>
-        <p className="muted mb-8">
-          Cada {DAYS_BETWEEN_WHEEL_MEASUREMENTS} dias mides donde estas. Sin drama, solo la realidad.
-        </p>
+        <PageHeader
+          kicker="MEDICION"
+          title="Wheel of Life"
+          subtitle={`Cada ${DAYS_BETWEEN_WHEEL_MEASUREMENTS} dias mides donde estas. Sin drama, solo la realidad.`}
+        />
 
         {latest ? (
           <div className="card mb-8">

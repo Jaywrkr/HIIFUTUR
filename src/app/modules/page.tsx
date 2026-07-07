@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
+import { PageHeader } from "@/components/PageHeader";
 import { requireUser } from "@/lib/session";
 import { getUserPreferences, getModuleProgressForUser } from "@/lib/queries";
 import { MODULES, PHASES } from "@/lib/modules-content";
@@ -17,10 +18,9 @@ export default async function ModulesPage() {
     <>
       <Nav />
       <main className="app-main">
-        <p className="kicker">APRENDIZAJE</p>
-        <h1 className="section-title text-2xl mb-4">EL CAMINO</h1>
+        <PageHeader kicker="APRENDIZAJE" title="El camino" />
 
-        <blockquote className="card border-l-2 border-l-accent mb-10">
+        <blockquote className="border-l-2 border-l-accent pl-4 mb-12">
           <p className="text-sm leading-relaxed text-neutral-300">
             Este curso nace de mi propia transformacion: pase de un promedio de 3 a un 9 en mi
             Wheel of Life, en 8 meses. No fue un giro de 180 grados de un dia para otro — fue un
@@ -33,11 +33,11 @@ export default async function ModulesPage() {
           const phaseModules = MODULES.filter((m) => m.phaseId === phase.id);
 
           return (
-            <div key={phase.id} className="mb-10">
+            <div key={phase.id} className="mb-12">
               <p className="text-xs uppercase tracking-widest text-accent mb-1">{phase.title}</p>
-              <p className="muted mb-4">{phase.description}</p>
+              <p className="muted mb-2">{phase.description}</p>
 
-              <div className="flex flex-col gap-3">
+              <div>
                 {phaseModules.map((module) => {
                   const idx = MODULES.findIndex((m) => m.id === module.id);
                   const done = completedIds.has(module.id);
@@ -45,10 +45,7 @@ export default async function ModulesPage() {
                   const locked = !previousDone && !done;
 
                   return (
-                    <div
-                      key={module.id}
-                      className={`card flex items-center justify-between ${locked ? "opacity-40" : ""}`}
-                    >
+                    <div key={module.id} className={`list-row ${locked ? "opacity-40" : ""}`}>
                       <div>
                         <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">
                           Modulo {module.order}

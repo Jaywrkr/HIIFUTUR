@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
+import { PageHeader } from "@/components/PageHeader";
 import { CreateHabitForm } from "@/components/CreateHabitForm";
 import { requireUser } from "@/lib/session";
 import { getUserPreferences, getHabitsForUser, getHabitLogs } from "@/lib/queries";
@@ -37,19 +38,23 @@ export default async function HabitsPage() {
     <>
       <Nav />
       <main className="app-main">
-        <p className="kicker">EL SISTEMA</p>
-        <h1 className="section-title text-2xl mb-1">GESTIONA TUS HABITOS</h1>
-        <p className="muted mb-8">
-          Marcarlos dia a dia pasa en <Link href="/dashboard" className="link-accent">Hoy</Link>. Aqui
-          los creas y ves tu progreso hacia el siguiente.
-        </p>
+        <PageHeader
+          kicker="EL SISTEMA"
+          title="Gestiona tus habitos"
+          subtitle={
+            <>
+              Marcarlos dia a dia pasa en <Link href="/dashboard" className="link-accent">Hoy</Link>.
+              Aqui los creas y ves tu progreso hacia el siguiente.
+            </>
+          }
+        />
 
         {habitsWithData.length === 0 ? (
           <p className="muted mb-8">Aun no tienes habitos. Crea el primero — el mas pequeno posible.</p>
         ) : (
-          <div className="flex flex-col gap-2 mb-8">
+          <div className="mb-8">
             {habitsWithData.map(({ habit, streak, doneToday }) => (
-              <div key={habit.id} className="flex items-center justify-between border-b border-line py-3">
+              <div key={habit.id} className="list-row">
                 <div>
                   <p className="text-xs uppercase tracking-widest text-neutral-500">{habit.category}</p>
                   <p className="font-bold uppercase">{habit.name}</p>
