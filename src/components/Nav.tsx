@@ -5,9 +5,8 @@ import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 
 const links = [
-  { href: "/dashboard", label: "DASHBOARD" },
+  { href: "/dashboard", label: "HOY" },
   { href: "/modules", label: "MODULOS" },
-  { href: "/habits", label: "HABITOS" },
   { href: "/wheel", label: "WHEEL OF LIFE" },
 ];
 

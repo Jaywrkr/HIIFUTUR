@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
-import { HabitCard } from "@/components/HabitCard";
 import { CreateHabitForm } from "@/components/CreateHabitForm";
 import { requireUser } from "@/lib/session";
 import { getUserPreferences, getHabitsForUser, getHabitLogs } from "@/lib/queries";
@@ -38,23 +38,29 @@ export default async function HabitsPage() {
       <Nav />
       <main className="app-main">
         <p className="kicker">EL SISTEMA</p>
-        <h1 className="section-title text-2xl mb-1">HABITOS</h1>
-        <p className="muted mb-8">Hoy completaste. Manana, lo mismo.</p>
+        <h1 className="section-title text-2xl mb-1">GESTIONA TUS HABITOS</h1>
+        <p className="muted mb-8">
+          Marcarlos dia a dia pasa en <Link href="/dashboard" className="link-accent">Hoy</Link>. Aqui
+          los creas y ves tu progreso hacia el siguiente.
+        </p>
 
         {habitsWithData.length === 0 ? (
-          <p className="muted mb-6">Aun no tienes habitos. Crea el primero — el mas pequeno posible.</p>
+          <p className="muted mb-8">Aun no tienes habitos. Crea el primero — el mas pequeno posible.</p>
         ) : (
-          <div className="flex flex-col gap-3 mb-8">
+          <div className="flex flex-col gap-2 mb-8">
             {habitsWithData.map(({ habit, streak, doneToday }) => (
-              <HabitCard
-                key={habit.id}
-                id={habit.id}
-                name={habit.name}
-                description={habit.description}
-                category={habit.category}
-                streak={streak}
-                doneToday={doneToday}
-              />
+              <div key={habit.id} className="flex items-center justify-between border-b border-line py-3">
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-neutral-500">{habit.category}</p>
+                  <p className="font-bold uppercase">{habit.name}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-xs text-accent uppercase tracking-widest">
+                    {streak} {streak === 1 ? "dia" : "dias"}
+                  </p>
+                  <p className="muted text-xs">{doneToday ? "hecho hoy" : "pendiente hoy"}</p>
+                </div>
+              </div>
             ))}
           </div>
         )}
