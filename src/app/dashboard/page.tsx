@@ -13,6 +13,7 @@ import {
 import { addDays, computeStreak, daysBetween, todayKey } from "@/lib/habit-utils";
 import { MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT, DAYS_BETWEEN_WHEEL_MEASUREMENTS } from "@/lib/constants";
 import { MODULES } from "@/lib/modules-content";
+import { getMantraOfTheDay } from "@/lib/mantras";
 
 export default async function DashboardPage() {
   const user = await requireUser();
@@ -56,6 +57,12 @@ export default async function DashboardPage() {
         <p className="kicker">HOY</p>
         <h1 className="section-title text-2xl mb-1">DASHBOARD</h1>
         <p className="muted mb-8">Sin ruido. Solo lo esencial.</p>
+
+        <div className="card border-l-2 border-l-accent mb-8 text-center">
+          <p className="text-xs uppercase tracking-widest text-accent mb-2">Mantra de hoy</p>
+          <p className="text-sm font-bold leading-snug">&ldquo;{getMantraOfTheDay()}&rdquo;</p>
+          <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
+        </div>
 
         <div className="grid gap-4 mb-8" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
           <div className="card">
