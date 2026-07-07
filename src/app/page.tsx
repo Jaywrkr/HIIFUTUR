@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/session";
 import { MANTRAS } from "@/lib/mantras";
 import { Reveal } from "@/components/Reveal";
+import { ScrollTextLine } from "@/components/ScrollTextLine";
 
 const FOR_YOU_IF = [
   "Ya intentaste 100 apps de habitos y las dejaste en la semana 2.",
@@ -93,15 +94,22 @@ export default async function HomePage() {
 
       <Reveal>
         <p className="kicker">No lo escribio un equipo de marketing</p>
-        <blockquote className="border-l-2 border-l-accent pl-4 mb-24">
-          <p className="text-sm leading-relaxed text-neutral-300">
-            Lo vivi yo. Pase de un promedio de 3 a un 9 en mi Wheel of Life, en 8 meses. No fue un
-            giro de 180 grados de un dia para otro — fue un sistema pequeño, sostenido, mes tras
-            mes. Esto es ese sistema, no una version bonita de el.
-          </p>
-          <p className="text-xs uppercase tracking-widest text-neutral-500 mt-3">— Jay</p>
-        </blockquote>
       </Reveal>
+
+      <div className="border-l-2 border-l-accent pl-4 mb-24 flex flex-col gap-4">
+        {[
+          "Lo vivi yo.",
+          "Pase de un promedio de 3 a un 9 en mi Wheel of Life, en 8 meses.",
+          "No fue un giro de 180 grados de un dia para otro.",
+          "Fue un sistema pequeño, sostenido, mes tras mes.",
+          "Esto es ese sistema. No una version bonita de el.",
+        ].map((line) => (
+          <ScrollTextLine key={line}>
+            <span className="text-lg font-bold leading-snug">{line}</span>
+          </ScrollTextLine>
+        ))}
+        <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
+      </div>
 
       <Reveal>
         <p className="kicker">Como funciona (y como no)</p>
