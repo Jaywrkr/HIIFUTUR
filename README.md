@@ -57,6 +57,15 @@ y el UI/UX se expandiran en versiones futuras.
    Postgres. Despues de esto, el deploy en Vercel (`npm run build`) queda
    listo para usarse.
 
+   **Si no tienes terminal** (deploy hecho solo desde el dashboard de
+   Vercel): agrega la variable de entorno `SETUP_SECRET` (cualquier valor
+   que elijas) en `Settings → Environment Variables`, redeploy, y visita una
+   sola vez `https://tu-proyecto.vercel.app/api/setup/migrate?secret=<ese-valor>`.
+   Esa ruta crea las mismas tablas directamente. Es seguro visitarla mas de
+   una vez (no borra ni duplica datos). Puedes borrar
+   `src/app/api/setup/migrate` despues de usarla si prefieres no dejarla en
+   produccion.
+
 ## Desarrollo local
 
 ```bash
