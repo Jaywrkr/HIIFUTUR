@@ -9,6 +9,7 @@ export function LoginForm() {
   const router = useRouter();
   const params = useSearchParams();
   const justRegistered = params.get("registered") === "1";
+  const justReset = params.get("reset") === "1";
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
@@ -40,12 +41,20 @@ export function LoginForm() {
       {justRegistered ? (
         <p className="form-success">Cuenta creada. Inicia sesion para continuar.</p>
       ) : null}
+      {justReset ? (
+        <p className="form-success">Contrasena actualizada. Inicia sesion con la nueva.</p>
+      ) : null}
 
       <form action={handleSubmit} className="auth-form">
         <label className="field-label" htmlFor="email">EMAIL</label>
         <input id="email" name="email" type="email" required className="field-input" placeholder="tu@email.com" />
 
-        <label className="field-label" htmlFor="password">CONTRASENA</label>
+        <div className="flex items-center justify-between mt-4 mb-1">
+          <label className="field-label mt-0 mb-0" htmlFor="password">CONTRASENA</label>
+          <Link href="/forgot-password" className="text-xs text-neutral-500 hover:text-accent transition-colors">
+            Olvidaste tu contrasena?
+          </Link>
+        </div>
         <input id="password" name="password" type="password" required className="field-input" placeholder="Tu contrasena" />
 
         {error ? <p className="form-error">{error}</p> : null}
