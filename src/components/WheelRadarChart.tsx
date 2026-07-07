@@ -27,13 +27,13 @@ export function WheelRadarChart({
   return (
     <ResponsiveContainer width="100%" height={360}>
       <RadarChart data={data} outerRadius="70%">
-        <PolarGrid stroke="#1F1F1F" />
-        <PolarAngleAxis dataKey="area" tick={{ fill: "#a3a3a3", fontSize: 11 }} />
-        <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: "#525252", fontSize: 10 }} />
+        <PolarGrid stroke="#2B241C" />
+        <PolarAngleAxis dataKey="area" tick={{ fill: "#a89a85", fontSize: 11 }} />
+        <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: "#6b6153", fontSize: 10 }} />
         {previous ? (
-          <Radar name="Mes anterior" dataKey="anterior" stroke="#525252" fill="#525252" fillOpacity={0.15} />
+          <Radar name="Mes anterior" dataKey="anterior" stroke="#6b6153" fill="#6b6153" fillOpacity={0.15} />
         ) : null}
-        <Radar name="Actual" dataKey="actual" stroke="#39FF88" fill="#39FF88" fillOpacity={0.3} />
+        <Radar name="Actual" dataKey="actual" stroke="#E3C9A0" fill="#E3C9A0" fillOpacity={0.3} />
         <Legend wrapperStyle={{ fontSize: 11, textTransform: "uppercase" }} />
       </RadarChart>
     </ResponsiveContainer>

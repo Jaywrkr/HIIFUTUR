@@ -70,7 +70,7 @@ export default async function DashboardPage() {
         ) : (
           <div className="mb-10">
             <div className="flex items-baseline justify-between mb-4">
-              <h1 className="text-xl font-bold uppercase tracking-wide">Lo de hoy</h1>
+              <h1 className="text-2xl font-extrabold tracking-tight">Lo de hoy</h1>
               <p className="muted text-xs uppercase tracking-widest">
                 {doneCount}/{habitsWithData.length} hecho
               </p>

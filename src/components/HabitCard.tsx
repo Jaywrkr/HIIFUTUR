@@ -87,7 +87,7 @@ export function HabitCard({
     <div className="card flex items-center justify-between gap-4">
       <div className="flex-1">
         <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">{category}</p>
-        <p className="font-bold uppercase">{name}</p>
+        <p className="font-bold text-lg">{name}</p>
         <p className="muted mt-1">{description}</p>
         <p className="text-xs text-accent mt-2 uppercase tracking-widest">
           Racha: {streak} {streak === 1 ? "dia" : "dias"}
@@ -104,7 +104,7 @@ export function HabitCard({
           onClick={displayDone ? undo : undefined}
           onKeyDown={handleKeyDown}
           style={{ touchAction: "manipulation", userSelect: "none" }}
-          className={`relative h-14 w-14 overflow-hidden border flex items-center justify-center text-lg transition-transform duration-200 ${
+          className={`relative h-14 w-14 overflow-hidden border rounded-2xl flex items-center justify-center text-lg transition-transform duration-200 ${
             displayDone ? "border-accent bg-accent text-black" : "border-line text-neutral-500"
           } ${justCompleted ? "scale-110" : "scale-100"}`}
           aria-label={displayDone ? "Deshacer habito de hoy" : "Mantén presionado para marcar habito de hoy"}

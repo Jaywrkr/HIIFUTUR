@@ -22,7 +22,7 @@ export default function RegisterPage() {
     <div className="auth-shell">
       <div className="auth-card">
         <p className="kicker">EJECUTA</p>
-        <h1 className="auth-title">CREA TU CUENTA</h1>
+        <h1 className="auth-title">Crea tu cuenta</h1>
         <p className="auth-sub">Un sistema, no una promesa. Empieza aqui.</p>
 
         <form action={formAction} className="auth-form">

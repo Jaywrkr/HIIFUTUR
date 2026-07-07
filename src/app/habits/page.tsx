@@ -57,7 +57,7 @@ export default async function HabitsPage() {
               <div key={habit.id} className="list-row">
                 <div>
                   <p className="text-xs uppercase tracking-widest text-neutral-500">{habit.category}</p>
-                  <p className="font-bold uppercase">{habit.name}</p>
+                  <p className="font-bold">{habit.name}</p>
                 </div>
                 <div className="text-right">
                   <p className="text-xs text-accent uppercase tracking-widest">

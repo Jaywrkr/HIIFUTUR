@@ -22,7 +22,7 @@ export default function ForgotPasswordPage() {
     <div className="auth-shell">
       <div className="auth-card">
         <p className="kicker">EJECUTA</p>
-        <h1 className="auth-title">RECUPERA TU ACCESO</h1>
+        <h1 className="auth-title">Recupera tu acceso</h1>
         <p className="auth-sub">Te mandamos un enlace para elegir una contraseña nueva.</p>
 
         {state.message ? (

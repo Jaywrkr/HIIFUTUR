@@ -35,7 +35,7 @@ export function LoginForm() {
   return (
     <div className="auth-card">
       <p className="kicker">EJECUTA</p>
-      <h1 className="auth-title">INICIA SESION</h1>
+      <h1 className="auth-title">Inicia sesion</h1>
       <p className="auth-sub">Vuelve al sistema. Hoy tambien cuenta.</p>
 
       {justRegistered ? (

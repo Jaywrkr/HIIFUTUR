@@ -2,15 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-}
-
 html,
 body {
-  background-color: #000000;
-  color: #f5f5f5;
-  font-family: var(--font-mono);
+  background-color: #0f0c09;
+  color: #f2ece2;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 * {
@@ -18,18 +14,18 @@ body {
 }
 
 .kicker {
-  @apply text-accent text-xs tracking-[0.3em] uppercase mb-2;
+  @apply inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs tracking-widest uppercase text-accent font-semibold mb-3 w-fit;
 }
 
 /* --- Auth --- */
 .auth-shell {
-  @apply min-h-screen flex items-center justify-center px-4 py-12 bg-black;
+  @apply min-h-screen flex items-center justify-center px-4 py-12 bg-ink;
 }
 .auth-card {
-  @apply w-full max-w-sm border border-line p-8 bg-surface;
+  @apply w-full max-w-sm border border-line rounded-3xl p-8 bg-surface;
 }
 .auth-title {
-  @apply text-2xl uppercase tracking-wide font-bold mb-1;
+  @apply text-2xl tracking-tight font-bold mb-1;
 }
 .auth-sub {
   @apply text-sm text-neutral-400 mb-6;
@@ -44,10 +40,10 @@ body {
   @apply text-xs uppercase tracking-widest text-neutral-400 mt-4 mb-1;
 }
 .field-input {
-  @apply bg-black border border-line px-3 py-2 text-sm text-white outline-none focus:border-accent transition-colors;
+  @apply bg-ink border border-line rounded-xl px-4 py-2.5 text-sm text-white outline-none focus:border-accent transition-colors;
 }
 .form-error {
-  @apply text-xs text-red-500 mt-3;
+  @apply text-xs text-red-400 mt-3;
 }
 .form-success {
   @apply text-xs text-accent mb-4;
@@ -57,10 +53,10 @@ body {
 }
 
 .btn-primary {
-  @apply inline-block bg-accent text-black font-bold uppercase tracking-widest text-sm py-3 px-4 text-center hover:opacity-90 transition-opacity disabled:opacity-50;
+  @apply inline-block bg-accent text-black font-bold uppercase tracking-widest text-sm py-3 px-6 rounded-full text-center hover:opacity-90 transition-opacity disabled:opacity-50;
 }
 .btn-secondary {
-  @apply border border-line text-white uppercase tracking-widest text-xs py-2 px-4 hover:border-accent transition-colors disabled:opacity-40;
+  @apply border border-line text-white uppercase tracking-widest text-xs py-2 px-5 rounded-full hover:border-accent transition-colors disabled:opacity-40;
 }
 .w-full {
   width: 100%;
@@ -68,7 +64,7 @@ body {
 
 /* --- App shell --- */
 .app-nav {
-  @apply border-b border-line sticky top-0 bg-black z-10;
+  @apply border-b border-line sticky top-0 bg-ink z-10;
 }
 .app-nav-inner {
   @apply max-w-4xl mx-auto flex items-center justify-between px-4 py-4;
@@ -90,10 +86,10 @@ body {
 }
 
 .card {
-  @apply border border-line bg-surface p-6;
+  @apply border border-line bg-surface rounded-2xl p-6;
 }
 .section-title {
-  @apply text-lg uppercase tracking-wide font-bold mb-4;
+  @apply text-lg font-bold mb-4;
 }
 .muted {
   @apply text-neutral-500 text-sm;

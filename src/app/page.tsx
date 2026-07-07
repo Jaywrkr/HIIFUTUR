@@ -4,6 +4,15 @@ import { getCurrentUser } from "@/lib/session";
 import { MANTRAS } from "@/lib/mantras";
 import { Reveal } from "@/components/Reveal";
 import { ScrollTextLine } from "@/components/ScrollTextLine";
+import { WordReveal, type RevealWord } from "@/components/WordReveal";
+
+const WHY_WE_BUILT_IT: RevealWord[] = [
+  { text: "La" }, { text: "mayoria" }, { text: "de" }, { text: "las" }, { text: "apps" },
+  { text: "de" }, { text: "habitos" }, { text: "estan" }, { text: "hechas" }, { text: "para" },
+  { text: "que" }, { text: "te" }, { text: "sientas" }, { text: "culpable.", strike: true },
+  { text: "Nosotros" }, { text: "hicimos" }, { text: "un" }, { text: "sistema" }, { text: "para" },
+  { text: "que" }, { text: "sigas," }, { text: "aunque" }, { text: "falles." },
+];
 
 const FOR_YOU_IF = [
   "Ya intentaste 100 apps de habitos y las dejaste en la semana 2.",
@@ -65,7 +74,7 @@ export default async function HomePage() {
 
       <Reveal>
         <p className="kicker">Sistema de ejecucion sostenible</p>
-        <h1 className="text-3xl font-bold uppercase leading-tight mb-4">
+        <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
           No es disciplina. No es fuerza de voluntad. Es un sistema que no pueda fallar.
         </h1>
         <p className="text-sm leading-relaxed text-neutral-300 mb-8 max-w-lg">
@@ -79,6 +88,14 @@ export default async function HomePage() {
           </Link>
         </div>
       </Reveal>
+
+      <div className="mb-24">
+        <p className="kicker">Por que lo hicimos</p>
+        <WordReveal
+          words={WHY_WE_BUILT_IT}
+          className="text-2xl sm:text-3xl font-extrabold leading-snug tracking-tight"
+        />
+      </div>
 
       <Reveal>
         <p className="kicker">Esto es para ti si...</p>
@@ -121,7 +138,7 @@ export default async function HomePage() {
             <div key={step.title} className="group flex gap-4 border-b border-line py-4 last:border-b-0 hover:border-l-2 hover:border-l-accent hover:pl-2 transition-all">
               <span className="text-xs text-accent tracking-widest mt-1 shrink-0">{String(i + 1).padStart(2, "0")}</span>
               <div>
-                <p className="font-bold uppercase">{step.title}</p>
+                <p className="font-bold text-lg">{step.title}</p>
                 <p className="muted mt-1">{step.description}</p>
               </div>
             </div>
@@ -146,7 +163,7 @@ export default async function HomePage() {
         <div className="mb-24">
           {FAQ.map((item) => (
             <div key={item.q} className="border-b border-line py-4 last:border-b-0">
-              <p className="font-bold uppercase text-sm mb-1">{item.q}</p>
+              <p className="font-bold text-base mb-1">{item.q}</p>
               <p className="muted">{item.a}</p>
             </div>
           ))}

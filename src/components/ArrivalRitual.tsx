@@ -44,7 +44,7 @@ export function ArrivalRitual({ mantra }: { mantra: string }) {
         }
       }}
       aria-label="Toca para entrar"
-      className={`fixed inset-0 z-50 bg-black flex flex-col items-center justify-center px-6 cursor-pointer transition-opacity duration-[400ms] ${
+      className={`fixed inset-0 z-50 bg-ink flex flex-col items-center justify-center px-6 cursor-pointer transition-opacity duration-[400ms] ${
         dismissing ? "opacity-0" : "opacity-100"
       }`}
     >

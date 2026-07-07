@@ -50,7 +50,7 @@ export default async function ModulesPage() {
                         <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">
                           Modulo {module.order}
                         </p>
-                        <p className="font-bold uppercase">{module.title}</p>
+                        <p className="font-bold">{module.title}</p>
                       </div>
                       {locked ? (
                         <span className="text-xs uppercase text-neutral-600">Bloqueado</span>

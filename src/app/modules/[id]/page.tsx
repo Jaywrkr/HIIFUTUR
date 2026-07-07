@@ -43,7 +43,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         <p className="kicker">
           {phase?.title} · MODULO {courseModule.order}
         </p>
-        <h1 className="text-2xl font-bold uppercase mb-6">{courseModule.title}</h1>
+        <h1 className="text-3xl font-extrabold tracking-tight mb-6">{courseModule.title}</h1>
 
         <blockquote className="border-l-2 border-l-accent pl-4 mb-8">
           <p className="text-sm leading-relaxed text-neutral-300 italic">
@@ -67,7 +67,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
 
         <div className="card">
           <p className="text-xs uppercase tracking-widest text-accent mb-2">Ejercicio</p>
-          <h2 className="font-bold uppercase mb-2">{courseModule.exerciseTitle}</h2>
+          <h2 className="font-bold text-lg mb-2">{courseModule.exerciseTitle}</h2>
           <p className="muted mb-6">{courseModule.exerciseDescription}</p>
 
           <ModuleExerciseForm

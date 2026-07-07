@@ -40,7 +40,7 @@ export default function OnboardingPage() {
 
         {step === 1 ? (
           <>
-            <h1 className="auth-title">QUE VAS A CAMBIAR</h1>
+            <h1 className="auth-title">Que vas a cambiar</h1>
             <p className="auth-sub">
               Elige hasta {MAX_SELECTED_AREAS} areas. No mas. El sistema funciona porque es pequeno.
             </p>
@@ -52,7 +52,7 @@ export default function OnboardingPage() {
                     key={area.id}
                     type="button"
                     onClick={() => toggleArea(area.id)}
-                    className={`text-left border px-4 py-3 uppercase text-sm tracking-wide transition-colors ${
+                    className={`text-left border rounded-xl px-4 py-3 uppercase text-sm tracking-wide transition-colors ${
                       active ? "border-accent text-accent" : "border-line text-neutral-400"
                     }`}
                   >
@@ -72,7 +72,7 @@ export default function OnboardingPage() {
           </>
         ) : (
           <form action={formAction}>
-            <h1 className="auth-title">DONDE ESTAS HOY</h1>
+            <h1 className="auth-title">Donde estas hoy</h1>
             <p className="auth-sub">Del 1 al 10, sin filtro. Esta es tu linea base.</p>
 
             {selected.map((id) => (

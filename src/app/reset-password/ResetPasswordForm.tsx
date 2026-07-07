@@ -25,7 +25,7 @@ export function ResetPasswordForm() {
     return (
       <div className="auth-card">
         <p className="kicker">EJECUTA</p>
-        <h1 className="auth-title">ENLACE INVALIDO</h1>
+        <h1 className="auth-title">Enlace invalido</h1>
         <p className="auth-sub">Este enlace no trae la informacion necesaria.</p>
         <p className="auth-footer">
           <Link href="/forgot-password" className="link-accent">Pedir un enlace nuevo</Link>
@@ -37,7 +37,7 @@ export function ResetPasswordForm() {
   return (
     <div className="auth-card">
       <p className="kicker">EJECUTA</p>
-      <h1 className="auth-title">ELIGE TU NUEVA CONTRASENA</h1>
+      <h1 className="auth-title">Elige tu nueva contrasena</h1>
       <p className="auth-sub">Minimo 8 caracteres.</p>
 
       <form action={formAction} className="auth-form">

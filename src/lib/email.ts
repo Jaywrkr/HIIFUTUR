@@ -15,15 +15,15 @@ export async function sendPasswordResetEmail(to: string, resetUrl: string) {
     to,
     subject: "Recupera el acceso a tu cuenta de EJECUTA",
     html: `
-      <div style="font-family: monospace; background: #000; color: #f5f5f5; padding: 32px;">
-        <p style="color: #39FF88; text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px;">EJECUTA</p>
+      <div style="font-family: sans-serif; background: #0F0C09; color: #F2ECE2; padding: 32px;">
+        <p style="color: #E3C9A0; text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px;">EJECUTA</p>
         <p style="font-size: 16px;">Pediste restablecer tu contraseña.</p>
         <p>
-          <a href="${resetUrl}" style="background: #39FF88; color: #000; padding: 12px 20px; text-decoration: none; font-weight: bold; text-transform: uppercase; display: inline-block;">
+          <a href="${resetUrl}" style="background: #E3C9A0; color: #000; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 999px; display: inline-block;">
             Elegir nueva contraseña
           </a>
         </p>
-        <p style="color: #737373; font-size: 12px;">
+        <p style="color: #8a8072; font-size: 12px;">
           Este enlace expira en 1 hora. Si no pediste esto, ignora el correo.
         </p>
       </div>
