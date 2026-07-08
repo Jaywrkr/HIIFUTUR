@@ -51,6 +51,13 @@ y el UI/UX se expandiran en versiones futuras.
      `/api/cron/reminders`, que Vercel Cron llama una vez al dia (ver
      `vercel.json`) para avisarle a quien tenga un habito activo sin marcar
      hoy. Cada correo trae un link de "dejar de recibir estos recordatorios".
+   - `NEXT_PUBLIC_SENTRY_DSN` y `SENTRY_DSN` (mismo valor): para enterarte de
+     errores en produccion antes de que el usuario te escriba. Crea un
+     proyecto gratis en [sentry.io](https://sentry.io) (elige "Next.js").
+     Sin esto, los errores no se reportan a ningun lado — no rompe nada, solo
+     te quedas a ciegas. Opcional: `SENTRY_ORG`, `SENTRY_PROJECT` y
+     `SENTRY_AUTH_TOKEN` para que el build suba source maps y los stack
+     traces en Sentry muestren tu codigo real en vez de JS minificado.
 
    Ve `.env.example` para la lista completa (usalo tambien para desarrollo
    local, copialo a `.env`).
