@@ -94,6 +94,16 @@ export const wheelOfLifeMeasurements = pgTable("wheel_of_life_measurements", {
   notes: text("notes"),
 });
 
+export const feedbackMessages = pgTable("feedback_messages", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  message: text("message").notNull(),
+  pageUrl: text("page_url"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
 export const moduleProgress = pgTable(
   "module_progress",
   {

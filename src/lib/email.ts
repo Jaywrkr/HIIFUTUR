@@ -2,6 +2,14 @@ import { Resend } from "resend";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 export async function sendPasswordResetEmail(to: string, resetUrl: string) {
   if (!resend) {
     // No email provider configured (local dev, or not set up yet in prod).
@@ -63,6 +71,34 @@ export async function sendReminderEmail(
         <p style="color: #544c40; font-size: 11px; margin-top: 32px;">
           <a href="${unsubscribeUrl}" style="color: #544c40;">Dejar de recibir estos recordatorios</a>
         </p>
+      </div>
+    `,
+  });
+}
+
+export async function sendFeedbackNotification(
+  userEmail: string,
+  message: string,
+  pageUrl: string | null
+) {
+  const to = process.env.FEEDBACK_TO_EMAIL ?? "jaywrkr@gmail.com";
+
+  if (!resend) {
+    console.log(`[email:dev] Feedback de ${userEmail} (${pageUrl ?? "?"}): ${message}`);
+    return;
+  }
+
+  await resend.emails.send({
+    from: process.env.EMAIL_FROM ?? "EJECUTA <onboarding@resend.dev>",
+    to,
+    reply_to: userEmail,
+    subject: `Feedback en EJECUTA de ${userEmail}`,
+    html: `
+      <div style="font-family: sans-serif; background: #0F0C09; color: #F2ECE2; padding: 32px;">
+        <p style="color: #E3C9A0; text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px;">EJECUTA · Feedback</p>
+        <p style="font-size: 14px; color: #8a8072;">De: ${escapeHtml(userEmail)}</p>
+        ${pageUrl ? `<p style="font-size: 14px; color: #8a8072;">Pagina: ${escapeHtml(pageUrl)}</p>` : ""}
+        <p style="font-size: 16px; white-space: pre-wrap; margin-top: 16px;">${escapeHtml(message)}</p>
       </div>
     `,
   });

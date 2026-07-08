@@ -36,6 +36,13 @@
       "when": 1783526855366,
       "tag": "0004_last_psylocke",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1783529694760,
+      "tag": "0005_perpetual_vermin",
+      "breakpoints": true
     }
   ]
 }
