@@ -4,14 +4,15 @@ import { z } from "zod";
 import { and, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
-import { habits, habitLogs } from "@/db/schema";
+import { habits, habitLogs, habitFreezes } from "@/db/schema";
 import { requireUser } from "@/lib/session";
-import { getHabitsForUser } from "@/lib/queries";
+import { getHabitsForUser, getHabitLogs, getHabitFreezes } from "@/lib/queries";
 import {
   HABIT_CATEGORIES,
   MAX_HABITS,
   DAYS_TO_UNLOCK_NEXT_HABIT,
   DAYS_BETWEEN_HABIT_EDITS,
+  DAYS_BETWEEN_STREAK_FREEZES,
 } from "@/lib/constants";
 import { addDays, todayKey } from "@/lib/habit-utils";
 
@@ -141,6 +142,48 @@ export async function updateHabit(
       lastEditedAt: new Date(),
     })
     .where(eq(habits.id, habitId));
+
+  revalidatePath("/habits");
+  revalidatePath("/dashboard");
+  return {};
+}
+
+export async function freezeStreak(habitId: string): Promise<HabitFormState> {
+  const user = await requireUser();
+
+  const [habit] = await db
+    .select()
+    .from(habits)
+    .where(and(eq(habits.id, habitId), eq(habits.userId, user.id)))
+    .limit(1);
+
+  if (!habit) return { error: "Habito no encontrado." };
+
+  if (habit.lastFreezeUsedAt) {
+    const nextFreezeDate = addDays(habit.lastFreezeUsedAt, DAYS_BETWEEN_STREAK_FREEZES);
+    if (new Date() < nextFreezeDate) {
+      return {
+        error: `Ya usaste tu congelamiento. El siguiente esta disponible el ${nextFreezeDate.toLocaleDateString("es-MX")}.`,
+      };
+    }
+  }
+
+  const yesterday = addDays(new Date(), -1).toISOString().slice(0, 10);
+  const logs = await getHabitLogs(habitId);
+  const freezes = await getHabitFreezes(habitId);
+  const logDates = logs.map((l) => l.date);
+  const freezeDates = freezes.map((f) => f.date);
+
+  if (logDates.includes(yesterday) || freezeDates.includes(yesterday)) {
+    return { error: "Ayer no fue un dia perdido, no hay nada que congelar." };
+  }
+
+  if (logDates.length === 0) {
+    return { error: "Todavia no hay racha que proteger." };
+  }
+
+  await db.insert(habitFreezes).values({ habitId, date: yesterday });
+  await db.update(habits).set({ lastFreezeUsedAt: new Date() }).where(eq(habits.id, habitId));
 
   revalidatePath("/habits");
   revalidatePath("/dashboard");

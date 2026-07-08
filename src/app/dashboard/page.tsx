@@ -7,6 +7,7 @@ import {
   getUserPreferences,
   getHabitsForUser,
   getHabitLogs,
+  getHabitFreezes,
   getWheelMeasurements,
   getModuleProgressForUser,
 } from "@/lib/queries";
@@ -31,8 +32,14 @@ export default async function DashboardPage() {
   const habitsWithData = await Promise.all(
     userHabits.map(async (habit) => {
       const logs = await getHabitLogs(habit.id);
+      const freezes = await getHabitFreezes(habit.id);
       const logDates = logs.map((l) => l.date);
-      return { habit, streak: computeStreak(logDates), doneToday: logDates.includes(today) };
+      const freezeDates = freezes.map((f) => f.date);
+      return {
+        habit,
+        streak: computeStreak(logDates, freezeDates),
+        doneToday: logDates.includes(today),
+      };
     })
   );
 

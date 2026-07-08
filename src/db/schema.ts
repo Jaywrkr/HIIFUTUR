@@ -60,6 +60,7 @@ export const habits = pgTable("habits", {
   activatedAt: timestamp("activated_at"),
   unlockDate: timestamp("unlock_date"),
   lastEditedAt: timestamp("last_edited_at"),
+  lastFreezeUsedAt: timestamp("last_freeze_used_at"),
 });
 
 export const habitLogs = pgTable("habit_logs", {
@@ -69,6 +70,17 @@ export const habitLogs = pgTable("habit_logs", {
     .references(() => habits.id, { onDelete: "cascade" }),
   date: date("date").notNull(),
   completed: boolean("completed").notNull().default(true),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+// A day protected by a streak freeze: counts toward the streak like a
+// completed log, but isn't one — kept separate so the UI can tell them apart.
+export const habitFreezes = pgTable("habit_freezes", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  habitId: uuid("habit_id")
+    .notNull()
+    .references(() => habits.id, { onDelete: "cascade" }),
+  date: date("date").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 

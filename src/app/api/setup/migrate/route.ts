@@ -14,6 +14,12 @@ CREATE TABLE IF NOT EXISTS "habit_logs" (
 	"completed" boolean DEFAULT true NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL
 );
+CREATE TABLE IF NOT EXISTS "habit_freezes" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"habit_id" uuid NOT NULL,
+	"date" date NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL
+);
 CREATE TABLE IF NOT EXISTS "habits" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"user_id" uuid NOT NULL,
@@ -25,9 +31,11 @@ CREATE TABLE IF NOT EXISTS "habits" (
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"activated_at" timestamp,
 	"unlock_date" timestamp,
-	"last_edited_at" timestamp
+	"last_edited_at" timestamp,
+	"last_freeze_used_at" timestamp
 );
 ALTER TABLE "habits" ADD COLUMN IF NOT EXISTS "last_edited_at" timestamp;
+ALTER TABLE "habits" ADD COLUMN IF NOT EXISTS "last_freeze_used_at" timestamp;
 CREATE TABLE IF NOT EXISTS "module_progress" (
 	"user_id" uuid NOT NULL,
 	"module_id" text NOT NULL,
@@ -74,6 +82,11 @@ CREATE TABLE IF NOT EXISTS "password_reset_tokens" (
 );
 DO $$ BEGIN
  ALTER TABLE "habit_logs" ADD CONSTRAINT "habit_logs_habit_id_habits_id_fk" FOREIGN KEY ("habit_id") REFERENCES "public"."habits"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+DO $$ BEGIN
+ ALTER TABLE "habit_freezes" ADD CONSTRAINT "habit_freezes_habit_id_habits_id_fk" FOREIGN KEY ("habit_id") REFERENCES "public"."habits"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

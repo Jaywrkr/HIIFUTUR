@@ -4,6 +4,7 @@ import {
   userPreferences,
   habits,
   habitLogs,
+  habitFreezes,
   wheelOfLifeMeasurements,
   moduleProgress,
 } from "@/db/schema";
@@ -31,6 +32,14 @@ export async function getHabitLogs(habitId: string) {
     .from(habitLogs)
     .where(eq(habitLogs.habitId, habitId))
     .orderBy(desc(habitLogs.date));
+}
+
+export async function getHabitFreezes(habitId: string) {
+  return db
+    .select()
+    .from(habitFreezes)
+    .where(eq(habitFreezes.habitId, habitId))
+    .orderBy(desc(habitFreezes.date));
 }
 
 export async function getLogForDate(habitId: string, date: string) {

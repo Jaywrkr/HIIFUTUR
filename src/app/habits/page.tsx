@@ -5,9 +5,14 @@ import { PageHeader } from "@/components/PageHeader";
 import { CreateHabitForm } from "@/components/CreateHabitForm";
 import { EditHabitRow } from "@/components/EditHabitRow";
 import { requireUser } from "@/lib/session";
-import { getUserPreferences, getHabitsForUser, getHabitLogs } from "@/lib/queries";
+import { getUserPreferences, getHabitsForUser, getHabitLogs, getHabitFreezes } from "@/lib/queries";
 import { addDays, computeStreak, todayKey } from "@/lib/habit-utils";
-import { MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT, DAYS_BETWEEN_HABIT_EDITS } from "@/lib/constants";
+import {
+  MAX_HABITS,
+  DAYS_TO_UNLOCK_NEXT_HABIT,
+  DAYS_BETWEEN_HABIT_EDITS,
+  DAYS_BETWEEN_STREAK_FREEZES,
+} from "@/lib/constants";
 
 export default async function HabitsPage() {
   const user = await requireUser();
@@ -17,20 +22,35 @@ export default async function HabitsPage() {
   const userHabits = await getHabitsForUser(user.id);
   const today = todayKey();
 
+  const yesterday = addDays(new Date(), -1).toISOString().slice(0, 10);
+
   const habitsWithData = await Promise.all(
     userHabits.map(async (habit) => {
       const logs = await getHabitLogs(habit.id);
+      const freezes = await getHabitFreezes(habit.id);
       const logDates = logs.map((l) => l.date);
+      const freezeDates = freezes.map((f) => f.date);
+
       const nextEditDate = habit.lastEditedAt
         ? addDays(habit.lastEditedAt, DAYS_BETWEEN_HABIT_EDITS)
         : null;
       const canEdit = !nextEditDate || new Date() >= nextEditDate;
+
+      const nextFreezeDate = habit.lastFreezeUsedAt
+        ? addDays(habit.lastFreezeUsedAt, DAYS_BETWEEN_STREAK_FREEZES)
+        : null;
+      const freezeOnCooldown = !!nextFreezeDate && new Date() < nextFreezeDate;
+      const yesterdayMissed = !logDates.includes(yesterday) && !freezeDates.includes(yesterday);
+      const canFreeze = logDates.length > 0 && yesterdayMissed && !freezeOnCooldown;
+
       return {
         habit,
-        streak: computeStreak(logDates),
+        streak: computeStreak(logDates, freezeDates),
         doneToday: logDates.includes(today),
         canEdit,
         nextEditLabel: nextEditDate ? nextEditDate.toLocaleDateString("es-MX") : null,
+        canFreeze,
+        nextFreezeLabel: freezeOnCooldown ? nextFreezeDate!.toLocaleDateString("es-MX") : null,
       };
     })
   );
@@ -60,16 +80,20 @@ export default async function HabitsPage() {
           <p className="muted mb-8">Aun no tienes habitos. Crea el primero — el mas pequeno posible.</p>
         ) : (
           <div className="mb-8">
-            {habitsWithData.map(({ habit, streak, doneToday, canEdit, nextEditLabel }) => (
-              <EditHabitRow
-                key={habit.id}
-                habit={habit}
-                streak={streak}
-                doneToday={doneToday}
-                canEdit={canEdit}
-                nextEditLabel={nextEditLabel}
-              />
-            ))}
+            {habitsWithData.map(
+              ({ habit, streak, doneToday, canEdit, nextEditLabel, canFreeze, nextFreezeLabel }) => (
+                <EditHabitRow
+                  key={habit.id}
+                  habit={habit}
+                  streak={streak}
+                  doneToday={doneToday}
+                  canEdit={canEdit}
+                  nextEditLabel={nextEditLabel}
+                  canFreeze={canFreeze}
+                  nextFreezeLabel={nextFreezeLabel}
+                />
+              )
+            )}
           </div>
         )}
 

@@ -29,6 +29,13 @@
       "when": 1783526237701,
       "tag": "0003_living_rage",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1783526855366,
+      "tag": "0004_last_psylocke",
+      "breakpoints": true
     }
   ]
 }

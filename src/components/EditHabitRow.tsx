@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useFormState, useFormStatus } from "react-dom";
-import { updateHabit, type HabitFormState } from "@/lib/habit-actions";
+import { updateHabit, freezeStreak, type HabitFormState } from "@/lib/habit-actions";
 import { HABIT_CATEGORIES, DAYS_BETWEEN_HABIT_EDITS } from "@/lib/constants";
 
 const initialState: HabitFormState = {};
@@ -22,16 +22,36 @@ export function EditHabitRow({
   doneToday,
   canEdit,
   nextEditLabel,
+  canFreeze,
+  nextFreezeLabel,
 }: {
   habit: { id: string; name: string; description: string; category: string };
   streak: number;
   doneToday: boolean;
   canEdit: boolean;
   nextEditLabel: string | null;
+  canFreeze: boolean;
+  nextFreezeLabel: string | null;
 }) {
   const [editing, setEditing] = useState(false);
   const updateWithId = updateHabit.bind(null, habit.id);
   const [state, formAction] = useFormState(updateWithId, initialState);
+
+  const [freezePending, startFreeze] = useTransition();
+  const [freezeError, setFreezeError] = useState<string | null>(null);
+  const [justFrozen, setJustFrozen] = useState(false);
+
+  function handleFreeze() {
+    setFreezeError(null);
+    startFreeze(async () => {
+      const result = await freezeStreak(habit.id);
+      if (result.error) {
+        setFreezeError(result.error);
+      } else {
+        setJustFrozen(true);
+      }
+    });
+  }
 
   // Close the form once a save succeeds (no error, and the form isn't the
   // freshly-mounted initial state).
@@ -102,33 +122,59 @@ export function EditHabitRow({
   }
 
   return (
-    <div className="list-row">
-      <div>
-        <p className="text-xs uppercase tracking-widest text-neutral-500">{habit.category}</p>
-        <p className="font-bold">{habit.name}</p>
-        <p className="muted mt-1">{habit.description}</p>
-      </div>
-      <div className="flex items-center gap-4">
-        <div className="text-right">
-          <p className="text-xs text-accent uppercase tracking-widest">
-            {streak} {streak === 1 ? "dia" : "dias"}
-          </p>
-          <p className="muted text-xs">{doneToday ? "hecho hoy" : "pendiente hoy"}</p>
+    <div className="border-b border-line py-4 last:border-b-0">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-xs uppercase tracking-widest text-neutral-500">{habit.category}</p>
+          <p className="font-bold">{habit.name}</p>
+          <p className="muted mt-1">{habit.description}</p>
         </div>
-        {canEdit ? (
+        <div className="flex items-center gap-4">
+          <div className="text-right">
+            <p className="text-xs text-accent uppercase tracking-widest">
+              {streak} {streak === 1 ? "dia" : "dias"}
+            </p>
+            <p className="muted text-xs">{doneToday ? "hecho hoy" : "pendiente hoy"}</p>
+          </div>
+          {canEdit ? (
+            <button
+              type="button"
+              onClick={() => setEditing(true)}
+              className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors"
+            >
+              Editar
+            </button>
+          ) : (
+            <p className="text-[10px] text-neutral-600 text-right leading-tight max-w-[90px]">
+              Editable el {nextEditLabel}
+            </p>
+          )}
+        </div>
+      </div>
+
+      {canFreeze && !justFrozen ? (
+        <div className="mt-3 flex items-center gap-3">
           <button
             type="button"
-            onClick={() => setEditing(true)}
-            className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors"
+            onClick={handleFreeze}
+            disabled={freezePending}
+            className="text-xs text-accent uppercase tracking-widest hover:opacity-80 transition-opacity disabled:opacity-40"
           >
-            Editar
+            {freezePending ? "Congelando..." : "❄️ Ayer se te paso — congelar racha"}
           </button>
-        ) : (
-          <p className="text-[10px] text-neutral-600 text-right leading-tight max-w-[90px]">
-            Editable el {nextEditLabel}
-          </p>
-        )}
-      </div>
+        </div>
+      ) : null}
+      {justFrozen ? (
+        <p className="mt-3 text-xs text-accent uppercase tracking-widest">
+          ❄️ Racha protegida. Sigue como si nada.
+        </p>
+      ) : null}
+      {freezeError ? <p className="form-error mt-3">{freezeError}</p> : null}
+      {!canFreeze && nextFreezeLabel ? (
+        <p className="mt-3 text-[10px] text-neutral-600">
+          Congelamiento disponible de nuevo el {nextFreezeLabel}.
+        </p>
+      ) : null}
     </div>
   );
 }
