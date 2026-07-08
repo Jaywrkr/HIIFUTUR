@@ -59,123 +59,186 @@ const FAQ = [
   },
 ];
 
+function FloatingStat({
+  icon,
+  label,
+  value,
+  className,
+}: {
+  icon: string;
+  label: string;
+  value: string;
+  className: string;
+}) {
+  return (
+    <div
+      className={`absolute bg-surface border border-line rounded-2xl px-5 py-4 shadow-2xl flex items-center gap-3 ${className}`}
+    >
+      <span className="text-2xl leading-none">{icon}</span>
+      <div>
+        <p className="font-extrabold leading-tight">{value}</p>
+        <p className="text-xs text-neutral-500 uppercase tracking-widest">{label}</p>
+      </div>
+    </div>
+  );
+}
+
 export default async function HomePage() {
   const user = await getCurrentUser();
   if (user) redirect("/dashboard");
 
   return (
-    <main className="max-w-2xl mx-auto px-4 py-10">
-      <div className="flex items-center justify-between mb-16">
+    <main className="min-h-screen overflow-x-hidden">
+      <div className="max-w-6xl mx-auto px-6 md:px-10 py-8 flex items-center justify-between">
         <span className="text-sm font-bold tracking-[0.3em] text-white">EJECUTA</span>
         <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
           Iniciar sesion
         </Link>
       </div>
 
-      <Reveal>
-        <p className="kicker">Sistema de ejecucion sostenible</p>
-        <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
-          No es disciplina. No es fuerza de voluntad. Es un sistema que no pueda fallar.
-        </h1>
-        <p className="text-sm leading-relaxed text-neutral-300 mb-8 max-w-lg">
-          Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.
-          Sin gurus, sin 47 habitos a la vez, sin culpa cuando fallas un dia.
-        </p>
-        <div className="flex items-center gap-6 mb-24">
-          <Link href="/register" className="btn-primary">EMPEZAR GRATIS</Link>
-          <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
-            Ya tengo cuenta
-          </Link>
-        </div>
-      </Reveal>
-
-      <div className="mb-24">
-        <p className="kicker">Por que lo hicimos</p>
-        <WordReveal
-          words={WHY_WE_BUILT_IT}
-          className="text-2xl sm:text-3xl font-extrabold leading-snug tracking-tight"
-        />
-      </div>
-
-      <Reveal>
-        <p className="kicker">Esto es para ti si...</p>
-        <div className="mb-24">
-          {FOR_YOU_IF.map((line) => (
-            <div key={line} className="group flex items-start gap-4 border-b border-line py-4 last:border-b-0">
-              <span className="text-accent mt-0.5 shrink-0">—</span>
-              <p className="text-sm text-neutral-300 group-hover:text-white transition-colors">{line}</p>
-            </div>
-          ))}
-        </div>
-      </Reveal>
-
-      <Reveal>
-        <p className="kicker">No lo escribio un equipo de marketing</p>
-      </Reveal>
-
-      <div className="border-l-2 border-l-accent pl-4 mb-24 flex flex-col gap-4">
-        {[
-          "Lo vivi yo.",
-          "Pase de un promedio de 3 a un 9 en mi Wheel of Life, en 8 meses.",
-          "No fue un giro de 180 grados de un dia para otro.",
-          "Fue un sistema pequeño, sostenido, mes tras mes.",
-          "Esto es ese sistema. No una version bonita de el.",
-        ].map((line) => (
-          <ScrollTextLine key={line}>
-            <span className="text-lg font-bold leading-snug">{line}</span>
-          </ScrollTextLine>
-        ))}
-        <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
-      </div>
-
-      <Reveal>
-        <p className="kicker">Como funciona (y como no)</p>
-        <p className="text-sm text-neutral-300 mb-6">
-          No dietas. No despertar a las 5am. No 47 habitos a la vez.
-        </p>
-        <div className="mb-24">
-          {HOW_IT_WORKS.map((step, i) => (
-            <div key={step.title} className="group flex gap-4 border-b border-line py-4 last:border-b-0 hover:border-l-2 hover:border-l-accent hover:pl-2 transition-all">
-              <span className="text-xs text-accent tracking-widest mt-1 shrink-0">{String(i + 1).padStart(2, "0")}</span>
-              <div>
-                <p className="font-bold text-lg">{step.title}</p>
-                <p className="muted mt-1">{step.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Reveal>
-
-      <Reveal>
-        <p className="kicker">Mantras de Jay</p>
-        <div className="flex flex-col gap-6 mb-24">
-          {[MANTRAS[9], MANTRAS[17], MANTRAS[12]].map((mantra) => (
-            <p key={mantra} className="text-lg font-bold leading-snug">
-              &ldquo;{mantra}&rdquo;
+      {/* Hero: two columns, full width, floating stat mockups on the right
+          (illustrative example data, not a claim about any real user). */}
+      <div className="max-w-6xl mx-auto px-6 md:px-10">
+        <div className="grid md:grid-cols-2 gap-16 items-center py-10 md:py-20">
+          <Reveal>
+            <p className="kicker">Sistema de ejecucion sostenible</p>
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
+              No es disciplina. No es fuerza de voluntad.{" "}
+              <span className="bg-accent/20 rounded-lg px-2 box-decoration-clone">
+                Es un sistema que no pueda fallar.
+              </span>
+            </h1>
+            <p className="text-sm leading-relaxed text-neutral-300 mb-6 max-w-lg">
+              Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.
+              Sin gurus, sin 47 habitos a la vez, sin culpa cuando fallas un dia.
             </p>
-          ))}
-          <p className="text-xs uppercase tracking-widest text-neutral-500">— Jay</p>
-        </div>
-      </Reveal>
-
-      <Reveal>
-        <p className="kicker">Preguntas que te estas haciendo</p>
-        <div className="mb-24">
-          {FAQ.map((item) => (
-            <div key={item.q} className="border-b border-line py-4 last:border-b-0">
-              <p className="font-bold text-base mb-1">{item.q}</p>
-              <p className="muted">{item.a}</p>
+            <p className="text-base mb-8">
+              Hoy, eso podria ser <span className="font-bold text-accent">5 sentadillas.</span>
+            </p>
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <Link href="/register" className="btn-primary">Empezar gratis</Link>
+              <span className="border border-line text-neutral-500 text-xs uppercase tracking-widest py-2 px-5 rounded-full">
+                iOS · pronto
+              </span>
+              <span className="border border-line text-neutral-500 text-xs uppercase tracking-widest py-2 px-5 rounded-full">
+                Android · pronto
+              </span>
             </div>
-          ))}
-        </div>
-      </Reveal>
+            <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
+              Ya tengo cuenta
+            </Link>
+          </Reveal>
 
-      <Reveal>
-        <div className="border-t border-line pt-10 pb-16 text-center">
-          <Link href="/register" className="btn-primary">EMPEZAR GRATIS</Link>
-          <p className="muted mt-6">Un sistema, no una promesa.</p>
+          <div className="relative h-[420px] hidden md:block">
+            <div
+              className="absolute inset-0 rounded-3xl"
+              style={{
+                backgroundImage: "radial-gradient(circle, rgba(227,201,160,0.18) 1px, transparent 1px)",
+                backgroundSize: "22px 22px",
+              }}
+            />
+            <div
+              className="absolute inset-0 rounded-3xl"
+              style={{
+                background: "radial-gradient(circle at 60% 40%, rgba(227,201,160,0.15), transparent 60%)",
+              }}
+            />
+            <FloatingStat icon="🔥" value="Dia 1" label="Racha" className="top-6 left-2 -rotate-6" />
+            <FloatingStat icon="⏱️" value="1 habito" label="Hoy" className="top-40 right-2 rotate-3" />
+            <FloatingStat icon="🎯" value="7/10" label="Wheel of life" className="bottom-10 left-10 -rotate-3" />
+          </div>
         </div>
-      </Reveal>
+      </div>
+
+      <div className="max-w-2xl mx-auto px-6">
+        <div className="mb-24">
+          <p className="kicker">Por que lo hicimos</p>
+          <WordReveal
+            words={WHY_WE_BUILT_IT}
+            className="text-2xl sm:text-3xl font-extrabold leading-snug tracking-tight"
+          />
+        </div>
+
+        <Reveal>
+          <p className="kicker">Esto es para ti si...</p>
+          <div className="mb-24">
+            {FOR_YOU_IF.map((line) => (
+              <div key={line} className="group flex items-start gap-4 border-b border-line py-4 last:border-b-0">
+                <span className="text-accent mt-0.5 shrink-0">—</span>
+                <p className="text-sm text-neutral-300 group-hover:text-white transition-colors">{line}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <p className="kicker">No lo escribio un equipo de marketing</p>
+        </Reveal>
+
+        <div className="border-l-2 border-l-accent pl-4 mb-24 flex flex-col gap-4">
+          {[
+            "Lo vivi yo.",
+            "Pase de un promedio de 3 a un 9 en mi Wheel of Life, en 8 meses.",
+            "No fue un giro de 180 grados de un dia para otro.",
+            "Fue un sistema pequeño, sostenido, mes tras mes.",
+            "Esto es ese sistema. No una version bonita de el.",
+          ].map((line) => (
+            <ScrollTextLine key={line}>
+              <span className="text-lg font-bold leading-snug">{line}</span>
+            </ScrollTextLine>
+          ))}
+          <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
+        </div>
+
+        <Reveal>
+          <p className="kicker">Como funciona (y como no)</p>
+          <p className="text-sm text-neutral-300 mb-6">
+            No dietas. No despertar a las 5am. No 47 habitos a la vez.
+          </p>
+          <div className="mb-24">
+            {HOW_IT_WORKS.map((step, i) => (
+              <div key={step.title} className="group flex gap-4 border-b border-line py-4 last:border-b-0 hover:border-l-2 hover:border-l-accent hover:pl-2 transition-all">
+                <span className="text-xs text-accent tracking-widest mt-1 shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <p className="font-bold text-lg">{step.title}</p>
+                  <p className="muted mt-1">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <p className="kicker">Mantras de Jay</p>
+          <div className="flex flex-col gap-6 mb-24">
+            {[MANTRAS[9], MANTRAS[17], MANTRAS[12]].map((mantra) => (
+              <p key={mantra} className="text-lg font-bold leading-snug">
+                &ldquo;{mantra}&rdquo;
+              </p>
+            ))}
+            <p className="text-xs uppercase tracking-widest text-neutral-500">— Jay</p>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <p className="kicker">Preguntas que te estas haciendo</p>
+          <div className="mb-24">
+            {FAQ.map((item) => (
+              <div key={item.q} className="border-b border-line py-4 last:border-b-0">
+                <p className="font-bold text-base mb-1">{item.q}</p>
+                <p className="muted">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div className="border-t border-line pt-10 pb-16 text-center">
+            <Link href="/register" className="btn-primary">Empezar gratis</Link>
+            <p className="muted mt-6">Un sistema, no una promesa.</p>
+          </div>
+        </Reveal>
+      </div>
     </main>
   );
 }
