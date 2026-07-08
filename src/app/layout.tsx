@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { VersionBadge } from "@/components/VersionBadge";
+import { RegisterServiceWorker } from "@/components/RegisterServiceWorker";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -14,10 +15,15 @@ export const metadata: Metadata = {
   title: "EJECUTA — Sistema de Ejecucion Sostenible",
   description:
     "Curso interactivo basado en el Principio de Pareto: identifica el 20% de acciones que generan el 80% de tu cambio.",
+  manifest: "/manifest.webmanifest",
   icons: {
     icon: "/favicon.svg",
-    apple: "/favicon.svg",
+    apple: "/apple-touch-icon.png",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0F0C09",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -26,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers>{children}</Providers>
         <VersionBadge />
+        <RegisterServiceWorker />
       </body>
     </html>
   );
