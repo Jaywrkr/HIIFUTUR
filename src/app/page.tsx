@@ -6,6 +6,25 @@ import { Reveal } from "@/components/Reveal";
 import { ScrollTextLine } from "@/components/ScrollTextLine";
 import { WordReveal, type RevealWord } from "@/components/WordReveal";
 import { MarqueeTicker } from "@/components/MarqueeTicker";
+import { WebAppMockup } from "@/components/WebAppMockup";
+
+const WEB_FEATURES = [
+  {
+    icon: "⚡",
+    title: "Cero configuracion",
+    description: "Abre el link y listo. Nada que instalar, nada que actualizar.",
+  },
+  {
+    icon: "🔁",
+    title: "Misma cuenta, en cualquier lugar",
+    description: "Celular, laptop, tablet. Tu racha te sigue a ti, no al dispositivo.",
+  },
+  {
+    icon: "🖥️",
+    title: "Funciona en cualquier pantalla",
+    description: "Marca tu habito desde el celular en la mañana o desde la laptop en la oficina.",
+  },
+];
 
 const WHY_WE_BUILT_IT: RevealWord[] = [
   { text: "La" }, { text: "mayoria" }, { text: "de" }, { text: "las" }, { text: "apps" },
@@ -152,6 +171,38 @@ export default async function HomePage() {
       </div>
 
       <MarqueeTicker />
+
+      <div className="max-w-6xl mx-auto px-6 md:px-10">
+        <div className="grid md:grid-cols-2 gap-16 items-center py-16 md:py-24">
+          <Reveal>
+            <p className="kicker">🌐 Ahora en la web</p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
+              Sin descargas. Sin App Store. <span className="text-accent">Solo un link.</span>
+            </h2>
+            <p className="text-sm leading-relaxed text-neutral-300 mb-8 max-w-lg">
+              Es la app completa, corriendo en tu navegador. Abrela en la laptop en el almuerzo,
+              en el celular apenas despiertas, en la tablet antes de dormir. Tu racha y tu
+              progreso te siguen a ti, no al aparato.
+            </p>
+            <div className="flex flex-col gap-6 mb-8">
+              {WEB_FEATURES.map((f) => (
+                <div key={f.title} className="flex items-start gap-4">
+                  <span className="text-xl leading-none mt-0.5">{f.icon}</span>
+                  <div>
+                    <p className="font-bold">{f.title}</p>
+                    <p className="muted mt-1">{f.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <Link href="/register" className="btn-primary inline-flex items-center gap-2">
+              <span>▶</span> Lanzar la app
+            </Link>
+          </Reveal>
+
+          <WebAppMockup />
+        </div>
+      </div>
 
       <div className="max-w-2xl mx-auto px-6">
         <div className="mb-24 mt-16">
