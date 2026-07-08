@@ -8,6 +8,7 @@ import { requireUser } from "@/lib/session";
 import { getWheelMeasurements } from "@/lib/queries";
 import { WHEEL_AREAS, DAYS_BETWEEN_WHEEL_MEASUREMENTS } from "@/lib/constants";
 import { addDays } from "@/lib/habit-utils";
+import { trackEvent } from "@/lib/analytics";
 
 const wheelAreaIds = WHEEL_AREAS.map((a) => a.id);
 
@@ -45,6 +46,8 @@ export async function recordWheelMeasurement(
     areaScores: parsed.data,
     notes: String(formData.get("notes") ?? "").trim() || null,
   });
+
+  await trackEvent(user.id, "wheel_measured");
 
   revalidatePath("/wheel");
   revalidatePath("/dashboard");

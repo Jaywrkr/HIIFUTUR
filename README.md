@@ -58,6 +58,10 @@ y el UI/UX se expandiran en versiones futuras.
      te quedas a ciegas. Opcional: `SENTRY_ORG`, `SENTRY_PROJECT` y
      `SENTRY_AUTH_TOKEN` para que el build suba source maps y los stack
      traces en Sentry muestren tu codigo real en vez de JS minificado.
+   - `ADMIN_EMAIL`: quien puede ver `/admin/analytics` (el embudo de
+     registro → onboarding → primer habito → primer check → primera
+     medicion → primer modulo). Sin third parties, sin cookies de rastreo —
+     los eventos se guardan en tu propia base. Default: `jaywrkr@gmail.com`.
 
    Ve `.env.example` para la lista completa (usalo tambien para desarrollo
    local, copialo a `.env`).

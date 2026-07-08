@@ -6,6 +6,7 @@ import { db } from "@/db";
 import { moduleProgress } from "@/db/schema";
 import { requireUser } from "@/lib/session";
 import { getModuleById } from "@/lib/modules-content";
+import { trackEvent } from "@/lib/analytics";
 
 export async function completeModule(moduleId: string, formData: FormData) {
   const user = await requireUser();
@@ -35,6 +36,8 @@ export async function completeModule(moduleId: string, formData: FormData) {
         updatedAt: new Date(),
       },
     });
+
+  await trackEvent(user.id, "module_completed", { moduleId });
 
   revalidatePath("/modules");
   redirect("/modules");

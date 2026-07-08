@@ -15,6 +15,7 @@ import {
   DAYS_BETWEEN_STREAK_FREEZES,
 } from "@/lib/constants";
 import { addDays, todayKey } from "@/lib/habit-utils";
+import { trackEvent } from "@/lib/analytics";
 
 const categoryIds = HABIT_CATEGORIES.map((c) => c.id);
 
@@ -67,6 +68,8 @@ export async function createHabit(
     activatedAt: new Date(),
   });
 
+  await trackEvent(user.id, "habit_created", { category: parsed.data.category });
+
   revalidatePath("/habits");
   return {};
 }
@@ -93,6 +96,7 @@ export async function toggleHabitToday(habitId: string) {
     await db.delete(habitLogs).where(eq(habitLogs.id, existingLog.id));
   } else {
     await db.insert(habitLogs).values({ habitId, date, completed: true });
+    await trackEvent(user.id, "habit_checked", { category: habit.category });
   }
 
   revalidatePath("/habits");

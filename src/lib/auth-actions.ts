@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { db } from "@/db";
 import { users } from "@/db/schema";
+import { trackEvent } from "@/lib/analytics";
 
 const registerSchema = z.object({
   name: z.string().min(1, "Escribe tu nombre.").max(80),
@@ -45,11 +46,16 @@ export async function registerUser(
 
   const passwordHash = await bcrypt.hash(parsed.data.password, 10);
 
-  await db.insert(users).values({
-    name: parsed.data.name.trim(),
-    email,
-    passwordHash,
-  });
+  const [newUser] = await db
+    .insert(users)
+    .values({
+      name: parsed.data.name.trim(),
+      email,
+      passwordHash,
+    })
+    .returning({ id: users.id });
+
+  await trackEvent(newUser.id, "registered");
 
   redirect("/login?registered=1");
 }

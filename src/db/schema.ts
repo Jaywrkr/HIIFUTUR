@@ -104,6 +104,20 @@ export const feedbackMessages = pgTable("feedback_messages", {
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
+// First-party funnel tracking — no third-party service, no cookies, nothing
+// that contradicts what /privacidad promises. Just enough to see where
+// people get stuck: registered, onboarding_completed, habit_created,
+// habit_checked, wheel_measured, module_completed.
+export const analyticsEvents = pgTable("analytics_events", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  event: text("event").notNull(),
+  properties: jsonb("properties").$type<Record<string, unknown>>(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
 export const moduleProgress = pgTable(
   "module_progress",
   {

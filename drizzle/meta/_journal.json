@@ -43,6 +43,13 @@
       "when": 1783529694760,
       "tag": "0005_perpetual_vermin",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1783533299589,
+      "tag": "0006_white_tombstone",
+      "breakpoints": true
     }
   ]
 }

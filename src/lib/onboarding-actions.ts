@@ -6,6 +6,7 @@ import { db } from "@/db";
 import { userPreferences, wheelOfLifeMeasurements } from "@/db/schema";
 import { requireUser } from "@/lib/session";
 import { WHEEL_AREAS, MAX_SELECTED_AREAS } from "@/lib/constants";
+import { trackEvent } from "@/lib/analytics";
 
 const wheelAreaIds = WHEEL_AREAS.map((a) => a.id);
 
@@ -58,6 +59,8 @@ export async function completeOnboarding(
     areaScores: parsed.data.scores,
     notes: "Medicion inicial (onboarding).",
   });
+
+  await trackEvent(user.id, "onboarding_completed", { areas: parsed.data.selectedAreas });
 
   redirect("/modules");
 }
