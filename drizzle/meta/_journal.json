@@ -22,6 +22,13 @@
       "when": 1783474889452,
       "tag": "0002_breezy_xorn",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1783526237701,
+      "tag": "0003_living_rage",
+      "breakpoints": true
     }
   ]
 }

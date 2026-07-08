@@ -42,11 +42,15 @@ y el UI/UX se expandiran en versiones futuras.
    - `AUTH_SECRET`: genera uno con `openssl rand -base64 32`.
    - `NEXTAUTH_URL`: la URL publica de tu deploy (ej.
      `https://tu-proyecto.vercel.app`).
-   - `RESEND_API_KEY` y `EMAIL_FROM`: para que "olvidaste tu contraseña"
-     mande un correo real. Crea una cuenta gratis en
-     [resend.com](https://resend.com). Sin esto, el enlace de recuperacion
-     se imprime en los logs del servidor en vez de enviarse — sirve para
-     probar, no para produccion.
+   - `RESEND_API_KEY` y `EMAIL_FROM`: para que "olvidaste tu contraseña" y
+     los recordatorios diarios manden un correo real. Crea una cuenta gratis
+     en [resend.com](https://resend.com). Sin esto, ambos se imprimen en los
+     logs del servidor en vez de enviarse — sirve para probar, no para
+     produccion.
+   - `CRON_SECRET`: genera uno con `openssl rand -base64 32`. Protege
+     `/api/cron/reminders`, que Vercel Cron llama una vez al dia (ver
+     `vercel.json`) para avisarle a quien tenga un habito activo sin marcar
+     hoy. Cada correo trae un link de "dejar de recibir estos recordatorios".
 
    Ve `.env.example` para la lista completa (usalo tambien para desarrollo
    local, copialo a `.env`).

@@ -15,6 +15,8 @@ export const users = pgTable("users", {
   name: text("name"),
   email: text("email").notNull().unique(),
   passwordHash: text("password_hash").notNull(),
+  remindersEnabled: boolean("reminders_enabled").notNull().default(true),
+  lastReminderSentAt: timestamp("last_reminder_sent_at"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

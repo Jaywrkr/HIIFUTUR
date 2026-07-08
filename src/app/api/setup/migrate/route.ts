@@ -49,10 +49,14 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"name" text,
 	"email" text NOT NULL,
 	"password_hash" text NOT NULL,
+	"reminders_enabled" boolean DEFAULT true NOT NULL,
+	"last_reminder_sent_at" timestamp,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT "users_email_unique" UNIQUE("email")
 );
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "reminders_enabled" boolean DEFAULT true NOT NULL;
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "last_reminder_sent_at" timestamp;
 CREATE TABLE IF NOT EXISTS "wheel_of_life_measurements" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"user_id" uuid NOT NULL,
