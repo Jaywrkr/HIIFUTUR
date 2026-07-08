@@ -1,1 +1,1 @@
-ALTER TABLE "habits" ADD COLUMN "last_edited_at" timestamp;
+ALTER TABLE "habits" ADD COLUMN IF NOT EXISTS "last_edited_at" timestamp;
