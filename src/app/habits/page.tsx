@@ -13,6 +13,7 @@ import {
   DAYS_BETWEEN_HABIT_EDITS,
   DAYS_BETWEEN_STREAK_FREEZES,
 } from "@/lib/constants";
+import { getAnchorHabitSuggestion, OPEN_APP_SUGGESTION } from "@/lib/habit-suggestions";
 
 export default async function HabitsPage() {
   const user = await requireUser();
@@ -61,6 +62,11 @@ export default async function HabitsPage() {
     : null;
   const canCreate = userHabits.length < MAX_HABITS && (!nextUnlockDate || new Date() >= nextUnlockDate);
 
+  // The anchor-habit suggestion only makes sense for the very first habit —
+  // after that, the person already knows how the system feels.
+  const anchorSuggestion =
+    userHabits.length === 0 ? getAnchorHabitSuggestion(prefs.initialWheelScores) : null;
+
   return (
     <>
       <Nav />
@@ -98,7 +104,7 @@ export default async function HabitsPage() {
         )}
 
         {canCreate ? (
-          <CreateHabitForm />
+          <CreateHabitForm suggestion={anchorSuggestion} altSuggestion={OPEN_APP_SUGGESTION} />
         ) : userHabits.length >= MAX_HABITS ? (
           <p className="muted">Ya tienes tus {MAX_HABITS} habitos activos. Enfocate en sostenerlos.</p>
         ) : (
