@@ -7,6 +7,22 @@ import { ScrollTextLine } from "@/components/ScrollTextLine";
 import { WordReveal, type RevealWord } from "@/components/WordReveal";
 import { MarqueeTicker } from "@/components/MarqueeTicker";
 import { WebAppMockup } from "@/components/WebAppMockup";
+import { PhoneMantra } from "@/components/PhoneMantra";
+
+const PHILOSOPHY = [
+  {
+    title: "Empieza tan pequeño que no puedas fallar",
+    description: "Un habito a la vez. Si necesitas fuerza de voluntad para hacerlo, esta mal diseñado.",
+  },
+  {
+    title: "La consistencia le gana a la intensidad",
+    description: "Todos los dias le gana a algunos dias increibles. El sistema premia mostrarte, no rendir al maximo.",
+  },
+  {
+    title: "Si no lo disfrutas, no dura",
+    description: "Elige el habito que se sienta bien sostener, no el que se ve mejor en redes.",
+  },
+];
 
 const WEB_FEATURES = [
   {
@@ -203,6 +219,36 @@ export default async function HomePage() {
           <WebAppMockup />
         </div>
       </div>
+
+      <Reveal>
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="text-center mb-16">
+            <p className="kicker mx-auto">🎯 Como vemos las cosas</p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+              La forma <span className="text-accent">EJECUTA</span>
+            </h2>
+            <p className="text-sm text-neutral-400 max-w-xl mx-auto">
+              Tres ideas, nada mas. Empieza pequeño, sostenlo todos los dias, y disfrutalo.
+              Si no es sostenible, no sirve.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <PhoneMantra mantra={MANTRAS[11]} />
+            <div className="flex flex-col gap-6">
+              {PHILOSOPHY.map((item, i) => (
+                <div key={item.title} className="card">
+                  <p className="text-accent text-sm font-bold tracking-widest mb-2">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p className="font-extrabold text-xl mb-2">{item.title}</p>
+                  <p className="muted">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Reveal>
 
       <div className="max-w-2xl mx-auto px-6">
         <div className="mb-24 mt-16">
