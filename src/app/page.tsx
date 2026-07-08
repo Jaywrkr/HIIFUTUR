@@ -333,11 +333,16 @@ export default async function HomePage() {
         </Reveal>
 
         <Reveal>
-          <div className="border-t border-line pt-10 pb-16 text-center">
+          <div className="border-t border-line pt-10 pb-10 text-center">
             <Link href="/register" className="btn-primary">Empezar gratis</Link>
             <p className="muted mt-6">Un sistema, no una promesa.</p>
           </div>
         </Reveal>
+
+        <div className="pb-16 flex items-center justify-center gap-6 text-xs uppercase tracking-widest text-neutral-600">
+          <Link href="/terminos" className="hover:text-neutral-400 transition-colors">Terminos</Link>
+          <Link href="/privacidad" className="hover:text-neutral-400 transition-colors">Privacidad</Link>
+        </div>
       </div>
     </main>
   );

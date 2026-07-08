@@ -8,6 +8,7 @@ const links = [
   { href: "/dashboard", label: "HOY" },
   { href: "/modules", label: "MODULOS" },
   { href: "/wheel", label: "WHEEL OF LIFE" },
+  { href: "/cuenta", label: "CUENTA" },
 ];
 
 export function Nav() {
