@@ -31,7 +31,7 @@ y el UI/UX se expandiran en versiones futuras.
 6. Dashboard con resumen: modulos completados, habitos activos y su
    countdown de desbloqueo, y estado de la medicion mensual.
 
-## Configuracion en Vercel (3 pasos)
+## Configuracion en Vercel (2 pasos)
 
 1. **Crear la base de datos**: en el dashboard de tu proyecto en Vercel, ve
    a `Storage → Create Database → Postgres` (Neon). Esto genera e inyecta
@@ -50,26 +50,24 @@ y el UI/UX se expandiran en versiones futuras.
 
    Ve `.env.example` para la lista completa (usalo tambien para desarrollo
    local, copialo a `.env`).
-3. **Correr las migraciones**: con las variables de entorno ya disponibles
-   localmente (o usando `vercel env pull .env`), corre:
 
-   ```bash
-   npm install
-   npm run db:migrate
-   ```
+**Las migraciones corren solas**: el script `vercel-build` (que Vercel usa
+automaticamente en vez de `build` cuando existe) corre `db:migrate` antes de
+compilar. Cada vez que agregues una tabla o columna nueva al schema y hagas
+push, el proximo deploy la crea sola — no hay que acordarse de visitar
+ninguna ruta ni correr nada a mano.
 
-   Esto crea todas las tablas necesarias contra tu base de datos de Vercel
-   Postgres. Despues de esto, el deploy en Vercel (`npm run build`) queda
-   listo para usarse.
+Si alguna vez necesitas correrlas manualmente (por ejemplo, apuntando a la
+base de datos desde tu maquina antes de desplegar), sigue disponible:
 
-   **Si no tienes terminal** (deploy hecho solo desde el dashboard de
-   Vercel): agrega la variable de entorno `SETUP_SECRET` (cualquier valor
-   que elijas) en `Settings → Environment Variables`, redeploy, y visita una
-   sola vez `https://tu-proyecto.vercel.app/api/setup/migrate?secret=<ese-valor>`.
-   Esa ruta crea las mismas tablas directamente. Es seguro visitarla mas de
-   una vez (no borra ni duplica datos). Puedes borrar
-   `src/app/api/setup/migrate` despues de usarla si prefieres no dejarla en
-   produccion.
+```bash
+npm install
+npm run db:migrate
+```
+
+Tambien existe `https://tu-proyecto.vercel.app/api/setup/migrate?secret=<SETUP_SECRET>`
+como respaldo manual (idempotente, segura de visitar mas de una vez) por si
+el deploy automatico fallara por alguna razon.
 
 ## Desarrollo local
 

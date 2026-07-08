@@ -1,11 +1,12 @@
 {
   "name": "ejecuta",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "private": true,
   "description": "EJECUTA: Sistema de Ejecucion Sostenible — MVP del curso interactivo basado en el Principio de Pareto.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "vercel-build": "npm run db:migrate && next build",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "drizzle-kit generate",
