@@ -35,6 +35,9 @@ export const MAX_HABITS = 5;
 export const DAYS_TO_UNLOCK_NEXT_HABIT = 30;
 export const DAYS_BETWEEN_WHEEL_MEASUREMENTS = 30;
 
+/** Editing a habit is real friction, not a free do-over — you wait between edits. */
+export const DAYS_BETWEEN_HABIT_EDITS = 14;
+
 /** Maps each Wheel of Life area to the closest habit category, used for the monthly insight. */
 export const WHEEL_AREA_TO_CATEGORY: Record<string, (typeof HABIT_CATEGORIES)[number]["id"]> = {
   salud_fisica: "salud",

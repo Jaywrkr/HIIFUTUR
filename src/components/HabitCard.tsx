@@ -43,8 +43,12 @@ export function HabitCard({
     startTransition(() => toggleHabitToday(id));
   }
 
-  function startHold() {
+  function startHold(e: React.PointerEvent<HTMLButtonElement>) {
     if (displayDone || pending) return;
+    // Capture the pointer so small finger drift during the hold doesn't
+    // fire a premature pointerleave/cancel — only an actual release should
+    // stop it, matching how a physical hold-button behaves.
+    e.currentTarget.setPointerCapture(e.pointerId);
     setHolding(true);
     holdTimer.current = setTimeout(() => {
       holdTimer.current = null;
@@ -99,11 +103,15 @@ export function HabitCard({
           disabled={pending}
           onPointerDown={startHold}
           onPointerUp={cancelHold}
-          onPointerLeave={cancelHold}
           onPointerCancel={cancelHold}
           onClick={displayDone ? undo : undefined}
           onKeyDown={handleKeyDown}
-          style={{ touchAction: "manipulation", userSelect: "none" }}
+          style={{
+            touchAction: "none",
+            userSelect: "none",
+            WebkitUserSelect: "none",
+            WebkitTouchCallout: "none",
+          }}
           className={`relative h-14 w-14 overflow-hidden border rounded-2xl flex items-center justify-center text-lg transition-transform duration-200 ${
             displayDone ? "border-accent bg-accent text-black" : "border-line text-neutral-500"
           } ${justCompleted ? "scale-110" : "scale-100"}`}

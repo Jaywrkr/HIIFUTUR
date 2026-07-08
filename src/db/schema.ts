@@ -57,6 +57,7 @@ export const habits = pgTable("habits", {
   createdAt: timestamp("created_at").notNull().defaultNow(),
   activatedAt: timestamp("activated_at"),
   unlockDate: timestamp("unlock_date"),
+  lastEditedAt: timestamp("last_edited_at"),
 });
 
 export const habitLogs = pgTable("habit_logs", {

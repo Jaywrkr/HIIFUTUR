@@ -3,10 +3,11 @@ import { redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
 import { PageHeader } from "@/components/PageHeader";
 import { CreateHabitForm } from "@/components/CreateHabitForm";
+import { EditHabitRow } from "@/components/EditHabitRow";
 import { requireUser } from "@/lib/session";
 import { getUserPreferences, getHabitsForUser, getHabitLogs } from "@/lib/queries";
 import { addDays, computeStreak, todayKey } from "@/lib/habit-utils";
-import { MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT } from "@/lib/constants";
+import { MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT, DAYS_BETWEEN_HABIT_EDITS } from "@/lib/constants";
 
 export default async function HabitsPage() {
   const user = await requireUser();
@@ -20,10 +21,16 @@ export default async function HabitsPage() {
     userHabits.map(async (habit) => {
       const logs = await getHabitLogs(habit.id);
       const logDates = logs.map((l) => l.date);
+      const nextEditDate = habit.lastEditedAt
+        ? addDays(habit.lastEditedAt, DAYS_BETWEEN_HABIT_EDITS)
+        : null;
+      const canEdit = !nextEditDate || new Date() >= nextEditDate;
       return {
         habit,
         streak: computeStreak(logDates),
         doneToday: logDates.includes(today),
+        canEdit,
+        nextEditLabel: nextEditDate ? nextEditDate.toLocaleDateString("es-MX") : null,
       };
     })
   );
@@ -44,7 +51,7 @@ export default async function HabitsPage() {
           subtitle={
             <>
               Marcarlos dia a dia pasa en <Link href="/dashboard" className="link-accent">Hoy</Link>.
-              Aqui los creas y ves tu progreso hacia el siguiente.
+              Aqui los creas, los editas y ves tu progreso hacia el siguiente.
             </>
           }
         />
@@ -53,19 +60,15 @@ export default async function HabitsPage() {
           <p className="muted mb-8">Aun no tienes habitos. Crea el primero — el mas pequeno posible.</p>
         ) : (
           <div className="mb-8">
-            {habitsWithData.map(({ habit, streak, doneToday }) => (
-              <div key={habit.id} className="list-row">
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-neutral-500">{habit.category}</p>
-                  <p className="font-bold">{habit.name}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-xs text-accent uppercase tracking-widest">
-                    {streak} {streak === 1 ? "dia" : "dias"}
-                  </p>
-                  <p className="muted text-xs">{doneToday ? "hecho hoy" : "pendiente hoy"}</p>
-                </div>
-              </div>
+            {habitsWithData.map(({ habit, streak, doneToday, canEdit, nextEditLabel }) => (
+              <EditHabitRow
+                key={habit.id}
+                habit={habit}
+                streak={streak}
+                doneToday={doneToday}
+                canEdit={canEdit}
+                nextEditLabel={nextEditLabel}
+              />
             ))}
           </div>
         )}

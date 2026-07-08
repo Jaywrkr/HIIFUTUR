@@ -1,0 +1,1 @@
+ALTER TABLE "habits" ADD COLUMN "last_edited_at" timestamp;

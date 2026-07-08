@@ -24,8 +24,10 @@ CREATE TABLE IF NOT EXISTS "habits" (
 	"status" text DEFAULT 'locked' NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"activated_at" timestamp,
-	"unlock_date" timestamp
+	"unlock_date" timestamp,
+	"last_edited_at" timestamp
 );
+ALTER TABLE "habits" ADD COLUMN IF NOT EXISTS "last_edited_at" timestamp;
 CREATE TABLE IF NOT EXISTS "module_progress" (
 	"user_id" uuid NOT NULL,
 	"module_id" text NOT NULL,

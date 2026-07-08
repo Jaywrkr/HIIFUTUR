@@ -7,7 +7,12 @@ import { db } from "@/db";
 import { habits, habitLogs } from "@/db/schema";
 import { requireUser } from "@/lib/session";
 import { getHabitsForUser } from "@/lib/queries";
-import { HABIT_CATEGORIES, MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT } from "@/lib/constants";
+import {
+  HABIT_CATEGORIES,
+  MAX_HABITS,
+  DAYS_TO_UNLOCK_NEXT_HABIT,
+  DAYS_BETWEEN_HABIT_EDITS,
+} from "@/lib/constants";
 import { addDays, todayKey } from "@/lib/habit-utils";
 
 const categoryIds = HABIT_CATEGORIES.map((c) => c.id);
@@ -91,4 +96,53 @@ export async function toggleHabitToday(habitId: string) {
 
   revalidatePath("/habits");
   revalidatePath("/dashboard");
+}
+
+export async function updateHabit(
+  habitId: string,
+  _prevState: HabitFormState,
+  formData: FormData
+): Promise<HabitFormState> {
+  const user = await requireUser();
+
+  const [habit] = await db
+    .select()
+    .from(habits)
+    .where(and(eq(habits.id, habitId), eq(habits.userId, user.id)))
+    .limit(1);
+
+  if (!habit) return { error: "Habito no encontrado." };
+
+  if (habit.lastEditedAt) {
+    const nextEditDate = addDays(habit.lastEditedAt, DAYS_BETWEEN_HABIT_EDITS);
+    if (new Date() < nextEditDate) {
+      return {
+        error: `Ya editaste este habito. Puedes volver a editarlo el ${nextEditDate.toLocaleDateString("es-MX")}.`,
+      };
+    }
+  }
+
+  const parsed = habitSchema.safeParse({
+    name: formData.get("name"),
+    description: formData.get("description"),
+    category: formData.get("category"),
+  });
+
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0]?.message ?? "Datos invalidos." };
+  }
+
+  await db
+    .update(habits)
+    .set({
+      name: parsed.data.name.trim(),
+      description: parsed.data.description.trim(),
+      category: parsed.data.category,
+      lastEditedAt: new Date(),
+    })
+    .where(eq(habits.id, habitId));
+
+  revalidatePath("/habits");
+  revalidatePath("/dashboard");
+  return {};
 }

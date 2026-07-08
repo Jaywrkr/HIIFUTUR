@@ -15,6 +15,13 @@
       "when": 1783457353320,
       "tag": "0001_hesitant_galactus",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1783474889452,
+      "tag": "0002_breezy_xorn",
+      "breakpoints": true
     }
   ]
 }
