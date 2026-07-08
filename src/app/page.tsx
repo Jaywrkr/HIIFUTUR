@@ -5,6 +5,7 @@ import { MANTRAS } from "@/lib/mantras";
 import { Reveal } from "@/components/Reveal";
 import { ScrollTextLine } from "@/components/ScrollTextLine";
 import { WordReveal, type RevealWord } from "@/components/WordReveal";
+import { MarqueeTicker } from "@/components/MarqueeTicker";
 
 const WHY_WE_BUILT_IT: RevealWord[] = [
   { text: "La" }, { text: "mayoria" }, { text: "de" }, { text: "las" }, { text: "apps" },
@@ -150,8 +151,10 @@ export default async function HomePage() {
         </div>
       </div>
 
+      <MarqueeTicker />
+
       <div className="max-w-2xl mx-auto px-6">
-        <div className="mb-24">
+        <div className="mb-24 mt-16">
           <p className="kicker">Por que lo hicimos</p>
           <WordReveal
             words={WHY_WE_BUILT_IT}
