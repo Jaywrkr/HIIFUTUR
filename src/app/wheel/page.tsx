@@ -3,6 +3,7 @@ import { Nav } from "@/components/Nav";
 import { PageHeader } from "@/components/PageHeader";
 import { WheelRadarChart } from "@/components/WheelRadarChart";
 import { WheelMeasurementForm } from "@/components/WheelMeasurementForm";
+import { ShareWheelButton } from "@/components/ShareWheelButton";
 import { requireUser } from "@/lib/session";
 import { getUserPreferences, getWheelMeasurements, getHabitsForUser } from "@/lib/queries";
 import { addDays } from "@/lib/habit-utils";
@@ -81,6 +82,12 @@ export default async function WheelPage() {
               previous={previous ? (previous.areaScores as Record<string, number>) : undefined}
             />
             {insight ? <p className="text-sm text-accent mt-4">{insight}</p> : null}
+            <div className="mt-4">
+              <ShareWheelButton
+                areaScores={latest.areaScores as Record<string, number>}
+                areaLabels={WHEEL_AREAS.map((a) => ({ id: a.id, label: a.label }))}
+              />
+            </div>
           </div>
         ) : (
           <p className="muted mb-8">Aun no tienes mediciones.</p>

@@ -4,6 +4,8 @@ import { useEffect, useState, useTransition } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { updateHabit, freezeStreak, type HabitFormState } from "@/lib/habit-actions";
 import { HABIT_CATEGORIES, DAYS_BETWEEN_HABIT_EDITS } from "@/lib/constants";
+import { ShareImageButton } from "@/components/ShareImageButton";
+import { drawStreakShareCard } from "@/lib/share-card";
 
 const initialState: HabitFormState = {};
 
@@ -174,6 +176,17 @@ export function EditHabitRow({
         <p className="mt-3 text-[10px] text-neutral-600">
           Congelamiento disponible de nuevo el {nextFreezeLabel}.
         </p>
+      ) : null}
+
+      {streak > 0 ? (
+        <div className="mt-3">
+          <ShareImageButton
+            draw={(canvas) => drawStreakShareCard(canvas, { habitName: habit.name, streak })}
+            fileName={`ejecuta-racha-${streak}-dias.png`}
+            shareText={`${streak} ${streak === 1 ? "dia" : "dias"} seguidos con "${habit.name}" en EJECUTA.`}
+            label="Compartir racha"
+          />
+        </div>
       ) : null}
     </div>
   );
