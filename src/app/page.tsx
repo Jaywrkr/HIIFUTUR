@@ -60,6 +60,53 @@ const UPGRADE_FEATURES = [
   },
 ];
 
+const PRICING_PLANS = [
+  {
+    id: "gratis",
+    label: "Gratis",
+    price: "$0",
+    unit: "para empezar",
+    tagline: "Sin tarjeta. Sin trampa.",
+    features: [
+      "Los 11 modulos completos",
+      "Hasta 5 habitos activos",
+      "Wheel of Life cada 30 dias",
+      "Recordatorios diarios",
+    ],
+    cta: "Empezar gratis",
+    highlight: false,
+  },
+  {
+    id: "mensual",
+    label: "Mensual",
+    price: "$4.99",
+    unit: "/ mes",
+    tagline: "Cancela cuando quieras.",
+    features: [
+      "Todo lo del plan gratis",
+      "Apoyas directamente el desarrollo",
+      "Proximamente: mas habitos activos",
+      "Proximamente: reportes avanzados",
+    ],
+    cta: "Empezar mensual",
+    highlight: false,
+  },
+  {
+    id: "anual",
+    label: "Anual",
+    price: "$39",
+    unit: "/ año",
+    tagline: "Menos de $3.25 al mes.",
+    features: [
+      "Todo lo del plan mensual",
+      "Casi 2 meses gratis vs. pagar mes a mes",
+      "Acceso prioritario a lo nuevo",
+    ],
+    cta: "Empezar anual",
+    highlight: true,
+  },
+];
+
 const WHY_WE_BUILT_IT: RevealWord[] = [
   { text: "La" }, { text: "mayoria" }, { text: "de" }, { text: "las" }, { text: "apps" },
   { text: "de" }, { text: "habitos" }, { text: "estan" }, { text: "hechas" }, { text: "para" },
@@ -304,6 +351,63 @@ export default async function HomePage() {
               <p className="muted">{UPGRADE_FEATURES[2].description}</p>
             </div>
           </div>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 text-center">
+          <p className="kicker mx-auto">💪 Empieza donde estes</p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+            Elige tu plan. Empieza tu sistema.
+          </h2>
+          <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-12">
+            Empieza gratis para probarlo. Los planes pagos son para quien quiere apoyar
+            directamente el desarrollo — hoy tienen las mismas funciones que el gratis.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 text-left">
+            {PRICING_PLANS.map((plan) => (
+              <div
+                key={plan.id}
+                className={`relative rounded-3xl p-6 flex flex-col ${
+                  plan.highlight
+                    ? "bg-accent/15 border border-accent/40"
+                    : "border border-line bg-surface"
+                }`}
+              >
+                {plan.highlight ? (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                    Mejor valor
+                  </span>
+                ) : null}
+                <p className="text-xs uppercase tracking-widest text-neutral-500 mb-4">{plan.label}</p>
+                <p className="mb-1">
+                  <span className="text-4xl font-extrabold">{plan.price}</span>{" "}
+                  <span className="text-sm text-neutral-400">{plan.unit}</span>
+                </p>
+                <p className="muted mb-6">{plan.tagline}</p>
+                <div className="flex flex-col gap-3 mb-8 flex-1">
+                  {plan.features.map((f) => (
+                    <div key={f} className="flex items-start gap-2">
+                      <span className="text-accent mt-0.5 shrink-0">✓</span>
+                      <span className="text-sm text-neutral-300">{f}</span>
+                    </div>
+                  ))}
+                </div>
+                <Link
+                  href="/register"
+                  className={plan.highlight ? "btn-primary text-center" : "btn-secondary text-center"}
+                >
+                  {plan.cta}
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-xs text-neutral-600 max-w-lg mx-auto mt-10">
+            Los cobros todavia no estan activos. Cualquier plan que elijas hoy crea tu cuenta
+            gratis — te avisamos apenas el pago este disponible.
+          </p>
         </div>
       </Reveal>
 
