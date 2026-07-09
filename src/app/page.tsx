@@ -107,6 +107,15 @@ const PRICING_PLANS = [
   },
 ];
 
+const OLD_RULES = [
+  "Ten mas disciplina.",
+  "Levantate a las 5am.",
+  "Hazlo todo o no hagas nada.",
+  "Sientete culpable si fallas.",
+  "Empieza de nuevo el lunes.",
+  "Repite.",
+];
+
 const WHY_WE_BUILT_IT: RevealWord[] = [
   { text: "La" }, { text: "mayoria" }, { text: "de" }, { text: "las" }, { text: "apps" },
   { text: "de" }, { text: "habitos" }, { text: "estan" }, { text: "hechas" }, { text: "para" },
@@ -407,6 +416,33 @@ export default async function HomePage() {
           <p className="text-xs text-neutral-600 max-w-lg mx-auto mt-10">
             Los cobros todavia no estan activos. Cualquier plan que elijas hoy crea tu cuenta
             gratis — te avisamos apenas el pago este disponible.
+          </p>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className="max-w-4xl mx-auto px-6 py-16 md:py-24 text-center">
+          <p className="kicker mx-auto">🚫 Las reglas viejas</p>
+          <p className="text-sm text-neutral-400 mb-10">Por años te dijeron...</p>
+
+          <div className="flex flex-col gap-1 mb-10">
+            {OLD_RULES.map((rule) => (
+              <p
+                key={rule}
+                className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-neutral-700 line-through decoration-red-500/70"
+                style={{ textDecorationThickness: "3px" }}
+              >
+                {rule}
+              </p>
+            ))}
+          </div>
+
+          <p className="text-sm text-neutral-400 mb-6">
+            Y de alguna forma... sigues sin sostener nada.
+          </p>
+          <p className="text-2xl sm:text-3xl font-extrabold leading-snug">
+            Tal vez el problema no eres tu.{" "}
+            <span className="text-accent">Tal vez son las reglas.</span>
           </p>
         </div>
       </Reveal>
