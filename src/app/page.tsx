@@ -42,6 +42,24 @@ const WEB_FEATURES = [
   },
 ];
 
+const UPGRADE_FEATURES = [
+  {
+    kicker: "Modulos",
+    title: "Aprender en partes chicas",
+    description: "11 modulos cortos basados en el Principio de Pareto. Ninguno te va a tomar una tarde entera.",
+  },
+  {
+    kicker: "Wheel of Life",
+    title: "Mide lo que importa",
+    description: "Cada 30 dias, un vistazo honesto a donde estas. Sin diez apps distintas para cada area de tu vida.",
+  },
+  {
+    kicker: "Todo en uno",
+    title: "Una sola app, no cinco",
+    description: "Modulos, habitos y medicion en el mismo lugar. No cinco apps distintas que dejaste de abrir.",
+  },
+];
+
 const WHY_WE_BUILT_IT: RevealWord[] = [
   { text: "La" }, { text: "mayoria" }, { text: "de" }, { text: "las" }, { text: "apps" },
   { text: "de" }, { text: "habitos" }, { text: "estan" }, { text: "hechas" }, { text: "para" },
@@ -245,6 +263,45 @@ export default async function HomePage() {
                   <p className="muted">{item.description}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
+          <p className="kicker">✨ Es una mejora en todo</p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+            Aprende. Actua. Mide. Repite.
+          </h2>
+          <p className="text-sm leading-relaxed text-neutral-300 max-w-xl mb-12">
+            EJECUTA mejora como ejecutas tu vida, sin intentar convertirte en otra persona.
+            Si sostenerlo te hace sentir peor, esta mal diseñado.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="card">
+              <p className="kicker">{UPGRADE_FEATURES[0].kicker}</p>
+              <p className="font-extrabold text-2xl mb-2">{UPGRADE_FEATURES[0].title}</p>
+              <p className="muted">{UPGRADE_FEATURES[0].description}</p>
+            </div>
+            <div className="card">
+              <p className="kicker">{UPGRADE_FEATURES[1].kicker}</p>
+              <p className="font-extrabold text-2xl mb-2">{UPGRADE_FEATURES[1].title}</p>
+              <p className="muted">{UPGRADE_FEATURES[1].description}</p>
+            </div>
+            <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col sm:flex-row items-center gap-6">
+              <div className="flex-1">
+                <p className="kicker">Tu ritmo</p>
+                <p className="font-extrabold text-2xl mb-2">Sin compararte con nadie</p>
+                <p className="muted">Tu racha es tuya. No hay ranking, no hay feed de lo que hacen los demas.</p>
+              </div>
+              <PhoneMantra mantra={MANTRAS[4]} />
+            </div>
+            <div className="card">
+              <p className="kicker">{UPGRADE_FEATURES[2].kicker}</p>
+              <p className="font-extrabold text-2xl mb-2">{UPGRADE_FEATURES[2].title}</p>
+              <p className="muted">{UPGRADE_FEATURES[2].description}</p>
             </div>
           </div>
         </div>
