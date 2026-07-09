@@ -16,6 +16,7 @@ import { MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT, DAYS_BETWEEN_WHEEL_MEASUREMENTS 
 import { MODULES } from "@/lib/modules-content";
 import { getMantraOfTheDay } from "@/lib/mantras";
 import { ArrivalRitual } from "@/components/ArrivalRitual";
+import { PullToRefresh } from "@/components/PullToRefresh";
 
 export default async function DashboardPage() {
   const user = await requireUser();
@@ -63,59 +64,63 @@ export default async function DashboardPage() {
     <>
       <ArrivalRitual mantra={getMantraOfTheDay()} />
       <Nav />
-      <main className="app-main">
-        <p className="kicker">HOY</p>
+      <PullToRefresh>
+        <main className="app-main">
+          <p className="kicker">HOY</p>
 
-        {habitsWithData.length === 0 ? (
-          <div className="mb-10">
-            <p className="text-sm text-neutral-300 mb-1">Todavia no tienes nada que sostener.</p>
-            <p className="muted">
-              <Link href="/habits" className="link-accent">Crea tu primer habito</Link> — el mas
-              pequeno que se te ocurra.
-            </p>
-          </div>
-        ) : (
-          <div className="mb-10">
-            <div className="flex items-baseline justify-between mb-4">
-              <h1 className="text-2xl font-extrabold tracking-tight">Lo de hoy</h1>
-              <p className="muted text-xs uppercase tracking-widest">
-                {doneCount}/{habitsWithData.length} hecho
+          {habitsWithData.length === 0 ? (
+            <div className="mb-10">
+              <p className="text-2xl mb-2">🌱</p>
+              <p className="text-sm text-neutral-300 mb-1">Todavia no tienes nada que sostener.</p>
+              <p className="muted">
+                <Link href="/habits" className="link-accent">Crea tu primer habito</Link> — el mas
+                pequeno que se te ocurra.
               </p>
             </div>
-            <div className="flex flex-col gap-3">
-              {habitsWithData.map(({ habit, streak, doneToday }) => (
-                <HabitCard
-                  key={habit.id}
-                  id={habit.id}
-                  name={habit.name}
-                  description={habit.description}
-                  category={habit.category}
-                  streak={streak}
-                  doneToday={doneToday}
-                />
-              ))}
+          ) : (
+            <div className="mb-10">
+              <div className="flex items-baseline justify-between mb-4">
+                <h1 className="text-2xl font-extrabold tracking-tight">Lo de hoy</h1>
+                <p className="muted text-xs uppercase tracking-widest">
+                  {doneCount}/{habitsWithData.length} hecho
+                </p>
+              </div>
+              <div className="flex flex-col gap-3">
+                {habitsWithData.map(({ habit, streak, doneToday }, i) => (
+                  <HabitCard
+                    key={habit.id}
+                    id={habit.id}
+                    name={habit.name}
+                    description={habit.description}
+                    category={habit.category}
+                    streak={streak}
+                    doneToday={doneToday}
+                    isAnchor={i === 0}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-widest text-neutral-500 border-t border-line pt-6">
-          <Link href="/habits" className="hover:text-accent transition-colors">
-            {canUnlockNextHabit
-              ? userHabits.length === 0
-                ? "Crear habito"
-                : userHabits.length >= MAX_HABITS
-                  ? "Gestionar habitos"
-                  : "Desbloquear siguiente habito"
-              : `Gestionar habitos · siguiente en ${daysUntilNextHabit}d`}
-          </Link>
-          <Link href="/modules" className="hover:text-accent transition-colors">
-            Modulos {completedModules}/{MODULES.length}
-          </Link>
-          <Link href="/wheel" className="hover:text-accent transition-colors">
-            {canMeasureWheel ? "Medir Wheel of Life" : `Wheel of Life · ${nextWheelDate?.toLocaleDateString("es-MX")}`}
-          </Link>
-        </div>
-      </main>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-widest text-neutral-500 border-t border-line pt-6">
+            <Link href="/habits" className="hover:text-accent transition-colors">
+              {canUnlockNextHabit
+                ? userHabits.length === 0
+                  ? "Crear habito"
+                  : userHabits.length >= MAX_HABITS
+                    ? "Gestionar habitos"
+                    : "Desbloquear siguiente habito"
+                : `Gestionar habitos · siguiente en ${daysUntilNextHabit}d`}
+            </Link>
+            <Link href="/modules" className="hover:text-accent transition-colors">
+              Modulos {completedModules}/{MODULES.length}
+            </Link>
+            <Link href="/wheel" className="hover:text-accent transition-colors">
+              {canMeasureWheel ? "Medir Wheel of Life" : `Wheel of Life · ${nextWheelDate?.toLocaleDateString("es-MX")}`}
+            </Link>
+          </div>
+        </main>
+      </PullToRefresh>
     </>
   );
 }

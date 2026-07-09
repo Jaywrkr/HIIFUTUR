@@ -6,6 +6,7 @@ import { updateHabit, freezeStreak, type HabitFormState } from "@/lib/habit-acti
 import { HABIT_CATEGORIES, DAYS_BETWEEN_HABIT_EDITS } from "@/lib/constants";
 import { ShareImageButton } from "@/components/ShareImageButton";
 import { drawStreakShareCard } from "@/lib/share-card";
+import { HabitHeatmap } from "@/components/HabitHeatmap";
 
 const initialState: HabitFormState = {};
 
@@ -21,19 +22,29 @@ function SaveButton() {
 export function EditHabitRow({
   habit,
   streak,
+  longestStreak,
   doneToday,
   canEdit,
   nextEditLabel,
   canFreeze,
   nextFreezeLabel,
+  isAnchor,
+  logDates,
+  freezeDates,
+  habitCreatedAt,
 }: {
   habit: { id: string; name: string; description: string; category: string };
   streak: number;
+  longestStreak: number;
   doneToday: boolean;
   canEdit: boolean;
   nextEditLabel: string | null;
   canFreeze: boolean;
   nextFreezeLabel: string | null;
+  isAnchor: boolean;
+  logDates: string[];
+  freezeDates: string[];
+  habitCreatedAt: Date;
 }) {
   const [editing, setEditing] = useState(false);
   const updateWithId = updateHabit.bind(null, habit.id);
@@ -127,7 +138,14 @@ export function EditHabitRow({
     <div className="border-b border-line py-4 last:border-b-0">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-xs uppercase tracking-widest text-neutral-500">{habit.category}</p>
+          <div className="flex items-center gap-2">
+            <p className="text-xs uppercase tracking-widest text-neutral-500">{habit.category}</p>
+            {isAnchor ? (
+              <span className="text-[10px] uppercase tracking-widest text-accent border border-accent/40 rounded-full px-2 py-0.5">
+                ⚓ Ancla
+              </span>
+            ) : null}
+          </div>
           <p className="font-bold">{habit.name}</p>
           <p className="muted mt-1">{habit.description}</p>
         </div>
@@ -188,6 +206,13 @@ export function EditHabitRow({
           />
         </div>
       ) : null}
+
+      <div className="mt-4 flex items-center justify-between">
+        <p className="text-[10px] uppercase tracking-widest text-neutral-600">
+          Ultimas 12 semanas · mejor racha: {longestStreak} {longestStreak === 1 ? "dia" : "dias"}
+        </p>
+      </div>
+      <HabitHeatmap logDates={logDates} freezeDates={freezeDates} habitCreatedAt={habitCreatedAt} />
     </div>
   );
 }

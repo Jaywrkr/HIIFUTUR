@@ -18,7 +18,11 @@ export default async function ModulesPage() {
     <>
       <Nav />
       <main className="app-main">
-        <PageHeader kicker="APRENDIZAJE" title="El camino" />
+        <PageHeader
+          kicker="APRENDIZAJE"
+          title="El camino"
+          subtitle={`${completedIds.size} de ${MODULES.length} modulos completados.`}
+        />
 
         <blockquote className="border-l-2 border-l-accent pl-4 mb-12">
           <p className="text-sm leading-relaxed text-neutral-300">

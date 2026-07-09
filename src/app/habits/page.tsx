@@ -4,9 +4,11 @@ import { Nav } from "@/components/Nav";
 import { PageHeader } from "@/components/PageHeader";
 import { CreateHabitForm } from "@/components/CreateHabitForm";
 import { EditHabitRow } from "@/components/EditHabitRow";
+import { UnlockBanner } from "@/components/UnlockBanner";
 import { requireUser } from "@/lib/session";
 import { getUserPreferences, getHabitsForUser, getHabitLogs, getHabitFreezes } from "@/lib/queries";
 import { addDays, computeStreak, todayKey } from "@/lib/habit-utils";
+import { computeLongestStreak } from "@/lib/habit-stats";
 import {
   MAX_HABITS,
   DAYS_TO_UNLOCK_NEXT_HABIT,
@@ -47,11 +49,15 @@ export default async function HabitsPage() {
       return {
         habit,
         streak: computeStreak(logDates, freezeDates),
+        longestStreak: computeLongestStreak(logDates, freezeDates),
+        totalDays: new Set(logDates).size,
         doneToday: logDates.includes(today),
         canEdit,
         nextEditLabel: nextEditDate ? nextEditDate.toLocaleDateString("es-MX") : null,
         canFreeze,
         nextFreezeLabel: freezeOnCooldown ? nextFreezeDate!.toLocaleDateString("es-MX") : null,
+        logDates,
+        freezeDates,
       };
     })
   );
@@ -66,6 +72,9 @@ export default async function HabitsPage() {
   // after that, the person already knows how the system feels.
   const anchorSuggestion =
     userHabits.length === 0 ? getAnchorHabitSuggestion(prefs.initialWheelScores) : null;
+
+  const totalDaysCompleted = habitsWithData.reduce((sum, h) => sum + h.totalDays, 0);
+  const bestStreakEver = habitsWithData.reduce((max, h) => Math.max(max, h.longestStreak), 0);
 
   return (
     <>
@@ -82,21 +91,57 @@ export default async function HabitsPage() {
           }
         />
 
+        {habitsWithData.length > 0 ? (
+          <div className="flex gap-8 mb-10">
+            <div>
+              <p className="text-2xl font-extrabold text-accent">{totalDaysCompleted}</p>
+              <p className="text-xs uppercase tracking-widest text-neutral-500">Dias completados</p>
+            </div>
+            <div>
+              <p className="text-2xl font-extrabold text-accent">{bestStreakEver}</p>
+              <p className="text-xs uppercase tracking-widest text-neutral-500">Mejor racha</p>
+            </div>
+          </div>
+        ) : null}
+
+        {canCreate && userHabits.length > 0 && nextUnlockDate ? (
+          <UnlockBanner unlockKey={nextUnlockDate.toISOString().slice(0, 10)} />
+        ) : null}
+
         {habitsWithData.length === 0 ? (
-          <p className="muted mb-8">Aun no tienes habitos. Crea el primero — el mas pequeno posible.</p>
+          <p className="muted mb-8">🌱 Aun no tienes habitos. Crea el primero — el mas pequeño posible.</p>
         ) : (
           <div className="mb-8">
             {habitsWithData.map(
-              ({ habit, streak, doneToday, canEdit, nextEditLabel, canFreeze, nextFreezeLabel }) => (
+              (
+                {
+                  habit,
+                  streak,
+                  longestStreak,
+                  doneToday,
+                  canEdit,
+                  nextEditLabel,
+                  canFreeze,
+                  nextFreezeLabel,
+                  logDates,
+                  freezeDates,
+                },
+                i
+              ) => (
                 <EditHabitRow
                   key={habit.id}
                   habit={habit}
                   streak={streak}
+                  longestStreak={longestStreak}
                   doneToday={doneToday}
                   canEdit={canEdit}
                   nextEditLabel={nextEditLabel}
                   canFreeze={canFreeze}
                   nextFreezeLabel={nextFreezeLabel}
+                  isAnchor={i === 0}
+                  logDates={logDates}
+                  freezeDates={freezeDates}
+                  habitCreatedAt={habit.createdAt}
                 />
               )
             )}

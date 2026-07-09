@@ -27,8 +27,13 @@ export const MANTRAS: string[] = [
 ];
 
 export function getMantraOfTheDay(): string {
-  const start = new Date(new Date().getFullYear(), 0, 0);
-  const now = new Date();
-  const dayOfYear = Math.floor((now.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+  return getMantraForDate(new Date());
+}
+
+/** Same rotation as getMantraOfTheDay, but for an arbitrary date — used to
+ * show "the mantra of that day" when looking back at a past day. */
+export function getMantraForDate(date: Date): string {
+  const start = new Date(date.getFullYear(), 0, 0);
+  const dayOfYear = Math.floor((date.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
   return MANTRAS[dayOfYear % MANTRAS.length];
 }

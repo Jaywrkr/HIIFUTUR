@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useTransition } from "react";
 import { toggleHabitToday } from "@/lib/habit-actions";
+import { STREAK_MILESTONES } from "@/lib/habit-stats";
 
 const HOLD_MS = 650;
 
@@ -12,6 +13,7 @@ export function HabitCard({
   category,
   streak,
   doneToday,
+  isAnchor,
 }: {
   id: string;
   name: string;
@@ -19,17 +21,20 @@ export function HabitCard({
   category: string;
   streak: number;
   doneToday: boolean;
+  isAnchor?: boolean;
 }) {
   const [pending, startTransition] = useTransition();
   const [optimistic, setOptimistic] = useState<boolean | null>(null);
   const [holding, setHolding] = useState(false);
   const [justCompleted, setJustCompleted] = useState(false);
+  const [milestone, setMilestone] = useState<number | null>(null);
   const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Releasing the pointer right after a hold completes fires a trailing
   // native "click" on the same element. Without this guard that click would
   // immediately fire the undo handler, since by then displayDone is already
   // true — the habit would un-check itself the instant it got checked.
   const completedAt = useRef(0);
+  const prevStreak = useRef(streak);
 
   const displayDone = optimistic ?? doneToday;
 
@@ -37,6 +42,27 @@ export function HabitCard({
   useEffect(() => {
     setOptimistic(null);
   }, [doneToday]);
+
+  // Celebrate when the confirmed streak (not the optimistic one) lands on a
+  // round number — real data, not a guess about what the server will say.
+  useEffect(() => {
+    if (streak > prevStreak.current && STREAK_MILESTONES.includes(streak)) {
+      setMilestone(streak);
+      const t = setTimeout(() => setMilestone(null), 2600);
+      return () => clearTimeout(t);
+    }
+    prevStreak.current = streak;
+  }, [streak]);
+
+  // Elegant, not alarming: once it's late and today is still unmarked, the
+  // streak label warms from accent to amber instead of popping a banner.
+  const [now, setNow] = useState<Date | null>(null);
+  useEffect(() => {
+    setNow(new Date());
+    const interval = setInterval(() => setNow(new Date()), 60_000);
+    return () => clearInterval(interval);
+  }, []);
+  const streakAtRisk = !displayDone && !!now && now.getHours() >= 20;
 
   function commit(next: boolean) {
     setOptimistic(next);
@@ -56,6 +82,9 @@ export function HabitCard({
       setJustCompleted(true);
       completedAt.current = Date.now();
       setTimeout(() => setJustCompleted(false), 220);
+      if (typeof navigator !== "undefined" && navigator.vibrate) {
+        navigator.vibrate(15);
+      }
       commit(true);
     }, HOLD_MS);
   }
@@ -88,13 +117,28 @@ export function HabitCard({
   }
 
   return (
-    <div className="card flex items-center justify-between gap-4">
+    <div className="card flex items-center justify-between gap-4 relative overflow-hidden">
+      {milestone ? (
+        <div className="absolute inset-0 flex items-center justify-center bg-ink/95 z-20 animate-[fadeIn_150ms_ease-out]">
+          <p className="text-lg font-extrabold text-accent">🔥 {milestone} dias seguidos</p>
+        </div>
+      ) : null}
       <div className="flex-1">
-        <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">{category}</p>
+        <div className="flex items-center gap-2 mb-1">
+          <p className="text-xs uppercase tracking-widest text-neutral-500">{category}</p>
+          {isAnchor ? (
+            <span className="text-[10px] uppercase tracking-widest text-accent border border-accent/40 rounded-full px-2 py-0.5">
+              ⚓ Ancla
+            </span>
+          ) : null}
+        </div>
         <p className="font-bold text-lg">{name}</p>
         <p className="muted mt-1">{description}</p>
-        <p className="text-xs text-accent mt-2 uppercase tracking-widest">
+        <p
+          className={`text-xs mt-2 uppercase tracking-widest ${streakAtRisk ? "text-amber-400" : "text-accent"}`}
+        >
           Racha: {streak} {streak === 1 ? "dia" : "dias"}
+          {streakAtRisk ? " · se te va a ir el dia" : ""}
         </p>
       </div>
 

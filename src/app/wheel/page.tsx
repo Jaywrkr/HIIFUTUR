@@ -90,7 +90,10 @@ export default async function WheelPage() {
             </div>
           </div>
         ) : (
-          <p className="muted mb-8">Aun no tienes mediciones.</p>
+          <div className="mb-8">
+            <p className="text-2xl mb-2">🎯</p>
+            <p className="muted">Aun no tienes mediciones.</p>
+          </div>
         )}
 
         {canMeasure ? (

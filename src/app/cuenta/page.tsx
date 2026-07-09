@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { PageHeader } from "@/components/PageHeader";
 import { DeleteAccountSection } from "@/components/DeleteAccountSection";
+import { EditNameSection } from "@/components/EditNameSection";
 import { requireUser } from "@/lib/session";
 
 export default async function CuentaPage() {
@@ -15,7 +16,9 @@ export default async function CuentaPage() {
 
         <div className="mb-10">
           <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Nombre</p>
-          <p className="font-bold mb-4">{user.name ?? "—"}</p>
+          <div className="mb-4">
+            <EditNameSection initialName={user.name ?? ""} />
+          </div>
           <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Email</p>
           <p className="font-bold">{user.email}</p>
         </div>
