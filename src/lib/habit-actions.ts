@@ -1,10 +1,10 @@
 "use server";
 
 import { z } from "zod";
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
-import { habits, habitLogs, habitFreezes } from "@/db/schema";
+import { habits, habitLogs, habitFreezes, users } from "@/db/schema";
 import { requireUser } from "@/lib/session";
 import { getHabitsForUser, getHabitLogs, getHabitFreezes } from "@/lib/queries";
 import {
@@ -14,6 +14,7 @@ import {
   DAYS_BETWEEN_HABIT_EDITS,
   DAYS_BETWEEN_STREAK_FREEZES,
 } from "@/lib/constants";
+import { POINTS_PER_CHECK } from "@/lib/leveling";
 import { addDays, todayKey } from "@/lib/habit-utils";
 import { trackEvent } from "@/lib/analytics";
 
@@ -94,8 +95,16 @@ export async function toggleHabitToday(habitId: string) {
 
   if (existingLog) {
     await db.delete(habitLogs).where(eq(habitLogs.id, existingLog.id));
+    await db
+      .update(users)
+      .set({ points: sql`greatest(${users.points} - ${POINTS_PER_CHECK}, 0)` })
+      .where(eq(users.id, user.id));
   } else {
     await db.insert(habitLogs).values({ habitId, date, completed: true });
+    await db
+      .update(users)
+      .set({ points: sql`${users.points} + ${POINTS_PER_CHECK}` })
+      .where(eq(users.id, user.id));
     await trackEvent(user.id, "habit_checked", { category: habit.category });
   }
 

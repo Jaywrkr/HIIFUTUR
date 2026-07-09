@@ -349,8 +349,8 @@ export default async function HomePage() {
             <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col sm:flex-row items-center gap-6">
               <div className="flex-1">
                 <p className="kicker">Tu ritmo</p>
-                <p className="font-extrabold text-2xl mb-2">Sin compararte con nadie</p>
-                <p className="muted">Tu racha es tuya. No hay ranking, no hay feed de lo que hacen los demas.</p>
+                <p className="font-extrabold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
+                <p className="muted">Cada habito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demas.</p>
               </div>
               <PhoneMantra mantra={MANTRAS[4]} />
             </div>

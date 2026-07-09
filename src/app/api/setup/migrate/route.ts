@@ -65,6 +65,13 @@ CREATE TABLE IF NOT EXISTS "users" (
 );
 ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "reminders_enabled" boolean DEFAULT true NOT NULL;
 ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "last_reminder_sent_at" timestamp;
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "points" integer DEFAULT 0 NOT NULL;
+UPDATE "users" u SET "name" = u."name" || ' ' || substr(u."id"::text, 1, 4)
+WHERE u."name" IS NOT NULL AND EXISTS (
+	SELECT 1 FROM "users" u2
+	WHERE lower(u2."name") = lower(u."name") AND u2."id" != u."id" AND u2."id" > u."id"
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "users_name_lower_unique" ON "users" USING btree (lower("name"));
 CREATE TABLE IF NOT EXISTS "wheel_of_life_measurements" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"user_id" uuid NOT NULL,

@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
-import { eq } from "drizzle-orm";
+import { eq, sql, ne, and } from "drizzle-orm";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { requireUser } from "@/lib/session";
@@ -22,8 +22,23 @@ export async function updateName(
     return { error: parsed.error.issues[0]?.message ?? "Nombre invalido." };
   }
 
-  await db.update(users).set({ name: parsed.data }).where(eq(users.id, user.id));
+  const [nameTaken] = await db
+    .select({ id: users.id })
+    .from(users)
+    .where(and(sql`lower(${users.name}) = lower(${parsed.data})`, ne(users.id, user.id)))
+    .limit(1);
+
+  if (nameTaken) {
+    return { error: "Ese nombre ya esta en uso. Elige otro." };
+  }
+
+  try {
+    await db.update(users).set({ name: parsed.data }).where(eq(users.id, user.id));
+  } catch {
+    return { error: "Ese nombre ya esta en uso. Elige otro." };
+  }
   revalidatePath("/cuenta");
+  revalidatePath("/leaderboard");
   return { ok: true };
 }
 

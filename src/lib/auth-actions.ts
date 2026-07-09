@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import bcrypt from "bcryptjs";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { db } from "@/db";
 import { users } from "@/db/schema";
@@ -44,16 +44,29 @@ export async function registerUser(
     return { error: "Ya existe una cuenta con ese email." };
   }
 
+  const name = parsed.data.name.trim();
+
+  const [nameTaken] = await db
+    .select({ id: users.id })
+    .from(users)
+    .where(sql`lower(${users.name}) = lower(${name})`)
+    .limit(1);
+
+  if (nameTaken) {
+    return { error: "Ese nombre ya esta en uso. Elige otro." };
+  }
+
   const passwordHash = await bcrypt.hash(parsed.data.password, 10);
 
-  const [newUser] = await db
-    .insert(users)
-    .values({
-      name: parsed.data.name.trim(),
-      email,
-      passwordHash,
-    })
-    .returning({ id: users.id });
+  let newUser;
+  try {
+    [newUser] = await db
+      .insert(users)
+      .values({ name, email, passwordHash })
+      .returning({ id: users.id });
+  } catch {
+    return { error: "Ese nombre ya esta en uso. Elige otro." };
+  }
 
   await trackEvent(newUser.id, "registered");
 

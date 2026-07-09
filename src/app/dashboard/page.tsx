@@ -69,7 +69,7 @@ export default async function DashboardPage() {
           <p className="kicker">HOY</p>
 
           {habitsWithData.length === 0 ? (
-            <div className="mb-10">
+            <div className="card mb-12">
               <p className="text-2xl mb-2">🌱</p>
               <p className="text-sm text-neutral-300 mb-1">Todavia no tienes nada que sostener.</p>
               <p className="muted">
@@ -78,10 +78,16 @@ export default async function DashboardPage() {
               </p>
             </div>
           ) : (
-            <div className="mb-10">
-              <div className="flex items-baseline justify-between mb-4">
-                <h1 className="text-2xl font-extrabold tracking-tight">Lo de hoy</h1>
-                <p className="muted text-xs uppercase tracking-widest">
+            <div className="mb-12">
+              <div className="flex items-baseline justify-between mb-5">
+                <h1 className="text-3xl font-extrabold tracking-tight">Lo de hoy</h1>
+                <p
+                  className={
+                    doneCount === habitsWithData.length
+                      ? "text-xs uppercase tracking-widest text-accent font-semibold"
+                      : "muted text-xs uppercase tracking-widest"
+                  }
+                >
                   {doneCount}/{habitsWithData.length} hecho
                 </p>
               </div>
@@ -102,22 +108,49 @@ export default async function DashboardPage() {
             </div>
           )}
 
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-widest text-neutral-500 border-t border-line pt-6">
-            <Link href="/habits" className="hover:text-accent transition-colors">
-              {canUnlockNextHabit
-                ? userHabits.length === 0
-                  ? "Crear habito"
-                  : userHabits.length >= MAX_HABITS
-                    ? "Gestionar habitos"
-                    : "Desbloquear siguiente habito"
-                : `Gestionar habitos · siguiente en ${daysUntilNextHabit}d`}
-            </Link>
-            <Link href="/modules" className="hover:text-accent transition-colors">
-              Modulos {completedModules}/{MODULES.length}
-            </Link>
-            <Link href="/wheel" className="hover:text-accent transition-colors">
-              {canMeasureWheel ? "Medir Wheel of Life" : `Wheel of Life · ${nextWheelDate?.toLocaleDateString("es-MX")}`}
-            </Link>
+          <div className="border-t border-line pt-6">
+            <p className="text-xs uppercase tracking-widest text-neutral-600 mb-3">Tu progreso</p>
+            <div className="flex flex-col gap-1">
+              <Link
+                href="/habits"
+                className="flex items-center justify-between py-2 text-sm text-neutral-400 hover:text-accent transition-colors"
+              >
+                <span>
+                  {canUnlockNextHabit
+                    ? userHabits.length === 0
+                      ? "Crear habito"
+                      : userHabits.length >= MAX_HABITS
+                        ? "Gestionar habitos"
+                        : "Desbloquear siguiente habito"
+                    : "Gestionar habitos"}
+                </span>
+                {!canUnlockNextHabit ? (
+                  <span className="text-xs text-neutral-600">siguiente en {daysUntilNextHabit}d</span>
+                ) : null}
+              </Link>
+              <Link
+                href="/modules"
+                className="flex items-center justify-between py-2 text-sm text-neutral-400 hover:text-accent transition-colors"
+              >
+                <span>Modulos</span>
+                <span className="text-xs text-neutral-600">{completedModules}/{MODULES.length}</span>
+              </Link>
+              <Link
+                href="/wheel"
+                className="flex items-center justify-between py-2 text-sm text-neutral-400 hover:text-accent transition-colors"
+              >
+                <span>Wheel of Life</span>
+                <span className="text-xs text-neutral-600">
+                  {canMeasureWheel ? "medir ahora" : nextWheelDate?.toLocaleDateString("es-MX")}
+                </span>
+              </Link>
+              <Link
+                href="/leaderboard"
+                className="flex items-center justify-between py-2 text-sm text-neutral-400 hover:text-accent transition-colors"
+              >
+                <span>Leaderboard</span>
+              </Link>
+            </div>
           </div>
         </main>
       </PullToRefresh>

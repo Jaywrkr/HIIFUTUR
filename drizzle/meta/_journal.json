@@ -50,6 +50,13 @@
       "when": 1783533299589,
       "tag": "0006_white_tombstone",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1783598534795,
+      "tag": "0007_amused_genesis",
+      "breakpoints": true
     }
   ]
 }

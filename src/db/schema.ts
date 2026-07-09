@@ -8,18 +8,29 @@ import {
   primaryKey,
   uuid,
   date,
+  uniqueIndex,
 } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
 
-export const users = pgTable("users", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  name: text("name"),
-  email: text("email").notNull().unique(),
-  passwordHash: text("password_hash").notNull(),
-  remindersEnabled: boolean("reminders_enabled").notNull().default(true),
-  lastReminderSentAt: timestamp("last_reminder_sent_at"),
-  createdAt: timestamp("created_at").notNull().defaultNow(),
-  updatedAt: timestamp("updated_at").notNull().defaultNow(),
-});
+export const users = pgTable(
+  "users",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    name: text("name"),
+    email: text("email").notNull().unique(),
+    passwordHash: text("password_hash").notNull(),
+    remindersEnabled: boolean("reminders_enabled").notNull().default(true),
+    lastReminderSentAt: timestamp("last_reminder_sent_at"),
+    points: integer("points").notNull().default(0),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+  },
+  (u) => ({
+    // Display names must be unique (case-insensitive) — shown on the
+    // leaderboard, so two users can't be confused for one another.
+    nameLowerUnique: uniqueIndex("users_name_lower_unique").on(sql`lower(${u.name})`),
+  })
+);
 
 export const passwordResetTokens = pgTable("password_reset_tokens", {
   id: uuid("id").primaryKey().defaultRandom(),

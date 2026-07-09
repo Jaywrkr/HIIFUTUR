@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { updateName, type UpdateNameState } from "@/lib/account-actions";
 
@@ -19,14 +19,18 @@ export function EditNameSection({ initialName }: { initialName: string }) {
   const [editing, setEditing] = useState(false);
   const [displayName, setDisplayName] = useState(initialName);
   const [state, formAction] = useFormState(updateName, initialState);
+  const pendingValue = useRef(initialName);
 
-  async function handleSubmit(formData: FormData) {
-    const value = String(formData.get("name") ?? "").trim();
-    formAction(formData);
-    if (value) {
-      setDisplayName(value);
+  useEffect(() => {
+    if (state.ok) {
+      setDisplayName(pendingValue.current);
       setEditing(false);
     }
+  }, [state]);
+
+  function handleSubmit(formData: FormData) {
+    pendingValue.current = String(formData.get("name") ?? "").trim();
+    formAction(formData);
   }
 
   if (editing) {

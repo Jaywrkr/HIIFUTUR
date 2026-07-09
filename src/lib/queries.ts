@@ -7,7 +7,13 @@ import {
   habitFreezes,
   wheelOfLifeMeasurements,
   moduleProgress,
+  users,
 } from "@/db/schema";
+
+export async function getUserById(userId: string) {
+  const [row] = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+  return row ?? null;
+}
 
 export async function getUserPreferences(userId: string) {
   const [prefs] = await db
@@ -64,4 +70,14 @@ export async function getModuleProgressForUser(userId: string) {
     .select()
     .from(moduleProgress)
     .where(eq(moduleProgress.userId, userId));
+}
+
+export const LEADERBOARD_SIZE = 10;
+
+export async function getTopUsers() {
+  return db
+    .select({ id: users.id, name: users.name, points: users.points })
+    .from(users)
+    .orderBy(desc(users.points))
+    .limit(LEADERBOARD_SIZE);
 }
