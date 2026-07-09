@@ -103,6 +103,21 @@ npm run dev
 - `wheel_of_life_measurements` — historico de mediciones mensuales.
 - `module_progress` — progreso y respuestas de ejercicios por modulo.
 
+## Backups y recuperacion
+
+La base de datos vive en Postgres gestionado por Vercel (Neon por debajo).
+Neon guarda un historial de "point-in-time restore" — puedes volver la base
+a como estaba en cualquier momento dentro de esa ventana, sin restaurar un
+backup manual. La duracion exacta de esa ventana depende del plan:
+
+- Plan gratis de Neon: normalmente 24 horas.
+- Planes pagos: hasta 7-30 dias segun el tier.
+
+Para confirmar la ventana real de tu proyecto: Vercel → `Storage` → tu base
+de datos → abre el dashboard de Neon → `Backups` (o `Restore`). Si el
+proyecto crece, vale la pena revisar si conviene subir de plan para tener
+mas dias de margen.
+
 ## Scripts
 
 - `npm run dev` — servidor de desarrollo.
