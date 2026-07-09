@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "claude/**"]
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: ejecuta
+          POSTGRES_PASSWORD: ejecuta
+          POSTGRES_DB: ejecuta
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ejecuta"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      POSTGRES_URL: postgres://ejecuta:ejecuta@localhost:5432/ejecuta
+      AUTH_SECRET: ci-only-secret-not-used-in-production
+      NEXTAUTH_URL: http://localhost:3000
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Database migrations (against a real Postgres)
+        run: npm run db:migrate
+
+      - name: Build
+        run: npm run build
