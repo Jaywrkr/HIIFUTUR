@@ -53,10 +53,10 @@ body {
 }
 
 .btn-primary {
-  @apply inline-block bg-accent text-black font-bold uppercase tracking-widest text-sm py-3 px-6 rounded-full text-center hover:opacity-90 transition-opacity disabled:opacity-50;
+  @apply inline-block bg-accent text-black font-bold uppercase tracking-widest text-sm py-3 px-6 rounded-full text-center hover:bg-accent-hover transition-colors disabled:opacity-50;
 }
 .btn-secondary {
-  @apply border border-line text-white uppercase tracking-widest text-xs py-2 px-5 rounded-full hover:border-accent transition-colors disabled:opacity-40;
+  @apply border border-line text-white uppercase tracking-widest text-xs py-2 px-5 rounded-full hover:border-accent hover:bg-accent/10 hover:text-accent transition-colors disabled:opacity-40;
 }
 .w-full {
   width: 100%;
