@@ -71,7 +71,7 @@ export function Nav() {
         {/* Mobile menu panel */}
         {open ? (
           <div className="md:hidden border-t border-line bg-ink">
-            <div className="max-w-4xl mx-auto px-4 py-2 flex flex-col">
+            <div className="max-w-6xl mx-auto px-4 py-2 flex flex-col">
               {links.map((l) => (
                 <Link
                   key={l.href}
