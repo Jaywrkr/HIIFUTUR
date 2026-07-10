@@ -1,5 +1,13 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.28.0",
+    date: "2026-07-10",
+    changes: [
+      "Términos de uso y Política de privacidad reescritos y completos: quién opera el servicio, edad mínima, planes y reembolsos, tus derechos sobre tus datos y la ley aplicable (Ecuador).",
+      "Se aclara qué proveedores procesan tus datos (Vercel/Neon, Resend, Sentry) y cómo los protegemos.",
+    ],
+  },
+  {
     version: "2.27.0",
     date: "2026-07-10",
     changes: [
