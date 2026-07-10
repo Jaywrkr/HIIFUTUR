@@ -1,5 +1,29 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.22.0",
+    date: "2026-07-10",
+    changes: [
+      "Ciclo de formacion de 30 dias: los modulos se ganan con ejecucion real (uno cada 3 dias de habito cumplido).",
+      "Un fallo se perdona; al segundo se reinicia el ciclo: modulos y puntos del ciclo se pierden (tus ejercicios escritos se conservan).",
+      "Completar un modulo ahora tambien suma puntos.",
+      "Menu hamburguesa en movil.",
+    ],
+  },
+  {
+    version: "2.21.0",
+    date: "2026-07-10",
+    changes: ["Tests automatizados y CI: cada cambio se valida antes de llegar a produccion."],
+  },
+  {
+    version: "2.20.0",
+    date: "2026-07-09",
+    changes: [
+      "Puntos y niveles: cada habito marcado suma puntos; subir de nivel cuesta cada vez mas.",
+      "Leaderboard con los 10 primeros.",
+      "Rediseno de Hoy y del perfil.",
+    ],
+  },
+  {
     version: "2.17.0",
     date: "2026-07-09",
     changes: ["Nueva seccion \"Las reglas viejas\" en el home."],

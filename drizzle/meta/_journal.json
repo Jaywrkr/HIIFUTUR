@@ -57,6 +57,13 @@
       "when": 1783598534795,
       "tag": "0007_amused_genesis",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1783646908584,
+      "tag": "0008_living_scarlet_spider",
+      "breakpoints": true
     }
   ]
 }

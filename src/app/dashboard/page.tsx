@@ -16,6 +16,8 @@ import { addDays, computeStreak, daysBetween, todayKey } from "@/lib/habit-utils
 import { MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT, DAYS_BETWEEN_WHEEL_MEASUREMENTS } from "@/lib/constants";
 import { MODULES, PHASES } from "@/lib/modules-content";
 import { computeLevel } from "@/lib/leveling";
+import { evaluateCycle } from "@/lib/cycle-state";
+import { CYCLE_DAYS, MAX_CYCLE_FAILS } from "@/lib/cycle";
 import { getMantraOfTheDay } from "@/lib/mantras";
 import { ArrivalRitual } from "@/components/ArrivalRitual";
 import { PullToRefresh } from "@/components/PullToRefresh";
@@ -25,13 +27,21 @@ export default async function DashboardPage() {
   const prefs = await getUserPreferences(sessionUser.id);
   if (!prefs) redirect("/onboarding");
 
-  const [user, userHabits, measurements, moduleProgress] = await Promise.all([
-    getUserById(sessionUser.id),
+  const user = await getUserById(sessionUser.id);
+  if (!user) redirect("/login");
+
+  // Before reading anything cycle-dependent: this may reset points and
+  // module progress if the user just hit their second miss.
+  const cycle = await evaluateCycle(user);
+  if (cycle.wasReset) {
+    user.points = user.cycleStartPoints;
+  }
+
+  const [userHabits, measurements, moduleProgress] = await Promise.all([
     getHabitsForUser(sessionUser.id),
     getWheelMeasurements(sessionUser.id),
     getModuleProgressForUser(sessionUser.id),
   ]);
-  if (!user) redirect("/login");
 
   const today = todayKey();
   const habitsWithData = await Promise.all(
@@ -77,6 +87,17 @@ export default async function DashboardPage() {
       <PullToRefresh>
         <main className="app-main">
           <p className="kicker">HOY</p>
+
+          {cycle.wasReset ? (
+            <div className="rounded-2xl border border-red-500/40 bg-red-500/10 p-5 mb-8">
+              <p className="text-xs uppercase tracking-widest text-red-400 mb-1">El ciclo se reinicio</p>
+              <p className="text-sm text-neutral-300">
+                Fallaste dos veces en 30 dias. Tus ejercicios siguen escritos, pero los modulos y
+                los puntos del ciclo se perdieron. No perdiste el conocimiento — perdiste el
+                derecho a avanzar. Ganatelo otra vez, hoy.
+              </p>
+            </div>
+          ) : null}
 
           {habitsWithData.length === 0 ? (
             <div className="card mb-10">
@@ -135,6 +156,14 @@ export default async function DashboardPage() {
                   <p className="muted text-sm">
                     {completedIds.size} de {MODULES.length} completados — continua donde ibas.
                   </p>
+                  {!cycle.completed && cycle.hasAnchor ? (
+                    <p className="text-xs uppercase tracking-widest mt-2 text-neutral-500">
+                      Ciclo: dia {cycle.day}/{CYCLE_DAYS} ·{" "}
+                      <span className={cycle.failsUsed >= MAX_CYCLE_FAILS ? "text-red-400 font-semibold" : ""}>
+                        fallos {cycle.failsUsed}/{MAX_CYCLE_FAILS}
+                      </span>
+                    </p>
+                  ) : null}
                 </div>
                 <span className="text-accent text-2xl shrink-0">→</span>
               </div>

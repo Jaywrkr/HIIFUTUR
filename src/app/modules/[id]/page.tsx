@@ -1,7 +1,9 @@
 import { notFound, redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
 import { requireUser } from "@/lib/session";
-import { getUserPreferences } from "@/lib/queries";
+import { getUserById, getUserPreferences, getModuleProgressForUser } from "@/lib/queries";
+import { evaluateCycle, executionLocked } from "@/lib/cycle-state";
+import { countCompletedInCycle } from "@/lib/cycle";
 import { getModuleById, getPhaseById, MODULES } from "@/lib/modules-content";
 import { db } from "@/db";
 import { moduleProgress } from "@/db/schema";
@@ -35,6 +37,17 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
     .from(moduleProgress)
     .where(and(eq(moduleProgress.userId, user.id), eq(moduleProgress.moduleId, courseModule.id)))
     .limit(1);
+
+  // Uncompleted modules beyond the first also wait for real habit
+  // execution — same gate as the module list, enforced against direct URLs.
+  if (idx > 0 && !existing?.completed) {
+    const fullUser = await getUserById(user.id);
+    if (!fullUser) redirect("/login");
+    const cycle = await evaluateCycle(fullUser);
+    const progress = await getModuleProgressForUser(user.id);
+    const completedInCycle = countCompletedInCycle(progress, fullUser.cycleStartedAt, MODULES[0].id);
+    if (executionLocked(cycle, completedInCycle)) redirect("/modules");
+  }
 
   return (
     <>

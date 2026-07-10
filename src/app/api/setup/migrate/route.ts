@@ -66,6 +66,9 @@ CREATE TABLE IF NOT EXISTS "users" (
 ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "reminders_enabled" boolean DEFAULT true NOT NULL;
 ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "last_reminder_sent_at" timestamp;
 ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "points" integer DEFAULT 0 NOT NULL;
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "cycle_started_at" timestamp;
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "cycle_start_points" integer DEFAULT 0 NOT NULL;
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "cycle_completed_at" timestamp;
 UPDATE "users" u SET "name" = u."name" || ' ' || substr(u."id"::text, 1, 4)
 WHERE u."name" IS NOT NULL AND EXISTS (
 	SELECT 1 FROM "users" u2
