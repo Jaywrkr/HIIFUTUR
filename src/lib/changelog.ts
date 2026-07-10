@@ -1,5 +1,13 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.24.0",
+    date: "2026-07-10",
+    changes: [
+      "Menú de navegación en negrita.",
+      "El curso se reorganizó por fases: cada fase es ahora una sección clara con su avance y el estado de cada módulo.",
+    ],
+  },
+  {
     version: "2.23.0",
     date: "2026-07-10",
     changes: [

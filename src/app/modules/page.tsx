@@ -85,15 +85,39 @@ export default async function ModulesPage({
           <p className="text-xs uppercase tracking-widest text-neutral-500 mt-3">— Jay</p>
         </blockquote>
 
-        {PHASES.map((phase) => {
+        {PHASES.map((phase, phaseIdx) => {
           const phaseModules = MODULES.filter((m) => m.phaseId === phase.id);
+          const phaseDone = phaseModules.filter((m) => completedIds.has(m.id)).length;
+          const phaseComplete = phaseDone === phaseModules.length;
 
           return (
-            <div key={phase.id} className="mb-12">
-              <p className="text-xs uppercase tracking-widest text-accent mb-1">{phase.title}</p>
-              <p className="muted mb-2">{phase.description}</p>
+            <section key={phase.id} className="mb-10">
+              {/* Phase header: a clear, labeled band so each of the four
+                  sections reads as its own block instead of a flat list. */}
+              <div className="flex items-center gap-3 mb-3">
+                <span
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
+                    phaseComplete
+                      ? "bg-accent text-black"
+                      : "border border-accent/50 text-accent"
+                  }`}
+                >
+                  {phaseIdx + 1}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h2 className="text-sm font-bold uppercase tracking-widest text-accent truncate">
+                      {phase.title}
+                    </h2>
+                    <span className="text-xs uppercase tracking-widest text-neutral-500 shrink-0">
+                      {phaseDone}/{phaseModules.length}
+                    </span>
+                  </div>
+                  <p className="muted mt-0.5">{phase.description}</p>
+                </div>
+              </div>
 
-              <div>
+              <div className="card !p-0 divide-y divide-line overflow-hidden">
                 {phaseModules.map((module) => {
                   const idx = MODULES.findIndex((m) => m.id === module.id);
                   const done = completedIds.has(module.id);
@@ -103,26 +127,44 @@ export default async function ModulesPage({
                   const needsExecution = !done && idx > 0 && previousDone && gateLocked;
                   const locked = (!previousDone || needsExecution) && !done;
 
+                  const lockLabel = needsExecution
+                    ? cycle.hasAnchor
+                      ? `${daysMissing} día${daysMissing === 1 ? "" : "s"} de ejecución`
+                      : "Crea tu hábito primero"
+                    : "Termina el anterior";
+
                   return (
-                    <div key={module.id} className={`list-row ${locked ? "opacity-40" : ""}`}>
-                      <div>
-                        <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">
+                    <div
+                      key={module.id}
+                      className={`flex items-center gap-4 px-5 py-4 ${locked ? "opacity-70" : ""}`}
+                    >
+                      <span
+                        className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
+                          done
+                            ? "bg-accent text-black"
+                            : locked
+                              ? "border border-line text-neutral-600"
+                              : "border border-accent/50 text-accent"
+                        }`}
+                      >
+                        {done ? "✓" : locked ? "🔒" : module.order}
+                      </span>
+
+                      <div className="flex-1 min-w-0">
+                        <p className="text-[10px] uppercase tracking-widest text-neutral-500">
                           Módulo {module.order}
                         </p>
-                        <p className="font-bold">{module.title}</p>
+                        <p className="font-bold text-sm leading-tight">{module.title}</p>
                       </div>
+
                       {locked ? (
-                        <span className="text-xs uppercase text-neutral-600 text-right">
-                          {needsExecution
-                            ? cycle.hasAnchor
-                              ? `${daysMissing} día${daysMissing === 1 ? "" : "s"} de ejecución`
-                              : "Crea tu hábito primero"
-                            : "Bloqueado"}
+                        <span className="text-[11px] uppercase tracking-widest text-neutral-600 text-right shrink-0 max-w-[6.5rem] leading-tight">
+                          {lockLabel}
                         </span>
                       ) : (
                         <Link
                           href={`/modules/${module.id}`}
-                          className={done ? "btn-secondary" : "btn-primary"}
+                          className={done ? "btn-secondary shrink-0" : "btn-primary shrink-0"}
                         >
                           {done ? "REVISAR" : "EMPEZAR"}
                         </Link>
@@ -131,7 +173,7 @@ export default async function ModulesPage({
                   );
                 })}
               </div>
-            </div>
+            </section>
           );
         })}
       </main>
