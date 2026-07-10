@@ -67,7 +67,7 @@ body {
   @apply border-b border-line sticky top-0 bg-ink z-10;
 }
 .app-nav-inner {
-  @apply max-w-4xl mx-auto flex items-center justify-between px-4 py-4;
+  @apply max-w-6xl mx-auto flex items-center justify-between px-4 py-4;
 }
 .app-logo {
   @apply text-sm font-bold tracking-[0.3em] text-white;
@@ -82,7 +82,7 @@ body {
   @apply text-accent;
 }
 .app-main {
-  @apply max-w-4xl mx-auto px-4 py-10;
+  @apply max-w-6xl mx-auto px-4 py-10;
 }
 
 .card {

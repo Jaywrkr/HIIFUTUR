@@ -5,7 +5,7 @@ export const metadata = { title: "Changelog — EJECUTA" };
 
 export default function ChangelogPage() {
   return (
-    <main className="max-w-2xl mx-auto px-6 py-16">
+    <main className="max-w-3xl mx-auto px-6 py-16">
       <Link href="/" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
         ← EJECUTA
       </Link>
