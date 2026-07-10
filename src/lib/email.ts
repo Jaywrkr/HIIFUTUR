@@ -14,7 +14,7 @@ export async function sendPasswordResetEmail(to: string, resetUrl: string) {
   if (!resend) {
     // No email provider configured (local dev, or not set up yet in prod).
     // Print the link so the flow is still testable end to end.
-    console.log(`[email:dev] Enlace de recuperacion para ${to}: ${resetUrl}`);
+    console.log(`[email:dev] Enlace de recuperación para ${to}: ${resetUrl}`);
     return;
   }
 
@@ -54,12 +54,12 @@ export async function sendReminderEmail(
   await resend.emails.send({
     from: process.env.EMAIL_FROM ?? "EJECUTA <onboarding@resend.dev>",
     to,
-    subject: `Hoy todavia no has hecho: ${habitName}`,
+    subject: `Hoy todavía no has hecho: ${habitName}`,
     html: `
       <div style="font-family: sans-serif; background: #0F0C09; color: #F2ECE2; padding: 32px;">
         <p style="color: #E3C9A0; text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px;">EJECUTA</p>
-        <p style="font-size: 20px; font-weight: bold; margin: 16px 0 8px;">Todavia no marcas "${habitName}" hoy.</p>
-        <p style="color: #8a8072; font-size: 14px; margin-bottom: 20px;">No pasa nada si es tarde. La unica regla real es no fallar dos dias seguidos.</p>
+        <p style="font-size: 20px; font-weight: bold; margin: 16px 0 8px;">Todavía no marcas "${habitName}" hoy.</p>
+        <p style="color: #8a8072; font-size: 14px; margin-bottom: 20px;">No pasa nada si es tarde. La única regla real es no fallar dos días seguidos.</p>
         <p>
           <a href="${appUrl}" style="background: #E3C9A0; color: #000; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 999px; display: inline-block;">
             Marcarlo ahora
@@ -97,7 +97,7 @@ export async function sendFeedbackNotification(
       <div style="font-family: sans-serif; background: #0F0C09; color: #F2ECE2; padding: 32px;">
         <p style="color: #E3C9A0; text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px;">EJECUTA · Feedback</p>
         <p style="font-size: 14px; color: #8a8072;">De: ${escapeHtml(userEmail)}</p>
-        ${pageUrl ? `<p style="font-size: 14px; color: #8a8072;">Pagina: ${escapeHtml(pageUrl)}</p>` : ""}
+        ${pageUrl ? `<p style="font-size: 14px; color: #8a8072;">Página: ${escapeHtml(pageUrl)}</p>` : ""}
         <p style="font-size: 16px; white-space: pre-wrap; margin-top: 16px;">${escapeHtml(message)}</p>
       </div>
     `,

@@ -120,7 +120,7 @@ export function HabitCard({
     <div className="card flex items-center justify-between gap-4 relative overflow-hidden">
       {milestone ? (
         <div className="absolute inset-0 flex items-center justify-center bg-ink/95 z-20 animate-[fadeIn_150ms_ease-out]">
-          <p className="text-lg font-extrabold text-accent">🔥 {milestone} dias seguidos</p>
+          <p className="text-lg font-extrabold text-accent">🔥 {milestone} días seguidos</p>
         </div>
       ) : null}
       <div className="flex-1">
@@ -137,8 +137,8 @@ export function HabitCard({
         <p
           className={`text-xs mt-2 uppercase tracking-widest ${streakAtRisk ? "text-amber-400" : "text-accent"}`}
         >
-          Racha: {streak} {streak === 1 ? "dia" : "dias"}
-          {streakAtRisk ? " · se te va a ir el dia" : ""}
+          Racha: {streak} {streak === 1 ? "día" : "días"}
+          {streakAtRisk ? " · se te va a ir el día" : ""}
         </p>
       </div>
 
@@ -159,7 +159,7 @@ export function HabitCard({
           className={`relative h-14 w-14 overflow-hidden border rounded-2xl flex items-center justify-center text-lg transition-transform duration-200 ${
             displayDone ? "border-accent bg-accent text-black" : "border-line text-neutral-500"
           } ${justCompleted ? "scale-110" : "scale-100"}`}
-          aria-label={displayDone ? "Deshacer habito de hoy" : "Mantén presionado para marcar habito de hoy"}
+          aria-label={displayDone ? "Deshacer hábito de hoy" : "Mantén presionado para marcar hábito de hoy"}
           aria-pressed={displayDone}
         >
           {!displayDone && (

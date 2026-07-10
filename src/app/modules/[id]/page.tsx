@@ -54,7 +54,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
       <Nav />
       <main className="app-main max-w-3xl">
         <p className="kicker">
-          {phase?.title} · MODULO {courseModule.order}
+          {phase?.title} · MÓDULO {courseModule.order}
         </p>
         <h1 className="text-3xl font-extrabold tracking-tight mb-6">{courseModule.title}</h1>
 

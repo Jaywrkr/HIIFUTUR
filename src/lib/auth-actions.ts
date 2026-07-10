@@ -11,7 +11,7 @@ import { trackEvent } from "@/lib/analytics";
 const registerSchema = z.object({
   name: z.string().min(1, "Escribe tu nombre.").max(80),
   email: z.string().email("Email invalido."),
-  password: z.string().min(8, "Minimo 8 caracteres."),
+  password: z.string().min(8, "Mínimo 8 caracteres."),
 });
 
 export type RegisterState = {
@@ -53,7 +53,7 @@ export async function registerUser(
     .limit(1);
 
   if (nameTaken) {
-    return { error: "Ese nombre ya esta en uso. Elige otro." };
+    return { error: "Ese nombre ya está en uso. Elige otro." };
   }
 
   const passwordHash = await bcrypt.hash(parsed.data.password, 10);
@@ -65,7 +65,7 @@ export async function registerUser(
       .values({ name, email, passwordHash })
       .returning({ id: users.id });
   } catch {
-    return { error: "Ese nombre ya esta en uso. Elige otro." };
+    return { error: "Ese nombre ya está en uso. Elige otro." };
   }
 
   await trackEvent(newUser.id, "registered");

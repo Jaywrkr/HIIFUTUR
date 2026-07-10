@@ -52,7 +52,7 @@ export default async function CuentaPage() {
         <div className="card mb-6 text-center">
           <p className="kicker mx-auto">TU PERFIL</p>
           <h1 className="text-3xl font-extrabold tracking-tight mb-1">{user.name?.trim() || "Usuario"}</h1>
-          <p className="muted text-sm mb-5">{daysTogether} dias en EJECUTA</p>
+          <p className="muted text-sm mb-5">{daysTogether} días en EJECUTA</p>
 
           <div className="flex items-center justify-center gap-8 mb-5">
             <div>
@@ -75,7 +75,7 @@ export default async function CuentaPage() {
               <div className="h-full bg-accent rounded-full" style={{ width: `${progressPct}%` }} />
             </div>
             <p className="text-xs text-neutral-600 mt-1">
-              {pointsToNextLevel} puntos mas · cada habito marcado suma {POINTS_PER_CHECK}
+              {pointsToNextLevel} puntos más · cada hábito marcado suma {POINTS_PER_CHECK}
             </p>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default async function CuentaPage() {
 
           {nextMilestone ? (
             <p className="text-xs text-neutral-600 mt-4">
-              Siguiente meta: {nextMilestone} dias seguidos ({nextMilestone - bestCurrentStreak} por delante)
+              Siguiente meta: {nextMilestone} días seguidos ({nextMilestone - bestCurrentStreak} por delante)
             </p>
           ) : null}
         </div>
@@ -140,8 +140,8 @@ export default async function CuentaPage() {
         <div className="mb-10">
           <p className="section-title">Legal</p>
           <div className="flex flex-col gap-1">
-            <Link href="/terminos" className="link-accent text-sm">Terminos de uso</Link>
-            <Link href="/privacidad" className="link-accent text-sm">Politica de privacidad</Link>
+            <Link href="/términos" className="link-accent text-sm">Términos de uso</Link>
+            <Link href="/privacidad" className="link-accent text-sm">Política de privacidad</Link>
           </div>
         </div>
 

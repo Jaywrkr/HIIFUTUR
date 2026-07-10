@@ -77,7 +77,7 @@ export function drawStreakShareCard(
   if (!ctx) return;
 
   drawBackground(ctx);
-  drawKicker(ctx, "SISTEMA DE EJECUCION SOSTENIBLE", 90);
+  drawKicker(ctx, "SISTEMA DE EJECUCIÓN SOSTENIBLE", 90);
 
   ctx.textAlign = "center";
   ctx.font = "150px sans-serif";
@@ -91,7 +91,7 @@ export function drawStreakShareCard(
   ctx.font = "700 44px sans-serif";
   ctx.save();
   ctx.letterSpacing = "6px";
-  ctx.fillText(streak === 1 ? "DIA SEGUIDO" : "DIAS SEGUIDOS", WIDTH / 2, 850);
+  ctx.fillText(streak === 1 ? "DÍA SEGUIDO" : "DÍAS SEGUIDOS", WIDTH / 2, 850);
   ctx.restore();
 
   ctx.fillStyle = MUTED;

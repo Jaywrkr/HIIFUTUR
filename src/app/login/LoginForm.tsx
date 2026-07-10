@@ -23,7 +23,7 @@ export function LoginForm() {
       });
 
       if (result?.error) {
-        setError("Email o contrasena incorrectos.");
+        setError("Email o contraseña incorrectos.");
         return;
       }
 
@@ -35,14 +35,14 @@ export function LoginForm() {
   return (
     <div className="auth-card">
       <p className="kicker">EJECUTA</p>
-      <h1 className="auth-title">Inicia sesion</h1>
-      <p className="auth-sub">Vuelve al sistema. Hoy tambien cuenta.</p>
+      <h1 className="auth-title">Inicia sesión</h1>
+      <p className="auth-sub">Vuelve al sistema. Hoy también cuenta.</p>
 
       {justRegistered ? (
-        <p className="form-success">Cuenta creada. Inicia sesion para continuar.</p>
+        <p className="form-success">Cuenta creada. Inicia sesión para continuar.</p>
       ) : null}
       {justReset ? (
-        <p className="form-success">Contrasena actualizada. Inicia sesion con la nueva.</p>
+        <p className="form-success">Contraseña actualizada. Inicia sesión con la nueva.</p>
       ) : null}
 
       <form action={handleSubmit} className="auth-form">
@@ -50,12 +50,12 @@ export function LoginForm() {
         <input id="email" name="email" type="email" required className="field-input" placeholder="tu@email.com" />
 
         <div className="flex items-center justify-between mt-4 mb-1">
-          <label className="field-label mt-0 mb-0" htmlFor="password">CONTRASENA</label>
+          <label className="field-label mt-0 mb-0" htmlFor="password">CONTRASEÑA</label>
           <Link href="/forgot-password" className="text-xs text-neutral-500 hover:text-accent transition-colors">
-            Olvidaste tu contrasena?
+            Olvidaste tu contraseña?
           </Link>
         </div>
-        <input id="password" name="password" type="password" required className="field-input" placeholder="Tu contrasena" />
+        <input id="password" name="password" type="password" required className="field-input" placeholder="Tu contraseña" />
 
         {error ? <p className="form-error">{error}</p> : null}
 

@@ -12,7 +12,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 const SITE_URL = process.env.NEXTAUTH_URL ?? "https://hiifutur.vercel.app";
-const TITLE = "EJECUTA — Sistema de Ejecucion Sostenible";
+const TITLE = "EJECUTA — Sistema de Ejecución Sostenible";
 const DESCRIPTION =
   "Curso interactivo basado en el Principio de Pareto: identifica el 20% de acciones que generan el 80% de tu cambio.";
 

@@ -14,7 +14,7 @@ const onboardingSchema = z.object({
   selectedAreas: z
     .array(z.string())
     .min(1, "Elige al menos un area.")
-    .max(MAX_SELECTED_AREAS, `Elige un maximo de ${MAX_SELECTED_AREAS} areas.`),
+    .max(MAX_SELECTED_AREAS, `Elige un máximo de ${MAX_SELECTED_AREAS} áreas.`),
   scores: z.record(z.string(), z.coerce.number().min(1).max(10)),
 });
 
@@ -57,7 +57,7 @@ export async function completeOnboarding(
   await db.insert(wheelOfLifeMeasurements).values({
     userId: user.id,
     areaScores: parsed.data.scores,
-    notes: "Medicion inicial (onboarding).",
+    notes: "Medición inicial (onboarding).",
   });
 
   await trackEvent(user.id, "onboarding_completed", { areas: parsed.data.selectedAreas });

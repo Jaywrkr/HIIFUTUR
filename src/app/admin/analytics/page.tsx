@@ -10,10 +10,10 @@ import { addDays } from "@/lib/habit-utils";
 const FUNNEL_EVENTS = [
   { event: "registered", label: "Se registro" },
   { event: "onboarding_completed", label: "Termino onboarding" },
-  { event: "habit_created", label: "Creo un habito" },
-  { event: "habit_checked", label: "Marco un habito" },
+  { event: "habit_created", label: "Creo un hábito" },
+  { event: "habit_checked", label: "Marco un hábito" },
   { event: "wheel_measured", label: "Midio su Wheel of Life" },
-  { event: "module_completed", label: "Completo un modulo" },
+  { event: "module_completed", label: "Completo un módulo" },
 ] as const;
 
 export default async function AdminAnalyticsPage() {
@@ -55,7 +55,7 @@ export default async function AdminAnalyticsPage() {
       <main className="app-main">
         <PageHeader
           kicker="SOLO TU"
-          title="Analitica"
+          title="Analítica"
           subtitle="Datos propios, sin terceros. Nada de esto se comparte ni se vende — ver /privacidad."
         />
 
@@ -65,7 +65,7 @@ export default async function AdminAnalyticsPage() {
         </div>
 
         <div className="mb-10">
-          <p className="section-title">Embudo (usuarios unicos que llegaron a cada paso)</p>
+          <p className="section-title">Embudo (usuarios únicos que llegaron a cada paso)</p>
           {funnel.map((step) => (
             <div key={step.event} className="list-row">
               <p className="font-bold">{step.label}</p>
@@ -75,9 +75,9 @@ export default async function AdminAnalyticsPage() {
         </div>
 
         <div>
-          <p className="section-title">Eventos, ultimos 14 dias</p>
+          <p className="section-title">Eventos, últimos 14 días</p>
           {recentEvents.length === 0 ? (
-            <p className="muted">Todavia no hay eventos en este rango.</p>
+            <p className="muted">Todavía no hay eventos en este rango.</p>
           ) : (
             recentEvents.map((row) => (
               <div key={`${row.day}-${row.event}`} className="list-row">

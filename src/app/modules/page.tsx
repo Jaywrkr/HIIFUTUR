@@ -36,16 +36,16 @@ export default async function ModulesPage() {
         <PageHeader
           kicker="APRENDIZAJE"
           title="El camino"
-          subtitle={`${completedIds.size} de ${MODULES.length} modulos completados.`}
+          subtitle={`${completedIds.size} de ${MODULES.length} módulos completados.`}
         />
 
         {cycle.wasReset ? (
           <div className="rounded-2xl border border-red-500/40 bg-red-500/10 p-5 mb-8">
-            <p className="text-xs uppercase tracking-widest text-red-400 mb-1">El ciclo se reinicio</p>
+            <p className="text-xs uppercase tracking-widest text-red-400 mb-1">El ciclo se reinició</p>
             <p className="text-sm text-neutral-300">
-              Fallaste dos veces en 30 dias. No perdiste el conocimiento — tus ejercicios siguen
-              escritos — pero perdiste el derecho a avanzar. Ganatelo otra vez: los modulos se
-              re-desbloquean con ejecucion real.
+              Fallaste dos veces en 30 días. No perdiste el conocimiento — tus ejercicios siguen
+              escritos — pero perdiste el derecho a avanzar. Gánatelo otra vez: los módulos se
+              re-desbloquean con ejecución real.
             </p>
           </div>
         ) : null}
@@ -54,10 +54,10 @@ export default async function ModulesPage() {
           <div className="card mb-8 flex items-center justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-widest text-accent mb-1">
-                Ciclo de formacion · dia {cycle.day} de {CYCLE_DAYS}
+                Ciclo de formación · día {cycle.day} de {CYCLE_DAYS}
               </p>
               <p className="text-sm text-neutral-400">
-                Cada {DAYS_PER_MODULE} dias de ejecucion real desbloquean el siguiente modulo.
+                Cada {DAYS_PER_MODULE} días de ejecución real desbloquean el siguiente módulo.
               </p>
             </div>
             <p
@@ -72,9 +72,9 @@ export default async function ModulesPage() {
 
         <blockquote className="border-l-2 border-l-accent pl-4 mb-12">
           <p className="text-sm leading-relaxed text-neutral-300">
-            Este curso nace de mi propia transformacion: pase de un promedio de 3 a un 9 en mi
-            Wheel of Life, en 8 meses. No fue un giro de 180 grados de un dia para otro — fue un
-            sistema pequeño, sostenido, mes tras mes. Este es ese sistema, en 11 modulos.
+            Este curso nace de mi propia transformación: pasé de un promedio de 3 a un 9 en mi
+            Wheel of Life, en 8 meses. No fue un giro de 180 grados de un día para otro — fue un
+            sistema pequeño, sostenido, mes tras mes. Este es ese sistema, en 11 módulos.
           </p>
           <p className="text-xs uppercase tracking-widest text-neutral-500 mt-3">— Jay</p>
         </blockquote>
@@ -101,7 +101,7 @@ export default async function ModulesPage() {
                     <div key={module.id} className={`list-row ${locked ? "opacity-40" : ""}`}>
                       <div>
                         <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">
-                          Modulo {module.order}
+                          Módulo {module.order}
                         </p>
                         <p className="font-bold">{module.title}</p>
                       </div>
@@ -109,8 +109,8 @@ export default async function ModulesPage() {
                         <span className="text-xs uppercase text-neutral-600 text-right">
                           {needsExecution
                             ? cycle.hasAnchor
-                              ? `${daysMissing} dia${daysMissing === 1 ? "" : "s"} de ejecucion`
-                              : "Crea tu habito primero"
+                              ? `${daysMissing} día${daysMissing === 1 ? "" : "s"} de ejecución`
+                              : "Crea tu hábito primero"
                             : "Bloqueado"}
                         </span>
                       ) : (

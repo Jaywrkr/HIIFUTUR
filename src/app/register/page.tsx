@@ -23,7 +23,7 @@ export default function RegisterPage() {
       <div className="auth-card">
         <p className="kicker">EJECUTA</p>
         <h1 className="auth-title">Crea tu cuenta</h1>
-        <p className="auth-sub">Un sistema, no una promesa. Empieza aqui.</p>
+        <p className="auth-sub">Un sistema, no una promesa. Empieza aquí.</p>
 
         <form action={formAction} className="auth-form">
           <label className="field-label" htmlFor="name">NOMBRE</label>
@@ -32,8 +32,8 @@ export default function RegisterPage() {
           <label className="field-label" htmlFor="email">EMAIL</label>
           <input id="email" name="email" type="email" required className="field-input" placeholder="tu@email.com" />
 
-          <label className="field-label" htmlFor="password">CONTRASENA</label>
-          <input id="password" name="password" type="password" required minLength={8} className="field-input" placeholder="Minimo 8 caracteres" />
+          <label className="field-label" htmlFor="password">CONTRASEÑA</label>
+          <input id="password" name="password" type="password" required minLength={8} className="field-input" placeholder="Mínimo 8 caracteres" />
 
           {state.error ? <p className="form-error">{state.error}</p> : null}
 
@@ -42,12 +42,12 @@ export default function RegisterPage() {
 
         <p className="text-xs text-neutral-500 text-center mt-4">
           Al crear una cuenta aceptas los{" "}
-          <Link href="/terminos" className="link-accent">Terminos</Link> y la{" "}
+          <Link href="/términos" className="link-accent">Términos</Link> y la{" "}
           <Link href="/privacidad" className="link-accent">Privacidad</Link>.
         </p>
 
         <p className="auth-footer">
-          Ya tienes cuenta? <Link href="/login" className="link-accent">Inicia sesion</Link>
+          Ya tienes cuenta? <Link href="/login" className="link-accent">Inicia sesión</Link>
         </p>
       </div>
     </div>

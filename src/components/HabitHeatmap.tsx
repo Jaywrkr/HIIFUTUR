@@ -109,10 +109,10 @@ export function HabitHeatmap({
             </p>
             <p className="text-sm text-neutral-300">
               {logSet.has(selected.key)
-                ? "Hecho ese dia."
+                ? "Hecho ese día."
                 : freezeSet.has(selected.key)
-                  ? "Racha congelada ese dia."
-                  : "No se marco ese dia."}
+                  ? "Racha congelada ese día."
+                  : "No se marco ese día."}
             </p>
             <p className="text-xs text-neutral-500 italic mt-1">
               &ldquo;{getMantraForDate(selected.date)}&rdquo;

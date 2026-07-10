@@ -32,7 +32,7 @@ function buildInsight(
   const hasMatchingHabit = activeHabitCategories.has(relatedCategory);
 
   if (hasMatchingHabit) {
-    return `Este mes mejoraste en ${areaLabel} (+${bestDelta}). Eso correlaciona con tus habitos activos. El sistema funciona.`;
+    return `Este mes mejoraste en ${areaLabel} (+${bestDelta}). Eso correlaciona con tus hábitos activos. El sistema funciona.`;
   }
   return `Este mes mejoraste en ${areaLabel} (+${bestDelta}). Sigue sosteniendo el sistema.`;
 }
@@ -72,7 +72,7 @@ export default async function WheelPage() {
         <PageHeader
           kicker="MEDICION"
           title="Wheel of Life"
-          subtitle={`Cada ${DAYS_BETWEEN_WHEEL_MEASUREMENTS} dias mides donde estas. Sin drama, solo la realidad.`}
+          subtitle={`Cada ${DAYS_BETWEEN_WHEEL_MEASUREMENTS} días mides donde estas. Sin drama, solo la realidad.`}
         />
 
         {latest ? (
@@ -92,7 +92,7 @@ export default async function WheelPage() {
         ) : (
           <div className="mb-8">
             <p className="text-2xl mb-2">🎯</p>
-            <p className="muted">Aun no tienes mediciones.</p>
+            <p className="muted">Aún no tienes mediciones.</p>
           </div>
         )}
 
@@ -100,7 +100,7 @@ export default async function WheelPage() {
           <WheelMeasurementForm lastScores={latest?.areaScores as Record<string, number> | undefined} />
         ) : (
           <p className="muted">
-            Tu siguiente medicion esta disponible el {nextAllowed?.toLocaleDateString("es-MX")}.
+            Tu siguiente medición está disponible el {nextAllowed?.toLocaleDateString("es-MX")}.
           </p>
         )}
       </main>

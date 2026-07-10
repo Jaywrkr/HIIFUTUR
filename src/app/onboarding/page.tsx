@@ -72,7 +72,7 @@ export default function OnboardingPage() {
           </>
         ) : (
           <form action={formAction}>
-            <h1 className="auth-title">Donde estas hoy</h1>
+            <h1 className="auth-title">Dónde estás hoy</h1>
             <p className="auth-sub">Del 1 al 10, sin filtro. Esta es tu linea base.</p>
 
             {selected.map((id) => (

@@ -21,7 +21,7 @@ export function UnlockBanner({ unlockKey }: { unlockKey: string }) {
     <div className="mb-6 rounded-2xl border border-accent/40 bg-accent/10 p-4 flex items-center gap-3">
       <span className="text-2xl leading-none">🔓</span>
       <p className="text-sm text-neutral-200">
-        Se desbloqueo tu siguiente habito. Sostener el actual te trajo hasta aqui.
+        Se desbloqueo tu siguiente hábito. Sostener el actual te trajo hasta aquí.
       </p>
     </div>
   );

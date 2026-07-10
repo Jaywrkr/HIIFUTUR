@@ -22,7 +22,7 @@ const categoryIds = HABIT_CATEGORIES.map((c) => c.id);
 
 const habitSchema = z.object({
   name: z.string().min(1, "Ponle un nombre.").max(80),
-  description: z.string().min(1, "Describe la version minima de este habito.").max(240),
+  description: z.string().min(1, "Describe la versión mínima de este hábito.").max(240),
   category: z.enum(categoryIds as [string, ...string[]]),
 });
 
@@ -36,7 +36,7 @@ export async function createHabit(
 
   const existing = await getHabitsForUser(user.id);
   if (existing.length >= MAX_HABITS) {
-    return { error: `Ya tienes el maximo de ${MAX_HABITS} habitos.` };
+    return { error: `Ya tienes el máximo de ${MAX_HABITS} hábitos.` };
   }
 
   const lastHabit = existing[existing.length - 1];
@@ -44,7 +44,7 @@ export async function createHabit(
     const unlockDate = addDays(lastHabit.activatedAt ?? lastHabit.createdAt, DAYS_TO_UNLOCK_NEXT_HABIT);
     if (new Date() < unlockDate) {
       return {
-        error: `Tu siguiente habito se desbloquea el ${unlockDate.toLocaleDateString("es-MX")}.`,
+        error: `Tu siguiente hábito se desbloquea el ${unlockDate.toLocaleDateString("es-MX")}.`,
       };
     }
   }
@@ -125,13 +125,13 @@ export async function updateHabit(
     .where(and(eq(habits.id, habitId), eq(habits.userId, user.id)))
     .limit(1);
 
-  if (!habit) return { error: "Habito no encontrado." };
+  if (!habit) return { error: "Hábito no encontrado." };
 
   if (habit.lastEditedAt) {
     const nextEditDate = addDays(habit.lastEditedAt, DAYS_BETWEEN_HABIT_EDITS);
     if (new Date() < nextEditDate) {
       return {
-        error: `Ya editaste este habito. Puedes volver a editarlo el ${nextEditDate.toLocaleDateString("es-MX")}.`,
+        error: `Ya editaste este hábito. Puedes volver a editarlo el ${nextEditDate.toLocaleDateString("es-MX")}.`,
       };
     }
   }
@@ -170,13 +170,13 @@ export async function freezeStreak(habitId: string): Promise<HabitFormState> {
     .where(and(eq(habits.id, habitId), eq(habits.userId, user.id)))
     .limit(1);
 
-  if (!habit) return { error: "Habito no encontrado." };
+  if (!habit) return { error: "Hábito no encontrado." };
 
   if (habit.lastFreezeUsedAt) {
     const nextFreezeDate = addDays(habit.lastFreezeUsedAt, DAYS_BETWEEN_STREAK_FREEZES);
     if (new Date() < nextFreezeDate) {
       return {
-        error: `Ya usaste tu congelamiento. El siguiente esta disponible el ${nextFreezeDate.toLocaleDateString("es-MX")}.`,
+        error: `Ya usaste tu congelamiento. El siguiente está disponible el ${nextFreezeDate.toLocaleDateString("es-MX")}.`,
       };
     }
   }
@@ -188,11 +188,11 @@ export async function freezeStreak(habitId: string): Promise<HabitFormState> {
   const freezeDates = freezes.map((f) => f.date);
 
   if (logDates.includes(yesterday) || freezeDates.includes(yesterday)) {
-    return { error: "Ayer no fue un dia perdido, no hay nada que congelar." };
+    return { error: "Ayer no fue un día perdido, no hay nada que congelar." };
   }
 
   if (logDates.length === 0) {
-    return { error: "Todavia no hay racha que proteger." };
+    return { error: "Todavía no hay racha que proteger." };
   }
 
   await db.insert(habitFreezes).values({ habitId, date: yesterday });

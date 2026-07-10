@@ -29,13 +29,13 @@ export async function updateName(
     .limit(1);
 
   if (nameTaken) {
-    return { error: "Ese nombre ya esta en uso. Elige otro." };
+    return { error: "Ese nombre ya está en uso. Elige otro." };
   }
 
   try {
     await db.update(users).set({ name: parsed.data }).where(eq(users.id, user.id));
   } catch {
-    return { error: "Ese nombre ya esta en uso. Elige otro." };
+    return { error: "Ese nombre ya está en uso. Elige otro." };
   }
   revalidatePath("/cuenta");
   revalidatePath("/leaderboard");
