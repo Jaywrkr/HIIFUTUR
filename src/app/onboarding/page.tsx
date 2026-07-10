@@ -75,6 +75,45 @@ export default function OnboardingPage() {
             <h1 className="auth-title">Donde estas hoy</h1>
             <p className="auth-sub">Del 1 al 10, sin filtro. Esta es tu linea base.</p>
 
+            <details className="mt-3 rounded-xl border border-line bg-surface px-4 py-3 group">
+              <summary className="cursor-pointer text-xs uppercase tracking-widest text-accent list-none flex items-center justify-between">
+                Qué es esto y por qué funciona
+                <span className="text-neutral-500 group-open:rotate-90 transition-transform">›</span>
+              </summary>
+              <div className="mt-3 flex flex-col gap-3 text-sm text-neutral-300 leading-relaxed">
+                <p>
+                  Vas a medir tu <strong>Wheel of Life</strong> (rueda de la vida): una foto
+                  honesta de 10 áreas de tu vida, del 1 al 10. Es una herramienta clásica de
+                  coaching creada por Paul J. Meyer, y aquí es tu punto de partida — cada 30
+                  días la vuelves a medir para ver qué movió tu hábito.
+                </p>
+                <p>
+                  No es un test psicológico, pero lo que hace sí tiene respaldo:
+                </p>
+                <ul className="list-disc pl-5 flex flex-col gap-2 text-neutral-400">
+                  <li>
+                    Evaluar tu satisfacción de vida por áreas es un método válido y confiable
+                    en psicología (Diener et al., 1985, <em>The Satisfaction With Life
+                    Scale</em>).
+                  </li>
+                  <li>
+                    Monitorear tu progreso hacia una meta aumenta significativamente la
+                    probabilidad de lograrla — meta-análisis de 138 estudios (Harkin et al.,
+                    2016, <em>Psychological Bulletin</em>).
+                  </li>
+                  <li>
+                    Las metas específicas y medibles producen mejor desempeño que el
+                    &ldquo;voy a echarle ganas&rdquo; (Locke &amp; Latham, 2002, teoría de
+                    fijación de metas).
+                  </li>
+                </ul>
+                <p className="text-neutral-500 text-xs">
+                  Sé honesto: el número bajo no te castiga. Solo marca dónde el sistema puede
+                  trabajar.
+                </p>
+              </div>
+            </details>
+
             {selected.map((id) => (
               <input key={id} type="hidden" name="selectedAreas" value={id} />
             ))}
