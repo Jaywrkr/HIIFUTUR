@@ -56,7 +56,7 @@ export async function registerUser(
     return { error: "Ese nombre ya está en uso. Elige otro." };
   }
 
-  const passwordHash = await bcrypt.hash(parsed.data.password, 10);
+  const passwordHash = await bcrypt.hash(parsed.data.password, 12);
 
   let newUser;
   try {

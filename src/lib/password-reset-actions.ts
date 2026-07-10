@@ -81,7 +81,7 @@ export async function resetPassword(
     return { error: "Ese enlace es invalido o ya expiro. Pide uno nuevo." };
   }
 
-  const passwordHash = await bcrypt.hash(parsed.data.password, 10);
+  const passwordHash = await bcrypt.hash(parsed.data.password, 12);
 
   await db.update(users).set({ passwordHash, updatedAt: new Date() }).where(eq(users.id, tokenRow.userId));
   await db
