@@ -1,5 +1,12 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.33.0",
+    date: "2026-07-10",
+    changes: [
+      "Módulos, Hábitos y Wheel of Life ahora se nombran como lo que son — Aprendizaje, Acción y Control (1, 2 y 3 de 3) — directo en el encabezado de cada página, para que el sistema se entienda sin depender solo del tour inicial.",
+    ],
+  },
+  {
     version: "2.32.0",
     date: "2026-07-10",
     changes: [

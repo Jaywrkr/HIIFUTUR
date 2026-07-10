@@ -99,12 +99,13 @@ export default async function HabitsPage() {
       <Nav />
       <main className="app-main">
         <PageHeader
-          kicker="EL SISTEMA"
+          kicker="ACCIÓN · 2 DE 3"
           title="Gestiona tus hábitos"
           subtitle={
             <>
-              Marcarlos día a día pasa en <Link href="/dashboard" className="link-accent">Hoy</Link>.
-              Aquí los creas, los editas y ves tu progreso hacia el siguiente.
+              Esta es la acción: lo que aprendes en Módulos, lo ejecutas aquí. Marcarlos día a
+              día pasa en <Link href="/dashboard" className="link-accent">Hoy</Link>. Aquí los
+              creas, los editas y ves tu progreso hacia el siguiente.
             </>
           }
         />
