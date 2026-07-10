@@ -92,9 +92,9 @@ export default async function DashboardPage() {
             <div className="rounded-2xl border border-red-500/40 bg-red-500/10 p-5 mb-8">
               <p className="text-xs uppercase tracking-widest text-red-400 mb-1">El ciclo se reinició</p>
               <p className="text-sm text-neutral-300">
-                Fallaste dos veces en 30 días. Tus ejercicios siguen escritos, pero los módulos y
-                los puntos del ciclo se perdieron. No perdiste el conocimiento — perdiste el
-                derecho a avanzar. Gánatelo otra vez, hoy.
+                Fallaste tres veces en 30 días. Tus ejercicios siguen escritos y conservas la
+                mitad de los puntos que ganaste en este ciclo — no perdiste todo. Pero sí
+                perdiste el derecho a avanzar. Gánatelo otra vez, hoy.
               </p>
             </div>
           ) : null}

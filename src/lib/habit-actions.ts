@@ -6,7 +6,8 @@ import { revalidatePath } from "next/cache";
 import { db } from "@/db";
 import { habits, habitLogs, habitFreezes, users } from "@/db/schema";
 import { requireUser } from "@/lib/session";
-import { getHabitsForUser, getHabitLogs, getHabitFreezes } from "@/lib/queries";
+import { getHabitsForUser, getHabitLogs, getHabitFreezes, getModuleProgressForUser } from "@/lib/queries";
+import { MODULES } from "@/lib/modules-content";
 import {
   HABIT_CATEGORIES,
   MAX_HABITS,
@@ -37,6 +38,14 @@ export async function createHabit(
   const existing = await getHabitsForUser(user.id);
   if (existing.length >= MAX_HABITS) {
     return { error: `Ya tienes el máximo de ${MAX_HABITS} hábitos.` };
+  }
+
+  if (existing.length === 0) {
+    const progress = await getModuleProgressForUser(user.id);
+    const firstModuleDone = progress.some((p) => p.moduleId === MODULES[0].id && p.completed);
+    if (!firstModuleDone) {
+      return { error: "Primero completa el Módulo 1 — ahí eliges tu hábito ancla." };
+    }
   }
 
   const lastHabit = existing[existing.length - 1];

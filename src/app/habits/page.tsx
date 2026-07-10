@@ -6,7 +6,14 @@ import { CreateHabitForm } from "@/components/CreateHabitForm";
 import { EditHabitRow } from "@/components/EditHabitRow";
 import { UnlockBanner } from "@/components/UnlockBanner";
 import { requireUser } from "@/lib/session";
-import { getUserPreferences, getHabitsForUser, getHabitLogs, getHabitFreezes } from "@/lib/queries";
+import {
+  getUserPreferences,
+  getHabitsForUser,
+  getHabitLogs,
+  getHabitFreezes,
+  getModuleProgressForUser,
+} from "@/lib/queries";
+import { MODULES } from "@/lib/modules-content";
 import { addDays, computeStreak, todayKey } from "@/lib/habit-utils";
 import { computeLongestStreak } from "@/lib/habit-stats";
 import {
@@ -66,7 +73,18 @@ export default async function HabitsPage() {
   const nextUnlockDate = lastHabit
     ? addDays(lastHabit.activatedAt ?? lastHabit.createdAt, DAYS_TO_UNLOCK_NEXT_HABIT)
     : null;
-  const canCreate = userHabits.length < MAX_HABITS && (!nextUnlockDate || new Date() >= nextUnlockDate);
+
+  // The very first habit is exclusively unlocked by finishing Module 1 —
+  // that's where the anchor habit gets chosen. Habits 2-5 don't need this.
+  const firstModule = MODULES[0];
+  const progress = userHabits.length === 0 ? await getModuleProgressForUser(user.id) : [];
+  const firstModuleDone = progress.some((p) => p.moduleId === firstModule.id && p.completed);
+  const blockedByFirstModule = userHabits.length === 0 && !firstModuleDone;
+
+  const canCreate =
+    !blockedByFirstModule &&
+    userHabits.length < MAX_HABITS &&
+    (!nextUnlockDate || new Date() >= nextUnlockDate);
 
   // The anchor-habit suggestion only makes sense for the very first habit —
   // after that, the person already knows how the system feels.
@@ -108,9 +126,25 @@ export default async function HabitsPage() {
           <UnlockBanner unlockKey={nextUnlockDate.toISOString().slice(0, 10)} />
         ) : null}
 
-        {habitsWithData.length === 0 ? (
+        {habitsWithData.length === 0 && !blockedByFirstModule ? (
           <p className="muted mb-8">🌱 Aún no tienes hábitos. Crea el primero — el más pequeño posible.</p>
-        ) : (
+        ) : null}
+
+        {blockedByFirstModule ? (
+          <div className="rounded-3xl bg-accent/10 border border-accent/40 p-6 mb-8">
+            <p className="text-xs uppercase tracking-widest text-accent mb-1">Un paso antes</p>
+            <p className="font-extrabold text-xl mb-2">Tu hábito ancla se elige en el Módulo 1</p>
+            <p className="muted mb-4">
+              Ahí entiendes por qué fallabas antes y eliges, sin darle mil vueltas, el hábito más
+              pequeño posible para arrancar hoy.
+            </p>
+            <Link href={`/modules/${firstModule.id}`} className="btn-primary inline-block">
+              Ir al Módulo 1
+            </Link>
+          </div>
+        ) : null}
+
+        {habitsWithData.length > 0 ? (
           <div className="mb-8">
             {habitsWithData.map(
               (
@@ -146,11 +180,11 @@ export default async function HabitsPage() {
               )
             )}
           </div>
-        )}
+        ) : null}
 
         {canCreate ? (
           <CreateHabitForm suggestion={anchorSuggestion} altSuggestion={OPEN_APP_SUGGESTION} />
-        ) : userHabits.length >= MAX_HABITS ? (
+        ) : blockedByFirstModule ? null : userHabits.length >= MAX_HABITS ? (
           <p className="muted">Ya tienes tus {MAX_HABITS} hábitos activos. Enfocate en sostenerlos.</p>
         ) : (
           <p className="muted">
