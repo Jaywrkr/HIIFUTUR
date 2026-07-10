@@ -24,6 +24,24 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     ],
   },
   {
+    version: "2.19.0",
+    date: "2026-07-09",
+    changes: [
+      "Heatmap de tu historial de habitos (manten presionado un dia para ver su detalle).",
+      "Estadisticas: mejor racha historica, total de checks y insignia de habito ancla.",
+      "Celebracion al alcanzar hitos de racha y aviso de color cuando tu racha esta en riesgo.",
+      "Grafica de la rueda animada, vibracion al marcar y desliza hacia abajo para refrescar.",
+    ],
+  },
+  {
+    version: "2.18.0",
+    date: "2026-07-09",
+    changes: [
+      "Pagina 404 propia, imagen para compartir en redes, sitemap y estados de carga.",
+      "Este changelog publico.",
+    ],
+  },
+  {
     version: "2.17.0",
     date: "2026-07-09",
     changes: ["Nueva seccion \"Las reglas viejas\" en el home."],
