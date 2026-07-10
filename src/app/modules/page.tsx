@@ -6,6 +6,7 @@ import { requireUser } from "@/lib/session";
 import { getUserById, getUserPreferences, getModuleProgressForUser } from "@/lib/queries";
 import { MODULES, PHASES } from "@/lib/modules-content";
 import { evaluateCycle, executionLocked } from "@/lib/cycle-state";
+import { WelcomeTour } from "@/components/WelcomeTour";
 import {
   MAX_CYCLE_FAILS,
   CYCLE_DAYS,
@@ -14,7 +15,11 @@ import {
   requiredExecutedDaysForNext,
 } from "@/lib/cycle";
 
-export default async function ModulesPage() {
+export default async function ModulesPage({
+  searchParams,
+}: {
+  searchParams?: { bienvenida?: string };
+}) {
   const sessionUser = await requireUser();
   const prefs = await getUserPreferences(sessionUser.id);
   if (!prefs) redirect("/onboarding");
@@ -31,6 +36,7 @@ export default async function ModulesPage() {
 
   return (
     <>
+      {searchParams?.bienvenida === "1" ? <WelcomeTour /> : null}
       <Nav />
       <main className="app-main">
         <PageHeader
