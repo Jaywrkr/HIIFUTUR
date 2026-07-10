@@ -52,7 +52,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
   return (
     <>
       <Nav />
-      <main className="app-main max-w-2xl">
+      <main className="app-main max-w-3xl">
         <p className="kicker">
           {phase?.title} · MÓDULO {courseModule.order}
         </p>

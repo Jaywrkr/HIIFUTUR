@@ -6,6 +6,7 @@ const config: Config = {
     extend: {
       colors: {
         accent: "#E3C9A0",
+        "accent-hover": "#EFDCBC",
         surface: "#17130F",
         line: "#2B241C",
         ink: "#0F0C09",

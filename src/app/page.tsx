@@ -421,7 +421,7 @@ export default async function HomePage() {
       </Reveal>
 
       <Reveal>
-        <div className="max-w-4xl mx-auto px-6 py-16 md:py-24 text-center">
+        <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 text-center">
           <p className="kicker mx-auto">🚫 Las reglas viejas</p>
           <p className="text-sm text-neutral-400 mb-10">Por años te dijeron...</p>
 
