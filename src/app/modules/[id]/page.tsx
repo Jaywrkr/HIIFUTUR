@@ -9,7 +9,6 @@ import { db } from "@/db";
 import { moduleProgress } from "@/db/schema";
 import { and, eq } from "drizzle-orm";
 import { ModuleExerciseForm } from "@/components/ModuleExerciseForm";
-import { ModuleListenButton } from "@/components/ModuleListenButton";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -59,15 +58,9 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         </p>
         <h1 className="text-3xl font-extrabold tracking-tight mb-6">{courseModule.title}</h1>
 
-        <ModuleListenButton
-          paragraphs={[
-            `Módulo ${courseModule.order}: ${courseModule.title}.`,
-            courseModule.narrative,
-            ...courseModule.theory,
-            `El mantra de este módulo: ${courseModule.mantra}`,
-            `Ejercicio: ${courseModule.exerciseTitle}. ${courseModule.exerciseDescription}`,
-          ]}
-        />
+        {/* Audio del módulo pausado por ahora: la lógica vive en
+            src/components/ModuleListenButton.tsx — para reactivarla,
+            volver a montar <ModuleListenButton paragraphs={...} /> aquí. */}
 
         <blockquote className="border-l-2 border-l-accent pl-4 mb-8">
           <p className="text-sm leading-relaxed text-neutral-300 italic">
