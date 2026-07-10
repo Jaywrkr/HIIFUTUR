@@ -1,5 +1,13 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.27.0",
+    date: "2026-07-10",
+    changes: [
+      "Límite de intentos en inicio de sesión, registro, recuperación de contraseña y feedback: frena la fuerza bruta y el spam.",
+      "Si haces demasiados intentos seguidos, ahora te avisamos cuánto esperar en vez de dejarte insistir.",
+    ],
+  },
+  {
     version: "2.26.0",
     date: "2026-07-10",
     changes: [
