@@ -70,9 +70,9 @@ export default async function WheelPage() {
       <Nav />
       <main className="app-main">
         <PageHeader
-          kicker="MEDICION"
+          kicker="CONTROL · 3 DE 3"
           title="Wheel of Life"
-          subtitle={`Cada ${DAYS_BETWEEN_WHEEL_MEASUREMENTS} días mides dónde estás. Sin drama, solo la realidad.`}
+          subtitle={`Este es el control: la brújula que dice si el aprendizaje y la acción están moviendo algo. Cada ${DAYS_BETWEEN_WHEEL_MEASUREMENTS} días mides dónde estás. Sin drama, solo la realidad.`}
         />
 
         {latest ? (

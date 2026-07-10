@@ -24,6 +24,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
   const phase = getPhaseById(courseModule.phaseId);
 
   const idx = MODULES.findIndex((m) => m.id === courseModule.id);
+  const nextModule = idx < MODULES.length - 1 ? MODULES[idx + 1] : null;
 
   // One read of the user's whole course history — powers the sequential
   // gate, the current answers, and the callbacks that echo prior modules.
@@ -133,11 +134,16 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         </div>
 
         {/* Progression thread: where you're going next. */}
-        <div className="mt-8 flex gap-3 items-start">
-          <span className="text-xs uppercase tracking-widest text-accent shrink-0 mt-0.5">
-            Lo que sigue
-          </span>
-          <p className="text-sm text-neutral-400 leading-relaxed">{courseModule.leadsTo}</p>
+        <div className="rounded-2xl border border-accent/40 bg-accent/10 p-5 mt-8">
+          <p className="text-xs uppercase tracking-widest text-accent mb-2">
+            {nextModule ? "Lo que sigue" : "Fin del curso"}
+          </p>
+          {nextModule ? (
+            <p className="font-bold text-base mb-2">
+              Módulo {nextModule.order}: {nextModule.title}
+            </p>
+          ) : null}
+          <p className="text-sm text-neutral-300 leading-relaxed">{courseModule.leadsTo}</p>
         </div>
       </main>
     </>
