@@ -11,7 +11,7 @@ export default function ChangelogPage() {
       </Link>
       <p className="kicker mt-8">Changelog</p>
       <h1 className="text-3xl font-extrabold tracking-tight mb-2">Que ha cambiado</h1>
-      <p className="muted mb-10">Cada version, en orden. Sin letra chica.</p>
+      <p className="muted mb-10">Cada versión, en orden. Sin letra chica.</p>
 
       <div className="flex flex-col gap-10 mb-16">
         {CHANGELOG.map((entry) => (

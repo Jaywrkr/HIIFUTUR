@@ -3,45 +3,45 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.22.0",
     date: "2026-07-10",
     changes: [
-      "Ciclo de formacion de 30 dias: los modulos se ganan con ejecucion real (uno cada 3 dias de habito cumplido).",
-      "Un fallo se perdona; al segundo se reinicia el ciclo: modulos y puntos del ciclo se pierden (tus ejercicios escritos se conservan).",
-      "Completar un modulo ahora tambien suma puntos.",
-      "Menu hamburguesa en movil.",
+      "Ciclo de formación de 30 días: los módulos se ganan con ejecución real (uno cada 3 días de hábito cumplido).",
+      "Un fallo se perdona; al segundo se reinicia el ciclo: módulos y puntos del ciclo se pierden (tus ejercicios escritos se conservan).",
+      "Completar un módulo ahora también suma puntos.",
+      "Menu hamburguesa en móvil.",
     ],
   },
   {
     version: "2.21.0",
     date: "2026-07-10",
-    changes: ["Tests automatizados y CI: cada cambio se valida antes de llegar a produccion."],
+    changes: ["Tests automatizados y CI: cada cambio se valida antes de llegar a producción."],
   },
   {
     version: "2.20.0",
     date: "2026-07-09",
     changes: [
-      "Puntos y niveles: cada habito marcado suma puntos; subir de nivel cuesta cada vez mas.",
+      "Puntos y niveles: cada hábito marcado suma puntos; subir de nivel cuesta cada vez más.",
       "Leaderboard con los 10 primeros.",
-      "Rediseno de Hoy y del perfil.",
+      "Rediseño de Hoy y del perfil.",
     ],
   },
   {
     version: "2.17.0",
     date: "2026-07-09",
-    changes: ["Nueva seccion \"Las reglas viejas\" en el home."],
+    changes: ["Nueva sección \"Las reglas viejas\" en el home."],
   },
   {
     version: "2.16.0",
     date: "2026-07-09",
-    changes: ["Seccion de planes (gratis, mensual, anual) en el home."],
+    changes: ["Sección de planes (gratis, mensual, anual) en el home."],
   },
   {
     version: "2.15.0",
     date: "2026-07-09",
-    changes: ["Nueva seccion \"Aprende. Actua. Mide. Repite.\" en el home."],
+    changes: ["Nueva sección \"Aprende. Actúa. Mide. Repite.\" en el home."],
   },
   {
     version: "2.14.0",
     date: "2026-07-08",
-    changes: ["Analitica de producto propia, sin terceros ni cookies de rastreo."],
+    changes: ["Analítica de producto propia, sin terceros ni cookies de rastreo."],
   },
   {
     version: "2.13.0",
@@ -51,7 +51,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
   {
     version: "2.12.0",
     date: "2026-07-08",
-    changes: ["Monitoreo de errores en produccion."],
+    changes: ["Monitoreo de errores en producción."],
   },
   {
     version: "2.11.0",
@@ -61,17 +61,17 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
   {
     version: "2.10.0",
     date: "2026-07-08",
-    changes: ["Terminos, privacidad, y la opcion de borrar tu cuenta por completo."],
+    changes: ["Términos, privacidad, y la opción de borrar tu cuenta por completo."],
   },
   {
     version: "2.9.0",
     date: "2026-07-08",
-    changes: ["Tu primer Wheel of Life ahora sugiere con que habito empezar."],
+    changes: ["Tu primer Wheel of Life ahora sugiere con que hábito empezar."],
   },
   {
     version: "2.8.0",
     date: "2026-07-08",
-    changes: ["Proteccion de racha: congela un dia perdido, una vez al mes."],
+    changes: ["Protección de racha: congela un día perdido, una vez al mes."],
   },
   {
     version: "2.7.0",
@@ -81,15 +81,15 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
   {
     version: "2.6.0",
     date: "2026-07-08",
-    changes: ["Recordatorios diarios por email cuando se te pasa un habito."],
+    changes: ["Recordatorios diarios por email cuando se te pasa un hábito."],
   },
   {
     version: "2.0.0 – 2.5.0",
     date: "2026-07-07 – 2026-07-08",
     changes: [
       "Rebrand completo: tipografia, colores y formas.",
-      "Landing publica con hero, ticker y seccion de la app web.",
-      "Edicion de habitos con periodo de espera; arreglo del gesto de mantener presionado en movil.",
+      "Landing publica con hero, ticker y sección de la app web.",
+      "Edición de hábitos con período de espera; arreglo del gesto de mantener presionado en móvil.",
       "Las migraciones de base de datos corren solas en cada deploy.",
     ],
   },
@@ -97,8 +97,8 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "1.0.0",
     date: "2026-07-07",
     changes: [
-      "Lanzamiento inicial: cuenta, onboarding, 11 modulos, habit tracker y Wheel of Life.",
-      "Recuperacion de contraseña.",
+      "Lanzamiento inicial: cuenta, onboarding, 11 módulos, habit tracker y Wheel of Life.",
+      "Recuperación de contraseña.",
     ],
   },
 ];

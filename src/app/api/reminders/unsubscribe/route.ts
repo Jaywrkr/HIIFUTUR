@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     <html lang="es">
       <head><meta charset="utf-8" /><title>EJECUTA</title></head>
       <body style="font-family: sans-serif; background: #0F0C09; color: #F2ECE2; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0;">
-        <p>Listo. No te vamos a mandar mas recordatorios.</p>
+        <p>Listo. No te vamos a mandar más recordatorios.</p>
       </body>
     </html>`,
     { headers: { "content-type": "text/html; charset=utf-8" } }

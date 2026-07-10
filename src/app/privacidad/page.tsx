@@ -9,16 +9,16 @@ export default function PrivacidadPage() {
         ← EJECUTA
       </Link>
       <p className="kicker mt-8">Legal</p>
-      <h1 className="text-3xl font-extrabold tracking-tight mb-2">Politica de privacidad</h1>
-      <p className="muted mb-10">Ultima actualizacion: julio 2026.</p>
+      <h1 className="text-3xl font-extrabold tracking-tight mb-2">Política de privacidad</h1>
+      <p className="muted mb-10">Última actualización: julio 2026.</p>
 
       <div className="flex flex-col gap-8 mb-16">
         <section>
           <p className="font-bold mb-2">Que guardamos</p>
           <p className="muted">
-            Tu nombre, tu email, tu contraseña (encriptada, nunca en texto plano), los habitos que
-            creas y cuando los marcas, tus respuestas en los modulos, y tus mediciones del Wheel of
-            Life. Nada mas que eso.
+            Tu nombre, tu email, tu contraseña (encriptada, nunca en texto plano), los hábitos que
+            creas y cuando los marcas, tus respuestas en los módulos, y tus mediciones del Wheel of
+            Life. Nada más que eso.
           </p>
         </section>
 
@@ -26,8 +26,8 @@ export default function PrivacidadPage() {
           <p className="font-bold mb-2">Para que lo usamos</p>
           <p className="muted">
             Para que la app funcione: mostrarte tu progreso, calcular tu racha, mandarte el correo
-            de recuperacion de contraseña si lo pides, y avisarte por email si tienes un habito
-            pendiente (puedes desactivar esto ultimo con un click desde el mismo correo).
+            de recuperación de contraseña si lo pides, y avisarte por email si tienes un hábito
+            pendiente (puedes desactivar esto último con un click desde el mismo correo).
           </p>
         </section>
 
@@ -44,7 +44,7 @@ export default function PrivacidadPage() {
         <section>
           <p className="font-bold mb-2">Cookies</p>
           <p className="muted">
-            Usamos una sola cookie de sesion para saber que estas logeado. No hay cookies de
+            Usamos una sola cookie de sesión para saber que estás logeado. No hay cookies de
             publicidad ni de rastreo de terceros.
           </p>
         </section>
@@ -54,8 +54,8 @@ export default function PrivacidadPage() {
           <p className="muted">
             Puedes eliminar tu cuenta en cualquier momento desde{" "}
             <Link href="/cuenta" className="link-accent">Mi cuenta</Link>. Al hacerlo, se borra tu
-            usuario, tus habitos, tu historial y tus mediciones — de forma permanente e inmediata.
-            No guardamos una copia despues.
+            usuario, tus hábitos, tu historial y tus mediciones — de forma permanente e inmediata.
+            No guardamos una copia después.
           </p>
         </section>
 
@@ -69,7 +69,7 @@ export default function PrivacidadPage() {
       </div>
 
       <p className="muted">
-        Ver tambien: <Link href="/terminos" className="link-accent">Terminos de uso</Link>
+        Ver también: <Link href="/términos" className="link-accent">Términos de uso</Link>
       </p>
     </main>
   );

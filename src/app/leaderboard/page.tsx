@@ -20,7 +20,7 @@ export default async function LeaderboardPage() {
         <PageHeader
           kicker="TOP 10"
           title="Leaderboard"
-          subtitle="Puntos por cada habito marcado. Entre mas alto el nivel, mas cuesta subir."
+          subtitle="Puntos por cada hábito marcado. Entre más alto el nivel, más cuesta subir."
         />
 
         <div className="flex flex-col gap-1">

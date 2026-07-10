@@ -82,11 +82,11 @@ export default async function HabitsPage() {
       <main className="app-main">
         <PageHeader
           kicker="EL SISTEMA"
-          title="Gestiona tus habitos"
+          title="Gestiona tus hábitos"
           subtitle={
             <>
-              Marcarlos dia a dia pasa en <Link href="/dashboard" className="link-accent">Hoy</Link>.
-              Aqui los creas, los editas y ves tu progreso hacia el siguiente.
+              Marcarlos día a día pasa en <Link href="/dashboard" className="link-accent">Hoy</Link>.
+              Aquí los creas, los editas y ves tu progreso hacia el siguiente.
             </>
           }
         />
@@ -95,7 +95,7 @@ export default async function HabitsPage() {
           <div className="flex gap-8 mb-10">
             <div>
               <p className="text-2xl font-extrabold text-accent">{totalDaysCompleted}</p>
-              <p className="text-xs uppercase tracking-widest text-neutral-500">Dias completados</p>
+              <p className="text-xs uppercase tracking-widest text-neutral-500">Días completados</p>
             </div>
             <div>
               <p className="text-2xl font-extrabold text-accent">{bestStreakEver}</p>
@@ -109,7 +109,7 @@ export default async function HabitsPage() {
         ) : null}
 
         {habitsWithData.length === 0 ? (
-          <p className="muted mb-8">🌱 Aun no tienes habitos. Crea el primero — el mas pequeño posible.</p>
+          <p className="muted mb-8">🌱 Aún no tienes hábitos. Crea el primero — el más pequeño posible.</p>
         ) : (
           <div className="mb-8">
             {habitsWithData.map(
@@ -151,10 +151,10 @@ export default async function HabitsPage() {
         {canCreate ? (
           <CreateHabitForm suggestion={anchorSuggestion} altSuggestion={OPEN_APP_SUGGESTION} />
         ) : userHabits.length >= MAX_HABITS ? (
-          <p className="muted">Ya tienes tus {MAX_HABITS} habitos activos. Enfocate en sostenerlos.</p>
+          <p className="muted">Ya tienes tus {MAX_HABITS} hábitos activos. Enfocate en sostenerlos.</p>
         ) : (
           <p className="muted">
-            Tu siguiente habito se desbloquea el {nextUnlockDate?.toLocaleDateString("es-MX")}.
+            Tu siguiente hábito se desbloquea el {nextUnlockDate?.toLocaleDateString("es-MX")}.
             Sostener el actual es el trabajo ahora.
           </p>
         )}

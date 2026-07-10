@@ -24,7 +24,7 @@ export function WheelMeasurementForm({ lastScores }: { lastScores?: Record<strin
 
   return (
     <form action={formAction} className="card flex flex-col gap-4">
-      <p className="text-xs uppercase tracking-widest text-accent">Medicion de hoy</p>
+      <p className="text-xs uppercase tracking-widest text-accent">Medición de hoy</p>
 
       {WHEEL_AREAS.map((area) => (
         <div key={area.id}>

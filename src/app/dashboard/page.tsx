@@ -90,11 +90,11 @@ export default async function DashboardPage() {
 
           {cycle.wasReset ? (
             <div className="rounded-2xl border border-red-500/40 bg-red-500/10 p-5 mb-8">
-              <p className="text-xs uppercase tracking-widest text-red-400 mb-1">El ciclo se reinicio</p>
+              <p className="text-xs uppercase tracking-widest text-red-400 mb-1">El ciclo se reinició</p>
               <p className="text-sm text-neutral-300">
-                Fallaste dos veces en 30 dias. Tus ejercicios siguen escritos, pero los modulos y
+                Fallaste dos veces en 30 días. Tus ejercicios siguen escritos, pero los módulos y
                 los puntos del ciclo se perdieron. No perdiste el conocimiento — perdiste el
-                derecho a avanzar. Ganatelo otra vez, hoy.
+                derecho a avanzar. Gánatelo otra vez, hoy.
               </p>
             </div>
           ) : null}
@@ -102,10 +102,10 @@ export default async function DashboardPage() {
           {habitsWithData.length === 0 ? (
             <div className="card mb-10">
               <p className="text-2xl mb-2">🌱</p>
-              <p className="text-sm text-neutral-300 mb-1">Todavia no tienes nada que sostener.</p>
+              <p className="text-sm text-neutral-300 mb-1">Todavía no tienes nada que sostener.</p>
               <p className="muted">
-                <Link href="/habits" className="link-accent">Crea tu primer habito</Link> — el mas
-                pequeno que se te ocurra.
+                <Link href="/habits" className="link-accent">Crea tu primer hábito</Link> — el más
+                pequeño que se te ocurra.
               </p>
             </div>
           ) : (
@@ -151,14 +151,14 @@ export default async function DashboardPage() {
                     Tu camino · {nextPhase?.title}
                   </p>
                   <p className="font-extrabold text-xl mb-1">
-                    Modulo {nextModule.order}: {nextModule.title}
+                    Módulo {nextModule.order}: {nextModule.title}
                   </p>
                   <p className="muted text-sm">
-                    {completedIds.size} de {MODULES.length} completados — continua donde ibas.
+                    {completedIds.size} de {MODULES.length} completados — continúa donde ibas.
                   </p>
                   {!cycle.completed && cycle.hasAnchor ? (
                     <p className="text-xs uppercase tracking-widest mt-2 text-neutral-500">
-                      Ciclo: dia {cycle.day}/{CYCLE_DAYS} ·{" "}
+                      Ciclo: día {cycle.day}/{CYCLE_DAYS} ·{" "}
                       <span className={cycle.failsUsed >= MAX_CYCLE_FAILS ? "text-red-400 font-semibold" : ""}>
                         fallos {cycle.failsUsed}/{MAX_CYCLE_FAILS}
                       </span>
@@ -171,7 +171,7 @@ export default async function DashboardPage() {
           ) : (
             <div className="rounded-3xl bg-accent/10 border border-accent/40 p-6 mb-10">
               <p className="text-xs uppercase tracking-widest text-accent mb-1">Tu camino</p>
-              <p className="font-extrabold text-xl mb-1">Completaste los {MODULES.length} modulos</p>
+              <p className="font-extrabold text-xl mb-1">Completaste los {MODULES.length} módulos</p>
               <p className="muted text-sm">
                 Ahora el sistema es tuyo. <Link href="/modules" className="link-accent">Vuelve a repasar</Link> cuando
                 quieras.
@@ -208,11 +208,11 @@ export default async function DashboardPage() {
                 <span>
                   {canUnlockNextHabit
                     ? userHabits.length === 0
-                      ? "Crear habito"
+                      ? "Crear hábito"
                       : userHabits.length >= MAX_HABITS
-                        ? "Gestionar habitos"
-                        : "Desbloquear siguiente habito"
-                    : "Gestionar habitos"}
+                        ? "Gestionar hábitos"
+                        : "Desbloquear siguiente hábito"
+                    : "Gestionar hábitos"}
                 </span>
                 {!canUnlockNextHabit ? (
                   <span className="text-xs text-neutral-600">siguiente en {daysUntilNextHabit}d</span>
@@ -222,7 +222,7 @@ export default async function DashboardPage() {
                 href="/modules"
                 className="flex items-center justify-between py-2 text-sm text-neutral-400 hover:text-accent transition-colors"
               >
-                <span>Todos los modulos</span>
+                <span>Todos los módulos</span>
                 <span className="text-xs text-neutral-600">{completedIds.size}/{MODULES.length}</span>
               </Link>
               <Link

@@ -7,7 +7,7 @@ import { requireUser } from "@/lib/session";
 import { sendFeedbackNotification } from "@/lib/email";
 
 const feedbackSchema = z.object({
-  message: z.string().trim().min(3, "Escribe un poco mas.").max(2000, "Maximo 2000 caracteres."),
+  message: z.string().trim().min(3, "Escribe un poco más.").max(2000, "Máximo 2000 caracteres."),
   pageUrl: z.string().max(300).optional(),
 });
 

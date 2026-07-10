@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Terminos — EJECUTA" };
+export const metadata = { title: "Términos — EJECUTA" };
 
 export default function TerminosPage() {
   return (
@@ -9,15 +9,15 @@ export default function TerminosPage() {
         ← EJECUTA
       </Link>
       <p className="kicker mt-8">Legal</p>
-      <h1 className="text-3xl font-extrabold tracking-tight mb-2">Terminos de uso</h1>
-      <p className="muted mb-10">Ultima actualizacion: julio 2026.</p>
+      <h1 className="text-3xl font-extrabold tracking-tight mb-2">Términos de uso</h1>
+      <p className="muted mb-10">Última actualización: julio 2026.</p>
 
       <div className="flex flex-col gap-8 mb-16">
         <section>
           <p className="font-bold mb-2">Que es EJECUTA</p>
           <p className="muted">
-            EJECUTA es un sistema de ejecucion sostenible: modulos interactivos, un habit tracker
-            progresivo y mediciones periodicas (Wheel of Life). Es una herramienta de habitos y
+            EJECUTA es un sistema de ejecución sostenible: módulos interactivos, un habit tracker
+            progresivo y mediciones periodicas (Wheel of Life). Es una herramienta de hábitos y
             productividad personal, no consejo medico, financiero, ni psicologico.
           </p>
         </section>
@@ -50,7 +50,7 @@ export default function TerminosPage() {
         <section>
           <p className="font-bold mb-2">Cambios</p>
           <p className="muted">
-            Podemos actualizar estos terminos conforme el producto evoluciona. Si el cambio es
+            Podemos actualizar estos términos conforme el producto evoluciona. Si el cambio es
             importante, lo vas a notar — no escondemos cambios relevantes en letra chica.
           </p>
         </section>
@@ -58,14 +58,14 @@ export default function TerminosPage() {
         <section>
           <p className="font-bold mb-2">Contacto</p>
           <p className="muted">
-            Preguntas sobre estos terminos: escribe a{" "}
+            Preguntas sobre estos términos: escribe a{" "}
             <a href="mailto:jaywrkr@gmail.com" className="link-accent">jaywrkr@gmail.com</a>.
           </p>
         </section>
       </div>
 
       <p className="muted">
-        Ver tambien: <Link href="/privacidad" className="link-accent">Politica de privacidad</Link>
+        Ver también: <Link href="/privacidad" className="link-accent">Política de privacidad</Link>
       </p>
     </main>
   );

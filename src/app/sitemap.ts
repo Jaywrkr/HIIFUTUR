@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 const BASE_URL = process.env.NEXTAUTH_URL ?? "https://hiifutur.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/login", "/register", "/terminos", "/privacidad", "/changelog"];
+  const staticRoutes = ["", "/login", "/register", "/términos", "/privacidad", "/changelog"];
 
   return staticRoutes.map((route) => ({
     url: `${BASE_URL}${route}`,

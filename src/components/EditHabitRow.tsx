@@ -90,7 +90,7 @@ export function EditHabitRow({
           />
         </div>
         <div>
-          <label className="field-label" htmlFor={`description-${habit.id}`}>Version minima</label>
+          <label className="field-label" htmlFor={`description-${habit.id}`}>Version mínima</label>
           <input
             id={`description-${habit.id}`}
             name="description"
@@ -101,7 +101,7 @@ export function EditHabitRow({
           />
         </div>
         <div>
-          <label className="field-label" htmlFor={`category-${habit.id}`}>Categoria</label>
+          <label className="field-label" htmlFor={`category-${habit.id}`}>Categoría</label>
           <select
             id={`category-${habit.id}`}
             name="category"
@@ -116,7 +116,7 @@ export function EditHabitRow({
         </div>
 
         <p className="text-xs text-neutral-500">
-          Despues de guardar, no podras volver a editar este habito por {DAYS_BETWEEN_HABIT_EDITS} dias.
+          Después de guardar, no podrás volver a editar este hábito por {DAYS_BETWEEN_HABIT_EDITS} días.
         </p>
         {state.error ? <p className="form-error mt-0">{state.error}</p> : null}
 
@@ -152,7 +152,7 @@ export function EditHabitRow({
         <div className="flex items-center gap-4">
           <div className="text-right">
             <p className="text-xs text-accent uppercase tracking-widest">
-              {streak} {streak === 1 ? "dia" : "dias"}
+              {streak} {streak === 1 ? "día" : "días"}
             </p>
             <p className="muted text-xs">{doneToday ? "hecho hoy" : "pendiente hoy"}</p>
           </div>
@@ -180,7 +180,7 @@ export function EditHabitRow({
             disabled={freezePending}
             className="text-xs text-accent uppercase tracking-widest hover:opacity-80 transition-opacity disabled:opacity-40"
           >
-            {freezePending ? "Congelando..." : "❄️ Ayer se te paso — congelar racha"}
+            {freezePending ? "Congelando..." : "❄️ Ayer se te pasó — congelar racha"}
           </button>
         </div>
       ) : null}
@@ -201,7 +201,7 @@ export function EditHabitRow({
           <ShareImageButton
             draw={(canvas) => drawStreakShareCard(canvas, { habitName: habit.name, streak })}
             fileName={`ejecuta-racha-${streak}-dias.png`}
-            shareText={`${streak} ${streak === 1 ? "dia" : "dias"} seguidos con "${habit.name}" en EJECUTA.`}
+            shareText={`${streak} ${streak === 1 ? "día" : "días"} seguidos con "${habit.name}" en EJECUTA.`}
             label="Compartir racha"
           />
         </div>
@@ -209,7 +209,7 @@ export function EditHabitRow({
 
       <div className="mt-4 flex items-center justify-between">
         <p className="text-[10px] uppercase tracking-widest text-neutral-600">
-          Ultimas 12 semanas · mejor racha: {longestStreak} {longestStreak === 1 ? "dia" : "dias"}
+          Ultimas 12 semanas · mejor racha: {longestStreak} {longestStreak === 1 ? "día" : "días"}
         </p>
       </div>
       <HabitHeatmap logDates={logDates} freezeDates={freezeDates} habitCreatedAt={habitCreatedAt} />

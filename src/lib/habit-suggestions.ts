@@ -10,8 +10,8 @@ export type HabitSuggestion = {
 // One tiny, "can't fail" starting point per category. Not the only option —
 // just a suggestion the user is free to ignore and type their own.
 const SUGGESTIONS_BY_CATEGORY: Record<string, { name: string; description: string }> = {
-  salud: { name: "5 sentadillas", description: "Al despertar o antes de dormir. Nada mas." },
-  trabajo: { name: "Una tarea de 2 minutos", description: "La mas chica de tu lista. Solo esa." },
+  salud: { name: "5 sentadillas", description: "Al despertar o antes de dormir. Nada más." },
+  trabajo: { name: "Una tarea de 2 minutos", description: "La más chica de tu lista. Solo esa." },
   finanzas: { name: "Revisar mis gastos de hoy", description: "30 segundos, sin juzgarte." },
   relaciones: { name: "Un mensaje a alguien que quieres", description: "Un 'como estas' cuenta." },
   mentalidad: { name: "Escribir una linea", description: "Lo que sea que tengas en la cabeza." },
@@ -19,10 +19,10 @@ const SUGGESTIONS_BY_CATEGORY: Record<string, { name: string; description: strin
 };
 
 // The floor: if nothing else feels pequeño, esto lo es. Abrir la app y
-// presionar el boton, 30 dias seguidos, ya es un habito.
+// presionar el boton, 30 días seguidos, ya es un hábito.
 export const OPEN_APP_SUGGESTION: HabitSuggestion = {
   name: "Abrir la app y presionar el boton",
-  description: "Nada mas. Si haces eso 30 dias seguidos, ya es un habito.",
+  description: "Nada más. Si haces eso 30 días seguidos, ya es un hábito.",
   category: "disciplina",
 };
 

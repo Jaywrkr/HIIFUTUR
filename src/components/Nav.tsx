@@ -8,7 +8,7 @@ import { FeedbackWidget } from "@/components/FeedbackWidget";
 
 const links = [
   { href: "/dashboard", label: "HOY" },
-  { href: "/modules", label: "MODULOS" },
+  { href: "/modules", label: "MÓDULOS" },
   { href: "/wheel", label: "WHEEL OF LIFE" },
   { href: "/leaderboard", label: "LEADERBOARD" },
   { href: "/cuenta", label: "CUENTA" },

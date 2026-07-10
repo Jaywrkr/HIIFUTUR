@@ -11,7 +11,7 @@ export const MAX_SELECTED_AREAS = 3;
 
 export const WHEEL_AREAS = [
   { id: "salud_fisica", label: "Salud Fisica" },
-  { id: "nutricion", label: "Nutricion" },
+  { id: "nutrición", label: "Nutrición" },
   { id: "ejercicio", label: "Ejercicio" },
   { id: "relaciones", label: "Relaciones" },
   { id: "trabajo_carrera", label: "Trabajo / Carrera" },
@@ -44,7 +44,7 @@ export const DAYS_BETWEEN_STREAK_FREEZES = 30;
 /** Maps each Wheel of Life area to the closest habit category, used for the monthly insight. */
 export const WHEEL_AREA_TO_CATEGORY: Record<string, (typeof HABIT_CATEGORIES)[number]["id"]> = {
   salud_fisica: "salud",
-  nutricion: "salud",
+  nutrición: "salud",
   ejercicio: "salud",
   relaciones: "relaciones",
   trabajo_carrera: "trabajo",

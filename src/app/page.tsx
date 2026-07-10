@@ -12,22 +12,22 @@ import { PhoneMantra } from "@/components/PhoneMantra";
 const PHILOSOPHY = [
   {
     title: "Empieza tan pequeño que no puedas fallar",
-    description: "Un habito a la vez. Si necesitas fuerza de voluntad para hacerlo, esta mal diseñado.",
+    description: "Un hábito a la vez. Si necesitas fuerza de voluntad para hacerlo, está mal diseñado.",
   },
   {
     title: "La consistencia le gana a la intensidad",
-    description: "Todos los dias le gana a algunos dias increibles. El sistema premia mostrarte, no rendir al maximo.",
+    description: "Todos los días le gana a algunos días increibles. El sistema premia mostrarte, no rendir al máximo.",
   },
   {
     title: "Si no lo disfrutas, no dura",
-    description: "Elige el habito que se sienta bien sostener, no el que se ve mejor en redes.",
+    description: "Elige el hábito que se sienta bien sostener, no el que se ve mejor en redes.",
   },
 ];
 
 const WEB_FEATURES = [
   {
     icon: "⚡",
-    title: "Cero configuracion",
+    title: "Cero configuración",
     description: "Abre el link y listo. Nada que instalar, nada que actualizar.",
   },
   {
@@ -38,25 +38,25 @@ const WEB_FEATURES = [
   {
     icon: "🖥️",
     title: "Funciona en cualquier pantalla",
-    description: "Marca tu habito desde el celular en la mañana o desde la laptop en la oficina.",
+    description: "Marca tu hábito desde el celular en la mañana o desde la laptop en la oficina.",
   },
 ];
 
 const UPGRADE_FEATURES = [
   {
-    kicker: "Modulos",
+    kicker: "Módulos",
     title: "Aprender en partes chicas",
-    description: "11 modulos cortos basados en el Principio de Pareto. Ninguno te va a tomar una tarde entera.",
+    description: "11 módulos cortos basados en el Principio de Pareto. Ninguno te va a tomar una tarde entera.",
   },
   {
     kicker: "Wheel of Life",
     title: "Mide lo que importa",
-    description: "Cada 30 dias, un vistazo honesto a donde estas. Sin diez apps distintas para cada area de tu vida.",
+    description: "Cada 30 días, un vistazo honesto a dónde estás. Sin diez apps distintas para cada área de tu vida.",
   },
   {
     kicker: "Todo en uno",
     title: "Una sola app, no cinco",
-    description: "Modulos, habitos y medicion en el mismo lugar. No cinco apps distintas que dejaste de abrir.",
+    description: "Módulos, hábitos y medición en el mismo lugar. No cinco apps distintas que dejaste de abrir.",
   },
 ];
 
@@ -68,9 +68,9 @@ const PRICING_PLANS = [
     unit: "para empezar",
     tagline: "Sin tarjeta. Sin trampa.",
     features: [
-      "Los 11 modulos completos",
-      "Hasta 5 habitos activos",
-      "Wheel of Life cada 30 dias",
+      "Los 11 módulos completos",
+      "Hasta 5 hábitos activos",
+      "Wheel of Life cada 30 días",
       "Recordatorios diarios",
     ],
     cta: "Empezar gratis",
@@ -85,7 +85,7 @@ const PRICING_PLANS = [
     features: [
       "Todo lo del plan gratis",
       "Apoyas directamente el desarrollo",
-      "Proximamente: mas habitos activos",
+      "Proximamente: más hábitos activos",
       "Proximamente: reportes avanzados",
     ],
     cta: "Empezar mensual",
@@ -108,7 +108,7 @@ const PRICING_PLANS = [
 ];
 
 const OLD_RULES = [
-  "Ten mas disciplina.",
+  "Ten más disciplina.",
   "Levantate a las 5am.",
   "Hazlo todo o no hagas nada.",
   "Sientete culpable si fallas.",
@@ -117,16 +117,16 @@ const OLD_RULES = [
 ];
 
 const WHY_WE_BUILT_IT: RevealWord[] = [
-  { text: "La" }, { text: "mayoria" }, { text: "de" }, { text: "las" }, { text: "apps" },
-  { text: "de" }, { text: "habitos" }, { text: "estan" }, { text: "hechas" }, { text: "para" },
+  { text: "La" }, { text: "mayoría" }, { text: "de" }, { text: "las" }, { text: "apps" },
+  { text: "de" }, { text: "hábitos" }, { text: "estan" }, { text: "hechas" }, { text: "para" },
   { text: "que" }, { text: "te" }, { text: "sientas" }, { text: "culpable.", strike: true },
   { text: "Nosotros" }, { text: "hicimos" }, { text: "un" }, { text: "sistema" }, { text: "para" },
   { text: "que" }, { text: "sigas," }, { text: "aunque" }, { text: "falles." },
 ];
 
 const FOR_YOU_IF = [
-  "Ya intentaste 100 apps de habitos y las dejaste en la semana 2.",
-  MANTRAS[15], // "Te sientes mal porque sabes lo que se supone que debes hacer y no lo estas haciendo."
+  "Ya intentaste 100 apps de hábitos y las dejaste en la semana 2.",
+  MANTRAS[15], // "Te sientes mal porque sabes lo que se supone que debes hacer y no lo estás haciendo."
   "Estas cansado de sentirte mal por 'no tener disciplina'.",
   "Quieres resultados reales, no una racha de emojis.",
 ];
@@ -134,38 +134,38 @@ const FOR_YOU_IF = [
 const HOW_IT_WORKS = [
   {
     title: "Aprende",
-    description: "11 modulos interactivos basados en el Principio de Pareto y en habitos atomicos.",
+    description: "11 módulos interactivos basados en el Principio de Pareto y en hábitos atomicos.",
   },
   {
-    title: "Encuentra tu habito ancla",
-    description: "El unico habito que, si lo sostienes, jala a todos los demas sin esfuerzo extra.",
+    title: "Encuentra tu hábito ancla",
+    description: "El único hábito que, si lo sostienes, jala a todos los demás sin esfuerzo extra.",
   },
   {
     title: "Sostenlo",
-    description: "Habit tracker progresivo: maximo 5 habitos, uno a la vez, sin castigo por fallar.",
+    description: "Habit tracker progresivo: máximo 5 hábitos, uno a la vez, sin castigo por fallar.",
   },
   {
     title: "Mide tu vida",
-    description: "Wheel of Life cada 30 dias. Sin drama, solo la realidad y hacia donde te mueves.",
+    description: "Wheel of Life cada 30 días. Sin drama, solo la realidad y hacia donde te mueves.",
   },
 ];
 
 const FAQ = [
   {
-    q: "Cuanto tiempo toma al dia?",
-    a: "El que tu elijas para tu primer habito. Puede ser literalmente 2 minutos.",
+    q: "Cuánto tiempo toma al día?",
+    a: "El que tu elijas para tu primer hábito. Puede ser literalmente 2 minutos.",
   },
   {
     q: "Necesito comprar algo?",
     a: "No. Es gratis para empezar.",
   },
   {
-    q: "Y si fallo un dia?",
-    a: "No pasa nada. La unica regla real es no fallar dos dias seguidos.",
+    q: "Y si fallo un día?",
+    a: "No pasa nada. La única regla real es no fallar dos días seguidos.",
   },
   {
     q: "Esto es otro curso que voy a abandonar?",
-    a: "Puede ser. Depende de si empiezas tan pequeno que sea imposible fallar. Por eso el sistema esta disenado asi, no al reves.",
+    a: "Puede ser. Depende de si empiezas tan pequeño que sea imposible fallar. Por eso el sistema esta diseñado así, no al reves.",
   },
 ];
 
@@ -202,7 +202,7 @@ export default async function HomePage() {
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-8 flex items-center justify-between">
         <span className="text-sm font-bold tracking-[0.3em] text-white">EJECUTA</span>
         <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
-          Iniciar sesion
+          Iniciar sesión
         </Link>
       </div>
 
@@ -211,7 +211,7 @@ export default async function HomePage() {
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="grid md:grid-cols-2 gap-16 items-center py-10 md:py-20">
           <Reveal>
-            <p className="kicker">Sistema de ejecucion sostenible</p>
+            <p className="kicker">Sistema de ejecución sostenible</p>
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
               No es disciplina. No es fuerza de voluntad.{" "}
               <span className="bg-accent/20 rounded-lg px-2 box-decoration-clone">
@@ -220,10 +220,10 @@ export default async function HomePage() {
             </h1>
             <p className="text-sm leading-relaxed text-neutral-300 mb-6 max-w-lg">
               Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.
-              Sin gurus, sin 47 habitos a la vez, sin culpa cuando fallas un dia.
+              Sin gurus, sin 47 hábitos a la vez, sin culpa cuando fallas un día.
             </p>
             <p className="text-base mb-8">
-              Hoy, eso podria ser <span className="font-bold text-accent">5 sentadillas.</span>
+              Hoy, eso podría ser <span className="font-bold text-accent">5 sentadillas.</span>
             </p>
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <Link href="/register" className="btn-primary">Empezar gratis</Link>
@@ -253,8 +253,8 @@ export default async function HomePage() {
                 background: "radial-gradient(circle at 60% 40%, rgba(227,201,160,0.15), transparent 60%)",
               }}
             />
-            <FloatingStat icon="🔥" value="Dia 1" label="Racha" className="top-6 left-2 -rotate-6" />
-            <FloatingStat icon="⏱️" value="1 habito" label="Hoy" className="top-40 right-2 rotate-3" />
+            <FloatingStat icon="🔥" value="Día 1" label="Racha" className="top-6 left-2 -rotate-6" />
+            <FloatingStat icon="⏱️" value="1 hábito" label="Hoy" className="top-40 right-2 rotate-3" />
             <FloatingStat icon="🎯" value="7/10" label="Wheel of life" className="bottom-10 left-10 -rotate-3" />
           </div>
         </div>
@@ -297,12 +297,12 @@ export default async function HomePage() {
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
           <div className="text-center mb-16">
-            <p className="kicker mx-auto">🎯 Como vemos las cosas</p>
+            <p className="kicker mx-auto">🎯 Cómo vemos las cosas</p>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
               La forma <span className="text-accent">EJECUTA</span>
             </h2>
             <p className="text-sm text-neutral-400 max-w-xl mx-auto">
-              Tres ideas, nada mas. Empieza pequeño, sostenlo todos los dias, y disfrutalo.
+              Tres ideas, nada más. Empieza pequeño, sostenlo todos los días, y disfrutalo.
               Si no es sostenible, no sirve.
             </p>
           </div>
@@ -328,11 +328,11 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
           <p className="kicker">✨ Es una mejora en todo</p>
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
-            Aprende. Actua. Mide. Repite.
+            Aprende. Actúa. Mide. Repite.
           </h2>
           <p className="text-sm leading-relaxed text-neutral-300 max-w-xl mb-12">
             EJECUTA mejora como ejecutas tu vida, sin intentar convertirte en otra persona.
-            Si sostenerlo te hace sentir peor, esta mal diseñado.
+            Si sostenerlo te hace sentir peor, está mal diseñado.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -350,7 +350,7 @@ export default async function HomePage() {
               <div className="flex-1">
                 <p className="kicker">Tu ritmo</p>
                 <p className="font-extrabold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
-                <p className="muted">Cada habito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demas.</p>
+                <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
               </div>
               <PhoneMantra mantra={MANTRAS[4]} />
             </div>
@@ -414,7 +414,7 @@ export default async function HomePage() {
           </div>
 
           <p className="text-xs text-neutral-600 max-w-lg mx-auto mt-10">
-            Los cobros todavia no estan activos. Cualquier plan que elijas hoy crea tu cuenta
+            Los cobros todavía no estan activos. Cualquier plan que elijas hoy crea tu cuenta
             gratis — te avisamos apenas el pago este disponible.
           </p>
         </div>
@@ -449,7 +449,7 @@ export default async function HomePage() {
 
       <div className="max-w-2xl mx-auto px-6">
         <div className="mb-24 mt-16">
-          <p className="kicker">Por que lo hicimos</p>
+          <p className="kicker">Por qué lo hicimos</p>
           <WordReveal
             words={WHY_WE_BUILT_IT}
             className="text-2xl sm:text-3xl font-extrabold leading-snug tracking-tight"
@@ -476,9 +476,9 @@ export default async function HomePage() {
           {[
             "Lo vivi yo.",
             "Pase de un promedio de 3 a un 9 en mi Wheel of Life, en 8 meses.",
-            "No fue un giro de 180 grados de un dia para otro.",
+            "No fue un giro de 180 grados de un día para otro.",
             "Fue un sistema pequeño, sostenido, mes tras mes.",
-            "Esto es ese sistema. No una version bonita de el.",
+            "Esto es ese sistema. No una versión bonita de el.",
           ].map((line) => (
             <ScrollTextLine key={line}>
               <span className="text-lg font-bold leading-snug">{line}</span>
@@ -488,9 +488,9 @@ export default async function HomePage() {
         </div>
 
         <Reveal>
-          <p className="kicker">Como funciona (y como no)</p>
+          <p className="kicker">Cómo funciona (y cómo no)</p>
           <p className="text-sm text-neutral-300 mb-6">
-            No dietas. No despertar a las 5am. No 47 habitos a la vez.
+            No dietas. No despertar a las 5am. No 47 hábitos a la vez.
           </p>
           <div className="mb-24">
             {HOW_IT_WORKS.map((step, i) => (
@@ -518,7 +518,7 @@ export default async function HomePage() {
         </Reveal>
 
         <Reveal>
-          <p className="kicker">Preguntas que te estas haciendo</p>
+          <p className="kicker">Preguntas que te estás haciendo</p>
           <div className="mb-24">
             {FAQ.map((item) => (
               <div key={item.q} className="border-b border-line py-4 last:border-b-0">
@@ -537,7 +537,7 @@ export default async function HomePage() {
         </Reveal>
 
         <div className="pb-16 flex items-center justify-center gap-6 text-xs uppercase tracking-widest text-neutral-600">
-          <Link href="/terminos" className="hover:text-neutral-400 transition-colors">Terminos</Link>
+          <Link href="/términos" className="hover:text-neutral-400 transition-colors">Términos</Link>
           <Link href="/privacidad" className="hover:text-neutral-400 transition-colors">Privacidad</Link>
         </div>
       </div>

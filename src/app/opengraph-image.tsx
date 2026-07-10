@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "EJECUTA — Sistema de Ejecucion Sostenible";
+export const alt = "EJECUTA — Sistema de Ejecución Sostenible";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -33,7 +33,7 @@ export default function Image() {
           }}
         >
           <span style={{ color: "#E3C9A0", fontSize: 20, fontWeight: 700, letterSpacing: 4 }}>
-            SISTEMA DE EJECUCION SOSTENIBLE
+            SISTEMA DE EJECUCIÓN SOSTENIBLE
           </span>
         </div>
         <div

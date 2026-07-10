@@ -37,7 +37,7 @@ export default function ForgotPasswordPage() {
         )}
 
         <p className="auth-footer">
-          <Link href="/login" className="link-accent">Volver a inicio de sesion</Link>
+          <Link href="/login" className="link-accent">Volver a inicio de sesión</Link>
         </p>
       </div>
     </div>

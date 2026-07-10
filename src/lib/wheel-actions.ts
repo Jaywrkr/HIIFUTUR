@@ -27,7 +27,7 @@ export async function recordWheelMeasurement(
   if (last) {
     const nextAllowed = addDays(last.measurementDate, DAYS_BETWEEN_WHEEL_MEASUREMENTS);
     if (new Date() < nextAllowed) {
-      return { error: `Tu siguiente medicion esta disponible el ${nextAllowed.toLocaleDateString("es-MX")}.` };
+      return { error: `Tu siguiente medición está disponible el ${nextAllowed.toLocaleDateString("es-MX")}.` };
     }
   }
 

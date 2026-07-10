@@ -12,7 +12,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
   return (
     <button type="submit" disabled={pending} className="btn-primary w-full mt-2">
-      {pending ? "GUARDANDO..." : "CREAR HABITO"}
+      {pending ? "GUARDANDO..." : "CREAR HÁBITO"}
     </button>
   );
 }
@@ -37,13 +37,13 @@ export function CreateHabitForm({
 
   return (
     <form action={formAction} className="card flex flex-col gap-4">
-      <p className="text-xs uppercase tracking-widest text-accent">Nuevo habito</p>
+      <p className="text-xs uppercase tracking-widest text-accent">Nuevo hábito</p>
 
       {suggestion ? (
         <div className="rounded-2xl border border-line bg-ink p-4">
           <p className="text-xs text-neutral-500 mb-2">
-            Segun tu Wheel of Life, <span className="text-accent">{suggestion.areaLabel}</span> es
-            donde mas puedes ganar terreno. Una sugerencia, no una obligacion:
+            Según tu Wheel of Life, <span className="text-accent">{suggestion.areaLabel}</span> es
+            donde más puedes ganar terreno. Una sugerencia, no una obligación:
           </p>
           <p className="font-bold">{suggestion.name}</p>
           <p className="muted mt-1">{suggestion.description}</p>
@@ -61,12 +61,12 @@ export function CreateHabitForm({
                 onClick={() => applySuggestion(altSuggestion)}
                 className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors"
               >
-                O algo mas simple todavia →
+                O algo más simple todavía →
               </button>
             ) : null}
           </div>
           <p className="text-[11px] text-neutral-600 mt-3">
-            Son solo ideas. Elige lo que tu quieras — lo unico que importa es que no puedas fallar.
+            Son solo ideas. Elige lo que tu quieras — lo único que importa es que no puedas fallar.
           </p>
         </div>
       ) : null}
@@ -87,7 +87,7 @@ export function CreateHabitForm({
 
       <div>
         <label className="field-label" htmlFor="description">
-          Version minima (tan pequena que no puedas fallar)
+          Version mínima (tan pequeña que no puedas fallar)
         </label>
         <input
           id="description"
@@ -97,12 +97,12 @@ export function CreateHabitForm({
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="field-input w-full"
-          placeholder="Ej: Despues de cepillarme los dientes, 5 sentadillas."
+          placeholder="Ej: Después de cepillarme los dientes, 5 sentadillas."
         />
       </div>
 
       <div>
-        <label className="field-label" htmlFor="category">Categoria</label>
+        <label className="field-label" htmlFor="category">Categoría</label>
         <select
           id="category"
           name="category"

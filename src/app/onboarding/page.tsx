@@ -42,7 +42,7 @@ export default function OnboardingPage() {
           <>
             <h1 className="auth-title">Que vas a cambiar</h1>
             <p className="auth-sub">
-              Elige hasta {MAX_SELECTED_AREAS} areas. No mas. El sistema funciona porque es pequeno.
+              Elige hasta {MAX_SELECTED_AREAS} áreas. No más. El sistema funciona porque es pequeño.
             </p>
             <div className="flex flex-col gap-2 mt-4">
               {LIFE_AREAS.map((area) => {
@@ -72,7 +72,7 @@ export default function OnboardingPage() {
           </>
         ) : (
           <form action={formAction}>
-            <h1 className="auth-title">Donde estas hoy</h1>
+            <h1 className="auth-title">Dónde estás hoy</h1>
             <p className="auth-sub">Del 1 al 10, sin filtro. Esta es tu linea base.</p>
 
             {selected.map((id) => (
