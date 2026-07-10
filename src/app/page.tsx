@@ -537,7 +537,7 @@ export default async function HomePage() {
         </Reveal>
 
         <div className="pb-16 flex items-center justify-center gap-6 text-xs uppercase tracking-widest text-neutral-600">
-          <Link href="/términos" className="hover:text-neutral-400 transition-colors">Términos</Link>
+          <Link href="/terminos" className="hover:text-neutral-400 transition-colors">Términos</Link>
           <Link href="/privacidad" className="hover:text-neutral-400 transition-colors">Privacidad</Link>
         </div>
       </div>

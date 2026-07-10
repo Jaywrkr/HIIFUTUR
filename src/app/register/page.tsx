@@ -42,7 +42,7 @@ export default function RegisterPage() {
 
         <p className="text-xs text-neutral-500 text-center mt-4">
           Al crear una cuenta aceptas los{" "}
-          <Link href="/términos" className="link-accent">Términos</Link> y la{" "}
+          <Link href="/terminos" className="link-accent">Términos</Link> y la{" "}
           <Link href="/privacidad" className="link-accent">Privacidad</Link>.
         </p>
 

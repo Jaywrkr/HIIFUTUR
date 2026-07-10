@@ -99,7 +99,7 @@ export default async function CuentaPage() {
           </div>
 
           {missedYesterday ? (
-            <p className="text-xs text-amber-500 mb-4">Ayer se quedo sin marcar.</p>
+            <p className="text-xs text-amber-500 mb-4">Ayer se quedó sin marcar.</p>
           ) : null}
 
           <div className="grid grid-cols-2 gap-4 text-center">
@@ -121,32 +121,70 @@ export default async function CuentaPage() {
         </div>
 
         {/* Account settings */}
-        <div className="mb-10">
-          <p className="section-title">Nombre</p>
-          <div className="mb-4">
-            <EditNameSection initialName={user.name ?? ""} />
-          </div>
-          <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Email</p>
-          <p className="font-bold">{user.email}</p>
-        </div>
+        <p className="text-xs uppercase tracking-widest text-neutral-600 mb-4">Tu cuenta</p>
 
-        <div className="mb-10">
-          <p className="section-title">Contraseña</p>
-          <Link href="/forgot-password" className="link-accent text-sm">
-            Cambiar mi contraseña
+        <div className="card !p-0 mb-6 divide-y divide-line overflow-hidden">
+          <div className="px-6 py-5 flex items-center gap-4">
+            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
+              👤
+            </span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Nombre</p>
+              <EditNameSection initialName={user.name ?? ""} />
+            </div>
+          </div>
+
+          <div className="px-6 py-5 flex items-center gap-4">
+            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
+              ✉️
+            </span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Email</p>
+              <p className="font-bold truncate">{user.email}</p>
+            </div>
+          </div>
+
+          <Link
+            href="/forgot-password"
+            className="px-6 py-5 flex items-center gap-4 hover:bg-accent/5 transition-colors group"
+          >
+            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
+              🔒
+            </span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Contraseña</p>
+              <p className="font-bold text-sm">Cambiar mi contraseña</p>
+            </div>
+            <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
           </Link>
         </div>
 
-        <div className="mb-10">
-          <p className="section-title">Legal</p>
-          <div className="flex flex-col gap-1">
-            <Link href="/términos" className="link-accent text-sm">Términos de uso</Link>
-            <Link href="/privacidad" className="link-accent text-sm">Política de privacidad</Link>
-          </div>
+        <div className="card !p-0 mb-6 divide-y divide-line overflow-hidden">
+          <Link
+            href="/terminos"
+            className="px-6 py-4 flex items-center justify-between text-sm hover:bg-accent/5 transition-colors group"
+          >
+            <span className="text-neutral-300">Términos de uso</span>
+            <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
+          </Link>
+          <Link
+            href="/privacidad"
+            className="px-6 py-4 flex items-center justify-between text-sm hover:bg-accent/5 transition-colors group"
+          >
+            <span className="text-neutral-300">Política de privacidad</span>
+            <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
+          </Link>
+          <Link
+            href="/changelog"
+            className="px-6 py-4 flex items-center justify-between text-sm hover:bg-accent/5 transition-colors group"
+          >
+            <span className="text-neutral-300">Novedades de la app</span>
+            <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
+          </Link>
         </div>
 
-        <div>
-          <p className="section-title">Zona de riesgo</p>
+        <div className="rounded-2xl border border-red-500/25 bg-red-500/5 px-6 py-5">
+          <p className="text-xs uppercase tracking-widest text-red-400/80 mb-3">Zona de riesgo</p>
           <DeleteAccountSection userEmail={user.email ?? ""} />
         </div>
       </main>
