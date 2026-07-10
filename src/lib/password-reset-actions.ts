@@ -4,10 +4,12 @@ import { z } from "zod";
 import bcrypt from "bcryptjs";
 import { and, eq, gt, isNull } from "drizzle-orm";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { db } from "@/db";
 import { users, passwordResetTokens } from "@/db/schema";
 import { generateResetToken, hashResetToken, RESET_TOKEN_TTL_MS } from "@/lib/password-reset";
 import { sendPasswordResetEmail } from "@/lib/email";
+import { rateLimit, clientIpFromHeaders, retryAfterText } from "@/lib/rate-limit";
 
 export type ForgotPasswordState = { message?: string };
 
@@ -20,6 +22,17 @@ export async function requestPasswordReset(
     .trim();
 
   const genericMessage = "Si ese email existe, te enviamos un enlace para recuperar tu cuenta.";
+
+  // Freno de spam de correos de recuperacion (por IP y por email). El mensaje de
+  // throttling es por IP, asi que no revela si el email esta registrado.
+  const h = headers();
+  const ip = clientIpFromHeaders(h.get("x-forwarded-for"), h.get("x-real-ip"));
+  const perIp = rateLimit(`reset:ip:${ip}`, { limit: 5, windowMs: 15 * 60_000 });
+  const perEmail = rateLimit(`reset:email:${email}`, { limit: 3, windowMs: 60 * 60_000 });
+  if (!perIp.ok || !perEmail.ok) {
+    const secs = Math.max(perIp.retryAfterSeconds, perEmail.retryAfterSeconds);
+    return { message: `Demasiados intentos. Espera ${retryAfterText(secs)} antes de volver a pedirlo.` };
+  }
 
   const parsed = z.string().email().safeParse(email);
   if (!parsed.success) return { message: genericMessage };

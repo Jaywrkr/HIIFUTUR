@@ -5,6 +5,7 @@ import { db } from "@/db";
 import { feedbackMessages } from "@/db/schema";
 import { requireUser } from "@/lib/session";
 import { sendFeedbackNotification } from "@/lib/email";
+import { rateLimit, retryAfterText } from "@/lib/rate-limit";
 
 const feedbackSchema = z.object({
   message: z.string().trim().min(3, "Escribe un poco más.").max(2000, "Máximo 2000 caracteres."),
@@ -18,6 +19,12 @@ export async function submitFeedback(
   formData: FormData
 ): Promise<FeedbackState> {
   const user = await requireUser();
+
+  // Freno de spam de feedback (por usuario): evita golpear el correo de aviso.
+  const limited = rateLimit(`feedback:${user.id}`, { limit: 10, windowMs: 60 * 60_000 });
+  if (!limited.ok) {
+    return { error: `Recibimos varios mensajes tuyos. Intenta de nuevo en ${retryAfterText(limited.retryAfterSeconds)}.` };
+  }
 
   const parsed = feedbackSchema.safeParse({
     message: formData.get("message"),

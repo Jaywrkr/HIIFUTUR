@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { users } from "@/db/schema";
+import { rateLimit, clientIpFromHeaders } from "@/lib/rate-limit";
 
 export const authOptions: NextAuthOptions = {
   session: { strategy: "jwt" },
@@ -17,10 +18,21 @@ export const authOptions: NextAuthOptions = {
         email: { label: "Email", type: "email" },
         password: { label: "Contraseña", type: "password" },
       },
-      async authorize(credentials) {
+      async authorize(credentials, req) {
         if (!credentials?.email || !credentials?.password) return null;
 
         const email = credentials.email.toLowerCase().trim();
+
+        // Freno de fuerza bruta. Se limita por IP+email (ataque a una cuenta) y
+        // por IP a secas (relleno de credenciales rotando emails). Al exceder se
+        // devuelve null igual que una credencial mala: no revela el bloqueo y
+        // cubre tambien los golpes directos a la API de NextAuth. El mensaje
+        // "demasiados intentos" no se puede propagar de forma fiable aqui.
+        const headers = (req?.headers ?? {}) as Record<string, string | undefined>;
+        const ip = clientIpFromHeaders(headers["x-forwarded-for"], headers["x-real-ip"]);
+        const perAccount = rateLimit(`login:${ip}:${email}`, { limit: 8, windowMs: 10 * 60_000 });
+        const perIp = rateLimit(`login:ip:${ip}`, { limit: 40, windowMs: 10 * 60_000 });
+        if (!perAccount.ok || !perIp.ok) return null;
         const [user] = await db
           .select()
           .from(users)
