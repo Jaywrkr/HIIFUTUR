@@ -9,6 +9,7 @@ import { db } from "@/db";
 import { moduleProgress } from "@/db/schema";
 import { and, eq } from "drizzle-orm";
 import { ModuleExerciseForm } from "@/components/ModuleExerciseForm";
+import { ModuleListenButton } from "@/components/ModuleListenButton";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -57,6 +58,16 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
           {phase?.title} · MODULO {courseModule.order}
         </p>
         <h1 className="text-3xl font-extrabold tracking-tight mb-6">{courseModule.title}</h1>
+
+        <ModuleListenButton
+          paragraphs={[
+            `Módulo ${courseModule.order}: ${courseModule.title}.`,
+            courseModule.narrative,
+            ...courseModule.theory,
+            `El mantra de este módulo: ${courseModule.mantra}`,
+            `Ejercicio: ${courseModule.exerciseTitle}. ${courseModule.exerciseDescription}`,
+          ]}
+        />
 
         <blockquote className="border-l-2 border-l-accent pl-4 mb-8">
           <p className="text-sm leading-relaxed text-neutral-300 italic">
