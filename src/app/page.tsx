@@ -133,7 +133,8 @@ const FOR_YOU_IF = [
 
 const JAY_STORY = [
   "Lo viví yo.",
-  "Pasé de un promedio de 3 a un 9 en mi Wheel of Life, en 8 meses.",
+  "El Wheel of Life es la nota del 1 al 10 que le pongo a mi vida cada mes: salud, trabajo, relaciones, dinero, mentalidad.",
+  "En 8 meses, mi promedio pasó de un 3 a un 9.",
   "No fue un giro de 180 grados de un día para otro.",
   "Fue un sistema pequeño, sostenido, mes tras mes.",
   "Esto es ese sistema. No una versión bonita de él.",
