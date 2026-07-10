@@ -69,7 +69,7 @@ export default function PrivacidadPage() {
       </div>
 
       <p className="muted">
-        Ver también: <Link href="/términos" className="link-accent">Términos de uso</Link>
+        Ver también: <Link href="/terminos" className="link-accent">Términos de uso</Link>
       </p>
     </main>
   );

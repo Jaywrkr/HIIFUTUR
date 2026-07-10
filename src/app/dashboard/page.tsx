@@ -198,47 +198,85 @@ export default async function DashboardPage() {
             </Link>
           </div>
 
-          <div className="border-t border-line pt-6">
-            <p className="text-xs uppercase tracking-widest text-neutral-600 mb-3">Tu progreso</p>
-            <div className="flex flex-col gap-1">
+          <div>
+            <p className="text-xs uppercase tracking-widest text-neutral-600 mb-4">Tu progreso</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link
                 href="/habits"
-                className="flex items-center justify-between py-2 text-sm text-neutral-400 hover:text-accent transition-colors"
+                className="card !p-5 flex items-center gap-4 hover:border-accent/50 transition-colors group"
               >
-                <span>
-                  {canUnlockNextHabit
-                    ? userHabits.length === 0
-                      ? "Crear hábito"
-                      : userHabits.length >= MAX_HABITS
-                        ? "Gestionar hábitos"
-                        : "Desbloquear siguiente hábito"
-                    : "Gestionar hábitos"}
+                <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
+                  ✅
                 </span>
-                {!canUnlockNextHabit ? (
-                  <span className="text-xs text-neutral-600">siguiente en {daysUntilNextHabit}d</span>
-                ) : null}
+                <span className="flex-1 min-w-0">
+                  <span className="block font-bold text-sm">
+                    {canUnlockNextHabit
+                      ? userHabits.length === 0
+                        ? "Crear hábito"
+                        : userHabits.length >= MAX_HABITS
+                          ? "Gestionar hábitos"
+                          : "Desbloquear siguiente hábito"
+                      : "Gestionar hábitos"}
+                  </span>
+                  <span className="block text-xs text-neutral-500 mt-0.5">
+                    {canUnlockNextHabit
+                      ? `${userHabits.length}/${MAX_HABITS} activos`
+                      : `${userHabits.length}/${MAX_HABITS} activos · siguiente en ${daysUntilNextHabit}d`}
+                  </span>
+                </span>
+                <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
               </Link>
+
               <Link
                 href="/modules"
-                className="flex items-center justify-between py-2 text-sm text-neutral-400 hover:text-accent transition-colors"
+                className="card !p-5 flex items-center gap-4 hover:border-accent/50 transition-colors group"
               >
-                <span>Todos los módulos</span>
-                <span className="text-xs text-neutral-600">{completedIds.size}/{MODULES.length}</span>
+                <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
+                  📚
+                </span>
+                <span className="flex-1 min-w-0">
+                  <span className="block font-bold text-sm">Todos los módulos</span>
+                  <span className="block text-xs text-neutral-500 mt-0.5">
+                    {completedIds.size} de {MODULES.length} completados
+                  </span>
+                </span>
+                <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
               </Link>
+
               <Link
                 href="/wheel"
-                className="flex items-center justify-between py-2 text-sm text-neutral-400 hover:text-accent transition-colors"
+                className="card !p-5 flex items-center gap-4 hover:border-accent/50 transition-colors group"
               >
-                <span>Wheel of Life</span>
-                <span className="text-xs text-neutral-600">
-                  {canMeasureWheel ? "medir ahora" : nextWheelDate?.toLocaleDateString("es-MX")}
+                <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
+                  🎯
                 </span>
+                <span className="flex-1 min-w-0">
+                  <span className="block font-bold text-sm">Wheel of Life</span>
+                  <span
+                    className={`block text-xs mt-0.5 ${canMeasureWheel ? "text-accent" : "text-neutral-500"}`}
+                  >
+                    {canMeasureWheel
+                      ? "Puedes medir ahora"
+                      : `Próxima medición: ${nextWheelDate?.toLocaleDateString("es-MX")}`}
+                  </span>
+                </span>
+                <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
               </Link>
+
               <Link
                 href="/leaderboard"
-                className="flex items-center justify-between py-2 text-sm text-neutral-400 hover:text-accent transition-colors"
+                className="card !p-5 flex items-center gap-4 hover:border-accent/50 transition-colors group"
               >
-                <span>Leaderboard</span>
+                <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
+                  🏆
+                </span>
+                <span className="flex-1 min-w-0">
+                  <span className="block font-bold text-sm">Leaderboard</span>
+                  <span className="block text-xs text-neutral-500 mt-0.5">
+                    Los 10 primeros, por puntos
+                  </span>
+                </span>
+                <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
               </Link>
             </div>
           </div>
