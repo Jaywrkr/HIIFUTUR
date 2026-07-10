@@ -10,6 +10,7 @@ import {
   countMissedDays,
   cycleElapsed,
   dayOfCycle,
+  pointsAfterReset,
   requiredExecutedDaysForNext,
 } from "@/lib/cycle";
 
@@ -69,18 +70,20 @@ export async function evaluateCycle(user: CycleUser): Promise<CycleStatus> {
   const missed = countMissedDays(user.cycleStartedAt, now, logDates, freezeDates);
 
   if (missed > MAX_CYCLE_FAILS) {
-    // Second miss: the cycle resets. Points return to their value at cycle
-    // start, modules re-lock — but written exercises stay untouched, so
-    // re-earning them is fast. Habits and their history are never deleted.
+    // Third miss: the cycle resets. Modules re-lock, and half of the points
+    // earned since cycle start are lost — a penalty, not a wipe. Written
+    // exercises stay untouched, so re-earning modules is fast. Habits and
+    // their history are never deleted.
+    const pointsAfter = pointsAfterReset(user.points, user.cycleStartPoints);
     await db
       .update(users)
-      .set({ points: user.cycleStartPoints, cycleStartedAt: now, cycleStartPoints: user.cycleStartPoints })
+      .set({ points: pointsAfter, cycleStartedAt: now, cycleStartPoints: pointsAfter })
       .where(eq(users.id, user.id));
     await db
       .update(moduleProgress)
       .set({ completed: false, completedAt: null, updatedAt: now })
       .where(eq(moduleProgress.userId, user.id));
-    await trackEvent(user.id, "cycle_reset", { missed });
+    await trackEvent(user.id, "cycle_reset", { missed, pointsLost: user.points - pointsAfter });
     return { hasAnchor: true, completed: false, day: 1, executedDays: 0, failsUsed: 0, wasReset: true };
   }
 

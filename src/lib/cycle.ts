@@ -2,12 +2,23 @@ import { addDays } from "@/lib/habit-utils";
 
 // The 30-day formation cycle. It starts the day the anchor habit is created:
 // modules unlock as real execution accumulates (one every 3 checked days),
-// one miss is forgiven, and the second miss resets the cycle — points go back
-// to the value they had at cycle start and modules re-lock. Written exercises
-// are never deleted: re-earning a module you already wrote is fast on purpose.
+// two misses are forgiven, and the third miss resets the cycle — modules
+// re-lock and you lose half of the points earned since cycle start (the
+// other half stays: a real penalty, not a wipe). Written exercises are never
+// deleted: re-earning a module you already wrote is fast on purpose.
 export const CYCLE_DAYS = 30;
-export const MAX_CYCLE_FAILS = 1;
+export const MAX_CYCLE_FAILS = 2;
 export const DAYS_PER_MODULE = 3;
+/** Fraction of the points earned this cycle that survive a reset. */
+export const RESET_POINTS_KEPT_RATIO = 0.5;
+
+/** Points a user keeps when the cycle resets: half of what they earned since
+ * cycle start survives, the rest is the penalty. Never dips below the
+ * points they already had at cycle start. */
+export function pointsAfterReset(points: number, cycleStartPoints: number): number {
+  const earned = Math.max(0, points - cycleStartPoints);
+  return cycleStartPoints + Math.round(earned * RESET_POINTS_KEPT_RATIO);
+}
 
 function toDateKey(d: Date): string {
   return d.toISOString().slice(0, 10);

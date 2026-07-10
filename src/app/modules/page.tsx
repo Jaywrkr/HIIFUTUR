@@ -49,9 +49,10 @@ export default async function ModulesPage({
           <div className="rounded-2xl border border-red-500/40 bg-red-500/10 p-5 mb-8">
             <p className="text-xs uppercase tracking-widest text-red-400 mb-1">El ciclo se reinició</p>
             <p className="text-sm text-neutral-300">
-              Fallaste dos veces en 30 días. No perdiste el conocimiento — tus ejercicios siguen
-              escritos — pero perdiste el derecho a avanzar. Gánatelo otra vez: los módulos se
-              re-desbloquean con ejecución real.
+              Fallaste tres veces en 30 días. No perdiste todo: tus ejercicios siguen escritos y
+              conservas la mitad de los puntos que ganaste en este ciclo. Pero sí perdiste el
+              derecho a avanzar — gánatelo otra vez: los módulos se re-desbloquean con ejecución
+              real.
             </p>
           </div>
         ) : null}

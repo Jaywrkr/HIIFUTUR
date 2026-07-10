@@ -22,7 +22,7 @@ const STEPS = [
   {
     emoji: "🔥",
     title: "El curso avanza con tu racha",
-    body: "Cada 3 días reales de hábito cumplido desbloquean el siguiente módulo. Son 30 días en total. Puedes fallar una vez; a la segunda, el ciclo se reinicia. El contenido no se lee — se gana.",
+    body: "Cada 3 días reales de hábito cumplido desbloquean el siguiente módulo. Son 30 días en total. Puedes fallar hasta 2 veces; a la tercera, el ciclo se reinicia — pero no pierdes todo: conservas la mitad de tus puntos y tus respuestas siguen escritas. El contenido no se lee — se gana.",
   },
   {
     emoji: "🎯",

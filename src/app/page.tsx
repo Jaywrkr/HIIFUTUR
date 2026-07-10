@@ -150,7 +150,7 @@ const FAQ = [
   },
   {
     q: "¿Y si fallo un día?",
-    a: "No pasa nada. La única regla real es no fallar dos días seguidos.",
+    a: "No pasa nada. Tienes hasta 2 fallos dentro de cada ciclo de 30 días — el tercero lo reinicia, pero no pierdes todo: conservas la mitad de tus puntos y tus respuestas siguen escritas.",
   },
   {
     q: "¿Esto es otro curso que voy a abandonar?",

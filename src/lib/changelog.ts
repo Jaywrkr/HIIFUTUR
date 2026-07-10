@@ -1,5 +1,13 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.31.0",
+    date: "2026-07-10",
+    changes: [
+      "Ciclo de 30 días: ahora se permiten hasta 2 fallos (antes era 1). Al tercero el ciclo se reinicia, pero ya no pierdes todos tus puntos — conservas la mitad de lo ganado en el ciclo. Explicado en la bienvenida al curso, en el tablero y en las preguntas frecuentes de la landing.",
+      "El Módulo 1 ahora es donde eliges tu hábito ancla — pequeño, tipo 'estudiar 5 minutos' — y crear tu primer hábito en /habits queda bloqueado hasta terminarlo. Los módulos 2 a 5 se ajustaron para que la historia siga teniendo sentido con este cambio.",
+    ],
+  },
+  {
     version: "2.30.0",
     date: "2026-07-10",
     changes: [

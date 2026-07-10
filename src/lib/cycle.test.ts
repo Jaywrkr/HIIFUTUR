@@ -7,6 +7,7 @@ import {
   countMissedDays,
   cycleElapsed,
   dayOfCycle,
+  pointsAfterReset,
   requiredExecutedDaysForNext,
 } from "@/lib/cycle";
 
@@ -32,10 +33,32 @@ describe("countMissedDays", () => {
     expect(countMissedDays(start, at(4), [day(1), day(3)], [day(2)])).toBe(0);
   });
 
-  it("second miss crosses the reset threshold", () => {
-    const missed = countMissedDays(start, at(6), [day(1), day(4)]);
+  it("two misses stay within the forgiven range", () => {
+    const missed = countMissedDays(start, at(4), [day(1)]);
+    expect(missed).toBe(2);
+    expect(missed > MAX_CYCLE_FAILS).toBe(false);
+  });
+
+  it("third miss crosses the reset threshold", () => {
+    const missed = countMissedDays(start, at(7), [day(1), day(4), day(5)]);
     expect(missed).toBe(3);
     expect(missed > MAX_CYCLE_FAILS).toBe(true);
+  });
+});
+
+describe("pointsAfterReset", () => {
+  it("keeps half of the points earned since cycle start", () => {
+    expect(pointsAfterReset(150, 100)).toBe(125);
+  });
+
+  it("rounds to the nearest point", () => {
+    expect(pointsAfterReset(101, 100)).toBe(101); // 0.5 earned -> rounds up to 1
+    expect(pointsAfterReset(103, 100)).toBe(102); // 3 earned -> keeps 1.5 -> 2
+  });
+
+  it("never drops below the cycle-start value", () => {
+    expect(pointsAfterReset(100, 100)).toBe(100);
+    expect(pointsAfterReset(90, 100)).toBe(100);
   });
 });
 

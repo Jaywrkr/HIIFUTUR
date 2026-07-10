@@ -88,7 +88,7 @@ export const MODULES: CourseModule[] = [
     order: 1,
     concept: "willpower-battery",
     leadsTo:
-      "Ya que viste por qué fallabas, el módulo 2 te muestra dónde concentrar tu energía: tu 20% crítico, el puñado de acciones que mueven todo lo demás.",
+      "Con tu causa raíz nombrada y tu hábito ancla ya elegido, el módulo 2 te muestra dónde vas a concentrar tu energía de aquí en adelante: tu 20% crítico.",
     title: "Por qué fallas (y no es tu culpa)",
     narrative:
       "Antes de todo esto, mi vida promediaba un 3. No porque me pasaran cosas horribles, sino porque llevaba años en piloto automático, prometiéndome empezar 'el lunes que viene'. El primer cambio real no fue una rutina nueva — fue aceptar que el problema nunca fue mi disciplina.",
@@ -99,27 +99,15 @@ export const MODULES: CourseModule[] = [
       "No fallaste por débil. Fallaste porque diseñaste un plan que dependia de sentirte con ganas. Un plan bueno funciona incluso el día que te sientes pesimo — porque no depende de eso.",
       "Hay una versión cómoda de esta historia que dice 'la vida no es justa' y se queda ahí, usando la injusticia como excusa. Y es cierto: la vida no es justa. Pero quedarte ahí es victimizarte, y victimizarte te roba el poder que sí tienes sobre lo que haces hoy.",
       "El objetivo de este curso no es subir tu motivación. Es construir un sistema tan pequeño que funcione incluso en tus peores días — para que dejes de necesitar sentirte bien para actuar bien.",
-      "Antes de seguir, necesitas ver tu propio patron. No para juzgarte — para dejar de repetirlo sin darte cuenta.",
+      "Por eso este módulo no termina solo en teoría: vas a nombrar tu patrón, y vas a arrancar HOY con un hábito — tu hábito ancla. No busques el más importante ni el perfecto. Busca el más pequeño que puedas sostener incluso en tu peor día: estudiar 5 minutos, tomar un vaso de agua, escribir una línea. El resto del curso te ayuda a afinarlo, pero primero necesitas uno corriendo.",
     ],
-    exerciseTitle: "Mapea tus fracasos pasados",
+    exerciseTitle: "Nombra tu patrón y elige tu hábito ancla",
     exerciseDescription:
-      "Sin juzgarte. Solo observa el patron. Escribe 2-3 intentos anteriores que abandonaste y que tenian en común.",
+      "Sin juzgarte: identifica la causa raíz de tus fracasos anteriores, y elige — sin darle mil vueltas — el hábito más pequeño posible para empezar hoy.",
     fields: [
       {
-        id: "intentos_pasados",
-        label: "Que intentaste antes y abandonaste?",
-        type: "textarea",
-        placeholder: "Ej: Ir al gym 5 veces por semana, dieta estricta desde el lunes, despertar a las 5am...",
-      },
-      {
-        id: "patron_comun",
-        label: "Que tenian en común esos intentos?",
-        type: "textarea",
-        placeholder: "Ej: Todos empezaban demasiado grandes, dependian de motivación, no tenian un disparador claro...",
-      },
-      {
         id: "causa_raiz",
-        label: "Si tuvieras que elegir UNA causa raiz, cual sería?",
+        label: "De tus intentos pasados, si tuvieras que elegir UNA causa raiz, cual sería?",
         type: "choice",
         options: [
           { value: "empezaba_grande", label: "Empezaba demasiado grande" },
@@ -127,6 +115,22 @@ export const MODULES: CourseModule[] = [
           { value: "dependia_motivacion", label: "Dependia de sentirme motivado" },
           { value: "sin_tiempo_real", label: "Nunca tuve tiempo real asignado" },
           { value: "comparación", label: "Me comparaba con el ritmo de otros" },
+        ],
+      },
+      {
+        id: "habito_1",
+        label: "Tu hábito ancla: nombre + disparador",
+        type: "text",
+        placeholder: "Ej: Después de despertar, estudio 5 minutos",
+      },
+      {
+        id: "tamano_habito",
+        label: "Tu hábito ancla, tan pequeño que...",
+        type: "choice",
+        options: [
+          { value: "vergonzoso", label: "Me da un poco de vergüenza lo pequeño que es (perfecto)" },
+          { value: "reto_real", label: "Se siente como un reto real (hazlo más chico)" },
+          { value: "ya_lo_hago", label: "Ya lo hago casi siempre (bien, pero sube el nivel)" },
         ],
       },
     ],
@@ -137,7 +141,7 @@ export const MODULES: CourseModule[] = [
     order: 2,
     concept: "pareto-8020",
     recap:
-      "En el módulo 1 nombraste la causa raíz de tus fracasos. Ahora, en vez de pelear en diez frentes a la vez, vas a encontrar el único que realmente mueve la aguja.",
+      "En el módulo 1 nombraste tu causa raíz y arrancaste tu hábito ancla. Ahora, en vez de pelear en diez frentes a la vez, vas a encontrar el único que realmente mueve la aguja de aquí en adelante.",
     leadsTo:
       "Con tu 20% nombrado, el módulo 3 lo convierte en un sistema diario tan pequeño que sea imposible fallar.",
     callbacks: [
@@ -184,10 +188,11 @@ export const MODULES: CourseModule[] = [
     order: 3,
     concept: "goal-vs-system",
     recap:
-      "Ya tienes tu 20% crítico. Aquí lo transformas en un sistema — algo que haces un martes cualquiera a las 7am, no una meta lejana y vaga.",
+      "Ya tienes tu hábito ancla corriendo (módulo 1) y tu 20% crítico nombrado (módulo 2). Aquí afinas el sistema: el disparador, el tamaño, y qué sigue después de este.",
     leadsTo:
-      "Diseñado el sistema, el módulo 4 te blinda para el momento donde casi todos abandonan: las primeras 72 horas.",
+      "Con tu sistema afinado, el módulo 4 te blinda para el momento donde casi todos abandonan: las primeras 72 horas.",
     callbacks: [
+      { moduleId: "por-que-fallas", fieldId: "habito_1", label: "Tu hábito ancla" },
       { moduleId: "pareto-en-tu-vida", fieldId: "accion_critica", label: "Tu 20% crítico" },
     ],
     title: "Diseña tu sistema (no tu meta)",
@@ -202,37 +207,31 @@ export const MODULES: CourseModule[] = [
       "Una trampa común: tener un plan A y un plan B 'por si acaso'. El plan B es, casi siempre, el permiso que te das de antemano para no cumplir el plan A. Un solo plan, sin salida de emergencia, te obliga a resolver en el momento en vez de escapar.",
       "No se trata de encontrar lo que amas hacer. Se trata de encontrar aquello que hace que el sacrificio de sostenerlo valga la pena — y disenar el sistema alrededor de eso.",
     ],
-    exerciseTitle: "Diseña tus primeros hábitos",
+    exerciseTitle: "Afina tu hábito ancla",
     exerciseDescription:
-      "Vas a poder activar hasta 5 hábitos, pero solo uno a la vez al inicio. Diseña el primero: minusculo, concreto, con disparador claro.",
+      "Ya llevas unos días ejecutando. Revisa el disparador, confirma el tamaño, y deja anotados los próximos hábitos para más adelante — vas a poder activar hasta 5, uno a la vez.",
     fields: [
       {
-        id: "habito_1",
-        label: "Hábito 1: nombre + disparador",
+        id: "disparador_confirmado",
+        label: "¿Cuál es el disparador exacto de tu hábito ancla hoy?",
         type: "text",
-        placeholder: "Ej: Después de cepillarme los dientes, hago 5 sentadillas",
+        placeholder: "Ej: Después de despertar, antes de revisar el celular",
       },
       {
-        id: "habito_2",
-        label: "Hábito 2 (para más adelante): nombre + disparador",
-        type: "text",
-        placeholder: "Ej: Antes de dormir, escribo 1 linea en mi diario",
-      },
-      {
-        id: "habito_3",
-        label: "Hábito 3 (para más adelante): nombre + disparador",
-        type: "text",
-        placeholder: "Ej: Al llegar del trabajo, guardo 20 pesos",
-      },
-      {
-        id: "tamano_habito",
-        label: "Tu hábito 1, tan pequeño que...",
+        id: "tamano_actual",
+        label: "Unos días después, tu hábito ancla se siente...",
         type: "choice",
         options: [
-          { value: "vergonzoso", label: "Me da un poco de vergüenza lo pequeño que es (perfecto)" },
-          { value: "reto_real", label: "Se siente como un reto real (hazlo más chico)" },
-          { value: "ya_lo_hago", label: "Ya lo hago casi siempre (bien, pero sube el nivel)" },
+          { value: "perfecto_chico", label: "Vergonzosamente pequeño (perfecto, no lo cambies)" },
+          { value: "aun_reto", label: "Todavía un reto real (achícalo más)" },
+          { value: "ya_automatico", label: "Casi automático (puedes subir el nivel)" },
         ],
+      },
+      {
+        id: "habitos_futuros",
+        label: "Qué 1-2 hábitos podrías activar más adelante, cuando este se sienta automático?",
+        type: "textarea",
+        placeholder: "Ej: después, escribir 1 línea en mi diario; más adelante, ahorrar 20 pesos...",
       },
     ],
   },
@@ -242,11 +241,11 @@ export const MODULES: CourseModule[] = [
     order: 4,
     concept: "never-twice",
     recap:
-      "Con tu sistema y tu primer hábito ya diseñados, ahora proteges el arranque — porque el 80% de la gente abandona en los primeros 3 días.",
+      "Con tu hábito ancla en marcha y tu sistema afinado, ahora proteges el arranque — porque el 80% de la gente abandona en los primeros 3 días.",
     leadsTo:
-      "Superadas las 72 horas, la Fase 2 busca el hábito que jala a todos los demás sin esfuerzo extra: tu ancla.",
+      "Superadas las 72 horas, la Fase 2 vuelve sobre el hábito que jala a todos los demás sin esfuerzo extra: tu ancla.",
     callbacks: [
-      { moduleId: "disena-tu-sistema", fieldId: "habito_1", label: "Tu primer hábito" },
+      { moduleId: "por-que-fallas", fieldId: "habito_1", label: "Tu hábito ancla" },
     ],
     title: "Las primeras 72 horas",
     narrative:
@@ -295,11 +294,11 @@ export const MODULES: CourseModule[] = [
     order: 5,
     concept: "anchor-cascade",
     recap:
-      "Ya sostienes (o estás por sostener) tu primer hábito y tienes un plan para cuando falles. Ahora identificas cuál de tus hábitos es el ancla: el que, al mejorar, arrastra a los demás.",
+      "Sostienes tu hábito ancla desde el módulo 1 y tienes un plan para cuando falles. Ahora, con días de ejecución real encima, confirmas si de verdad es tu ancla — o si hay una mejor candidata.",
     leadsTo:
       "Con tu ancla clara, la Fase 3 la vuelve sostenible de verdad: identidad, entorno y las recaídas que vas a tener sí o sí.",
     callbacks: [
-      { moduleId: "disena-tu-sistema", fieldId: "habito_1", label: "Tu primer hábito" },
+      { moduleId: "por-que-fallas", fieldId: "habito_1", label: "Tu hábito ancla original (módulo 1)" },
       { moduleId: "pareto-en-tu-vida", fieldId: "accion_critica", label: "Tu 20% crítico" },
     ],
     title: "Encuentra tu hábito ancla",
@@ -307,6 +306,7 @@ export const MODULES: CourseModule[] = [
       "En el mes 3 me di cuenta de que un solo hábito — dormir a una hora fija — estaba arrastrando a todos los demás sin que yo hiciera nada extra. Ese fue mi hábito ancla, y no lo elegi a propósito: lo descubri mirando hacia atrás.",
     mantra: "Nadie piensa en el ahora como el futuro pasado.",
     theory: [
+      "En el módulo 1 elegiste tu hábito ancla rápido, solo para arrancar — por velocidad, no por evidencia. Este módulo es distinto: ahora ya tienes días reales ejecutando, y eso te deja ver, con datos, si ese hábito de verdad es tu ancla.",
       "James Clear, en Hábitos Atómicos, habla de los 'keystone habits': hábitos que no solo mejoran un área, sino que jalan a varias otras sin que tengas que trabajar en ellas directamente.",
       "No todos los hábitos pesan igual. Dormir bien mejora tu energía, tu energía mejora tu entrenamiento, tu entrenamiento mejora tu animo, tu animo mejora tus relaciones. Un solo cambio, efectos en cascada.",
       "Tu hábito ancla no siempre es el más obvio ni el que más te emociona. A veces es el más aburrido: dormir, tomar agua, ordenar tu espacio. Lo reconoces no por lo que es, sino por lo que arrastra.",
