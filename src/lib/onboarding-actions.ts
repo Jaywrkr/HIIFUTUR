@@ -62,5 +62,5 @@ export async function completeOnboarding(
 
   await trackEvent(user.id, "onboarding_completed", { areas: parsed.data.selectedAreas });
 
-  redirect("/modules");
+  redirect("/modules?bienvenida=1");
 }
