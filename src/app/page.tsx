@@ -131,23 +131,12 @@ const FOR_YOU_IF = [
   "Quieres resultados reales, no una racha de emojis.",
 ];
 
-const HOW_IT_WORKS = [
-  {
-    title: "Aprende",
-    description: "11 módulos interactivos basados en el Principio de Pareto y en hábitos atómicos.",
-  },
-  {
-    title: "Encuentra tu hábito ancla",
-    description: "El único hábito que, si lo sostienes, jala a todos los demás sin esfuerzo extra.",
-  },
-  {
-    title: "Sostenlo",
-    description: "Habit tracker progresivo: máximo 5 hábitos, uno a la vez, sin castigo por fallar.",
-  },
-  {
-    title: "Mide tu vida",
-    description: "Wheel of Life cada 30 días. Sin drama, solo la realidad y hacia donde te mueves.",
-  },
+const JAY_STORY = [
+  "Lo viví yo.",
+  "Pasé de un promedio de 3 a un 9 en mi Wheel of Life, en 8 meses.",
+  "No fue un giro de 180 grados de un día para otro.",
+  "Fue un sistema pequeño, sostenido, mes tras mes.",
+  "Esto es ese sistema. No una versión bonita de él.",
 ];
 
 const FAQ = [
@@ -447,99 +436,84 @@ export default async function HomePage() {
         </div>
       </Reveal>
 
-      <div className="max-w-2xl mx-auto px-6">
-        <div className="mb-24 mt-16">
-          <p className="kicker">Por qué lo hicimos</p>
-          <WordReveal
-            words={WHY_WE_BUILT_IT}
-            className="text-2xl sm:text-3xl font-extrabold leading-snug tracking-tight"
-          />
-        </div>
-
-        <Reveal>
-          <p className="kicker">Esto es para ti si...</p>
-          <div className="mb-24">
-            {FOR_YOU_IF.map((line) => (
-              <div key={line} className="group flex items-start gap-4 border-b border-line py-4 last:border-b-0">
-                <span className="text-accent mt-0.5 shrink-0">—</span>
-                <p className="text-sm text-neutral-300 group-hover:text-white transition-colors">{line}</p>
-              </div>
-            ))}
+      <Reveal>
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="text-center mb-16">
+            <p className="kicker mx-auto">💭 Por qué lo hicimos</p>
+            <WordReveal
+              words={WHY_WE_BUILT_IT}
+              className="text-3xl sm:text-4xl font-extrabold leading-snug tracking-tight max-w-3xl mx-auto"
+            />
           </div>
-        </Reveal>
 
-        <Reveal>
-          <p className="kicker">No lo escribió un equipo de marketing</p>
-        </Reveal>
-
-        <div className="border-l-2 border-l-accent pl-4 mb-24 flex flex-col gap-4">
-          {[
-            "Lo viví yo.",
-            "Pasé de un promedio de 3 a un 9 en mi Wheel of Life, en 8 meses.",
-            "No fue un giro de 180 grados de un día para otro.",
-            "Fue un sistema pequeño, sostenido, mes tras mes.",
-            "Esto es ese sistema. No una versión bonita de él.",
-          ].map((line) => (
-            <ScrollTextLine key={line}>
-              <span className="text-lg font-bold leading-snug">{line}</span>
-            </ScrollTextLine>
-          ))}
-          <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
-        </div>
-
-        <Reveal>
-          <p className="kicker">Cómo funciona (y cómo no)</p>
-          <p className="text-sm text-neutral-300 mb-6">
-            No dietas. No despertar a las 5am. No 47 hábitos a la vez.
-          </p>
-          <div className="mb-24">
-            {HOW_IT_WORKS.map((step, i) => (
-              <div key={step.title} className="group flex gap-4 border-b border-line py-4 last:border-b-0 hover:border-l-2 hover:border-l-accent hover:pl-2 transition-all">
-                <span className="text-xs text-accent tracking-widest mt-1 shrink-0">{String(i + 1).padStart(2, "0")}</span>
-                <div>
-                  <p className="font-bold text-lg">{step.title}</p>
-                  <p className="muted mt-1">{step.description}</p>
-                </div>
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-16">
+            <PhoneMantra mantra={MANTRAS[9]} />
+            <div>
+              <p className="kicker">No lo escribió un equipo de marketing</p>
+              <div className="border-l-2 border-l-accent pl-6 flex flex-col gap-4 mt-4">
+                {JAY_STORY.map((line) => (
+                  <ScrollTextLine key={line}>
+                    <span className="text-lg font-bold leading-snug">{line}</span>
+                  </ScrollTextLine>
+                ))}
+                <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
               </div>
-            ))}
+            </div>
           </div>
-        </Reveal>
 
-        <Reveal>
-          <p className="kicker">Mantras de Jay</p>
-          <div className="flex flex-col gap-6 mb-24">
-            {[MANTRAS[9], MANTRAS[17], MANTRAS[12]].map((mantra) => (
-              <p key={mantra} className="text-lg font-bold leading-snug">
-                &ldquo;{mantra}&rdquo;
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="card">
+              <p className="kicker">Esto es para ti si...</p>
+              <div className="flex flex-col gap-1 mt-4">
+                {FOR_YOU_IF.map((line) => (
+                  <div key={line} className="group flex items-start gap-3 border-b border-line py-3 last:border-b-0">
+                    <span className="text-accent mt-0.5 shrink-0">—</span>
+                    <p className="text-sm text-neutral-300 group-hover:text-white transition-colors">{line}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col justify-center">
+              <p className="kicker">El truco</p>
+              <p className="font-extrabold text-2xl mb-2">Encuentra tu hábito ancla</p>
+              <p className="muted">
+                El único hábito que, si lo sostienes, jala a todos los demás sin esfuerzo extra.
+                No dietas, no despertar a las 5am, no 47 hábitos a la vez — uno solo, bien elegido.
               </p>
-            ))}
-            <p className="text-xs uppercase tracking-widest text-neutral-500">— Jay</p>
+            </div>
           </div>
-        </Reveal>
+        </div>
+      </Reveal>
 
-        <Reveal>
-          <p className="kicker">Preguntas que te estás haciendo</p>
-          <div className="mb-24">
+      <Reveal>
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="text-center mb-16">
+            <p className="kicker mx-auto">❓ Preguntas que te estás haciendo</p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
+              Antes de que preguntes
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
             {FAQ.map((item) => (
-              <div key={item.q} className="border-b border-line py-4 last:border-b-0">
+              <div key={item.q} className="card">
                 <p className="font-bold text-base mb-1">{item.q}</p>
                 <p className="muted">{item.a}</p>
               </div>
             ))}
           </div>
-        </Reveal>
-
-        <Reveal>
-          <div className="border-t border-line pt-10 pb-10 text-center">
-            <Link href="/register" className="btn-primary">Empezar gratis</Link>
-            <p className="muted mt-6">Un sistema, no una promesa.</p>
-          </div>
-        </Reveal>
-
-        <div className="pb-16 flex items-center justify-center gap-6 text-xs uppercase tracking-widest text-neutral-600">
-          <Link href="/terminos" className="hover:text-neutral-400 transition-colors">Términos</Link>
-          <Link href="/privacidad" className="hover:text-neutral-400 transition-colors">Privacidad</Link>
         </div>
+      </Reveal>
+
+      <Reveal>
+        <div className="max-w-2xl mx-auto px-6 border-t border-line pt-10 pb-10 text-center">
+          <Link href="/register" className="btn-primary">Empezar gratis</Link>
+          <p className="muted mt-6">Un sistema, no una promesa.</p>
+        </div>
+      </Reveal>
+
+      <div className="max-w-2xl mx-auto px-6 pb-16 flex items-center justify-center gap-6 text-xs uppercase tracking-widest text-neutral-600">
+        <Link href="/terminos" className="hover:text-neutral-400 transition-colors">Términos</Link>
+        <Link href="/privacidad" className="hover:text-neutral-400 transition-colors">Privacidad</Link>
       </div>
     </main>
   );

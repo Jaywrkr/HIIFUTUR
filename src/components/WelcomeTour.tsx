@@ -10,6 +10,11 @@ const STEPS = [
     body: "Felicidades por llegar hasta aquí. La mayoría no pasa del 'algún día'. Tú ya tienes tu línea base medida y un camino enfrente. Esto es lo que sigue.",
   },
   {
+    emoji: "🧭",
+    title: "La metodología, en 3 partes",
+    body: "Curso + Hábitos + Wheel of Life. O dicho de otra forma: Aprendizaje + Acción + Control. Aprendes algo pequeño, lo conviertes en hábito, y cada 30 días mides si de verdad se movió algo.",
+  },
+  {
     emoji: "📚",
     title: "Empieza por el curso",
     body: "El Módulo 1 ya está abierto. Al terminarlo vas a crear tu primer hábito — el ancla. No al revés: primero entiendes por qué fallabas antes, después ejecutas.",

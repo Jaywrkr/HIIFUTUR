@@ -1,5 +1,13 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.30.0",
+    date: "2026-07-10",
+    changes: [
+      "Landing: la segunda mitad de la página se condensó en menos secciones (por qué lo hicimos, historia de Jay, para quién es y FAQ) con el mismo lenguaje visual — tarjetas y encabezados — que el resto de la página.",
+      "Bienvenida al curso: se agregó un paso que explica la metodología general (Curso + Hábitos + Wheel of Life = Aprendizaje + Acción + Control) antes de decirte por dónde empezar.",
+    ],
+  },
+  {
     version: "2.29.0",
     date: "2026-07-10",
     changes: [
