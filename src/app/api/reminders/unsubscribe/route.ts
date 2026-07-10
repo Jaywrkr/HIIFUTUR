@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   const token = request.nextUrl.searchParams.get("token");
 
   if (!userId || !token || !verifyUnsubscribeToken(userId, token)) {
-    return NextResponse.json({ error: "Enlace invalido." }, { status: 400 });
+    return NextResponse.json({ error: "Enlace inválido." }, { status: 400 });
   }
 
   await db.update(users).set({ remindersEnabled: false }).where(eq(users.id, userId));

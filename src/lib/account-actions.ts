@@ -19,7 +19,7 @@ export async function updateName(
 
   const parsed = nameSchema.safeParse(formData.get("name"));
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Nombre invalido." };
+    return { error: parsed.error.issues[0]?.message ?? "Nombre inválido." };
   }
 
   const [nameTaken] = await db

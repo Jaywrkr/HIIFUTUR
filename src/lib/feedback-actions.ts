@@ -32,7 +32,7 @@ export async function submitFeedback(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Datos invalidos." };
+    return { error: parsed.error.issues[0]?.message ?? "Datos inválidos." };
   }
 
   await db.insert(feedbackMessages).values({

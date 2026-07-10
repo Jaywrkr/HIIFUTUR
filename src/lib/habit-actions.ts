@@ -56,7 +56,7 @@ export async function createHabit(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Datos invalidos." };
+    return { error: parsed.error.issues[0]?.message ?? "Datos inválidos." };
   }
 
   await db.insert(habits).values({
@@ -143,7 +143,7 @@ export async function updateHabit(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Datos invalidos." };
+    return { error: parsed.error.issues[0]?.message ?? "Datos inválidos." };
   }
 
   await db

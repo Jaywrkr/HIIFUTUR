@@ -73,7 +73,7 @@ export async function resetPassword(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Datos invalidos." };
+    return { error: parsed.error.issues[0]?.message ?? "Datos inválidos." };
   }
 
   const tokenHash = hashResetToken(parsed.data.token);
@@ -91,7 +91,7 @@ export async function resetPassword(
     .limit(1);
 
   if (!tokenRow) {
-    return { error: "Ese enlace es invalido o ya expiro. Pide uno nuevo." };
+    return { error: "Ese enlace es inválido o ya expiró. Pide uno nuevo." };
   }
 
   const passwordHash = await bcrypt.hash(parsed.data.password, 12);

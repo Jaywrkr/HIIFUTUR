@@ -34,7 +34,7 @@ export async function completeOnboarding(
 
   const parsed = onboardingSchema.safeParse({ selectedAreas, scores });
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Datos invalidos." };
+    return { error: parsed.error.issues[0]?.message ?? "Datos inválidos." };
   }
 
   await db

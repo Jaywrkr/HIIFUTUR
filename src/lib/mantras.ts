@@ -17,7 +17,7 @@ export const MANTRAS: string[] = [
   "La gente pide tanto consejo porque tiene miedo de la prueba y error.",
   "Amate a ti mismo. Pero también se autocritico.",
   "Exito es tener cada día menos arrepentimientos.",
-  "La mayoría de las personas utilizan el aprendizaje como una forma de sentirse bien por haber progresado cuando, en realidad, no estan aprendiendo ni progresando. Si no tienes un proyecto, negocio o propósito para aplicar lo que aprendes, estás perdido.",
+  "La mayoría de las personas utilizan el aprendizaje como una forma de sentirse bien por haber progresado cuando, en realidad, no están aprendiendo ni progresando. Si no tienes un proyecto, negocio o propósito para aplicar lo que aprendes, estás perdido.",
   "La gente no te ignora, simplemente está ocupada con otras personas que anaden más valor a sus vidas.",
   "Te sientes mal porque sabes lo que se supone que debes hacer y no lo estás haciendo.",
   "El único atajo que tienes que buscar es no buscar atajos.",

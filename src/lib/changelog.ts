@@ -1,5 +1,12 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.29.0",
+    date: "2026-07-10",
+    changes: [
+      "Repaso de ortografía en toda la app: tildes y signos de interrogación corregidos en la landing, los formularios, los mensajes y el historial de cambios.",
+    ],
+  },
+  {
     version: "2.28.0",
     date: "2026-07-10",
     changes: [
@@ -53,73 +60,73 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.22.0",
     date: "2026-07-10",
     changes: [
-      "Ciclo de formaciÃ³n de 30 dÃ­as: los mÃ³dulos se ganan con ejecuciÃ³n real (uno cada 3 dÃ­as de hÃ¡bito cumplido).",
-      "Un fallo se perdona; al segundo se reinicia el ciclo: mÃ³dulos y puntos del ciclo se pierden (tus ejercicios escritos se conservan).",
-      "Completar un mÃ³dulo ahora tambiÃ©n suma puntos.",
-      "Menu hamburguesa en mÃ³vil.",
+      "Ciclo de formación de 30 días: los módulos se ganan con ejecución real (uno cada 3 días de hábito cumplido).",
+      "Un fallo se perdona; al segundo se reinicia el ciclo: módulos y puntos del ciclo se pierden (tus ejercicios escritos se conservan).",
+      "Completar un módulo ahora también suma puntos.",
+      "Menú hamburguesa en móvil.",
     ],
   },
   {
     version: "2.21.0",
     date: "2026-07-10",
-    changes: ["Tests automatizados y CI: cada cambio se valida antes de llegar a producciÃ³n."],
+    changes: ["Tests automatizados y CI: cada cambio se valida antes de llegar a producción."],
   },
   {
     version: "2.20.0",
     date: "2026-07-09",
     changes: [
-      "Puntos y niveles: cada hÃ¡bito marcado suma puntos; subir de nivel cuesta cada vez mÃ¡s.",
+      "Puntos y niveles: cada hábito marcado suma puntos; subir de nivel cuesta cada vez más.",
       "Leaderboard con los 10 primeros.",
-      "RediseÃ±o de Hoy y del perfil.",
+      "Rediseño de Hoy y del perfil.",
     ],
   },
   {
     version: "2.19.0",
     date: "2026-07-09",
     changes: [
-      "Heatmap de tu historial de habitos (manten presionado un dia para ver su detalle).",
-      "Estadisticas: mejor racha historica, total de checks y insignia de habito ancla.",
-      "Celebracion al alcanzar hitos de racha y aviso de color cuando tu racha esta en riesgo.",
-      "Grafica de la rueda animada, vibracion al marcar y desliza hacia abajo para refrescar.",
+      "Heatmap de tu historial de hábitos (mantén presionado un día para ver su detalle).",
+      "Estadísticas: mejor racha histórica, total de checks y insignia de hábito ancla.",
+      "Celebración al alcanzar hitos de racha y aviso de color cuando tu racha está en riesgo.",
+      "Gráfica de la rueda animada, vibración al marcar y desliza hacia abajo para refrescar.",
     ],
   },
   {
     version: "2.18.0",
     date: "2026-07-09",
     changes: [
-      "Pagina 404 propia, imagen para compartir en redes, sitemap y estados de carga.",
-      "Este changelog publico.",
+      "Página 404 propia, imagen para compartir en redes, sitemap y estados de carga.",
+      "Este changelog público.",
     ],
   },
   {
     version: "2.17.0",
     date: "2026-07-09",
-    changes: ["Nueva secciÃ³n \"Las reglas viejas\" en el home."],
+    changes: ["Nueva sección \"Las reglas viejas\" en el home."],
   },
   {
     version: "2.16.0",
     date: "2026-07-09",
-    changes: ["SecciÃ³n de planes (gratis, mensual, anual) en el home."],
+    changes: ["Sección de planes (gratis, mensual, anual) en el home."],
   },
   {
     version: "2.15.0",
     date: "2026-07-09",
-    changes: ["Nueva secciÃ³n \"Aprende. ActÃºa. Mide. Repite.\" en el home."],
+    changes: ["Nueva sección \"Aprende. Actúa. Mide. Repite.\" en el home."],
   },
   {
     version: "2.14.0",
     date: "2026-07-08",
-    changes: ["AnalÃ­tica de producto propia, sin terceros ni cookies de rastreo."],
+    changes: ["Analítica de producto propia, sin terceros ni cookies de rastreo."],
   },
   {
     version: "2.13.0",
     date: "2026-07-08",
-    changes: ["Boton de feedback visible en toda la app."],
+    changes: ["Botón de feedback visible en toda la app."],
   },
   {
     version: "2.12.0",
     date: "2026-07-08",
-    changes: ["Monitoreo de errores en producciÃ³n."],
+    changes: ["Monitoreo de errores en producción."],
   },
   {
     version: "2.11.0",
@@ -129,17 +136,17 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
   {
     version: "2.10.0",
     date: "2026-07-08",
-    changes: ["TÃ©rminos, privacidad, y la opciÃ³n de borrar tu cuenta por completo."],
+    changes: ["Términos, privacidad, y la opción de borrar tu cuenta por completo."],
   },
   {
     version: "2.9.0",
     date: "2026-07-08",
-    changes: ["Tu primer Wheel of Life ahora sugiere con que hÃ¡bito empezar."],
+    changes: ["Tu primer Wheel of Life ahora sugiere con qué hábito empezar."],
   },
   {
     version: "2.8.0",
     date: "2026-07-08",
-    changes: ["ProtecciÃ³n de racha: congela un dÃ­a perdido, una vez al mes."],
+    changes: ["Protección de racha: congela un día perdido, una vez al mes."],
   },
   {
     version: "2.7.0",
@@ -149,15 +156,15 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
   {
     version: "2.6.0",
     date: "2026-07-08",
-    changes: ["Recordatorios diarios por email cuando se te pasa un hÃ¡bito."],
+    changes: ["Recordatorios diarios por email cuando se te pasa un hábito."],
   },
   {
-    version: "2.0.0 â 2.5.0",
-    date: "2026-07-07 â 2026-07-08",
+    version: "2.0.0 – 2.5.0",
+    date: "2026-07-07 – 2026-07-08",
     changes: [
-      "Rebrand completo: tipografia, colores y formas.",
-      "Landing publica con hero, ticker y secciÃ³n de la app web.",
-      "EdiciÃ³n de hÃ¡bitos con perÃ­odo de espera; arreglo del gesto de mantener presionado en mÃ³vil.",
+      "Rebrand completo: tipografía, colores y formas.",
+      "Landing pública con hero, ticker y sección de la app web.",
+      "Edición de hábitos con período de espera; arreglo del gesto de mantener presionado en móvil.",
       "Las migraciones de base de datos corren solas en cada deploy.",
     ],
   },
@@ -165,8 +172,8 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "1.0.0",
     date: "2026-07-07",
     changes: [
-      "Lanzamiento inicial: cuenta, onboarding, 11 mÃ³dulos, habit tracker y Wheel of Life.",
-      "RecuperaciÃ³n de contraseÃ±a.",
+      "Lanzamiento inicial: cuenta, onboarding, 11 módulos, habit tracker y Wheel of Life.",
+      "Recuperación de contraseña.",
     ],
   },
 ];
