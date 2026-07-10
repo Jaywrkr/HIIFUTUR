@@ -27,7 +27,7 @@ export function Nav() {
           </Link>
 
           {/* Desktop: inline links */}
-          <div className="hidden md:flex items-center gap-5 text-xs uppercase tracking-widest text-neutral-500">
+          <div className="hidden md:flex items-center gap-5 text-xs uppercase tracking-widest font-bold text-neutral-400">
             {links.map((l) => (
               <Link
                 key={l.href}
@@ -77,8 +77,8 @@ export function Nav() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className={`py-3 text-xs uppercase tracking-widest border-b border-line/50 last:border-0 ${
-                    pathname.startsWith(l.href) ? "text-accent" : "text-neutral-400"
+                  className={`py-3 text-xs uppercase tracking-widest font-bold border-b border-line/50 last:border-0 ${
+                    pathname.startsWith(l.href) ? "text-accent" : "text-neutral-300"
                   }`}
                 >
                   {l.label}
@@ -86,7 +86,7 @@ export function Nav() {
               ))}
               <button
                 onClick={() => signOut({ callbackUrl: "/login" })}
-                className="py-3 text-xs uppercase tracking-widest text-neutral-400 text-left"
+                className="py-3 text-xs uppercase tracking-widest font-bold text-neutral-300 text-left"
               >
                 SALIR
               </button>
