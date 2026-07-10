@@ -46,7 +46,7 @@ export function WheelMeasurementForm({ lastScores }: { lastScores?: Record<strin
 
       <div>
         <label className="field-label" htmlFor="notes">Notas (opcional)</label>
-        <textarea id="notes" name="notes" rows={2} className="field-input w-full" placeholder="Que cambio este mes?" />
+        <textarea id="notes" name="notes" rows={2} className="field-input w-full" placeholder="¿Qué cambió este mes?" />
       </div>
 
       {state.error ? <p className="form-error">{state.error}</p> : null}

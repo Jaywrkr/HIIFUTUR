@@ -8,7 +8,7 @@ export default function NotFound() {
       <div>
         <p className="kicker mx-auto">404</p>
         <h1 className="text-3xl font-extrabold tracking-tight mb-2">Esta página no existe.</h1>
-        <p className="muted mb-8">O se movio, o el link está mal. Cualquiera de las dos, no es tu culpa.</p>
+        <p className="muted mb-8">O se movió, o el link está mal. Cualquiera de las dos, no es tu culpa.</p>
         <Link href="/" className="btn-primary">Volver al inicio</Link>
       </div>
     </main>

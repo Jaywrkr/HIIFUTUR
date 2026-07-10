@@ -10,23 +10,35 @@ export default function TerminosPage() {
       </Link>
       <p className="kicker mt-8">Legal</p>
       <h1 className="text-3xl font-extrabold tracking-tight mb-2">Términos de uso</h1>
-      <p className="muted mb-10">Última actualización: julio 2026.</p>
+      <p className="muted mb-10">Última actualización: julio de 2026.</p>
 
       <div className="flex flex-col gap-8 mb-16">
         <section>
-          <p className="font-bold mb-2">Que es EJECUTA</p>
+          <p className="font-bold mb-2">Qué es EJECUTA y quién lo opera</p>
           <p className="muted">
             EJECUTA es un sistema de ejecución sostenible: módulos interactivos, un habit tracker
-            progresivo y mediciones periodicas (Wheel of Life). Es una herramienta de hábitos y
-            productividad personal, no consejo medico, financiero, ni psicologico.
+            progresivo y mediciones periódicas (Wheel of Life). Es una herramienta de hábitos y
+            productividad personal — no es consejo médico, financiero ni psicológico, y no
+            sustituye la atención de un profesional. El servicio lo opera la marca{" "}
+            <span className="text-neutral-300">HIIFUTUR</span>. Al crear una cuenta o usar el
+            servicio aceptas estos términos.
+          </p>
+        </section>
+
+        <section>
+          <p className="font-bold mb-2">Edad mínima</p>
+          <p className="muted">
+            Debes tener al menos 16 años para usar EJECUTA. Si eres menor de esa edad, no crees una
+            cuenta. Si detectamos una cuenta de un menor de 16, la eliminaremos.
           </p>
         </section>
 
         <section>
           <p className="font-bold mb-2">Tu cuenta</p>
           <p className="muted">
-            Eres responsable de mantener segura tu contraseña. No compartas tu cuenta. Puedes
-            eliminar tu cuenta cuando quieras desde{" "}
+            Eres responsable de mantener segura tu contraseña y de la actividad de tu cuenta. No
+            compartas tu cuenta ni uses la de otra persona. Los datos que registras (nombre, email,
+            hábitos) deben ser reales y tuyos. Puedes eliminar tu cuenta cuando quieras desde{" "}
             <Link href="/cuenta" className="link-accent">Mi cuenta</Link>.
           </p>
         </section>
@@ -34,16 +46,79 @@ export default function TerminosPage() {
         <section>
           <p className="font-bold mb-2">Uso aceptable</p>
           <p className="muted">
-            No uses EJECUTA para nada ilegal, para intentar acceder a cuentas de otras personas, o
-            para interferir con el funcionamiento del servicio.
+            No uses EJECUTA para nada ilegal, para intentar acceder a cuentas de otras personas,
+            para saltarte límites técnicos, extraer datos de forma automatizada, o para interferir
+            con el funcionamiento del servicio. Podemos suspender o cerrar cuentas que incumplan
+            estas reglas.
           </p>
         </section>
 
         <section>
-          <p className="font-bold mb-2">Sin garantias</p>
+          <p className="font-bold mb-2">Planes, precios y pagos</p>
           <p className="muted">
-            EJECUTA se ofrece &ldquo;tal cual&rdquo;. Hacemos lo posible por mantenerlo funcionando
-            de forma estable, pero no garantizamos que este libre de errores o interrupciones.
+            EJECUTA tiene un plan gratuito y planes de pago (mensual y anual). Hoy los cobros aún no
+            están activos: cualquier plan que elijas crea una cuenta gratis y te avisaremos antes de
+            empezar a cobrar. Cuando los pagos estén disponibles, aplicará lo siguiente:
+          </p>
+          <ul className="muted mt-3 flex flex-col gap-2 list-disc pl-5">
+            <li>
+              Las suscripciones se renuevan automáticamente al final de cada periodo (mensual o
+              anual) al precio vigente, hasta que las canceles.
+            </li>
+            <li>
+              Puedes cancelar en cualquier momento desde tu cuenta. La cancelación detiene la
+              siguiente renovación; conservas el acceso hasta que termina el periodo ya pagado.
+            </li>
+            <li>
+              Reembolsos: si algo sale mal o no quedaste conforme, escríbenos dentro de los primeros
+              14 días de un cobro y buscamos una solución justa, incluido el reembolso cuando
+              corresponda. Los impuestos aplicables no son reembolsables.
+            </li>
+            <li>
+              Los pagos se procesan a través de un proveedor externo de pagos. Nunca vemos ni
+              guardamos los datos completos de tu tarjeta.
+            </li>
+            <li>Podemos cambiar los precios avisándote con antelación razonable antes de tu próxima renovación.</li>
+          </ul>
+        </section>
+
+        <section>
+          <p className="font-bold mb-2">Contenido y propiedad</p>
+          <p className="muted">
+            El contenido del curso, los textos, el diseño y la marca son de HIIFUTUR y no puedes
+            copiarlos ni revenderlos. Lo que tú escribes (tus respuestas, tus hábitos, tus
+            mediciones) es tuyo: solo lo usamos para hacer funcionar el servicio, como se explica en
+            la <Link href="/privacidad" className="link-accent">Política de privacidad</Link>.
+          </p>
+        </section>
+
+        <section>
+          <p className="font-bold mb-2">Sin garantías</p>
+          <p className="muted">
+            EJECUTA se ofrece &ldquo;tal cual&rdquo; y &ldquo;según disponibilidad&rdquo;. Hacemos
+            lo posible por mantenerlo funcionando de forma estable, pero no garantizamos que esté
+            libre de errores o interrupciones, ni que produzca un resultado específico en tu vida o
+            en tus hábitos.
+          </p>
+        </section>
+
+        <section>
+          <p className="font-bold mb-2">Límite de responsabilidad</p>
+          <p className="muted">
+            En la medida que permita la ley, HIIFUTUR no es responsable por daños indirectos,
+            incidentales o consecuentes derivados del uso o la imposibilidad de usar el servicio. Si
+            alguna vez fuéramos responsables por algo, esa responsabilidad se limita a lo que hayas
+            pagado por el servicio en los 12 meses previos.
+          </p>
+        </section>
+
+        <section>
+          <p className="font-bold mb-2">Suspensión y cierre</p>
+          <p className="muted">
+            Puedes dejar de usar EJECUTA y borrar tu cuenta cuando quieras. Nosotros podemos
+            suspender o cerrar el servicio, o una cuenta, si hay un uso indebido, un riesgo de
+            seguridad, o una obligación legal. Si cerramos el servicio por completo, te avisaremos
+            con antelación razonable.
           </p>
         </section>
 
@@ -51,7 +126,17 @@ export default function TerminosPage() {
           <p className="font-bold mb-2">Cambios</p>
           <p className="muted">
             Podemos actualizar estos términos conforme el producto evoluciona. Si el cambio es
-            importante, lo vas a notar — no escondemos cambios relevantes en letra chica.
+            importante, lo vas a notar — no escondemos cambios relevantes en letra chica. La fecha de
+            &ldquo;última actualización&rdquo; arriba te dice cuándo cambiaron por última vez.
+          </p>
+        </section>
+
+        <section>
+          <p className="font-bold mb-2">Ley aplicable</p>
+          <p className="muted">
+            Estos términos se rigen por las leyes de la República del Ecuador. Cualquier disputa se
+            resolverá ante los tribunales competentes del Ecuador, sin perjuicio de los derechos que
+            te reconozca la ley de tu país de residencia como consumidor.
           </p>
         </section>
 

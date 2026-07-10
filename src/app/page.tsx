@@ -16,7 +16,7 @@ const PHILOSOPHY = [
   },
   {
     title: "La consistencia le gana a la intensidad",
-    description: "Todos los días le gana a algunos días increibles. El sistema premia mostrarte, no rendir al máximo.",
+    description: "Todos los días le gana a algunos días increíbles. El sistema premia mostrarte, no rendir al máximo.",
   },
   {
     title: "Si no lo disfrutas, no dura",
@@ -85,8 +85,8 @@ const PRICING_PLANS = [
     features: [
       "Todo lo del plan gratis",
       "Apoyas directamente el desarrollo",
-      "Proximamente: más hábitos activos",
-      "Proximamente: reportes avanzados",
+      "Próximamente: más hábitos activos",
+      "Próximamente: reportes avanzados",
     ],
     cta: "Empezar mensual",
     highlight: false,
@@ -118,7 +118,7 @@ const OLD_RULES = [
 
 const WHY_WE_BUILT_IT: RevealWord[] = [
   { text: "La" }, { text: "mayoría" }, { text: "de" }, { text: "las" }, { text: "apps" },
-  { text: "de" }, { text: "hábitos" }, { text: "estan" }, { text: "hechas" }, { text: "para" },
+  { text: "de" }, { text: "hábitos" }, { text: "están" }, { text: "hechas" }, { text: "para" },
   { text: "que" }, { text: "te" }, { text: "sientas" }, { text: "culpable.", strike: true },
   { text: "Nosotros" }, { text: "hicimos" }, { text: "un" }, { text: "sistema" }, { text: "para" },
   { text: "que" }, { text: "sigas," }, { text: "aunque" }, { text: "falles." },
@@ -127,14 +127,14 @@ const WHY_WE_BUILT_IT: RevealWord[] = [
 const FOR_YOU_IF = [
   "Ya intentaste 100 apps de hábitos y las dejaste en la semana 2.",
   MANTRAS[15], // "Te sientes mal porque sabes lo que se supone que debes hacer y no lo estás haciendo."
-  "Estas cansado de sentirte mal por 'no tener disciplina'.",
+  "Estás cansado de sentirte mal por 'no tener disciplina'.",
   "Quieres resultados reales, no una racha de emojis.",
 ];
 
 const HOW_IT_WORKS = [
   {
     title: "Aprende",
-    description: "11 módulos interactivos basados en el Principio de Pareto y en hábitos atomicos.",
+    description: "11 módulos interactivos basados en el Principio de Pareto y en hábitos atómicos.",
   },
   {
     title: "Encuentra tu hábito ancla",
@@ -152,20 +152,20 @@ const HOW_IT_WORKS = [
 
 const FAQ = [
   {
-    q: "Cuánto tiempo toma al día?",
-    a: "El que tu elijas para tu primer hábito. Puede ser literalmente 2 minutos.",
+    q: "¿Cuánto tiempo toma al día?",
+    a: "El que tú elijas para tu primer hábito. Puede ser literalmente 2 minutos.",
   },
   {
-    q: "Necesito comprar algo?",
+    q: "¿Necesito comprar algo?",
     a: "No. Es gratis para empezar.",
   },
   {
-    q: "Y si fallo un día?",
+    q: "¿Y si fallo un día?",
     a: "No pasa nada. La única regla real es no fallar dos días seguidos.",
   },
   {
-    q: "Esto es otro curso que voy a abandonar?",
-    a: "Puede ser. Depende de si empiezas tan pequeño que sea imposible fallar. Por eso el sistema esta diseñado así, no al reves.",
+    q: "¿Esto es otro curso que voy a abandonar?",
+    a: "Puede ser. Depende de si empiezas tan pequeño que sea imposible fallar. Por eso el sistema está diseñado así, no al revés.",
   },
 ];
 
@@ -220,7 +220,7 @@ export default async function HomePage() {
             </h1>
             <p className="text-sm leading-relaxed text-neutral-300 mb-6 max-w-lg">
               Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.
-              Sin gurus, sin 47 hábitos a la vez, sin culpa cuando fallas un día.
+              Sin gurús, sin 47 hábitos a la vez, sin culpa cuando fallas un día.
             </p>
             <p className="text-base mb-8">
               Hoy, eso podría ser <span className="font-bold text-accent">5 sentadillas.</span>
@@ -414,7 +414,7 @@ export default async function HomePage() {
           </div>
 
           <p className="text-xs text-neutral-600 max-w-lg mx-auto mt-10">
-            Los cobros todavía no estan activos. Cualquier plan que elijas hoy crea tu cuenta
+            Los cobros todavía no están activos. Cualquier plan que elijas hoy crea tu cuenta
             gratis — te avisamos apenas el pago este disponible.
           </p>
         </div>
@@ -469,16 +469,16 @@ export default async function HomePage() {
         </Reveal>
 
         <Reveal>
-          <p className="kicker">No lo escribio un equipo de marketing</p>
+          <p className="kicker">No lo escribió un equipo de marketing</p>
         </Reveal>
 
         <div className="border-l-2 border-l-accent pl-4 mb-24 flex flex-col gap-4">
           {[
-            "Lo vivi yo.",
-            "Pase de un promedio de 3 a un 9 en mi Wheel of Life, en 8 meses.",
+            "Lo viví yo.",
+            "Pasé de un promedio de 3 a un 9 en mi Wheel of Life, en 8 meses.",
             "No fue un giro de 180 grados de un día para otro.",
             "Fue un sistema pequeño, sostenido, mes tras mes.",
-            "Esto es ese sistema. No una versión bonita de el.",
+            "Esto es ese sistema. No una versión bonita de él.",
           ].map((line) => (
             <ScrollTextLine key={line}>
               <span className="text-lg font-bold leading-snug">{line}</span>

@@ -72,7 +72,7 @@ export default async function WheelPage() {
         <PageHeader
           kicker="MEDICION"
           title="Wheel of Life"
-          subtitle={`Cada ${DAYS_BETWEEN_WHEEL_MEASUREMENTS} días mides donde estas. Sin drama, solo la realidad.`}
+          subtitle={`Cada ${DAYS_BETWEEN_WHEEL_MEASUREMENTS} días mides dónde estás. Sin drama, solo la realidad.`}
         />
 
         {latest ? (

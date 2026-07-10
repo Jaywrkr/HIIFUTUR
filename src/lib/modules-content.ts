@@ -526,7 +526,7 @@ export const MODULES: CourseModule[] = [
     narrative:
       "Para el mes 6 ya no sostenia un solo hábito. Sostenia cuatro, apilados uno sobre el otro, sin que se sintiera como más esfuerzo — porque cada uno uso al anterior como disparador.",
     mantra:
-      "La mayoría de las personas utilizan el aprendizaje como una forma de sentirse bien por haber progresado cuando, en realidad, no estan aprendiendo ni progresando. Si no tienes un proyecto, negocio o propósito para aplicar lo que aprendes, estás perdido.",
+      "La mayoría de las personas utilizan el aprendizaje como una forma de sentirse bien por haber progresado cuando, en realidad, no están aprendiendo ni progresando. Si no tienes un proyecto, negocio o propósito para aplicar lo que aprendes, estás perdido.",
     theory: [
       "El habit stacking (apilamiento de hábitos) usa un hábito que ya sostienes como disparador automático para uno nuevo, más pequeño. 'Después de [hábito que ya hago], voy a [hábito nuevo]'.",
       "Esto funciona porque no dependes de recordar o de tener ganas — el hábito anterior, que ya es automático, dispara al siguiente sin que tengas que pensarlo.",
@@ -570,7 +570,7 @@ export const MODULES: CourseModule[] = [
       "El Wheel of Life no es un examen que apruebas o repruebas. Es una brujula: te dice hacia donde te estás moviendo, no que tan 'bien' o 'mal' eres como persona.",
       "Cada medición mensual es una fotografia. Comparar la foto de este mes con la anterior te dice, con datos y no con sensaciones, si el sistema está funcionando o si es momento de ajustar el hábito ancla.",
       "Es fácil obsesionarse con el área que menos sube. Pero éxito real no es tener un 10 en todo — es tener, cada día, menos cosas de las que te arrepientes al acostarte. Esa es una métrica más honesta que cualquier promedio.",
-      "Usa esta revisión para preguntarte qué área está compitiendo por el mismo tiempo y energía que tu hábito ancla, y decide con calma — no con culpa — que vas a hacer al respecto el próximo mes.",
+      "Usa esta revisión para preguntarte qué área está compitiendo por el mismo tiempo y energía que tu hábito ancla, y decide con calma — no con culpa — qué vas a hacer al respecto el próximo mes.",
     ],
     exerciseTitle: "Lee tu propio progreso",
     exerciseDescription: "Antes de tu próxima medición, reflexiona sobre lo que ya sabes que va a mostrar.",

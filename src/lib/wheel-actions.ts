@@ -38,7 +38,7 @@ export async function recordWheelMeasurement(
 
   const parsed = wheelSchema.safeParse(scores);
   if (!parsed.success) {
-    return { error: "Datos invalidos." };
+    return { error: "Datos inválidos." };
   }
 
   await db.insert(wheelOfLifeMeasurements).values({

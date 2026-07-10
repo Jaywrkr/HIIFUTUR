@@ -209,7 +209,7 @@ export function EditHabitRow({
 
       <div className="mt-4 flex items-center justify-between">
         <p className="text-[10px] uppercase tracking-widest text-neutral-600">
-          Ultimas 12 semanas · mejor racha: {longestStreak} {longestStreak === 1 ? "día" : "días"}
+          Últimas 12 semanas · mejor racha: {longestStreak} {longestStreak === 1 ? "día" : "días"}
         </p>
       </div>
       <HabitHeatmap logDates={logDates} freezeDates={freezeDates} habitCreatedAt={habitCreatedAt} />

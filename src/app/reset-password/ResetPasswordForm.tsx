@@ -25,7 +25,7 @@ export function ResetPasswordForm() {
     return (
       <div className="auth-card">
         <p className="kicker">EJECUTA</p>
-        <h1 className="auth-title">Enlace invalido</h1>
+        <h1 className="auth-title">Enlace inválido</h1>
         <p className="auth-sub">Este enlace no trae la información necesaria.</p>
         <p className="auth-footer">
           <Link href="/forgot-password" className="link-accent">Pedir un enlace nuevo</Link>

@@ -47,7 +47,7 @@ export default function RegisterPage() {
         </p>
 
         <p className="auth-footer">
-          Ya tienes cuenta? <Link href="/login" className="link-accent">Inicia sesión</Link>
+          ¿Ya tienes cuenta? <Link href="/login" className="link-accent">Inicia sesión</Link>
         </p>
       </div>
     </div>

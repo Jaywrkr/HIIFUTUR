@@ -52,7 +52,7 @@ export function LoginForm() {
         <div className="flex items-center justify-between mt-4 mb-1">
           <label className="field-label mt-0 mb-0" htmlFor="password">CONTRASEÑA</label>
           <Link href="/forgot-password" className="text-xs text-neutral-500 hover:text-accent transition-colors">
-            Olvidaste tu contraseña?
+            ¿Olvidaste tu contraseña?
           </Link>
         </div>
         <input id="password" name="password" type="password" required className="field-input" placeholder="Tu contraseña" />
@@ -65,7 +65,7 @@ export function LoginForm() {
       </form>
 
       <p className="auth-footer">
-        No tienes cuenta? <Link href="/register" className="link-accent">Registrate</Link>
+        ¿No tienes cuenta? <Link href="/register" className="link-accent">Regístrate</Link>
       </p>
     </div>
   );

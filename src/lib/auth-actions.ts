@@ -12,7 +12,7 @@ import { rateLimit, clientIpFromHeaders, retryAfterText } from "@/lib/rate-limit
 
 const registerSchema = z.object({
   name: z.string().min(1, "Escribe tu nombre.").max(80),
-  email: z.string().email("Email invalido."),
+  email: z.string().email("Email inválido."),
   password: z.string().min(8, "Mínimo 8 caracteres."),
 });
 
@@ -38,7 +38,7 @@ export async function registerUser(
   });
 
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Datos invalidos." };
+    return { error: parsed.error.issues[0]?.message ?? "Datos inválidos." };
   }
 
   const email = parsed.data.email.toLowerCase().trim();
