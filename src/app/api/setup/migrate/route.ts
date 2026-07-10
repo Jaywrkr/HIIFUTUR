@@ -3,7 +3,10 @@ import { db } from "@/db";
 import { sql } from "drizzle-orm";
 
 // One-time setup endpoint: creates all tables if they don't exist yet.
-// Guard it with SETUP_SECRET so it can't be triggered by randoms.
+// Disabled by default — it only responds when SETUP_MIGRATE_ENABLED="1" AND the
+// SETUP_SECRET matches. Migrations normally run in the build (`vercel-build`), so
+// this stays off in production and isn't a standing attack surface. Enable the
+// flag only for the brief window you actually need to run it from a browser.
 // Safe to run more than once (CREATE TABLE IF NOT EXISTS / duplicate_object guards).
 
 const MIGRATION_SQL = `
@@ -152,6 +155,12 @@ END $$;
 `;
 
 export async function GET(request: NextRequest) {
+  // Off unless explicitly enabled. Return 404 (not 401) so the endpoint is
+  // invisible when disabled — no hint that it exists.
+  if (process.env.SETUP_MIGRATE_ENABLED !== "1") {
+    return NextResponse.json({ error: "not found" }, { status: 404 });
+  }
+
   const secret = request.nextUrl.searchParams.get("secret");
 
   if (!process.env.SETUP_SECRET || secret !== process.env.SETUP_SECRET) {

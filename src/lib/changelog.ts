@@ -1,5 +1,14 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.26.0",
+    date: "2026-07-10",
+    changes: [
+      "Refuerzo de seguridad: cabeceras de protección del navegador (anti-clickjacking, HTTPS forzado y más) en todas las páginas.",
+      "El endpoint de instalación de la base de datos queda desactivado por defecto — deja de ser una puerta abierta en producción.",
+      "Cifrado de contraseñas más fuerte para las cuentas nuevas y los cambios de contraseña.",
+    ],
+  },
+  {
     version: "2.25.0",
     date: "2026-07-10",
     changes: [

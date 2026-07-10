@@ -15,6 +15,32 @@ const nextConfig = {
   env: {
     APP_VERSION: pkg.version,
   },
+  // Security headers applied to every response. These are the "safe" set that
+  // never breaks the app: they don't restrict script/style sources (a full
+  // Content-Security-Policy with a nonce is a separate follow-up). frame-ancestors
+  // 'none' is the modern anti-clickjacking control; X-Frame-Options is the legacy
+  // fallback for old browsers.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+          },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
+        ],
+      },
+    ];
+  },
 };
 
 // Wraps the config to upload source maps to Sentry on build. No-ops without
