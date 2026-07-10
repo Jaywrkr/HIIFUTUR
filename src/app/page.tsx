@@ -8,6 +8,7 @@ import { WordReveal, type RevealWord } from "@/components/WordReveal";
 import { MarqueeTicker } from "@/components/MarqueeTicker";
 import { WebAppMockup } from "@/components/WebAppMockup";
 import { PhoneMantra } from "@/components/PhoneMantra";
+import { Footer } from "@/components/Footer";
 
 const PHILOSOPHY = [
   {
@@ -512,10 +513,7 @@ export default async function HomePage() {
         </div>
       </Reveal>
 
-      <div className="max-w-2xl mx-auto px-6 pb-16 flex items-center justify-center gap-6 text-xs uppercase tracking-widest text-neutral-600">
-        <Link href="/terminos" className="hover:text-neutral-400 transition-colors">Términos</Link>
-        <Link href="/privacidad" className="hover:text-neutral-400 transition-colors">Privacidad</Link>
-      </div>
+      <Footer />
     </main>
   );
 }
