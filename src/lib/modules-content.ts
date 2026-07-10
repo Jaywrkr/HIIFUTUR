@@ -12,6 +12,28 @@ export type CoursePhase = {
   description: string;
 };
 
+/** Key of the creative illustration that teaches this module's core idea. */
+export type ConceptKey =
+  | "willpower-battery"
+  | "pareto-8020"
+  | "goal-vs-system"
+  | "never-twice"
+  | "anchor-cascade"
+  | "identity-votes"
+  | "friction-meter"
+  | "two-stories"
+  | "habit-chain"
+  | "compass"
+  | "mantra-collection";
+
+/** Surfaces one of the user's OWN prior exercise answers inside a later
+ * module, so the course visibly builds on what they already wrote. */
+export type ModuleCallback = {
+  moduleId: string;
+  fieldId: string;
+  label: string;
+};
+
 export type CourseModule = {
   id: string;
   phaseId: string;
@@ -22,6 +44,14 @@ export type CourseModule = {
   /** Una de las MANTRAS, la que más resuena con este módulo. */
   mantra: string;
   theory: string[];
+  /** Ilustración creativa que explica visualmente la idea clave del módulo. */
+  concept: ConceptKey;
+  /** Puente desde lo anterior: "vienes de aquí". Ausente en el módulo 1. */
+  recap?: string;
+  /** Puente hacia adelante: "esto es lo que sigue". */
+  leadsTo: string;
+  /** Respuestas propias de módulos anteriores que este módulo retoma. */
+  callbacks?: ModuleCallback[];
   exerciseTitle: string;
   exerciseDescription: string;
   fields: ExerciseField[];
@@ -56,6 +86,9 @@ export const MODULES: CourseModule[] = [
     id: "por-que-fallas",
     phaseId: "fundamentos",
     order: 1,
+    concept: "willpower-battery",
+    leadsTo:
+      "Ya que viste por qué fallabas, el módulo 2 te muestra dónde concentrar tu energía: tu 20% crítico, el puñado de acciones que mueven todo lo demás.",
     title: "Por qué fallas (y no es tu culpa)",
     narrative:
       "Antes de todo esto, mi vida promediaba un 3. No porque me pasaran cosas horribles, sino porque llevaba años en piloto automático, prometiéndome empezar 'el lunes que viene'. El primer cambio real no fue una rutina nueva — fue aceptar que el problema nunca fue mi disciplina.",
@@ -102,6 +135,14 @@ export const MODULES: CourseModule[] = [
     id: "pareto-en-tu-vida",
     phaseId: "fundamentos",
     order: 2,
+    concept: "pareto-8020",
+    recap:
+      "En el módulo 1 nombraste la causa raíz de tus fracasos. Ahora, en vez de pelear en diez frentes a la vez, vas a encontrar el único que realmente mueve la aguja.",
+    leadsTo:
+      "Con tu 20% nombrado, el módulo 3 lo convierte en un sistema diario tan pequeño que sea imposible fallar.",
+    callbacks: [
+      { moduleId: "por-que-fallas", fieldId: "causa_raiz", label: "Tu causa raíz del módulo 1" },
+    ],
     title: "El Principio de Pareto aplicado a tu vida",
     narrative:
       "Cuando encontre el Principio de Pareto, deje de intentar arreglar los diez frentes de mi vida al mismo tiempo. Elegi uno. En el momento no se sintió como un gran cambio. Visto desde ahora, fue el punto de quiebre real.",
@@ -141,6 +182,14 @@ export const MODULES: CourseModule[] = [
     id: "disena-tu-sistema",
     phaseId: "fundamentos",
     order: 3,
+    concept: "goal-vs-system",
+    recap:
+      "Ya tienes tu 20% crítico. Aquí lo transformas en un sistema — algo que haces un martes cualquiera a las 7am, no una meta lejana y vaga.",
+    leadsTo:
+      "Diseñado el sistema, el módulo 4 te blinda para el momento donde casi todos abandonan: las primeras 72 horas.",
+    callbacks: [
+      { moduleId: "pareto-en-tu-vida", fieldId: "accion_critica", label: "Tu 20% crítico" },
+    ],
     title: "Diseña tu sistema (no tu meta)",
     narrative:
       "Mi primer 'hábito' fue tan pequeño que me daba un poco de vergüenza contarlo. Funciono precisamente por eso: era imposible fallarlo, incluso en los días donde todo lo demás se caia.",
@@ -191,6 +240,14 @@ export const MODULES: CourseModule[] = [
     id: "primeras-72-horas",
     phaseId: "fundamentos",
     order: 4,
+    concept: "never-twice",
+    recap:
+      "Con tu sistema y tu primer hábito ya diseñados, ahora proteges el arranque — porque el 80% de la gente abandona en los primeros 3 días.",
+    leadsTo:
+      "Superadas las 72 horas, la Fase 2 busca el hábito que jala a todos los demás sin esfuerzo extra: tu ancla.",
+    callbacks: [
+      { moduleId: "disena-tu-sistema", fieldId: "habito_1", label: "Tu primer hábito" },
+    ],
     title: "Las primeras 72 horas",
     narrative:
       "Falle al tercer día. Estuve a punto de tirar todo por la borda. La única diferencia esta vez fue que ya tenia decidido, de antemano, exactamente que iba a hacer cuando fallara.",
@@ -236,6 +293,15 @@ export const MODULES: CourseModule[] = [
     id: "habito-ancla",
     phaseId: "habito-ancla",
     order: 5,
+    concept: "anchor-cascade",
+    recap:
+      "Ya sostienes (o estás por sostener) tu primer hábito y tienes un plan para cuando falles. Ahora identificas cuál de tus hábitos es el ancla: el que, al mejorar, arrastra a los demás.",
+    leadsTo:
+      "Con tu ancla clara, la Fase 3 la vuelve sostenible de verdad: identidad, entorno y las recaídas que vas a tener sí o sí.",
+    callbacks: [
+      { moduleId: "disena-tu-sistema", fieldId: "habito_1", label: "Tu primer hábito" },
+      { moduleId: "pareto-en-tu-vida", fieldId: "accion_critica", label: "Tu 20% crítico" },
+    ],
     title: "Encuentra tu hábito ancla",
     narrative:
       "En el mes 3 me di cuenta de que un solo hábito — dormir a una hora fija — estaba arrastrando a todos los demás sin que yo hiciera nada extra. Ese fue mi hábito ancla, y no lo elegi a propósito: lo descubri mirando hacia atrás.",
@@ -289,6 +355,14 @@ export const MODULES: CourseModule[] = [
     id: "identidad-vs-resultado",
     phaseId: "sostenibilidad",
     order: 6,
+    concept: "identity-votes",
+    recap:
+      "Tienes tu hábito ancla. Ahora lo conviertes en identidad — porque un resultado se pierde, pero 'soy alguien que hace esto' sostiene el hábito cuando el resultado todavía no llega.",
+    leadsTo:
+      "Con la identidad clara, el módulo 7 diseña tu entorno para que actuar como esa persona cueste menos fuerza de voluntad.",
+    callbacks: [
+      { moduleId: "habito-ancla", fieldId: "habito_ancla", label: "Tu hábito ancla" },
+    ],
     title: "Identidad vs. resultado",
     narrative:
       "Deje de decirme 'quiero ser alguien que hace ejercicio' y empece a decir 'soy alguien que entrena'. El lenguaje cambió antes que el resultado — y fue el lenguaje el que sostuvo el cambio en los días difíciles.",
@@ -331,6 +405,14 @@ export const MODULES: CourseModule[] = [
     id: "disena-tu-entorno",
     phaseId: "sostenibilidad",
     order: 7,
+    concept: "friction-meter",
+    recap:
+      "Ya sabes quién quieres ser. Ahora quitas del camino la fricción que te obliga a gastar fuerza de voluntad para actuar como esa persona.",
+    leadsTo:
+      "Con el entorno a tu favor, el módulo 8 te prepara para lo inevitable: la recaída, y cómo salir de ella sin drama.",
+    callbacks: [
+      { moduleId: "habito-ancla", fieldId: "habito_ancla", label: "El hábito que vas a proteger" },
+    ],
     title: "Diseña tu entorno",
     narrative:
       "Cambié mi cuarto, mi teléfono y mi cocina antes de cambiarme a mi mismo. Rediseñar el espacio fue más efectivo que cualquier cantidad de fuerza de voluntad que intente reunir antes.",
@@ -373,6 +455,14 @@ export const MODULES: CourseModule[] = [
     id: "maneja-recaidas",
     phaseId: "sostenibilidad",
     order: 8,
+    concept: "two-stories",
+    recap:
+      "Identidad y entorno listos. Ahora llega el examen real del sistema: qué haces el día — o el mes — en que falles. No si vas a fallar, sino qué historia te cuentas después.",
+    leadsTo:
+      "Sabiendo recuperarte sin drama, la Fase 4 expande: apilar hábitos, leer tu propio progreso y quedarte con algo tuyo.",
+    callbacks: [
+      { moduleId: "primeras-72-horas", fieldId: "plan_de_fallo", label: "Tu plan para cuando falles (módulo 4)" },
+    ],
     title: "Maneja las recaidas",
     narrative:
       "Hubo un mes completo, el quinto, donde no cumpli casi nada. Lo que me saco de ahí no fue la motivación — fue negarme a tratarme como una victima de mi propio mal mes.",
@@ -424,6 +514,14 @@ export const MODULES: CourseModule[] = [
     id: "apila-tus-habitos",
     phaseId: "expansion",
     order: 9,
+    concept: "habit-chain",
+    recap:
+      "Tu ancla ya es estable y sabes recuperarte de una recaída. Ahora usas ese hábito automático como disparador del siguiente, sin gastar más fuerza de voluntad.",
+    leadsTo:
+      "Con tu cadena creciendo, el módulo 10 te enseña a leer, con datos y no con sensaciones, si de verdad está funcionando: tu Wheel of Life.",
+    callbacks: [
+      { moduleId: "habito-ancla", fieldId: "habito_ancla", label: "Tu ancla (primer eslabón)" },
+    ],
     title: "Apila tus hábitos",
     narrative:
       "Para el mes 6 ya no sostenia un solo hábito. Sostenia cuatro, apilados uno sobre el otro, sin que se sintiera como más esfuerzo — porque cada uno uso al anterior como disparador.",
@@ -456,6 +554,14 @@ export const MODULES: CourseModule[] = [
     id: "wheel-of-life-brujula",
     phaseId: "expansion",
     order: 10,
+    concept: "compass",
+    recap:
+      "Llevas semanas ejecutando y encadenando hábitos. Ahora usas tu Wheel of Life no como calificación, sino como brújula para decidir dónde apuntar el próximo mes.",
+    leadsTo:
+      "Solo queda el cierre del curso: quedarte con algo escrito por ti, para ti — tu mantra personal.",
+    callbacks: [
+      { moduleId: "pareto-en-tu-vida", fieldId: "accion_critica", label: "El 20% con el que empezaste" },
+    ],
     title: "Tu Wheel of Life como brujula",
     narrative:
       "El mes 8 medi mi Wheel of Life y marco un 9. No llore de felicidad — senti, simplemente, que por fin el número coincidia con lo que ya sabia por dentro desde hacia semanas.",
@@ -492,6 +598,11 @@ export const MODULES: CourseModule[] = [
     id: "tu-mantra-personal",
     phaseId: "expansion",
     order: 11,
+    concept: "mantra-collection",
+    recap:
+      "Recorriste las cuatro fases: entendiste por qué fallabas, encontraste tu 20%, lo volviste sistema, sostuviste tu ancla, la volviste identidad y aprendiste a recuperarte. Este es el cierre.",
+    leadsTo:
+      "Aquí termina la teoría, pero no el sistema: tu habit tracker y tu Wheel of Life siguen vivos, mes tras mes. El curso te dio el mapa; el camino lo sostienes tú.",
     title: "Tu mantra personal",
     narrative:
       "Con el tiempo, mis propias frases se volvieron parte del sistema. No las escribi para inspirar a nadie más — las escribi para recordarme a mi mismo, a las 6am, por que me estaba levantando.",
@@ -537,4 +648,23 @@ export function getModuleById(id: string) {
 
 export function getPhaseById(id: string) {
   return PHASES.find((p) => p.id === id) ?? null;
+}
+
+/**
+ * Turns a stored exercise answer into readable text for a callback. Choice
+ * fields are stored as option values, so we map them back to their label;
+ * text/textarea/scale answers are returned as-is. Empty answers return "".
+ */
+export function resolveFieldValue(
+  moduleId: string,
+  fieldId: string,
+  storedValue: string | undefined
+): string {
+  const value = (storedValue ?? "").trim();
+  if (!value) return "";
+  const field = getModuleById(moduleId)?.fields.find((f) => f.id === fieldId);
+  if (field?.type === "choice") {
+    return field.options?.find((o) => o.value === value)?.label ?? value;
+  }
+  return value;
 }

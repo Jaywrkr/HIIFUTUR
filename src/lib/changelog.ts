@@ -1,5 +1,14 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.25.0",
+    date: "2026-07-10",
+    changes: [
+      "Cada módulo ahora tiene una ilustración de su idea clave (batería de voluntad, 80/20, cadena de hábitos, brújula...).",
+      "El curso hila mejor: cada módulo dice de dónde vienes y a dónde vas.",
+      "Los módulos retoman tus propias respuestas anteriores — ya no empiezas de cero en cada uno.",
+    ],
+  },
+  {
     version: "2.24.0",
     date: "2026-07-10",
     changes: [
