@@ -64,6 +64,13 @@
       "when": 1783646908584,
       "tag": "0008_living_scarlet_spider",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1783768383549,
+      "tag": "0009_famous_lenny_balinger",
+      "breakpoints": true
     }
   ]
 }

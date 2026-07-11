@@ -121,6 +121,42 @@ export async function toggleHabitToday(habitId: string) {
   revalidatePath("/dashboard");
 }
 
+/** Idempotent "mark done" for a given user+habit — always ends in the
+ * checked state, never un-checks. Used by the push notification's "Marcar
+ * hecho" action: tapping it twice shouldn't undo the check-in. Takes the
+ * user id directly instead of calling requireUser() so it can be called
+ * from a plain Route Handler (@/app/api/habits/[id]/check) that resolves
+ * auth itself and wants a clean 401 instead of a redirect. */
+export async function markHabitDone(userId: string, habitId: string): Promise<{ ok: boolean }> {
+  const [habit] = await db
+    .select()
+    .from(habits)
+    .where(and(eq(habits.id, habitId), eq(habits.userId, userId)))
+    .limit(1);
+
+  if (!habit) return { ok: false };
+
+  const date = todayKey();
+  const [existingLog] = await db
+    .select()
+    .from(habitLogs)
+    .where(and(eq(habitLogs.habitId, habitId), eq(habitLogs.date, date)))
+    .limit(1);
+
+  if (!existingLog) {
+    await db.insert(habitLogs).values({ habitId, date, completed: true });
+    await db
+      .update(users)
+      .set({ points: sql`${users.points} + ${POINTS_PER_CHECK}` })
+      .where(eq(users.id, userId));
+    await trackEvent(userId, "habit_checked", { category: habit.category, source: "push" });
+  }
+
+  revalidatePath("/habits");
+  revalidatePath("/dashboard");
+  return { ok: true };
+}
+
 export async function updateHabit(
   habitId: string,
   _prevState: HabitFormState,

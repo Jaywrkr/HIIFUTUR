@@ -135,6 +135,20 @@ export const analyticsEvents = pgTable("analytics_events", {
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
+// One row per browser/device subscribed to push. A user can have several
+// (phone + laptop); each is addressed independently and removed on its own
+// if the browser reports it's gone (404/410 from the push service).
+export const pushSubscriptions = pgTable("push_subscriptions", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  endpoint: text("endpoint").notNull().unique(),
+  p256dh: text("p256dh").notNull(),
+  auth: text("auth").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
 export const moduleProgress = pgTable(
   "module_progress",
   {

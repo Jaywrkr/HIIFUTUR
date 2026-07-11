@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { DeleteAccountSection } from "@/components/DeleteAccountSection";
 import { EditNameSection } from "@/components/EditNameSection";
+import { PushNotificationToggle } from "@/components/PushNotificationToggle";
 import { requireUser } from "@/lib/session";
 import { getUserById, getHabitsForUser, getHabitLogs, getHabitFreezes } from "@/lib/queries";
 import { computeStreak, daysBetween, todayKey, addDays } from "@/lib/habit-utils";
@@ -157,6 +158,16 @@ export default async function CuentaPage() {
             </div>
             <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
           </Link>
+
+          <div className="px-6 py-5 flex items-center gap-4">
+            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
+              🔔
+            </span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs uppercase tracking-widest text-neutral-500 mb-2">Notificaciones push</p>
+              <PushNotificationToggle />
+            </div>
+          </div>
         </div>
 
         <div className="card !p-0 mb-6 divide-y divide-line overflow-hidden">

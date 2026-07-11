@@ -5,6 +5,7 @@ import { habits, habitLogs, users } from "@/db/schema";
 import { todayKey } from "@/lib/habit-utils";
 import { getMantraOfTheDay } from "@/lib/mantras";
 import { sendReminderEmail } from "@/lib/email";
+import { sendPushToUser } from "@/lib/push";
 import { signUnsubscribeToken } from "@/lib/reminder-token";
 
 // Triggered daily by Vercel Cron (see vercel.json). Reminds users who have an
@@ -26,6 +27,7 @@ export async function GET(request: NextRequest) {
       userId: users.id,
       email: users.email,
       lastReminderSentAt: users.lastReminderSentAt,
+      habitId: habits.id,
       habitName: habits.name,
     })
     .from(habits)
@@ -53,6 +55,12 @@ export async function GET(request: NextRequest) {
     const unsubscribeUrl = `${appUrl}/api/reminders/unsubscribe?uid=${row.userId}&token=${token}`;
 
     await sendReminderEmail(row.email, row.habitName, mantra, appUrl, unsubscribeUrl);
+    await sendPushToUser(row.userId, {
+      title: `Hoy todavía no has hecho: ${row.habitName}`,
+      body: "No pasa nada si es tarde. Tienes hasta 2 fallos por ciclo.",
+      url: `${appUrl}/dashboard`,
+      habitId: row.habitId,
+    });
     await db.update(users).set({ lastReminderSentAt: new Date() }).where(eq(users.id, row.userId));
     sent += 1;
   }
