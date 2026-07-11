@@ -10,6 +10,84 @@ function escapeHtml(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
+const COLORS = {
+  bg: "#0F0C09",
+  card: "#181310",
+  border: "#2A2118",
+  text: "#F2ECE2",
+  muted: "#9C9082",
+  faint: "#544C40",
+  accent: "#E3C9A0",
+};
+
+/** Table-based shell shared by every transactional email — the same dark/
+ * gold look as the app, wrapped in the boilerplate HTML email clients need
+ * (Outlook/Gmail don't reliably render flexbox, so everything below is
+ * tables + inline styles). `preheader` is the invisible preview text shown
+ * next to the subject line in inbox lists. */
+function emailShell({
+  preheader,
+  kicker,
+  bodyHtml,
+  footerHtml,
+}: {
+  preheader: string;
+  kicker: string;
+  bodyHtml: string;
+  footerHtml?: string;
+}): string {
+  return `
+<!DOCTYPE html>
+<html lang="es">
+  <body style="margin:0; padding:0; background:${COLORS.bg}; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
+    <div style="display:none; max-height:0; overflow:hidden; opacity:0;">${escapeHtml(preheader)}</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${COLORS.bg}; padding: 40px 16px;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="480" cellpadding="0" cellspacing="0" style="max-width: 480px; width: 100%; background:${COLORS.card}; border: 1px solid ${COLORS.border}; border-radius: 20px; overflow: hidden;">
+            <tr>
+              <td style="padding: 36px 32px 8px;">
+                <p style="margin:0; color:${COLORS.accent}; text-transform:uppercase; letter-spacing:0.2em; font-size:11px; font-weight:700;">EJECUTA</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 32px 0;">
+                <p style="margin:0 0 20px; color:${COLORS.muted}; text-transform:uppercase; letter-spacing:0.14em; font-size:11px; font-weight:600;">${escapeHtml(kicker)}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 0 32px 36px; color:${COLORS.text}; font-size:15px; line-height:1.6;">
+                ${bodyHtml}
+              </td>
+            </tr>
+          </table>
+          <table role="presentation" width="480" cellpadding="0" cellspacing="0" style="max-width: 480px; width: 100%;">
+            <tr>
+              <td style="padding: 20px 8px 0; color:${COLORS.faint}; font-size:11px; line-height:1.6; text-align:center;">
+                ${footerHtml ?? "EJECUTA — Sistema de Ejecución Sostenible"}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>`;
+}
+
+function ctaButton(url: string, label: string): string {
+  return `
+    <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 24px 0 4px;">
+      <tr>
+        <td style="border-radius: 999px; background:${COLORS.accent};">
+          <a href="${url}" style="display:inline-block; padding: 13px 28px; color:#0F0C09; font-weight:700; font-size:14px; text-decoration:none; border-radius:999px;">
+            ${escapeHtml(label)}
+          </a>
+        </td>
+      </tr>
+    </table>`;
+}
+
 export async function sendPasswordResetEmail(to: string, resetUrl: string) {
   if (!resend) {
     // No email provider configured (local dev, or not set up yet in prod).
@@ -22,20 +100,18 @@ export async function sendPasswordResetEmail(to: string, resetUrl: string) {
     from: process.env.EMAIL_FROM ?? "EJECUTA <onboarding@resend.dev>",
     to,
     subject: "Recupera el acceso a tu cuenta de EJECUTA",
-    html: `
-      <div style="font-family: sans-serif; background: #0F0C09; color: #F2ECE2; padding: 32px;">
-        <p style="color: #E3C9A0; text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px;">EJECUTA</p>
-        <p style="font-size: 16px;">Pediste restablecer tu contraseña.</p>
-        <p>
-          <a href="${resetUrl}" style="background: #E3C9A0; color: #000; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 999px; display: inline-block;">
-            Elegir nueva contraseña
-          </a>
+    html: emailShell({
+      preheader: "Elige una contraseña nueva — el enlace expira en 1 hora.",
+      kicker: "Recuperar acceso",
+      bodyHtml: `
+        <p style="margin:0 0 4px; font-size:19px; font-weight:800; color:${COLORS.text};">Pediste restablecer tu contraseña.</p>
+        <p style="margin:8px 0 0; color:${COLORS.muted};">Un solo clic y eliges una nueva.</p>
+        ${ctaButton(resetUrl, "Elegir nueva contraseña")}
+        <p style="margin:24px 0 0; color:${COLORS.faint}; font-size:12px;">
+          Este enlace expira en 1 hora. Si no pediste esto, ignora el correo — tu cuenta sigue segura.
         </p>
-        <p style="color: #8a8072; font-size: 12px;">
-          Este enlace expira en 1 hora. Si no pediste esto, ignora el correo.
-        </p>
-      </div>
-    `,
+      `,
+    }),
   });
 }
 
@@ -55,24 +131,28 @@ export async function sendReminderEmail(
     from: process.env.EMAIL_FROM ?? "EJECUTA <onboarding@resend.dev>",
     to,
     subject: `Hoy todavía no has hecho: ${habitName}`,
-    html: `
-      <div style="font-family: sans-serif; background: #0F0C09; color: #F2ECE2; padding: 32px;">
-        <p style="color: #E3C9A0; text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px;">EJECUTA</p>
-        <p style="font-size: 20px; font-weight: bold; margin: 16px 0 8px;">Todavía no marcas "${habitName}" hoy.</p>
-        <p style="color: #8a8072; font-size: 14px; margin-bottom: 20px;">No pasa nada si es tarde. Tienes hasta 2 fallos dentro del ciclo — no se trata de ser perfecto, se trata de no dejarlo ir.</p>
-        <p>
-          <a href="${appUrl}" style="background: #E3C9A0; color: #000; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 999px; display: inline-block;">
-            Marcarlo ahora
-          </a>
+    html: emailShell({
+      preheader: `Todavía no marcas "${habitName}" hoy. Tienes hasta 2 fallos por ciclo.`,
+      kicker: "Recordatorio de hoy",
+      bodyHtml: `
+        <p style="margin:0 0 4px; font-size:19px; font-weight:800; color:${COLORS.text};">
+          Todavía no marcas &ldquo;${escapeHtml(habitName)}&rdquo; hoy.
         </p>
-        <p style="color: #F2ECE2; font-size: 14px; font-style: italic; margin-top: 28px; border-left: 2px solid #E3C9A0; padding-left: 12px;">
-          &ldquo;${mantra}&rdquo;
+        <p style="margin:8px 0 0; color:${COLORS.muted};">
+          No pasa nada si es tarde. Tienes hasta 2 fallos dentro del ciclo — no se trata de ser
+          perfecto, se trata de no dejarlo ir.
         </p>
-        <p style="color: #544c40; font-size: 11px; margin-top: 32px;">
-          <a href="${unsubscribeUrl}" style="color: #544c40;">Dejar de recibir estos recordatorios</a>
-        </p>
-      </div>
-    `,
+        ${ctaButton(appUrl, "Marcarlo ahora")}
+        <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top: 28px;">
+          <tr>
+            <td style="border-left: 2px solid ${COLORS.accent}; padding-left: 14px; color:${COLORS.text}; font-size:13px; font-style:italic;">
+              &ldquo;${escapeHtml(mantra)}&rdquo;
+            </td>
+          </tr>
+        </table>
+      `,
+      footerHtml: `<a href="${unsubscribeUrl}" style="color:${COLORS.faint};">Dejar de recibir estos recordatorios</a>`,
+    }),
   });
 }
 
@@ -93,13 +173,14 @@ export async function sendFeedbackNotification(
     to,
     reply_to: userEmail,
     subject: `Feedback en EJECUTA de ${userEmail}`,
-    html: `
-      <div style="font-family: sans-serif; background: #0F0C09; color: #F2ECE2; padding: 32px;">
-        <p style="color: #E3C9A0; text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px;">EJECUTA · Feedback</p>
-        <p style="font-size: 14px; color: #8a8072;">De: ${escapeHtml(userEmail)}</p>
-        ${pageUrl ? `<p style="font-size: 14px; color: #8a8072;">Página: ${escapeHtml(pageUrl)}</p>` : ""}
-        <p style="font-size: 16px; white-space: pre-wrap; margin-top: 16px;">${escapeHtml(message)}</p>
-      </div>
-    `,
+    html: emailShell({
+      preheader: message.slice(0, 120),
+      kicker: "Feedback recibido",
+      bodyHtml: `
+        <p style="margin:0 0 2px; color:${COLORS.muted}; font-size:13px;">De: <span style="color:${COLORS.text};">${escapeHtml(userEmail)}</span></p>
+        ${pageUrl ? `<p style="margin:0 0 16px; color:${COLORS.muted}; font-size:13px;">Página: <span style="color:${COLORS.text};">${escapeHtml(pageUrl)}</span></p>` : `<div style="margin-bottom:16px;"></div>`}
+        <p style="margin:0; white-space:pre-wrap; color:${COLORS.text};">${escapeHtml(message)}</p>
+      `,
+    }),
   });
 }
