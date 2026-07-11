@@ -28,36 +28,31 @@ const PHILOSOPHY = [
 const WEB_FEATURES = [
   {
     icon: "⚡",
-    title: "Cero configuración",
-    description: "Abre el link y listo. Nada que instalar, nada que actualizar.",
+    title: "Cero instalación",
+    description: "Abres el link y ya. Nada que descargar, nada que actualizar, nada que te pida espacio en el celular.",
   },
   {
     icon: "🔁",
-    title: "Misma cuenta, en cualquier lugar",
-    description: "Celular, laptop, tablet. Tu racha te sigue a ti, no al dispositivo.",
-  },
-  {
-    icon: "🖥️",
-    title: "Funciona en cualquier pantalla",
-    description: "Marca tu hábito desde el celular en la mañana o desde la laptop en la oficina.",
+    title: "Tu progreso te sigue a ti",
+    description: "Empieza en el celular, sigue en la laptop, ciérralo en la tablet antes de dormir. La cuenta es tuya, no del aparato.",
   },
 ];
 
-const UPGRADE_FEATURES = [
+const SYSTEM_PARTS = [
   {
-    kicker: "Módulos",
-    title: "Aprender en partes chicas",
-    description: "11 módulos cortos basados en el Principio de Pareto. Ninguno te va a tomar una tarde entera.",
+    kicker: "Aprendizaje",
+    title: "11 módulos, en partes chicas",
+    description: "Basados en el Principio de Pareto. Ninguno te toma una tarde entera — los ganas con tu propia ejecución, no leyéndolos de corrido.",
   },
   {
-    kicker: "Wheel of Life",
-    title: "Mide lo que importa",
-    description: "Cada 30 días, un vistazo honesto a dónde estás. Sin diez apps distintas para cada área de tu vida.",
+    kicker: "Acción",
+    title: "Hasta 5 hábitos, uno a la vez",
+    description: "Actívalos de a poco — el primero antes de pensar en el segundo. Marcarlos es literal: un tap, y tu racha sigue viva.",
   },
   {
-    kicker: "Todo en uno",
-    title: "Una sola app, no cinco",
-    description: "Módulos, hábitos y medición en el mismo lugar. No cinco apps distintas que dejaste de abrir.",
+    kicker: "Control",
+    title: "Wheel of Life cada 30 días",
+    description: "Una foto honesta de las áreas que elegiste. No es examen, es brújula — te dice hacia dónde te estás moviendo.",
   },
 ];
 
@@ -128,7 +123,7 @@ const WHY_WE_BUILT_IT: RevealWord[] = [
 const FOR_YOU_IF = [
   "Ya intentaste 100 apps de hábitos y las dejaste en la semana 2.",
   MANTRAS[15], // "Te sientes mal porque sabes lo que se supone que debes hacer y no lo estás haciendo."
-  "Estás cansado de sentirte mal por 'no tener disciplina'.",
+  "Cada lunes prometes empezar de nuevo — y cada lunes se siente igual de lejos.",
   "Quieres resultados reales, no una racha de emojis.",
 ];
 
@@ -253,6 +248,120 @@ export default async function HomePage() {
 
       <MarqueeTicker />
 
+      {/* Agitación: las reglas que ya te dijeron, y que no funcionaron —
+          entra antes de pedirte nada, para que el resto tenga contexto. */}
+      <Reveal>
+        <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 text-center">
+          <p className="kicker mx-auto">🚫 Las reglas viejas</p>
+          <p className="text-sm text-neutral-400 mb-10">Por años te dijeron...</p>
+
+          <div className="flex flex-col gap-1 mb-10">
+            {OLD_RULES.map((rule) => (
+              <p
+                key={rule}
+                className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-neutral-700 line-through decoration-red-500/70"
+                style={{ textDecorationThickness: "3px" }}
+              >
+                {rule}
+              </p>
+            ))}
+          </div>
+
+          <p className="text-sm text-neutral-400 mb-6">
+            Y de alguna forma... sigues sin sostener nada.
+          </p>
+          <p className="text-2xl sm:text-3xl font-extrabold leading-snug">
+            Tal vez el problema no eres tu.{" "}
+            <span className="text-accent">Tal vez son las reglas.</span>
+          </p>
+        </div>
+      </Reveal>
+
+      {/* Credibilidad: por qué lo hicimos, quién lo escribió, para quién es,
+          y el truco central (hábito ancla) — todo en un mismo bloque. */}
+      <Reveal>
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="text-center mb-16">
+            <p className="kicker mx-auto">💭 Por qué lo hicimos</p>
+            <WordReveal
+              words={WHY_WE_BUILT_IT}
+              className="text-3xl sm:text-4xl font-extrabold leading-snug tracking-tight max-w-3xl mx-auto"
+            />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-16">
+            <PhoneMantra mantra={MANTRAS[9]} />
+            <div>
+              <p className="kicker">No lo escribió un equipo de marketing</p>
+              <div className="border-l-2 border-l-accent pl-6 flex flex-col gap-4 mt-4">
+                {JAY_STORY.map((line) => (
+                  <ScrollTextLine key={line}>
+                    <span className="text-lg font-bold leading-snug">{line}</span>
+                  </ScrollTextLine>
+                ))}
+                <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="card">
+              <p className="kicker">Esto es para ti si...</p>
+              <div className="flex flex-col gap-1 mt-4">
+                {FOR_YOU_IF.map((line) => (
+                  <div key={line} className="group flex items-start gap-3 border-b border-line py-3 last:border-b-0">
+                    <span className="text-accent mt-0.5 shrink-0">—</span>
+                    <p className="text-sm text-neutral-300 group-hover:text-white transition-colors">{line}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col justify-center">
+              <p className="kicker">El truco</p>
+              <p className="font-extrabold text-2xl mb-2">Encuentra tu hábito ancla</p>
+              <p className="muted">
+                El único hábito que, si lo sostienes, jala a todos los demás sin que hagas nada
+                extra. No es el más vistoso ni el que más te emociona — es el que arrastra a los
+                demás con que tú lo sostengas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* La filosofía: la respuesta corta a "por qué esto sí funciona". */}
+      <Reveal>
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="text-center mb-16">
+            <p className="kicker mx-auto">🎯 Cómo vemos las cosas</p>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+              La forma <span className="text-accent">EJECUTA</span>
+            </h2>
+            <p className="text-sm text-neutral-400 max-w-xl mx-auto">
+              Tres ideas, nada más. Empieza pequeño, sostenlo todos los días, y disfrutalo.
+              Si no es sostenible, no sirve.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <PhoneMantra mantra={MANTRAS[11]} />
+            <div className="flex flex-col gap-6">
+              {PHILOSOPHY.map((item, i) => (
+                <div key={item.title} className="card">
+                  <p className="text-accent text-sm font-bold tracking-widest mb-2">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p className="font-extrabold text-xl mb-2">{item.title}</p>
+                  <p className="muted">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* Encaje práctico: dónde vive esto (la web app), antes de entrar al
+          detalle de cómo está armado por dentro. */}
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="grid md:grid-cols-2 gap-16 items-center py-16 md:py-24">
           <Reveal>
@@ -285,57 +394,35 @@ export default async function HomePage() {
         </div>
       </div>
 
+      {/* El sistema por dentro, en el mismo lenguaje que usa la app una vez
+          adentro: Aprendizaje + Acción + Control. */}
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
-          <div className="text-center mb-16">
-            <p className="kicker mx-auto">🎯 Cómo vemos las cosas</p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
-              La forma <span className="text-accent">EJECUTA</span>
-            </h2>
-            <p className="text-sm text-neutral-400 max-w-xl mx-auto">
-              Tres ideas, nada más. Empieza pequeño, sostenlo todos los días, y disfrutalo.
-              Si no es sostenible, no sirve.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <PhoneMantra mantra={MANTRAS[11]} />
-            <div className="flex flex-col gap-6">
-              {PHILOSOPHY.map((item, i) => (
-                <div key={item.title} className="card">
-                  <p className="text-accent text-sm font-bold tracking-widest mb-2">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <p className="font-extrabold text-xl mb-2">{item.title}</p>
-                  <p className="muted">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Reveal>
-
-      <Reveal>
-        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
-          <p className="kicker">✨ Es una mejora en todo</p>
+          <p className="kicker">🧭 Cómo funciona, en 3 partes</p>
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
-            Aprende. Actúa. Mide. Repite.
+            Aprendizaje. Acción. Control.
           </h2>
           <p className="text-sm leading-relaxed text-neutral-300 max-w-xl mb-12">
-            EJECUTA mejora como ejecutas tu vida, sin intentar convertirte en otra persona.
-            Si sostenerlo te hace sentir peor, está mal diseñado.
+            Curso, hábitos y Wheel of Life no son tres apps distintas — son las tres partes del
+            mismo sistema. Aprendes, actúas, mides, y repites, no porque te obliguen, sino porque
+            ya es parte de tu día.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <p className="kicker">{UPGRADE_FEATURES[0].kicker}</p>
-              <p className="font-extrabold text-2xl mb-2">{UPGRADE_FEATURES[0].title}</p>
-              <p className="muted">{UPGRADE_FEATURES[0].description}</p>
+              <p className="kicker">{SYSTEM_PARTS[0].kicker}</p>
+              <p className="font-extrabold text-2xl mb-2">{SYSTEM_PARTS[0].title}</p>
+              <p className="muted">{SYSTEM_PARTS[0].description}</p>
             </div>
             <div className="card">
-              <p className="kicker">{UPGRADE_FEATURES[1].kicker}</p>
-              <p className="font-extrabold text-2xl mb-2">{UPGRADE_FEATURES[1].title}</p>
-              <p className="muted">{UPGRADE_FEATURES[1].description}</p>
+              <p className="kicker">{SYSTEM_PARTS[1].kicker}</p>
+              <p className="font-extrabold text-2xl mb-2">{SYSTEM_PARTS[1].title}</p>
+              <p className="muted">{SYSTEM_PARTS[1].description}</p>
+            </div>
+            <div className="card">
+              <p className="kicker">{SYSTEM_PARTS[2].kicker}</p>
+              <p className="font-extrabold text-2xl mb-2">{SYSTEM_PARTS[2].title}</p>
+              <p className="muted">{SYSTEM_PARTS[2].description}</p>
             </div>
             <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col sm:flex-row items-center gap-6">
               <div className="flex-1">
@@ -345,15 +432,12 @@ export default async function HomePage() {
               </div>
               <PhoneMantra mantra={MANTRAS[4]} />
             </div>
-            <div className="card">
-              <p className="kicker">{UPGRADE_FEATURES[2].kicker}</p>
-              <p className="font-extrabold text-2xl mb-2">{UPGRADE_FEATURES[2].title}</p>
-              <p className="muted">{UPGRADE_FEATURES[2].description}</p>
-            </div>
           </div>
         </div>
       </Reveal>
 
+      {/* El pedido: ahora que ya construimos confianza y explicamos el
+          sistema, recién aquí llega el precio. */}
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 text-center">
           <p className="kicker mx-auto">💪 Empieza donde estes</p>
@@ -412,87 +496,11 @@ export default async function HomePage() {
       </Reveal>
 
       <Reveal>
-        <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 text-center">
-          <p className="kicker mx-auto">🚫 Las reglas viejas</p>
-          <p className="text-sm text-neutral-400 mb-10">Por años te dijeron...</p>
-
-          <div className="flex flex-col gap-1 mb-10">
-            {OLD_RULES.map((rule) => (
-              <p
-                key={rule}
-                className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-neutral-700 line-through decoration-red-500/70"
-                style={{ textDecorationThickness: "3px" }}
-              >
-                {rule}
-              </p>
-            ))}
-          </div>
-
-          <p className="text-sm text-neutral-400 mb-6">
-            Y de alguna forma... sigues sin sostener nada.
-          </p>
-          <p className="text-2xl sm:text-3xl font-extrabold leading-snug">
-            Tal vez el problema no eres tu.{" "}
-            <span className="text-accent">Tal vez son las reglas.</span>
-          </p>
-        </div>
-      </Reveal>
-
-      <Reveal>
-        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
-          <div className="text-center mb-16">
-            <p className="kicker mx-auto">💭 Por qué lo hicimos</p>
-            <WordReveal
-              words={WHY_WE_BUILT_IT}
-              className="text-3xl sm:text-4xl font-extrabold leading-snug tracking-tight max-w-3xl mx-auto"
-            />
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-16">
-            <PhoneMantra mantra={MANTRAS[9]} />
-            <div>
-              <p className="kicker">No lo escribió un equipo de marketing</p>
-              <div className="border-l-2 border-l-accent pl-6 flex flex-col gap-4 mt-4">
-                {JAY_STORY.map((line) => (
-                  <ScrollTextLine key={line}>
-                    <span className="text-lg font-bold leading-snug">{line}</span>
-                  </ScrollTextLine>
-                ))}
-                <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="card">
-              <p className="kicker">Esto es para ti si...</p>
-              <div className="flex flex-col gap-1 mt-4">
-                {FOR_YOU_IF.map((line) => (
-                  <div key={line} className="group flex items-start gap-3 border-b border-line py-3 last:border-b-0">
-                    <span className="text-accent mt-0.5 shrink-0">—</span>
-                    <p className="text-sm text-neutral-300 group-hover:text-white transition-colors">{line}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col justify-center">
-              <p className="kicker">El truco</p>
-              <p className="font-extrabold text-2xl mb-2">Encuentra tu hábito ancla</p>
-              <p className="muted">
-                El único hábito que, si lo sostienes, jala a todos los demás sin esfuerzo extra.
-                No dietas, no despertar a las 5am, no 47 hábitos a la vez — uno solo, bien elegido.
-              </p>
-            </div>
-          </div>
-        </div>
-      </Reveal>
-
-      <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
           <div className="text-center mb-16">
             <p className="kicker mx-auto">❓ Preguntas que te estás haciendo</p>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-              Antes de que preguntes
+              Ya sé qué estás pensando
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
