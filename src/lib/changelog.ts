@@ -1,5 +1,12 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.40.0",
+    date: "2026-07-11",
+    changes: [
+      "La ilustración del hábito ancla (Módulo 5) ahora se ve como lo que es: una cascada real, paso a paso, en vez de tres cajas sueltas alrededor de un ancla.",
+    ],
+  },
+  {
     version: "2.39.0",
     date: "2026-07-11",
     changes: [
