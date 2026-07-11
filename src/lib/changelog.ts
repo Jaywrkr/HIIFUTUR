@@ -1,5 +1,28 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.36.0",
+    date: "2026-07-10",
+    changes: [
+      "Accesibilidad: navegar con teclado ahora muestra un anillo de foco visible en toda la app, y la sección activa del menú se marca correctamente para lectores de pantalla.",
+    ],
+  },
+  {
+    version: "2.35.0",
+    date: "2026-07-10",
+    changes: [
+      "La página de Wheel of Life carga mucho más rápido: reemplazamos la librería de gráficos por una versión propia y liviana, sin cambiar cómo se ve ni cómo funciona.",
+    ],
+  },
+  {
+    version: "2.34.0",
+    date: "2026-07-10",
+    changes: [
+      "Wheel of Life: cada área ahora explica qué mide, con un ejemplo (ej. Salud Física, Finanzas), tanto en la medición inicial como en las siguientes.",
+      "Antes de guardar cualquier medición del Wheel of Life, ahora se te avisa que no se podrá editar después y se te pide confirmar.",
+      "Footer nuevo en la landing: marca, contacto, Términos, Privacidad y aviso legal — antes solo había dos links sueltos.",
+    ],
+  },
+  {
     version: "2.33.0",
     date: "2026-07-10",
     changes: [

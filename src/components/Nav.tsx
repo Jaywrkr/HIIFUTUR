@@ -32,6 +32,7 @@ export function Nav() {
               <Link
                 key={l.href}
                 href={l.href}
+                aria-current={pathname.startsWith(l.href) ? "page" : undefined}
                 className={`app-nav-link ${pathname.startsWith(l.href) ? "app-nav-link-active" : ""}`}
               >
                 {l.label}
@@ -77,6 +78,7 @@ export function Nav() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
+                  aria-current={pathname.startsWith(l.href) ? "page" : undefined}
                   className={`py-3 text-xs uppercase tracking-widest font-bold border-b border-line/50 last:border-0 ${
                     pathname.startsWith(l.href) ? "text-accent" : "text-neutral-300"
                   }`}

@@ -10,16 +10,56 @@ export const LIFE_AREAS = [
 export const MAX_SELECTED_AREAS = 3;
 
 export const WHEEL_AREAS = [
-  { id: "salud_fisica", label: "Salud Fisica" },
-  { id: "nutrición", label: "Nutrición" },
-  { id: "ejercicio", label: "Ejercicio" },
-  { id: "relaciones", label: "Relaciones" },
-  { id: "trabajo_carrera", label: "Trabajo / Carrera" },
-  { id: "finanzas", label: "Finanzas" },
-  { id: "mentalidad", label: "Mentalidad" },
-  { id: "disciplina", label: "Disciplina" },
-  { id: "descanso", label: "Descanso" },
-  { id: "crecimiento_personal", label: "Crecimiento Personal" },
+  {
+    id: "salud_fisica",
+    label: "Salud Fisica",
+    description: "Energía y cómo se siente tu cuerpo día a día. Ej: dormir lo suficiente, no vivir agotado.",
+  },
+  {
+    id: "nutrición",
+    label: "Nutrición",
+    description: "Qué tan bien te alimentas, no cuánto pesas. Ej: comer variado, no saltarte comidas por flojera.",
+  },
+  {
+    id: "ejercicio",
+    label: "Ejercicio",
+    description: "Movimiento regular, no rendimiento atlético. Ej: caminar, entrenar, estirar — lo que hagas seguido.",
+  },
+  {
+    id: "relaciones",
+    label: "Relaciones",
+    description: "Calidad de tus vínculos cercanos: familia, pareja, amigos. Ej: ¿te sientes acompañado o aislado?",
+  },
+  {
+    id: "trabajo_carrera",
+    label: "Trabajo / Carrera",
+    description: "Qué tan realizado te sientes con lo que haces para vivir. Ej: crecimiento y propósito, no solo el sueldo.",
+  },
+  {
+    id: "finanzas",
+    label: "Finanzas",
+    description: "Tu relación con el dinero: control y tranquilidad. Ej: ¿sabes a dónde se va lo que ganas?",
+  },
+  {
+    id: "mentalidad",
+    label: "Mentalidad",
+    description: "Cómo te hablas a ti mismo ante los problemas. Ej: ¿te tratas con dureza o con calma?",
+  },
+  {
+    id: "disciplina",
+    label: "Disciplina",
+    description: "Qué tanto cumples lo que te propones sin depender del ánimo. Ej: hacer lo que dijiste, aunque no tengas ganas.",
+  },
+  {
+    id: "descanso",
+    label: "Descanso",
+    description: "Sueño y tiempo libre real, no solo horas en la cama. Ej: ¿te levantas descansado? ¿tienes tiempo para no hacer nada?",
+  },
+  {
+    id: "crecimiento_personal",
+    label: "Crecimiento Personal",
+    description: "Qué tanto estás aprendiendo o evolucionando. Ej: leer, un curso, reflexionar — no solo acumular información.",
+  },
 ] as const;
 
 export const HABIT_CATEGORIES = [

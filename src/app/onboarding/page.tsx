@@ -1,16 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { completeOnboarding, type OnboardingState } from "@/lib/onboarding-actions";
 import { LIFE_AREAS, MAX_SELECTED_AREAS, WHEEL_AREAS } from "@/lib/constants";
+import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 const initialState: OnboardingState = {};
 
-function SubmitButton() {
+function SubmitButton({ onOpenConfirm }: { onOpenConfirm: () => void }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} className="btn-primary w-full">
+    <button type="button" disabled={pending} onClick={onOpenConfirm} className="btn-primary w-full">
       {pending ? "GUARDANDO..." : "EMPEZAR MI SISTEMA"}
     </button>
   );
@@ -24,6 +25,8 @@ export default function OnboardingPage() {
     Object.fromEntries(WHEEL_AREAS.map((a) => [a.id, 5]))
   );
   const [state, formAction] = useFormState(completeOnboarding, initialState);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   function toggleArea(id: string) {
     setSelected((prev) => {
@@ -71,7 +74,7 @@ export default function OnboardingPage() {
             </button>
           </>
         ) : (
-          <form action={formAction}>
+          <form ref={formRef} action={formAction}>
             <h1 className="auth-title">Dónde estás hoy</h1>
             <p className="auth-sub">Del 1 al 10, sin filtro. Esta es tu linea base.</p>
 
@@ -125,6 +128,7 @@ export default function OnboardingPage() {
                     <span>{area.label}</span>
                     <span className="text-accent">{scores[area.id]}</span>
                   </div>
+                  <p className="text-xs text-neutral-500 mb-1.5">{area.description}</p>
                   <input
                     type="range"
                     min={1}
@@ -147,12 +151,24 @@ export default function OnboardingPage() {
                 ATRAS
               </button>
               <div className="flex-1">
-                <SubmitButton />
+                <SubmitButton onOpenConfirm={() => setConfirmOpen(true)} />
               </div>
             </div>
           </form>
         )}
       </div>
+
+      <ConfirmDialog
+        open={confirmOpen}
+        title="¿Confirmas tu línea base?"
+        body="Esta es tu punto de partida: una vez guardada, no vas a poder editarla — así puedes comparar contra ella de verdad en 30 días. Revísala una última vez si quieres."
+        confirmLabel="Sí, así estoy hoy"
+        onConfirm={() => {
+          setConfirmOpen(false);
+          formRef.current?.requestSubmit();
+        }}
+        onCancel={() => setConfirmOpen(false)}
+      />
     </div>
   );
 }
