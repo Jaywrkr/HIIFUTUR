@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.45.0",
+    date: "2026-07-11",
+    changes: [
+      "Los correos de recuperación de contraseña y recordatorio diario tienen diseño nuevo: tarjeta con el mismo look de la app en vez de texto suelto sobre fondo plano.",
+    ],
+  },
+  {
     version: "2.44.0",
     date: "2026-07-11",
     changes: [
