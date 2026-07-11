@@ -133,17 +133,27 @@ function NeverTwice() {
 }
 
 function AnchorCascade() {
-  const items = ["Energía", "Ánimo", "Relaciones"];
+  // Same chain as the module's own example ("dormir a una hora fija" ->
+  // energía -> entrenamiento -> ánimo -> relaciones): a real downstream
+  // cascade, not a hub fanning out to unrelated things — each step down
+  // and to the right, fading, is the one hábito ancla rippling outward.
+  const chain = ["Dormir a una hora fija", "Energía", "Entrenamiento", "Ánimo", "Relaciones"];
   return (
-    <div className="flex items-center gap-2 flex-wrap">
-      <span className="rounded-lg bg-accent text-black text-xs font-bold px-3 py-2">Ancla</span>
-      {items.map((it) => (
-        <span key={it} className="flex items-center gap-2">
-          <span className="text-accent">→</span>
-          <span className="rounded-lg border border-accent/40 text-neutral-300 text-xs px-3 py-2">
-            {it}
+    <div className="flex flex-col gap-2">
+      {chain.map((item, i) => (
+        <div key={item} className="flex items-center gap-2" style={{ marginLeft: `${i * 18}px` }}>
+          {i > 0 ? <span className="text-accent text-sm shrink-0">↳</span> : null}
+          <span
+            className={`rounded-lg text-xs px-3 py-2 shrink-0 ${
+              i === 0
+                ? "bg-accent text-black font-bold"
+                : "border text-neutral-300"
+            }`}
+            style={i === 0 ? undefined : { borderColor: `rgba(227,201,160,${0.45 - i * 0.08})` }}
+          >
+            {i === 0 ? `Ancla · ${item}` : item}
           </span>
-        </span>
+        </div>
       ))}
     </div>
   );
