@@ -1,5 +1,13 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.38.0",
+    date: "2026-07-10",
+    changes: [
+      "Cuando el ciclo se reinicia, en vez de un aviso rojo de alarma ahora hay un momento real de reencuentro: qué pasó, qué conservas, y un botón para retomar hoy.",
+      "Arreglado: el tablero mostraba los puntos totalmente reiniciados justo después de un reset, en vez de la mitad que sí se conserva.",
+    ],
+  },
+  {
     version: "2.37.0",
     date: "2026-07-10",
     changes: [

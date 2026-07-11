@@ -24,6 +24,9 @@ export type CycleStatus = {
   failsUsed: number;
   /** The second miss was detected on this evaluation and the reset just ran. */
   wasReset: boolean;
+  /** Only set when wasReset is true: the user's points right after the
+   * reset penalty, so callers don't have to re-derive or re-fetch it. */
+  pointsAfterReset?: number;
 };
 
 type CycleUser = {
@@ -84,7 +87,15 @@ export async function evaluateCycle(user: CycleUser): Promise<CycleStatus> {
       .set({ completed: false, completedAt: null, updatedAt: now })
       .where(eq(moduleProgress.userId, user.id));
     await trackEvent(user.id, "cycle_reset", { missed, pointsLost: user.points - pointsAfter });
-    return { hasAnchor: true, completed: false, day: 1, executedDays: 0, failsUsed: 0, wasReset: true };
+    return {
+      hasAnchor: true,
+      completed: false,
+      day: 1,
+      executedDays: 0,
+      failsUsed: 0,
+      wasReset: true,
+      pointsAfterReset: pointsAfter,
+    };
   }
 
   if (cycleElapsed(user.cycleStartedAt, now)) {
