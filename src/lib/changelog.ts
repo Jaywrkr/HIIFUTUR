@@ -1,5 +1,12 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.36.0",
+    date: "2026-07-10",
+    changes: [
+      "Accesibilidad: navegar con teclado ahora muestra un anillo de foco visible en toda la app, y la sección activa del menú se marca correctamente para lectores de pantalla.",
+    ],
+  },
+  {
     version: "2.35.0",
     date: "2026-07-10",
     changes: [
