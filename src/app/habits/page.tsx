@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
@@ -23,6 +24,8 @@ import {
   DAYS_BETWEEN_STREAK_FREEZES,
 } from "@/lib/constants";
 import { getAnchorHabitSuggestion, OPEN_APP_SUGGESTION } from "@/lib/habit-suggestions";
+
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 export default async function HabitsPage() {
   const user = await requireUser();

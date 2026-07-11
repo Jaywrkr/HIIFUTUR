@@ -6,6 +6,7 @@ import { eq, sql, ne, and } from "drizzle-orm";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { requireUser } from "@/lib/session";
+import { rateLimit, retryAfterText } from "@/lib/rate-limit";
 
 export type UpdateNameState = { error?: string; ok?: boolean };
 
@@ -16,6 +17,11 @@ export async function updateName(
   formData: FormData
 ): Promise<UpdateNameState> {
   const user = await requireUser();
+
+  const limited = rateLimit(`update-name:${user.id}`, { limit: 10, windowMs: 60 * 60_000 });
+  if (!limited.ok) {
+    return { error: `Demasiados cambios seguidos. Intenta de nuevo en ${retryAfterText(limited.retryAfterSeconds)}.` };
+  }
 
   const parsed = nameSchema.safeParse(formData.get("name"));
   if (!parsed.success) {
@@ -49,6 +55,11 @@ export type DeleteAccountState = { error?: string };
 // cascades via its FK — see src/db/schema.ts onDelete: "cascade".
 export async function deleteAccount(confirmEmail: string): Promise<DeleteAccountState> {
   const user = await requireUser();
+
+  const limited = rateLimit(`delete-account:${user.id}`, { limit: 5, windowMs: 60 * 60_000 });
+  if (!limited.ok) {
+    return { error: `Demasiados intentos. Intenta de nuevo en ${retryAfterText(limited.retryAfterSeconds)}.` };
+  }
 
   if (confirmEmail.trim().toLowerCase() !== user.email?.toLowerCase()) {
     return { error: "El email no coincide. Escribelo exactamente como aparece arriba." };

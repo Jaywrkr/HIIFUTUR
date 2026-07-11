@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { DeleteAccountSection } from "@/components/DeleteAccountSection";
@@ -8,6 +9,8 @@ import { getUserById, getHabitsForUser, getHabitLogs, getHabitFreezes } from "@/
 import { computeStreak, daysBetween, todayKey, addDays } from "@/lib/habit-utils";
 import { computeLongestStreak, STREAK_MILESTONES } from "@/lib/habit-stats";
 import { computeLevel, POINTS_PER_CHECK } from "@/lib/leveling";
+
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 export default async function CuentaPage() {
   const sessionUser = await requireUser();

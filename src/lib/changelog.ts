@@ -1,11 +1,30 @@
+export const CHANGELOG_DESCRIPTION =
+  "Todo lo que cambia en EJECUTA, versión por versión — features nuevas, arreglos y mejoras.";
+
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
+  {
+    version: "2.45.0",
+    date: "2026-07-11",
+    changes: [
+      "Los correos de recuperación de contraseña y recordatorio diario tienen diseño nuevo: tarjeta con el mismo look de la app en vez de texto suelto sobre fondo plano.",
+    ],
+  },
+  {
+    version: "2.44.0",
+    date: "2026-07-11",
+    changes: [
+      "Cuando terminas tus 30 días completos sin que el ciclo se reinicie, ahora hay un momento real para reconocerlo — antes solo existía el aviso para cuando el ciclo se reinicia.",
+      "Cambio interno: se limpió una advertencia de conexión a la base de datos que salía en cada arranque en producción.",
+    ],
+  },
   {
     version: "2.43.0",
     date: "2026-07-11",
     changes: [
-      "Landing reordenada: ahora sigue el orden real de por qué te sirve — el problema, quiénes somos, cómo funciona, cuánto cuesta — en vez de meter el precio antes de que sepas de qué se trata.",
-      "Se quitaron frases que se repetían dos veces en la misma página (el 'truco' del hábito ancla, 'para quién es esto') y se juntó todo bajo el mismo lenguaje que ya usa el resto de la app.",
-      "Nueva sección \"Aprendizaje. Acción. Control.\" en la landing — la misma forma en la que ya se explica el sistema adentro, ahora también visible antes de crear cuenta.",
+      "Cambio interno: índices nuevos en la base de datos para que el tablero, el leaderboard y el historial de hábitos respondan más rápido a medida que crece la cantidad de usuarios.",
+      "Más límites de intentos (cambiar tu nombre, borrar tu cuenta, marcar un hábito desde una notificación) para frenar abuso.",
+      "Cambio interno: páginas internas (tablero, hábitos, Wheel of Life, módulos, cuenta, leaderboard) marcadas para que buscadores no las indexen — son privadas.",
+      "Login y registro ahora tienen su propio título al compartir el link o verlo en una pestaña.",
     ],
   },
   {
