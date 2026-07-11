@@ -1,4 +1,17 @@
+export const CHANGELOG_DESCRIPTION =
+  "Todo lo que cambia en EJECUTA, versión por versión — features nuevas, arreglos y mejoras.";
+
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
+  {
+    version: "2.43.0",
+    date: "2026-07-11",
+    changes: [
+      "Cambio interno: índices nuevos en la base de datos para que el tablero, el leaderboard y el historial de hábitos respondan más rápido a medida que crece la cantidad de usuarios.",
+      "Más límites de intentos (cambiar tu nombre, borrar tu cuenta, marcar un hábito desde una notificación) para frenar abuso.",
+      "Cambio interno: páginas internas (tablero, hábitos, Wheel of Life, módulos, cuenta, leaderboard) marcadas para que buscadores no las indexen — son privadas.",
+      "Login y registro ahora tienen su propio título al compartir el link o verlo en una pestaña.",
+    ],
+  },
   {
     version: "2.42.0",
     date: "2026-07-11",

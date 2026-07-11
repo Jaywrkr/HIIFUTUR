@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
@@ -22,6 +23,8 @@ import { getMantraOfTheDay } from "@/lib/mantras";
 import { ArrivalRitual } from "@/components/ArrivalRitual";
 import { ResetReentryRitual } from "@/components/ResetReentryRitual";
 import { PullToRefresh } from "@/components/PullToRefresh";
+
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 export default async function DashboardPage() {
   const sessionUser = await requireUser();
