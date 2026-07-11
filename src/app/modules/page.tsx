@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
@@ -14,6 +15,8 @@ import {
   countCompletedInCycle,
   requiredExecutedDaysForNext,
 } from "@/lib/cycle";
+
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 export default async function ModulesPage({
   searchParams,

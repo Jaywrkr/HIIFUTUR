@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import { Nav } from "@/components/Nav";
 import { PageHeader } from "@/components/PageHeader";
 import { requireUser } from "@/lib/session";
 import { getTopUsers, LEADERBOARD_SIZE } from "@/lib/queries";
 import { computeLevel } from "@/lib/leveling";
+
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 export default async function LeaderboardPage() {
   const user = await requireUser();

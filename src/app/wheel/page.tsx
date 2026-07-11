@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
 import { PageHeader } from "@/components/PageHeader";
@@ -8,6 +9,8 @@ import { requireUser } from "@/lib/session";
 import { getUserPreferences, getWheelMeasurements, getHabitsForUser } from "@/lib/queries";
 import { addDays } from "@/lib/habit-utils";
 import { DAYS_BETWEEN_WHEEL_MEASUREMENTS, WHEEL_AREAS, WHEEL_AREA_TO_CATEGORY } from "@/lib/constants";
+
+export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 function buildInsight(
   current: Record<string, number>,
