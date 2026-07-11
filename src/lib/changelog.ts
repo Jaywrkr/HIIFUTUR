@@ -1,5 +1,12 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.41.0",
+    date: "2026-07-11",
+    changes: [
+      "Cambio interno: se agregó una suite de tests automáticos que recorre los flujos reales de la app (registro, onboarding, el bloqueo del primer hábito) en cada cambio, para agarrar roturas antes de que lleguen a producción.",
+    ],
+  },
+  {
     version: "2.40.0",
     date: "2026-07-11",
     changes: [
