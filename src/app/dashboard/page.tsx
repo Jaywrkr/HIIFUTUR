@@ -20,6 +20,7 @@ import { evaluateCycle } from "@/lib/cycle-state";
 import { CYCLE_DAYS, MAX_CYCLE_FAILS } from "@/lib/cycle";
 import { getMantraOfTheDay } from "@/lib/mantras";
 import { ArrivalRitual } from "@/components/ArrivalRitual";
+import { ResetReentryRitual } from "@/components/ResetReentryRitual";
 import { PullToRefresh } from "@/components/PullToRefresh";
 
 export default async function DashboardPage() {
@@ -31,10 +32,10 @@ export default async function DashboardPage() {
   if (!user) redirect("/login");
 
   // Before reading anything cycle-dependent: this may reset points and
-  // module progress if the user just hit their second miss.
+  // module progress if the user just crossed the fail threshold.
   const cycle = await evaluateCycle(user);
-  if (cycle.wasReset) {
-    user.points = user.cycleStartPoints;
+  if (cycle.wasReset && cycle.pointsAfterReset !== undefined) {
+    user.points = cycle.pointsAfterReset;
   }
 
   const [userHabits, measurements, moduleProgress] = await Promise.all([
@@ -82,22 +83,11 @@ export default async function DashboardPage() {
 
   return (
     <>
-      <ArrivalRitual mantra={getMantraOfTheDay()} />
+      {cycle.wasReset ? <ResetReentryRitual /> : <ArrivalRitual mantra={getMantraOfTheDay()} />}
       <Nav />
       <PullToRefresh>
         <main className="app-main">
           <p className="kicker">HOY</p>
-
-          {cycle.wasReset ? (
-            <div className="rounded-2xl border border-red-500/40 bg-red-500/10 p-5 mb-8">
-              <p className="text-xs uppercase tracking-widest text-red-400 mb-1">El ciclo se reinició</p>
-              <p className="text-sm text-neutral-300">
-                Fallaste tres veces en 30 días. Tus ejercicios siguen escritos y conservas la
-                mitad de los puntos que ganaste en este ciclo — no perdiste todo. Pero sí
-                perdiste el derecho a avanzar. Gánatelo otra vez, hoy.
-              </p>
-            </div>
-          ) : null}
 
           {habitsWithData.length === 0 ? (
             <div className="card mb-10">
