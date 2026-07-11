@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.44.0",
+    date: "2026-07-11",
+    changes: [
+      "Cuando terminas tus 30 días completos sin que el ciclo se reinicie, ahora hay un momento real para reconocerlo — antes solo existía el aviso para cuando el ciclo se reinicia.",
+      "Cambio interno: se limpió una advertencia de conexión a la base de datos que salía en cada arranque en producción.",
+    ],
+  },
+  {
     version: "2.43.0",
     date: "2026-07-11",
     changes: [

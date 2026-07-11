@@ -2,10 +2,11 @@ import "dotenv/config";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 import { Pool } from "pg";
+import { withoutSslModeParam } from "@/lib/db-url";
 
 async function main() {
   const pool = new Pool({
-    connectionString: process.env.POSTGRES_URL,
+    connectionString: withoutSslModeParam(process.env.POSTGRES_URL),
     ssl: process.env.POSTGRES_URL?.includes("localhost") ? false : { rejectUnauthorized: false },
   });
   const db = drizzle(pool);
