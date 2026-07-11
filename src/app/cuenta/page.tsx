@@ -4,11 +4,14 @@ import { Nav } from "@/components/Nav";
 import { DeleteAccountSection } from "@/components/DeleteAccountSection";
 import { EditNameSection } from "@/components/EditNameSection";
 import { PushNotificationToggle } from "@/components/PushNotificationToggle";
+import { MiPlanCard } from "@/components/MiPlanSection";
 import { requireUser } from "@/lib/session";
 import { getUserById, getHabitsForUser, getHabitLogs, getHabitFreezes } from "@/lib/queries";
 import { computeStreak, daysBetween, todayKey, addDays } from "@/lib/habit-utils";
 import { computeLongestStreak, STREAK_MILESTONES } from "@/lib/habit-stats";
 import { computeLevel, POINTS_PER_CHECK } from "@/lib/leveling";
+import { daysLeftInTrial } from "@/lib/access";
+import { SUBSCRIPTION_PLANS, formatUsd } from "@/lib/subscription-plans";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
@@ -123,6 +126,22 @@ export default async function CuentaPage() {
             </p>
           ) : null}
         </div>
+
+        <MiPlanCard
+          status={user.subscriptionStatus}
+          plan={user.subscriptionPlan ? SUBSCRIPTION_PLANS[user.subscriptionPlan].label : null}
+          priceLabel={
+            user.subscriptionPlan && user.subscriptionPriceTier
+              ? `${formatUsd(SUBSCRIPTION_PLANS[user.subscriptionPlan].price[user.subscriptionPriceTier])}${SUBSCRIPTION_PLANS[user.subscriptionPlan].unit}`
+              : null
+          }
+          nextBillingDate={
+            user.subscriptionCurrentPeriodEnd
+              ? user.subscriptionCurrentPeriodEnd.toLocaleDateString("es-MX")
+              : null
+          }
+          daysLeftInTrial={daysLeftInTrial(user.trialEndsAt)}
+        />
 
         {/* Account settings */}
         <p className="text-xs uppercase tracking-widest text-neutral-600 mb-4">Tu cuenta</p>

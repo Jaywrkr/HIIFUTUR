@@ -29,6 +29,21 @@ export const users = pgTable(
     cycleStartedAt: timestamp("cycle_started_at"),
     cycleStartPoints: integer("cycle_start_points").notNull().default(0),
     cycleCompletedAt: timestamp("cycle_completed_at"),
+    // Trial + subscription (PayPal). trialEndsAt is set once, when onboarding
+    // completes (7 days out). Past it, access is hard-locked unless
+    // subscriptionStatus is "active". priceTier is locked in permanently at
+    // the moment the user subscribes — "descuento" if they subscribed before
+    // trialEndsAt, "normal" otherwise — and never changes after that, even if
+    // list prices change later.
+    trialEndsAt: timestamp("trial_ends_at"),
+    subscriptionPlan: text("subscription_plan").$type<"mensual" | "anual" | null>(),
+    subscriptionPriceTier: text("subscription_price_tier").$type<"normal" | "descuento" | null>(),
+    subscriptionStatus: text("subscription_status")
+      .$type<"trialing" | "active" | "canceled" | "expired">()
+      .notNull()
+      .default("trialing"),
+    paypalSubscriptionId: text("paypal_subscription_id").unique(),
+    subscriptionCurrentPeriodEnd: timestamp("subscription_current_period_end"),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     updatedAt: timestamp("updated_at").notNull().defaultNow(),
   },

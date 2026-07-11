@@ -58,15 +58,15 @@ const SYSTEM_PARTS = [
 
 const PRICING_PLANS = [
   {
-    id: "gratis",
-    label: "Gratis",
+    id: "prueba",
+    label: "Prueba gratis",
     price: "$0",
-    unit: "para empezar",
-    tagline: "Sin tarjeta. Sin trampa.",
+    unit: "7 días",
+    tagline: "Sin tarjeta.",
     features: [
       "Los 11 módulos completos",
-      "Hasta 5 hábitos activos",
-      "Wheel of Life cada 30 días",
+      "Tu hábito ancla activo",
+      "Wheel of Life inicial",
       "Recordatorios diarios",
     ],
     cta: "Empezar gratis",
@@ -75,14 +75,14 @@ const PRICING_PLANS = [
   {
     id: "mensual",
     label: "Mensual",
-    price: "$4.99",
+    price: "$6.99",
     unit: "/ mes",
-    tagline: "Cancela cuando quieras.",
+    tagline: "$4.99/mes si activas en tus primeros 7 días — precio fijo para siempre.",
     features: [
-      "Todo lo del plan gratis",
-      "Apoyas directamente el desarrollo",
-      "Próximamente: más hábitos activos",
-      "Próximamente: reportes avanzados",
+      "Todo el sistema, sin límite de tiempo",
+      "Hasta 5 hábitos activos",
+      "Wheel of Life cada 30 días",
+      "Cancela cuando quieras",
     ],
     cta: "Empezar mensual",
     highlight: false,
@@ -90,9 +90,9 @@ const PRICING_PLANS = [
   {
     id: "anual",
     label: "Anual",
-    price: "$39",
+    price: "$59",
     unit: "/ año",
-    tagline: "Menos de $3.25 al mes.",
+    tagline: "$42/año si activas en tus primeros 7 días — precio fijo para siempre.",
     features: [
       "Todo lo del plan mensual",
       "Casi 2 meses gratis vs. pagar mes a mes",
@@ -143,7 +143,7 @@ const FAQ = [
   },
   {
     q: "¿Necesito comprar algo?",
-    a: "No. Es gratis para empezar.",
+    a: "No para empezar — tienes 7 días gratis, sin tarjeta, con el sistema completo. Si decides seguir, activas un plan pago; si activas dentro de esos 7 días, te queda un precio más bajo para siempre.",
   },
   {
     q: "¿Y si fallo un día?",

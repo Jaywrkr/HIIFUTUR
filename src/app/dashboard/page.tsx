@@ -24,6 +24,7 @@ import { ArrivalRitual } from "@/components/ArrivalRitual";
 import { ResetReentryRitual } from "@/components/ResetReentryRitual";
 import { CycleCompletionRitual } from "@/components/CycleCompletionRitual";
 import { PullToRefresh } from "@/components/PullToRefresh";
+import { hasActiveAccess } from "@/lib/access";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
@@ -34,6 +35,7 @@ export default async function DashboardPage() {
 
   const user = await getUserById(sessionUser.id);
   if (!user) redirect("/login");
+  if (!hasActiveAccess(user)) redirect("/upgrade");
 
   // Before reading anything cycle-dependent: this may reset points and
   // module progress if the user just crossed the fail threshold.

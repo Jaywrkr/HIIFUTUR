@@ -8,6 +8,7 @@ import { getUserById, getUserPreferences, getModuleProgressForUser } from "@/lib
 import { MODULES, PHASES } from "@/lib/modules-content";
 import { evaluateCycle, executionLocked } from "@/lib/cycle-state";
 import { WelcomeTour } from "@/components/WelcomeTour";
+import { hasActiveAccess } from "@/lib/access";
 import {
   MAX_CYCLE_FAILS,
   CYCLE_DAYS,
@@ -29,6 +30,7 @@ export default async function ModulesPage({
 
   const user = await getUserById(sessionUser.id);
   if (!user) redirect("/login");
+  if (!hasActiveAccess(user)) redirect("/upgrade");
 
   const cycle = await evaluateCycle(user);
   const progress = await getModuleProgressForUser(user.id);
