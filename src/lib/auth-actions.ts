@@ -3,7 +3,6 @@
 import { z } from "zod";
 import bcrypt from "bcryptjs";
 import { eq, sql } from "drizzle-orm";
-import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { db } from "@/db";
 import { users } from "@/db/schema";
@@ -18,6 +17,7 @@ const registerSchema = z.object({
 
 export type RegisterState = {
   error?: string;
+  ok?: boolean;
 };
 
 export async function registerUser(
@@ -79,5 +79,5 @@ export async function registerUser(
 
   await trackEvent(newUser.id, "registered");
 
-  redirect("/login?registered=1");
+  return { ok: true };
 }

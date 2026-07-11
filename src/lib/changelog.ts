@@ -1,5 +1,15 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.39.0",
+    date: "2026-07-11",
+    changes: [
+      "Al crear tu cuenta ya no te pedimos escribir tu email y contraseña otra vez en la pantalla de inicio de sesión — quedas adentro directo.",
+      "Arreglado un error real de producción: una sesión de una cuenta borrada podía tronar la app en vez de mandarte a iniciar sesión de nuevo.",
+      "Los ejercicios del curso llevan bien el signo de apertura en sus preguntas (¿Cuál sería?, en vez de Cual sería?) en los casos donde faltaba.",
+      "El email de recordatorio diario ya no dice la regla vieja de \"no fallar dos días seguidos\" — ahora coincide con la regla real de 2 fallos por ciclo.",
+    ],
+  },
+  {
     version: "2.38.0",
     date: "2026-07-10",
     changes: [

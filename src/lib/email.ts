@@ -59,7 +59,7 @@ export async function sendReminderEmail(
       <div style="font-family: sans-serif; background: #0F0C09; color: #F2ECE2; padding: 32px;">
         <p style="color: #E3C9A0; text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px;">EJECUTA</p>
         <p style="font-size: 20px; font-weight: bold; margin: 16px 0 8px;">Todavía no marcas "${habitName}" hoy.</p>
-        <p style="color: #8a8072; font-size: 14px; margin-bottom: 20px;">No pasa nada si es tarde. La única regla real es no fallar dos días seguidos.</p>
+        <p style="color: #8a8072; font-size: 14px; margin-bottom: 20px;">No pasa nada si es tarde. Tienes hasta 2 fallos dentro del ciclo — no se trata de ser perfecto, se trata de no dejarlo ir.</p>
         <p>
           <a href="${appUrl}" style="background: #E3C9A0; color: #000; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 999px; display: inline-block;">
             Marcarlo ahora
