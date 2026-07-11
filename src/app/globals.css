@@ -96,7 +96,35 @@ select:focus-visible,
   @apply text-accent;
 }
 .app-main {
-  @apply max-w-6xl mx-auto px-4 py-10;
+  /* Extra bottom padding on mobile so content clears the fixed bottom tab
+     bar (its own height + the iOS home-indicator safe area). */
+  @apply max-w-6xl mx-auto px-4 pt-10 pb-10;
+  padding-bottom: calc(6rem + env(safe-area-inset-bottom));
+}
+@media (min-width: 768px) {
+  .app-main {
+    padding-bottom: 2.5rem;
+  }
+}
+
+/* Sits above the mobile bottom tab bar; back to a normal corner on desktop,
+   where there's no tab bar to clear. */
+.feedback-widget {
+  bottom: calc(5.5rem + env(safe-area-inset-bottom));
+}
+@media (min-width: 768px) {
+  .feedback-widget {
+    bottom: 1.25rem;
+  }
+}
+
+.version-badge {
+  bottom: calc(5.5rem + env(safe-area-inset-bottom));
+}
+@media (min-width: 768px) {
+  .version-badge {
+    bottom: 1rem;
+  }
 }
 
 .card {

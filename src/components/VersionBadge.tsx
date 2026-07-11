@@ -4,9 +4,9 @@ export function VersionBadge() {
   return (
     <Link
       href="/changelog"
+      className="version-badge"
       style={{
         position: "fixed",
-        bottom: 16,
         left: 16,
         zIndex: 40,
         background: "rgba(15, 12, 9, 0.7)",

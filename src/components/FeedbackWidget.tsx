@@ -29,7 +29,7 @@ export function FeedbackWidget() {
   }, [state.ok]);
 
   return (
-    <div className="fixed bottom-5 right-5 z-50">
+    <div className="feedback-widget fixed right-5 z-50">
       {open ? (
         <div className="w-80 max-w-[calc(100vw-2.5rem)] rounded-2xl border border-line bg-surface p-4 shadow-2xl">
           {state.ok ? (
