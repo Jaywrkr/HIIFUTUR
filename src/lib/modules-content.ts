@@ -107,7 +107,7 @@ export const MODULES: CourseModule[] = [
     fields: [
       {
         id: "causa_raiz",
-        label: "De tus intentos pasados, si tuvieras que elegir UNA causa raiz, cual sería?",
+        label: "De tus intentos pasados, si tuvieras que elegir UNA causa raíz, ¿cuál sería?",
         type: "choice",
         options: [
           { value: "empezaba_grande", label: "Empezaba demasiado grande" },
@@ -171,13 +171,13 @@ export const MODULES: CourseModule[] = [
       },
       {
         id: "accion_critica",
-        label: "De esa lista, cual es LA acción que más 80% generaría?",
+        label: "De esa lista, ¿cuál es LA acción que más 80% generaría?",
         type: "text",
         placeholder: "Se específico. Una sola acción.",
       },
       {
         id: "confianza_accion",
-        label: "Que tan seguro estás de que esta es tu acción del 20%?",
+        label: "¿Qué tan seguro estás de que esta es tu acción del 20%?",
         type: "scale",
       },
     ],
@@ -229,7 +229,7 @@ export const MODULES: CourseModule[] = [
       },
       {
         id: "habitos_futuros",
-        label: "Qué 1-2 hábitos podrías activar más adelante, cuando este se sienta automático?",
+        label: "¿Qué 1-2 hábitos podrías activar más adelante, cuando este se sienta automático?",
         type: "textarea",
         placeholder: "Ej: después, escribir 1 línea en mi diario; más adelante, ahorrar 20 pesos...",
       },
@@ -264,7 +264,7 @@ export const MODULES: CourseModule[] = [
     fields: [
       {
         id: "plan_de_fallo",
-        label: "Si fallas un día, que harás exactamente al día siguiente?",
+        label: "Si fallas un día, ¿qué harás exactamente al día siguiente?",
         type: "textarea",
         placeholder: "Ej: Hago la versión más pequeña del hábito, sin excusas, sin esperar sentirme listo.",
       },
@@ -276,7 +276,7 @@ export const MODULES: CourseModule[] = [
       },
       {
         id: "regla_de_fallo",
-        label: "Cuando falles, que vas a hacer?",
+        label: "Cuando falles, ¿qué vas a hacer?",
         type: "choice",
         options: [
           { value: "version_minima", label: "La versión más pequeña, sin excusas" },
@@ -320,13 +320,13 @@ export const MODULES: CourseModule[] = [
     fields: [
       {
         id: "areas_relacionadas",
-        label: "Qué áreas de tu vida sientes que están conectadas entre sí (si una falla, las demás también)?",
+        label: "¿Qué áreas de tu vida sientes que están conectadas entre sí (si una falla, las demás también)?",
         type: "textarea",
         placeholder: "Ej: cuando duermo mal, también como peor y soy más cortante con mi pareja...",
       },
       {
         id: "habito_ancla",
-        label: "Que UNA acción, si mejora, jalaría a todas las demás?",
+        label: "¿Qué UNA acción, si mejora, jalaría a todas las demás?",
         type: "text",
         placeholder: "Ej: dormir a la misma hora todos los días",
       },
@@ -344,7 +344,7 @@ export const MODULES: CourseModule[] = [
       },
       {
         id: "control_actual",
-        label: "Que tanto control tienes hoy sobre ese hábito ancla?",
+        label: "¿Qué tanto control tienes hoy sobre ese hábito ancla?",
         type: "scale",
       },
     ],
@@ -385,13 +385,13 @@ export const MODULES: CourseModule[] = [
       },
       {
         id: "evidencia_identidad",
-        label: "Que evidencia (por pequeña que sea) tienes de que ya eres esa persona?",
+        label: "¿Qué evidencia (por pequeña que sea) tienes de que ya eres esa persona?",
         type: "textarea",
         placeholder: "Ej: llevo 12 días haciendo mi hábito mínimo, sin fallar dos seguidos...",
       },
       {
         id: "actuaste_como",
-        label: "Hoy, actuaste más como la persona que quieres ser o como la de antes?",
+        label: "Hoy, ¿actuaste más como la persona que quieres ser o como la de antes?",
         type: "choice",
         options: [
           { value: "nueva", label: "Como la nueva versión de mí" },
@@ -429,13 +429,13 @@ export const MODULES: CourseModule[] = [
     fields: [
       {
         id: "friccion_actual",
-        label: "Que fricción en tu entorno hace más difícil tu hábito hoy?",
+        label: "¿Qué fricción en tu entorno hace más difícil tu hábito hoy?",
         type: "textarea",
         placeholder: "Ej: la ropa de entrenar esta guardada hasta arriba del clóset, tardo 10 min en encontrarla",
       },
       {
         id: "cambio_entorno",
-        label: "Que UN cambio de entorno reduciría esa fricción?",
+        label: "¿Qué UN cambio de entorno reduciría esa fricción?",
         type: "textarea",
         placeholder: "Ej: dejar la ropa de entrenar sobre la silla, ya lista, la noche anterior",
       },
@@ -486,7 +486,7 @@ export const MODULES: CourseModule[] = [
       },
       {
         id: "pensamiento_justificacion",
-        label: "Cual fue (o sería) el pensamiento que usaste para justificarla?",
+        label: "¿Cuál fue (o sería) el pensamiento que usaste para justificarla?",
         type: "text",
         placeholder: "Ej: total ya perdi la racha, para que sigo...",
       },
@@ -544,7 +544,7 @@ export const MODULES: CourseModule[] = [
       },
       {
         id: "futuros_apilados",
-        label: "Que otros 2 hábitos podrías apilar más adelante, cuando el actual se sienta automático?",
+        label: "¿Qué otros 2 hábitos podrías apilar más adelante, cuando el actual se sienta automático?",
         type: "textarea",
         placeholder: "Ej: después de tomar el agua, escribo 1 linea de gratitud; después de eso, reviso mis finanzas 2 min...",
       },
@@ -577,19 +577,19 @@ export const MODULES: CourseModule[] = [
     fields: [
       {
         id: "area_que_subio",
-        label: "Qué área crees que subió más desde tu última medición, y por qué?",
+        label: "¿Qué área crees que subió más desde tu última medición, y por qué?",
         type: "textarea",
         placeholder: "Ej: salud física, porque sostuve mi hábito ancla casi todos los días...",
       },
       {
         id: "area_estancada",
-        label: "Qué área se quedó igual o bajó, y qué está compitiendo por ese tiempo o energía?",
+        label: "¿Qué área se quedó igual o bajó, y qué está compitiendo por ese tiempo o energía?",
         type: "textarea",
         placeholder: "Ej: relaciones, porque el tiempo que antes usaba ahí ahora lo uso en el gym...",
       },
       {
         id: "alineacion_funeral",
-        label: "Qué tan alineada está tu vida hoy con lo que dirías en tu funeral?",
+        label: "¿Qué tan alineada está tu vida hoy con lo que dirías en tu funeral?",
         type: "scale",
       },
     ],
@@ -624,13 +624,13 @@ export const MODULES: CourseModule[] = [
       },
       {
         id: "mantra_final",
-        label: "De esas 3, cual es TU mantra a partir de hoy?",
+        label: "De esas 3, ¿cuál es TU mantra a partir de hoy?",
         type: "text",
         placeholder: "Escribelo tal cual te lo vas a repetir",
       },
       {
         id: "compartir_mantra",
-        label: "Quieres que esta frase la vea alguien más algún día?",
+        label: "¿Quieres que esta frase la vea alguien más algún día?",
         type: "choice",
         options: [
           { value: "si_se_quien", label: "Si, ya se quien" },

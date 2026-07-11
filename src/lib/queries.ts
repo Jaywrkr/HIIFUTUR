@@ -15,6 +15,14 @@ export async function getUserById(userId: string) {
   return row ?? null;
 }
 
+/** Cheap existence check — used to catch sessions whose user was deleted
+ * (account deletion, or a stale cookie from a wiped dev/test account)
+ * before any write tries to use that id as a foreign key. */
+export async function userExists(userId: string): Promise<boolean> {
+  const [row] = await db.select({ id: users.id }).from(users).where(eq(users.id, userId)).limit(1);
+  return !!row;
+}
+
 export async function getUserPreferences(userId: string) {
   const [prefs] = await db
     .select()
