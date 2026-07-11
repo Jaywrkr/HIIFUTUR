@@ -1,5 +1,14 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.43.0",
+    date: "2026-07-11",
+    changes: [
+      "Landing reordenada: ahora sigue el orden real de por qué te sirve — el problema, quiénes somos, cómo funciona, cuánto cuesta — en vez de meter el precio antes de que sepas de qué se trata.",
+      "Se quitaron frases que se repetían dos veces en la misma página (el 'truco' del hábito ancla, 'para quién es esto') y se juntó todo bajo el mismo lenguaje que ya usa el resto de la app.",
+      "Nueva sección \"Aprendizaje. Acción. Control.\" en la landing — la misma forma en la que ya se explica el sistema adentro, ahora también visible antes de crear cuenta.",
+    ],
+  },
+  {
     version: "2.42.0",
     date: "2026-07-11",
     changes: [
