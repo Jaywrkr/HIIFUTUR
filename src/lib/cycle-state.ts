@@ -27,6 +27,10 @@ export type CycleStatus = {
   /** Only set when wasReset is true: the user's points right after the
    * reset penalty, so callers don't have to re-derive or re-fetch it. */
   pointsAfterReset?: number;
+  /** The 30 days were just finished on this exact evaluation — a naturally
+   * single-fire flag, like wasReset. False on every load after this one,
+   * since cycleCompletedAt is already set by then. */
+  wasJustCompleted: boolean;
 };
 
 type CycleUser = {
@@ -47,11 +51,11 @@ export async function evaluateCycle(user: CycleUser): Promise<CycleStatus> {
   const anchor = userHabits[0];
 
   if (!anchor) {
-    return { hasAnchor: false, completed: false, day: 0, executedDays: 0, failsUsed: 0, wasReset: false };
+    return { hasAnchor: false, completed: false, day: 0, executedDays: 0, failsUsed: 0, wasReset: false, wasJustCompleted: false };
   }
 
   if (user.cycleCompletedAt) {
-    return { hasAnchor: true, completed: true, day: CYCLE_DAYS, executedDays: 0, failsUsed: 0, wasReset: false };
+    return { hasAnchor: true, completed: true, day: CYCLE_DAYS, executedDays: 0, failsUsed: 0, wasReset: false, wasJustCompleted: false };
   }
 
   const now = new Date();
@@ -63,7 +67,7 @@ export async function evaluateCycle(user: CycleUser): Promise<CycleStatus> {
       .update(users)
       .set({ cycleStartedAt: now, cycleStartPoints: user.points })
       .where(eq(users.id, user.id));
-    return { hasAnchor: true, completed: false, day: 1, executedDays: 0, failsUsed: 0, wasReset: false };
+    return { hasAnchor: true, completed: false, day: 1, executedDays: 0, failsUsed: 0, wasReset: false, wasJustCompleted: false };
   }
 
   const [logs, freezes] = await Promise.all([getHabitLogs(anchor.id), getHabitFreezes(anchor.id)]);
@@ -95,13 +99,22 @@ export async function evaluateCycle(user: CycleUser): Promise<CycleStatus> {
       failsUsed: 0,
       wasReset: true,
       pointsAfterReset: pointsAfter,
+      wasJustCompleted: false,
     };
   }
 
   if (cycleElapsed(user.cycleStartedAt, now)) {
     await db.update(users).set({ cycleCompletedAt: now }).where(eq(users.id, user.id));
     await trackEvent(user.id, "cycle_completed");
-    return { hasAnchor: true, completed: true, day: CYCLE_DAYS, executedDays: 0, failsUsed: 0, wasReset: false };
+    return {
+      hasAnchor: true,
+      completed: true,
+      day: CYCLE_DAYS,
+      executedDays: 0,
+      failsUsed: 0,
+      wasReset: false,
+      wasJustCompleted: true,
+    };
   }
 
   return {
@@ -111,6 +124,7 @@ export async function evaluateCycle(user: CycleUser): Promise<CycleStatus> {
     executedDays: countExecutedDays(user.cycleStartedAt, logDates, freezeDates),
     failsUsed: missed,
     wasReset: false,
+    wasJustCompleted: false,
   };
 }
 

@@ -22,6 +22,7 @@ import { CYCLE_DAYS, MAX_CYCLE_FAILS } from "@/lib/cycle";
 import { getMantraOfTheDay } from "@/lib/mantras";
 import { ArrivalRitual } from "@/components/ArrivalRitual";
 import { ResetReentryRitual } from "@/components/ResetReentryRitual";
+import { CycleCompletionRitual } from "@/components/CycleCompletionRitual";
 import { PullToRefresh } from "@/components/PullToRefresh";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
@@ -86,7 +87,13 @@ export default async function DashboardPage() {
 
   return (
     <>
-      {cycle.wasReset ? <ResetReentryRitual /> : <ArrivalRitual mantra={getMantraOfTheDay()} />}
+      {cycle.wasReset ? (
+        <ResetReentryRitual />
+      ) : cycle.wasJustCompleted ? (
+        <CycleCompletionRitual />
+      ) : (
+        <ArrivalRitual mantra={getMantraOfTheDay()} />
+      )}
       <Nav />
       <PullToRefresh>
         <main className="app-main">
