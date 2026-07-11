@@ -1,5 +1,12 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.35.0",
+    date: "2026-07-10",
+    changes: [
+      "La página de Wheel of Life carga mucho más rápido: reemplazamos la librería de gráficos por una versión propia y liviana, sin cambiar cómo se ve ni cómo funciona.",
+    ],
+  },
+  {
     version: "2.34.0",
     date: "2026-07-10",
     changes: [
