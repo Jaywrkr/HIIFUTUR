@@ -7,6 +7,7 @@ import {
   habitFreezes,
   wheelOfLifeMeasurements,
   moduleProgress,
+  pushSubscriptions,
   users,
 } from "@/db/schema";
 
@@ -78,6 +79,13 @@ export async function getModuleProgressForUser(userId: string) {
     .select()
     .from(moduleProgress)
     .where(eq(moduleProgress.userId, userId));
+}
+
+export async function getPushSubscriptionsForUser(userId: string) {
+  return db
+    .select()
+    .from(pushSubscriptions)
+    .where(eq(pushSubscriptions.userId, userId));
 }
 
 export const LEADERBOARD_SIZE = 10;

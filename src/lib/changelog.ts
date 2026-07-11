@@ -1,5 +1,13 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.42.0",
+    date: "2026-07-11",
+    changes: [
+      "Notificaciones push: activalas desde Mi cuenta y recibe el recordatorio diario en tu dispositivo, no solo por email.",
+      "El recordatorio push de tu hábito ancla trae un botón \"Marcar hecho\" — lo marcas sin abrir la app.",
+    ],
+  },
+  {
     version: "2.41.0",
     date: "2026-07-11",
     changes: [
