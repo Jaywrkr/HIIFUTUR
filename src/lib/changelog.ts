@@ -1,5 +1,13 @@
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.37.0",
+    date: "2026-07-10",
+    changes: [
+      "Nav móvil rediseñado: barra inferior fija con Hoy, Módulos, Hábitos y Wheel of Life a un toque, en vez del menú hamburguesa de antes.",
+      "\"Hábitos\" ahora tiene su propio link en el menú — antes solo se llegaba ahí desde el tablero.",
+    ],
+  },
+  {
     version: "2.36.0",
     date: "2026-07-10",
     changes: [
