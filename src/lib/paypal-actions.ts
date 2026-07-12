@@ -31,7 +31,18 @@ export async function confirmSubscription(
   // if this same subscription renews after the trial window would've closed.
   const tier = priceTierFor(access.trialEndsAt);
 
-  const subscription = await paypalFetch(`/v1/billing/subscriptions/${paypalSubscriptionId}`);
+  let subscription;
+  try {
+    subscription = await paypalFetch(`/v1/billing/subscriptions/${paypalSubscriptionId}`);
+  } catch (err) {
+    console.error("confirmSubscription: paypalFetch falló", err);
+    return {
+      error:
+        "PayPal aprobó tu pago pero no pudimos confirmarlo automáticamente. Escríbenos a jaywrkr@gmail.com con este ID: " +
+        paypalSubscriptionId,
+    };
+  }
+
   if (subscription?.status !== "ACTIVE") {
     return { error: "PayPal todavía no confirma el pago. Espera un momento y refresca." };
   }
@@ -66,10 +77,15 @@ export async function cancelSubscription(): Promise<CancelSubscriptionState> {
     return { error: "No tienes una suscripción activa para cancelar." };
   }
 
-  await paypalFetch(`/v1/billing/subscriptions/${paypalSubscriptionId}/cancel`, {
-    method: "POST",
-    body: JSON.stringify({ reason: "Cancelado por el usuario desde EJECUTA." }),
-  });
+  try {
+    await paypalFetch(`/v1/billing/subscriptions/${paypalSubscriptionId}/cancel`, {
+      method: "POST",
+      body: JSON.stringify({ reason: "Cancelado por el usuario desde EJECUTA." }),
+    });
+  } catch (err) {
+    console.error("cancelSubscription: paypalFetch falló", err);
+    return { error: "No pudimos cancelar con PayPal en este momento. Intenta de nuevo en un rato." };
+  }
 
   await db
     .update(users)

@@ -39,6 +39,7 @@ export function PayPalSubscribeButton({
   const containerRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [confirming, setConfirming] = useState(false);
+  const [activated, setActivated] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -57,14 +58,25 @@ export function PayPalSubscribeButton({
             onApprove: async (data: { subscriptionID?: string }) => {
               if (!data.subscriptionID) return;
               setConfirming(true);
-              const result = await confirmSubscription(plan, data.subscriptionID);
-              setConfirming(false);
-              if (result.error) {
-                setError(result.error);
-                return;
+              setError(null);
+              try {
+                const result = await confirmSubscription(plan, data.subscriptionID);
+                if (result.error) {
+                  setError(result.error);
+                  return;
+                }
+                setActivated(true);
+                setTimeout(() => {
+                  router.push("/dashboard");
+                  router.refresh();
+                }, 1800);
+              } catch {
+                setError(
+                  "PayPal aprobó tu pago pero algo falló confirmándolo acá. Refresca esta página — si sigue sin activarse, escríbenos a jaywrkr@gmail.com."
+                );
+              } finally {
+                setConfirming(false);
               }
-              router.push("/dashboard");
-              router.refresh();
             },
             onError: () => setError("Algo falló con PayPal. Intenta de nuevo."),
           })
@@ -81,9 +93,13 @@ export function PayPalSubscribeButton({
     return <p className="muted text-xs">Pagos todavía no configurados para este plan.</p>;
   }
 
+  if (activated) {
+    return <p className="text-sm font-bold text-accent">✓ Listo, tu plan quedó activo. Entrando...</p>;
+  }
+
   return (
     <div>
-      <div id={`paypal-button-${plan}`} ref={containerRef} />
+      <div id={`paypal-button-${plan}`} ref={containerRef} style={confirming ? { opacity: 0.4, pointerEvents: "none" } : undefined} />
       {confirming ? <p className="muted text-xs mt-2">Confirmando con PayPal...</p> : null}
       {error ? <p className="form-error mt-2">{error}</p> : null}
     </div>
