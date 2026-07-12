@@ -24,7 +24,7 @@ import { ArrivalRitual } from "@/components/ArrivalRitual";
 import { ResetReentryRitual } from "@/components/ResetReentryRitual";
 import { CycleCompletionRitual } from "@/components/CycleCompletionRitual";
 import { PullToRefresh } from "@/components/PullToRefresh";
-import { hasActiveAccess } from "@/lib/access";
+import { hasActiveAccess, daysLeftInTrial } from "@/lib/access";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
@@ -100,6 +100,19 @@ export default async function DashboardPage() {
       <PullToRefresh>
         <main className="app-main">
           <p className="kicker">HOY</p>
+
+          {user.subscriptionStatus === "trialing" ? (
+            <Link
+              href="/upgrade"
+              className="flex items-center justify-between gap-3 rounded-xl border border-accent/30 bg-accent/5 px-4 py-3 mb-6 text-sm hover:bg-accent/10 transition-colors"
+            >
+              <span className="text-neutral-300">
+                Prueba: {daysLeftInTrial(user.trialEndsAt)} día{daysLeftInTrial(user.trialEndsAt) === 1 ? "" : "s"} restante
+                {daysLeftInTrial(user.trialEndsAt) === 1 ? "" : "s"} — activa y quédate con el precio de ahora
+              </span>
+              <span className="text-accent font-semibold shrink-0">Ver planes →</span>
+            </Link>
+          ) : null}
 
           {habitsWithData.length === 0 ? (
             <div className="card mb-10">

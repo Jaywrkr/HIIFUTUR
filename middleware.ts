@@ -15,5 +15,6 @@ export const config = {
     "/onboarding/:path*",
     "/leaderboard/:path*",
     "/cuenta/:path*",
+    "/upgrade/:path*",
   ],
 };
