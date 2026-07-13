@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.47.0",
+    date: "2026-07-13",
+    changes: [
+      "Los módulos del curso ahora subrayan términos como \"hábito ancla\", \"Wheel of Life\" o \"Principio de Pareto\" la primera vez que aparecen — tócalos para ver una explicación corta sin salir de la lección.",
+    ],
+  },
+  {
     version: "2.46.0",
     date: "2026-07-13",
     changes: [

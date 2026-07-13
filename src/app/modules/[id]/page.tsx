@@ -13,6 +13,7 @@ import {
 } from "@/lib/modules-content";
 import { ModuleExerciseForm } from "@/components/ModuleExerciseForm";
 import { ModuleConcept } from "@/components/ModuleConcept";
+import { TheoryText } from "@/components/TheoryText";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -91,13 +92,22 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
           <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
         </blockquote>
 
-        <div className="flex flex-col gap-4 mb-8">
-          {courseModule.theory.map((p, i) => (
-            <p key={i} className="text-sm leading-relaxed text-neutral-300">
-              {p}
-            </p>
-          ))}
-        </div>
+        {(() => {
+          const usedTerms = new Set<string>();
+          const paragraphs = courseModule.theory.map((p, i) => (
+            <TheoryText key={i} text={p} usedTerms={usedTerms} />
+          ));
+          return (
+            <div className="mb-8">
+              <div className="flex flex-col gap-4">{paragraphs}</div>
+              {usedTerms.size > 0 ? (
+                <p className="text-xs text-neutral-500 mt-3">
+                  Los términos subrayados se pueden tocar para ver qué significan.
+                </p>
+              ) : null}
+            </div>
+          );
+        })()}
 
         {/* Creative illustration of the module's core idea. */}
         <ModuleConcept concept={courseModule.concept} />
