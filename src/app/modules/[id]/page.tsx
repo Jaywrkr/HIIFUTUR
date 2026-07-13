@@ -62,6 +62,10 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
     })
     .filter((cb) => cb.value);
 
+  // Shared across theory paragraphs AND the exercise description, so a term
+  // already explained higher up on the page doesn't get underlined twice.
+  const usedTerms = new Set<string>();
+
   return (
     <>
       <Nav />
@@ -92,22 +96,18 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
           <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
         </blockquote>
 
-        {(() => {
-          const usedTerms = new Set<string>();
-          const paragraphs = courseModule.theory.map((p, i) => (
-            <TheoryText key={i} text={p} usedTerms={usedTerms} />
-          ));
-          return (
-            <div className="mb-8">
-              <div className="flex flex-col gap-4">{paragraphs}</div>
-              {usedTerms.size > 0 ? (
-                <p className="text-xs text-neutral-500 mt-3">
-                  Los términos subrayados se pueden tocar para ver qué significan.
-                </p>
-              ) : null}
-            </div>
-          );
-        })()}
+        <div className="mb-8">
+          <div className="flex flex-col gap-4">
+            {courseModule.theory.map((p, i) => (
+              <TheoryText key={i} text={p} usedTerms={usedTerms} />
+            ))}
+          </div>
+          {usedTerms.size > 0 ? (
+            <p className="text-xs text-neutral-500 mt-3">
+              Los términos subrayados se pueden tocar para ver qué significan.
+            </p>
+          ) : null}
+        </div>
 
         {/* Creative illustration of the module's core idea. */}
         <ModuleConcept concept={courseModule.concept} />
@@ -138,7 +138,11 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         <div className="card">
           <p className="text-xs uppercase tracking-widest text-accent mb-2">Ejercicio</p>
           <h2 className="font-bold text-lg mb-2">{courseModule.exerciseTitle}</h2>
-          <p className="muted mb-6">{courseModule.exerciseDescription}</p>
+          <TheoryText
+            text={courseModule.exerciseDescription}
+            usedTerms={usedTerms}
+            className="muted mb-6"
+          />
 
           <ModuleExerciseForm
             moduleId={courseModule.id}

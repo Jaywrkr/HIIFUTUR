@@ -3,7 +3,7 @@ export type ExerciseField = {
   label: string;
   type: "textarea" | "text" | "scale" | "choice";
   placeholder?: string;
-  options?: { value: string; label: string }[];
+  options?: { value: string; label: string; hint: string }[];
 };
 
 export type CoursePhase = {
@@ -110,11 +110,31 @@ export const MODULES: CourseModule[] = [
         label: "De tus intentos pasados, si tuvieras que elegir UNA causa raíz, ¿cuál sería?",
         type: "choice",
         options: [
-          { value: "empezaba_grande", label: "Empezaba demasiado grande" },
-          { value: "sin_plan_fallo", label: "No tenia plan para cuando fallara" },
-          { value: "dependia_motivacion", label: "Dependia de sentirme motivado" },
-          { value: "sin_tiempo_real", label: "Nunca tuve tiempo real asignado" },
-          { value: "comparación", label: "Me comparaba con el ritmo de otros" },
+          {
+            value: "empezaba_grande",
+            label: "Empezaba demasiado grande",
+            hint: "Arrancabas con una versión ambiciosa (1 hora en el gym, dieta estricta) en vez de la más pequeña posible.",
+          },
+          {
+            value: "sin_plan_fallo",
+            label: "No tenia plan para cuando fallara",
+            hint: "El primer día que se te pasó, no sabías qué hacer — y esa duda fue lo que rompió la racha.",
+          },
+          {
+            value: "dependia_motivacion",
+            label: "Dependia de sentirme motivado",
+            hint: "Funcionaba solo los días que tenías ganas — y esos días no alcanzan para sostener nada a largo plazo.",
+          },
+          {
+            value: "sin_tiempo_real",
+            label: "Nunca tuve tiempo real asignado",
+            hint: "El hábito vivía en 'cuando pueda' en vez de tener un momento fijo del día — así es fácil que nunca llegue.",
+          },
+          {
+            value: "comparación",
+            label: "Me comparaba con el ritmo de otros",
+            hint: "Medías tu progreso contra el de alguien más, en vez de contra tu propio punto de partida.",
+          },
         ],
       },
       {
@@ -128,9 +148,21 @@ export const MODULES: CourseModule[] = [
         label: "Tu hábito ancla, tan pequeño que...",
         type: "choice",
         options: [
-          { value: "vergonzoso", label: "Me da un poco de vergüenza lo pequeño que es (perfecto)" },
-          { value: "reto_real", label: "Se siente como un reto real (hazlo más chico)" },
-          { value: "ya_lo_hago", label: "Ya lo hago casi siempre (bien, pero sube el nivel)" },
+          {
+            value: "vergonzoso",
+            label: "Me da un poco de vergüenza lo pequeño que es (perfecto)",
+            hint: "Esa vergüenza es la señal correcta: significa que es tan pequeño que es casi imposible fallarlo.",
+          },
+          {
+            value: "reto_real",
+            label: "Se siente como un reto real (hazlo más chico)",
+            hint: "Si todavía se siente como un esfuerzo, redúcelo más — el objetivo es que no requiera fuerza de voluntad.",
+          },
+          {
+            value: "ya_lo_hago",
+            label: "Ya lo hago casi siempre (bien, pero sube el nivel)",
+            hint: "Si ya es automático, puedes subirle un poco de dificultad sin romper la constancia.",
+          },
         ],
       },
     ],
@@ -222,9 +254,21 @@ export const MODULES: CourseModule[] = [
         label: "Unos días después, tu hábito ancla se siente...",
         type: "choice",
         options: [
-          { value: "perfecto_chico", label: "Vergonzosamente pequeño (perfecto, no lo cambies)" },
-          { value: "aun_reto", label: "Todavía un reto real (achícalo más)" },
-          { value: "ya_automatico", label: "Casi automático (puedes subir el nivel)" },
+          {
+            value: "perfecto_chico",
+            label: "Vergonzosamente pequeño (perfecto, no lo cambies)",
+            hint: "Está en el tamaño correcto. No lo agrandes solo porque se siente 'demasiado fácil' — esa facilidad es la que lo sostiene.",
+          },
+          {
+            value: "aun_reto",
+            label: "Todavía un reto real (achícalo más)",
+            hint: "Si algunos días te cuesta empezarlo, sigue siendo grande. Redúcelo hasta que ya no lo dudes.",
+          },
+          {
+            value: "ya_automatico",
+            label: "Casi automático (puedes subir el nivel)",
+            hint: "Ya no gasta fuerza de voluntad — es el momento de hacerlo un poco más grande, sin perder la constancia.",
+          },
         ],
       },
       {
@@ -279,9 +323,21 @@ export const MODULES: CourseModule[] = [
         label: "Cuando falles, ¿qué vas a hacer?",
         type: "choice",
         options: [
-          { value: "version_minima", label: "La versión más pequeña, sin excusas" },
-          { value: "saltar_sin_culpa", label: "Saltarlo y retomar mañana sin culpa" },
-          { value: "avisar", label: "Avisarle a alguien que me haga responsable" },
+          {
+            value: "version_minima",
+            label: "La versión más pequeña, sin excusas",
+            hint: "Aunque sea un minuto o una repetición — lo importante es no dejarlo en cero dos días seguidos.",
+          },
+          {
+            value: "saltar_sin_culpa",
+            label: "Saltarlo y retomar mañana sin culpa",
+            hint: "Aceptas que hoy no se dio, sin castigarte, y vuelves mañana como si nada — sin convertirlo en una racha de fallos.",
+          },
+          {
+            value: "avisar",
+            label: "Avisarle a alguien que me haga responsable",
+            hint: "Le cuentas a otra persona que fallaste, para que la vergüenza social te empuje a no repetirlo al día siguiente.",
+          },
         ],
       },
     ],
@@ -335,11 +391,31 @@ export const MODULES: CourseModule[] = [
         label: "Tu hábito ancla toca principalmente...",
         type: "choice",
         options: [
-          { value: "sueño", label: "Sueño / descanso" },
-          { value: "movimiento", label: "Movimiento / ejercicio" },
-          { value: "alimentación", label: "Alimentación" },
-          { value: "entorno", label: "Entorno / organización" },
-          { value: "mentalidad", label: "Mentalidad / reflexión" },
+          {
+            value: "sueño",
+            label: "Sueño / descanso",
+            hint: "Ej: dormir a una hora fija — cuando duermes bien, casi todo lo demás cuesta menos.",
+          },
+          {
+            value: "movimiento",
+            label: "Movimiento / ejercicio",
+            hint: "Ej: caminar o entrenar poco pero seguido — el movimiento diario suele mejorar ánimo y energía por sí solo.",
+          },
+          {
+            value: "alimentación",
+            label: "Alimentación",
+            hint: "Ej: tomar agua al despertar, o una comida fija — cambios pequeños de comida que arrastran energía y ánimo.",
+          },
+          {
+            value: "entorno",
+            label: "Entorno / organización",
+            hint: "Ej: ordenar tu espacio o tu celular — reduce la fricción de todos tus demás hábitos sin tocarlos directamente.",
+          },
+          {
+            value: "mentalidad",
+            label: "Mentalidad / reflexión",
+            hint: "Ej: escribir o meditar unos minutos — cambia cómo interpretas el resto de tu día.",
+          },
         ],
       },
       {
@@ -394,9 +470,21 @@ export const MODULES: CourseModule[] = [
         label: "Hoy, ¿actuaste más como la persona que quieres ser o como la de antes?",
         type: "choice",
         options: [
-          { value: "nueva", label: "Como la nueva versión de mí" },
-          { value: "antes", label: "Como la versión de antes" },
-          { value: "mitad", label: "Mitad y mitad" },
+          {
+            value: "nueva",
+            label: "Como la nueva versión de mí",
+            hint: "Hoy tus acciones fueron evidencia real de la identidad que estás construyendo.",
+          },
+          {
+            value: "antes",
+            label: "Como la versión de antes",
+            hint: "No pasa nada — es un dato, no una sentencia. Mañana es otra oportunidad de votar distinto.",
+          },
+          {
+            value: "mitad",
+            label: "Mitad y mitad",
+            hint: "Normal en días de transición — lo que importa es que la balanza se vaya moviendo con el tiempo.",
+          },
         ],
       },
     ],
@@ -444,9 +532,21 @@ export const MODULES: CourseModule[] = [
         label: "Ese cambio que propones es...",
         type: "choice",
         options: [
-          { value: "gratis", label: "Gratis, lo puedo hacer hoy mismo" },
-          { value: "barato", label: "Cuesta poco (menos de lo que gastas en un antojo)" },
-          { value: "ahorrar", label: "Requiere ahorrar o planear un poco más" },
+          {
+            value: "gratis",
+            label: "Gratis, lo puedo hacer hoy mismo",
+            hint: "Sin excusa para posponerlo — hazlo antes de terminar este módulo si puedes.",
+          },
+          {
+            value: "barato",
+            label: "Cuesta poco (menos de lo que gastas en un antojo)",
+            hint: "Vale la pena comprarlo esta semana — el costo es mínimo comparado con lo que reduce la fricción.",
+          },
+          {
+            value: "ahorrar",
+            label: "Requiere ahorrar o planear un poco más",
+            hint: "Mientras tanto, busca una versión gratis o temporal del mismo cambio para no quedarte esperando.",
+          },
         ],
       },
     ],
@@ -501,9 +601,21 @@ export const MODULES: CourseModule[] = [
         label: "Tu regla para la próxima vez",
         type: "choice",
         options: [
-          { value: "no_2_seguidos", label: "Nunca fallar 2 días seguidos" },
-          { value: "avisar_24h", label: "Avisarle a alguien en menos de 24h" },
-          { value: "version_mini_obligatoria", label: "Version mínima obligatoria al día siguiente" },
+          {
+            value: "no_2_seguidos",
+            label: "Nunca fallar 2 días seguidos",
+            hint: "Tu única regla no negociable: un día se perdona solo, dos seguidos ya es un patrón que hay que cortar.",
+          },
+          {
+            value: "avisar_24h",
+            label: "Avisarle a alguien en menos de 24h",
+            hint: "Usas la vergüenza social como empuje — contarle a alguien te hace más difícil dejarlo pasar en silencio.",
+          },
+          {
+            value: "version_mini_obligatoria",
+            label: "Version mínima obligatoria al día siguiente",
+            hint: "Sin negociar el tamaño: al día siguiente haces la versión más chica posible, pase lo que pase.",
+          },
         ],
       },
     ],
@@ -633,9 +745,21 @@ export const MODULES: CourseModule[] = [
         label: "¿Quieres que esta frase la vea alguien más algún día?",
         type: "choice",
         options: [
-          { value: "si_se_quien", label: "Si, ya se quien" },
-          { value: "si_no_se_quien", label: "Si, no se quien todavía" },
-          { value: "no_solo_mia", label: "No, es solo mia" },
+          {
+            value: "si_se_quien",
+            label: "Si, ya se quien",
+            hint: "Esta respuesta no se comparte automáticamente — es solo para que reflexiones. Si quieres compartirla, es decisión tuya, fuera de la app.",
+          },
+          {
+            value: "si_no_se_quien",
+            label: "Si, no se quien todavía",
+            hint: "Esta respuesta no se comparte automáticamente — queda guardada en tu cuenta hasta que decidas qué hacer con ella.",
+          },
+          {
+            value: "no_solo_mia",
+            label: "No, es solo mia",
+            hint: "Esta respuesta no se comparte automáticamente con nadie — queda privada en tu cuenta, como el resto de tus ejercicios.",
+          },
         ],
       },
     ],
