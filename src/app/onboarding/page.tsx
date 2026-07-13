@@ -38,7 +38,7 @@ export default function OnboardingPage() {
 
   return (
     <div className="auth-shell">
-      <div className="auth-card max-w-lg">
+      <div className={`auth-card ${step === 2 ? "max-w-3xl" : "max-w-lg"}`}>
         <p className="kicker">PASO {step} DE 2</p>
 
         {step === 1 ? (
@@ -121,7 +121,7 @@ export default function OnboardingPage() {
               <input key={id} type="hidden" name="selectedAreas" value={id} />
             ))}
 
-            <div className="flex flex-col gap-4 mt-4">
+            <div className="grid md:grid-cols-2 gap-x-8 gap-y-4 mt-4">
               {WHEEL_AREAS.map((area) => (
                 <div key={area.id}>
                   <div className="flex justify-between text-xs uppercase tracking-widest text-neutral-400 mb-1">

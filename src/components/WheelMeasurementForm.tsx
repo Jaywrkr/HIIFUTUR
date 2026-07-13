@@ -27,27 +27,29 @@ export function WheelMeasurementForm({ lastScores }: { lastScores?: Record<strin
 
   return (
     <>
-      <form ref={formRef} action={formAction} className="card flex flex-col gap-4">
+      <form ref={formRef} action={formAction} className="card flex flex-col gap-4 md:max-w-none">
         <p className="text-xs uppercase tracking-widest text-accent">Medición de hoy</p>
 
-        {WHEEL_AREAS.map((area) => (
-          <div key={area.id}>
-            <div className="flex justify-between text-xs uppercase tracking-widest text-neutral-400 mb-1">
-              <span>{area.label}</span>
-              <span className="text-accent">{scores[area.id]}</span>
+        <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
+          {WHEEL_AREAS.map((area) => (
+            <div key={area.id}>
+              <div className="flex justify-between text-xs uppercase tracking-widest text-neutral-400 mb-1">
+                <span>{area.label}</span>
+                <span className="text-accent">{scores[area.id]}</span>
+              </div>
+              <p className="text-xs text-neutral-500 mb-1.5">{area.description}</p>
+              <input
+                type="range"
+                min={1}
+                max={10}
+                name={`score_${area.id}`}
+                value={scores[area.id]}
+                onChange={(e) => setScores((prev) => ({ ...prev, [area.id]: Number(e.target.value) }))}
+                className="w-full accent-accent"
+              />
             </div>
-            <p className="text-xs text-neutral-500 mb-1.5">{area.description}</p>
-            <input
-              type="range"
-              min={1}
-              max={10}
-              name={`score_${area.id}`}
-              value={scores[area.id]}
-              onChange={(e) => setScores((prev) => ({ ...prev, [area.id]: Number(e.target.value) }))}
-              className="w-full accent-accent"
-            />
-          </div>
-        ))}
+          ))}
+        </div>
 
         <div>
           <label className="field-label" htmlFor="notes">Notas (opcional)</label>

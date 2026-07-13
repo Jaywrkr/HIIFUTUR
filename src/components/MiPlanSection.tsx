@@ -66,11 +66,11 @@ export function MiPlanCard({
       <p className="section-title">Mi plan</p>
       {status === "trialing" ? (
         <>
-          <p className="text-sm text-neutral-300 mb-1">
-            Estás en tu prueba gratis — {daysLeftInTrial} día{daysLeftInTrial === 1 ? "" : "s"} restante
+          <p className="text-sm text-red-300 font-semibold mb-1">
+            ⚠ Estás en tu prueba gratis — {daysLeftInTrial} día{daysLeftInTrial === 1 ? "" : "s"} restante
             {daysLeftInTrial === 1 ? "" : "s"}.
           </p>
-          <Link href="/upgrade" className="link-accent text-sm font-semibold">
+          <Link href="/upgrade" className="text-red-400 underline underline-offset-2 text-sm font-semibold">
             Activar mi plan y quedarme con el precio de ahora →
           </Link>
         </>
@@ -95,8 +95,8 @@ export function MiPlanCard({
         </>
       ) : (
         <>
-          <p className="text-sm text-neutral-300 mb-1">Tu acceso está vencido.</p>
-          <Link href="/upgrade" className="link-accent text-sm font-semibold">
+          <p className="text-sm text-red-300 font-semibold mb-1">⚠ Tu acceso está vencido.</p>
+          <Link href="/upgrade" className="text-red-400 underline underline-offset-2 text-sm font-semibold">
             Elegir un plan →
           </Link>
         </>

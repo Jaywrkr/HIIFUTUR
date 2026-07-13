@@ -26,10 +26,16 @@ import { CycleCompletionRitual } from "@/components/CycleCompletionRitual";
 import { PullToRefresh } from "@/components/PullToRefresh";
 import { hasActiveAccess, daysLeftInTrial } from "@/lib/access";
 import { IconSprout, IconFlame } from "@/components/icons";
+import { SubscriptionActivatedRitual } from "@/components/SubscriptionActivatedRitual";
+import { SUBSCRIPTION_PLANS, formatUsd } from "@/lib/subscription-plans";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams?: { activated?: string };
+}) {
   const sessionUser = await requireUser();
   const prefs = await getUserPreferences(sessionUser.id);
   if (!prefs) redirect("/onboarding");
@@ -88,9 +94,20 @@ export default async function DashboardPage() {
   const { level, pointsIntoLevel, nextLevelThreshold } = computeLevel(user.points);
   const levelPct = nextLevelThreshold === 0 ? 100 : Math.round((pointsIntoLevel / nextLevelThreshold) * 100);
 
+  const justActivated =
+    searchParams?.activated === "1" &&
+    user.subscriptionStatus === "active" &&
+    user.subscriptionPlan &&
+    user.subscriptionPriceTier;
+
   return (
     <>
-      {cycle.wasReset ? (
+      {justActivated ? (
+        <SubscriptionActivatedRitual
+          planLabel={SUBSCRIPTION_PLANS[user.subscriptionPlan!].label}
+          priceLabel={`${formatUsd(SUBSCRIPTION_PLANS[user.subscriptionPlan!].price[user.subscriptionPriceTier!])}${SUBSCRIPTION_PLANS[user.subscriptionPlan!].unit}`}
+        />
+      ) : cycle.wasReset ? (
         <ResetReentryRitual />
       ) : cycle.wasJustCompleted ? (
         <CycleCompletionRitual />
@@ -105,13 +122,13 @@ export default async function DashboardPage() {
           {user.subscriptionStatus === "trialing" ? (
             <Link
               href="/upgrade"
-              className="flex items-center justify-between gap-3 rounded-xl border border-accent/30 bg-accent/5 px-4 py-3 mb-6 text-sm hover:bg-accent/10 transition-colors"
+              className="flex items-center justify-between gap-3 rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 mb-6 text-sm hover:bg-red-500/15 transition-colors"
             >
-              <span className="text-neutral-300">
-                Prueba: {daysLeftInTrial(user.trialEndsAt)} día{daysLeftInTrial(user.trialEndsAt) === 1 ? "" : "s"} restante
+              <span className="text-red-300">
+                ⚠ Prueba: {daysLeftInTrial(user.trialEndsAt)} día{daysLeftInTrial(user.trialEndsAt) === 1 ? "" : "s"} restante
                 {daysLeftInTrial(user.trialEndsAt) === 1 ? "" : "s"} — activa y quédate con el precio de ahora
               </span>
-              <span className="text-accent font-semibold shrink-0">Ver planes →</span>
+              <span className="text-red-400 font-semibold shrink-0">Ver planes →</span>
             </Link>
           ) : null}
 

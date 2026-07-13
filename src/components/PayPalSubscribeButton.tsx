@@ -67,7 +67,7 @@ export function PayPalSubscribeButton({
                 }
                 setActivated(true);
                 setTimeout(() => {
-                  router.push("/dashboard");
+                  router.push("/dashboard?activated=1");
                   router.refresh();
                 }, 1800);
               } catch {
