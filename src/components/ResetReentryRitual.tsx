@@ -39,7 +39,7 @@ export function ResetReentryRitual() {
       <p className="text-sm italic text-neutral-400 leading-relaxed max-w-md mb-2">
         &ldquo;{MANTRA}&rdquo;
       </p>
-      <p className="text-xs uppercase tracking-widest text-neutral-600 mb-10">— Jay</p>
+      <p className="text-xs uppercase tracking-widest text-neutral-400 mb-10">— Jay</p>
       <button type="button" onClick={dismiss} className="btn-primary">
         Retomo hoy
       </button>
