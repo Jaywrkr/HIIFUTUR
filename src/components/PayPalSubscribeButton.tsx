@@ -40,6 +40,7 @@ export function PayPalSubscribeButton({
   const [error, setError] = useState<string | null>(null);
   const [confirming, setConfirming] = useState(false);
   const [activated, setActivated] = useState(false);
+  const [sdkReady, setSdkReady] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -50,6 +51,7 @@ export function PayPalSubscribeButton({
     loadPayPalSdk(clientId)
       .then(() => {
         if (cancelled || !window.paypal || !containerRef.current) return;
+        setSdkReady(true);
         window.paypal
           .Buttons({
             style: { shape: "pill", color: "gold", label: "subscribe" },
@@ -99,7 +101,15 @@ export function PayPalSubscribeButton({
 
   return (
     <div>
-      <div id={`paypal-button-${plan}`} ref={containerRef} style={confirming ? { opacity: 0.4, pointerEvents: "none" } : undefined} />
+      {!sdkReady ? (
+        <div className="h-11 w-full rounded-full bg-line animate-pulse" aria-hidden="true" />
+      ) : null}
+      <div
+        id={`paypal-button-${plan}`}
+        ref={containerRef}
+        className={sdkReady ? "animate-[fadeIn_200ms_ease-out]" : "sr-only"}
+        style={confirming ? { opacity: 0.4, pointerEvents: "none" } : undefined}
+      />
       {confirming ? <p className="muted text-xs mt-2">Confirmando con PayPal...</p> : null}
       {error ? <p className="form-error mt-2">{error}</p> : null}
     </div>

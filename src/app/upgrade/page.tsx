@@ -8,7 +8,13 @@ import { hasActiveAccess, daysLeftInTrial } from "@/lib/access";
 import { SUBSCRIPTION_PLANS, formatUsd, priceTierFor } from "@/lib/subscription-plans";
 import { resolvePlanId } from "@/lib/paypal";
 import { PayPalSubscribeButton } from "@/components/PayPalSubscribeButton";
-import { IconShieldCheck } from "@/components/icons";
+import { IconShieldCheck, IconLock } from "@/components/icons";
+
+const TRUST_BADGES = [
+  { icon: IconShieldCheck, label: "Pago seguro con PayPal" },
+  { icon: IconLock, label: "Precio fijo para siempre" },
+  { icon: null, label: "Cancela cuando quieras" },
+] as const;
 
 const UPGRADE_FAQ = [
   {
@@ -50,12 +56,21 @@ export default async function UpgradePage() {
           }
         />
 
+        <div className="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+          {TRUST_BADGES.map((badge) => (
+            <span key={badge.label} className="flex items-center gap-1.5 text-xs text-neutral-400">
+              {badge.icon ? <badge.icon className="w-3.5 h-3.5 text-accent shrink-0" /> : <span className="text-accent">✓</span>}
+              {badge.label}
+            </span>
+          ))}
+        </div>
+
         <div className="grid sm:grid-cols-2 gap-6 max-w-2xl">
           {(Object.entries(SUBSCRIPTION_PLANS) as [keyof typeof SUBSCRIPTION_PLANS, (typeof SUBSCRIPTION_PLANS)[keyof typeof SUBSCRIPTION_PLANS]][]).map(
             ([planId, plan]) => (
               <div
                 key={planId}
-                className={`relative rounded-3xl p-6 flex flex-col ${
+                className={`relative rounded-3xl p-6 flex flex-col transition-transform duration-200 hover:-translate-y-1 ${
                   plan.highlight ? "bg-accent/15 border border-accent/40" : "border border-line bg-surface"
                 }`}
               >

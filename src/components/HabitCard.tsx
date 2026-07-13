@@ -119,7 +119,11 @@ export function HabitCard({
   return (
     <div className="card flex items-center justify-between gap-4 relative overflow-hidden">
       {milestone ? (
-        <div className="absolute inset-0 flex items-center justify-center bg-ink/95 z-20 animate-[fadeIn_150ms_ease-out]">
+        <div
+          role="status"
+          aria-live="polite"
+          className="absolute inset-0 flex items-center justify-center bg-ink/95 z-20 animate-[fadeIn_150ms_ease-out]"
+        >
           <p className="text-lg font-extrabold text-accent">🔥 {milestone} días seguidos</p>
         </div>
       ) : null}
@@ -135,6 +139,7 @@ export function HabitCard({
         <p className="font-bold text-lg">{name}</p>
         <p className="muted mt-1">{description}</p>
         <p
+          aria-live="polite"
           className={`text-xs mt-2 uppercase tracking-widest ${streakAtRisk ? "text-amber-400" : "text-accent"}`}
         >
           Racha: {streak} {streak === 1 ? "día" : "días"}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useToast } from "@/components/Toast";
 
 export function ShareImageButton({
   draw,
@@ -14,6 +15,7 @@ export function ShareImageButton({
   label?: string;
 }) {
   const [busy, setBusy] = useState(false);
+  const toast = useToast();
 
   async function handleClick() {
     setBusy(true);
@@ -45,6 +47,7 @@ export function ShareImageButton({
       a.download = fileName;
       a.click();
       URL.revokeObjectURL(url);
+      toast("Imagen descargada.");
     } finally {
       setBusy(false);
     }

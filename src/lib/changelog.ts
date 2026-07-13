@@ -3,6 +3,16 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.46.0",
+    date: "2026-07-13",
+    changes: [
+      "Confirmaciones nuevas (cancelar suscripción, cambiar tu nombre, descargar una imagen) ahora avisan con un mensaje breve en pantalla en vez de quedarse silenciosas.",
+      "El botón de pago con PayPal muestra un estado de carga en vez de un espacio vacío mientras conecta.",
+      "El momento de activar tu plan tiene un pequeño gesto visual nuevo, y la página de planes suma insignias de confianza (pago seguro, precio fijo, cancela cuando quieras).",
+      "Cambio interno: mejoras de accesibilidad — la racha de un hábito y el aviso de racha larga ahora se anuncian a lectores de pantalla.",
+    ],
+  },
+  {
     version: "2.45.0",
     date: "2026-07-11",
     changes: [
