@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/session";
@@ -179,12 +180,34 @@ function FloatingStat({
   );
 }
 
+const STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "EJECUTA",
+  applicationCategory: "LifestyleApplication",
+  operatingSystem: "Web",
+  description:
+    "Curso interactivo basado en el Principio de Pareto, con seguimiento de hábitos y Wheel of Life — sistema de ejecución sostenible.",
+  offers: PRICING_PLANS.filter((p) => p.id !== "prueba").map((p) => ({
+    "@type": "Offer",
+    name: p.label,
+    price: p.price.replace("$", ""),
+    priceCurrency: "USD",
+  })),
+};
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
 export default async function HomePage() {
   const user = await getCurrentUser();
   if (user) redirect("/dashboard");
 
   return (
     <main className="min-h-screen overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
+      />
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-8 flex items-center justify-between">
         <span className="text-sm font-bold tracking-[0.3em] text-white">EJECUTA</span>
         <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
