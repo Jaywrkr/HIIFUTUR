@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Términos — EJECUTA", alternates: { canonical: "/terminos" } };
+export const metadata = { title: "Términos — EJECUTA" };
 
 export default function TerminosPage() {
   return (

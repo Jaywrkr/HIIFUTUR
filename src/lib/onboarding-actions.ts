@@ -2,14 +2,11 @@
 
 import { z } from "zod";
 import { redirect } from "next/navigation";
-import { eq } from "drizzle-orm";
 import { db } from "@/db";
-import { userPreferences, wheelOfLifeMeasurements, users } from "@/db/schema";
+import { userPreferences, wheelOfLifeMeasurements } from "@/db/schema";
 import { requireUser } from "@/lib/session";
 import { WHEEL_AREAS, MAX_SELECTED_AREAS } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
-import { TRIAL_DAYS } from "@/lib/subscription-plans";
-import { addDays } from "@/lib/habit-utils";
 
 const wheelAreaIds = WHEEL_AREAS.map((a) => a.id);
 
@@ -62,13 +59,6 @@ export async function completeOnboarding(
     areaScores: parsed.data.scores,
     notes: "Medición inicial (onboarding).",
   });
-
-  // Trial clock starts now, not at registration — someone who registers and
-  // wanders off shouldn't burn trial days before they've even started.
-  await db
-    .update(users)
-    .set({ trialEndsAt: addDays(new Date(), TRIAL_DAYS) })
-    .where(eq(users.id, user.id));
 
   await trackEvent(user.id, "onboarding_completed", { areas: parsed.data.selectedAreas });
 

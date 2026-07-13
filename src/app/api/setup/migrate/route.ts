@@ -175,17 +175,6 @@ CREATE INDEX IF NOT EXISTS "password_reset_tokens_user_id_idx" ON "password_rese
 CREATE INDEX IF NOT EXISTS "push_subscriptions_user_id_idx" ON "push_subscriptions" USING btree ("user_id");
 CREATE INDEX IF NOT EXISTS "users_points_idx" ON "users" USING btree ("points");
 CREATE INDEX IF NOT EXISTS "wheel_measurements_user_id_idx" ON "wheel_of_life_measurements" USING btree ("user_id");
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "trial_ends_at" timestamp;
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "subscription_plan" text;
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "subscription_price_tier" text;
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "subscription_status" text DEFAULT 'trialing' NOT NULL;
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "paypal_subscription_id" text;
-ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "subscription_current_period_end" timestamp;
-DO $$ BEGIN
- ALTER TABLE "users" ADD CONSTRAINT "users_paypal_subscription_id_unique" UNIQUE("paypal_subscription_id");
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
 `;
 
 export async function GET(request: NextRequest) {

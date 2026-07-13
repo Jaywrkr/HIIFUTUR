@@ -16,21 +16,6 @@ export async function getUserById(userId: string) {
   return row ?? null;
 }
 
-/** Just the two fields hasActiveAccess() needs — for pages that otherwise
- * never fetch the full user row. */
-export async function getAccessStatus(userId: string) {
-  const [row] = await db
-    .select({
-      trialEndsAt: users.trialEndsAt,
-      subscriptionStatus: users.subscriptionStatus,
-      subscriptionCurrentPeriodEnd: users.subscriptionCurrentPeriodEnd,
-    })
-    .from(users)
-    .where(eq(users.id, userId))
-    .limit(1);
-  return row ?? null;
-}
-
 /** Cheap existence check — used to catch sessions whose user was deleted
  * (account deletion, or a stale cookie from a wiped dev/test account)
  * before any write tries to use that id as a foreign key. */

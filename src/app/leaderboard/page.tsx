@@ -52,10 +52,10 @@ export default async function LeaderboardPage() {
             ) : (
               <div key={`empty-${i}`} className="flex items-center justify-between border-b border-line px-4 py-3">
                 <div className="flex items-center gap-3">
-                  <span className="w-6 text-sm font-bold text-neutral-500">{i + 1}</span>
-                  <span className="text-neutral-500">-----</span>
+                  <span className="w-6 text-sm font-bold text-neutral-700">{i + 1}</span>
+                  <span className="text-neutral-700">-----</span>
                 </div>
-                <span className="text-xs text-neutral-500">-----</span>
+                <span className="text-xs text-neutral-700">-----</span>
               </div>
             )
           )}

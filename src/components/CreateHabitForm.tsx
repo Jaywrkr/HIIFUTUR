@@ -65,7 +65,7 @@ export function CreateHabitForm({
               </button>
             ) : null}
           </div>
-          <p className="text-[11px] text-neutral-400 mt-3">
+          <p className="text-[11px] text-neutral-600 mt-3">
             Son solo ideas. Elige lo que tu quieras — lo único que importa es que no puedas fallar.
           </p>
         </div>

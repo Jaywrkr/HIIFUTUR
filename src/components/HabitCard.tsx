@@ -173,7 +173,7 @@ export function HabitCard({
           )}
           <span className="relative z-10">{displayDone ? "X" : ""}</span>
         </button>
-        <span className="text-[10px] uppercase tracking-widest text-neutral-400 text-center leading-tight">
+        <span className="text-[10px] uppercase tracking-widest text-neutral-600 text-center leading-tight">
           {displayDone ? "toca para deshacer" : "mantén para marcar"}
         </span>
       </div>

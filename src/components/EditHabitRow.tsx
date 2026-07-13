@@ -165,7 +165,7 @@ export function EditHabitRow({
               Editar
             </button>
           ) : (
-            <p className="text-[10px] text-neutral-400 text-right leading-tight max-w-[90px]">
+            <p className="text-[10px] text-neutral-600 text-right leading-tight max-w-[90px]">
               Editable el {nextEditLabel}
             </p>
           )}
@@ -191,7 +191,7 @@ export function EditHabitRow({
       ) : null}
       {freezeError ? <p className="form-error mt-3">{freezeError}</p> : null}
       {!canFreeze && nextFreezeLabel ? (
-        <p className="mt-3 text-[10px] text-neutral-400">
+        <p className="mt-3 text-[10px] text-neutral-600">
           Congelamiento disponible de nuevo el {nextFreezeLabel}.
         </p>
       ) : null}
@@ -208,7 +208,7 @@ export function EditHabitRow({
       ) : null}
 
       <div className="mt-4 flex items-center justify-between">
-        <p className="text-[10px] uppercase tracking-widest text-neutral-400">
+        <p className="text-[10px] uppercase tracking-widest text-neutral-600">
           Últimas 12 semanas · mejor racha: {longestStreak} {longestStreak === 1 ? "día" : "días"}
         </p>
       </div>

@@ -53,7 +53,7 @@ export function ArrivalRitual({ mantra }: { mantra: string }) {
         &ldquo;{mantra}&rdquo;
       </p>
       <p className="text-xs uppercase tracking-widest text-neutral-500 mt-6">— Jay</p>
-      <p className="text-[10px] uppercase tracking-widest text-neutral-500 mt-16 animate-pulse">
+      <p className="text-[10px] uppercase tracking-widest text-neutral-700 mt-16 animate-pulse">
         toca para entrar
       </p>
     </div>

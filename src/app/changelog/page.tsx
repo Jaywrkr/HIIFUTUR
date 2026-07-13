@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { CHANGELOG, CHANGELOG_DESCRIPTION } from "@/lib/changelog";
 
-export const metadata = {
-  title: "Changelog — EJECUTA",
-  description: CHANGELOG_DESCRIPTION,
-  alternates: { canonical: "/changelog" },
-};
+export const metadata = { title: "Changelog — EJECUTA", description: CHANGELOG_DESCRIPTION };
 
 export default function ChangelogPage() {
   return (

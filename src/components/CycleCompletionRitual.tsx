@@ -37,7 +37,7 @@ export function CycleCompletionRitual() {
       <p className="text-sm italic text-neutral-400 leading-relaxed max-w-md mb-2">
         &ldquo;El crecimiento real es cuando te cansas de tus mierdas.&rdquo;
       </p>
-      <p className="text-xs uppercase tracking-widest text-neutral-400 mb-10">— Jay</p>
+      <p className="text-xs uppercase tracking-widest text-neutral-600 mb-10">— Jay</p>
       <div className="flex gap-3">
         <Link href="/wheel" className="btn-primary" onClick={dismiss}>
           Mide tu Wheel of Life
