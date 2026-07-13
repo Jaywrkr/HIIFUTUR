@@ -25,6 +25,7 @@ import { ResetReentryRitual } from "@/components/ResetReentryRitual";
 import { CycleCompletionRitual } from "@/components/CycleCompletionRitual";
 import { PullToRefresh } from "@/components/PullToRefresh";
 import { hasActiveAccess, daysLeftInTrial } from "@/lib/access";
+import { IconSprout, IconFlame } from "@/components/icons";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
@@ -116,7 +117,7 @@ export default async function DashboardPage() {
 
           {habitsWithData.length === 0 ? (
             <div className="card mb-10">
-              <p className="text-2xl mb-2">🌱</p>
+              <IconSprout className="w-7 h-7 text-accent mb-2" />
               <p className="text-sm text-neutral-300 mb-1">Todavía no tienes nada que sostener.</p>
               <p className="muted">
                 <Link href="/habits" className="link-accent">Crea tu primer hábito</Link> — el más
@@ -208,7 +209,15 @@ export default async function DashboardPage() {
               <p className="text-[10px] uppercase tracking-widest text-neutral-500 mt-1.5">Puntos</p>
             </Link>
             <Link href="/cuenta" className="card !p-4 text-center hover:border-accent/50 transition-colors">
-              <p className="text-xl font-extrabold">{bestStreak > 0 ? `🔥 ${bestStreak}` : "—"}</p>
+              <p className="text-xl font-extrabold flex items-center justify-center gap-1">
+                {bestStreak > 0 ? (
+                  <>
+                    <IconFlame className="w-4 h-4 text-accent" /> {bestStreak}
+                  </>
+                ) : (
+                  "—"
+                )}
+              </p>
               <p className="text-[10px] uppercase tracking-widest text-neutral-500 mt-1.5">Racha</p>
             </Link>
           </div>

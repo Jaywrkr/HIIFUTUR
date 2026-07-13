@@ -431,30 +431,32 @@ export default async function HomePage() {
             ya es parte de tu día.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="card">
-              <p className="kicker">{SYSTEM_PARTS[0].kicker}</p>
-              <p className="font-extrabold text-2xl mb-2">{SYSTEM_PARTS[0].title}</p>
-              <p className="muted">{SYSTEM_PARTS[0].description}</p>
-            </div>
-            <div className="card">
-              <p className="kicker">{SYSTEM_PARTS[1].kicker}</p>
-              <p className="font-extrabold text-2xl mb-2">{SYSTEM_PARTS[1].title}</p>
-              <p className="muted">{SYSTEM_PARTS[1].description}</p>
-            </div>
-            <div className="card">
-              <p className="kicker">{SYSTEM_PARTS[2].kicker}</p>
-              <p className="font-extrabold text-2xl mb-2">{SYSTEM_PARTS[2].title}</p>
-              <p className="muted">{SYSTEM_PARTS[2].description}</p>
-            </div>
-            <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col sm:flex-row items-center gap-6">
-              <div className="flex-1">
-                <p className="kicker">Tu ritmo</p>
-                <p className="font-extrabold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
-                <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
+          <div className="flex flex-col md:flex-row md:items-stretch gap-3 mb-6">
+            {SYSTEM_PARTS.map((part, i) => (
+              <div key={part.kicker} className="flex items-center gap-3 flex-1">
+                <Reveal delay={i * 150}>
+                  <div className="card h-full">
+                    <p className="kicker">{part.kicker}</p>
+                    <p className="font-extrabold text-2xl mb-2">{part.title}</p>
+                    <p className="muted">{part.description}</p>
+                  </div>
+                </Reveal>
+                {i < SYSTEM_PARTS.length - 1 ? (
+                  <span className="hidden md:block text-accent/50 text-2xl shrink-0" aria-hidden="true">
+                    →
+                  </span>
+                ) : null}
               </div>
-              <PhoneMantra mantra={MANTRAS[4]} />
+            ))}
+          </div>
+
+          <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col sm:flex-row items-center gap-6">
+            <div className="flex-1">
+              <p className="kicker">Tu ritmo</p>
+              <p className="font-extrabold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
+              <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
             </div>
+            <PhoneMantra mantra={MANTRAS[4]} />
           </div>
         </div>
       </Reveal>
@@ -468,8 +470,8 @@ export default async function HomePage() {
             Elige tu plan. Empieza tu sistema.
           </h2>
           <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-12">
-            Empieza gratis para probarlo. Los planes pagos son para quien quiere apoyar
-            directamente el desarrollo — hoy tienen las mismas funciones que el gratis.
+            7 días de prueba completa, sin tarjeta. Si decides seguir, activa dentro de esos 7
+            días y el precio con descuento te queda fijo para siempre.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 text-left">
@@ -512,8 +514,8 @@ export default async function HomePage() {
           </div>
 
           <p className="text-xs text-neutral-600 max-w-lg mx-auto mt-10">
-            Los cobros todavía no están activos. Cualquier plan que elijas hoy crea tu cuenta
-            gratis — te avisamos apenas el pago este disponible.
+            Cancela cuando quieras desde Mi cuenta. El pago se procesa por PayPal — puedes pagar
+            con tu cuenta PayPal o con tarjeta sin tener una.
           </p>
         </div>
       </Reveal>

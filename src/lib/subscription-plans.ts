@@ -10,17 +10,39 @@ export type PriceTier = "normal" | "descuento";
  * that subscription, even after the trial window has passed. */
 export const SUBSCRIPTION_PLANS: Record<
   SubscriptionPlanId,
-  { label: string; unit: string; price: Record<PriceTier, number> }
+  {
+    label: string;
+    unit: string;
+    price: Record<PriceTier, number>;
+    tagline: string;
+    features: string[];
+    highlight: boolean;
+  }
 > = {
   mensual: {
     label: "Mensual",
     unit: "/ mes",
     price: { normal: 699, descuento: 499 },
+    tagline: "Cancela cuando quieras.",
+    features: [
+      "Los 11 módulos completos",
+      "Hasta 5 hábitos activos",
+      "Wheel of Life cada 30 días",
+      "Recordatorios diarios",
+    ],
+    highlight: false,
   },
   anual: {
     label: "Anual",
     unit: "/ año",
     price: { normal: 5900, descuento: 4200 },
+    tagline: "Casi 2 meses gratis vs. pagar mes a mes.",
+    features: [
+      "Todo lo del plan mensual",
+      "Precio bloqueado para todo el año",
+      "Acceso prioritario a lo nuevo",
+    ],
+    highlight: true,
   },
 };
 

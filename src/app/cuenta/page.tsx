@@ -5,6 +5,7 @@ import { DeleteAccountSection } from "@/components/DeleteAccountSection";
 import { EditNameSection } from "@/components/EditNameSection";
 import { PushNotificationToggle } from "@/components/PushNotificationToggle";
 import { MiPlanCard } from "@/components/MiPlanSection";
+import { IconUser, IconMail, IconLock, IconBell, IconFlame } from "@/components/icons";
 import { requireUser } from "@/lib/session";
 import { getUserById, getHabitsForUser, getHabitLogs, getHabitFreezes } from "@/lib/queries";
 import { computeStreak, daysBetween, todayKey, addDays } from "@/lib/habit-utils";
@@ -96,7 +97,7 @@ export default async function CuentaPage() {
               const hit = allLogDates.has(key);
               return (
                 <div key={key} className="flex flex-col items-center gap-1 flex-1">
-                  <span className={`text-lg ${hit ? "" : "opacity-20 grayscale"}`}>🔥</span>
+                  <IconFlame className={`w-5 h-5 ${hit ? "text-accent" : "text-neutral-700"}`} />
                   <span className="text-[10px] uppercase tracking-widest text-neutral-600">
                     {d.toLocaleDateString("es-MX", { weekday: "narrow" })}
                   </span>
@@ -148,8 +149,8 @@ export default async function CuentaPage() {
 
         <div className="card !p-0 mb-6 divide-y divide-line overflow-hidden">
           <div className="px-6 py-5 flex items-center gap-4">
-            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
-              👤
+            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0">
+              <IconUser className="w-5 h-5 text-accent" />
             </span>
             <div className="flex-1 min-w-0">
               <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Nombre</p>
@@ -158,8 +159,8 @@ export default async function CuentaPage() {
           </div>
 
           <div className="px-6 py-5 flex items-center gap-4">
-            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
-              ✉️
+            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0">
+              <IconMail className="w-5 h-5 text-accent" />
             </span>
             <div className="flex-1 min-w-0">
               <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Email</p>
@@ -171,8 +172,8 @@ export default async function CuentaPage() {
             href="/forgot-password"
             className="px-6 py-5 flex items-center gap-4 hover:bg-accent/5 transition-colors group"
           >
-            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
-              🔒
+            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0">
+              <IconLock className="w-5 h-5 text-accent" />
             </span>
             <div className="flex-1 min-w-0">
               <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Contraseña</p>
@@ -182,8 +183,8 @@ export default async function CuentaPage() {
           </Link>
 
           <div className="px-6 py-5 flex items-center gap-4">
-            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
-              🔔
+            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0">
+              <IconBell className="w-5 h-5 text-accent" />
             </span>
             <div className="flex-1 min-w-0">
               <p className="text-xs uppercase tracking-widest text-neutral-500 mb-2">Notificaciones push</p>

@@ -34,21 +34,41 @@ export default async function UpgradePage() {
           }
         />
 
-        <div className="grid sm:grid-cols-2 gap-4 max-w-2xl">
+        <div className="grid sm:grid-cols-2 gap-6 max-w-2xl">
           {(Object.entries(SUBSCRIPTION_PLANS) as [keyof typeof SUBSCRIPTION_PLANS, (typeof SUBSCRIPTION_PLANS)[keyof typeof SUBSCRIPTION_PLANS]][]).map(
             ([planId, plan]) => (
-              <div key={planId} className="card flex flex-col">
-                <p className="kicker">{plan.label}</p>
-                <p className="text-3xl font-extrabold mt-1">
-                  {formatUsd(plan.price[tier])}
-                  <span className="text-sm font-normal text-neutral-500">{plan.unit}</span>
+              <div
+                key={planId}
+                className={`relative rounded-3xl p-6 flex flex-col ${
+                  plan.highlight ? "bg-accent/15 border border-accent/40" : "border border-line bg-surface"
+                }`}
+              >
+                {plan.highlight ? (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                    Mejor valor
+                  </span>
+                ) : null}
+                <p className="text-xs uppercase tracking-widest text-neutral-500 mb-4">{plan.label}</p>
+                <p className="mb-1">
+                  <span className="text-4xl font-extrabold">{formatUsd(plan.price[tier])}</span>{" "}
+                  <span className="text-sm text-neutral-400">{plan.unit}</span>
                 </p>
                 {tier === "descuento" ? (
-                  <p className="muted text-sm mt-1 line-through">{formatUsd(plan.price.normal)}{plan.unit}</p>
+                  <p className="text-sm text-neutral-500 mb-1 line-through">
+                    {formatUsd(plan.price.normal)}
+                    {plan.unit}
+                  </p>
                 ) : null}
-                <div className="mt-6">
-                  <PayPalSubscribeButton plan={planId} paypalPlanId={resolvePlanId(planId, tier)} />
+                <p className="muted mb-6">{plan.tagline}</p>
+                <div className="flex flex-col gap-3 mb-8 flex-1">
+                  {plan.features.map((f) => (
+                    <div key={f} className="flex items-start gap-2">
+                      <span className="text-accent mt-0.5 shrink-0">✓</span>
+                      <span className="text-sm text-neutral-300">{f}</span>
+                    </div>
+                  ))}
                 </div>
+                <PayPalSubscribeButton plan={planId} paypalPlanId={resolvePlanId(planId, tier)} />
               </div>
             )
           )}
