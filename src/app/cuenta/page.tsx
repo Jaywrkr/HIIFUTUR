@@ -82,7 +82,7 @@ export default async function CuentaPage() {
             <div className="h-2 rounded-full bg-ink border border-line overflow-hidden">
               <div className="h-full bg-accent rounded-full" style={{ width: `${progressPct}%` }} />
             </div>
-            <p className="text-xs text-neutral-600 mt-1">
+            <p className="text-xs text-neutral-400 mt-1">
               {pointsToNextLevel} puntos más · cada hábito marcado suma {POINTS_PER_CHECK}
             </p>
           </div>
@@ -97,8 +97,8 @@ export default async function CuentaPage() {
               const hit = allLogDates.has(key);
               return (
                 <div key={key} className="flex flex-col items-center gap-1 flex-1">
-                  <IconFlame className={`w-5 h-5 ${hit ? "text-accent" : "text-neutral-700"}`} />
-                  <span className="text-[10px] uppercase tracking-widest text-neutral-600">
+                  <IconFlame className={`w-5 h-5 ${hit ? "text-accent" : "text-neutral-500"}`} />
+                  <span className="text-[10px] uppercase tracking-widest text-neutral-400">
                     {d.toLocaleDateString("es-MX", { weekday: "narrow" })}
                   </span>
                 </div>
@@ -122,7 +122,7 @@ export default async function CuentaPage() {
           </div>
 
           {nextMilestone ? (
-            <p className="text-xs text-neutral-600 mt-4">
+            <p className="text-xs text-neutral-400 mt-4">
               Siguiente meta: {nextMilestone} días seguidos ({nextMilestone - bestCurrentStreak} por delante)
             </p>
           ) : null}
@@ -145,7 +145,7 @@ export default async function CuentaPage() {
         />
 
         {/* Account settings */}
-        <p className="text-xs uppercase tracking-widest text-neutral-600 mb-4">Tu cuenta</p>
+        <p className="text-xs uppercase tracking-widest text-neutral-400 mb-4">Tu cuenta</p>
 
         <div className="card !p-0 mb-6 divide-y divide-line overflow-hidden">
           <div className="px-6 py-5 flex items-center gap-4">
@@ -179,7 +179,7 @@ export default async function CuentaPage() {
               <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Contraseña</p>
               <p className="font-bold text-sm">Cambiar mi contraseña</p>
             </div>
-            <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
+            <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
           </Link>
 
           <div className="px-6 py-5 flex items-center gap-4">
@@ -199,21 +199,21 @@ export default async function CuentaPage() {
             className="px-6 py-4 flex items-center justify-between text-sm hover:bg-accent/5 transition-colors group"
           >
             <span className="text-neutral-300">Términos de uso</span>
-            <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
+            <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
           </Link>
           <Link
             href="/privacidad"
             className="px-6 py-4 flex items-center justify-between text-sm hover:bg-accent/5 transition-colors group"
           >
             <span className="text-neutral-300">Política de privacidad</span>
-            <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
+            <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
           </Link>
           <Link
             href="/changelog"
             className="px-6 py-4 flex items-center justify-between text-sm hover:bg-accent/5 transition-colors group"
           >
             <span className="text-neutral-300">Novedades de la app</span>
-            <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
+            <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
           </Link>
         </div>
 

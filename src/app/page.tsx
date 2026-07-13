@@ -282,7 +282,7 @@ export default async function HomePage() {
             {OLD_RULES.map((rule) => (
               <p
                 key={rule}
-                className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-neutral-700 line-through decoration-red-500/70"
+                className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-neutral-500 line-through decoration-red-500/70"
                 style={{ textDecorationThickness: "3px" }}
               >
                 {rule}
@@ -513,7 +513,7 @@ export default async function HomePage() {
             ))}
           </div>
 
-          <p className="text-xs text-neutral-600 max-w-lg mx-auto mt-10">
+          <p className="text-xs text-neutral-400 max-w-lg mx-auto mt-10">
             Cancela cuando quieras desde Mi cuenta. El pago se procesa por PayPal — puedes pagar
             con tu cuenta PayPal o con tarjeta sin tener una.
           </p>

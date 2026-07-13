@@ -148,7 +148,7 @@ export default async function ModulesPage({
                           done
                             ? "bg-accent text-black"
                             : locked
-                              ? "border border-line text-neutral-600"
+                              ? "border border-line text-neutral-400"
                               : "border border-accent/50 text-accent"
                         }`}
                       >
@@ -163,7 +163,7 @@ export default async function ModulesPage({
                       </div>
 
                       {locked ? (
-                        <span className="text-[11px] uppercase tracking-widest text-neutral-600 text-right shrink-0 max-w-[6.5rem] leading-tight">
+                        <span className="text-[11px] uppercase tracking-widest text-neutral-400 text-right shrink-0 max-w-[6.5rem] leading-tight">
                           {lockLabel}
                         </span>
                       ) : (

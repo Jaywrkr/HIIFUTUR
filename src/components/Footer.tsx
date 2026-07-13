@@ -47,7 +47,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-line pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-600 text-center sm:text-left">
+        <div className="border-t border-line pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400 text-center sm:text-left">
           <p>© {year} HIIFUTUR. Todos los derechos reservados.</p>
           <p>EJECUTA no es consejo médico, financiero ni psicológico.</p>
         </div>

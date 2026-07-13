@@ -47,7 +47,7 @@ function WillpowerBattery() {
       </div>
       <div className="flex justify-between mt-2 px-1">
         {labels.map((l) => (
-          <span key={l} className="text-[10px] uppercase tracking-widest text-neutral-600">
+          <span key={l} className="text-[10px] uppercase tracking-widest text-neutral-400">
             {l}
           </span>
         ))}
@@ -114,7 +114,7 @@ function NeverTwice() {
           <span
             key={i}
             className={`w-6 h-6 rounded flex items-center justify-center text-xs ${
-              hit ? "bg-accent text-black" : "border border-neutral-700 text-neutral-700"
+              hit ? "bg-accent text-black" : "border border-neutral-700 text-neutral-500"
             }`}
           >
             {hit ? "✓" : "·"}
@@ -279,7 +279,7 @@ function MantraCollection() {
     <div className="flex flex-col gap-2">
       {MODULES.map((m) => (
         <div key={m.id} className="flex gap-3 items-start">
-          <span className="text-[10px] uppercase tracking-widest text-neutral-600 shrink-0 mt-1 w-6">
+          <span className="text-[10px] uppercase tracking-widest text-neutral-400 shrink-0 mt-1 w-6">
             {m.order}
           </span>
           <p className="text-xs text-neutral-400 italic leading-snug">

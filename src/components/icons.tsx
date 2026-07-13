@@ -58,6 +58,15 @@ export function IconFlame({ className }: IconProps) {
   );
 }
 
+export function IconShieldCheck({ className }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M12 3.5l7 2.5v5.2c0 4.4-2.9 7.9-7 9.3-4.1-1.4-7-4.9-7-9.3V6l7-2.5Z" />
+      <path d="M9 12l2 2 4-4.5" />
+    </svg>
+  );
+}
+
 export function IconSprout({ className }: IconProps) {
   return (
     <svg {...base} className={className} aria-hidden="true">

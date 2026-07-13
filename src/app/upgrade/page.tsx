@@ -8,6 +8,22 @@ import { hasActiveAccess, daysLeftInTrial } from "@/lib/access";
 import { SUBSCRIPTION_PLANS, formatUsd, priceTierFor } from "@/lib/subscription-plans";
 import { resolvePlanId } from "@/lib/paypal";
 import { PayPalSubscribeButton } from "@/components/PayPalSubscribeButton";
+import { IconShieldCheck } from "@/components/icons";
+
+const UPGRADE_FAQ = [
+  {
+    q: "¿Puedo cancelar cuando quiera?",
+    a: "Sí, desde Mi cuenta, sin escribirnos ni pedir permiso. Mantienes acceso hasta el final del periodo que ya pagaste.",
+  },
+  {
+    q: "¿Es seguro pagar aquí?",
+    a: "El cobro lo procesa PayPal directamente — nosotros nunca vemos ni guardamos tu número de tarjeta.",
+  },
+  {
+    q: "¿El precio puede subir después?",
+    a: "El precio que actives hoy queda fijo en tu cuenta para siempre, aunque más adelante cambiemos las tarifas de lista.",
+  },
+];
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
@@ -74,10 +90,22 @@ export default async function UpgradePage() {
           )}
         </div>
 
-        <p className="muted text-xs mt-8 max-w-xl">
-          Puedes cancelar cuando quieras desde Mi cuenta. El pago se procesa por PayPal — puedes
-          pagar con tu cuenta PayPal o con tarjeta sin tener una.
+        <p className="flex items-center gap-2 text-xs text-neutral-500 mt-6 max-w-xl">
+          <IconShieldCheck className="w-4 h-4 text-accent shrink-0" />
+          Pago seguro, procesado por PayPal. Nunca vemos ni guardamos tu número de tarjeta.
         </p>
+
+        <div className="max-w-xl mt-12">
+          <p className="text-xs uppercase tracking-widest text-neutral-400 mb-4">Antes de activar</p>
+          <div className="flex flex-col gap-4">
+            {UPGRADE_FAQ.map((item) => (
+              <div key={item.q}>
+                <p className="font-bold text-sm mb-1">{item.q}</p>
+                <p className="muted text-sm">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </main>
     </>
   );

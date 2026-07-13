@@ -223,7 +223,7 @@ export default async function DashboardPage() {
           </div>
 
           <div>
-            <p className="text-xs uppercase tracking-widest text-neutral-600 mb-4">Tu progreso</p>
+            <p className="text-xs uppercase tracking-widest text-neutral-400 mb-4">Tu progreso</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link
                 href="/habits"
@@ -248,7 +248,7 @@ export default async function DashboardPage() {
                       : `${userHabits.length}/${MAX_HABITS} activos · siguiente en ${daysUntilNextHabit}d`}
                   </span>
                 </span>
-                <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
+                <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
               </Link>
 
               <Link
@@ -264,7 +264,7 @@ export default async function DashboardPage() {
                     {completedIds.size} de {MODULES.length} completados
                   </span>
                 </span>
-                <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
+                <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
               </Link>
 
               <Link
@@ -284,7 +284,7 @@ export default async function DashboardPage() {
                       : `Próxima medición: ${nextWheelDate?.toLocaleDateString("es-MX")}`}
                   </span>
                 </span>
-                <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
+                <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
               </Link>
 
               <Link
@@ -300,7 +300,7 @@ export default async function DashboardPage() {
                     Los 10 primeros, por puntos
                   </span>
                 </span>
-                <span className="text-neutral-600 group-hover:text-accent transition-colors">→</span>
+                <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
               </Link>
             </div>
           </div>
