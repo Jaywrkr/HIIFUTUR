@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Privacidad — EJECUTA" };
+export const metadata = { title: "Privacidad — EJECUTA", alternates: { canonical: "/privacidad" } };
 
 export default function PrivacidadPage() {
   return (

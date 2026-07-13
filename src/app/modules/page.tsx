@@ -8,6 +8,7 @@ import { getUserById, getUserPreferences, getModuleProgressForUser } from "@/lib
 import { MODULES, PHASES } from "@/lib/modules-content";
 import { evaluateCycle, executionLocked } from "@/lib/cycle-state";
 import { WelcomeTour } from "@/components/WelcomeTour";
+import { hasActiveAccess } from "@/lib/access";
 import {
   MAX_CYCLE_FAILS,
   CYCLE_DAYS,
@@ -29,6 +30,7 @@ export default async function ModulesPage({
 
   const user = await getUserById(sessionUser.id);
   if (!user) redirect("/login");
+  if (!hasActiveAccess(user)) redirect("/upgrade");
 
   const cycle = await evaluateCycle(user);
   const progress = await getModuleProgressForUser(user.id);
@@ -146,7 +148,7 @@ export default async function ModulesPage({
                           done
                             ? "bg-accent text-black"
                             : locked
-                              ? "border border-line text-neutral-600"
+                              ? "border border-line text-neutral-400"
                               : "border border-accent/50 text-accent"
                         }`}
                       >
@@ -161,7 +163,7 @@ export default async function ModulesPage({
                       </div>
 
                       {locked ? (
-                        <span className="text-[11px] uppercase tracking-widest text-neutral-600 text-right shrink-0 max-w-[6.5rem] leading-tight">
+                        <span className="text-[11px] uppercase tracking-widest text-neutral-400 text-right shrink-0 max-w-[6.5rem] leading-tight">
                           {lockLabel}
                         </span>
                       ) : (

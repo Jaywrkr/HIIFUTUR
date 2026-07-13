@@ -6,7 +6,8 @@ import { WheelRadarChart } from "@/components/WheelRadarChart";
 import { WheelMeasurementForm } from "@/components/WheelMeasurementForm";
 import { ShareWheelButton } from "@/components/ShareWheelButton";
 import { requireUser } from "@/lib/session";
-import { getUserPreferences, getWheelMeasurements, getHabitsForUser } from "@/lib/queries";
+import { getUserPreferences, getWheelMeasurements, getHabitsForUser, getAccessStatus } from "@/lib/queries";
+import { hasActiveAccess } from "@/lib/access";
 import { addDays } from "@/lib/habit-utils";
 import { DAYS_BETWEEN_WHEEL_MEASUREMENTS, WHEEL_AREAS, WHEEL_AREA_TO_CATEGORY } from "@/lib/constants";
 
@@ -44,6 +45,9 @@ export default async function WheelPage() {
   const user = await requireUser();
   const prefs = await getUserPreferences(user.id);
   if (!prefs) redirect("/onboarding");
+
+  const access = await getAccessStatus(user.id);
+  if (!access || !hasActiveAccess(access)) redirect("/upgrade");
 
   const measurements = await getWheelMeasurements(user.id);
   const habits = await getHabitsForUser(user.id);

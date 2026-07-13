@@ -5,6 +5,7 @@ import { LoginForm } from "./LoginForm";
 export const metadata: Metadata = {
   title: "Inicia sesión — EJECUTA",
   description: "Entra a tu cuenta de EJECUTA: tu curso, tus hábitos y tu Wheel of Life.",
+  alternates: { canonical: "/login" },
 };
 
 export default function LoginPage() {

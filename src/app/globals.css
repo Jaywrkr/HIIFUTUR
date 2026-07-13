@@ -48,7 +48,7 @@ select:focus-visible,
   @apply flex flex-col gap-1;
 }
 .auth-footer {
-  @apply text-sm text-neutral-500 mt-6 text-center;
+  @apply text-sm text-neutral-400 mt-6 text-center;
 }
 .field-label {
   @apply text-xs uppercase tracking-widest text-neutral-400 mt-4 mb-1;
@@ -87,7 +87,7 @@ select:focus-visible,
   @apply text-sm font-bold tracking-[0.3em] text-white;
 }
 .app-nav-links {
-  @apply flex items-center gap-5 text-xs uppercase tracking-widest text-neutral-500;
+  @apply flex items-center gap-5 text-xs uppercase tracking-widest text-neutral-400;
 }
 .app-nav-link {
   @apply hover:text-white transition-colors;
@@ -134,7 +134,7 @@ select:focus-visible,
   @apply text-lg font-bold mb-4;
 }
 .muted {
-  @apply text-neutral-500 text-sm;
+  @apply text-neutral-400 text-sm;
 }
 
 /* Repeated rows in a list (habits, modules): a divider, not a box. Cards are

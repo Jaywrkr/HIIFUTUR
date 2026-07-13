@@ -4,6 +4,7 @@ import { ForgotPasswordForm } from "./ForgotPasswordForm";
 export const metadata: Metadata = {
   title: "Recupera tu acceso — EJECUTA",
   description: "Te mandamos un enlace para elegir una contraseña nueva.",
+  alternates: { canonical: "/forgot-password" },
 };
 
 export default function ForgotPasswordPage() {

@@ -1,7 +1,8 @@
 import { notFound, redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
 import { requireUser } from "@/lib/session";
-import { getUserById, getUserPreferences, getModuleProgressForUser } from "@/lib/queries";
+import { getUserById, getUserPreferences, getModuleProgressForUser, getAccessStatus } from "@/lib/queries";
+import { hasActiveAccess } from "@/lib/access";
 import { evaluateCycle, executionLocked } from "@/lib/cycle-state";
 import { countCompletedInCycle } from "@/lib/cycle";
 import {
@@ -17,6 +18,9 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
   const user = await requireUser();
   const prefs = await getUserPreferences(user.id);
   if (!prefs) redirect("/onboarding");
+
+  const access = await getAccessStatus(user.id);
+  if (!access || !hasActiveAccess(access)) redirect("/upgrade");
 
   const courseModule = getModuleById(params.id);
   if (!courseModule) notFound();

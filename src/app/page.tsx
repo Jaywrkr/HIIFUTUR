@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/session";
@@ -58,15 +59,15 @@ const SYSTEM_PARTS = [
 
 const PRICING_PLANS = [
   {
-    id: "gratis",
-    label: "Gratis",
+    id: "prueba",
+    label: "Prueba gratis",
     price: "$0",
-    unit: "para empezar",
-    tagline: "Sin tarjeta. Sin trampa.",
+    unit: "7 días",
+    tagline: "Sin tarjeta.",
     features: [
       "Los 11 módulos completos",
-      "Hasta 5 hábitos activos",
-      "Wheel of Life cada 30 días",
+      "Tu hábito ancla activo",
+      "Wheel of Life inicial",
       "Recordatorios diarios",
     ],
     cta: "Empezar gratis",
@@ -75,14 +76,14 @@ const PRICING_PLANS = [
   {
     id: "mensual",
     label: "Mensual",
-    price: "$4.99",
+    price: "$6.99",
     unit: "/ mes",
-    tagline: "Cancela cuando quieras.",
+    tagline: "$4.99/mes si activas en tus primeros 7 días — precio fijo para siempre.",
     features: [
-      "Todo lo del plan gratis",
-      "Apoyas directamente el desarrollo",
-      "Próximamente: más hábitos activos",
-      "Próximamente: reportes avanzados",
+      "Todo el sistema, sin límite de tiempo",
+      "Hasta 5 hábitos activos",
+      "Wheel of Life cada 30 días",
+      "Cancela cuando quieras",
     ],
     cta: "Empezar mensual",
     highlight: false,
@@ -90,9 +91,9 @@ const PRICING_PLANS = [
   {
     id: "anual",
     label: "Anual",
-    price: "$39",
+    price: "$59",
     unit: "/ año",
-    tagline: "Menos de $3.25 al mes.",
+    tagline: "$42/año si activas en tus primeros 7 días — precio fijo para siempre.",
     features: [
       "Todo lo del plan mensual",
       "Casi 2 meses gratis vs. pagar mes a mes",
@@ -143,7 +144,7 @@ const FAQ = [
   },
   {
     q: "¿Necesito comprar algo?",
-    a: "No. Es gratis para empezar.",
+    a: "No para empezar — tienes 7 días gratis, sin tarjeta, con el sistema completo. Si decides seguir, activas un plan pago; si activas dentro de esos 7 días, te queda un precio más bajo para siempre.",
   },
   {
     q: "¿Y si fallo un día?",
@@ -179,12 +180,34 @@ function FloatingStat({
   );
 }
 
+const STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "EJECUTA",
+  applicationCategory: "LifestyleApplication",
+  operatingSystem: "Web",
+  description:
+    "Curso interactivo basado en el Principio de Pareto, con seguimiento de hábitos y Wheel of Life — sistema de ejecución sostenible.",
+  offers: PRICING_PLANS.filter((p) => p.id !== "prueba").map((p) => ({
+    "@type": "Offer",
+    name: p.label,
+    price: p.price.replace("$", ""),
+    priceCurrency: "USD",
+  })),
+};
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
 export default async function HomePage() {
   const user = await getCurrentUser();
   if (user) redirect("/dashboard");
 
   return (
     <main className="min-h-screen overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
+      />
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-8 flex items-center justify-between">
         <span className="text-sm font-bold tracking-[0.3em] text-white">EJECUTA</span>
         <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
@@ -259,7 +282,7 @@ export default async function HomePage() {
             {OLD_RULES.map((rule) => (
               <p
                 key={rule}
-                className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-neutral-700 line-through decoration-red-500/70"
+                className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-neutral-500 line-through decoration-red-500/70"
                 style={{ textDecorationThickness: "3px" }}
               >
                 {rule}
@@ -408,30 +431,32 @@ export default async function HomePage() {
             ya es parte de tu día.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="card">
-              <p className="kicker">{SYSTEM_PARTS[0].kicker}</p>
-              <p className="font-extrabold text-2xl mb-2">{SYSTEM_PARTS[0].title}</p>
-              <p className="muted">{SYSTEM_PARTS[0].description}</p>
-            </div>
-            <div className="card">
-              <p className="kicker">{SYSTEM_PARTS[1].kicker}</p>
-              <p className="font-extrabold text-2xl mb-2">{SYSTEM_PARTS[1].title}</p>
-              <p className="muted">{SYSTEM_PARTS[1].description}</p>
-            </div>
-            <div className="card">
-              <p className="kicker">{SYSTEM_PARTS[2].kicker}</p>
-              <p className="font-extrabold text-2xl mb-2">{SYSTEM_PARTS[2].title}</p>
-              <p className="muted">{SYSTEM_PARTS[2].description}</p>
-            </div>
-            <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col sm:flex-row items-center gap-6">
-              <div className="flex-1">
-                <p className="kicker">Tu ritmo</p>
-                <p className="font-extrabold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
-                <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
+          <div className="flex flex-col md:flex-row md:items-stretch gap-3 mb-6">
+            {SYSTEM_PARTS.map((part, i) => (
+              <div key={part.kicker} className="flex items-center gap-3 flex-1">
+                <Reveal delay={i * 150}>
+                  <div className="card h-full">
+                    <p className="kicker">{part.kicker}</p>
+                    <p className="font-extrabold text-2xl mb-2">{part.title}</p>
+                    <p className="muted">{part.description}</p>
+                  </div>
+                </Reveal>
+                {i < SYSTEM_PARTS.length - 1 ? (
+                  <span className="hidden md:block text-accent/50 text-2xl shrink-0" aria-hidden="true">
+                    →
+                  </span>
+                ) : null}
               </div>
-              <PhoneMantra mantra={MANTRAS[4]} />
+            ))}
+          </div>
+
+          <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col sm:flex-row items-center gap-6">
+            <div className="flex-1">
+              <p className="kicker">Tu ritmo</p>
+              <p className="font-extrabold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
+              <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
             </div>
+            <PhoneMantra mantra={MANTRAS[4]} />
           </div>
         </div>
       </Reveal>
@@ -445,8 +470,8 @@ export default async function HomePage() {
             Elige tu plan. Empieza tu sistema.
           </h2>
           <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-12">
-            Empieza gratis para probarlo. Los planes pagos son para quien quiere apoyar
-            directamente el desarrollo — hoy tienen las mismas funciones que el gratis.
+            7 días de prueba completa, sin tarjeta. Si decides seguir, activa dentro de esos 7
+            días y el precio con descuento te queda fijo para siempre.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 text-left">
@@ -488,9 +513,9 @@ export default async function HomePage() {
             ))}
           </div>
 
-          <p className="text-xs text-neutral-600 max-w-lg mx-auto mt-10">
-            Los cobros todavía no están activos. Cualquier plan que elijas hoy crea tu cuenta
-            gratis — te avisamos apenas el pago este disponible.
+          <p className="text-xs text-neutral-400 max-w-lg mx-auto mt-10">
+            Cancela cuando quieras desde Mi cuenta. El pago se procesa por PayPal — puedes pagar
+            con tu cuenta PayPal o con tarjeta sin tener una.
           </p>
         </div>
       </Reveal>

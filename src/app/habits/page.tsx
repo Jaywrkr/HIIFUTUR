@@ -13,7 +13,9 @@ import {
   getHabitLogs,
   getHabitFreezes,
   getModuleProgressForUser,
+  getAccessStatus,
 } from "@/lib/queries";
+import { hasActiveAccess } from "@/lib/access";
 import { MODULES } from "@/lib/modules-content";
 import { addDays, computeStreak, todayKey } from "@/lib/habit-utils";
 import { computeLongestStreak } from "@/lib/habit-stats";
@@ -31,6 +33,9 @@ export default async function HabitsPage() {
   const user = await requireUser();
   const prefs = await getUserPreferences(user.id);
   if (!prefs) redirect("/onboarding");
+
+  const access = await getAccessStatus(user.id);
+  if (!access || !hasActiveAccess(access)) redirect("/upgrade");
 
   const userHabits = await getHabitsForUser(user.id);
   const today = todayKey();
