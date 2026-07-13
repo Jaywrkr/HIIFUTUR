@@ -30,4 +30,15 @@ describe("course content integrity", () => {
       expect(new Set(fieldIds).size).toBe(fieldIds.length);
     }
   });
+
+  it("every choice option has a non-empty hint explaining what picking it means", () => {
+    for (const m of MODULES) {
+      for (const f of m.fields) {
+        if (f.type !== "choice") continue;
+        for (const option of f.options ?? []) {
+          expect(option.hint.trim().length).toBeGreaterThan(0);
+        }
+      }
+    }
+  });
 });

@@ -85,7 +85,7 @@ export function ModuleExerciseForm({
               {field.options?.map((option) => (
                 <label
                   key={option.value}
-                  className="flex items-center gap-3 border border-line px-3 py-2 text-sm text-neutral-300 has-[:checked]:border-accent has-[:checked]:text-accent cursor-pointer"
+                  className="flex items-start gap-3 border border-line px-3 py-2 text-sm text-neutral-300 has-[:checked]:border-accent has-[:checked]:text-accent cursor-pointer"
                 >
                   <input
                     type="radio"
@@ -93,9 +93,12 @@ export function ModuleExerciseForm({
                     value={option.value}
                     required
                     defaultChecked={existingData[field.id] === option.value}
-                    className="accent-accent"
+                    className="accent-accent mt-0.5"
                   />
-                  {option.label}
+                  <span>
+                    <span className="block">{option.label}</span>
+                    <span className="block text-xs text-neutral-500 mt-0.5">{option.hint}</span>
+                  </span>
                 </label>
               ))}
             </div>

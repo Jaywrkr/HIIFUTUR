@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.48.0",
+    date: "2026-07-13",
+    changes: [
+      "Cada opción de respuesta de tipo elección en los módulos ahora explica qué significa elegirla, no solo el texto corto de la opción.",
+      "La descripción de cada ejercicio también resalta términos del glosario, igual que el bloque de teoría.",
+    ],
+  },
+  {
     version: "2.47.0",
     date: "2026-07-13",
     changes: [
