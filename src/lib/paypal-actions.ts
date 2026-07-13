@@ -31,6 +31,17 @@ export async function confirmSubscription(
   // if this same subscription renews after the trial window would've closed.
   const tier = priceTierFor(access.trialEndsAt);
 
+  // Persist the subscription id + locked-in plan/tier *before* verifying
+  // with PayPal. If the verification call below fails, the webhook
+  // (src/app/api/webhooks/paypal/route.ts) can still find this user by
+  // paypal_subscription_id when it arrives later and finish the job —
+  // without this, a failed verification here would leave the id nowhere,
+  // and the webhook's WHERE clause would match no rows.
+  await db
+    .update(users)
+    .set({ paypalSubscriptionId, subscriptionPlan: plan, subscriptionPriceTier: tier })
+    .where(eq(users.id, user.id));
+
   let subscription;
   try {
     subscription = await paypalFetch(`/v1/billing/subscriptions/${paypalSubscriptionId}`);
@@ -38,7 +49,7 @@ export async function confirmSubscription(
     console.error("confirmSubscription: paypalFetch falló", err);
     return {
       error:
-        "PayPal aprobó tu pago pero no pudimos confirmarlo automáticamente. Escríbenos a jaywrkr@gmail.com con este ID: " +
+        "PayPal aprobó tu pago pero no pudimos confirmarlo automáticamente. Se activará solo en unos minutos — si no, escríbenos a jaywrkr@gmail.com con este ID: " +
         paypalSubscriptionId,
     };
   }
@@ -50,10 +61,7 @@ export async function confirmSubscription(
   await db
     .update(users)
     .set({
-      subscriptionPlan: plan,
-      subscriptionPriceTier: tier,
       subscriptionStatus: "active",
-      paypalSubscriptionId,
       subscriptionCurrentPeriodEnd: subscription.billing_info?.next_billing_time
         ? new Date(subscription.billing_info.next_billing_time)
         : null,
