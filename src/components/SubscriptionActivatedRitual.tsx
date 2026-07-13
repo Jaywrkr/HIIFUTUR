@@ -38,6 +38,12 @@ export function SubscriptionActivatedRitual({
         dismissing ? "opacity-0" : "opacity-100"
       }`}
     >
+      <div
+        className="mb-6 h-16 w-16 rounded-full bg-accent/15 border border-accent/40 flex items-center justify-center animate-[fadeIn_400ms_ease-out]"
+        aria-hidden="true"
+      >
+        <span className="text-3xl text-accent">✓</span>
+      </div>
       <p className="text-xs uppercase tracking-widest text-accent mb-4">Bienvenido de verdad</p>
       <h1 className="text-2xl md:text-3xl font-extrabold leading-snug max-w-lg mb-4">
         Listo. Tu sistema ya es tuyo, para siempre.

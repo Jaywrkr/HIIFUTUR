@@ -5,12 +5,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { cancelSubscription } from "@/lib/paypal-actions";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { useToast } from "@/components/Toast";
 
 export function MiPlanSection() {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const toast = useToast();
 
   async function handleCancel() {
     setPending(true);
@@ -21,6 +23,7 @@ export function MiPlanSection() {
       setError(result.error);
       return;
     }
+    toast("Suscripción cancelada. Mantienes acceso hasta el final del periodo pagado.");
     router.refresh();
   }
 

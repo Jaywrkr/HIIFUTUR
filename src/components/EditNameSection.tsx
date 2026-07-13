@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { updateName, type UpdateNameState } from "@/lib/account-actions";
+import { useToast } from "@/components/Toast";
 
 const initialState: UpdateNameState = {};
 
@@ -20,13 +21,15 @@ export function EditNameSection({ initialName }: { initialName: string }) {
   const [displayName, setDisplayName] = useState(initialName);
   const [state, formAction] = useFormState(updateName, initialState);
   const pendingValue = useRef(initialName);
+  const toast = useToast();
 
   useEffect(() => {
     if (state.ok) {
       setDisplayName(pendingValue.current);
       setEditing(false);
+      toast("Nombre actualizado.");
     }
-  }, [state]);
+  }, [state, toast]);
 
   function handleSubmit(formData: FormData) {
     pendingValue.current = String(formData.get("name") ?? "").trim();
