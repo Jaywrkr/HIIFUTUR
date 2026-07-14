@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.53.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 2: la barra estática del 80/20 ahora es un control deslizante — arrastras para elegir cuántas de 10 acciones proteges y ves en vivo qué porcentaje del resultado capturas. Con 2 de 10 ya casi llegas al 80%; seguir agregando después casi no suma.",
+    ],
+  },
+  {
     version: "2.52.0",
     date: "2026-07-14",
     changes: [
