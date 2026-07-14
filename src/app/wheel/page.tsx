@@ -8,7 +8,7 @@ import { ShareWheelButton } from "@/components/ShareWheelButton";
 import { requireUser } from "@/lib/session";
 import { getUserPreferences, getWheelMeasurements, getHabitsForUser, getAccessStatus } from "@/lib/queries";
 import { hasActiveAccess } from "@/lib/access";
-import { addDays } from "@/lib/habit-utils";
+import { addDays, relativeDayLabel } from "@/lib/habit-utils";
 import { DAYS_BETWEEN_WHEEL_MEASUREMENTS, WHEEL_AREAS, WHEEL_AREA_TO_CATEGORY } from "@/lib/constants";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
@@ -107,7 +107,8 @@ export default async function WheelPage() {
           <WheelMeasurementForm lastScores={latest?.areaScores as Record<string, number> | undefined} />
         ) : (
           <p className="muted">
-            Tu siguiente medición está disponible el {nextAllowed?.toLocaleDateString("es-MX")}.
+            Puedes volver a medir {nextAllowed ? relativeDayLabel(nextAllowed) : "pronto"} — la
+            medición se hace cada mes, para darle tiempo real a tus hábitos de mover algo.
           </p>
         )}
       </main>

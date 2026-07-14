@@ -3,6 +3,20 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.49.0",
+    date: "2026-07-14",
+    changes: [
+      "Cualquier lugar que hable de 'crear tu hábito' ahora deja claro que el primero se elige al terminar el Módulo 1 — no aparece la opción de crearlo antes de eso.",
+      "En los módulos, si le das a \"Marcar como completado\" con algo sin llenar, el botón lo avisa: vibra, se pone rojo un segundo y te dice exactamente qué falta.",
+      "La explicación extra de cada opción de respuesta ahora está oculta por defecto — la despliegas tocando \"¿Qué significa esto?\".",
+      "Los mensajes de \"vuelve en X días\" (Wheel of Life, hábitos, congelar racha) ya no muestran una fecha técnica: dicen \"hoy\", \"mañana\" o \"en X días\".",
+      "Quitamos la etiqueta \"HOY\" arriba de la pantalla principal — ya era redundante.",
+      "Cuando ayer se te pasó marcar un hábito, ahora lo dice directamente en la tarjeta: \"Ayer te quedaste sin marcar\".",
+      "Arreglado: cuentas creadas antes de que existiera la prueba de 7 días se habían quedado sin fecha de prueba, así que nunca veían el precio de $4.99/$42 al activar. Ahora todas tienen su ventana de prueba.",
+      "La pantalla de Gestionar hábitos ahora usa el mismo estilo de tarjetas que la pantalla de Hoy.",
+    ],
+  },
+  {
     version: "2.48.0",
     date: "2026-07-13",
     changes: [

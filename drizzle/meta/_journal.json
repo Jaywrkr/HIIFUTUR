@@ -85,6 +85,13 @@
       "when": 1783812578152,
       "tag": "0011_plain_swordsman",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1783999470320,
+      "tag": "0012_backfill_trial_ends_at",
+      "breakpoints": true
     }
   ]
 }
