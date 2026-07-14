@@ -17,7 +17,7 @@ import {
 } from "@/lib/queries";
 import { hasActiveAccess } from "@/lib/access";
 import { MODULES } from "@/lib/modules-content";
-import { addDays, computeStreak, todayKey } from "@/lib/habit-utils";
+import { addDays, computeStreak, relativeDayLabel, todayKey } from "@/lib/habit-utils";
 import { computeLongestStreak } from "@/lib/habit-stats";
 import {
   MAX_HABITS,
@@ -68,9 +68,9 @@ export default async function HabitsPage() {
         totalDays: new Set(logDates).size,
         doneToday: logDates.includes(today),
         canEdit,
-        nextEditLabel: nextEditDate ? nextEditDate.toLocaleDateString("es-MX") : null,
+        nextEditLabel: nextEditDate ? relativeDayLabel(nextEditDate) : null,
         canFreeze,
-        nextFreezeLabel: freezeOnCooldown ? nextFreezeDate!.toLocaleDateString("es-MX") : null,
+        nextFreezeLabel: freezeOnCooldown ? relativeDayLabel(nextFreezeDate!) : null,
         logDates,
         freezeDates,
       };
@@ -154,7 +154,7 @@ export default async function HabitsPage() {
         ) : null}
 
         {habitsWithData.length > 0 ? (
-          <div className="mb-8">
+          <div className="flex flex-col gap-3 mb-8">
             {habitsWithData.map(
               (
                 {
@@ -197,7 +197,7 @@ export default async function HabitsPage() {
           <p className="muted">Ya tienes tus {MAX_HABITS} hábitos activos. Enfocate en sostenerlos.</p>
         ) : (
           <p className="muted">
-            Tu siguiente hábito se desbloquea el {nextUnlockDate?.toLocaleDateString("es-MX")}.
+            Tu siguiente hábito se desbloquea {nextUnlockDate ? relativeDayLabel(nextUnlockDate) : "pronto"}.
             Sostener el actual es el trabajo ahora.
           </p>
         )}

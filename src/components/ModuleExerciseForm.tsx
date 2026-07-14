@@ -1,17 +1,49 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { completeModule } from "@/lib/module-actions";
 import type { ExerciseField } from "@/lib/modules-content";
 
-function SubmitButton() {
+function SubmitButton({ shaking }: { shaking: boolean }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} className="btn-primary w-full mt-2">
+    <button
+      type="submit"
+      disabled={pending}
+      className={`btn-primary w-full mt-2 ${shaking ? "shake-error !bg-red-500" : ""}`}
+    >
       {pending ? "GUARDANDO..." : "MARCAR COMO COMPLETADO"}
     </button>
   );
+}
+
+function OptionHint({ hint }: { hint: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <span className="block mt-1">
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((v) => !v);
+        }}
+        aria-expanded={open}
+        className="text-[11px] uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors"
+      >
+        {open ? "Ocultar qué significa ▲" : "¿Qué significa esto? ▾"}
+      </button>
+      {open ? <span className="block text-xs text-neutral-500 mt-1">{hint}</span> : null}
+    </span>
+  );
+}
+
+function getFieldValue(form: HTMLFormElement, id: string): string {
+  const el = form.elements.namedItem(id);
+  if (!el) return "";
+  if (el instanceof RadioNodeList) return String(el.value ?? "");
+  if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) return el.value;
+  return "";
 }
 
 export function ModuleExerciseForm({
@@ -24,6 +56,9 @@ export function ModuleExerciseForm({
   existingData: Record<string, string>;
 }) {
   const boundAction = completeModule.bind(null, moduleId);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [shaking, setShaking] = useState(false);
+  const [missingLabels, setMissingLabels] = useState<string[]>([]);
 
   const [scaleValues, setScaleValues] = useState<Record<string, number>>(
     Object.fromEntries(
@@ -33,8 +68,23 @@ export function ModuleExerciseForm({
     )
   );
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    const form = e.currentTarget;
+    const missing = fields.filter(
+      (f) => f.type !== "scale" && !getFieldValue(form, f.id).trim()
+    );
+    if (missing.length === 0) {
+      setMissingLabels([]);
+      return;
+    }
+    e.preventDefault();
+    setMissingLabels(missing.map((f) => f.label));
+    setShaking(true);
+    setTimeout(() => setShaking(false), 1000);
+  }
+
   return (
-    <form action={boundAction} className="flex flex-col gap-4">
+    <form ref={formRef} action={boundAction} onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
       {fields.map((field) => (
         <div key={field.id}>
           <label className="field-label" htmlFor={field.id}>
@@ -45,7 +95,6 @@ export function ModuleExerciseForm({
             <textarea
               id={field.id}
               name={field.id}
-              required
               rows={3}
               defaultValue={existingData[field.id] ?? ""}
               placeholder={field.placeholder}
@@ -56,7 +105,6 @@ export function ModuleExerciseForm({
               id={field.id}
               name={field.id}
               type="text"
-              required
               defaultValue={existingData[field.id] ?? ""}
               placeholder={field.placeholder}
               className="field-input w-full"
@@ -91,13 +139,12 @@ export function ModuleExerciseForm({
                     type="radio"
                     name={field.id}
                     value={option.value}
-                    required
                     defaultChecked={existingData[field.id] === option.value}
                     className="accent-accent mt-0.5"
                   />
-                  <span>
+                  <span className="flex-1">
                     <span className="block">{option.label}</span>
-                    <span className="block text-xs text-neutral-500 mt-0.5">{option.hint}</span>
+                    <OptionHint hint={option.hint} />
                   </span>
                 </label>
               ))}
@@ -105,7 +152,12 @@ export function ModuleExerciseForm({
           )}
         </div>
       ))}
-      <SubmitButton />
+      <SubmitButton shaking={shaking} />
+      {missingLabels.length > 0 ? (
+        <p role="alert" className="form-error -mt-2">
+          Te falta completar: {missingLabels.join(", ")}.
+        </p>
+      ) : null}
     </form>
   );
 }

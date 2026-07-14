@@ -23,9 +23,10 @@ export const users = pgTable(
     remindersEnabled: boolean("reminders_enabled").notNull().default(true),
     lastReminderSentAt: timestamp("last_reminder_sent_at"),
     points: integer("points").notNull().default(0),
-    // 30-day formation cycle: starts with the anchor habit. One miss is
-    // forgiven; the second one resets the cycle (points back to the value at
-    // cycle start, modules re-locked — written exercises are preserved).
+    // 30-day formation cycle: starts with the anchor habit. Two misses are
+    // forgiven; the third one resets the cycle (points back to half of what
+    // was earned since cycle start, modules re-locked — written exercises
+    // are preserved).
     cycleStartedAt: timestamp("cycle_started_at"),
     cycleStartPoints: integer("cycle_start_points").notNull().default(0),
     cycleCompletedAt: timestamp("cycle_completed_at"),

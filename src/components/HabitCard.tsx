@@ -13,6 +13,7 @@ export function HabitCard({
   category,
   streak,
   doneToday,
+  missedYesterday,
   isAnchor,
 }: {
   id: string;
@@ -21,6 +22,7 @@ export function HabitCard({
   category: string;
   streak: number;
   doneToday: boolean;
+  missedYesterday?: boolean;
   isAnchor?: boolean;
 }) {
   const [pending, startTransition] = useTransition();
@@ -145,6 +147,9 @@ export function HabitCard({
           Racha: {streak} {streak === 1 ? "día" : "días"}
           {streakAtRisk ? " · se te va a ir el día" : ""}
         </p>
+        {missedYesterday ? (
+          <p className="text-xs mt-1 text-amber-400">Ayer te quedaste sin marcar.</p>
+        ) : null}
       </div>
 
       <div className="flex flex-col items-center gap-1.5 shrink-0">

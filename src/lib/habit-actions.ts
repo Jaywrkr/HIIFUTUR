@@ -16,7 +16,7 @@ import {
   DAYS_BETWEEN_STREAK_FREEZES,
 } from "@/lib/constants";
 import { POINTS_PER_CHECK } from "@/lib/leveling";
-import { addDays, todayKey } from "@/lib/habit-utils";
+import { addDays, relativeDayLabel, todayKey } from "@/lib/habit-utils";
 import { trackEvent } from "@/lib/analytics";
 
 const categoryIds = HABIT_CATEGORIES.map((c) => c.id);
@@ -53,7 +53,7 @@ export async function createHabit(
     const unlockDate = addDays(lastHabit.activatedAt ?? lastHabit.createdAt, DAYS_TO_UNLOCK_NEXT_HABIT);
     if (new Date() < unlockDate) {
       return {
-        error: `Tu siguiente hábito se desbloquea el ${unlockDate.toLocaleDateString("es-MX")}.`,
+        error: `Tu siguiente hábito se desbloquea ${relativeDayLabel(unlockDate)}.`,
       };
     }
   }
@@ -176,7 +176,7 @@ export async function updateHabit(
     const nextEditDate = addDays(habit.lastEditedAt, DAYS_BETWEEN_HABIT_EDITS);
     if (new Date() < nextEditDate) {
       return {
-        error: `Ya editaste este hábito. Puedes volver a editarlo el ${nextEditDate.toLocaleDateString("es-MX")}.`,
+        error: `Ya editaste este hábito. Puedes volver a editarlo ${relativeDayLabel(nextEditDate)}.`,
       };
     }
   }
@@ -221,7 +221,7 @@ export async function freezeStreak(habitId: string): Promise<HabitFormState> {
     const nextFreezeDate = addDays(habit.lastFreezeUsedAt, DAYS_BETWEEN_STREAK_FREEZES);
     if (new Date() < nextFreezeDate) {
       return {
-        error: `Ya usaste tu congelamiento. El siguiente está disponible el ${nextFreezeDate.toLocaleDateString("es-MX")}.`,
+        error: `Ya usaste tu congelamiento. El siguiente lo puedes usar ${relativeDayLabel(nextFreezeDate)}.`,
       };
     }
   }

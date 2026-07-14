@@ -7,7 +7,7 @@ import { wheelOfLifeMeasurements } from "@/db/schema";
 import { requireUser } from "@/lib/session";
 import { getWheelMeasurements } from "@/lib/queries";
 import { WHEEL_AREAS, DAYS_BETWEEN_WHEEL_MEASUREMENTS } from "@/lib/constants";
-import { addDays } from "@/lib/habit-utils";
+import { addDays, relativeDayLabel } from "@/lib/habit-utils";
 import { trackEvent } from "@/lib/analytics";
 
 const wheelAreaIds = WHEEL_AREAS.map((a) => a.id);
@@ -27,7 +27,9 @@ export async function recordWheelMeasurement(
   if (last) {
     const nextAllowed = addDays(last.measurementDate, DAYS_BETWEEN_WHEEL_MEASUREMENTS);
     if (new Date() < nextAllowed) {
-      return { error: `Tu siguiente medición está disponible el ${nextAllowed.toLocaleDateString("es-MX")}.` };
+      return {
+        error: `Puedes volver a medir ${relativeDayLabel(nextAllowed)} — la medición se hace cada mes.`,
+      };
     }
   }
 

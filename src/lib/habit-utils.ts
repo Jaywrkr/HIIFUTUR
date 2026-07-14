@@ -17,6 +17,16 @@ export function daysBetween(from: Date, to: Date): number {
   return Math.floor(ms / (1000 * 60 * 60 * 24));
 }
 
+/** Plain-language "when" instead of a raw date — "hoy", "mañana", "en 12
+ * días". Rounds up so "en 1 día" means less than 48h away, matching how
+ * someone would actually describe it out loud. */
+export function relativeDayLabel(target: Date, now: Date = new Date()): string {
+  const days = Math.ceil((target.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+  if (days <= 0) return "hoy";
+  if (days === 1) return "mañana";
+  return `en ${days} días`;
+}
+
 /**
  * Consecutive-day streak counted backwards from today. A missed day (before
  * today) breaks it, unless that day was protected by a streak freeze —

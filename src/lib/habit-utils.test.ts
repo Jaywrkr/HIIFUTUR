@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { addDays, computeStreak, daysBetween, todayKey } from "@/lib/habit-utils";
+import { addDays, computeStreak, daysBetween, relativeDayLabel, todayKey } from "@/lib/habit-utils";
 
 function key(daysAgo: number): string {
   return addDays(new Date(), -daysAgo).toISOString().slice(0, 10);
@@ -20,6 +20,23 @@ describe("addDays / daysBetween / todayKey", () => {
 
   it("todayKey is a YYYY-MM-DD string", () => {
     expect(todayKey()).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  });
+});
+
+describe("relativeDayLabel", () => {
+  const now = new Date("2026-06-15T12:00:00Z");
+
+  it("says 'hoy' for a target at or before now", () => {
+    expect(relativeDayLabel(now, now)).toBe("hoy");
+    expect(relativeDayLabel(addDays(now, -1), now)).toBe("hoy");
+  });
+
+  it("says 'mañana' for a target under 48h away", () => {
+    expect(relativeDayLabel(addDays(now, 1), now)).toBe("mañana");
+  });
+
+  it("says 'en N días' further out", () => {
+    expect(relativeDayLabel(addDays(now, 12), now)).toBe("en 12 días");
   });
 });
 

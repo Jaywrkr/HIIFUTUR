@@ -13,7 +13,7 @@ import {
   getWheelMeasurements,
   getModuleProgressForUser,
 } from "@/lib/queries";
-import { addDays, computeStreak, daysBetween, todayKey } from "@/lib/habit-utils";
+import { addDays, computeStreak, daysBetween, relativeDayLabel, todayKey } from "@/lib/habit-utils";
 import { MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT, DAYS_BETWEEN_WHEEL_MEASUREMENTS } from "@/lib/constants";
 import { MODULES, PHASES } from "@/lib/modules-content";
 import { computeLevel } from "@/lib/leveling";
@@ -58,6 +58,7 @@ export default async function DashboardPage({
   ]);
 
   const today = todayKey();
+  const yesterday = addDays(new Date(), -1).toISOString().slice(0, 10);
   const habitsWithData = await Promise.all(
     userHabits.map(async (habit) => {
       const logs = await getHabitLogs(habit.id);
@@ -68,6 +69,8 @@ export default async function DashboardPage({
         habit,
         streak: computeStreak(logDates, freezeDates),
         doneToday: logDates.includes(today),
+        missedYesterday:
+          logDates.length > 0 && !logDates.includes(yesterday) && !freezeDates.includes(yesterday),
       };
     })
   );
@@ -89,6 +92,10 @@ export default async function DashboardPage({
   const nextModule = MODULES.find((m) => !completedIds.has(m.id)) ?? null;
   const nextPhase = nextModule ? PHASES.find((p) => p.id === nextModule.phaseId) : null;
   const doneCount = habitsWithData.filter((h) => h.doneToday).length;
+
+  // The first habit is chosen exclusively at the end of Module 1 — no
+  // "create habit" UI should imply it can be created any other way.
+  const firstModuleDone = completedIds.has(MODULES[0].id);
 
   const bestStreak = habitsWithData.reduce((max, h) => Math.max(max, h.streak), 0);
   const { level, pointsIntoLevel, nextLevelThreshold } = computeLevel(user.points);
@@ -117,8 +124,6 @@ export default async function DashboardPage({
       <Nav />
       <PullToRefresh>
         <main className="app-main">
-          <p className="kicker">HOY</p>
-
           {user.subscriptionStatus === "trialing" ? (
             <Link
               href="/upgrade"
@@ -136,10 +141,17 @@ export default async function DashboardPage({
             <div className="card mb-10">
               <IconSprout className="w-7 h-7 text-accent mb-2" />
               <p className="text-sm text-neutral-300 mb-1">Todavía no tienes nada que sostener.</p>
-              <p className="muted">
-                <Link href="/habits" className="link-accent">Crea tu primer hábito</Link> — el más
-                pequeño que se te ocurra.
-              </p>
+              {firstModuleDone ? (
+                <p className="muted">
+                  <Link href="/habits" className="link-accent">Crea tu primer hábito</Link> — el más
+                  pequeño que se te ocurra.
+                </p>
+              ) : (
+                <p className="muted">
+                  Tu primer hábito se elige al terminar el{" "}
+                  <Link href={`/modules/${MODULES[0].id}`} className="link-accent">Módulo 1</Link>.
+                </p>
+              )}
             </div>
           ) : (
             <div className="mb-10">
@@ -156,7 +168,7 @@ export default async function DashboardPage({
                 </p>
               </div>
               <div className="flex flex-col gap-3">
-                {habitsWithData.map(({ habit, streak, doneToday }, i) => (
+                {habitsWithData.map(({ habit, streak, doneToday, missedYesterday }, i) => (
                   <HabitCard
                     key={habit.id}
                     id={habit.id}
@@ -165,6 +177,7 @@ export default async function DashboardPage({
                     category={habit.category}
                     streak={streak}
                     doneToday={doneToday}
+                    missedYesterday={missedYesterday}
                     isAnchor={i === 0}
                   />
                 ))}
@@ -243,7 +256,7 @@ export default async function DashboardPage({
             <p className="text-xs uppercase tracking-widest text-neutral-400 mb-4">Tu progreso</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link
-                href="/habits"
+                href={userHabits.length === 0 && !firstModuleDone ? `/modules/${MODULES[0].id}` : "/habits"}
                 className="card !p-5 flex items-center gap-4 hover:border-accent/50 transition-colors group"
               >
                 <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
@@ -251,18 +264,22 @@ export default async function DashboardPage({
                 </span>
                 <span className="flex-1 min-w-0">
                   <span className="block font-bold text-sm">
-                    {canUnlockNextHabit
-                      ? userHabits.length === 0
-                        ? "Crear hábito"
-                        : userHabits.length >= MAX_HABITS
-                          ? "Gestionar hábitos"
-                          : "Desbloquear siguiente hábito"
-                      : "Gestionar hábitos"}
+                    {userHabits.length === 0 && !firstModuleDone
+                      ? "Elige tu hábito en el Módulo 1"
+                      : canUnlockNextHabit
+                        ? userHabits.length === 0
+                          ? "Crear hábito"
+                          : userHabits.length >= MAX_HABITS
+                            ? "Gestionar hábitos"
+                            : "Desbloquear siguiente hábito"
+                        : "Gestionar hábitos"}
                   </span>
                   <span className="block text-xs text-neutral-500 mt-0.5">
-                    {canUnlockNextHabit
-                      ? `${userHabits.length}/${MAX_HABITS} activos`
-                      : `${userHabits.length}/${MAX_HABITS} activos · siguiente en ${daysUntilNextHabit}d`}
+                    {userHabits.length === 0 && !firstModuleDone
+                      ? "Ahí arranca tu sistema"
+                      : canUnlockNextHabit
+                        ? `${userHabits.length}/${MAX_HABITS} activos`
+                        : `${userHabits.length}/${MAX_HABITS} activos · siguiente ${nextHabitUnlockDate ? relativeDayLabel(nextHabitUnlockDate) : "pronto"}`}
                   </span>
                 </span>
                 <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
@@ -298,7 +315,7 @@ export default async function DashboardPage({
                   >
                     {canMeasureWheel
                       ? "Puedes medir ahora"
-                      : `Próxima medición: ${nextWheelDate?.toLocaleDateString("es-MX")}`}
+                      : `Próxima medición ${nextWheelDate ? relativeDayLabel(nextWheelDate) : "pronto"}`}
                   </span>
                 </span>
                 <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>

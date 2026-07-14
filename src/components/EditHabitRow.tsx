@@ -77,7 +77,7 @@ export function EditHabitRow({
 
   if (editing) {
     return (
-      <form action={formAction} className="border-b border-line py-4 flex flex-col items-stretch gap-3">
+      <form action={formAction} className="card flex flex-col items-stretch gap-3">
         <div>
           <label className="field-label" htmlFor={`name-${habit.id}`}>Nombre</label>
           <input
@@ -135,7 +135,7 @@ export function EditHabitRow({
   }
 
   return (
-    <div className="border-b border-line py-4 last:border-b-0">
+    <div className="card">
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center gap-2">
@@ -166,7 +166,7 @@ export function EditHabitRow({
             </button>
           ) : (
             <p className="text-[10px] text-neutral-400 text-right leading-tight max-w-[90px]">
-              Editable el {nextEditLabel}
+              Editable {nextEditLabel}
             </p>
           )}
         </div>
@@ -192,7 +192,7 @@ export function EditHabitRow({
       {freezeError ? <p className="form-error mt-3">{freezeError}</p> : null}
       {!canFreeze && nextFreezeLabel ? (
         <p className="mt-3 text-[10px] text-neutral-400">
-          Congelamiento disponible de nuevo el {nextFreezeLabel}.
+          Vuelves a poder congelar {nextFreezeLabel}.
         </p>
       ) : null}
 
