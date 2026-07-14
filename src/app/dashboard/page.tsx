@@ -269,20 +269,22 @@ export default async function DashboardPage({
             </div>
           )}
 
-          {/* Compact status band: level, points, streak — the game at a glance. */}
-          <div className="grid grid-cols-3 gap-3 mb-10">
-            <Link href="/cuenta" className="card !p-4 text-center hover:border-accent/50 transition-colors">
+          {/* Compact status band: level, points, streak — the game at a
+              glance. One shared card with internal dividers instead of
+              three separate boxes: same info, a third of the borders. */}
+          <div className="card !p-0 grid grid-cols-3 divide-x divide-line mb-10 overflow-hidden">
+            <Link href="/cuenta" className="p-4 text-center hover:bg-ink/40 transition-colors">
               <p className="text-xl font-extrabold text-accent">Nv. {level}</p>
               <div className="h-1 rounded-full bg-ink border border-line overflow-hidden my-1.5">
                 <div className="h-full bg-accent rounded-full" style={{ width: `${levelPct}%` }} />
               </div>
               <p className="text-[10px] uppercase tracking-widest text-neutral-500">Nivel</p>
             </Link>
-            <Link href="/leaderboard" className="card !p-4 text-center hover:border-accent/50 transition-colors">
+            <Link href="/leaderboard" className="p-4 text-center hover:bg-ink/40 transition-colors">
               <p className="text-xl font-extrabold">{user.points}</p>
               <p className="text-[10px] uppercase tracking-widest text-neutral-500 mt-1.5">Puntos</p>
             </Link>
-            <Link href="/cuenta" className="card !p-4 text-center hover:border-accent/50 transition-colors">
+            <Link href="/cuenta" className="p-4 text-center hover:bg-ink/40 transition-colors">
               <p className="text-xl font-extrabold flex items-center justify-center gap-1">
                 {bestStreak > 0 ? (
                   <>
@@ -298,14 +300,14 @@ export default async function DashboardPage({
 
           <div>
             <p className="text-xs uppercase tracking-widest text-neutral-400 mb-4">Tu progreso</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {/* One shared card with a divider between rows instead of four
+                separate boxes — same links, same info, a lot less border. */}
+            <div className="card !p-0 divide-y divide-line overflow-hidden">
               <Link
                 href={userHabits.length === 0 && !firstModuleDone ? `/modules/${MODULES[0].id}` : "/habits"}
-                className="card !p-5 flex items-center gap-4 hover:border-accent/50 transition-colors group"
+                className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
               >
-                <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
-                  ✅
-                </span>
+                <span className="text-lg shrink-0" aria-hidden="true">✅</span>
                 <span className="flex-1 min-w-0">
                   <span className="block font-bold text-sm">
                     {userHabits.length === 0 && !firstModuleDone
@@ -331,11 +333,9 @@ export default async function DashboardPage({
 
               <Link
                 href="/modules"
-                className="card !p-5 flex items-center gap-4 hover:border-accent/50 transition-colors group"
+                className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
               >
-                <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
-                  📚
-                </span>
+                <span className="text-lg shrink-0" aria-hidden="true">📚</span>
                 <span className="flex-1 min-w-0">
                   <span className="block font-bold text-sm">Todos los módulos</span>
                   <span className="block text-xs text-neutral-500 mt-0.5">
@@ -347,11 +347,9 @@ export default async function DashboardPage({
 
               <Link
                 href="/wheel"
-                className="card !p-5 flex items-center gap-4 hover:border-accent/50 transition-colors group"
+                className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
               >
-                <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
-                  🎯
-                </span>
+                <span className="text-lg shrink-0" aria-hidden="true">🎯</span>
                 <span className="flex-1 min-w-0">
                   <span className="block font-bold text-sm">Wheel of Life</span>
                   <span
@@ -367,11 +365,9 @@ export default async function DashboardPage({
 
               <Link
                 href="/leaderboard"
-                className="card !p-5 flex items-center gap-4 hover:border-accent/50 transition-colors group"
+                className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
               >
-                <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-lg shrink-0">
-                  🏆
-                </span>
+                <span className="text-lg shrink-0" aria-hidden="true">🏆</span>
                 <span className="flex-1 min-w-0">
                   <span className="block font-bold text-sm">Leaderboard</span>
                   <span className="block text-xs text-neutral-500 mt-0.5">

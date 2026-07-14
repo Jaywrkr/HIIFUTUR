@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.51.0",
+    date: "2026-07-14",
+    changes: [
+      "La pantalla de Hoy se ve más liviana: las tarjetas de Nivel/Puntos/Racha y las de Hábitos/Módulos/Wheel/Leaderboard ahora comparten una sola tarjeta con líneas divisoras en vez de una caja separada cada una — misma información, menos bordes.",
+    ],
+  },
+  {
     version: "2.50.0",
     date: "2026-07-14",
     changes: [
