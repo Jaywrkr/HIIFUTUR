@@ -15,6 +15,7 @@ import { ModuleExerciseForm } from "@/components/ModuleExerciseForm";
 import { ModuleConcept, ConceptFrame, CONCEPT_CAPTIONS } from "@/components/ModuleConcept";
 import { TheoryText } from "@/components/TheoryText";
 import { WillpowerBatteryGame } from "@/components/WillpowerBatteryGame";
+import { ParetoDragGame } from "@/components/ParetoDragGame";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -110,14 +111,17 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
           ) : null}
         </div>
 
-        {/* Creative illustration of the module's core idea — module 1 gets
-            an interactive version instead of the static bars, since it's
-            the one lesson (willpower depletes, tiny habits survive) that
-            actually clicks better when you feel it fail than when you
-            read it. */}
+        {/* Creative illustration of the module's core idea — modules 1 and 2
+            get an interactive version instead of a static graphic, since
+            those two lessons (willpower depletes; a few actions carry most
+            of the result) click better when felt than when just read. */}
         {courseModule.concept === "willpower-battery" ? (
           <ConceptFrame caption={CONCEPT_CAPTIONS["willpower-battery"]}>
             <WillpowerBatteryGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "pareto-8020" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["pareto-8020"]}>
+            <ParetoDragGame />
           </ConceptFrame>
         ) : (
           <ModuleConcept concept={courseModule.concept} />
