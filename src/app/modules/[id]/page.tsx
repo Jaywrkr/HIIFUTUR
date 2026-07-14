@@ -12,8 +12,9 @@ import {
   MODULES,
 } from "@/lib/modules-content";
 import { ModuleExerciseForm } from "@/components/ModuleExerciseForm";
-import { ModuleConcept } from "@/components/ModuleConcept";
+import { ModuleConcept, ConceptFrame, CONCEPT_CAPTIONS } from "@/components/ModuleConcept";
 import { TheoryText } from "@/components/TheoryText";
+import { WillpowerBatteryGame } from "@/components/WillpowerBatteryGame";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -109,8 +110,18 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
           ) : null}
         </div>
 
-        {/* Creative illustration of the module's core idea. */}
-        <ModuleConcept concept={courseModule.concept} />
+        {/* Creative illustration of the module's core idea — module 1 gets
+            an interactive version instead of the static bars, since it's
+            the one lesson (willpower depletes, tiny habits survive) that
+            actually clicks better when you feel it fail than when you
+            read it. */}
+        {courseModule.concept === "willpower-battery" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["willpower-battery"]}>
+            <WillpowerBatteryGame />
+          </ConceptFrame>
+        ) : (
+          <ModuleConcept concept={courseModule.concept} />
+        )}
 
         <div className="card mb-8 text-center">
           <p className="text-xs uppercase tracking-widest text-accent mb-2">Mantra de Jay</p>

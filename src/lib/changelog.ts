@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.52.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 1: la ilustración estática de la batería ahora es un mini-juego — toca la hora del día y arrastra un hábito grande o uno chiquito hasta la batería. El grande solo sobrevive con la batería alta; el chiquito siempre sobrevive. La misma idea del módulo, pero sentida en vez de solo leída.",
+    ],
+  },
+  {
     version: "2.51.0",
     date: "2026-07-14",
     changes: [
