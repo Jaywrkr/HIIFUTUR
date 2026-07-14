@@ -5,7 +5,7 @@ import { MODULES } from "@/lib/modules-content";
 // core idea click at a glance before the exercise. Pure CSS/SVG, no client
 // JS, theme-agnostic (they live on the dark app shell).
 
-function Frame({
+export function ConceptFrame({
   caption,
   children,
 }: {
@@ -291,7 +291,7 @@ function MantraCollection() {
   );
 }
 
-const CAPTIONS: Record<ConceptKey, string> = {
+export const CONCEPT_CAPTIONS: Record<ConceptKey, string> = {
   "willpower-battery":
     "Tu fuerza de voluntad es una batería que se descarga durante el día. Un buen sistema no depende de que esté llena.",
   "pareto-8020":
@@ -331,5 +331,5 @@ export function ModuleConcept({ concept }: { concept: ConceptKey }) {
     "mantra-collection": <MantraCollection />,
   };
 
-  return <Frame caption={CAPTIONS[concept]}>{visual[concept]}</Frame>;
+  return <ConceptFrame caption={CONCEPT_CAPTIONS[concept]}>{visual[concept]}</ConceptFrame>;
 }
