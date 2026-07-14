@@ -17,8 +17,13 @@ import { addDays, computeStreak, daysBetween, relativeDayLabel, todayKey } from 
 import { MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT, DAYS_BETWEEN_WHEEL_MEASUREMENTS } from "@/lib/constants";
 import { MODULES, PHASES } from "@/lib/modules-content";
 import { computeLevel } from "@/lib/leveling";
-import { evaluateCycle } from "@/lib/cycle-state";
-import { CYCLE_DAYS, MAX_CYCLE_FAILS } from "@/lib/cycle";
+import { evaluateCycle, executionLocked } from "@/lib/cycle-state";
+import {
+  CYCLE_DAYS,
+  MAX_CYCLE_FAILS,
+  countCompletedInCycle,
+  requiredExecutedDaysForNext,
+} from "@/lib/cycle";
 import { getMantraOfTheDay } from "@/lib/mantras";
 import { ArrivalRitual } from "@/components/ArrivalRitual";
 import { ResetReentryRitual } from "@/components/ResetReentryRitual";
@@ -92,6 +97,20 @@ export default async function DashboardPage({
   const nextModule = MODULES.find((m) => !completedIds.has(m.id)) ?? null;
   const nextPhase = nextModule ? PHASES.find((p) => p.id === nextModule.phaseId) : null;
   const doneCount = habitsWithData.filter((h) => h.doneToday).length;
+
+  // Module 1 is never execution-gated (it's how the anchor habit gets
+  // chosen in the first place) — every other module also waits for real
+  // execution days, same gate /modules enforces. Without this check the
+  // card below would point at a module the click-through would immediately
+  // bounce back from.
+  const nextModuleIdx = nextModule ? MODULES.findIndex((m) => m.id === nextModule.id) : -1;
+  const completedInCycle = countCompletedInCycle(moduleProgress, user.cycleStartedAt, MODULES[0].id);
+  const nextModuleGateLocked =
+    !!nextModule && nextModuleIdx > 0 && executionLocked(cycle, completedInCycle);
+  const daysMissingForNextModule = Math.max(
+    0,
+    requiredExecutedDaysForNext(completedInCycle) - cycle.executedDays
+  );
 
   // The first habit is chosen exclusively at the end of Module 1 — no
   // "create habit" UI should imply it can be created any other way.
@@ -185,8 +204,11 @@ export default async function DashboardPage({
             </div>
           )}
 
-          {/* Where the course continues — one tap from today's check-ins. */}
-          {nextModule ? (
+          {/* Where the course continues — one tap from today's check-ins.
+              Only a link when the module is actually reachable right now;
+              otherwise it explains what's still missing instead of pointing
+              at something that would just bounce back from /modules. */}
+          {nextModule && !nextModuleGateLocked ? (
             <Link
               href={`/modules/${nextModule.id}`}
               className="block rounded-3xl bg-accent/10 border border-accent/40 p-6 mb-10 hover:bg-accent/15 transition-colors"
@@ -214,6 +236,28 @@ export default async function DashboardPage({
                 <span className="text-accent text-2xl shrink-0">→</span>
               </div>
             </Link>
+          ) : nextModule && nextModuleGateLocked ? (
+            <div className="rounded-3xl bg-surface border border-line p-6 mb-10">
+              <p className="text-xs uppercase tracking-widest text-neutral-400 mb-1">
+                Tu camino · {nextPhase?.title}
+              </p>
+              <p className="font-extrabold text-xl mb-1">
+                Módulo {nextModule.order} se desbloquea con más ejecución
+              </p>
+              <p className="muted text-sm">
+                {completedIds.size} de {MODULES.length} completados — te faltan{" "}
+                {daysMissingForNextModule} día{daysMissingForNextModule === 1 ? "" : "s"} de{" "}
+                <Link href="/habits" className="link-accent">hábito cumplido</Link> para abrirlo.
+              </p>
+              {!cycle.completed && cycle.hasAnchor ? (
+                <p className="text-xs uppercase tracking-widest mt-2 text-neutral-500">
+                  Ciclo: día {cycle.day}/{CYCLE_DAYS} ·{" "}
+                  <span className={cycle.failsUsed >= MAX_CYCLE_FAILS ? "text-red-400 font-semibold" : ""}>
+                    fallos {cycle.failsUsed}/{MAX_CYCLE_FAILS}
+                  </span>
+                </p>
+              ) : null}
+            </div>
           ) : (
             <div className="rounded-3xl bg-accent/10 border border-accent/40 p-6 mb-10">
               <p className="text-xs uppercase tracking-widest text-accent mb-1">Tu camino</p>

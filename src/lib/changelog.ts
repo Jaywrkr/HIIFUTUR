@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.50.0",
+    date: "2026-07-14",
+    changes: [
+      "Arreglado: la tarjeta \"Tu camino\" en Hoy invitaba a seguir con el siguiente módulo aunque todavía estuviera bloqueado por ejecución (el mismo candado que ya aplica en Módulos). Ahora solo es un enlace directo cuando el módulo de verdad está disponible; si no, explica cuántos días de hábito cumplido faltan para abrirlo.",
+    ],
+  },
+  {
     version: "2.49.0",
     date: "2026-07-14",
     changes: [
