@@ -18,6 +18,7 @@ import { WillpowerBatteryGame } from "@/components/WillpowerBatteryGame";
 import { ParetoDragGame } from "@/components/ParetoDragGame";
 import { SystemVsGoalGame } from "@/components/SystemVsGoalGame";
 import { NeverTwiceGame } from "@/components/NeverTwiceGame";
+import { AnchorCascadeGame } from "@/components/AnchorCascadeGame";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -131,6 +132,10 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         ) : courseModule.concept === "never-twice" ? (
           <ConceptFrame caption={CONCEPT_CAPTIONS["never-twice"]}>
             <NeverTwiceGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "anchor-cascade" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["anchor-cascade"]}>
+            <AnchorCascadeGame />
           </ConceptFrame>
         ) : (
           <ModuleConcept concept={courseModule.concept} />

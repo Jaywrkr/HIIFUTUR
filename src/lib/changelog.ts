@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.56.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 5: la cascada estática de \"hábito ancla\" ahora es interactiva — arrastras distintos candidatos al centro y ves cuántas áreas mueven en cascada. El que arrastra las 4 áreas es tu ancla real; los demás mueven poco o nada, aunque se sientan productivos.",
+    ],
+  },
+  {
     version: "2.55.0",
     date: "2026-07-14",
     changes: [
