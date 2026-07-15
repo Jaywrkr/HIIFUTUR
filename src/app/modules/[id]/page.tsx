@@ -21,6 +21,7 @@ import { NeverTwiceGame } from "@/components/NeverTwiceGame";
 import { AnchorCascadeGame } from "@/components/AnchorCascadeGame";
 import { IdentityVotesGame } from "@/components/IdentityVotesGame";
 import { FrictionMeterGame } from "@/components/FrictionMeterGame";
+import { TwoStoriesGame } from "@/components/TwoStoriesGame";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -146,6 +147,10 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         ) : courseModule.concept === "friction-meter" ? (
           <ConceptFrame caption={CONCEPT_CAPTIONS["friction-meter"]}>
             <FrictionMeterGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "two-stories" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["two-stories"]}>
+            <TwoStoriesGame />
           </ConceptFrame>
         ) : (
           <ModuleConcept concept={courseModule.concept} />
