@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.57.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 6: el gráfico de barras estático de \"cada check es un voto\" ahora es interactivo — arrastras votos uno por uno a una fila y el mensaje va cambiando de \"todavía es solo una intención\" a \"esto ya es quién eres\" según se acumulan.",
+    ],
+  },
+  {
     version: "2.56.0",
     date: "2026-07-14",
     changes: [

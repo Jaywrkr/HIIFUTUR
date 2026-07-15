@@ -19,6 +19,7 @@ import { ParetoDragGame } from "@/components/ParetoDragGame";
 import { SystemVsGoalGame } from "@/components/SystemVsGoalGame";
 import { NeverTwiceGame } from "@/components/NeverTwiceGame";
 import { AnchorCascadeGame } from "@/components/AnchorCascadeGame";
+import { IdentityVotesGame } from "@/components/IdentityVotesGame";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -136,6 +137,10 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         ) : courseModule.concept === "anchor-cascade" ? (
           <ConceptFrame caption={CONCEPT_CAPTIONS["anchor-cascade"]}>
             <AnchorCascadeGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "identity-votes" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["identity-votes"]}>
+            <IdentityVotesGame />
           </ConceptFrame>
         ) : (
           <ModuleConcept concept={courseModule.concept} />
