@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.62.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 11 (cierre del curso): la lista estática de mantras ahora es interactiva — arrastras a tu bolsillo la que más te marcó, justo antes de escribir la tuya.",
+      "Con esto los 11 módulos ya tienen su ilustración interactiva.",
+    ],
+  },
+  {
     version: "2.61.0",
     date: "2026-07-14",
     changes: [

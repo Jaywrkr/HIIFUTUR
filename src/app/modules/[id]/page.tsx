@@ -24,6 +24,7 @@ import { FrictionMeterGame } from "@/components/FrictionMeterGame";
 import { TwoStoriesGame } from "@/components/TwoStoriesGame";
 import { HabitChainGame } from "@/components/HabitChainGame";
 import { CompassGame } from "@/components/CompassGame";
+import { MantraCollectionGame } from "@/components/MantraCollectionGame";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -161,6 +162,12 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         ) : courseModule.concept === "compass" ? (
           <ConceptFrame caption={CONCEPT_CAPTIONS["compass"]}>
             <CompassGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "mantra-collection" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["mantra-collection"]}>
+            <MantraCollectionGame
+              mantras={MODULES.map((m) => ({ id: m.id, order: m.order, mantra: m.mantra }))}
+            />
           </ConceptFrame>
         ) : (
           <ModuleConcept concept={courseModule.concept} />
