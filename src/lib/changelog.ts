@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.61.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 10: la brújula estática ahora es interactiva — arrastras la brújula a cada área de tu vida y ves cómo se movió desde el mes pasado (sube, baja o se queda igual). No es un examen, es hacia dónde te estás moviendo.",
+    ],
+  },
+  {
     version: "2.60.0",
     date: "2026-07-14",
     changes: [
