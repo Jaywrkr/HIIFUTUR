@@ -16,6 +16,11 @@ import { ModuleConcept, ConceptFrame, CONCEPT_CAPTIONS } from "@/components/Modu
 import { TheoryText } from "@/components/TheoryText";
 import { WillpowerBatteryGame } from "@/components/WillpowerBatteryGame";
 import { ParetoDragGame } from "@/components/ParetoDragGame";
+import { SystemVsGoalGame } from "@/components/SystemVsGoalGame";
+import { NeverTwiceGame } from "@/components/NeverTwiceGame";
+import { AnchorCascadeGame } from "@/components/AnchorCascadeGame";
+import { IdentityVotesGame } from "@/components/IdentityVotesGame";
+import { FrictionMeterGame } from "@/components/FrictionMeterGame";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -111,10 +116,9 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
           ) : null}
         </div>
 
-        {/* Creative illustration of the module's core idea — modules 1 and 2
-            get an interactive version instead of a static graphic, since
-            those two lessons (willpower depletes; a few actions carry most
-            of the result) click better when felt than when just read. */}
+        {/* Creative illustration of the module's core idea — some modules get
+            an interactive version instead of a static graphic, since those
+            lessons click better when felt than when just read. */}
         {courseModule.concept === "willpower-battery" ? (
           <ConceptFrame caption={CONCEPT_CAPTIONS["willpower-battery"]}>
             <WillpowerBatteryGame />
@@ -122,6 +126,26 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         ) : courseModule.concept === "pareto-8020" ? (
           <ConceptFrame caption={CONCEPT_CAPTIONS["pareto-8020"]}>
             <ParetoDragGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "goal-vs-system" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["goal-vs-system"]}>
+            <SystemVsGoalGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "never-twice" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["never-twice"]}>
+            <NeverTwiceGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "anchor-cascade" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["anchor-cascade"]}>
+            <AnchorCascadeGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "identity-votes" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["identity-votes"]}>
+            <IdentityVotesGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "friction-meter" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["friction-meter"]}>
+            <FrictionMeterGame />
           </ConceptFrame>
         ) : (
           <ModuleConcept concept={courseModule.concept} />

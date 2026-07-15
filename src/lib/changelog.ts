@@ -3,6 +3,41 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.58.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 7: las dos barras estáticas de fricción (\"sin diseñar tu entorno\" vs. \"con el entorno a tu favor\") ahora son un medidor interactivo — arrastras distintos cambios de entorno y ves cuánta fricción quita cada uno de verdad. Comprar cosas nuevas casi no ayuda; un cambio gratis y específico sí.",
+    ],
+  },
+  {
+    version: "2.57.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 6: el gráfico de barras estático de \"cada check es un voto\" ahora es interactivo — arrastras votos uno por uno a una fila y el mensaje va cambiando de \"todavía es solo una intención\" a \"esto ya es quién eres\" según se acumulan.",
+    ],
+  },
+  {
+    version: "2.56.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 5: la cascada estática de \"hábito ancla\" ahora es interactiva — arrastras distintos candidatos al centro y ves cuántas áreas mueven en cascada. El que arrastra las 4 áreas es tu ancla real; los demás mueven poco o nada, aunque se sientan productivos.",
+    ],
+  },
+  {
+    version: "2.55.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 4: la ilustración estática de \"un fallo suelto vs. dos seguidos\" ahora es interactiva — arrastras un fallo a cualquier día de la semana (o tocas uno marcado para quitarlo) y ves en vivo si la racha sigue viva o se rompe, aplicando la única regla real del módulo.",
+    ],
+  },
+  {
+    version: "2.54.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 3: las dos cajas estáticas de \"meta vs sistema\" ahora son una carrera que arrastras día a día — la meta solo avanza cuando hay motivación (y la motivación se seca), el sistema avanza igual todos los días. A los 30 días el sistema gana, no por ser más grande, sino por nunca detenerse.",
+    ],
+  },
+  {
     version: "2.53.0",
     date: "2026-07-14",
     changes: [
