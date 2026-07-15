@@ -22,6 +22,7 @@ import { AnchorCascadeGame } from "@/components/AnchorCascadeGame";
 import { IdentityVotesGame } from "@/components/IdentityVotesGame";
 import { FrictionMeterGame } from "@/components/FrictionMeterGame";
 import { TwoStoriesGame } from "@/components/TwoStoriesGame";
+import { HabitChainGame } from "@/components/HabitChainGame";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -151,6 +152,10 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         ) : courseModule.concept === "two-stories" ? (
           <ConceptFrame caption={CONCEPT_CAPTIONS["two-stories"]}>
             <TwoStoriesGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "habit-chain" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["habit-chain"]}>
+            <HabitChainGame />
           </ConceptFrame>
         ) : (
           <ModuleConcept concept={courseModule.concept} />

@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.60.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 9: la cadena de hábitos ahora es interactiva — arrastras un solo empujón al primer hábito y ves cómo el resto de la cadena cae solo, sin que tengas que arrastrar cada uno por separado.",
+    ],
+  },
+  {
     version: "2.59.0",
     date: "2026-07-14",
     changes: [
