@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.54.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 3: las dos cajas estáticas de \"meta vs sistema\" ahora son una carrera que arrastras día a día — la meta solo avanza cuando hay motivación (y la motivación se seca), el sistema avanza igual todos los días. A los 30 días el sistema gana, no por ser más grande, sino por nunca detenerse.",
+    ],
+  },
+  {
     version: "2.53.0",
     date: "2026-07-14",
     changes: [
