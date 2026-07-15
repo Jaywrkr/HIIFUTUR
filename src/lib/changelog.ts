@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.59.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 8: la bifurcación estática de \"dos historias\" ahora es interactiva — arrastras el pensamiento que tuviste después de fallar y ves si esa historia te saca del sistema por semanas o te devuelve hoy mismo.",
+    ],
+  },
+  {
     version: "2.58.0",
     date: "2026-07-14",
     changes: [
