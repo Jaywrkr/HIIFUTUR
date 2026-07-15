@@ -20,6 +20,7 @@ import { SystemVsGoalGame } from "@/components/SystemVsGoalGame";
 import { NeverTwiceGame } from "@/components/NeverTwiceGame";
 import { AnchorCascadeGame } from "@/components/AnchorCascadeGame";
 import { IdentityVotesGame } from "@/components/IdentityVotesGame";
+import { FrictionMeterGame } from "@/components/FrictionMeterGame";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -141,6 +142,10 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         ) : courseModule.concept === "identity-votes" ? (
           <ConceptFrame caption={CONCEPT_CAPTIONS["identity-votes"]}>
             <IdentityVotesGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "friction-meter" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["friction-meter"]}>
+            <FrictionMeterGame />
           </ConceptFrame>
         ) : (
           <ModuleConcept concept={courseModule.concept} />

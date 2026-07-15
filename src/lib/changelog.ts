@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.58.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 7: las dos barras estáticas de fricción (\"sin diseñar tu entorno\" vs. \"con el entorno a tu favor\") ahora son un medidor interactivo — arrastras distintos cambios de entorno y ves cuánta fricción quita cada uno de verdad. Comprar cosas nuevas casi no ayuda; un cambio gratis y específico sí.",
+    ],
+  },
+  {
     version: "2.57.0",
     date: "2026-07-14",
     changes: [
