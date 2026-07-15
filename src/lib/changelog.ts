@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.55.0",
+    date: "2026-07-14",
+    changes: [
+      "Módulo 4: la ilustración estática de \"un fallo suelto vs. dos seguidos\" ahora es interactiva — arrastras un fallo a cualquier día de la semana (o tocas uno marcado para quitarlo) y ves en vivo si la racha sigue viva o se rompe, aplicando la única regla real del módulo.",
+    ],
+  },
+  {
     version: "2.54.0",
     date: "2026-07-14",
     changes: [

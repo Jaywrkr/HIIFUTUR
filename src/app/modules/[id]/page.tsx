@@ -17,6 +17,7 @@ import { TheoryText } from "@/components/TheoryText";
 import { WillpowerBatteryGame } from "@/components/WillpowerBatteryGame";
 import { ParetoDragGame } from "@/components/ParetoDragGame";
 import { SystemVsGoalGame } from "@/components/SystemVsGoalGame";
+import { NeverTwiceGame } from "@/components/NeverTwiceGame";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -126,6 +127,10 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         ) : courseModule.concept === "goal-vs-system" ? (
           <ConceptFrame caption={CONCEPT_CAPTIONS["goal-vs-system"]}>
             <SystemVsGoalGame />
+          </ConceptFrame>
+        ) : courseModule.concept === "never-twice" ? (
+          <ConceptFrame caption={CONCEPT_CAPTIONS["never-twice"]}>
+            <NeverTwiceGame />
           </ConceptFrame>
         ) : (
           <ModuleConcept concept={courseModule.concept} />
