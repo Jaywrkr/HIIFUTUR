@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.63.0",
+    date: "2026-07-15",
+    changes: [
+      "Cambio interno — preparación de marketing/lanzamiento: las tarjetas de compartir (racha, Wheel of Life) ahora llevan el dominio de la app abajo, para que alguien que las vea en una historia tenga cómo llegar. Sección de testimonios lista en la landing (apagada hasta que existan reales). Variables de entorno para PayPal, Google Search Console y Meta Pixel documentadas y con el código ya preparado para recibirlas sin más trabajo.",
+    ],
+  },
+  {
     version: "2.62.0",
     date: "2026-07-14",
     changes: [
