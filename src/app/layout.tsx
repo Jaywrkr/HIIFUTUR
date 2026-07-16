@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { VersionBadge } from "@/components/VersionBadge";
 import { RegisterServiceWorker } from "@/components/RegisterServiceWorker";
+import { MetaPixel } from "@/components/MetaPixel";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -25,6 +26,11 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
     apple: "/apple-touch-icon.png",
   },
+  // Only rendered once GOOGLE_SITE_VERIFICATION is set (from Search Console
+  // -> Settings -> Ownership verification -> HTML tag) — no-op until then.
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -52,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>{children}</Providers>
         <VersionBadge />
         <RegisterServiceWorker />
+        <MetaPixel />
       </body>
     </html>
   );

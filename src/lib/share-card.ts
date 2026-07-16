@@ -5,6 +5,14 @@
 const WIDTH = 1080;
 const HEIGHT = 1350;
 
+// Shown at the bottom of every shared card so someone who sees it in a
+// story actually has a way back to the app — set NEXT_PUBLIC_SITE_URL once
+// the real domain is live; falls back to the current Vercel URL until then.
+const SITE_HOST = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://hiifutur.vercel.app").replace(
+  /^https?:\/\//,
+  ""
+);
+
 const INK = "#0F0C09";
 const SURFACE = "#17130F";
 const LINE = "#2B241C";
@@ -103,6 +111,9 @@ export function drawStreakShareCard(
   ctx.fillStyle = MUTED;
   ctx.font = "28px sans-serif";
   ctx.fillText("Un sistema, no una promesa.", WIDTH / 2, HEIGHT - 80);
+  ctx.fillStyle = ACCENT;
+  ctx.font = "600 26px sans-serif";
+  ctx.fillText(SITE_HOST, WIDTH / 2, HEIGHT - 40);
 }
 
 const WHEEL_HEIGHT = 1750;
@@ -194,4 +205,7 @@ export function drawWheelShareCard(
   ctx.fillStyle = MUTED;
   ctx.font = "28px sans-serif";
   ctx.fillText("Un sistema, no una promesa.", WIDTH / 2, WHEEL_HEIGHT - 80);
+  ctx.fillStyle = ACCENT;
+  ctx.font = "600 26px sans-serif";
+  ctx.fillText(SITE_HOST, WIDTH / 2, WHEEL_HEIGHT - 40);
 }

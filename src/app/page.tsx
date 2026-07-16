@@ -10,6 +10,7 @@ import { MarqueeTicker } from "@/components/MarqueeTicker";
 import { WebAppMockup } from "@/components/WebAppMockup";
 import { PhoneMantra } from "@/components/PhoneMantra";
 import { Footer } from "@/components/Footer";
+import { Testimonials } from "@/components/Testimonials";
 
 const PHILOSOPHY = [
   {
@@ -460,6 +461,8 @@ export default async function HomePage() {
           </div>
         </div>
       </Reveal>
+
+      <Testimonials />
 
       {/* El pedido: ahora que ya construimos confianza y explicamos el
           sistema, recién aquí llega el precio. */}
