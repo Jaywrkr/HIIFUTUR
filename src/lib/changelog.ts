@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.67.0",
+    date: "2026-07-18",
+    changes: [
+      "Fase 3 de rediseño de marca: pantallas interiores (Hoy, Módulos, Hábitos, Wheel of Life) sin emojis decorativos — barra de navegación inferior, tarjetas de racha/ancla y el tour de bienvenida ahora en línea con el look monocromo de las fases anteriores.",
+    ],
+  },
+  {
     version: "2.66.0",
     date: "2026-07-18",
     changes: [

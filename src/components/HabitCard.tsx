@@ -126,7 +126,7 @@ export function HabitCard({
           aria-live="polite"
           className="absolute inset-0 flex items-center justify-center bg-ink/95 z-20 animate-[fadeIn_150ms_ease-out]"
         >
-          <p className="text-lg font-extrabold text-accent">🔥 {milestone} días seguidos</p>
+          <p className="text-lg font-extrabold text-accent">{milestone} días seguidos</p>
         </div>
       ) : null}
       <div className="flex-1">
@@ -134,7 +134,7 @@ export function HabitCard({
           <p className="text-xs uppercase tracking-widest text-neutral-500">{category}</p>
           {isAnchor ? (
             <span className="text-[10px] uppercase tracking-widest text-accent border border-accent/40 rounded-full px-2 py-0.5">
-              ⚓ Ancla
+              Ancla
             </span>
           ) : null}
         </div>

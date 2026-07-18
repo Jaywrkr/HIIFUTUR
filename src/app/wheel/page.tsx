@@ -98,7 +98,6 @@ export default async function WheelPage() {
           </div>
         ) : (
           <div className="mb-8">
-            <p className="text-2xl mb-2">🎯</p>
             <p className="muted">Aún no tienes mediciones.</p>
           </div>
         )}

@@ -142,7 +142,7 @@ export function EditHabitRow({
             <p className="text-xs uppercase tracking-widest text-neutral-500">{habit.category}</p>
             {isAnchor ? (
               <span className="text-[10px] uppercase tracking-widest text-accent border border-accent/40 rounded-full px-2 py-0.5">
-                ⚓ Ancla
+                Ancla
               </span>
             ) : null}
           </div>
@@ -180,13 +180,13 @@ export function EditHabitRow({
             disabled={freezePending}
             className="text-xs text-accent uppercase tracking-widest hover:opacity-80 transition-opacity disabled:opacity-40"
           >
-            {freezePending ? "Congelando..." : "❄️ Ayer se te pasó — congelar racha"}
+            {freezePending ? "Congelando..." : "Ayer se te pasó — congelar racha"}
           </button>
         </div>
       ) : null}
       {justFrozen ? (
         <p className="mt-3 text-xs text-accent uppercase tracking-widest">
-          ❄️ Racha protegida. Sigue como si nada.
+          Racha protegida. Sigue como si nada.
         </p>
       ) : null}
       {freezeError ? <p className="form-error mt-3">{freezeError}</p> : null}

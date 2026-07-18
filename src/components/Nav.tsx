@@ -19,10 +19,10 @@ const links = [
 // (Leaderboard, Cuenta, Salir) lives behind "Más" — 5 tabs is the practical
 // ceiling for a bottom bar before labels start crowding each other.
 const TAB_ITEMS = [
-  { href: "/dashboard", label: "Hoy", icon: "🏠" },
-  { href: "/modules", label: "Módulos", icon: "📚" },
-  { href: "/habits", label: "Hábitos", icon: "✅" },
-  { href: "/wheel", label: "Wheel", icon: "🎯" },
+  { href: "/dashboard", label: "Hoy" },
+  { href: "/modules", label: "Módulos" },
+  { href: "/habits", label: "Hábitos" },
+  { href: "/wheel", label: "Wheel" },
 ];
 
 const MORE_ITEMS = [
@@ -78,13 +78,10 @@ export function Nav() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 onClick={() => setMoreOpen(false)}
-                className={`flex flex-col items-center justify-center gap-1 text-[10px] uppercase tracking-wide ${
+                className={`flex flex-col items-center justify-center text-[11px] uppercase tracking-wide font-bold ${
                   active ? "text-accent" : "text-neutral-500"
                 }`}
               >
-                <span className="text-lg leading-none" aria-hidden="true">
-                  {item.icon}
-                </span>
                 {item.label}
               </Link>
             );
