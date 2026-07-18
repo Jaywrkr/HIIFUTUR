@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.69.0",
+    date: "2026-07-18",
+    changes: [
+      "Rediseño de marca: los paneles con relleno de color en la landing (\"El truco\", \"Tu ritmo\", plan destacado en precios) pasan a solo borde, y la sección de filosofía se convierte en una lista numerada dividida por líneas — cero rellenos de color, todo línea y tipografía, como la referencia.",
+    ],
+  },
+  {
     version: "2.68.0",
     date: "2026-07-18",
     changes: [

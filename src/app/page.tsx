@@ -336,7 +336,7 @@ export default async function HomePage() {
                 ))}
               </div>
             </div>
-            <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col justify-center">
+            <div className="rounded-3xl border border-accent/50 p-6 flex flex-col justify-center">
               <p className="kicker">El truco</p>
               <p className="font-extrabold text-2xl mb-2">Encuentra tu hábito ancla</p>
               <p className="muted">
@@ -365,14 +365,16 @@ export default async function HomePage() {
 
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <PhoneMantra mantra={MANTRAS[11]} />
-            <div className="flex flex-col gap-6">
+            <div className="border-t border-line">
               {PHILOSOPHY.map((item, i) => (
-                <div key={item.title} className="card">
-                  <p className="text-accent text-sm font-bold tracking-widest mb-2">
+                <div key={item.title} className="border-b border-line py-6 flex gap-5">
+                  <p className="text-accent text-sm font-bold tracking-widest shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </p>
-                  <p className="font-extrabold text-xl mb-2">{item.title}</p>
-                  <p className="muted">{item.description}</p>
+                  <div>
+                    <p className="font-extrabold text-xl mb-2">{item.title}</p>
+                    <p className="muted">{item.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -444,7 +446,7 @@ export default async function HomePage() {
             ))}
           </div>
 
-          <div className="rounded-3xl bg-accent/15 border border-accent/40 p-6 flex flex-col sm:flex-row items-center gap-6">
+          <div className="rounded-3xl border border-accent/50 p-6 flex flex-col sm:flex-row items-center gap-6">
             <div className="flex-1">
               <p className="kicker">Tu ritmo</p>
               <p className="font-extrabold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
@@ -474,10 +476,8 @@ export default async function HomePage() {
             {PRICING_PLANS.map((plan) => (
               <div
                 key={plan.id}
-                className={`relative rounded-3xl p-6 flex flex-col ${
-                  plan.highlight
-                    ? "bg-accent/15 border border-accent/40"
-                    : "border border-line bg-surface"
+                className={`relative rounded-3xl p-6 flex flex-col border bg-surface ${
+                  plan.highlight ? "border-accent/60" : "border-line"
                 }`}
               >
                 {plan.highlight ? (
