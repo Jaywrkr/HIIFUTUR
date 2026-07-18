@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.70.0",
+    date: "2026-07-18",
+    changes: [
+      "Arreglo de fuente: la tipografía Geist Mono no se estaba aplicando realmente en producción — un nombre de variable CSS mal escrito hacía que el navegador cayera de vuelta a su fuente por defecto. Ahora usa los archivos reales de Geist Mono (Thin a Black) en vez del paquete npm variable.",
+    ],
+  },
+  {
     version: "2.69.0",
     date: "2026-07-18",
     changes: [
