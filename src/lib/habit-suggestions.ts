@@ -53,3 +53,46 @@ export function getAnchorHabitSuggestion(
 
   return { ...base, category, areaLabel: lowestArea.label };
 }
+
+/**
+ * Ranks all habit categories by how relevant they are to THIS user — the
+ * areas they picked as priorities at onboarding, plus the Wheel of Life
+ * areas where they scored themselves lowest (most room to move) — and
+ * returns one suggestion per category for the top 5. Used at Module 1,
+ * where the anchor habit is chosen, so the options aren't generic: they're
+ * shaped by what the person already told the app matters to them.
+ */
+export function getAnchorHabitOptions(
+  selectedAreas: string[] | null | undefined,
+  scores: Record<string, number> | null | undefined
+): HabitSuggestion[] {
+  const selected = new Set(selectedAreas ?? []);
+
+  const totals: Record<string, { sum: number; count: number }> = {};
+  for (const area of WHEEL_AREAS) {
+    const score = scores?.[area.id];
+    if (typeof score !== "number") continue;
+    const category = WHEEL_AREA_TO_CATEGORY[area.id];
+    totals[category] ??= { sum: 0, count: 0 };
+    totals[category].sum += score;
+    totals[category].count += 1;
+  }
+
+  const PREFERENCE_BONUS = 3;
+
+  const ranked = Object.keys(SUGGESTIONS_BY_CATEGORY)
+    .map((category) => {
+      const avg = totals[category] ? totals[category].sum / totals[category].count : 5;
+      const deficit = 10 - avg; // bigger gap = more room a tiny habit can move
+      const priority = deficit + (selected.has(category) ? PREFERENCE_BONUS : 0);
+      const areaLabel = WHEEL_AREAS.find((a) => WHEEL_AREA_TO_CATEGORY[a.id] === category)?.label;
+      return { category, priority, areaLabel };
+    })
+    .sort((a, b) => b.priority - a.priority);
+
+  return ranked.slice(0, 5).map(({ category, areaLabel }) => ({
+    ...SUGGESTIONS_BY_CATEGORY[category],
+    category,
+    areaLabel,
+  }));
+}
