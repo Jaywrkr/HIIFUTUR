@@ -78,9 +78,9 @@ export function HabitHeatmap({
 
               let bg = "transparent";
               if (!cell.inRange || beforeStart) bg = "transparent";
-              else if (done) bg = "#E3C9A0";
+              else if (done) bg = "#FFFFFF";
               else if (frozen) bg = "#6b93c9";
-              else if (empty) bg = "#2B241C";
+              else if (empty) bg = "#262626";
 
               return (
                 <button

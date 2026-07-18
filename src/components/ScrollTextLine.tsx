@@ -33,7 +33,7 @@ export function ScrollTextLine({ children }: { children: React.ReactNode }) {
       ref={ref}
       className="transition-colors ease-out"
       style={{
-        color: active ? "#F2ECE2" : "#544c40",
+        color: active ? "#F5F5F5" : "#525252",
         transitionDuration: "600ms",
       }}
     >

@@ -136,7 +136,7 @@ export default async function HabitsPage() {
         ) : null}
 
         {habitsWithData.length === 0 && !blockedByFirstModule ? (
-          <p className="muted mb-8">🌱 Aún no tienes hábitos. Crea el primero — el más pequeño posible.</p>
+          <p className="muted mb-8">Aún no tienes hábitos. Crea el primero — el más pequeño posible.</p>
         ) : null}
 
         {blockedByFirstModule ? (

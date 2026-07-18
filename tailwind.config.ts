@@ -5,14 +5,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        accent: "#E3C9A0",
-        "accent-hover": "#EFDCBC",
-        surface: "#17130F",
-        line: "#2B241C",
-        ink: "#0F0C09",
+        accent: "#FFFFFF",
+        "accent-hover": "#D4D4D4",
+        surface: "#0A0A0A",
+        line: "#262626",
+        ink: "#000000",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: [
+          "var(--font-geist-mono)",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "monospace",
+        ],
       },
     },
   },

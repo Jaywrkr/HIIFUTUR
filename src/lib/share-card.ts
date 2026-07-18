@@ -13,19 +13,19 @@ const SITE_HOST = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://hiifutur.vercel.
   ""
 );
 
-const INK = "#0F0C09";
-const SURFACE = "#17130F";
-const LINE = "#2B241C";
-const ACCENT = "#E3C9A0";
-const CREAM = "#F2ECE2";
-const MUTED = "#8a8072";
+const INK = "#000000";
+const SURFACE = "#0A0A0A";
+const LINE = "#262626";
+const ACCENT = "#FFFFFF";
+const CREAM = "#F5F5F5";
+const MUTED = "#A3A3A3";
 
 function drawBackground(ctx: CanvasRenderingContext2D) {
   ctx.fillStyle = INK;
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
   // Faint dot grid, echoing the landing hero.
-  ctx.fillStyle = "rgba(227,201,160,0.12)";
+  ctx.fillStyle = "rgba(255,255,255,0.08)";
   const gap = 44;
   for (let x = gap; x < WIDTH; x += gap) {
     for (let y = gap; y < HEIGHT; y += gap) {
@@ -129,7 +129,7 @@ export function drawWheelShareCard(
 
   ctx.fillStyle = INK;
   ctx.fillRect(0, 0, WIDTH, WHEEL_HEIGHT);
-  ctx.fillStyle = "rgba(227,201,160,0.12)";
+  ctx.fillStyle = "rgba(255,255,255,0.08)";
   const gap = 44;
   for (let x = gap; x < WIDTH; x += gap) {
     for (let y = gap; y < WHEEL_HEIGHT; y += gap) {

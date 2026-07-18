@@ -307,7 +307,6 @@ export default async function DashboardPage({
                 href={userHabits.length === 0 && !firstModuleDone ? `/modules/${MODULES[0].id}` : "/habits"}
                 className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
               >
-                <span className="text-lg shrink-0" aria-hidden="true">✅</span>
                 <span className="flex-1 min-w-0">
                   <span className="block font-bold text-sm">
                     {userHabits.length === 0 && !firstModuleDone
@@ -335,7 +334,6 @@ export default async function DashboardPage({
                 href="/modules"
                 className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
               >
-                <span className="text-lg shrink-0" aria-hidden="true">📚</span>
                 <span className="flex-1 min-w-0">
                   <span className="block font-bold text-sm">Todos los módulos</span>
                   <span className="block text-xs text-neutral-500 mt-0.5">
@@ -349,7 +347,6 @@ export default async function DashboardPage({
                 href="/wheel"
                 className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
               >
-                <span className="text-lg shrink-0" aria-hidden="true">🎯</span>
                 <span className="flex-1 min-w-0">
                   <span className="block font-bold text-sm">Wheel of Life</span>
                   <span
@@ -367,7 +364,6 @@ export default async function DashboardPage({
                 href="/leaderboard"
                 className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
               >
-                <span className="text-lg shrink-0" aria-hidden="true">🏆</span>
                 <span className="flex-1 min-w-0">
                   <span className="block font-bold text-sm">Leaderboard</span>
                   <span className="block text-xs text-neutral-500 mt-0.5">

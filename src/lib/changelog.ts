@@ -3,6 +3,41 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.69.0",
+    date: "2026-07-18",
+    changes: [
+      "Rediseño de marca: los paneles con relleno de color en la landing (\"El truco\", \"Tu ritmo\", plan destacado en precios) pasan a solo borde, y la sección de filosofía se convierte en una lista numerada dividida por líneas — cero rellenos de color, todo línea y tipografía, como la referencia.",
+    ],
+  },
+  {
+    version: "2.68.0",
+    date: "2026-07-18",
+    changes: [
+      "Rediseño de marca: la landing y la app ahora llevan el punto de estado junto al logo, el pie de página se reorganiza en filas con flecha (estilo 'Open') y las preguntas frecuentes pasan de tarjetas a una lista dividida por líneas finas — todo más minimalista.",
+    ],
+  },
+  {
+    version: "2.67.0",
+    date: "2026-07-18",
+    changes: [
+      "Fase 3 de rediseño de marca: pantallas interiores (Hoy, Módulos, Hábitos, Wheel of Life) sin emojis decorativos — barra de navegación inferior, tarjetas de racha/ancla y el tour de bienvenida ahora en línea con el look monocromo de las fases anteriores.",
+    ],
+  },
+  {
+    version: "2.66.0",
+    date: "2026-07-18",
+    changes: [
+      "Fase 2 de rediseño de marca: la landing page se limpia de emojis decorativos en títulos de sección, tarjetas flotantes del hero y el mockup de la app — look más sobrio, en línea con la Fase 1 (monocromo + Geist Mono).",
+    ],
+  },
+  {
+    version: "2.65.0",
+    date: "2026-07-18",
+    changes: [
+      "Fase 1 de rediseño de marca: tipografía Geist Mono en toda la app y paleta monocromática (negro/blanco) en lugar del dorado — pantallas, tarjetas para compartir, emails y la imagen de vista previa (OG image). La landing y el resto de pantallas siguen en las próximas fases.",
+    ],
+  },
+  {
     version: "2.64.0",
     date: "2026-07-15",
     changes: [
