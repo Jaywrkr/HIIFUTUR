@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.68.0",
+    date: "2026-07-18",
+    changes: [
+      "Rediseño de marca: la landing y la app ahora llevan el punto de estado junto al logo, el pie de página se reorganiza en filas con flecha (estilo 'Open') y las preguntas frecuentes pasan de tarjetas a una lista dividida por líneas finas — todo más minimalista.",
+    ],
+  },
+  {
     version: "2.67.0",
     date: "2026-07-18",
     changes: [

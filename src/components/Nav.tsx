@@ -38,7 +38,8 @@ export function Nav() {
     <>
       <nav className="app-nav">
         <div className="app-nav-inner">
-          <Link href="/dashboard" className="app-logo">
+          <Link href="/dashboard" className="app-logo inline-flex items-center gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" aria-hidden="true" />
             EJECUTA
           </Link>
 

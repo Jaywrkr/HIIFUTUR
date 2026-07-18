@@ -203,7 +203,10 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
       />
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-8 flex items-center justify-between">
-        <span className="text-sm font-bold tracking-[0.3em] text-white">EJECUTA</span>
+        <span className="inline-flex items-center gap-2.5 text-sm font-bold tracking-[0.3em] text-white">
+          <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" aria-hidden="true" />
+          EJECUTA
+        </span>
         <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
           Iniciar sesión
         </Link>
@@ -521,10 +524,13 @@ export default async function HomePage() {
               Ya sé qué estás pensando
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="border-t border-line">
             {FAQ.map((item) => (
-              <div key={item.q} className="card">
-                <p className="font-bold text-base mb-1">{item.q}</p>
+              <div
+                key={item.q}
+                className="border-b border-line py-6 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-10"
+              >
+                <p className="font-bold text-base sm:w-80 shrink-0">{item.q}</p>
                 <p className="muted">{item.a}</p>
               </div>
             ))}
