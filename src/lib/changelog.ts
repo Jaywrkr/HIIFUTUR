@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.74.0",
+    date: "2026-07-18",
+    changes: [
+      "Landing más zen (parte 2): las sombras pesadas de las tarjetas flotantes y los mockups bajan de intensidad, se quita la textura de puntitos detrás del hero (solo queda un resplandor suave), y \"Esto es para ti si...\" deja de ser una caja con borde para integrarse al flujo de la página como el resto de las secciones.",
+    ],
+  },
+  {
     version: "2.73.0",
     date: "2026-07-18",
     changes: [
