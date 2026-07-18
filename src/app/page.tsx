@@ -168,7 +168,7 @@ function FloatingStat({
     <div
       className={`absolute bg-surface border border-line rounded-2xl px-5 py-4 shadow-2xl ${className}`}
     >
-      <p className="font-extrabold leading-tight text-xl">{value}</p>
+      <p className="font-thin leading-tight text-xl">{value}</p>
       <p className="text-xs text-neutral-500 uppercase tracking-widest mt-1">{label}</p>
     </div>
   );
@@ -203,8 +203,8 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
       />
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-8 flex items-center justify-between">
-        <span className="inline-flex items-center gap-2.5 text-sm font-bold tracking-[0.3em] text-white">
-          <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" aria-hidden="true" />
+        <span className="inline-flex items-center gap-2.5 text-sm font-normal tracking-[0.3em] text-white">
+          <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 breathing-dot" aria-hidden="true" />
           EJECUTA
         </span>
         <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
@@ -218,7 +218,7 @@ export default async function HomePage() {
         <div className="grid md:grid-cols-2 gap-16 items-center py-14 md:py-28">
           <Reveal>
             <p className="kicker">Sistema de ejecución sostenible</p>
-            <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.15] tracking-tight mb-5">
+            <h1 className="text-4xl sm:text-5xl font-thin leading-[1.3] tracking-tight mb-5">
               No es disciplina. No es fuerza de voluntad.{" "}
               <span className="text-accent">Es un sistema que no pueda fallar.</span>
             </h1>
@@ -227,7 +227,7 @@ export default async function HomePage() {
               Sin gurús, sin 47 hábitos a la vez, sin culpa cuando fallas un día.
             </p>
             <p className="text-base mb-10">
-              Hoy, eso podría ser <span className="font-bold text-accent">5 sentadillas.</span>
+              Hoy, eso podría ser <span className="font-semibold text-accent">5 sentadillas.</span>
             </p>
             <div className="flex items-center gap-6">
               <Link href="/register" className="btn-primary">Empezar gratis</Link>
@@ -272,7 +272,7 @@ export default async function HomePage() {
             {OLD_RULES.map((rule) => (
               <p
                 key={rule}
-                className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-neutral-500 line-through decoration-red-500/70"
+                className="text-2xl sm:text-4xl font-thin uppercase tracking-tight text-neutral-600 line-through decoration-neutral-400/60"
                 style={{ textDecorationThickness: "3px" }}
               >
                 {rule}
@@ -283,7 +283,7 @@ export default async function HomePage() {
           <p className="text-sm text-neutral-400 mb-6">
             Y de alguna forma... sigues sin sostener nada.
           </p>
-          <p className="text-2xl sm:text-3xl font-extrabold leading-snug">
+          <p className="text-2xl sm:text-3xl font-thin leading-relaxed">
             Tal vez el problema no eres tu.{" "}
             <span className="text-accent">Tal vez son las reglas.</span>
           </p>
@@ -298,7 +298,7 @@ export default async function HomePage() {
             <p className="kicker mx-auto">Por qué lo hicimos</p>
             <WordReveal
               words={WHY_WE_BUILT_IT}
-              className="text-3xl sm:text-4xl font-extrabold leading-snug tracking-tight max-w-3xl mx-auto"
+              className="text-3xl sm:text-4xl font-thin leading-relaxed tracking-tight max-w-3xl mx-auto"
             />
           </div>
 
@@ -309,7 +309,7 @@ export default async function HomePage() {
               <div className="border-l-2 border-l-accent pl-6 flex flex-col gap-4 mt-4">
                 {JAY_STORY.map((line) => (
                   <ScrollTextLine key={line}>
-                    <span className="text-lg font-bold leading-snug">{line}</span>
+                    <span className="text-lg font-normal leading-snug">{line}</span>
                   </ScrollTextLine>
                 ))}
                 <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
@@ -331,7 +331,7 @@ export default async function HomePage() {
             </div>
             <div className="rounded-3xl border border-accent/50 p-6 flex flex-col justify-center">
               <p className="kicker">El truco</p>
-              <p className="font-extrabold text-2xl mb-2">Encuentra tu hábito ancla</p>
+              <p className="font-thin text-2xl mb-2">Encuentra tu hábito ancla</p>
               <p className="muted">
                 El único hábito que, si lo sostienes, jala a todos los demás sin que hagas nada
                 extra. No es el más vistoso ni el que más te emociona — es el que arrastra a los
@@ -347,7 +347,7 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-32">
           <div className="text-center mb-16">
             <p className="kicker mx-auto">Cómo vemos las cosas</p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-thin tracking-tight mb-4">
               La forma <span className="text-accent">EJECUTA</span>
             </h2>
             <p className="text-sm text-neutral-400 max-w-xl mx-auto">
@@ -361,11 +361,11 @@ export default async function HomePage() {
             <div className="border-t border-line">
               {PHILOSOPHY.map((item, i) => (
                 <div key={item.title} className="border-b border-line py-6 flex gap-5">
-                  <p className="text-accent text-sm font-bold tracking-widest shrink-0">
+                  <p className="text-accent text-sm font-semibold tracking-widest shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </p>
                   <div>
-                    <p className="font-extrabold text-xl mb-2">{item.title}</p>
+                    <p className="font-thin text-xl mb-2">{item.title}</p>
                     <p className="muted">{item.description}</p>
                   </div>
                 </div>
@@ -381,7 +381,7 @@ export default async function HomePage() {
         <div className="grid md:grid-cols-2 gap-16 items-center py-20 md:py-32">
           <Reveal>
             <p className="kicker">Ahora en la web</p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-thin leading-[1.25] tracking-tight mb-4">
               Sin descargas. Sin App Store. <span className="text-accent">Solo un link.</span>
             </h2>
             <p className="text-sm leading-relaxed text-neutral-300 mb-8 max-w-lg">
@@ -392,7 +392,7 @@ export default async function HomePage() {
             <div className="flex flex-col mb-8">
               {WEB_FEATURES.map((f) => (
                 <div key={f.title} className="border-t border-line py-4 first:border-t-0 first:pt-0">
-                  <p className="font-bold">{f.title}</p>
+                  <p className="font-normal">{f.title}</p>
                   <p className="muted mt-1">{f.description}</p>
                 </div>
               ))}
@@ -411,7 +411,7 @@ export default async function HomePage() {
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-32">
           <p className="kicker">Cómo funciona, en 3 partes</p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+          <h2 className="text-4xl sm:text-5xl font-thin tracking-tight mb-4">
             Aprendizaje. Acción. Control.
           </h2>
           <p className="text-sm leading-relaxed text-neutral-300 max-w-xl mb-12">
@@ -426,7 +426,7 @@ export default async function HomePage() {
                 <Reveal delay={i * 150}>
                   <div className="card h-full">
                     <p className="kicker">{part.kicker}</p>
-                    <p className="font-extrabold text-2xl mb-2">{part.title}</p>
+                    <p className="font-thin text-2xl mb-2">{part.title}</p>
                     <p className="muted">{part.description}</p>
                   </div>
                 </Reveal>
@@ -442,7 +442,7 @@ export default async function HomePage() {
           <div className="rounded-3xl border border-accent/50 p-6 flex flex-col sm:flex-row items-center gap-6">
             <div className="flex-1">
               <p className="kicker">Tu ritmo</p>
-              <p className="font-extrabold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
+              <p className="font-thin text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
               <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
             </div>
             <PhoneMantra mantra={MANTRAS[4]} />
@@ -457,7 +457,7 @@ export default async function HomePage() {
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-32 text-center">
           <p className="kicker mx-auto">Empieza donde estes</p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+          <h2 className="text-4xl sm:text-5xl font-thin tracking-tight mb-4">
             Elige tu plan. Empieza tu sistema.
           </h2>
           <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-12">
@@ -474,13 +474,13 @@ export default async function HomePage() {
                 }`}
               >
                 {plan.highlight ? (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full">
                     Mejor valor
                   </span>
                 ) : null}
                 <p className="text-xs uppercase tracking-widest text-neutral-500 mb-4">{plan.label}</p>
                 <p className="mb-1">
-                  <span className="text-4xl font-extrabold">{plan.price}</span>{" "}
+                  <span className="text-4xl font-thin">{plan.price}</span>{" "}
                   <span className="text-sm text-neutral-400">{plan.unit}</span>
                 </p>
                 <p className="muted mb-6">{plan.tagline}</p>
@@ -513,7 +513,7 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-32">
           <div className="text-center mb-16">
             <p className="kicker mx-auto">Preguntas que te estás haciendo</p>
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-thin tracking-tight">
               Ya sé qué estás pensando
             </h2>
           </div>
@@ -523,7 +523,7 @@ export default async function HomePage() {
                 key={item.q}
                 className="border-b border-line py-6 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-10"
               >
-                <p className="font-bold text-base sm:w-80 shrink-0">{item.q}</p>
+                <p className="font-normal text-base sm:w-80 shrink-0">{item.q}</p>
                 <p className="muted">{item.a}</p>
               </div>
             ))}

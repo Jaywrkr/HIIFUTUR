@@ -12,7 +12,7 @@ function TickerContent() {
     <>
       {ITEMS.map((label, i) => (
         <span key={i} className="flex items-center gap-3 shrink-0 px-6">
-          <span className="text-sm font-bold uppercase tracking-widest text-neutral-300">
+          <span className="text-sm font-normal uppercase tracking-widest text-neutral-300">
             {label}
           </span>
           <span className="text-accent">·</span>

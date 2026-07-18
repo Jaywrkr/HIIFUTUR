@@ -39,7 +39,7 @@ select:focus-visible,
   @apply w-full max-w-sm border border-line rounded-3xl p-8 bg-surface;
 }
 .auth-title {
-  @apply text-2xl tracking-tight font-bold mb-1;
+  @apply text-2xl tracking-tight font-thin mb-1;
 }
 .auth-sub {
   @apply text-sm text-neutral-400 mb-6;
@@ -67,7 +67,7 @@ select:focus-visible,
 }
 
 .btn-primary {
-  @apply inline-block bg-accent text-black font-bold uppercase tracking-widest text-sm py-3 px-6 rounded-full text-center hover:bg-accent-hover transition-colors disabled:opacity-50;
+  @apply inline-block bg-accent text-black font-normal uppercase tracking-widest text-sm py-3 px-6 rounded-full text-center hover:bg-accent-hover transition-colors disabled:opacity-50;
 }
 .btn-secondary {
   @apply border border-line text-white uppercase tracking-widest text-xs py-2 px-5 rounded-full hover:border-accent hover:bg-accent/10 hover:text-accent transition-colors disabled:opacity-40;
@@ -84,7 +84,7 @@ select:focus-visible,
   @apply max-w-6xl mx-auto flex items-center justify-between px-4 py-4;
 }
 .app-logo {
-  @apply text-sm font-bold tracking-[0.3em] text-white;
+  @apply text-sm font-thin tracking-[0.3em] text-white;
 }
 .app-nav-links {
   @apply flex items-center gap-5 text-xs uppercase tracking-widest text-neutral-400;
@@ -131,7 +131,7 @@ select:focus-visible,
   @apply border border-line bg-surface rounded-2xl p-6;
 }
 .section-title {
-  @apply text-lg font-bold mb-4;
+  @apply text-lg font-normal mb-4;
 }
 .muted {
   @apply text-neutral-400 text-sm;
@@ -216,6 +216,27 @@ select:focus-visible,
 }
 @media (prefers-reduced-motion: reduce) {
   .shake-error {
+    animation: none;
+  }
+}
+
+/* Status dot next to the wordmark: a slow inhale/exhale rather than a
+   static mark — the one place a meditation cue felt earned. */
+@keyframes breathe {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.breathing-dot {
+  animation: breathe 4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .breathing-dot {
     animation: none;
   }
 }

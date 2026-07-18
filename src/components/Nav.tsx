@@ -39,12 +39,12 @@ export function Nav() {
       <nav className="app-nav">
         <div className="app-nav-inner">
           <Link href="/dashboard" className="app-logo inline-flex items-center gap-2.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" aria-hidden="true" />
+            <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 breathing-dot" aria-hidden="true" />
             EJECUTA
           </Link>
 
           {/* Desktop: inline links, all of them */}
-          <div className="hidden md:flex items-center gap-5 text-xs uppercase tracking-widest font-bold text-neutral-400">
+          <div className="hidden md:flex items-center gap-5 text-xs uppercase tracking-widest font-normal text-neutral-400">
             {links.map((l) => (
               <Link
                 key={l.href}
@@ -79,7 +79,7 @@ export function Nav() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 onClick={() => setMoreOpen(false)}
-                className={`flex flex-col items-center justify-center text-[11px] uppercase tracking-wide font-bold ${
+                className={`flex flex-col items-center justify-center text-[11px] uppercase tracking-wide font-normal ${
                   active ? "text-accent" : "text-neutral-500"
                 }`}
               >
@@ -118,7 +118,7 @@ export function Nav() {
               href={item.href}
               onClick={() => setMoreOpen(false)}
               aria-current={pathname.startsWith(item.href) ? "page" : undefined}
-              className={`block px-5 py-3 text-xs uppercase tracking-widest font-bold border-b border-line/50 ${
+              className={`block px-5 py-3 text-xs uppercase tracking-widest font-normal border-b border-line/50 ${
                 pathname.startsWith(item.href) ? "text-accent" : "text-neutral-300"
               }`}
             >
@@ -127,7 +127,7 @@ export function Nav() {
           ))}
           <button
             onClick={() => signOut({ callbackUrl: "/login" })}
-            className="block w-full px-5 py-3 text-xs uppercase tracking-widest font-bold text-neutral-300 text-left"
+            className="block w-full px-5 py-3 text-xs uppercase tracking-widest font-normal text-neutral-300 text-left"
           >
             Salir
           </button>

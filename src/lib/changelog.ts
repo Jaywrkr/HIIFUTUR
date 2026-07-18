@@ -3,6 +3,20 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.73.0",
+    date: "2026-07-18",
+    changes: [
+      "Más zen: el punto junto al logo ahora respira (pulso lento, como una inhalación/exhalación), el tachado de \"las reglas viejas\" pierde el rojo y queda en gris (monocromo total), las palabras de \"por qué lo hicimos\" se revelan más suave al hacer scroll, y los títulos grandes de la landing tienen más aire entre líneas.",
+    ],
+  },
+  {
+    version: "2.72.0",
+    date: "2026-07-18",
+    changes: [
+      "Fuente mucho más liviana: títulos y logo pasan de negrita a peso delgado (thin) en la landing, el nav y las pantallas de acceso; textos de cuerpo y botones bajan de negrita a peso normal. Solo se mantiene algo de peso en etiquetas chicas donde hacía falta legibilidad (badge de precio destacado, contador de pasos).",
+    ],
+  },
+  {
     version: "2.71.0",
     date: "2026-07-18",
     changes: [
