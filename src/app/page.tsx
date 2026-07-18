@@ -29,12 +29,10 @@ const PHILOSOPHY = [
 
 const WEB_FEATURES = [
   {
-    icon: "⚡",
     title: "Cero instalación",
     description: "Abres el link y ya. Nada que descargar, nada que actualizar, nada que te pida espacio en el celular.",
   },
   {
-    icon: "🔁",
     title: "Tu progreso te sigue a ti",
     description: "Empieza en el celular, sigue en la laptop, ciérralo en la tablet antes de dormir. La cuenta es tuya, no del aparato.",
   },
@@ -158,25 +156,20 @@ const FAQ = [
 ];
 
 function FloatingStat({
-  icon,
   label,
   value,
   className,
 }: {
-  icon: string;
   label: string;
   value: string;
   className: string;
 }) {
   return (
     <div
-      className={`absolute bg-surface border border-line rounded-2xl px-5 py-4 shadow-2xl flex items-center gap-3 ${className}`}
+      className={`absolute bg-surface border border-line rounded-2xl px-5 py-4 shadow-2xl ${className}`}
     >
-      <span className="text-2xl leading-none">{icon}</span>
-      <div>
-        <p className="font-extrabold leading-tight">{value}</p>
-        <p className="text-xs text-neutral-500 uppercase tracking-widest">{label}</p>
-      </div>
+      <p className="font-extrabold leading-tight text-xl">{value}</p>
+      <p className="text-xs text-neutral-500 uppercase tracking-widest mt-1">{label}</p>
     </div>
   );
 }
@@ -253,19 +246,19 @@ export default async function HomePage() {
             <div
               className="absolute inset-0 rounded-3xl"
               style={{
-                backgroundImage: "radial-gradient(circle, rgba(227,201,160,0.18) 1px, transparent 1px)",
+                backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px)",
                 backgroundSize: "22px 22px",
               }}
             />
             <div
               className="absolute inset-0 rounded-3xl"
               style={{
-                background: "radial-gradient(circle at 60% 40%, rgba(227,201,160,0.15), transparent 60%)",
+                background: "radial-gradient(circle at 60% 40%, rgba(255,255,255,0.10), transparent 60%)",
               }}
             />
-            <FloatingStat icon="🔥" value="Día 1" label="Racha" className="top-6 left-2 -rotate-6" />
-            <FloatingStat icon="⏱️" value="1 hábito" label="Hoy" className="top-40 right-2 rotate-3" />
-            <FloatingStat icon="🎯" value="7/10" label="Wheel of life" className="bottom-10 left-10 -rotate-3" />
+            <FloatingStat value="Día 1" label="Racha" className="top-6 left-2 -rotate-6" />
+            <FloatingStat value="1 hábito" label="Hoy" className="top-40 right-2 rotate-3" />
+            <FloatingStat value="7/10" label="Wheel of life" className="bottom-10 left-10 -rotate-3" />
           </div>
         </div>
       </div>
@@ -276,7 +269,7 @@ export default async function HomePage() {
           entra antes de pedirte nada, para que el resto tenga contexto. */}
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 text-center">
-          <p className="kicker mx-auto">🚫 Las reglas viejas</p>
+          <p className="kicker mx-auto">Las reglas viejas</p>
           <p className="text-sm text-neutral-400 mb-10">Por años te dijeron...</p>
 
           <div className="flex flex-col gap-1 mb-10">
@@ -306,7 +299,7 @@ export default async function HomePage() {
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
           <div className="text-center mb-16">
-            <p className="kicker mx-auto">💭 Por qué lo hicimos</p>
+            <p className="kicker mx-auto">Por qué lo hicimos</p>
             <WordReveal
               words={WHY_WE_BUILT_IT}
               className="text-3xl sm:text-4xl font-extrabold leading-snug tracking-tight max-w-3xl mx-auto"
@@ -357,7 +350,7 @@ export default async function HomePage() {
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
           <div className="text-center mb-16">
-            <p className="kicker mx-auto">🎯 Cómo vemos las cosas</p>
+            <p className="kicker mx-auto">Cómo vemos las cosas</p>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
               La forma <span className="text-accent">EJECUTA</span>
             </h2>
@@ -389,7 +382,7 @@ export default async function HomePage() {
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="grid md:grid-cols-2 gap-16 items-center py-16 md:py-24">
           <Reveal>
-            <p className="kicker">🌐 Ahora en la web</p>
+            <p className="kicker">Ahora en la web</p>
             <h2 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
               Sin descargas. Sin App Store. <span className="text-accent">Solo un link.</span>
             </h2>
@@ -398,14 +391,11 @@ export default async function HomePage() {
               en el celular apenas despiertas, en la tablet antes de dormir. Tu racha y tu
               progreso te siguen a ti, no al aparato.
             </p>
-            <div className="flex flex-col gap-6 mb-8">
+            <div className="flex flex-col mb-8">
               {WEB_FEATURES.map((f) => (
-                <div key={f.title} className="flex items-start gap-4">
-                  <span className="text-xl leading-none mt-0.5">{f.icon}</span>
-                  <div>
-                    <p className="font-bold">{f.title}</p>
-                    <p className="muted mt-1">{f.description}</p>
-                  </div>
+                <div key={f.title} className="border-t border-line py-4 first:border-t-0 first:pt-0">
+                  <p className="font-bold">{f.title}</p>
+                  <p className="muted mt-1">{f.description}</p>
                 </div>
               ))}
             </div>
@@ -422,7 +412,7 @@ export default async function HomePage() {
           adentro: Aprendizaje + Acción + Control. */}
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
-          <p className="kicker">🧭 Cómo funciona, en 3 partes</p>
+          <p className="kicker">Cómo funciona, en 3 partes</p>
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
             Aprendizaje. Acción. Control.
           </h2>
@@ -468,7 +458,7 @@ export default async function HomePage() {
           sistema, recién aquí llega el precio. */}
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 text-center">
-          <p className="kicker mx-auto">💪 Empieza donde estes</p>
+          <p className="kicker mx-auto">Empieza donde estes</p>
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
             Elige tu plan. Empieza tu sistema.
           </h2>
@@ -526,7 +516,7 @@ export default async function HomePage() {
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
           <div className="text-center mb-16">
-            <p className="kicker mx-auto">❓ Preguntas que te estás haciendo</p>
+            <p className="kicker mx-auto">Preguntas que te estás haciendo</p>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
               Ya sé qué estás pensando
             </h2>

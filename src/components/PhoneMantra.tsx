@@ -5,7 +5,7 @@ export function PhoneMantra({ mantra }: { mantra: string }) {
         <div
           className="absolute inset-0"
           style={{
-            background: "radial-gradient(circle at 50% 30%, rgba(227,201,160,0.15), transparent 60%)",
+            background: "radial-gradient(circle at 50% 30%, rgba(255,255,255,0.10), transparent 60%)",
           }}
         />
         <p className="relative text-2xl font-extrabold leading-snug text-center">{mantra}</p>

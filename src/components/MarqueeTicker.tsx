@@ -1,22 +1,21 @@
 const ITEMS = [
-  { icon: "🧘", label: "Respirar 1 min" },
-  { icon: "🚶", label: "Caminar 10 min" },
-  { icon: "💧", label: "Tomar agua" },
-  { icon: "📓", label: "Escribir 1 linea" },
-  { icon: "🛌", label: "Dormir a tiempo" },
-  { icon: "🏋️", label: "5 sentadillas" },
+  "Respirar 1 min",
+  "Caminar 10 min",
+  "Tomar agua",
+  "Escribir 1 linea",
+  "Dormir a tiempo",
+  "5 sentadillas",
 ];
 
 function TickerContent() {
   return (
     <>
-      {ITEMS.map((item, i) => (
+      {ITEMS.map((label, i) => (
         <span key={i} className="flex items-center gap-3 shrink-0 px-6">
-          <span className="text-lg">{item.icon}</span>
           <span className="text-sm font-bold uppercase tracking-widest text-neutral-300">
-            {item.label}
+            {label}
           </span>
-          <span className="text-accent">✦</span>
+          <span className="text-accent">·</span>
         </span>
       ))}
     </>

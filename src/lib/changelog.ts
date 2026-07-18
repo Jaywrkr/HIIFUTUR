@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.66.0",
+    date: "2026-07-18",
+    changes: [
+      "Fase 2 de rediseño de marca: la landing page se limpia de emojis decorativos en títulos de sección, tarjetas flotantes del hero y el mockup de la app — look más sobrio, en línea con la Fase 1 (monocromo + Geist Mono).",
+    ],
+  },
+  {
     version: "2.65.0",
     date: "2026-07-18",
     changes: [

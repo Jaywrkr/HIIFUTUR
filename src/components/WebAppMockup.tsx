@@ -17,8 +17,8 @@ export function WebAppMockup() {
             <span className="w-2.5 h-2.5 rounded-full bg-neutral-700" />
             <span className="w-2.5 h-2.5 rounded-full bg-neutral-700" />
           </div>
-          <div className="flex-1 bg-ink border border-line rounded-full px-4 py-1.5 text-xs text-neutral-500 flex items-center gap-2">
-            <span>🔒</span> ejecuta.app
+          <div className="flex-1 bg-ink border border-line rounded-full px-4 py-1.5 text-xs text-neutral-500">
+            ejecuta.app
           </div>
         </div>
 
@@ -26,11 +26,11 @@ export function WebAppMockup() {
           <div className="flex items-center justify-between mb-6">
             <span className="text-sm font-bold tracking-[0.3em] text-white">EJECUTA</span>
             <div className="flex items-center gap-2">
-              <span className="flex items-center gap-1 text-xs bg-ink border border-line rounded-full px-3 py-1">
-                🔥 4
+              <span className="text-xs bg-ink border border-line rounded-full px-3 py-1">
+                4 días
               </span>
-              <span className="flex items-center gap-1 text-xs bg-ink border border-line rounded-full px-3 py-1">
-                🎯 7/10
+              <span className="text-xs bg-ink border border-line rounded-full px-3 py-1">
+                7/10
               </span>
             </div>
           </div>
