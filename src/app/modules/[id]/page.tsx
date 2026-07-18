@@ -25,6 +25,7 @@ import { TwoStoriesGame } from "@/components/TwoStoriesGame";
 import { HabitChainGame } from "@/components/HabitChainGame";
 import { CompassGame } from "@/components/CompassGame";
 import { MantraCollectionGame } from "@/components/MantraCollectionGame";
+import { getAnchorHabitOptions } from "@/lib/habit-suggestions";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -76,6 +77,14 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
   // Shared across theory paragraphs AND the exercise description, so a term
   // already explained higher up on the page doesn't get underlined twice.
   const usedTerms = new Set<string>();
+
+  // Module 1 is the only place the anchor habit gets chosen — the 5
+  // options shown are ranked by the areas this person picked at onboarding
+  // plus where their Wheel of Life scored lowest, not generic.
+  const anchorSuggestions =
+    courseModule.id === MODULES[0].id
+      ? { fieldId: "habito_1", options: getAnchorHabitOptions(prefs.selectedAreas, prefs.initialWheelScores) }
+      : undefined;
 
   return (
     <>
@@ -209,6 +218,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
             moduleId={courseModule.id}
             fields={courseModule.fields}
             existingData={(existing?.exerciseData as Record<string, string>) ?? {}}
+            suggestionsFor={anchorSuggestions}
           />
         </div>
 

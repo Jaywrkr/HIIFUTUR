@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.64.0",
+    date: "2026-07-15",
+    changes: [
+      "Módulo 1: elegir el hábito ancla ahora muestra 5 opciones sugeridas — no genéricas, elegidas según las áreas que marcaste al empezar y dónde saliste más bajo en tu Wheel of Life. Sigue siendo 100% editable: son punto de partida, no obligación.",
+    ],
+  },
+  {
     version: "2.63.0",
     date: "2026-07-15",
     changes: [

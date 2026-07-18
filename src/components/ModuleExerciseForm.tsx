@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { completeModule } from "@/lib/module-actions";
 import type { ExerciseField } from "@/lib/modules-content";
+import type { HabitSuggestion } from "@/lib/habit-suggestions";
 
 function SubmitButton({ shaking }: { shaking: boolean }) {
   const { pending } = useFormStatus();
@@ -50,10 +51,15 @@ export function ModuleExerciseForm({
   moduleId,
   fields,
   existingData,
+  suggestionsFor,
 }: {
   moduleId: string;
   fields: ExerciseField[];
   existingData: Record<string, string>;
+  /** Personalized options shown above one specific text field (e.g. the
+   * anchor habit at Module 1) — click one to fill the field, still fully
+   * editable afterward. */
+  suggestionsFor?: { fieldId: string; options: HabitSuggestion[] };
 }) {
   const boundAction = completeModule.bind(null, moduleId);
   const formRef = useRef<HTMLFormElement>(null);
@@ -65,6 +71,14 @@ export function ModuleExerciseForm({
       fields
         .filter((f) => f.type === "scale")
         .map((f) => [f.id, Number(existingData[f.id]) || 5])
+    )
+  );
+
+  const [textValues, setTextValues] = useState<Record<string, string>>(
+    Object.fromEntries(
+      fields
+        .filter((f) => f.type === "text" || f.type === "textarea")
+        .map((f) => [f.id, existingData[f.id] ?? ""])
     )
   );
 
@@ -96,19 +110,51 @@ export function ModuleExerciseForm({
               id={field.id}
               name={field.id}
               rows={3}
-              defaultValue={existingData[field.id] ?? ""}
+              value={textValues[field.id] ?? ""}
+              onChange={(e) => setTextValues((prev) => ({ ...prev, [field.id]: e.target.value }))}
               placeholder={field.placeholder}
               className="field-input w-full"
             />
           ) : field.type === "text" ? (
-            <input
-              id={field.id}
-              name={field.id}
-              type="text"
-              defaultValue={existingData[field.id] ?? ""}
-              placeholder={field.placeholder}
-              className="field-input w-full"
-            />
+            <>
+              {suggestionsFor?.fieldId === field.id ? (
+                <div className="flex flex-col gap-2 mb-3">
+                  {suggestionsFor.options.map((option) => (
+                    <button
+                      key={option.name}
+                      type="button"
+                      onClick={() =>
+                        setTextValues((prev) => ({ ...prev, [field.id]: option.name }))
+                      }
+                      className={`text-left rounded-xl border px-3 py-2.5 transition-colors ${
+                        textValues[field.id] === option.name
+                          ? "border-accent/50 bg-accent/10"
+                          : "border-line hover:border-accent/30"
+                      }`}
+                    >
+                      <span className="block text-sm font-bold">{option.name}</span>
+                      <span className="block text-xs text-neutral-500 mt-0.5">
+                        {option.description}
+                        {option.areaLabel ? ` · ${option.areaLabel}` : ""}
+                      </span>
+                    </button>
+                  ))}
+                  <p className="text-[11px] text-neutral-500">
+                    Son sugerencias según lo que elegiste al empezar y tu Wheel of Life — toca una
+                    para usarla, o escribe la tuya abajo.
+                  </p>
+                </div>
+              ) : null}
+              <input
+                id={field.id}
+                name={field.id}
+                type="text"
+                value={textValues[field.id] ?? ""}
+                onChange={(e) => setTextValues((prev) => ({ ...prev, [field.id]: e.target.value }))}
+                placeholder={field.placeholder}
+                className="field-input w-full"
+              />
+            </>
           ) : field.type === "scale" ? (
             <div>
               <div className="flex justify-between text-xs uppercase tracking-widest text-neutral-400 mb-1">
