@@ -27,14 +27,14 @@ export default function GlobalError({
             gap: "16px",
             padding: "24px",
             textAlign: "center",
-            background: "#0F0C09",
-            color: "#F2ECE2",
+            background: "#000000",
+            color: "#F5F5F5",
             fontFamily: "ui-sans-serif, system-ui, sans-serif",
           }}
         >
           <p
             style={{
-              color: "#E3C9A0",
+              color: "#FFFFFF",
               textTransform: "uppercase",
               letterSpacing: "0.2em",
               fontSize: "12px",
@@ -44,13 +44,13 @@ export default function GlobalError({
             EJECUTA
           </p>
           <h1 style={{ fontSize: "22px", margin: 0 }}>Algo se rompio de nuestro lado.</h1>
-          <p style={{ color: "#8a8072", fontSize: "14px", maxWidth: "320px" }}>
+          <p style={{ color: "#A3A3A3", fontSize: "14px", maxWidth: "320px" }}>
             Ya nos enteramos. Intenta de nuevo en un momento.
           </p>
           <button
             onClick={reset}
             style={{
-              background: "#E3C9A0",
+              background: "#FFFFFF",
               color: "#000",
               fontWeight: 700,
               fontSize: "13px",

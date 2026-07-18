@@ -11,17 +11,17 @@ function escapeHtml(s: string): string {
 }
 
 const COLORS = {
-  bg: "#0F0C09",
-  card: "#181310",
-  border: "#2A2118",
-  text: "#F2ECE2",
-  muted: "#9C9082",
-  faint: "#544C40",
-  accent: "#E3C9A0",
+  bg: "#000000",
+  card: "#0A0A0A",
+  border: "#262626",
+  text: "#F5F5F5",
+  muted: "#A3A3A3",
+  faint: "#6B6B6B",
+  accent: "#FFFFFF",
 };
 
-/** Table-based shell shared by every transactional email — the same dark/
- * gold look as the app, wrapped in the boilerplate HTML email clients need
+/** Table-based shell shared by every transactional email — the same black/
+ * white look as the app, wrapped in the boilerplate HTML email clients need
  * (Outlook/Gmail don't reliably render flexbox, so everything below is
  * tables + inline styles). `preheader` is the invisible preview text shown
  * next to the subject line in inbox lists. */
@@ -80,7 +80,7 @@ function ctaButton(url: string, label: string): string {
     <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 24px 0 4px;">
       <tr>
         <td style="border-radius: 999px; background:${COLORS.accent};">
-          <a href="${url}" style="display:inline-block; padding: 13px 28px; color:#0F0C09; font-weight:700; font-size:14px; text-decoration:none; border-radius:999px;">
+          <a href="${url}" style="display:inline-block; padding: 13px 28px; color:${COLORS.bg}; font-weight:700; font-size:14px; text-decoration:none; border-radius:999px;">
             ${escapeHtml(label)}
           </a>
         </td>

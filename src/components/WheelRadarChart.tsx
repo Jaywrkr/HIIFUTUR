@@ -75,22 +75,22 @@ export function WheelRadarChart({
             key={level}
             points={polygonPoints(WHEEL_AREAS.map(() => level), count)}
             fill="none"
-            stroke="#2B241C"
+            stroke="#262626"
           />
         ))}
         {/* Spokes */}
         {WHEEL_AREAS.map((_, i) => {
           const { x, y } = pointFor(i, count, MAX_RADIUS);
-          return <line key={i} x1={CENTER} y1={CENTER} x2={x} y2={y} stroke="#2B241C" />;
+          return <line key={i} x1={CENTER} y1={CENTER} x2={x} y2={y} stroke="#262626" />;
         })}
 
         {/* Previous measurement (muted, behind) */}
         {previousValues ? (
           <polygon
             points={polygonPoints(previousValues, count)}
-            fill="#6b6153"
+            fill="#525252"
             fillOpacity={0.15}
-            stroke="#6b6153"
+            stroke="#525252"
             strokeWidth={1.5}
           />
         ) : null}
@@ -98,9 +98,9 @@ export function WheelRadarChart({
         {/* Current measurement (accent, on top) */}
         <polygon
           points={polygonPoints(currentValues, count)}
-          fill="#E3C9A0"
+          fill="#FFFFFF"
           fillOpacity={0.3}
-          stroke="#E3C9A0"
+          stroke="#FFFFFF"
           strokeWidth={2}
         />
 
@@ -171,12 +171,12 @@ export function WheelRadarChart({
 
       <div className="flex items-center gap-5 mt-4 text-xs uppercase tracking-wide">
         <span className="flex items-center gap-1.5 text-neutral-300">
-          <span className="w-2.5 h-2.5 rounded-sm" style={{ background: "#E3C9A0" }} />
+          <span className="w-2.5 h-2.5 rounded-sm" style={{ background: "#FFFFFF" }} />
           Actual
         </span>
         {previous ? (
           <span className="flex items-center gap-1.5 text-neutral-500">
-            <span className="w-2.5 h-2.5 rounded-sm" style={{ background: "#6b6153" }} />
+            <span className="w-2.5 h-2.5 rounded-sm" style={{ background: "#525252" }} />
             Mes anterior
           </span>
         ) : null}

@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.65.0",
+    date: "2026-07-18",
+    changes: [
+      "Fase 1 de rediseño de marca: tipografía Geist Mono en toda la app y paleta monocromática (negro/blanco) en lugar del dorado — pantallas, tarjetas para compartir, emails y la imagen de vista previa (OG image). La landing y el resto de pantallas siguen en las próximas fases.",
+    ],
+  },
+  {
     version: "2.64.0",
     date: "2026-07-15",
     changes: [

@@ -1,16 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Providers } from "./providers";
 import { VersionBadge } from "@/components/VersionBadge";
 import { RegisterServiceWorker } from "@/components/RegisterServiceWorker";
 import { MetaPixel } from "@/components/MetaPixel";
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-sans",
-});
 
 const SITE_URL = process.env.NEXTAUTH_URL ?? "https://hiifutur.vercel.app";
 const TITLE = "EJECUTA — Sistema de Ejecución Sostenible";
@@ -47,13 +41,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0F0C09",
+  themeColor: "#000000",
   viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={jakarta.variable}>
+    <html lang="es" className={GeistMono.variable}>
       <body>
         <Providers>{children}</Providers>
         <VersionBadge />

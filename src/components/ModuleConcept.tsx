@@ -149,7 +149,7 @@ function AnchorCascade() {
                 ? "bg-accent text-black font-bold"
                 : "border text-neutral-300"
             }`}
-            style={i === 0 ? undefined : { borderColor: `rgba(227,201,160,${0.45 - i * 0.08})` }}
+            style={i === 0 ? undefined : { borderColor: `rgba(255,255,255,${0.45 - i * 0.08})` }}
           >
             {i === 0 ? `Ancla · ${item}` : item}
           </span>
@@ -249,17 +249,17 @@ function Compass() {
   return (
     <div className="flex items-center gap-4">
       <svg viewBox="0 0 80 80" className="w-20 h-20 shrink-0">
-        <circle cx="40" cy="40" r="36" fill="none" stroke="#2B241C" strokeWidth="2" />
-        <circle cx="40" cy="40" r="3" fill="#E3C9A0" />
-        <polygon points="40,12 46,40 40,36 34,40" fill="#E3C9A0" />
-        <polygon points="40,68 46,40 40,44 34,40" fill="#6b6153" />
+        <circle cx="40" cy="40" r="36" fill="none" stroke="#262626" strokeWidth="2" />
+        <circle cx="40" cy="40" r="3" fill="#FFFFFF" />
+        <polygon points="40,12 46,40 40,36 34,40" fill="#FFFFFF" />
+        <polygon points="40,68 46,40 40,44 34,40" fill="#525252" />
         {["N", "S", "E", "O"].map((d, i) => (
           <text
             key={d}
             x={i === 0 ? 40 : i === 1 ? 40 : i === 2 ? 70 : 10}
             y={i === 0 ? 9 : i === 1 ? 76 : 44}
             fontSize="8"
-            fill="#a89a85"
+            fill="#8a8a8a"
             textAnchor="middle"
           >
             {d}

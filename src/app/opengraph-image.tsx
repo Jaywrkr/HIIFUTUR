@@ -16,7 +16,7 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0F0C09",
+          background: "#000000",
           fontFamily: "sans-serif",
         }}
       >
@@ -25,21 +25,21 @@ export default function Image() {
             display: "flex",
             alignItems: "center",
             gap: 12,
-            border: "1px solid #2B241C",
-            background: "#17130F",
+            border: "1px solid #262626",
+            background: "#0A0A0A",
             borderRadius: 999,
             padding: "10px 26px",
             marginBottom: 36,
           }}
         >
-          <span style={{ color: "#E3C9A0", fontSize: 20, fontWeight: 700, letterSpacing: 4 }}>
+          <span style={{ color: "#FFFFFF", fontSize: 20, fontWeight: 700, letterSpacing: 4 }}>
             SISTEMA DE EJECUCIÓN SOSTENIBLE
           </span>
         </div>
         <div
           style={{
             display: "flex",
-            color: "#F2ECE2",
+            color: "#F5F5F5",
             fontSize: 76,
             fontWeight: 800,
             letterSpacing: 2,
@@ -47,7 +47,7 @@ export default function Image() {
         >
           EJECUTA
         </div>
-        <div style={{ display: "flex", color: "#8a8072", fontSize: 28, marginTop: 20 }}>
+        <div style={{ display: "flex", color: "#A3A3A3", fontSize: 28, marginTop: 20 }}>
           Un sistema, no una promesa.
         </div>
       </div>
