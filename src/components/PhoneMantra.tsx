@@ -8,7 +8,7 @@ export function PhoneMantra({ mantra }: { mantra: string }) {
             background: "radial-gradient(circle at 50% 30%, rgba(255,255,255,0.10), transparent 60%)",
           }}
         />
-        <p className="relative text-2xl font-extrabold leading-snug text-center">{mantra}</p>
+        <p className="relative text-2xl font-thin leading-snug text-center">{mantra}</p>
       </div>
     </div>
   );

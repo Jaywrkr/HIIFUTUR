@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.72.0",
+    date: "2026-07-18",
+    changes: [
+      "Fuente mucho más liviana: títulos y logo pasan de negrita a peso delgado (thin) en la landing, el nav y las pantallas de acceso; textos de cuerpo y botones bajan de negrita a peso normal. Solo se mantiene algo de peso en etiquetas chicas donde hacía falta legibilidad (badge de precio destacado, contador de pasos).",
+    ],
+  },
+  {
     version: "2.71.0",
     date: "2026-07-18",
     changes: [

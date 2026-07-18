@@ -25,7 +25,7 @@ export function Footer() {
   return (
     <footer className="border-t border-line mt-4">
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-14">
-        <p className="text-sm font-bold tracking-[0.3em] text-white mb-4">EJECUTA</p>
+        <p className="text-sm font-thin tracking-[0.3em] text-white mb-4">EJECUTA</p>
         <p className="text-sm text-neutral-400 max-w-md leading-relaxed mb-12">
           Sistema de ejecución sostenible: aprendizaje, hábitos y Wheel of Life en un mismo lugar.
           Un producto de HIIFUTUR, operado desde Ecuador.
