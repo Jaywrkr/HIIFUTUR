@@ -150,7 +150,7 @@ select:focus-visible,
 /* Full-width auto-scrolling ticker. The track renders its content twice
    back to back and scrolls exactly -50%, so the loop is seamless. */
 .marquee-track {
-  animation: marquee 28s linear infinite;
+  animation: marquee 42s linear infinite;
 }
 @keyframes marquee {
   from {

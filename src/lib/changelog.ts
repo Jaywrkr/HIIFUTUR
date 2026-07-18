@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.71.0",
+    date: "2026-07-18",
+    changes: [
+      "Landing más zen: más aire entre secciones, el hero pierde el recuadro de color sobre el título y las pastillas iOS/Android que competían con el botón principal, y las animaciones de aparición y el ticker de hábitos van más lentas y suaves.",
+    ],
+  },
+  {
     version: "2.70.0",
     date: "2026-07-18",
     changes: [

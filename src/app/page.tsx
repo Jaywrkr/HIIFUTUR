@@ -215,34 +215,27 @@ export default async function HomePage() {
       {/* Hero: two columns, full width, floating stat mockups on the right
           (illustrative example data, not a claim about any real user). */}
       <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <div className="grid md:grid-cols-2 gap-16 items-center py-10 md:py-20">
+        <div className="grid md:grid-cols-2 gap-16 items-center py-14 md:py-28">
           <Reveal>
             <p className="kicker">Sistema de ejecución sostenible</p>
-            <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.15] tracking-tight mb-5">
               No es disciplina. No es fuerza de voluntad.{" "}
-              <span className="bg-accent/20 rounded-lg px-2 box-decoration-clone">
-                Es un sistema que no pueda fallar.
-              </span>
+              <span className="text-accent">Es un sistema que no pueda fallar.</span>
             </h1>
-            <p className="text-sm leading-relaxed text-neutral-300 mb-6 max-w-lg">
+            <p className="text-sm leading-relaxed text-neutral-400 mb-8 max-w-lg">
               Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.
               Sin gurús, sin 47 hábitos a la vez, sin culpa cuando fallas un día.
             </p>
-            <p className="text-base mb-8">
+            <p className="text-base mb-10">
               Hoy, eso podría ser <span className="font-bold text-accent">5 sentadillas.</span>
             </p>
-            <div className="flex flex-wrap items-center gap-3 mb-6">
+            <div className="flex items-center gap-6">
               <Link href="/register" className="btn-primary">Empezar gratis</Link>
-              <span className="border border-line text-neutral-500 text-xs uppercase tracking-widest py-2 px-5 rounded-full">
-                iOS · pronto
-              </span>
-              <span className="border border-line text-neutral-500 text-xs uppercase tracking-widest py-2 px-5 rounded-full">
-                Android · pronto
-              </span>
+              <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
+                Ya tengo cuenta
+              </Link>
             </div>
-            <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
-              Ya tengo cuenta
-            </Link>
+            <p className="text-xs text-neutral-600 mt-6">iOS y Android, pronto.</p>
           </Reveal>
 
           <div className="relative h-[420px] hidden md:block">
@@ -271,7 +264,7 @@ export default async function HomePage() {
       {/* Agitación: las reglas que ya te dijeron, y que no funcionaron —
           entra antes de pedirte nada, para que el resto tenga contexto. */}
       <Reveal>
-        <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 text-center">
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-32 text-center">
           <p className="kicker mx-auto">Las reglas viejas</p>
           <p className="text-sm text-neutral-400 mb-10">Por años te dijeron...</p>
 
@@ -300,7 +293,7 @@ export default async function HomePage() {
       {/* Credibilidad: por qué lo hicimos, quién lo escribió, para quién es,
           y el truco central (hábito ancla) — todo en un mismo bloque. */}
       <Reveal>
-        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-32">
           <div className="text-center mb-16">
             <p className="kicker mx-auto">Por qué lo hicimos</p>
             <WordReveal
@@ -351,7 +344,7 @@ export default async function HomePage() {
 
       {/* La filosofía: la respuesta corta a "por qué esto sí funciona". */}
       <Reveal>
-        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-32">
           <div className="text-center mb-16">
             <p className="kicker mx-auto">Cómo vemos las cosas</p>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
@@ -385,7 +378,7 @@ export default async function HomePage() {
       {/* Encaje práctico: dónde vive esto (la web app), antes de entrar al
           detalle de cómo está armado por dentro. */}
       <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <div className="grid md:grid-cols-2 gap-16 items-center py-16 md:py-24">
+        <div className="grid md:grid-cols-2 gap-16 items-center py-20 md:py-32">
           <Reveal>
             <p className="kicker">Ahora en la web</p>
             <h2 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
@@ -416,7 +409,7 @@ export default async function HomePage() {
       {/* El sistema por dentro, en el mismo lenguaje que usa la app una vez
           adentro: Aprendizaje + Acción + Control. */}
       <Reveal>
-        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-32">
           <p className="kicker">Cómo funciona, en 3 partes</p>
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
             Aprendizaje. Acción. Control.
@@ -462,7 +455,7 @@ export default async function HomePage() {
       {/* El pedido: ahora que ya construimos confianza y explicamos el
           sistema, recién aquí llega el precio. */}
       <Reveal>
-        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 text-center">
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-32 text-center">
           <p className="kicker mx-auto">Empieza donde estes</p>
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
             Elige tu plan. Empieza tu sistema.
@@ -517,7 +510,7 @@ export default async function HomePage() {
       </Reveal>
 
       <Reveal>
-        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-32">
           <div className="text-center mb-16">
             <p className="kicker mx-auto">Preguntas que te estás haciendo</p>
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
