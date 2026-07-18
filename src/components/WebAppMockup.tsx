@@ -10,7 +10,7 @@ const DAYS = [
 export function WebAppMockup() {
   return (
     <div className="hidden md:block">
-      <div className="rounded-3xl border border-line bg-surface overflow-hidden shadow-2xl">
+      <div className="rounded-3xl border border-line bg-surface overflow-hidden shadow-lg shadow-black/20">
         <div className="flex items-center gap-4 px-5 py-3 border-b border-line">
           <div className="flex gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-accent/60" />

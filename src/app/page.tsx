@@ -166,7 +166,7 @@ function FloatingStat({
 }) {
   return (
     <div
-      className={`absolute bg-surface border border-line rounded-2xl px-5 py-4 shadow-2xl ${className}`}
+      className={`absolute bg-surface border border-line rounded-2xl px-5 py-4 shadow-lg shadow-black/20 ${className}`}
     >
       <p className="font-thin leading-tight text-xl">{value}</p>
       <p className="text-xs text-neutral-500 uppercase tracking-widest mt-1">{label}</p>
@@ -242,14 +242,7 @@ export default async function HomePage() {
             <div
               className="absolute inset-0 rounded-3xl"
               style={{
-                backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px)",
-                backgroundSize: "22px 22px",
-              }}
-            />
-            <div
-              className="absolute inset-0 rounded-3xl"
-              style={{
-                background: "radial-gradient(circle at 60% 40%, rgba(255,255,255,0.10), transparent 60%)",
+                background: "radial-gradient(circle at 60% 40%, rgba(255,255,255,0.06), transparent 65%)",
               }}
             />
             <FloatingStat value="Día 1" label="Racha" className="top-6 left-2 -rotate-6" />
@@ -317,8 +310,8 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="card">
+          <div className="grid md:grid-cols-2 gap-16">
+            <div>
               <p className="kicker">Esto es para ti si...</p>
               <div className="flex flex-col gap-1 mt-4">
                 {FOR_YOU_IF.map((line) => (
