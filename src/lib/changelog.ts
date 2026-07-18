@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.73.0",
+    date: "2026-07-18",
+    changes: [
+      "Más zen: el punto junto al logo ahora respira (pulso lento, como una inhalación/exhalación), el tachado de \"las reglas viejas\" pierde el rojo y queda en gris (monocromo total), las palabras de \"por qué lo hicimos\" se revelan más suave al hacer scroll, y los títulos grandes de la landing tienen más aire entre líneas.",
+    ],
+  },
+  {
     version: "2.72.0",
     date: "2026-07-18",
     changes: [

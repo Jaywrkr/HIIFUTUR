@@ -204,7 +204,7 @@ export default async function HomePage() {
       />
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-8 flex items-center justify-between">
         <span className="inline-flex items-center gap-2.5 text-sm font-normal tracking-[0.3em] text-white">
-          <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" aria-hidden="true" />
+          <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 breathing-dot" aria-hidden="true" />
           EJECUTA
         </span>
         <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
@@ -218,7 +218,7 @@ export default async function HomePage() {
         <div className="grid md:grid-cols-2 gap-16 items-center py-14 md:py-28">
           <Reveal>
             <p className="kicker">Sistema de ejecución sostenible</p>
-            <h1 className="text-4xl sm:text-5xl font-thin leading-[1.15] tracking-tight mb-5">
+            <h1 className="text-4xl sm:text-5xl font-thin leading-[1.3] tracking-tight mb-5">
               No es disciplina. No es fuerza de voluntad.{" "}
               <span className="text-accent">Es un sistema que no pueda fallar.</span>
             </h1>
@@ -272,7 +272,7 @@ export default async function HomePage() {
             {OLD_RULES.map((rule) => (
               <p
                 key={rule}
-                className="text-2xl sm:text-4xl font-thin uppercase tracking-tight text-neutral-500 line-through decoration-red-500/70"
+                className="text-2xl sm:text-4xl font-thin uppercase tracking-tight text-neutral-600 line-through decoration-neutral-400/60"
                 style={{ textDecorationThickness: "3px" }}
               >
                 {rule}
@@ -283,7 +283,7 @@ export default async function HomePage() {
           <p className="text-sm text-neutral-400 mb-6">
             Y de alguna forma... sigues sin sostener nada.
           </p>
-          <p className="text-2xl sm:text-3xl font-thin leading-snug">
+          <p className="text-2xl sm:text-3xl font-thin leading-relaxed">
             Tal vez el problema no eres tu.{" "}
             <span className="text-accent">Tal vez son las reglas.</span>
           </p>
@@ -298,7 +298,7 @@ export default async function HomePage() {
             <p className="kicker mx-auto">Por qué lo hicimos</p>
             <WordReveal
               words={WHY_WE_BUILT_IT}
-              className="text-3xl sm:text-4xl font-thin leading-snug tracking-tight max-w-3xl mx-auto"
+              className="text-3xl sm:text-4xl font-thin leading-relaxed tracking-tight max-w-3xl mx-auto"
             />
           </div>
 
@@ -381,7 +381,7 @@ export default async function HomePage() {
         <div className="grid md:grid-cols-2 gap-16 items-center py-20 md:py-32">
           <Reveal>
             <p className="kicker">Ahora en la web</p>
-            <h2 className="text-4xl sm:text-5xl font-thin leading-[1.1] tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-thin leading-[1.25] tracking-tight mb-4">
               Sin descargas. Sin App Store. <span className="text-accent">Solo un link.</span>
             </h2>
             <p className="text-sm leading-relaxed text-neutral-300 mb-8 max-w-lg">

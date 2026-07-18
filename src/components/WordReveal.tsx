@@ -57,8 +57,8 @@ export function WordReveal({ words, className }: { words: RevealWord[]; classNam
             key={i}
             style={{
               color: active ? "#F5F5F5" : "#404040",
-              filter: active ? "blur(0px)" : "blur(4px)",
-              transition: "color 250ms ease-out, filter 250ms ease-out",
+              filter: active ? "blur(0px)" : "blur(6px)",
+              transition: "color 450ms ease-out, filter 450ms ease-out",
               textDecorationLine: word.strike ? "line-through" : "none",
               textDecorationColor: "#737373",
             }}
