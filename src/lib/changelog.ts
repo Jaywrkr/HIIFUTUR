@@ -3,6 +3,20 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.71.0",
+    date: "2026-07-18",
+    changes: [
+      "Landing más zen: más aire entre secciones, el hero pierde el recuadro de color sobre el título y las pastillas iOS/Android que competían con el botón principal, y las animaciones de aparición y el ticker de hábitos van más lentas y suaves.",
+    ],
+  },
+  {
+    version: "2.70.0",
+    date: "2026-07-18",
+    changes: [
+      "Arreglo de fuente: la tipografía Geist Mono no se estaba aplicando realmente en producción — un nombre de variable CSS mal escrito hacía que el navegador cayera de vuelta a su fuente por defecto. Ahora usa los archivos reales de Geist Mono (Thin a Black) en vez del paquete npm variable.",
+    ],
+  },
+  {
     version: "2.69.0",
     date: "2026-07-18",
     changes: [

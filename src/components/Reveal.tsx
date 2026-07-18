@@ -29,11 +29,11 @@ export function Reveal({ children, delay = 0 }: { children: React.ReactNode; del
       ref={ref}
       style={{
         transitionProperty: "opacity, transform",
-        transitionDuration: "700ms",
+        transitionDuration: "1100ms",
         transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
         transitionDelay: `${delay}ms`,
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transform: visible ? "translateY(0)" : "translateY(14px)",
       }}
     >
       {children}

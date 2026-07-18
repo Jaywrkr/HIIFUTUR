@@ -1,10 +1,29 @@
 import type { Metadata, Viewport } from "next";
-import { GeistMono } from "geist/font/mono";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./providers";
 import { VersionBadge } from "@/components/VersionBadge";
 import { RegisterServiceWorker } from "@/components/RegisterServiceWorker";
 import { MetaPixel } from "@/components/MetaPixel";
+
+const geistMono = localFont({
+  src: [
+    { path: "../fonts/GeistMono-Thin.ttf", weight: "100", style: "normal" },
+    { path: "../fonts/GeistMono-Regular.ttf", weight: "400", style: "normal" },
+    { path: "../fonts/GeistMono-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "../fonts/GeistMono-Bold.ttf", weight: "700", style: "normal" },
+    { path: "../fonts/GeistMono-Black.ttf", weight: "900", style: "normal" },
+  ],
+  variable: "--font-geist-mono",
+  fallback: [
+    "ui-monospace",
+    "SFMono-Regular",
+    "Menlo",
+    "Monaco",
+    "Consolas",
+    "monospace",
+  ],
+});
 
 const SITE_URL = process.env.NEXTAUTH_URL ?? "https://hiifutur.vercel.app";
 const TITLE = "EJECUTA — Sistema de Ejecución Sostenible";
@@ -47,7 +66,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={GeistMono.variable}>
+    <html lang="es" className={geistMono.variable}>
       <body>
         <Providers>{children}</Providers>
         <VersionBadge />
