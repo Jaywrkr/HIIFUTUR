@@ -175,7 +175,7 @@ export default async function DashboardPage({
           ) : (
             <div className="mb-10">
               <div className="flex items-baseline justify-between mb-5">
-                <h1 className="text-3xl font-extrabold tracking-tight">Lo de hoy</h1>
+                <h1 className="text-3xl font-thin tracking-tight">Lo de hoy</h1>
                 <p
                   className={
                     doneCount === habitsWithData.length
@@ -211,14 +211,14 @@ export default async function DashboardPage({
           {nextModule && !nextModuleGateLocked ? (
             <Link
               href={`/modules/${nextModule.id}`}
-              className="block rounded-3xl bg-accent/10 border border-accent/40 p-6 mb-10 hover:bg-accent/15 transition-colors"
+              className="block rounded-2xl border border-accent/50 p-6 mb-10 hover:bg-accent/5 transition-colors"
             >
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-widest text-accent mb-1">
                     Tu camino · {nextPhase?.title}
                   </p>
-                  <p className="font-extrabold text-xl mb-1">
+                  <p className="font-thin text-xl mb-1">
                     Módulo {nextModule.order}: {nextModule.title}
                   </p>
                   <p className="muted text-sm">
@@ -237,11 +237,11 @@ export default async function DashboardPage({
               </div>
             </Link>
           ) : nextModule && nextModuleGateLocked ? (
-            <div className="rounded-3xl bg-surface border border-line p-6 mb-10">
+            <div className="rounded-2xl border border-line p-6 mb-10">
               <p className="text-xs uppercase tracking-widest text-neutral-400 mb-1">
                 Tu camino · {nextPhase?.title}
               </p>
-              <p className="font-extrabold text-xl mb-1">
+              <p className="font-thin text-xl mb-1">
                 Módulo {nextModule.order} se desbloquea con más ejecución
               </p>
               <p className="muted text-sm">
@@ -259,9 +259,9 @@ export default async function DashboardPage({
               ) : null}
             </div>
           ) : (
-            <div className="rounded-3xl bg-accent/10 border border-accent/40 p-6 mb-10">
+            <div className="rounded-2xl border border-accent/50 p-6 mb-10">
               <p className="text-xs uppercase tracking-widest text-accent mb-1">Tu camino</p>
-              <p className="font-extrabold text-xl mb-1">Completaste los {MODULES.length} módulos</p>
+              <p className="font-thin text-xl mb-1">Completaste los {MODULES.length} módulos</p>
               <p className="muted text-sm">
                 Ahora el sistema es tuyo. <Link href="/modules" className="link-accent">Vuelve a repasar</Link> cuando
                 quieras.
@@ -270,22 +270,31 @@ export default async function DashboardPage({
           )}
 
           {/* Compact status band: level, points, streak — the game at a
-              glance. One shared card with internal dividers instead of
-              three separate boxes: same info, a third of the borders. */}
-          <div className="card !p-0 grid grid-cols-3 divide-x divide-line mb-10 overflow-hidden">
-            <Link href="/cuenta" className="p-4 text-center hover:bg-ink/40 transition-colors">
-              <p className="text-xl font-extrabold text-accent">Nv. {level}</p>
-              <div className="h-1 rounded-full bg-ink border border-line overflow-hidden my-1.5">
+              glance. Three separate square tiles, not one divided box — same
+              information, more air between each number. */}
+          <div className="grid grid-cols-3 gap-3 mb-10">
+            <Link
+              href="/cuenta"
+              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-line text-center hover:border-accent/40 transition-colors"
+            >
+              <p className="text-xl font-thin text-accent">Nv. {level}</p>
+              <div className="h-1 w-12 rounded-full bg-ink border border-line overflow-hidden">
                 <div className="h-full bg-accent rounded-full" style={{ width: `${levelPct}%` }} />
               </div>
               <p className="text-[10px] uppercase tracking-widest text-neutral-500">Nivel</p>
             </Link>
-            <Link href="/leaderboard" className="p-4 text-center hover:bg-ink/40 transition-colors">
-              <p className="text-xl font-extrabold">{user.points}</p>
-              <p className="text-[10px] uppercase tracking-widest text-neutral-500 mt-1.5">Puntos</p>
+            <Link
+              href="/leaderboard"
+              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-line text-center hover:border-accent/40 transition-colors"
+            >
+              <p className="text-xl font-thin">{user.points}</p>
+              <p className="text-[10px] uppercase tracking-widest text-neutral-500">Puntos</p>
             </Link>
-            <Link href="/cuenta" className="p-4 text-center hover:bg-ink/40 transition-colors">
-              <p className="text-xl font-extrabold flex items-center justify-center gap-1">
+            <Link
+              href="/cuenta"
+              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-line text-center hover:border-accent/40 transition-colors"
+            >
+              <p className="text-xl font-thin flex items-center justify-center gap-1">
                 {bestStreak > 0 ? (
                   <>
                     <IconFlame className="w-4 h-4 text-accent" /> {bestStreak}
@@ -294,21 +303,23 @@ export default async function DashboardPage({
                   "—"
                 )}
               </p>
-              <p className="text-[10px] uppercase tracking-widest text-neutral-500 mt-1.5">Racha</p>
+              <p className="text-[10px] uppercase tracking-widest text-neutral-500">Racha</p>
             </Link>
           </div>
 
           <div>
             <p className="text-xs uppercase tracking-widest text-neutral-400 mb-4">Tu progreso</p>
-            {/* One shared card with a divider between rows instead of four
-                separate boxes — same links, same info, a lot less border. */}
-            <div className="card !p-0 divide-y divide-line overflow-hidden">
+            {/* Square tiles, gapped — not one divided box. Each destination
+                gets its own quiet space, closer to how Open lays out its
+                grid of cards than to a dense settings list. */}
+            <div className="grid grid-cols-2 gap-3">
               <Link
                 href={userHabits.length === 0 && !firstModuleDone ? `/modules/${MODULES[0].id}` : "/habits"}
-                className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-2xl border border-line p-5 hover:border-accent/40 transition-colors group"
               >
-                <span className="flex-1 min-w-0">
-                  <span className="block font-bold text-sm">
+                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
+                <span>
+                  <span className="block font-normal text-sm">
                     {userHabits.length === 0 && !firstModuleDone
                       ? "Elige tu hábito en el Módulo 1"
                       : canUnlockNextHabit
@@ -319,7 +330,7 @@ export default async function DashboardPage({
                             : "Desbloquear siguiente hábito"
                         : "Gestionar hábitos"}
                   </span>
-                  <span className="block text-xs text-neutral-500 mt-0.5">
+                  <span className="block text-xs text-neutral-500 mt-1">
                     {userHabits.length === 0 && !firstModuleDone
                       ? "Ahí arranca tu sistema"
                       : canUnlockNextHabit
@@ -327,50 +338,49 @@ export default async function DashboardPage({
                         : `${userHabits.length}/${MAX_HABITS} activos · siguiente ${nextHabitUnlockDate ? relativeDayLabel(nextHabitUnlockDate) : "pronto"}`}
                   </span>
                 </span>
-                <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
               </Link>
 
               <Link
                 href="/modules"
-                className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-2xl border border-line p-5 hover:border-accent/40 transition-colors group"
               >
-                <span className="flex-1 min-w-0">
-                  <span className="block font-bold text-sm">Todos los módulos</span>
-                  <span className="block text-xs text-neutral-500 mt-0.5">
+                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
+                <span>
+                  <span className="block font-normal text-sm">Todos los módulos</span>
+                  <span className="block text-xs text-neutral-500 mt-1">
                     {completedIds.size} de {MODULES.length} completados
                   </span>
                 </span>
-                <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
               </Link>
 
               <Link
                 href="/wheel"
-                className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-2xl border border-line p-5 hover:border-accent/40 transition-colors group"
               >
-                <span className="flex-1 min-w-0">
-                  <span className="block font-bold text-sm">Wheel of Life</span>
+                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
+                <span>
+                  <span className="block font-normal text-sm">Wheel of Life</span>
                   <span
-                    className={`block text-xs mt-0.5 ${canMeasureWheel ? "text-accent" : "text-neutral-500"}`}
+                    className={`block text-xs mt-1 ${canMeasureWheel ? "text-accent" : "text-neutral-500"}`}
                   >
                     {canMeasureWheel
                       ? "Puedes medir ahora"
                       : `Próxima medición ${nextWheelDate ? relativeDayLabel(nextWheelDate) : "pronto"}`}
                   </span>
                 </span>
-                <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
               </Link>
 
               <Link
                 href="/leaderboard"
-                className="flex items-center gap-4 px-5 py-4 hover:bg-ink/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-2xl border border-line p-5 hover:border-accent/40 transition-colors group"
               >
-                <span className="flex-1 min-w-0">
-                  <span className="block font-bold text-sm">Leaderboard</span>
-                  <span className="block text-xs text-neutral-500 mt-0.5">
+                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
+                <span>
+                  <span className="block font-normal text-sm">Leaderboard</span>
+                  <span className="block text-xs text-neutral-500 mt-1">
                     Los 10 primeros, por puntos
                   </span>
                 </span>
-                <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
               </Link>
             </div>
           </div>
