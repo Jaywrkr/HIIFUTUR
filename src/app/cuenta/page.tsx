@@ -64,12 +64,12 @@ export default async function CuentaPage() {
 
           <div className="flex items-center justify-center gap-8 mb-5">
             <div>
-              <p className="text-2xl font-thin text-accent">Nv. {level}</p>
+              <p className="text-2xl font-bold text-accent">Nv. {level}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Nivel</p>
             </div>
             <div className="w-px h-10 bg-line" />
             <div>
-              <p className="text-2xl font-thin">{user.points}</p>
+              <p className="text-2xl font-bold">{user.points}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Puntos</p>
             </div>
           </div>
@@ -112,11 +112,11 @@ export default async function CuentaPage() {
 
           <div className="grid grid-cols-2 gap-4 text-center">
             <div className="border border-line rounded-md py-3">
-              <p className="text-xl font-thin">{bestCurrentStreak}</p>
+              <p className="text-xl font-bold">{bestCurrentStreak}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Racha actual</p>
             </div>
             <div className="border border-line rounded-md py-3">
-              <p className="text-xl font-thin">{bestEverStreak}</p>
+              <p className="text-xl font-bold">{bestEverStreak}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Mejor racha</p>
             </div>
           </div>

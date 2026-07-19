@@ -92,7 +92,7 @@ export function HabitHeatmap({
                   onPointerCancel={endPress}
                   disabled={!cell.inRange || beforeStart}
                   aria-label={cell.key}
-                  className="h-2.5 w-2.5 rounded-[2px]"
+                  className="appearance-none block h-2.5 w-2.5 shrink-0 rounded-[2px] border-0 p-0"
                   style={{ background: bg, cursor: cell.inRange && !beforeStart ? "pointer" : "default" }}
                 />
               );
