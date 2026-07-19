@@ -43,7 +43,7 @@ export default function OnboardingPage() {
 
         {step === 1 ? (
           <>
-            <h1 className="auth-title">Que vas a cambiar</h1>
+            <h1 className="auth-title">Qué vas a cambiar</h1>
             <p className="auth-sub">
               Elige hasta {MAX_SELECTED_AREAS} áreas. No más. El sistema funciona porque es pequeño.
             </p>
@@ -76,7 +76,7 @@ export default function OnboardingPage() {
         ) : (
           <form ref={formRef} action={formAction}>
             <h1 className="auth-title">Dónde estás hoy</h1>
-            <p className="auth-sub">Del 1 al 10, sin filtro. Esta es tu linea base.</p>
+            <p className="auth-sub">Del 1 al 10, sin filtro. Esta es tu línea base.</p>
 
             <details className="mt-3 rounded-md border border-line bg-surface px-4 py-3 group">
               <summary className="cursor-pointer text-xs uppercase tracking-widest text-accent list-none flex items-center justify-between">
