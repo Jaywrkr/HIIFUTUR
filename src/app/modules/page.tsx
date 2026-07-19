@@ -51,18 +51,17 @@ export default async function ModulesPage({
         />
 
         {cycle.wasReset ? (
-          <div className="rounded-lg bg-accent/10 border border-accent/40 p-5 mb-8">
+          <div className="rounded-lg border border-accent/50 p-6 mb-10">
             <p className="text-xs uppercase tracking-widest text-accent mb-1">El ciclo se reinició. Tú no.</p>
             <p className="text-sm text-neutral-300">
-              Fallaste tres veces en 30 días — pasa. No perdiste todo: tus ejercicios siguen
-              escritos y conservas la mitad de los puntos que ganaste en este ciclo. Los módulos
-              se re-desbloquean con ejecución real, empezando ahora.
+              No perdiste todo: tus ejercicios siguen escritos y conservas la mitad de tus puntos.
+              Los módulos se re-desbloquean con ejecución real, empezando ahora.
             </p>
           </div>
         ) : null}
 
         {!cycle.completed && cycle.hasAnchor && !cycle.wasReset ? (
-          <div className="card mb-8 flex items-center justify-between gap-4">
+          <div className="card mb-10 flex items-center justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-widest text-accent mb-1">
                 Ciclo de formación · día {cycle.day} de {CYCLE_DAYS}
@@ -81,11 +80,11 @@ export default async function ModulesPage({
           </div>
         ) : null}
 
-        <blockquote className="border-l-2 border-l-accent pl-4 mb-12">
+        <blockquote className="border-l-2 border-l-accent pl-5 mb-16">
           <p className="text-sm leading-relaxed text-neutral-300">
-            Este curso nace de mi propia transformación: pasé de un promedio de 3 a un 9 en mi
-            Wheel of Life, en 8 meses. No fue un giro de 180 grados de un día para otro — fue un
-            sistema pequeño, sostenido, mes tras mes. Este es ese sistema, en 11 módulos.
+            Pasé de un 3 a un 9 en mi Wheel of Life, en 8 meses. No fue un giro de un día para
+            otro — fue un sistema pequeño, sostenido, mes tras mes. Este es ese sistema, en 11
+            módulos.
           </p>
           <p className="text-xs uppercase tracking-widest text-neutral-500 mt-3">— Jay</p>
         </blockquote>
@@ -96,10 +95,10 @@ export default async function ModulesPage({
           const phaseComplete = phaseDone === phaseModules.length;
 
           return (
-            <section key={phase.id} className="mb-10">
+            <section key={phase.id} className="mb-14">
               {/* Phase header: a clear, labeled band so each of the four
                   sections reads as its own block instead of a flat list. */}
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-3 mb-4">
                 <span
                   className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
                     phaseComplete
@@ -111,7 +110,7 @@ export default async function ModulesPage({
                 </span>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-baseline justify-between gap-3">
-                    <h2 className="text-sm font-bold uppercase tracking-widest text-accent truncate">
+                    <h2 className="text-sm font-semibold uppercase tracking-widest text-accent truncate">
                       {phase.title}
                     </h2>
                     <span className="text-xs uppercase tracking-widest text-neutral-500 shrink-0">
@@ -141,7 +140,7 @@ export default async function ModulesPage({
                   return (
                     <div
                       key={module.id}
-                      className={`flex items-center gap-4 px-5 py-4 ${locked ? "opacity-70" : ""}`}
+                      className={`flex items-center gap-4 px-5 py-5 ${locked ? "opacity-70" : ""}`}
                     >
                       <span
                         className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
@@ -152,14 +151,14 @@ export default async function ModulesPage({
                               : "border border-accent/50 text-accent"
                         }`}
                       >
-                        {done ? "✓" : locked ? "🔒" : module.order}
+                        {done ? "✓" : locked ? "–" : module.order}
                       </span>
 
                       <div className="flex-1 min-w-0">
                         <p className="text-[10px] uppercase tracking-widest text-neutral-500">
                           Módulo {module.order}
                         </p>
-                        <p className="font-bold text-sm leading-tight">{module.title}</p>
+                        <p className="font-normal text-sm leading-tight">{module.title}</p>
                       </div>
 
                       {locked ? (

@@ -45,7 +45,7 @@ export function CreateHabitForm({
             Según tu Wheel of Life, <span className="text-accent">{suggestion.areaLabel}</span> es
             donde más puedes ganar terreno. Una sugerencia, no una obligación:
           </p>
-          <p className="font-bold">{suggestion.name}</p>
+          <p className="font-normal">{suggestion.name}</p>
           <p className="muted mt-1">{suggestion.description}</p>
           <div className="flex flex-wrap items-center gap-4 mt-3">
             <button

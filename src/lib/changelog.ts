@@ -3,6 +3,20 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.80.0",
+    date: "2026-07-19",
+    changes: [
+      "Más calma en Hoy y Módulos: más espacio entre secciones (el margen entre bloques casi se duplica), tiles más grandes en \"Tu progreso\" y el resumen de nivel/puntos/racha, y cada fila de módulo respira más entre una y otra.",
+    ],
+  },
+  {
+    version: "2.79.0",
+    date: "2026-07-19",
+    changes: [
+      "Más zen en el resto de la app: Módulos, Hábitos y Cuenta pierden los rellenos de color que quedaban (banners de ciclo, tarjetas de \"un paso antes\", círculos de íconos en Cuenta) y bajan de negrita a peso delgado/normal en títulos y números, siguiendo el mismo criterio que ya tenían Hoy y la landing. El candado de módulos bloqueados cambia de 🔒 a un guión simple.",
+    ],
+  },
+  {
     version: "2.78.0",
     date: "2026-07-19",
     changes: [

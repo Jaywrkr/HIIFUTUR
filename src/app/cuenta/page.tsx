@@ -59,17 +59,17 @@ export default async function CuentaPage() {
         {/* Header: name + level */}
         <div className="card mb-6 text-center">
           <p className="kicker mx-auto">TU PERFIL</p>
-          <h1 className="text-3xl font-extrabold tracking-tight mb-1">{user.name?.trim() || "Usuario"}</h1>
+          <h1 className="text-3xl font-thin tracking-tight mb-1">{user.name?.trim() || "Usuario"}</h1>
           <p className="muted text-sm mb-5">{daysTogether} días en EJECUTA</p>
 
           <div className="flex items-center justify-center gap-8 mb-5">
             <div>
-              <p className="text-2xl font-extrabold text-accent">Nv. {level}</p>
+              <p className="text-2xl font-thin text-accent">Nv. {level}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Nivel</p>
             </div>
             <div className="w-px h-10 bg-line" />
             <div>
-              <p className="text-2xl font-extrabold">{user.points}</p>
+              <p className="text-2xl font-thin">{user.points}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Puntos</p>
             </div>
           </div>
@@ -112,11 +112,11 @@ export default async function CuentaPage() {
 
           <div className="grid grid-cols-2 gap-4 text-center">
             <div className="border border-line rounded-md py-3">
-              <p className="text-xl font-extrabold">{bestCurrentStreak}</p>
+              <p className="text-xl font-thin">{bestCurrentStreak}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Racha actual</p>
             </div>
             <div className="border border-line rounded-md py-3">
-              <p className="text-xl font-extrabold">{bestEverStreak}</p>
+              <p className="text-xl font-thin">{bestEverStreak}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Mejor racha</p>
             </div>
           </div>
@@ -149,7 +149,7 @@ export default async function CuentaPage() {
 
         <div className="card !p-0 mb-6 divide-y divide-line overflow-hidden">
           <div className="px-6 py-5 flex items-center gap-4">
-            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0">
+            <span className="w-10 h-10 rounded-full border border-line flex items-center justify-center shrink-0">
               <IconUser className="w-5 h-5 text-accent" />
             </span>
             <div className="flex-1 min-w-0">
@@ -159,12 +159,12 @@ export default async function CuentaPage() {
           </div>
 
           <div className="px-6 py-5 flex items-center gap-4">
-            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0">
+            <span className="w-10 h-10 rounded-full border border-line flex items-center justify-center shrink-0">
               <IconMail className="w-5 h-5 text-accent" />
             </span>
             <div className="flex-1 min-w-0">
               <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Email</p>
-              <p className="font-bold truncate">{user.email}</p>
+              <p className="font-normal truncate">{user.email}</p>
             </div>
           </div>
 
@@ -172,18 +172,18 @@ export default async function CuentaPage() {
             href="/forgot-password"
             className="px-6 py-5 flex items-center gap-4 hover:bg-accent/5 transition-colors group"
           >
-            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0">
+            <span className="w-10 h-10 rounded-full border border-line flex items-center justify-center shrink-0">
               <IconLock className="w-5 h-5 text-accent" />
             </span>
             <div className="flex-1 min-w-0">
               <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">Contraseña</p>
-              <p className="font-bold text-sm">Cambiar mi contraseña</p>
+              <p className="font-normal text-sm">Cambiar mi contraseña</p>
             </div>
             <span className="text-neutral-400 group-hover:text-accent transition-colors">→</span>
           </Link>
 
           <div className="px-6 py-5 flex items-center gap-4">
-            <span className="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0">
+            <span className="w-10 h-10 rounded-full border border-line flex items-center justify-center shrink-0">
               <IconBell className="w-5 h-5 text-accent" />
             </span>
             <div className="flex-1 min-w-0">

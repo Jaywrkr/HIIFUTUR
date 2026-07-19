@@ -98,7 +98,7 @@ select:focus-visible,
 .app-main {
   /* Extra bottom padding on mobile so content clears the fixed bottom tab
      bar (its own height + the iOS home-indicator safe area). */
-  @apply max-w-6xl mx-auto px-4 pt-10 pb-10;
+  @apply max-w-6xl mx-auto px-4 pt-14 pb-10;
   padding-bottom: calc(6rem + env(safe-area-inset-bottom));
 }
 @media (min-width: 768px) {

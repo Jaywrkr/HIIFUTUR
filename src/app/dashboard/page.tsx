@@ -157,7 +157,7 @@ export default async function DashboardPage({
           ) : null}
 
           {habitsWithData.length === 0 ? (
-            <div className="card mb-10">
+            <div className="card mb-14">
               <IconSprout className="w-7 h-7 text-accent mb-2" />
               <p className="text-sm text-neutral-300 mb-1">Todavía no tienes nada que sostener.</p>
               {firstModuleDone ? (
@@ -173,8 +173,8 @@ export default async function DashboardPage({
               )}
             </div>
           ) : (
-            <div className="mb-10">
-              <div className="flex items-baseline justify-between mb-5">
+            <div className="mb-14">
+              <div className="flex items-baseline justify-between mb-6">
                 <h1 className="text-3xl font-thin tracking-tight">Lo de hoy</h1>
                 <p
                   className={
@@ -186,7 +186,7 @@ export default async function DashboardPage({
                   {doneCount}/{habitsWithData.length} hecho
                 </p>
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 {habitsWithData.map(({ habit, streak, doneToday, missedYesterday }, i) => (
                   <HabitCard
                     key={habit.id}
@@ -211,7 +211,7 @@ export default async function DashboardPage({
           {nextModule && !nextModuleGateLocked ? (
             <Link
               href={`/modules/${nextModule.id}`}
-              className="block rounded-lg border border-accent/50 p-6 mb-10 hover:bg-accent/5 transition-colors"
+              className="block rounded-lg border border-accent/50 p-6 mb-14 hover:bg-accent/5 transition-colors"
             >
               <div className="flex items-center justify-between gap-4">
                 <div>
@@ -237,7 +237,7 @@ export default async function DashboardPage({
               </div>
             </Link>
           ) : nextModule && nextModuleGateLocked ? (
-            <div className="rounded-lg border border-line p-6 mb-10">
+            <div className="rounded-lg border border-line p-6 mb-14">
               <p className="text-xs uppercase tracking-widest text-neutral-400 mb-1">
                 Tu camino · {nextPhase?.title}
               </p>
@@ -259,7 +259,7 @@ export default async function DashboardPage({
               ) : null}
             </div>
           ) : (
-            <div className="rounded-lg border border-accent/50 p-6 mb-10">
+            <div className="rounded-lg border border-accent/50 p-6 mb-14">
               <p className="text-xs uppercase tracking-widest text-accent mb-1">Tu camino</p>
               <p className="font-thin text-xl mb-1">Completaste los {MODULES.length} módulos</p>
               <p className="muted text-sm">
@@ -272,7 +272,7 @@ export default async function DashboardPage({
           {/* Compact status band: level, points, streak — the game at a
               glance. Three separate square tiles, not one divided box — same
               information, more air between each number. */}
-          <div className="grid grid-cols-3 gap-3 mb-10">
+          <div className="grid grid-cols-3 gap-4 mb-14">
             <Link
               href="/cuenta"
               className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center hover:border-accent/40 transition-colors"
@@ -308,14 +308,14 @@ export default async function DashboardPage({
           </div>
 
           <div>
-            <p className="text-xs uppercase tracking-widest text-neutral-400 mb-4">Tu progreso</p>
+            <p className="text-xs uppercase tracking-widest text-neutral-400 mb-5">Tu progreso</p>
             {/* Square tiles, gapped — not one divided box. Each destination
                 gets its own quiet space, closer to how Open lays out its
                 grid of cards than to a dense settings list. */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-4">
               <Link
                 href={userHabits.length === 0 && !firstModuleDone ? `/modules/${MODULES[0].id}` : "/habits"}
-                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-5 hover:border-accent/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-6 hover:border-accent/40 transition-colors group"
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>
@@ -342,7 +342,7 @@ export default async function DashboardPage({
 
               <Link
                 href="/modules"
-                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-5 hover:border-accent/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-6 hover:border-accent/40 transition-colors group"
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>
@@ -355,7 +355,7 @@ export default async function DashboardPage({
 
               <Link
                 href="/wheel"
-                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-5 hover:border-accent/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-6 hover:border-accent/40 transition-colors group"
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>
@@ -372,7 +372,7 @@ export default async function DashboardPage({
 
               <Link
                 href="/leaderboard"
-                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-5 hover:border-accent/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-6 hover:border-accent/40 transition-colors group"
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>
