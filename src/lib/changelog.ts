@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.86.0",
+    date: "2026-07-19",
+    changes: [
+      "Un peldaño más de jerarquía: títulos de tarjeta, hábito, módulo y fila de leaderboard suben de semibold a bold en toda la app, y la frase promesa del hero de landing (\"Es un sistema que no pueda fallar\") pasa a black — el mismo contraste delgado/negro de un solo golpe que se ve en las referencias de diseño, aplicado a una sola línea, no a todo el texto.",
+      "Rediseño de Cuenta: el encabezado pasa de estar centrado a un layout con el nombre a la izquierda y un avatar circular arriba a la derecha (color oliva — marca dónde iría una foto de perfil real, todavía no existe la función de subir foto), con nivel/puntos/racha en una fila de tres divididas por línea en vez de bloques sueltos.",
+    ],
+  },
+  {
     version: "2.85.0",
     date: "2026-07-19",
     changes: [

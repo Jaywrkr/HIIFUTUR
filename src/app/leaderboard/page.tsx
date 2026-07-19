@@ -39,7 +39,7 @@ export default async function LeaderboardPage() {
               >
                 <div className="flex items-center gap-3">
                   <span className="w-6 text-sm font-bold text-neutral-500">{i + 1}</span>
-                  <span className="font-semibold">
+                  <span className="font-bold">
                     {row.name?.trim() || "Usuario"}
                     {row.id === user.id ? <span className="text-accent"> (tu)</span> : null}
                   </span>

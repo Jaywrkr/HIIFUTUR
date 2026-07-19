@@ -218,7 +218,7 @@ export default async function DashboardPage({
                   <p className="text-xs uppercase tracking-widest text-accent mb-1">
                     Tu camino · {nextPhase?.title}
                   </p>
-                  <p className="font-semibold text-xl mb-1">
+                  <p className="font-bold text-xl mb-1">
                     Módulo {nextModule.order}: {nextModule.title}
                   </p>
                   <p className="muted text-sm">
@@ -241,7 +241,7 @@ export default async function DashboardPage({
               <p className="text-xs uppercase tracking-widest text-neutral-400 mb-1">
                 Tu camino · {nextPhase?.title}
               </p>
-              <p className="font-semibold text-xl mb-1">
+              <p className="font-bold text-xl mb-1">
                 Módulo {nextModule.order} se desbloquea con más ejecución
               </p>
               <p className="muted text-sm">
@@ -261,7 +261,7 @@ export default async function DashboardPage({
           ) : (
             <div className="rounded-lg border border-accent/50 p-6 mb-14">
               <p className="text-xs uppercase tracking-widest text-accent mb-1">Tu camino</p>
-              <p className="font-semibold text-xl mb-1">Completaste los {MODULES.length} módulos</p>
+              <p className="font-bold text-xl mb-1">Completaste los {MODULES.length} módulos</p>
               <p className="muted text-sm">
                 Ahora el sistema es tuyo. <Link href="/modules" className="link-accent">Vuelve a repasar</Link> cuando
                 quieras.
@@ -319,7 +319,7 @@ export default async function DashboardPage({
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>
-                  <span className="block font-semibold text-sm">
+                  <span className="block font-bold text-sm">
                     {userHabits.length === 0 && !firstModuleDone
                       ? "Elige tu hábito en el Módulo 1"
                       : canUnlockNextHabit
@@ -346,7 +346,7 @@ export default async function DashboardPage({
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>
-                  <span className="block font-semibold text-sm">Todos los módulos</span>
+                  <span className="block font-bold text-sm">Todos los módulos</span>
                   <span className="block text-xs text-neutral-500 mt-1">
                     {completedIds.size} de {MODULES.length} completados
                   </span>
@@ -359,7 +359,7 @@ export default async function DashboardPage({
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>
-                  <span className="block font-semibold text-sm">Wheel of Life</span>
+                  <span className="block font-bold text-sm">Wheel of Life</span>
                   <span
                     className={`block text-xs mt-1 ${canMeasureWheel ? "text-accent" : "text-neutral-500"}`}
                   >
@@ -376,7 +376,7 @@ export default async function DashboardPage({
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>
-                  <span className="block font-semibold text-sm">Leaderboard</span>
+                  <span className="block font-bold text-sm">Leaderboard</span>
                   <span className="block text-xs text-neutral-500 mt-1">
                     Los 10 primeros, por puntos
                   </span>

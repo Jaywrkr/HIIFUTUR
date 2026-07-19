@@ -57,25 +57,42 @@ export default async function CuentaPage() {
     <>
       <Nav />
       <main className="app-main">
-        {/* Header: name + level */}
-        <div className="card mb-6 text-center">
-          <p className="kicker mx-auto">TU PERFIL</p>
-          <h1 className="text-3xl font-thin tracking-tight mb-1">{user.name?.trim() || "Usuario"}</h1>
-          <p className="muted text-sm mb-5">{daysTogether} días en EJECUTA</p>
-
-          <div className="flex items-center justify-center gap-8 mb-5">
+        {/* Header: name + level. Layout borrows the left-aligned name block +
+            top-right avatar + divided stat row pattern from Open's profile
+            screen. The avatar is a solid-color placeholder (no photo upload
+            exists yet) — the color marks where a real photo would go later. */}
+        <div className="card mb-6">
+          <div className="flex items-start justify-between gap-4 mb-6">
             <div>
-              <p className="text-2xl font-bold text-accent">Nv. {level}</p>
-              <p className="text-xs uppercase tracking-widest text-neutral-500">Nivel</p>
+              <p className="kicker">TU PERFIL</p>
+              <h1 className="text-3xl font-thin tracking-tight mb-1">{user.name?.trim() || "Usuario"}</h1>
+              <p className="muted text-sm">{daysTogether} días en EJECUTA</p>
             </div>
-            <div className="w-px h-10 bg-line" />
+            <span
+              className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 text-lg font-bold"
+              style={{ background: "#878B6C", color: "#0A0A0A" }}
+              aria-hidden="true"
+            >
+              {(user.name?.trim()?.[0] ?? "U").toUpperCase()}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-3 border-t border-line pt-5 text-center">
             <div>
-              <p className="text-2xl font-bold">{user.points}</p>
-              <p className="text-xs uppercase tracking-widest text-neutral-500">Puntos</p>
+              <p className="text-xl font-bold text-accent">Nv. {level}</p>
+              <p className="text-xs uppercase tracking-widest text-neutral-500 mt-1">Nivel</p>
+            </div>
+            <div className="border-x border-line">
+              <p className="text-xl font-bold">{user.points}</p>
+              <p className="text-xs uppercase tracking-widest text-neutral-500 mt-1">Puntos</p>
+            </div>
+            <div>
+              <p className="text-xl font-bold">{bestCurrentStreak}</p>
+              <p className="text-xs uppercase tracking-widest text-neutral-500 mt-1">Racha</p>
             </div>
           </div>
 
-          <div className="max-w-xs mx-auto text-left">
+          <div className="mt-5 pt-5 border-t border-line">
             <div className="flex items-center justify-between text-xs text-neutral-500 mb-1">
               <span>Progreso al Nv. {level + 1}</span>
               <span>{pointsIntoLevel}/{nextLevelThreshold}</span>

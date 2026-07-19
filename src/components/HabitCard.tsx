@@ -138,7 +138,7 @@ export function HabitCard({
             </span>
           ) : null}
         </div>
-        <p className="font-semibold text-lg">{name}</p>
+        <p className="font-bold text-lg">{name}</p>
         <p className="muted mt-1">{description}</p>
         <p
           aria-live="polite"
