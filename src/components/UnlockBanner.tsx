@@ -20,7 +20,7 @@ export function UnlockBanner({ unlockKey }: { unlockKey: string }) {
   return (
     <div className="mb-6 rounded-lg border border-accent/40 bg-accent/10 p-4 flex items-center gap-3">
       <p className="text-sm text-neutral-200">
-        Se desbloqueo tu siguiente hábito. Sostener el actual te trajo hasta aquí.
+        Se desbloqueó tu siguiente hábito. Sostener el actual te trajo hasta aquí.
       </p>
     </div>
   );

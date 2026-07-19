@@ -167,7 +167,7 @@ export default async function DashboardPage({
                 </p>
               ) : (
                 <p className="muted">
-                  Tu primer hábito se elige al terminar el{" "}
+                  Tu primer hábito se crea al terminar el{" "}
                   <Link href={`/modules/${MODULES[0].id}`} className="link-accent">Módulo 1</Link>.
                 </p>
               )}
