@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.78.0",
+    date: "2026-07-19",
+    changes: [
+      "Landing más ligera: se quita la sección \"Ahora en la web\" completa, el mockup del teléfono deja de repetirse 3 veces (queda solo junto a la historia de Jay), y las listas de \"reglas viejas\" / \"esto es para ti si\" bajan de longitud. Menos secciones, menos texto por pantalla — una idea a la vez.",
+    ],
+  },
+  {
     version: "2.77.0",
     date: "2026-07-19",
     changes: [

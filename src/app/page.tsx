@@ -7,7 +7,6 @@ import { Reveal } from "@/components/Reveal";
 import { ScrollTextLine } from "@/components/ScrollTextLine";
 import { WordReveal, type RevealWord } from "@/components/WordReveal";
 import { MarqueeTicker } from "@/components/MarqueeTicker";
-import { WebAppMockup } from "@/components/WebAppMockup";
 import { PhoneMantra } from "@/components/PhoneMantra";
 import { Footer } from "@/components/Footer";
 import { Testimonials } from "@/components/Testimonials";
@@ -24,17 +23,6 @@ const PHILOSOPHY = [
   {
     title: "Si no lo disfrutas, no dura",
     description: "Elige el hábito que se sienta bien sostener, no el que se ve mejor en redes.",
-  },
-];
-
-const WEB_FEATURES = [
-  {
-    title: "Cero instalación",
-    description: "Abres el link y ya. Nada que descargar, nada que actualizar, nada que te pida espacio en el celular.",
-  },
-  {
-    title: "Tu progreso te sigue a ti",
-    description: "Empieza en el celular, sigue en la laptop, ciérralo en la tablet antes de dormir. La cuenta es tuya, no del aparato.",
   },
 ];
 
@@ -105,11 +93,9 @@ const PRICING_PLANS = [
 
 const OLD_RULES = [
   "Ten más disciplina.",
-  "Levantate a las 5am.",
   "Hazlo todo o no hagas nada.",
   "Sientete culpable si fallas.",
   "Empieza de nuevo el lunes.",
-  "Repite.",
 ];
 
 const WHY_WE_BUILT_IT: RevealWord[] = [
@@ -123,16 +109,13 @@ const WHY_WE_BUILT_IT: RevealWord[] = [
 const FOR_YOU_IF = [
   "Ya intentaste 100 apps de hábitos y las dejaste en la semana 2.",
   MANTRAS[15], // "Te sientes mal porque sabes lo que se supone que debes hacer y no lo estás haciendo."
-  "Cada lunes prometes empezar de nuevo — y cada lunes se siente igual de lejos.",
   "Quieres resultados reales, no una racha de emojis.",
 ];
 
 const JAY_STORY = [
   "Lo viví yo.",
-  "El Wheel of Life es la nota del 1 al 10 que le pongo a mi vida cada mes: salud, trabajo, relaciones, dinero, mentalidad.",
-  "En 8 meses, mi promedio pasó de un 3 a un 9.",
-  "No fue un giro de 180 grados de un día para otro.",
-  "Fue un sistema pequeño, sostenido, mes tras mes.",
+  "El Wheel of Life es la nota del 1 al 10 que le pongo a mi vida cada mes.",
+  "En 8 meses, mi promedio pasó de un 3 a un 9. Sistema pequeño, sostenido, mes tras mes.",
   "Esto es ese sistema. No una versión bonita de él.",
 ];
 
@@ -349,55 +332,21 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <PhoneMantra mantra={MANTRAS[11]} />
-            <div className="border-t border-line">
-              {PHILOSOPHY.map((item, i) => (
-                <div key={item.title} className="border-b border-line py-6 flex gap-5">
-                  <p className="text-accent text-sm font-semibold tracking-widest shrink-0">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <div>
-                    <p className="font-thin text-xl mb-2">{item.title}</p>
-                    <p className="muted">{item.description}</p>
-                  </div>
+          <div className="max-w-2xl mx-auto border-t border-line">
+            {PHILOSOPHY.map((item, i) => (
+              <div key={item.title} className="border-b border-line py-6 flex gap-5">
+                <p className="text-accent text-sm font-semibold tracking-widest shrink-0">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <div>
+                  <p className="font-thin text-xl mb-2">{item.title}</p>
+                  <p className="muted">{item.description}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </Reveal>
-
-      {/* Encaje práctico: dónde vive esto (la web app), antes de entrar al
-          detalle de cómo está armado por dentro. */}
-      <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <div className="grid md:grid-cols-2 gap-16 items-center py-20 md:py-32">
-          <Reveal>
-            <p className="kicker">Ahora en la web</p>
-            <h2 className="text-4xl sm:text-5xl font-thin leading-[1.25] tracking-tight mb-4">
-              Sin descargas. Sin App Store. <span className="text-accent">Solo un link.</span>
-            </h2>
-            <p className="text-sm leading-relaxed text-neutral-300 mb-8 max-w-lg">
-              Es la app completa, corriendo en tu navegador. Abrela en la laptop en el almuerzo,
-              en el celular apenas despiertas, en la tablet antes de dormir. Tu racha y tu
-              progreso te siguen a ti, no al aparato.
-            </p>
-            <div className="flex flex-col mb-8">
-              {WEB_FEATURES.map((f) => (
-                <div key={f.title} className="border-t border-line py-4 first:border-t-0 first:pt-0">
-                  <p className="font-normal">{f.title}</p>
-                  <p className="muted mt-1">{f.description}</p>
-                </div>
-              ))}
-            </div>
-            <Link href="/register" className="btn-primary inline-flex items-center gap-2">
-              <span>▶</span> Lanzar la app
-            </Link>
-          </Reveal>
-
-          <WebAppMockup />
-        </div>
-      </div>
 
       {/* El sistema por dentro, en el mismo lenguaje que usa la app una vez
           adentro: Aprendizaje + Acción + Control. */}
@@ -432,13 +381,10 @@ export default async function HomePage() {
             ))}
           </div>
 
-          <div className="rounded-lg border border-accent/50 p-6 flex flex-col sm:flex-row items-center gap-6">
-            <div className="flex-1">
-              <p className="kicker">Tu ritmo</p>
-              <p className="font-thin text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
-              <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
-            </div>
-            <PhoneMantra mantra={MANTRAS[4]} />
+          <div className="rounded-lg border border-accent/50 p-6">
+            <p className="kicker">Tu ritmo</p>
+            <p className="font-thin text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
+            <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
           </div>
         </div>
       </Reveal>
