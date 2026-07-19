@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.84.0",
+    date: "2026-07-19",
+    changes: [
+      "Las celdas \"vacías\" del mapa de hábitos casi no se veían contra el fondo de la tarjeta (contraste real de 1.3:1, por debajo de cualquier mínimo de accesibilidad) — parte de por qué el mapa se sentía disparejo. Suben a un gris con contraste 3:1, visible pero claramente por debajo de una celda marcada.",
+    ],
+  },
+  {
     version: "2.83.0",
     date: "2026-07-19",
     changes: [
