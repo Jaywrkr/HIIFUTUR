@@ -146,7 +146,7 @@ export function EditHabitRow({
               </span>
             ) : null}
           </div>
-          <p className="font-normal">{habit.name}</p>
+          <p className="font-semibold">{habit.name}</p>
           <p className="muted mt-1">{habit.description}</p>
         </div>
         <div className="flex items-center gap-4">

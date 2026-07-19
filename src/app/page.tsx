@@ -18,7 +18,7 @@ const PHILOSOPHY = [
   },
   {
     title: "La consistencia le gana a la intensidad",
-    description: "Todos los días le gana a algunos días increíbles. El sistema premia mostrarte, no rendir al máximo.",
+    description: "Todos los días le gana a algunos días increíbles.",
   },
   {
     title: "Si no lo disfrutas, no dura",
@@ -142,16 +142,29 @@ function FloatingStat({
   label,
   value,
   className,
+  rotate,
+  duration,
+  delay,
 }: {
   label: string;
   value: string;
   className: string;
+  rotate: string;
+  duration: string;
+  delay: string;
 }) {
   return (
     <div
-      className={`absolute bg-surface border border-line rounded-lg px-5 py-4 shadow-lg shadow-black/20 ${className}`}
+      className={`float-card absolute bg-surface border border-line rounded-lg px-5 py-4 shadow-lg shadow-black/20 ${className}`}
+      style={
+        {
+          "--float-rot": rotate,
+          "--float-duration": duration,
+          "--float-delay": delay,
+        } as React.CSSProperties
+      }
     >
-      <p className="font-thin leading-tight text-xl">{value}</p>
+      <p className="font-bold leading-tight text-xl">{value}</p>
       <p className="text-xs text-neutral-500 uppercase tracking-widest mt-1">{label}</p>
     </div>
   );
@@ -228,9 +241,30 @@ export default async function HomePage() {
                 background: "radial-gradient(circle at 60% 40%, rgba(255,255,255,0.06), transparent 65%)",
               }}
             />
-            <FloatingStat value="Día 1" label="Racha" className="top-6 left-2 -rotate-6" />
-            <FloatingStat value="1 hábito" label="Hoy" className="top-40 right-2 rotate-3" />
-            <FloatingStat value="7/10" label="Wheel of life" className="bottom-10 left-10 -rotate-3" />
+            <FloatingStat
+              value="Día 1"
+              label="Racha"
+              className="top-6 left-2"
+              rotate="-6deg"
+              duration="6.5s"
+              delay="0s"
+            />
+            <FloatingStat
+              value="1 hábito"
+              label="Hoy"
+              className="top-40 right-2"
+              rotate="3deg"
+              duration="7.5s"
+              delay="0.6s"
+            />
+            <FloatingStat
+              value="7/10"
+              label="Wheel of life"
+              className="bottom-10 left-10"
+              rotate="-3deg"
+              duration="7s"
+              delay="1.2s"
+            />
           </div>
         </div>
       </div>
@@ -305,13 +339,12 @@ export default async function HomePage() {
                 ))}
               </div>
             </div>
-            <div className="rounded-lg border border-accent/50 p-6 flex flex-col justify-center">
+            <div className="lift-on-hover rounded-lg border border-accent/50 p-6 flex flex-col justify-center">
               <p className="kicker">El truco</p>
-              <p className="font-thin text-2xl mb-2">Encuentra tu hábito ancla</p>
+              <p className="font-semibold text-2xl mb-2">Encuentra tu hábito ancla</p>
               <p className="muted">
-                El único hábito que, si lo sostienes, jala a todos los demás sin que hagas nada
-                extra. No es el más vistoso ni el que más te emociona — es el que arrastra a los
-                demás con que tú lo sostengas.
+                El único hábito que, sostenido, jala a todos los demás. No es el más vistoso —
+                es el que arrastra al resto.
               </p>
             </div>
           </div>
@@ -327,22 +360,23 @@ export default async function HomePage() {
               La forma <span className="text-accent">EJECUTA</span>
             </h2>
             <p className="text-sm text-neutral-400 max-w-xl mx-auto">
-              Tres ideas, nada más. Empieza pequeño, sostenlo todos los días, y disfrutalo.
-              Si no es sostenible, no sirve.
+              Tres ideas. Si no es sostenible, no sirve.
             </p>
           </div>
 
           <div className="max-w-2xl mx-auto border-t border-line">
             {PHILOSOPHY.map((item, i) => (
-              <div key={item.title} className="border-b border-line py-6 flex gap-5">
-                <p className="text-accent text-sm font-semibold tracking-widest shrink-0">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <div>
-                  <p className="font-thin text-xl mb-2">{item.title}</p>
-                  <p className="muted">{item.description}</p>
+              <Reveal key={item.title} delay={i * 120}>
+                <div className="border-b border-line py-6 flex gap-5">
+                  <p className="text-accent text-sm font-semibold tracking-widest shrink-0">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <div>
+                    <p className="font-semibold text-xl mb-2">{item.title}</p>
+                    <p className="muted">{item.description}</p>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -368,7 +402,7 @@ export default async function HomePage() {
                 <Reveal delay={i * 150}>
                   <div className="card h-full">
                     <p className="kicker">{part.kicker}</p>
-                    <p className="font-thin text-2xl mb-2">{part.title}</p>
+                    <p className="font-semibold text-2xl mb-2">{part.title}</p>
                     <p className="muted">{part.description}</p>
                   </div>
                 </Reveal>
@@ -381,9 +415,9 @@ export default async function HomePage() {
             ))}
           </div>
 
-          <div className="rounded-lg border border-accent/50 p-6">
+          <div className="lift-on-hover rounded-lg border border-accent/50 p-6">
             <p className="kicker">Tu ritmo</p>
-            <p className="font-thin text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
+            <p className="font-semibold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
             <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
           </div>
         </div>
@@ -408,7 +442,7 @@ export default async function HomePage() {
             {PRICING_PLANS.map((plan) => (
               <div
                 key={plan.id}
-                className={`relative rounded-lg p-6 flex flex-col border bg-surface ${
+                className={`lift-on-hover relative rounded-lg p-6 flex flex-col border bg-surface ${
                   plan.highlight ? "border-accent/60" : "border-line"
                 }`}
               >
@@ -419,7 +453,7 @@ export default async function HomePage() {
                 ) : null}
                 <p className="text-xs uppercase tracking-widest text-neutral-500 mb-4">{plan.label}</p>
                 <p className="mb-1">
-                  <span className="text-4xl font-thin">{plan.price}</span>{" "}
+                  <span className="text-4xl font-bold">{plan.price}</span>{" "}
                   <span className="text-sm text-neutral-400">{plan.unit}</span>
                 </p>
                 <p className="muted mb-6">{plan.tagline}</p>
@@ -457,14 +491,13 @@ export default async function HomePage() {
             </h2>
           </div>
           <div className="border-t border-line">
-            {FAQ.map((item) => (
-              <div
-                key={item.q}
-                className="border-b border-line py-6 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-10"
-              >
-                <p className="font-normal text-base sm:w-80 shrink-0">{item.q}</p>
-                <p className="muted">{item.a}</p>
-              </div>
+            {FAQ.map((item, i) => (
+              <Reveal key={item.q} delay={i * 100}>
+                <div className="border-b border-line py-6 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-10">
+                  <p className="font-semibold text-base sm:w-80 shrink-0">{item.q}</p>
+                  <p className="muted">{item.a}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>

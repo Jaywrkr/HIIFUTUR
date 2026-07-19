@@ -121,11 +121,11 @@ export default async function HabitsPage() {
         {habitsWithData.length > 0 ? (
           <div className="flex gap-8 mb-10">
             <div>
-              <p className="text-2xl font-thin text-accent">{totalDaysCompleted}</p>
+              <p className="text-2xl font-bold text-accent">{totalDaysCompleted}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Días completados</p>
             </div>
             <div>
-              <p className="text-2xl font-thin text-accent">{bestStreakEver}</p>
+              <p className="text-2xl font-bold text-accent">{bestStreakEver}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Mejor racha</p>
             </div>
           </div>
@@ -142,7 +142,7 @@ export default async function HabitsPage() {
         {blockedByFirstModule ? (
           <div className="rounded-lg border border-accent/50 p-6 mb-8">
             <p className="text-xs uppercase tracking-widest text-accent mb-1">Un paso antes</p>
-            <p className="font-thin text-xl mb-2">Tu hábito ancla se crea en el Módulo 1</p>
+            <p className="font-semibold text-xl mb-2">Tu hábito ancla se crea en el Módulo 1</p>
             <p className="muted mb-4">
               Ahí entiendes por qué fallabas antes y eliges, sin darle mil vueltas, el hábito más
               pequeño posible para arrancar hoy.
