@@ -4,6 +4,7 @@ import { Nav } from "@/components/Nav";
 import { DeleteAccountSection } from "@/components/DeleteAccountSection";
 import { EditNameSection } from "@/components/EditNameSection";
 import { PushNotificationToggle } from "@/components/PushNotificationToggle";
+import { ZenGardenLauncher } from "@/components/ZenGardenLauncher";
 import { MiPlanCard } from "@/components/MiPlanSection";
 import { IconUser, IconMail, IconLock, IconBell, IconFlame } from "@/components/icons";
 import { requireUser } from "@/lib/session";
@@ -191,6 +192,10 @@ export default async function CuentaPage() {
               <PushNotificationToggle />
             </div>
           </div>
+        </div>
+
+        <div className="card !p-0 mb-6 divide-y divide-line overflow-hidden">
+          <ZenGardenLauncher habitCount={userHabits.length} />
         </div>
 
         <div className="card !p-0 mb-6 divide-y divide-line overflow-hidden">
