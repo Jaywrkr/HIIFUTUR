@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.83.0",
+    date: "2026-07-19",
+    changes: [
+      "Arreglo real del mapa de hábitos: la columna más reciente se veía despareja (más corta que las demás) casi todos los días de la semana — un error de cálculo hacía que el total de días no siempre fuera múltiplo de 7, así que esa última columna a veces tenía menos de 7 celdas en vez de una semana completa. Ahora el mapa siempre arma 12 semanas completas, sin importar qué día sea hoy.",
+    ],
+  },
+  {
     version: "2.82.0",
     date: "2026-07-19",
     changes: [
