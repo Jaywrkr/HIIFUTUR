@@ -6,7 +6,9 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.81.0",
     date: "2026-07-19",
     changes: [
-      "Se recupera la jerarquía tipográfica: el peso delgado (thin) ahora se usa solo para el título principal de cada pantalla, y todo lo demás (títulos de tarjeta, nombres de hábito, números de racha/puntos/nivel, precios) vuelve a tener peso real (semibold o bold) para que se distinga qué es lo importante de un vistazo.",
+      "Landing con más vida: las tres tarjetas del hero ahora flotan con un movimiento lento e independiente entre sí, los paneles destacados y las tarjetas de precio se levantan un poco al pasar el mouse, y las listas de filosofía y preguntas frecuentes aparecen en cascada en vez de todas a la vez.",
+      "Textos más simples en \"Cómo vemos las cosas\" y \"El truco\": menos palabras, mismo mensaje. También se recupera peso real (semibold/bold) en títulos de tarjeta y números de la landing, siguiendo el mismo criterio del resto de la app.",
+      "Se recupera la jerarquía tipográfica en el resto de la app: el peso delgado (thin) ahora se usa solo para el título principal de cada pantalla, y todo lo demás (títulos de tarjeta, nombres de hábito, números de racha/puntos/nivel, precios) vuelve a tener peso real (semibold o bold) para que se distinga qué es lo importante de un vistazo.",
       "Refuerzo defensivo en el mapa de hábitos: las celdas ahora anulan el estilo nativo de botón del navegador (appearance-none), para que siempre midan exactamente 10px sin importar el navegador.",
     ],
   },

@@ -240,3 +240,35 @@ select:focus-visible,
     animation: none;
   }
 }
+
+/* Hero stat cards: a slow, independent drift so the hero doesn't sit
+   completely still — each card gets its own duration/delay via inline
+   style so the three don't move in lockstep. */
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--float-rot, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--float-rot, 0deg));
+  }
+}
+.float-card {
+  animation: floatCard var(--float-duration, 6s) ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-card {
+    animation: none;
+  }
+}
+
+/* Panels get a quiet lift on hover instead of sitting static — desktop
+   only, since hover has no meaning on touch. */
+@media (hover: hover) {
+  .lift-on-hover {
+    transition: transform 300ms ease-out, border-color 300ms ease-out;
+  }
+  .lift-on-hover:hover {
+    transform: translateY(-4px);
+  }
+}
