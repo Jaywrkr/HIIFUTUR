@@ -151,7 +151,7 @@ function FloatingStat({
     <div
       className={`absolute bg-surface border border-line rounded-lg px-5 py-4 shadow-lg shadow-black/20 ${className}`}
     >
-      <p className="font-thin leading-tight text-xl">{value}</p>
+      <p className="font-bold leading-tight text-xl">{value}</p>
       <p className="text-xs text-neutral-500 uppercase tracking-widest mt-1">{label}</p>
     </div>
   );
@@ -307,7 +307,7 @@ export default async function HomePage() {
             </div>
             <div className="rounded-lg border border-accent/50 p-6 flex flex-col justify-center">
               <p className="kicker">El truco</p>
-              <p className="font-thin text-2xl mb-2">Encuentra tu hábito ancla</p>
+              <p className="font-semibold text-2xl mb-2">Encuentra tu hábito ancla</p>
               <p className="muted">
                 El único hábito que, si lo sostienes, jala a todos los demás sin que hagas nada
                 extra. No es el más vistoso ni el que más te emociona — es el que arrastra a los
@@ -339,7 +339,7 @@ export default async function HomePage() {
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <div>
-                  <p className="font-thin text-xl mb-2">{item.title}</p>
+                  <p className="font-semibold text-xl mb-2">{item.title}</p>
                   <p className="muted">{item.description}</p>
                 </div>
               </div>
@@ -368,7 +368,7 @@ export default async function HomePage() {
                 <Reveal delay={i * 150}>
                   <div className="card h-full">
                     <p className="kicker">{part.kicker}</p>
-                    <p className="font-thin text-2xl mb-2">{part.title}</p>
+                    <p className="font-semibold text-2xl mb-2">{part.title}</p>
                     <p className="muted">{part.description}</p>
                   </div>
                 </Reveal>
@@ -383,7 +383,7 @@ export default async function HomePage() {
 
           <div className="rounded-lg border border-accent/50 p-6">
             <p className="kicker">Tu ritmo</p>
-            <p className="font-thin text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
+            <p className="font-semibold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
             <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
           </div>
         </div>
@@ -419,7 +419,7 @@ export default async function HomePage() {
                 ) : null}
                 <p className="text-xs uppercase tracking-widest text-neutral-500 mb-4">{plan.label}</p>
                 <p className="mb-1">
-                  <span className="text-4xl font-thin">{plan.price}</span>{" "}
+                  <span className="text-4xl font-bold">{plan.price}</span>{" "}
                   <span className="text-sm text-neutral-400">{plan.unit}</span>
                 </p>
                 <p className="muted mb-6">{plan.tagline}</p>

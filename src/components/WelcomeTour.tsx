@@ -48,7 +48,7 @@ export function WelcomeTour() {
         <p className="text-xs uppercase tracking-widest text-neutral-500 mb-4">
           {String(step + 1).padStart(2, "0")} / {String(STEPS.length).padStart(2, "0")}
         </p>
-        <h2 className="text-2xl font-thin tracking-tight mb-3">{current.title}</h2>
+        <h2 className="text-2xl font-semibold tracking-tight mb-3">{current.title}</h2>
         <p className="text-sm text-neutral-300 leading-relaxed mb-8">{current.body}</p>
 
         <div className="flex items-center justify-center gap-2 mb-8">
