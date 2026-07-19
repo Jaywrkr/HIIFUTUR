@@ -55,7 +55,7 @@ export default function OnboardingPage() {
                     key={area.id}
                     type="button"
                     onClick={() => toggleArea(area.id)}
-                    className={`text-left border rounded-xl px-4 py-3 uppercase text-sm tracking-wide transition-colors ${
+                    className={`text-left border rounded-md px-4 py-3 uppercase text-sm tracking-wide transition-colors ${
                       active ? "border-accent text-accent" : "border-line text-neutral-400"
                     }`}
                   >
@@ -78,7 +78,7 @@ export default function OnboardingPage() {
             <h1 className="auth-title">Dónde estás hoy</h1>
             <p className="auth-sub">Del 1 al 10, sin filtro. Esta es tu linea base.</p>
 
-            <details className="mt-3 rounded-xl border border-line bg-surface px-4 py-3 group">
+            <details className="mt-3 rounded-md border border-line bg-surface px-4 py-3 group">
               <summary className="cursor-pointer text-xs uppercase tracking-widest text-accent list-none flex items-center justify-between">
                 Qué es esto y por qué funciona
                 <span className="text-neutral-500 group-open:rotate-90 transition-transform">›</span>

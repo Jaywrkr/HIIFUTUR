@@ -10,7 +10,7 @@ const DAYS = [
 export function WebAppMockup() {
   return (
     <div className="hidden md:block">
-      <div className="rounded-3xl border border-line bg-surface overflow-hidden shadow-lg shadow-black/20">
+      <div className="rounded-lg border border-line bg-surface overflow-hidden shadow-lg shadow-black/20">
         <div className="flex items-center gap-4 px-5 py-3 border-b border-line">
           <div className="flex gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-accent/60" />
@@ -42,7 +42,7 @@ export function WebAppMockup() {
             {DAYS.map((d, i) => (
               <div
                 key={d.label}
-                className={`flex-1 text-center rounded-xl py-2 text-xs ${
+                className={`flex-1 text-center rounded-md py-2 text-xs ${
                   i === 2
                     ? "bg-accent text-black font-normal"
                     : "bg-ink border border-line text-neutral-500"
@@ -54,7 +54,7 @@ export function WebAppMockup() {
             ))}
           </div>
 
-          <div className="rounded-2xl border border-line bg-ink p-5">
+          <div className="rounded-lg border border-line bg-ink p-5">
             <p className="kicker mb-3">Hoy</p>
             <p className="font-normal mb-1">5 sentadillas</p>
             <p className="muted mb-4">Manten presionado para marcar como hecho.</p>

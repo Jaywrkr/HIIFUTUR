@@ -126,7 +126,7 @@ export function ModuleExerciseForm({
                       onClick={() =>
                         setTextValues((prev) => ({ ...prev, [field.id]: option.name }))
                       }
-                      className={`text-left rounded-xl border px-3 py-2.5 transition-colors ${
+                      className={`text-left rounded-md border px-3 py-2.5 transition-colors ${
                         textValues[field.id] === option.name
                           ? "border-accent/50 bg-accent/10"
                           : "border-line hover:border-accent/30"

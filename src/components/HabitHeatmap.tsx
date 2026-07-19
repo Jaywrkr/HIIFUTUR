@@ -102,7 +102,7 @@ export function HabitHeatmap({
       </div>
 
       {selected ? (
-        <div className="mt-3 rounded-xl border border-line bg-ink p-3 flex items-start justify-between gap-3">
+        <div className="mt-3 rounded-md border border-line bg-ink p-3 flex items-start justify-between gap-3">
           <div>
             <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">
               {selected.date.toLocaleDateString("es-MX", { day: "numeric", month: "long", year: "numeric" })}

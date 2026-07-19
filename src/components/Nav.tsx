@@ -109,7 +109,7 @@ export function Nav() {
       {/* "Más" panel: floats just above the tab bar */}
       {moreOpen ? (
         <div
-          className="md:hidden fixed z-30 inset-x-4 rounded-2xl border border-line bg-surface shadow-2xl overflow-hidden"
+          className="md:hidden fixed z-30 inset-x-4 rounded-lg border border-line bg-surface shadow-2xl overflow-hidden"
           style={{ bottom: "calc(8.5rem + env(safe-area-inset-bottom))" }}
         >
           {MORE_ITEMS.map((item) => (

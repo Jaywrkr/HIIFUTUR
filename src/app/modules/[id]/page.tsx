@@ -101,7 +101,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
 
         {/* Progression thread: where you're coming from. */}
         {courseModule.recap ? (
-          <div className="rounded-xl border border-line bg-surface px-4 py-3 mb-8 flex gap-3">
+          <div className="rounded-md border border-line bg-surface px-4 py-3 mb-8 flex gap-3">
             <span className="text-xs uppercase tracking-widest text-neutral-500 shrink-0 mt-0.5">
               Vienes de
             </span>
@@ -189,7 +189,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
 
         {/* Callbacks: the course reflects your own prior answers back at you. */}
         {callbacks.length > 0 ? (
-          <div className="rounded-2xl border border-line bg-surface p-5 mb-8">
+          <div className="rounded-lg border border-line bg-surface p-5 mb-8">
             <p className="text-xs uppercase tracking-widest text-accent mb-3">Lo que ya construiste</p>
             <div className="flex flex-col gap-3">
               {callbacks.map((cb) => (
@@ -223,7 +223,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         </div>
 
         {/* Progression thread: where you're going next. */}
-        <div className="rounded-2xl border border-accent/40 bg-accent/10 p-5 mt-8">
+        <div className="rounded-lg border border-accent/40 bg-accent/10 p-5 mt-8">
           <p className="text-xs uppercase tracking-widest text-accent mb-2">
             {nextModule ? "Lo que sigue" : "Fin del curso"}
           </p>

@@ -98,7 +98,7 @@ export function CompassGame() {
             ref={(el) => {
               areaRefs.current[i] = el;
             }}
-            className={`rounded-xl border px-3 py-3 text-center transition-colors ${
+            className={`rounded-md border px-3 py-3 text-center transition-colors ${
               selected === a.id ? "border-accent/50 bg-accent/10" : "border-line"
             }`}
           >

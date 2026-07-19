@@ -36,7 +36,7 @@ select:focus-visible,
   @apply min-h-screen flex items-center justify-center px-4 py-12 bg-ink;
 }
 .auth-card {
-  @apply w-full max-w-sm border border-line rounded-3xl p-8 bg-surface;
+  @apply w-full max-w-sm border border-line rounded-lg p-8 bg-surface;
 }
 .auth-title {
   @apply text-2xl tracking-tight font-thin mb-1;
@@ -54,7 +54,7 @@ select:focus-visible,
   @apply text-xs uppercase tracking-widest text-neutral-400 mt-4 mb-1;
 }
 .field-input {
-  @apply bg-ink border border-line rounded-xl px-4 py-2.5 text-sm text-white outline-none focus:border-accent transition-colors;
+  @apply bg-ink border border-line rounded-md px-4 py-2.5 text-sm text-white outline-none focus:border-accent transition-colors;
 }
 .form-error {
   @apply text-xs text-red-400 mt-3;
@@ -128,7 +128,7 @@ select:focus-visible,
 }
 
 .card {
-  @apply border border-line bg-surface rounded-2xl p-6;
+  @apply border border-line bg-surface rounded-lg p-6;
 }
 .section-title {
   @apply text-lg font-normal mb-4;

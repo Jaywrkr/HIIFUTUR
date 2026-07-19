@@ -148,7 +148,7 @@ export function WheelRadarChart({
 
       {active && activePoint ? (
         <div
-          className="absolute rounded-xl border border-line bg-surface px-4 py-3 shadow-lg pointer-events-none"
+          className="absolute rounded-md border border-line bg-surface px-4 py-3 shadow-lg pointer-events-none"
           style={{
             left: `${(activePoint.x / SIZE) * 100}%`,
             top: `${(activePoint.y / SIZE) * 100}%`,

@@ -70,7 +70,7 @@ export default async function UpgradePage() {
             ([planId, plan]) => (
               <div
                 key={planId}
-                className={`relative rounded-3xl p-6 flex flex-col transition-transform duration-200 hover:-translate-y-1 ${
+                className={`relative rounded-lg p-6 flex flex-col transition-transform duration-200 hover:-translate-y-1 ${
                   plan.highlight ? "bg-accent/15 border border-accent/40" : "border border-line bg-surface"
                 }`}
               >

@@ -146,7 +146,7 @@ export default async function DashboardPage({
           {user.subscriptionStatus === "trialing" ? (
             <Link
               href="/upgrade"
-              className="flex items-center justify-between gap-3 rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 mb-6 text-sm hover:bg-red-500/15 transition-colors"
+              className="flex items-center justify-between gap-3 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 mb-6 text-sm hover:bg-red-500/15 transition-colors"
             >
               <span className="text-red-300">
                 ⚠ Prueba: {daysLeftInTrial(user.trialEndsAt)} día{daysLeftInTrial(user.trialEndsAt) === 1 ? "" : "s"} restante
@@ -211,7 +211,7 @@ export default async function DashboardPage({
           {nextModule && !nextModuleGateLocked ? (
             <Link
               href={`/modules/${nextModule.id}`}
-              className="block rounded-2xl border border-accent/50 p-6 mb-10 hover:bg-accent/5 transition-colors"
+              className="block rounded-lg border border-accent/50 p-6 mb-10 hover:bg-accent/5 transition-colors"
             >
               <div className="flex items-center justify-between gap-4">
                 <div>
@@ -237,7 +237,7 @@ export default async function DashboardPage({
               </div>
             </Link>
           ) : nextModule && nextModuleGateLocked ? (
-            <div className="rounded-2xl border border-line p-6 mb-10">
+            <div className="rounded-lg border border-line p-6 mb-10">
               <p className="text-xs uppercase tracking-widest text-neutral-400 mb-1">
                 Tu camino · {nextPhase?.title}
               </p>
@@ -259,7 +259,7 @@ export default async function DashboardPage({
               ) : null}
             </div>
           ) : (
-            <div className="rounded-2xl border border-accent/50 p-6 mb-10">
+            <div className="rounded-lg border border-accent/50 p-6 mb-10">
               <p className="text-xs uppercase tracking-widest text-accent mb-1">Tu camino</p>
               <p className="font-thin text-xl mb-1">Completaste los {MODULES.length} módulos</p>
               <p className="muted text-sm">
@@ -275,7 +275,7 @@ export default async function DashboardPage({
           <div className="grid grid-cols-3 gap-3 mb-10">
             <Link
               href="/cuenta"
-              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-line text-center hover:border-accent/40 transition-colors"
+              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center hover:border-accent/40 transition-colors"
             >
               <p className="text-xl font-thin text-accent">Nv. {level}</p>
               <div className="h-1 w-12 rounded-full bg-ink border border-line overflow-hidden">
@@ -285,14 +285,14 @@ export default async function DashboardPage({
             </Link>
             <Link
               href="/leaderboard"
-              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-line text-center hover:border-accent/40 transition-colors"
+              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center hover:border-accent/40 transition-colors"
             >
               <p className="text-xl font-thin">{user.points}</p>
               <p className="text-[10px] uppercase tracking-widest text-neutral-500">Puntos</p>
             </Link>
             <Link
               href="/cuenta"
-              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-line text-center hover:border-accent/40 transition-colors"
+              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center hover:border-accent/40 transition-colors"
             >
               <p className="text-xl font-thin flex items-center justify-center gap-1">
                 {bestStreak > 0 ? (
@@ -315,7 +315,7 @@ export default async function DashboardPage({
             <div className="grid grid-cols-2 gap-3">
               <Link
                 href={userHabits.length === 0 && !firstModuleDone ? `/modules/${MODULES[0].id}` : "/habits"}
-                className="aspect-square flex flex-col justify-between rounded-2xl border border-line p-5 hover:border-accent/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-5 hover:border-accent/40 transition-colors group"
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>
@@ -342,7 +342,7 @@ export default async function DashboardPage({
 
               <Link
                 href="/modules"
-                className="aspect-square flex flex-col justify-between rounded-2xl border border-line p-5 hover:border-accent/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-5 hover:border-accent/40 transition-colors group"
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>
@@ -355,7 +355,7 @@ export default async function DashboardPage({
 
               <Link
                 href="/wheel"
-                className="aspect-square flex flex-col justify-between rounded-2xl border border-line p-5 hover:border-accent/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-5 hover:border-accent/40 transition-colors group"
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>
@@ -372,7 +372,7 @@ export default async function DashboardPage({
 
               <Link
                 href="/leaderboard"
-                className="aspect-square flex flex-col justify-between rounded-2xl border border-line p-5 hover:border-accent/40 transition-colors group"
+                className="aspect-square flex flex-col justify-between rounded-lg border border-line p-5 hover:border-accent/40 transition-colors group"
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
                 <span>

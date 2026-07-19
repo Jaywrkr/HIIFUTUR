@@ -111,11 +111,11 @@ export default async function CuentaPage() {
           ) : null}
 
           <div className="grid grid-cols-2 gap-4 text-center">
-            <div className="border border-line rounded-xl py-3">
+            <div className="border border-line rounded-md py-3">
               <p className="text-xl font-extrabold">{bestCurrentStreak}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Racha actual</p>
             </div>
-            <div className="border border-line rounded-xl py-3">
+            <div className="border border-line rounded-md py-3">
               <p className="text-xl font-extrabold">{bestEverStreak}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Mejor racha</p>
             </div>
@@ -217,7 +217,7 @@ export default async function CuentaPage() {
           </Link>
         </div>
 
-        <div className="rounded-2xl border border-red-500/25 bg-red-500/5 px-6 py-5">
+        <div className="rounded-lg border border-red-500/25 bg-red-500/5 px-6 py-5">
           <p className="text-xs uppercase tracking-widest text-red-400/80 mb-3">Zona de riesgo</p>
           <DeleteAccountSection userEmail={user.email ?? ""} />
         </div>

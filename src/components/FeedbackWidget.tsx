@@ -31,7 +31,7 @@ export function FeedbackWidget() {
   return (
     <div className="feedback-widget fixed right-5 z-50">
       {open ? (
-        <div className="w-80 max-w-[calc(100vw-2.5rem)] rounded-2xl border border-line bg-surface p-4 shadow-2xl">
+        <div className="w-80 max-w-[calc(100vw-2.5rem)] rounded-lg border border-line bg-surface p-4 shadow-2xl">
           {state.ok ? (
             <p className="text-sm text-accent">Gracias. Lo leemos de verdad.</p>
           ) : (
