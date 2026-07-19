@@ -126,7 +126,7 @@ export function HabitCard({
           aria-live="polite"
           className="absolute inset-0 flex items-center justify-center bg-ink/95 z-20 animate-[fadeIn_150ms_ease-out]"
         >
-          <p className="text-lg font-thin text-accent">{milestone} días seguidos</p>
+          <p className="text-lg font-bold text-accent">{milestone} días seguidos</p>
         </div>
       ) : null}
       <div className="flex-1">
@@ -138,7 +138,7 @@ export function HabitCard({
             </span>
           ) : null}
         </div>
-        <p className="font-normal text-lg">{name}</p>
+        <p className="font-semibold text-lg">{name}</p>
         <p className="muted mt-1">{description}</p>
         <p
           aria-live="polite"

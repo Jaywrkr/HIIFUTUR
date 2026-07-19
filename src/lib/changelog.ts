@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.81.0",
+    date: "2026-07-19",
+    changes: [
+      "Se recupera la jerarquía tipográfica: el peso delgado (thin) ahora se usa solo para el título principal de cada pantalla, y todo lo demás (títulos de tarjeta, nombres de hábito, números de racha/puntos/nivel, precios) vuelve a tener peso real (semibold o bold) para que se distinga qué es lo importante de un vistazo.",
+      "Refuerzo defensivo en el mapa de hábitos: las celdas ahora anulan el estilo nativo de botón del navegador (appearance-none), para que siempre midan exactamente 10px sin importar el navegador.",
+    ],
+  },
+  {
     version: "2.80.0",
     date: "2026-07-19",
     changes: [
