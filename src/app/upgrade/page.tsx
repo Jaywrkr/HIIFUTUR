@@ -51,7 +51,7 @@ export default async function UpgradePage() {
           title={stillTrialing ? "Activa tu plan y quédate con el precio de ahora" : "Elige tu plan para seguir"}
           subtitle={
             stillTrialing
-              ? "Si activas dentro de tu ventana de prueba, este precio queda fijo para siempre en tu cuenta — no vuelve a subir aunque cambien las tarifas."
+              ? "Actívalo dentro de tu prueba y ese precio se queda contigo. Los detalles, abajo."
               : "Tus 7 días de prueba se acabaron. Tu progreso sigue ahí — actívalo para seguir donde quedaste."
           }
         />
@@ -104,11 +104,6 @@ export default async function UpgradePage() {
             )
           )}
         </div>
-
-        <p className="flex items-center gap-2 text-xs text-neutral-500 mt-6 max-w-xl">
-          <IconShieldCheck className="w-4 h-4 text-accent shrink-0" />
-          Pago seguro, procesado por PayPal. Nunca vemos ni guardamos tu número de tarjeta.
-        </p>
 
         <div className="max-w-xl mt-12">
           <p className="text-xs uppercase tracking-widest text-neutral-400 mb-4">Antes de activar</p>

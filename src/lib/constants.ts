@@ -94,3 +94,8 @@ export const WHEEL_AREA_TO_CATEGORY: Record<string, (typeof HABIT_CATEGORIES)[nu
   descanso: "salud",
   crecimiento_personal: "mentalidad",
 };
+
+/** La cifra real detrás de EJECUTA — una sola redacción, usada en landing y
+ * en el Módulo 1, para no mantener dos versiones del mismo dato. */
+export const JAY_RESULT_LINE =
+  "Pasé de un 3 a un 9 en mi Wheel of Life, en 8 meses. Sistema pequeño, sostenido, mes tras mes.";

@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { WheelRadarChart } from "@/components/WheelRadarChart";
 import { WheelMeasurementForm } from "@/components/WheelMeasurementForm";
 import { ShareWheelButton } from "@/components/ShareWheelButton";
+import { IconSprout } from "@/components/icons";
 import { requireUser } from "@/lib/session";
 import { getUserPreferences, getWheelMeasurements, getHabitsForUser, getAccessStatus } from "@/lib/queries";
 import { hasActiveAccess } from "@/lib/access";
@@ -97,7 +98,8 @@ export default async function WheelPage() {
             </div>
           </div>
         ) : (
-          <div className="mb-8">
+          <div className="card mb-8 flex items-center gap-3">
+            <IconSprout className="w-6 h-6 text-accent shrink-0" />
             <p className="muted">Aún no tienes mediciones.</p>
           </div>
         )}
