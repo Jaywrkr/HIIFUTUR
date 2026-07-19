@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.81.0",
+    date: "2026-07-19",
+    changes: [
+      "Landing con más vida: las tres tarjetas del hero ahora flotan con un movimiento lento e independiente entre sí, los paneles destacados y las tarjetas de precio se levantan un poco al pasar el mouse, y las listas de filosofía y preguntas frecuentes aparecen en cascada en vez de todas a la vez.",
+      "Textos más simples en \"Cómo vemos las cosas\" y \"El truco\": menos palabras, mismo mensaje. También se recupera peso real (semibold/bold) en títulos de tarjeta y números de la landing, siguiendo el mismo criterio del resto de la app.",
+    ],
+  },
+  {
     version: "2.80.0",
     date: "2026-07-19",
     changes: [
