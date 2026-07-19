@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.77.0",
+    date: "2026-07-19",
+    changes: [
+      "Terminar el Módulo 1 ahora crea tu hábito ancla de verdad, no solo lo guarda como texto. Antes tenías que volver a escribirlo desde cero en Hábitos, con una sugerencia distinta a la que viste en el módulo — ahora el hábito que eliges ahí (sugerido o escrito por ti) queda activo de inmediato, con su categoría y su racha, sin repetir el paso.",
+      "Se unifica el verbo para hablar del hábito ancla en toda la app (\"se crea\", antes mezclaba \"se elige\"/\"se crea\" en pantallas distintas) y se corrigen 4 erratas reales en el copy de onboarding y hábitos.",
+    ],
+  },
+  {
     version: "2.76.0",
     date: "2026-07-19",
     changes: [

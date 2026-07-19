@@ -14,14 +14,14 @@ const SUGGESTIONS_BY_CATEGORY: Record<string, { name: string; description: strin
   trabajo: { name: "Una tarea de 2 minutos", description: "La más chica de tu lista. Solo esa." },
   finanzas: { name: "Revisar mis gastos de hoy", description: "30 segundos, sin juzgarte." },
   relaciones: { name: "Un mensaje a alguien que quieres", description: "Un 'como estas' cuenta." },
-  mentalidad: { name: "Escribir una linea", description: "Lo que sea que tengas en la cabeza." },
+  mentalidad: { name: "Escribir una línea", description: "Lo que sea que tengas en la cabeza." },
   disciplina: { name: "Tender la cama", description: "Lo primero que haces al levantarte." },
 };
 
 // The floor: if nothing else feels pequeño, esto lo es. Abrir la app y
-// presionar el boton, 30 días seguidos, ya es un hábito.
+// presionar el botón, 30 días seguidos, ya es un hábito.
 export const OPEN_APP_SUGGESTION: HabitSuggestion = {
-  name: "Abrir la app y presionar el boton",
+  name: "Abrir la app y presionar el botón",
   description: "Nada más. Si haces eso 30 días seguidos, ya es un hábito.",
   category: "disciplina",
 };
