@@ -84,7 +84,7 @@ export function HabitHeatmap({
               if (!cell.inRange || beforeStart) bg = "transparent";
               else if (done) bg = "#FFFFFF";
               else if (frozen) bg = "#6b93c9";
-              else if (empty) bg = "#262626";
+              else if (empty) bg = "#5e5e5e";
 
               return (
                 <button
