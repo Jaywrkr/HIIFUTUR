@@ -157,7 +157,7 @@ export default async function ModulesPage({
                         <p className="text-[10px] uppercase tracking-widest text-neutral-500">
                           Módulo {module.order}
                         </p>
-                        <p className="font-semibold text-sm leading-tight">{module.title}</p>
+                        <p className="font-bold text-sm leading-tight">{module.title}</p>
                       </div>
 
                       {locked ? (

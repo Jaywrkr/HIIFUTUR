@@ -217,7 +217,7 @@ export default async function HomePage() {
             <p className="kicker">Sistema de ejecución sostenible</p>
             <h1 className="text-4xl sm:text-5xl font-thin leading-[1.3] tracking-tight mb-5">
               No es disciplina. No es fuerza de voluntad.{" "}
-              <span className="text-accent">Es un sistema que no pueda fallar.</span>
+              <span className="text-accent font-black">Es un sistema que no pueda fallar.</span>
             </h1>
             <p className="text-sm leading-relaxed text-neutral-400 mb-8 max-w-lg">
               Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.
@@ -342,7 +342,7 @@ export default async function HomePage() {
             </div>
             <div className="lift-on-hover rounded-lg border border-accent/50 p-6 flex flex-col justify-center">
               <p className="kicker">El truco</p>
-              <p className="font-semibold text-2xl mb-2">Encuentra tu hábito ancla</p>
+              <p className="font-bold text-2xl mb-2">Encuentra tu hábito ancla</p>
               <p className="muted">
                 El único hábito que, sostenido, jala a todos los demás. No es el más vistoso —
                 es el que arrastra al resto.
@@ -373,7 +373,7 @@ export default async function HomePage() {
                     {String(i + 1).padStart(2, "0")}
                   </p>
                   <div>
-                    <p className="font-semibold text-xl mb-2">{item.title}</p>
+                    <p className="font-bold text-xl mb-2">{item.title}</p>
                     <p className="muted">{item.description}</p>
                   </div>
                 </div>
@@ -403,7 +403,7 @@ export default async function HomePage() {
                 <Reveal delay={i * 150}>
                   <div className="card h-full">
                     <p className="kicker">{part.kicker}</p>
-                    <p className="font-semibold text-2xl mb-2">{part.title}</p>
+                    <p className="font-bold text-2xl mb-2">{part.title}</p>
                     <p className="muted">{part.description}</p>
                   </div>
                 </Reveal>
@@ -418,7 +418,7 @@ export default async function HomePage() {
 
           <div className="lift-on-hover rounded-lg border border-accent/50 p-6">
             <p className="kicker">Tu ritmo</p>
-            <p className="font-semibold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
+            <p className="font-bold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
             <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
           </div>
         </div>
@@ -495,7 +495,7 @@ export default async function HomePage() {
             {FAQ.map((item, i) => (
               <Reveal key={item.q} delay={i * 100}>
                 <div className="border-b border-line py-6 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-10">
-                  <p className="font-semibold text-base sm:w-80 shrink-0">{item.q}</p>
+                  <p className="font-bold text-base sm:w-80 shrink-0">{item.q}</p>
                   <p className="muted">{item.a}</p>
                 </div>
               </Reveal>
