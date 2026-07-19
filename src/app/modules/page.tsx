@@ -16,6 +16,7 @@ import {
   countCompletedInCycle,
   requiredExecutedDaysForNext,
 } from "@/lib/cycle";
+import { JAY_RESULT_LINE } from "@/lib/constants";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
@@ -82,9 +83,7 @@ export default async function ModulesPage({
 
         <blockquote className="border-l-2 border-l-accent pl-5 mb-16">
           <p className="text-sm leading-relaxed text-neutral-300">
-            Pasé de un 3 a un 9 en mi Wheel of Life, en 8 meses. No fue un giro de un día para
-            otro — fue un sistema pequeño, sostenido, mes tras mes. Este es ese sistema, en 11
-            módulos.
+            {JAY_RESULT_LINE} Este es ese sistema, en 11 módulos.
           </p>
           <p className="text-xs uppercase tracking-widest text-neutral-500 mt-3">— Jay</p>
         </blockquote>

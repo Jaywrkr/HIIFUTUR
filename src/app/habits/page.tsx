@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { CreateHabitForm } from "@/components/CreateHabitForm";
 import { EditHabitRow } from "@/components/EditHabitRow";
 import { UnlockBanner } from "@/components/UnlockBanner";
+import { IconFlame } from "@/components/icons";
 import { requireUser } from "@/lib/session";
 import {
   getUserPreferences,
@@ -125,7 +126,10 @@ export default async function HabitsPage() {
               <p className="text-xs uppercase tracking-widest text-neutral-500">Días completados</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-accent">{bestStreakEver}</p>
+              <p className="flex items-center gap-1.5 text-2xl font-bold text-accent">
+                <IconFlame className="w-5 h-5 shrink-0" />
+                {bestStreakEver}
+              </p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Mejor racha</p>
             </div>
           </div>

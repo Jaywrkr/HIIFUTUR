@@ -9,7 +9,7 @@ export default function TerminosPage() {
         ← EJECUTA
       </Link>
       <p className="kicker mt-8">Legal</p>
-      <h1 className="text-3xl font-extrabold tracking-tight mb-2">Términos de uso</h1>
+      <h1 className="text-3xl font-thin tracking-tight mb-2">Términos de uso</h1>
       <p className="muted mb-10">Última actualización: julio de 2026.</p>
 
       <div className="flex flex-col gap-8 mb-16">
