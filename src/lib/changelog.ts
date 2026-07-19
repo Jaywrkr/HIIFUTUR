@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.82.0",
+    date: "2026-07-19",
+    changes: [
+      "Nuevo: Jardín zen en Cuenta. Un espacio de arena interactiva donde trazas con el dedo o el mouse y las líneas se van borrando solas — sin puntos, sin racha, solo para respirar un momento. Las piedras que aparecen reflejan tus hábitos activos.",
+    ],
+  },
+  {
     version: "2.81.0",
     date: "2026-07-19",
     changes: [
