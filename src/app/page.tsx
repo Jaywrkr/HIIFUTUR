@@ -10,6 +10,7 @@ import { MarqueeTicker } from "@/components/MarqueeTicker";
 import { PhoneMantra } from "@/components/PhoneMantra";
 import { Footer } from "@/components/Footer";
 import { Testimonials } from "@/components/Testimonials";
+import { JAY_RESULT_LINE } from "@/lib/constants";
 
 const PHILOSOPHY = [
   {
@@ -115,7 +116,7 @@ const FOR_YOU_IF = [
 const JAY_STORY = [
   "Lo viví yo.",
   "El Wheel of Life es la nota del 1 al 10 que le pongo a mi vida cada mes.",
-  "En 8 meses, mi promedio pasó de un 3 a un 9. Sistema pequeño, sostenido, mes tras mes.",
+  JAY_RESULT_LINE,
   "Esto es ese sistema. No una versión bonita de él.",
 ];
 

@@ -93,7 +93,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
         <p className="kicker">
           {phase?.title} · MÓDULO {courseModule.order}
         </p>
-        <h1 className="text-3xl font-extrabold tracking-tight mb-6">{courseModule.title}</h1>
+        <h1 className="text-3xl font-thin tracking-tight mb-6">{courseModule.title}</h1>
 
         {/* Audio del módulo pausado por ahora: la lógica vive en
             src/components/ModuleListenButton.tsx — para reactivarla,

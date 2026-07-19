@@ -3,10 +3,20 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
-    version: "2.84.0",
+    version: "2.85.0",
     date: "2026-07-19",
     changes: [
       "Las celdas \"vacías\" del mapa de hábitos casi no se veían contra el fondo de la tarjeta (contraste real de 1.3:1, por debajo de cualquier mínimo de accesibilidad) — parte de por qué el mapa se sentía disparejo. Suben a un gris con contraste 3:1, visible pero claramente por debajo de una celda marcada.",
+    ],
+  },
+  {
+    version: "2.84.0",
+    date: "2026-07-19",
+    changes: [
+      "Pasada de armonía en toda la app: el título principal de Módulos, Hábitos, Wheel, Upgrade, Leaderboard, Changelog, Términos, Privacidad y el detalle de cada módulo tenía un peso distinto (muy negrita) al de Hoy, Cuenta y la landing (delgado) — ahora todos usan el mismo peso, así que navegar entre pantallas no se siente como cambiar de app.",
+      "Hábitos y Wheel of Life ya usan íconos (racha y estado vacío), en vez de ser las únicas pantallas centrales sin ninguno.",
+      "Se corrige la tilde de \"Qué ha cambiado\" en Changelog y se recorta texto repetido en Upgrade (la nota de \"no guardamos tu tarjeta\" y \"precio fijo para siempre\" se decían hasta 3 veces en la misma pantalla).",
+      "La historia real de Jay (3 a 9 en el Wheel of Life, en 8 meses) ahora se escribe una sola vez y se reusa en landing y en Módulos, en vez de mantener dos redacciones distintas del mismo dato.",
     ],
   },
   {
