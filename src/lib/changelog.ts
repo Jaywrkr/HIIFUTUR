@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.75.0",
+    date: "2026-07-19",
+    changes: [
+      "\"Hoy\" más zen y cuadrado: el resumen de nivel/puntos/racha y la sección \"Tu progreso\" pasan de una caja dividida a tiles cuadrados individuales con espacio entre ellos (como la cuadrícula de tarjetas de Open), y el módulo destacado pierde su relleno de color para quedar solo en borde.",
+    ],
+  },
+  {
     version: "2.74.0",
     date: "2026-07-18",
     changes: [
