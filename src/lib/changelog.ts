@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.78.0",
+    date: "2026-07-19",
+    changes: [
+      "Más calma en Hoy y Módulos: más espacio entre secciones (el margen entre bloques casi se duplica), tiles más grandes en \"Tu progreso\" y el resumen de nivel/puntos/racha, y cada fila de módulo respira más entre una y otra.",
+    ],
+  },
+  {
     version: "2.77.0",
     date: "2026-07-19",
     changes: [

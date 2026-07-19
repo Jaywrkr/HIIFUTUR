@@ -51,7 +51,7 @@ export default async function ModulesPage({
         />
 
         {cycle.wasReset ? (
-          <div className="rounded-lg border border-accent/50 p-5 mb-8">
+          <div className="rounded-lg border border-accent/50 p-6 mb-10">
             <p className="text-xs uppercase tracking-widest text-accent mb-1">El ciclo se reinició. Tú no.</p>
             <p className="text-sm text-neutral-300">
               No perdiste todo: tus ejercicios siguen escritos y conservas la mitad de tus puntos.
@@ -61,7 +61,7 @@ export default async function ModulesPage({
         ) : null}
 
         {!cycle.completed && cycle.hasAnchor && !cycle.wasReset ? (
-          <div className="card mb-8 flex items-center justify-between gap-4">
+          <div className="card mb-10 flex items-center justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-widest text-accent mb-1">
                 Ciclo de formación · día {cycle.day} de {CYCLE_DAYS}
@@ -80,7 +80,7 @@ export default async function ModulesPage({
           </div>
         ) : null}
 
-        <blockquote className="border-l-2 border-l-accent pl-4 mb-12">
+        <blockquote className="border-l-2 border-l-accent pl-5 mb-16">
           <p className="text-sm leading-relaxed text-neutral-300">
             Pasé de un 3 a un 9 en mi Wheel of Life, en 8 meses. No fue un giro de un día para
             otro — fue un sistema pequeño, sostenido, mes tras mes. Este es ese sistema, en 11
@@ -95,10 +95,10 @@ export default async function ModulesPage({
           const phaseComplete = phaseDone === phaseModules.length;
 
           return (
-            <section key={phase.id} className="mb-10">
+            <section key={phase.id} className="mb-14">
               {/* Phase header: a clear, labeled band so each of the four
                   sections reads as its own block instead of a flat list. */}
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-3 mb-4">
                 <span
                   className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
                     phaseComplete
@@ -140,7 +140,7 @@ export default async function ModulesPage({
                   return (
                     <div
                       key={module.id}
-                      className={`flex items-center gap-4 px-5 py-4 ${locked ? "opacity-70" : ""}`}
+                      className={`flex items-center gap-4 px-5 py-5 ${locked ? "opacity-70" : ""}`}
                     >
                       <span
                         className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
