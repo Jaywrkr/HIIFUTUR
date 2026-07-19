@@ -16,14 +16,18 @@ type DayCell = { key: string; date: Date; inRange: boolean };
 function buildGrid(): DayCell[][] {
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
-  // Align the grid to end on the current day-of-week so columns read as
-  // whole weeks, like GitHub's contribution graph.
+  // Every column must be a full 7-day week or the grid renders ragged (some
+  // columns shorter than others). End on the Saturday of the current week —
+  // that's the only anchor that keeps DAYS a multiple of 7 no matter what
+  // day of the week "today" is; days after today just render as empty/inactive.
   const endDow = today.getUTCDay();
-  const start = new Date(today);
-  start.setUTCDate(start.getUTCDate() - (DAYS - 1) - (6 - endDow));
+  const end = new Date(today);
+  end.setUTCDate(end.getUTCDate() + (6 - endDow));
+  const start = new Date(end);
+  start.setUTCDate(start.getUTCDate() - (DAYS - 1));
 
   const days: DayCell[] = [];
-  for (let i = 0; i < DAYS + (6 - endDow) + 1; i++) {
+  for (let i = 0; i < DAYS; i++) {
     const d = new Date(start);
     d.setUTCDate(start.getUTCDate() + i);
     days.push({ key: toDateKey(d), date: d, inRange: d <= today });
