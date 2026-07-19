@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.77.0",
+    date: "2026-07-19",
+    changes: [
+      "Más zen en el resto de la app: Módulos, Hábitos y Cuenta pierden los rellenos de color que quedaban (banners de ciclo, tarjetas de \"un paso antes\", círculos de íconos en Cuenta) y bajan de negrita a peso delgado/normal en títulos y números, siguiendo el mismo criterio que ya tenían Hoy y la landing. El candado de módulos bloqueados cambia de 🔒 a un guión simple.",
+    ],
+  },
+  {
     version: "2.76.0",
     date: "2026-07-19",
     changes: [

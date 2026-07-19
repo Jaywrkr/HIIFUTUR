@@ -61,7 +61,7 @@ export function EditNameSection({ initialName }: { initialName: string }) {
 
   return (
     <div className="flex items-center gap-3">
-      <p className="font-bold">{displayName || "—"}</p>
+      <p className="font-normal">{displayName || "—"}</p>
       <button
         type="button"
         onClick={() => setEditing(true)}

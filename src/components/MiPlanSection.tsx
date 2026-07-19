@@ -80,7 +80,7 @@ export function MiPlanCard({
       ) : status === "active" ? (
         <>
           <p className="text-sm text-neutral-300 mb-1">
-            Plan <span className="font-bold text-text">{plan}</span> — {priceLabel}
+            Plan <span className="font-normal text-text">{plan}</span> — {priceLabel}
           </p>
           {nextBillingDate ? (
             <p className="muted text-xs mb-4">Próximo cobro: {nextBillingDate}</p>
