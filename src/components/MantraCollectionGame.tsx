@@ -79,7 +79,7 @@ export function MantraCollectionGame({ mantras }: { mantras: MantraCard[] }) {
 
       <div
         ref={pocketRef}
-        className={`rounded-2xl border-2 border-dashed p-4 text-center mb-2 transition-colors ${
+        className={`rounded-lg border-2 border-dashed p-4 text-center mb-2 transition-colors ${
           dragging ? "border-accent bg-accent/5" : "border-line"
         }`}
       >

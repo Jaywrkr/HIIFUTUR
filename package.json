@@ -1,6 +1,6 @@
 {
   "name": "ejecuta",
-  "version": "2.75.0",
+  "version": "2.76.0",
   "private": true,
   "description": "EJECUTA: Sistema de Ejecucion Sostenible — MVP del curso interactivo basado en el Principio de Pareto.",
   "scripts": {

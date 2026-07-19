@@ -13,7 +13,7 @@ export function ConceptFrame({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-accent/30 bg-accent/5 p-6 mb-8">
+    <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 mb-8">
       <p className="text-xs uppercase tracking-widest text-accent mb-4">Idea clave</p>
       <div className="mb-4">{children}</div>
       <p className="text-sm text-neutral-300 leading-relaxed">{caption}</p>
@@ -85,7 +85,7 @@ function Pareto8020() {
 function GoalVsSystem() {
   return (
     <div className="grid grid-cols-2 gap-4">
-      <div className="rounded-xl border border-line p-4 text-center">
+      <div className="rounded-md border border-line p-4 text-center">
         <p className="text-[10px] uppercase tracking-widest text-neutral-500 mb-3">La meta</p>
         <div className="relative h-10 flex items-center">
           <div className="h-px w-full bg-neutral-700" />
@@ -93,7 +93,7 @@ function GoalVsSystem() {
         </div>
         <p className="text-xs text-neutral-500 mt-2">Un punto lejano</p>
       </div>
-      <div className="rounded-xl border border-accent/40 p-4 text-center">
+      <div className="rounded-md border border-accent/40 p-4 text-center">
         <p className="text-[10px] uppercase tracking-widest text-accent mb-3">El sistema</p>
         <div className="h-10 flex items-center justify-between">
           {Array.from({ length: 7 }).map((_, i) => (
@@ -210,11 +210,11 @@ function TwoStories() {
     <div>
       <p className="text-center text-xs text-neutral-400 mb-3">Fallaste un día. Aquí se bifurca:</p>
       <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-xl border border-red-500/30 bg-red-500/5 p-3 text-center">
+        <div className="rounded-md border border-red-500/30 bg-red-500/5 p-3 text-center">
           <p className="text-xs font-bold text-red-400 mb-1">&ldquo;Ya la regué&rdquo;</p>
           <p className="text-[11px] text-neutral-500">→ semanas fuera</p>
         </div>
-        <div className="rounded-xl border border-accent/40 bg-accent/5 p-3 text-center">
+        <div className="rounded-md border border-accent/40 bg-accent/5 p-3 text-center">
           <p className="text-xs font-bold text-accent mb-1">&ldquo;Un día, no un mes&rdquo;</p>
           <p className="text-[11px] text-neutral-400">→ mañana retomo</p>
         </div>

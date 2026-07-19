@@ -51,7 +51,7 @@ export default async function ModulesPage({
         />
 
         {cycle.wasReset ? (
-          <div className="rounded-2xl bg-accent/10 border border-accent/40 p-5 mb-8">
+          <div className="rounded-lg bg-accent/10 border border-accent/40 p-5 mb-8">
             <p className="text-xs uppercase tracking-widest text-accent mb-1">El ciclo se reinició. Tú no.</p>
             <p className="text-sm text-neutral-300">
               Fallaste tres veces en 30 días — pasa. No perdiste todo: tus ejercicios siguen

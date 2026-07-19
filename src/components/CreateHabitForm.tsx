@@ -40,7 +40,7 @@ export function CreateHabitForm({
       <p className="text-xs uppercase tracking-widest text-accent">Nuevo hábito</p>
 
       {suggestion ? (
-        <div className="rounded-2xl border border-line bg-ink p-4">
+        <div className="rounded-lg border border-line bg-ink p-4">
           <p className="text-xs text-neutral-500 mb-2">
             Según tu Wheel of Life, <span className="text-accent">{suggestion.areaLabel}</span> es
             donde más puedes ganar terreno. Una sugerencia, no una obligación:

@@ -10,9 +10,9 @@ export function PageSkeleton() {
         <div className="h-3 w-32 bg-line rounded-full mb-4" />
         <div className="h-8 w-64 bg-line rounded-lg mb-8" />
         <div className="flex flex-col gap-4">
-          <div className="h-20 bg-line rounded-2xl" />
-          <div className="h-20 bg-line rounded-2xl" />
-          <div className="h-20 bg-line rounded-2xl" />
+          <div className="h-20 bg-line rounded-lg" />
+          <div className="h-20 bg-line rounded-lg" />
+          <div className="h-20 bg-line rounded-lg" />
         </div>
       </main>
     </>

@@ -166,7 +166,7 @@ export function HabitCard({
             WebkitUserSelect: "none",
             WebkitTouchCallout: "none",
           }}
-          className={`relative h-14 w-14 overflow-hidden border rounded-2xl flex items-center justify-center text-lg transition-transform duration-200 ${
+          className={`relative h-14 w-14 overflow-hidden border rounded-lg flex items-center justify-center text-lg transition-transform duration-200 ${
             displayDone ? "border-accent bg-accent text-black" : "border-line text-neutral-500"
           } ${justCompleted ? "scale-110" : "scale-100"}`}
           aria-label={displayDone ? "Deshacer hábito de hoy" : "Mantén presionado para marcar hábito de hoy"}

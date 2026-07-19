@@ -166,7 +166,7 @@ function FloatingStat({
 }) {
   return (
     <div
-      className={`absolute bg-surface border border-line rounded-2xl px-5 py-4 shadow-lg shadow-black/20 ${className}`}
+      className={`absolute bg-surface border border-line rounded-lg px-5 py-4 shadow-lg shadow-black/20 ${className}`}
     >
       <p className="font-thin leading-tight text-xl">{value}</p>
       <p className="text-xs text-neutral-500 uppercase tracking-widest mt-1">{label}</p>
@@ -240,7 +240,7 @@ export default async function HomePage() {
 
           <div className="relative h-[420px] hidden md:block">
             <div
-              className="absolute inset-0 rounded-3xl"
+              className="absolute inset-0 rounded-lg"
               style={{
                 background: "radial-gradient(circle at 60% 40%, rgba(255,255,255,0.06), transparent 65%)",
               }}
@@ -322,7 +322,7 @@ export default async function HomePage() {
                 ))}
               </div>
             </div>
-            <div className="rounded-3xl border border-accent/50 p-6 flex flex-col justify-center">
+            <div className="rounded-lg border border-accent/50 p-6 flex flex-col justify-center">
               <p className="kicker">El truco</p>
               <p className="font-thin text-2xl mb-2">Encuentra tu hábito ancla</p>
               <p className="muted">
@@ -432,7 +432,7 @@ export default async function HomePage() {
             ))}
           </div>
 
-          <div className="rounded-3xl border border-accent/50 p-6 flex flex-col sm:flex-row items-center gap-6">
+          <div className="rounded-lg border border-accent/50 p-6 flex flex-col sm:flex-row items-center gap-6">
             <div className="flex-1">
               <p className="kicker">Tu ritmo</p>
               <p className="font-thin text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
@@ -462,7 +462,7 @@ export default async function HomePage() {
             {PRICING_PLANS.map((plan) => (
               <div
                 key={plan.id}
-                className={`relative rounded-3xl p-6 flex flex-col border bg-surface ${
+                className={`relative rounded-lg p-6 flex flex-col border bg-surface ${
                   plan.highlight ? "border-accent/60" : "border-line"
                 }`}
               >

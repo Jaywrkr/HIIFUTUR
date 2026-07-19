@@ -35,7 +35,7 @@ export function DeleteAccountSection({ userEmail }: { userEmail: string }) {
   }
 
   return (
-    <div className="rounded-2xl border border-red-900/50 bg-red-950/10 p-5">
+    <div className="rounded-lg border border-red-900/50 bg-red-950/10 p-5">
       <p className="font-bold mb-1">Eliminar tu cuenta es permanente.</p>
       <p className="muted mb-4">
         Se borran tus hábitos, tu historial, tus mediciones del Wheel of Life y tu progreso en los

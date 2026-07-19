@@ -88,7 +88,7 @@ export function IdentityVotesGame() {
           }}
           style={{ touchAction: "none" }}
           disabled={votes >= TOTAL_VOTES}
-          className={`flex items-center gap-2 rounded-xl border border-accent/40 bg-accent/10 px-4 py-2.5 text-sm text-accent cursor-grab active:cursor-grabbing select-none transition-opacity disabled:opacity-30 ${
+          className={`flex items-center gap-2 rounded-md border border-accent/40 bg-accent/10 px-4 py-2.5 text-sm text-accent cursor-grab active:cursor-grabbing select-none transition-opacity disabled:opacity-30 ${
             dragging ? "opacity-30" : ""
           }`}
         >

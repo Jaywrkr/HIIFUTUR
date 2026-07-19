@@ -33,7 +33,7 @@ export default async function LeaderboardPage() {
                 key={row.id}
                 className={
                   row.id === user.id
-                    ? "flex items-center justify-between border border-accent/50 bg-accent/10 rounded-xl px-4 py-3"
+                    ? "flex items-center justify-between border border-accent/50 bg-accent/10 rounded-md px-4 py-3"
                     : "flex items-center justify-between border-b border-line px-4 py-3"
                 }
               >

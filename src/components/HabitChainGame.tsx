@@ -54,7 +54,7 @@ export function HabitChainGame() {
 
       <div
         ref={rowRef}
-        className={`flex items-end gap-2 rounded-2xl border-2 border-dashed p-4 mb-4 transition-colors ${
+        className={`flex items-end gap-2 rounded-lg border-2 border-dashed p-4 mb-4 transition-colors ${
           dragging ? "border-accent bg-accent/5" : "border-line"
         }`}
       >
@@ -84,7 +84,7 @@ export function HabitChainGame() {
           }}
           style={{ touchAction: "none" }}
           disabled={toppled}
-          className={`flex items-center gap-2 rounded-xl border border-accent/40 bg-accent/10 px-4 py-2.5 text-sm text-accent cursor-grab active:cursor-grabbing select-none transition-opacity disabled:opacity-30 ${
+          className={`flex items-center gap-2 rounded-md border border-accent/40 bg-accent/10 px-4 py-2.5 text-sm text-accent cursor-grab active:cursor-grabbing select-none transition-opacity disabled:opacity-30 ${
             dragging ? "opacity-30" : ""
           }`}
         >

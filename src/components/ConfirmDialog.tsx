@@ -22,7 +22,7 @@ export function ConfirmDialog({
 
   return (
     <div className="fixed inset-0 z-50 bg-ink/90 backdrop-blur-sm flex items-center justify-center px-6">
-      <div className="w-full max-w-sm rounded-3xl border border-line bg-surface p-6 text-center">
+      <div className="w-full max-w-sm rounded-lg border border-line bg-surface p-6 text-center">
         <h2 className="text-lg font-extrabold tracking-tight mb-2">{title}</h2>
         <p className="text-sm text-neutral-300 leading-relaxed mb-6">{body}</p>
         <div className="flex flex-col gap-3">

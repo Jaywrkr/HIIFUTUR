@@ -140,7 +140,7 @@ export default async function HabitsPage() {
         ) : null}
 
         {blockedByFirstModule ? (
-          <div className="rounded-3xl bg-accent/10 border border-accent/40 p-6 mb-8">
+          <div className="rounded-lg bg-accent/10 border border-accent/40 p-6 mb-8">
             <p className="text-xs uppercase tracking-widest text-accent mb-1">Un paso antes</p>
             <p className="font-extrabold text-xl mb-2">Tu hábito ancla se elige en el Módulo 1</p>
             <p className="muted mb-4">

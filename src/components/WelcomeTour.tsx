@@ -44,7 +44,7 @@ export function WelcomeTour() {
 
   return (
     <div className="fixed inset-0 z-50 bg-ink/90 backdrop-blur-sm flex items-center justify-center px-6">
-      <div className="w-full max-w-md rounded-3xl border border-line bg-surface p-8 text-center">
+      <div className="w-full max-w-md rounded-lg border border-line bg-surface p-8 text-center">
         <p className="text-xs uppercase tracking-widest text-neutral-500 mb-4">
           {String(step + 1).padStart(2, "0")} / {String(STEPS.length).padStart(2, "0")}
         </p>

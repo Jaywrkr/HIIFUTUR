@@ -98,7 +98,7 @@ export function FrictionMeterGame() {
               setDragPos(null);
             }}
             style={{ touchAction: "none" }}
-            className={`flex items-center gap-2 rounded-xl border px-3 py-2 text-xs text-left cursor-grab active:cursor-grabbing select-none transition-opacity ${
+            className={`flex items-center gap-2 rounded-md border px-3 py-2 text-xs text-left cursor-grab active:cursor-grabbing select-none transition-opacity ${
               selected === c.id ? "border-accent/50 bg-accent/10 text-accent" : "border-line text-neutral-300"
             } ${dragging === c.id ? "opacity-30" : ""}`}
           >
@@ -110,7 +110,7 @@ export function FrictionMeterGame() {
 
       <div
         ref={meterRef}
-        className={`rounded-2xl border-2 border-dashed p-4 mb-4 transition-colors ${
+        className={`rounded-lg border-2 border-dashed p-4 mb-4 transition-colors ${
           dragging ? "border-accent bg-accent/5" : "border-line"
         }`}
       >

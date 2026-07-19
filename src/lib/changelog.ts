@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.76.0",
+    date: "2026-07-19",
+    changes: [
+      "Bordes cuadrados en toda la app: las tarjetas, banners y paneles pasaban de esquinas muy redondeadas (rounded-2xl/3xl) a esquinas mínimas, en toda la landing, el dashboard y las pantallas interiores. Los botones y badges tipo píldora se mantienen redondos — el resto queda cuadrado, como la referencia.",
+    ],
+  },
+  {
     version: "2.75.0",
     date: "2026-07-19",
     changes: [

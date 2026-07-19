@@ -35,7 +35,7 @@ export function GlossaryTerm({ term, definition }: { term: string; definition: s
       {open ? (
         <span
           role="tooltip"
-          className="toast-pop absolute z-40 top-full left-1/2 -translate-x-1/2 mt-2 w-64 max-w-[calc(100vw-2.5rem)] rounded-xl border border-line bg-surface p-3 text-left shadow-2xl"
+          className="toast-pop absolute z-40 top-full left-1/2 -translate-x-1/2 mt-2 w-64 max-w-[calc(100vw-2.5rem)] rounded-md border border-line bg-surface p-3 text-left shadow-2xl"
         >
           <span className="block text-[10px] uppercase tracking-widest text-accent mb-1">{term}</span>
           <span className="block text-xs leading-relaxed text-neutral-300">{definition}</span>

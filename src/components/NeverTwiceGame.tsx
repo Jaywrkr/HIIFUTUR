@@ -105,7 +105,7 @@ export function NeverTwiceGame() {
             setDragPos(null);
           }}
           style={{ touchAction: "none" }}
-          className={`flex items-center gap-2 rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-2.5 text-sm text-red-400 cursor-grab active:cursor-grabbing select-none transition-opacity ${
+          className={`flex items-center gap-2 rounded-md border border-red-500/40 bg-red-500/10 px-4 py-2.5 text-sm text-red-400 cursor-grab active:cursor-grabbing select-none transition-opacity ${
             dragging ? "opacity-30" : ""
           }`}
         >

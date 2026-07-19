@@ -118,7 +118,7 @@ export function WillpowerBatteryGame() {
               setDragPos(null);
             }}
             style={{ touchAction: "none" }}
-            className={`flex-1 flex flex-col items-center gap-1 rounded-xl border border-line px-3 py-3 text-center cursor-grab active:cursor-grabbing select-none transition-opacity ${
+            className={`flex-1 flex flex-col items-center gap-1 rounded-md border border-line px-3 py-3 text-center cursor-grab active:cursor-grabbing select-none transition-opacity ${
               dragging === c.id ? "opacity-30" : ""
             }`}
           >
