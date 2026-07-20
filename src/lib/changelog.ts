@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.88.0",
+    date: "2026-07-19",
+    changes: [
+      "El jardín zen suma otra vuelta de realismo: las líneas peinadas de arena ahora ondulan levemente en vez de ser rectas perfectas (como un rastrillo real tirado a mano), las piedras tienen textura mineral visible, algunas llevan un poco de musgo en la base, y aparecen guijarros sueltos dispersos por la arena.",
+    ],
+  },
+  {
     version: "2.87.0",
     date: "2026-07-19",
     changes: [

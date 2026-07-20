@@ -43,6 +43,27 @@ function irregularRadius(stone: Stone, angle: number) {
   return stone.r * factor;
 }
 
+function drawMoss(ctx: CanvasRenderingContext2D, stone: Stone) {
+  // A small patch of moss where the stone meets the sand — the one classic
+  // real-garden detail that isn't gray or tan, so it has to stay tiny and
+  // muted or it reads as decoration instead of age.
+  const angle = Math.PI * 0.65 + Math.random() * 0.5;
+  const dist = stone.r * 0.75;
+  const mx = Math.cos(angle) * dist;
+  const my = Math.sin(angle) * dist * 0.82;
+  ctx.save();
+  ctx.translate(stone.x + mx, stone.y + my);
+  ctx.rotate(Math.random() * Math.PI);
+  const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, stone.r * 0.55);
+  grad.addColorStop(0, "rgba(90,102,66,0.55)");
+  grad.addColorStop(1, "rgba(90,102,66,0)");
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.ellipse(0, 0, stone.r * 0.5, stone.r * 0.28, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
 function drawStone(ctx: CanvasRenderingContext2D, stone: Stone) {
   // Soft cast shadow on the sand first, offset toward "down-right" as if lit
   // from the upper left — the one light-direction cue that sells volume.
@@ -88,6 +109,19 @@ function drawStone(ctx: CanvasRenderingContext2D, stone: Stone) {
   ctx.strokeStyle = "rgba(0,0,0,0.25)";
   ctx.lineWidth = 1;
   ctx.stroke();
+
+  // Mineral speckle, clipped to the stone's own silhouette — flat gradient
+  // fills read as plastic without some grain breaking up the surface.
+  ctx.clip();
+  const speckleCount = Math.floor(stone.r * stone.r * 0.6);
+  for (let i = 0; i < speckleCount; i++) {
+    const a = Math.random() * Math.PI * 2;
+    const d = Math.random() * stone.r;
+    const sx = Math.cos(a) * d;
+    const sy = Math.sin(a) * d * 0.82;
+    ctx.fillStyle = Math.random() > 0.5 ? "rgba(0,0,0,0.14)" : "rgba(255,255,255,0.1)";
+    ctx.fillRect(sx, sy, 1, 1);
+  }
   ctx.restore();
 }
 
@@ -118,17 +152,20 @@ function paintBase(canvas: HTMLCanvasElement, width: number, height: number, sto
     });
   }
 
-  function ridgeLine(x0: number, y0: number, x1: number, y1: number) {
-    ctx.strokeStyle = SAND_RIDGE;
+  // A real rake is pulled by hand — no two passes are perfectly straight.
+  // Layering two sine waves at different frequencies per row avoids the
+  // "every line identical" look a single wave would give.
+  function wave(x: number, rowSeed: number) {
+    return Math.sin((x + rowSeed) * 0.045) * 1.1 + Math.sin((x + rowSeed) * 0.013) * 0.6;
+  }
+
+  function strokePath(points: { x: number; y: number }[], color: string, dy: number) {
+    if (points.length < 2) return;
+    ctx.strokeStyle = color;
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(x0, y0);
-    ctx.lineTo(x1, y1);
-    ctx.stroke();
-    ctx.strokeStyle = SAND_GROOVE;
-    ctx.beginPath();
-    ctx.moveTo(x0, y0 + 1.6);
-    ctx.lineTo(x1, y1 + 1.6);
+    ctx.moveTo(points[0].x, points[0].y + dy);
+    for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y + dy);
     ctx.stroke();
   }
 
@@ -151,20 +188,23 @@ function paintBase(canvas: HTMLCanvasElement, width: number, height: number, sto
   }
   ctx.globalAlpha = 1;
 
-  // Combed straight lines filling the rest of the field, skipping any
-  // segment that falls inside a stone's ripple zone.
+  // Combed lines filling the rest of the field, gently wavy like a
+  // hand-pulled rake, skipping any segment inside a stone's ripple zone.
   const step = 3;
   for (let y = 6; y < height; y += RIDGE_SPACING) {
-    let segStart: number | null = null;
+    const rowSeed = y * 13.7 + Math.random() * 40;
+    let segment: { x: number; y: number }[] = [];
     for (let x = 0; x <= width; x += step) {
-      const blocked = blockedByStone(x, y);
-      if (!blocked && segStart === null) segStart = x;
-      if (blocked && segStart !== null) {
-        ridgeLine(segStart, y, x, y);
-        segStart = null;
+      if (blockedByStone(x, y)) {
+        strokePath(segment, SAND_RIDGE, 0);
+        strokePath(segment, SAND_GROOVE, 1.6);
+        segment = [];
+        continue;
       }
+      segment.push({ x, y: y + wave(x, rowSeed) });
     }
-    if (segStart !== null) ridgeLine(segStart, y, width, y);
+    strokePath(segment, SAND_RIDGE, 0);
+    strokePath(segment, SAND_GROOVE, 1.6);
   }
 
   // Grain: sparse fine speckle for texture, subtle enough to read as sand
@@ -177,7 +217,33 @@ function paintBase(canvas: HTMLCanvasElement, width: number, height: number, sto
     ctx.fillRect(x, y, 1, 1);
   }
 
-  for (const stone of stones) drawStone(ctx, stone);
+  for (const stone of stones) {
+    drawStone(ctx, stone);
+    if (Math.random() > 0.45) drawMoss(ctx, stone);
+  }
+
+  // A handful of tiny loose pebbles scattered away from the main stones —
+  // real gravel gardens are never just the big rocks and empty sand.
+  const pebbleCount = 7;
+  for (let i = 0; i < pebbleCount; i++) {
+    let px = 0;
+    let py = 0;
+    let ok = false;
+    for (let attempt = 0; attempt < 12 && !ok; attempt++) {
+      px = 16 + Math.random() * (width - 32);
+      py = 16 + Math.random() * (height - 32);
+      ok = stones.every((s) => Math.hypot(px - s.x, py - s.y) > s.r + 22);
+    }
+    if (!ok) continue;
+    const pebble: Stone = {
+      x: px,
+      y: py,
+      r: 2.5 + Math.random() * 2,
+      angleOffsets: Array.from({ length: 8 }, () => 0.8 + Math.random() * 0.3),
+      hue: 28 + Math.random() * 12,
+    };
+    drawStone(ctx, pebble);
+  }
 }
 
 export function ZenGarden({ habitCount, onClose }: { habitCount: number; onClose: () => void }) {
