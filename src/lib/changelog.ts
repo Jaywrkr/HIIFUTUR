@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.88.0",
+    date: "2026-07-19",
+    changes: [
+      "Menos texto, más orden — más cerca del estilo compacto de las referencias de diseño: el subtítulo de Hábitos baja de 3 oraciones a una, el banner de prueba en Hoy deja de partirse en 3 líneas, y la tarjeta de \"Tu camino\" deja de repetir el nombre de la fase (ya se ve en Módulos).",
+    ],
+  },
+  {
     version: "2.87.0",
     date: "2026-07-19",
     changes: [
