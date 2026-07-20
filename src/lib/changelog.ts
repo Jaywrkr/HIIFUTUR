@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.92.0",
+    date: "2026-07-20",
+    changes: [
+      "La lista de Módulos se rediseña al estilo editorial de la referencia (IMAGEN 3): cada módulo pasa de una fila dividida en una lista a su propia tarjeta, con un thumbnail visual a la izquierda (reusa el PhotoSlot del perfil, con un tono distinto por módulo) y \"Empezar →\" / \"Revisar →\" como link, en vez del botón pill anterior. Los módulos bloqueados se ven apagados; el completado lleva una insignia de check sobre su thumbnail.",
+    ],
+  },
+  {
     version: "2.91.0",
     date: "2026-07-20",
     changes: [
