@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.91.0",
+    date: "2026-07-20",
+    changes: [
+      "El perfil (Cuenta) se rediseña al estilo editorial de la referencia: un panel oliva con el nombre a la izquierda y una foto de perfil circular grande a la derecha, con nivel/puntos/racha y el hábito ancla divididos por líneas finas. La foto es por ahora un espacio con un degradado suave — un \"hueco\" listo para cambiar por una foto real cuando exista esa función, sin rehacer nada.",
+    ],
+  },
+  {
     version: "2.90.0",
     date: "2026-07-19",
     changes: [
