@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.93.0",
+    date: "2026-07-20",
+    changes: [
+      "El interior de cada módulo (IMAGEN 2) suma el mismo lenguaje visual que ya tiene la lista de Módulos: la tarjeta de Ejercicio y la de \"Lo que sigue\" ahora llevan un thumbnail junto al título, en vez de ser solo texto — la misma sensación de \"sesión que estás por empezar\" de la referencia. De paso, \"Lo que sigue\" pierde el relleno de color que le quedaba (solo borde, como el resto de la app).",
+    ],
+  },
+  {
     version: "2.92.0",
     date: "2026-07-20",
     changes: [
