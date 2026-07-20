@@ -5,6 +5,7 @@ import { DeleteAccountSection } from "@/components/DeleteAccountSection";
 import { EditNameSection } from "@/components/EditNameSection";
 import { PushNotificationToggle } from "@/components/PushNotificationToggle";
 import { ZenGardenLauncher } from "@/components/ZenGardenLauncher";
+import { PhotoSlot } from "@/components/PhotoSlot";
 import { MiPlanCard } from "@/components/MiPlanSection";
 import { IconUser, IconMail, IconLock, IconBell, IconFlame } from "@/components/icons";
 import { requireUser } from "@/lib/session";
@@ -52,55 +53,74 @@ export default async function CuentaPage() {
   const missedYesterday = userHabits.length > 0 && !allLogDates.has(yesterdayKey);
 
   const nextMilestone = STREAK_MILESTONES.find((m) => m > bestCurrentStreak);
+  const anchorHabit = userHabits[0] ?? null;
 
   return (
     <>
       <Nav />
       <main className="app-main">
-        {/* Header: name + level. Layout borrows the left-aligned name block +
-            top-right avatar + divided stat row pattern from Open's profile
-            screen. The avatar is a solid-color placeholder (no photo upload
-            exists yet) — the color marks where a real photo would go later. */}
-        <div className="card mb-6">
-          <div className="flex items-start justify-between gap-4 mb-6">
-            <div>
-              <p className="kicker">TU PERFIL</p>
-              <h1 className="text-3xl font-thin tracking-tight mb-1">{user.name?.trim() || "Usuario"}</h1>
-              <p className="muted text-sm">{daysTogether} días en EJECUTA</p>
+        {/* Profile header, in the editorial olive-field style of Open's
+            teacher profile: an olive panel (the app's one deliberately light
+            island) with the name block left, a large circular PHOTO SLOT
+            right, and stats/anchor divided by hairlines. The photo slot is a
+            swappable placeholder (PhotoSlot) — pass it a real src the day
+            photo uploads exist and nothing else changes. Dark text on olive,
+            matching the reference. */}
+        <div
+          className="rounded-lg mb-6 p-6 overflow-hidden"
+          style={{ background: "#878B6C", color: "#171712" }}
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0">
+              <p className="text-[11px] uppercase tracking-[0.2em] mb-3" style={{ color: "rgba(0,0,0,0.5)" }}>
+                Tu perfil
+              </p>
+              <h1 className="text-3xl font-thin tracking-tight leading-none mb-2">
+                {user.name?.trim() || "Usuario"}
+              </h1>
+              <p className="text-sm" style={{ color: "rgba(0,0,0,0.6)" }}>
+                {daysTogether} días en EJECUTA
+              </p>
+              {anchorHabit ? (
+                <p className="text-sm mt-0.5" style={{ color: "rgba(0,0,0,0.6)" }}>
+                  Ancla · {anchorHabit.name}
+                </p>
+              ) : null}
             </div>
-            <span
-              className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 text-lg font-bold"
-              style={{ background: "#878B6C", color: "#0A0A0A" }}
-              aria-hidden="true"
-            >
-              {(user.name?.trim()?.[0] ?? "U").toUpperCase()}
-            </span>
+            <PhotoSlot
+              shape="circle"
+              alt={`Foto de ${user.name?.trim() || "tu perfil"}`}
+              className="w-24 h-24 shrink-0 shadow-lg shadow-black/20"
+            />
           </div>
 
-          <div className="grid grid-cols-3 border-t border-line pt-5 text-center">
+          <div
+            className="grid grid-cols-3 mt-6 pt-5 text-center"
+            style={{ borderTop: "1px solid rgba(0,0,0,0.15)" }}
+          >
             <div>
-              <p className="text-xl font-bold text-accent">Nv. {level}</p>
-              <p className="text-xs uppercase tracking-widest text-neutral-500 mt-1">Nivel</p>
+              <p className="text-xl font-bold">Nv. {level}</p>
+              <p className="text-[11px] uppercase tracking-widest mt-1" style={{ color: "rgba(0,0,0,0.5)" }}>Nivel</p>
             </div>
-            <div className="border-x border-line">
+            <div style={{ borderLeft: "1px solid rgba(0,0,0,0.15)", borderRight: "1px solid rgba(0,0,0,0.15)" }}>
               <p className="text-xl font-bold">{user.points}</p>
-              <p className="text-xs uppercase tracking-widest text-neutral-500 mt-1">Puntos</p>
+              <p className="text-[11px] uppercase tracking-widest mt-1" style={{ color: "rgba(0,0,0,0.5)" }}>Puntos</p>
             </div>
             <div>
               <p className="text-xl font-bold">{bestCurrentStreak}</p>
-              <p className="text-xs uppercase tracking-widest text-neutral-500 mt-1">Racha</p>
+              <p className="text-[11px] uppercase tracking-widest mt-1" style={{ color: "rgba(0,0,0,0.5)" }}>Racha</p>
             </div>
           </div>
 
-          <div className="mt-5 pt-5 border-t border-line">
-            <div className="flex items-center justify-between text-xs text-neutral-500 mb-1">
+          <div className="mt-5 pt-5" style={{ borderTop: "1px solid rgba(0,0,0,0.15)" }}>
+            <div className="flex items-center justify-between text-xs mb-1" style={{ color: "rgba(0,0,0,0.55)" }}>
               <span>Progreso al Nv. {level + 1}</span>
               <span>{pointsIntoLevel}/{nextLevelThreshold}</span>
             </div>
-            <div className="h-2 rounded-full bg-ink border border-line overflow-hidden">
-              <div className="h-full bg-accent rounded-full" style={{ width: `${progressPct}%` }} />
+            <div className="h-2 rounded-full overflow-hidden" style={{ background: "rgba(0,0,0,0.18)" }}>
+              <div className="h-full rounded-full" style={{ width: `${progressPct}%`, background: "#171712" }} />
             </div>
-            <p className="text-xs text-neutral-400 mt-1">
+            <p className="text-xs mt-1" style={{ color: "rgba(0,0,0,0.55)" }}>
               {pointsToNextLevel} puntos más · cada hábito marcado suma {POINTS_PER_CHECK}
             </p>
           </div>
