@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { WHEEL_AREAS } from "@/lib/constants";
+import { WHEEL_AREAS, colorForWheelArea } from "@/lib/constants";
 
 // Hand-rolled SVG radar chart. Recharts (+ its D3 deps) was shipping ~95kB
 // of JS for a single, largely static polygon chart — nowhere close to
@@ -110,17 +110,21 @@ export function WheelRadarChart({
         {WHEEL_AREAS.map((area, i) => {
           const { x, y } = pointFor(i, count, MAX_RADIUS);
           return (
-            <circle
-              key={area.id}
-              cx={x}
-              cy={y}
-              r={16}
-              fill="transparent"
-              className="cursor-pointer"
-              onMouseEnter={() => setActiveIndex(i)}
-              onMouseLeave={() => setActiveIndex((prev) => (prev === i ? null : prev))}
-              onClick={() => setActiveIndex((prev) => (prev === i ? null : i))}
-            />
+            <g key={area.id}>
+              {activeIndex === i ? (
+                <circle cx={x} cy={y} r={5} fill={colorForWheelArea(area.id)} className="pointer-events-none" />
+              ) : null}
+              <circle
+                cx={x}
+                cy={y}
+                r={16}
+                fill="transparent"
+                className="cursor-pointer"
+                onMouseEnter={() => setActiveIndex(i)}
+                onMouseLeave={() => setActiveIndex((prev) => (prev === i ? null : prev))}
+                onClick={() => setActiveIndex((prev) => (prev === i ? null : i))}
+              />
+            </g>
           );
         })}
       </svg>
@@ -128,11 +132,12 @@ export function WheelRadarChart({
       {WHEEL_AREAS.map((area, i) => {
         const { x, y } = pointFor(i, count, LABEL_RADIUS);
         const { textAlign, translateX, translateY } = labelLayout(i, count);
+        const color = colorForWheelArea(area.id);
         return (
           <div
             key={area.id}
             className={`absolute text-[10px] uppercase leading-tight select-none pointer-events-none w-[84px] ${
-              activeIndex === i ? "text-accent" : "text-neutral-400"
+              activeIndex === i ? "text-neutral-100" : "text-neutral-400"
             }`}
             style={{
               left: `${(x / SIZE) * 100}%`,
@@ -141,6 +146,11 @@ export function WheelRadarChart({
               textAlign,
             }}
           >
+            <span
+              className="inline-block w-1.5 h-1.5 rounded-full mr-1 align-middle"
+              style={{ background: color }}
+              aria-hidden="true"
+            />
             {area.label}
           </div>
         );
@@ -155,7 +165,9 @@ export function WheelRadarChart({
             transform: "translate(-50%, -50%)",
           }}
         >
-          <p className="text-xs uppercase tracking-widest text-accent mb-1">{active.label}</p>
+          <p className="text-xs uppercase tracking-widest mb-1" style={{ color: colorForWheelArea(active.id) }}>
+            {active.label}
+          </p>
           <p className="text-sm">
             <span className="text-neutral-400">Actual: </span>
             <span className="font-bold">{current[active.id] ?? 0}/10</span>

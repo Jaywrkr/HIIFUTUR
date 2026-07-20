@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { recordWheelMeasurement, type WheelFormState } from "@/lib/wheel-actions";
-import { WHEEL_AREAS } from "@/lib/constants";
+import { WHEEL_AREAS, colorForWheelArea } from "@/lib/constants";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 const initialState: WheelFormState = {};
@@ -31,24 +31,35 @@ export function WheelMeasurementForm({ lastScores }: { lastScores?: Record<strin
         <p className="text-xs uppercase tracking-widest text-accent">Medición de hoy</p>
 
         <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
-          {WHEEL_AREAS.map((area) => (
-            <div key={area.id}>
-              <div className="flex justify-between text-xs uppercase tracking-widest text-neutral-400 mb-1">
-                <span>{area.label}</span>
-                <span className="text-accent">{scores[area.id]}</span>
+          {WHEEL_AREAS.map((area) => {
+            const color = colorForWheelArea(area.id);
+            return (
+              <div key={area.id}>
+                <div className="flex justify-between text-xs uppercase tracking-widest text-neutral-400 mb-1">
+                  <span className="flex items-center gap-1.5">
+                    <span
+                      className="w-2 h-2 rounded-full shrink-0"
+                      style={{ background: color }}
+                      aria-hidden="true"
+                    />
+                    {area.label}
+                  </span>
+                  <span style={{ color }}>{scores[area.id]}</span>
+                </div>
+                <p className="text-xs text-neutral-500 mb-1.5">{area.description}</p>
+                <input
+                  type="range"
+                  min={1}
+                  max={10}
+                  name={`score_${area.id}`}
+                  value={scores[area.id]}
+                  onChange={(e) => setScores((prev) => ({ ...prev, [area.id]: Number(e.target.value) }))}
+                  className="w-full"
+                  style={{ accentColor: color }}
+                />
               </div>
-              <p className="text-xs text-neutral-500 mb-1.5">{area.description}</p>
-              <input
-                type="range"
-                min={1}
-                max={10}
-                name={`score_${area.id}`}
-                value={scores[area.id]}
-                onChange={(e) => setScores((prev) => ({ ...prev, [area.id]: Number(e.target.value) }))}
-                className="w-full accent-accent"
-              />
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div>
