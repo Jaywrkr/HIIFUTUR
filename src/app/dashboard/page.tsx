@@ -15,7 +15,7 @@ import {
 } from "@/lib/queries";
 import { addDays, computeStreak, daysBetween, relativeDayLabel, todayKey } from "@/lib/habit-utils";
 import { MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT, DAYS_BETWEEN_WHEEL_MEASUREMENTS } from "@/lib/constants";
-import { MODULES, PHASES } from "@/lib/modules-content";
+import { MODULES } from "@/lib/modules-content";
 import { computeLevel } from "@/lib/leveling";
 import { evaluateCycle, executionLocked } from "@/lib/cycle-state";
 import {
@@ -95,7 +95,6 @@ export default async function DashboardPage({
 
   const completedIds = new Set(moduleProgress.filter((m) => m.completed).map((m) => m.moduleId));
   const nextModule = MODULES.find((m) => !completedIds.has(m.id)) ?? null;
-  const nextPhase = nextModule ? PHASES.find((p) => p.id === nextModule.phaseId) : null;
   const doneCount = habitsWithData.filter((h) => h.doneToday).length;
 
   // Module 1 is never execution-gated (it's how the anchor habit gets
@@ -149,10 +148,9 @@ export default async function DashboardPage({
               className="flex items-center justify-between gap-3 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 mb-6 text-sm hover:bg-red-500/15 transition-colors"
             >
               <span className="text-red-300">
-                ⚠ Prueba: {daysLeftInTrial(user.trialEndsAt)} día{daysLeftInTrial(user.trialEndsAt) === 1 ? "" : "s"} restante
-                {daysLeftInTrial(user.trialEndsAt) === 1 ? "" : "s"} — activa y quédate con el precio de ahora
+                ⚠ {daysLeftInTrial(user.trialEndsAt)} día{daysLeftInTrial(user.trialEndsAt) === 1 ? "" : "s"} de prueba
               </span>
-              <span className="text-red-400 font-semibold shrink-0">Ver planes →</span>
+              <span className="text-red-400 font-semibold shrink-0">Activar →</span>
             </Link>
           ) : null}
 
@@ -216,7 +214,7 @@ export default async function DashboardPage({
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-widest text-accent mb-1">
-                    Tu camino · {nextPhase?.title}
+                    Tu camino
                   </p>
                   <p className="font-bold text-xl mb-1">
                     Módulo {nextModule.order}: {nextModule.title}
@@ -239,7 +237,7 @@ export default async function DashboardPage({
           ) : nextModule && nextModuleGateLocked ? (
             <div className="rounded-lg border border-line p-6 mb-14">
               <p className="text-xs uppercase tracking-widest text-neutral-400 mb-1">
-                Tu camino · {nextPhase?.title}
+                Tu camino
               </p>
               <p className="font-bold text-xl mb-1">
                 Módulo {nextModule.order} se desbloquea con más ejecución

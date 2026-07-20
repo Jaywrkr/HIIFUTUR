@@ -71,6 +71,18 @@ export const HABIT_CATEGORIES = [
   { id: "disciplina", label: "Disciplina" },
 ] as const;
 
+/** One muted, earthy tone per category — never saturated/primary, same rule
+ * Open uses for its editorial color cards. A small dot next to the category
+ * label, not a fill or a badge — color marks context, it doesn't shout. */
+export const HABIT_CATEGORY_COLORS: Record<(typeof HABIT_CATEGORIES)[number]["id"], string> = {
+  salud: "#878B6C",
+  trabajo: "#6E7C8C",
+  finanzas: "#C99A3E",
+  relaciones: "#C98F80",
+  mentalidad: "#8C82A0",
+  disciplina: "#B5624A",
+};
+
 export const MAX_HABITS = 5;
 export const DAYS_TO_UNLOCK_NEXT_HABIT = 30;
 export const DAYS_BETWEEN_WHEEL_MEASUREMENTS = 30;

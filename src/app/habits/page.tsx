@@ -112,9 +112,8 @@ export default async function HabitsPage() {
           title="Gestiona tus hábitos"
           subtitle={
             <>
-              Esta es la acción: lo que aprendes en Módulos, lo ejecutas aquí. Marcarlos día a
-              día pasa en <Link href="/dashboard" className="link-accent">Hoy</Link>. Aquí los
-              creas, los editas y ves tu progreso hacia el siguiente.
+              Lo que aprendes en Módulos, lo ejecutas aquí — se marca día a día en{" "}
+              <Link href="/dashboard" className="link-accent">Hoy</Link>.
             </>
           }
         />

@@ -3,17 +3,31 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
-    version: "2.88.0",
+    version: "2.90.0",
     date: "2026-07-19",
     changes: [
       "El jardín zen suma otra vuelta de realismo: las líneas peinadas de arena ahora ondulan levemente en vez de ser rectas perfectas (como un rastrillo real tirado a mano), las piedras tienen textura mineral visible, algunas llevan un poco de musgo en la base, y aparecen guijarros sueltos dispersos por la arena.",
     ],
   },
   {
-    version: "2.87.0",
+    version: "2.89.0",
     date: "2026-07-19",
     changes: [
       "El jardín zen ahora se ve como un jardín zen real: arena color tierra en vez de líneas blancas sobre negro, piedras con forma irregular y sombra propia, ondas concéntricas alrededor de cada piedra (como grava rastrillada de verdad), líneas peinadas que se abren paso alrededor de las piedras en vez de atravesarlas, y una bandeja de madera enmarcando todo. Al trazar, el rastrillo deja 4 surcos paralelos (como los dientes de un rastrillo real) en vez de una sola línea.",
+    ],
+  },
+  {
+    version: "2.88.0",
+    date: "2026-07-19",
+    changes: [
+      "Menos texto, más orden — más cerca del estilo compacto de las referencias de diseño: el subtítulo de Hábitos baja de 3 oraciones a una, el banner de prueba en Hoy deja de partirse en 3 líneas, y la tarjeta de \"Tu camino\" deja de repetir el nombre de la fase (ya se ve en Módulos).",
+    ],
+  },
+  {
+    version: "2.87.0",
+    date: "2026-07-19",
+    changes: [
+      "Cada categoría de hábito (Salud, Trabajo, Finanzas, Relaciones, Mentalidad, Disciplina) ahora lleva un punto de color propio, apagado y terroso — la misma regla de color de las referencias de diseño (un tono por contexto, nunca saturado) aplicada a algo que ya existía en la app en vez de decoración nueva.",
     ],
   },
   {
