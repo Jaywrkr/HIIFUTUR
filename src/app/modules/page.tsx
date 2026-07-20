@@ -17,6 +17,7 @@ import {
   requiredExecutedDaysForNext,
 } from "@/lib/cycle";
 import { JAY_RESULT_LINE } from "@/lib/constants";
+import { PhotoSlot } from "@/components/PhotoSlot";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
@@ -120,7 +121,14 @@ export default async function ModulesPage({
                 </div>
               </div>
 
-              <div className="card !p-0 divide-y divide-line overflow-hidden">
+              {/* Each module is its own card with a thumbnail, in the
+                  editorial-list style of the reference (visual + title +
+                  meta + a text "Start →" affordance, not a divided row of
+                  pill buttons). The thumbnail is the shared PhotoSlot
+                  placeholder, hue-shifted per module so the list doesn't
+                  read as one repeated tile — done modules get a check
+                  badge, locked ones desaturate. */}
+              <div className="flex flex-col gap-3">
                 {phaseModules.map((module) => {
                   const idx = MODULES.findIndex((m) => m.id === module.id);
                   const done = completedIds.has(module.id);
@@ -136,42 +144,40 @@ export default async function ModulesPage({
                       : "Crea tu hábito primero"
                     : "Termina el anterior";
 
+                  const hue = (idx * 47) % 360;
+
                   return (
-                    <div
-                      key={module.id}
-                      className={`flex items-center gap-4 px-5 py-5 ${locked ? "opacity-70" : ""}`}
-                    >
-                      <span
-                        className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
-                          done
-                            ? "bg-accent text-black"
-                            : locked
-                              ? "border border-line text-neutral-400"
-                              : "border border-accent/50 text-accent"
-                        }`}
+                    <div key={module.id} className="card flex items-center gap-4">
+                      <div
+                        className="relative shrink-0 w-16 h-16"
+                        style={{ filter: locked ? "grayscale(1) brightness(0.6)" : `hue-rotate(${hue}deg)` }}
                       >
-                        {done ? "✓" : locked ? "–" : module.order}
-                      </span>
+                        <PhotoSlot shape="rounded" alt="" className="w-16 h-16" />
+                        {done ? (
+                          <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-accent text-black flex items-center justify-center text-[10px] font-bold shadow">
+                            ✓
+                          </span>
+                        ) : null}
+                      </div>
 
                       <div className="flex-1 min-w-0">
                         <p className="text-[10px] uppercase tracking-widest text-neutral-500">
                           Módulo {module.order}
                         </p>
-                        <p className="font-bold text-sm leading-tight">{module.title}</p>
+                        <p className={`font-bold text-sm leading-tight ${locked ? "text-neutral-400" : ""}`}>
+                          {module.title}
+                        </p>
+                        {locked ? (
+                          <p className="text-xs text-neutral-500 mt-1">{lockLabel}</p>
+                        ) : (
+                          <Link
+                            href={`/modules/${module.id}`}
+                            className="text-xs uppercase tracking-widest text-accent hover:opacity-80 transition-opacity mt-1 inline-block"
+                          >
+                            {done ? "Revisar →" : "Empezar →"}
+                          </Link>
+                        )}
                       </div>
-
-                      {locked ? (
-                        <span className="text-[11px] uppercase tracking-widest text-neutral-400 text-right shrink-0 max-w-[6.5rem] leading-tight">
-                          {lockLabel}
-                        </span>
-                      ) : (
-                        <Link
-                          href={`/modules/${module.id}`}
-                          className={done ? "btn-secondary shrink-0" : "btn-primary shrink-0"}
-                        >
-                          {done ? "REVISAR" : "EMPEZAR"}
-                        </Link>
-                      )}
                     </div>
                   );
                 })}
