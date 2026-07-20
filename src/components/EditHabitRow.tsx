@@ -3,7 +3,7 @@
 import { useEffect, useState, useTransition } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { updateHabit, freezeStreak, type HabitFormState } from "@/lib/habit-actions";
-import { HABIT_CATEGORIES, DAYS_BETWEEN_HABIT_EDITS } from "@/lib/constants";
+import { HABIT_CATEGORIES, HABIT_CATEGORY_COLORS, DAYS_BETWEEN_HABIT_EDITS } from "@/lib/constants";
 import { ShareImageButton } from "@/components/ShareImageButton";
 import { drawStreakShareCard } from "@/lib/share-card";
 import { HabitHeatmap } from "@/components/HabitHeatmap";
@@ -139,6 +139,11 @@ export function EditHabitRow({
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center gap-2">
+            <span
+              className="w-1.5 h-1.5 rounded-full shrink-0"
+              style={{ background: HABIT_CATEGORY_COLORS[habit.category as keyof typeof HABIT_CATEGORY_COLORS] ?? "#737373" }}
+              aria-hidden="true"
+            />
             <p className="text-xs uppercase tracking-widest text-neutral-500">{habit.category}</p>
             {isAnchor ? (
               <span className="text-[10px] uppercase tracking-widest text-accent border border-accent/40 rounded-full px-2 py-0.5">

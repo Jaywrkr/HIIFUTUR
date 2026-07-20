@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.87.0",
+    date: "2026-07-19",
+    changes: [
+      "Cada categoría de hábito (Salud, Trabajo, Finanzas, Relaciones, Mentalidad, Disciplina) ahora lleva un punto de color propio, apagado y terroso — la misma regla de color de las referencias de diseño (un tono por contexto, nunca saturado) aplicada a algo que ya existía en la app en vez de decoración nueva.",
+    ],
+  },
+  {
     version: "2.86.0",
     date: "2026-07-19",
     changes: [

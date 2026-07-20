@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useTransition } from "react";
 import { toggleHabitToday } from "@/lib/habit-actions";
 import { STREAK_MILESTONES } from "@/lib/habit-stats";
+import { HABIT_CATEGORY_COLORS } from "@/lib/constants";
 
 const HOLD_MS = 650;
 
@@ -131,6 +132,11 @@ export function HabitCard({
       ) : null}
       <div className="flex-1">
         <div className="flex items-center gap-2 mb-1">
+          <span
+            className="w-1.5 h-1.5 rounded-full shrink-0"
+            style={{ background: HABIT_CATEGORY_COLORS[category as keyof typeof HABIT_CATEGORY_COLORS] ?? "#737373" }}
+            aria-hidden="true"
+          />
           <p className="text-xs uppercase tracking-widest text-neutral-500">{category}</p>
           {isAnchor ? (
             <span className="text-[10px] uppercase tracking-widest text-accent border border-accent/40 rounded-full px-2 py-0.5">
