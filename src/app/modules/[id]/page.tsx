@@ -26,6 +26,7 @@ import { HabitChainGame } from "@/components/HabitChainGame";
 import { CompassGame } from "@/components/CompassGame";
 import { MantraCollectionGame } from "@/components/MantraCollectionGame";
 import { getAnchorHabitOptions } from "@/lib/habit-suggestions";
+import { PhotoSlot } from "@/components/PhotoSlot";
 
 export default async function ModuleDetailPage({ params }: { params: { id: string } }) {
   const user = await requireUser();
@@ -205,9 +206,20 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
           </div>
         ) : null}
 
+        {/* The exercise is the one thing this module actually asks you to
+            do — same visual language as the module list (PhotoSlot icon +
+            title), so it reads as "the session you're in", the way the
+            reference highlights the class you're about to start. */}
         <div className="card">
-          <p className="text-xs uppercase tracking-widest text-accent mb-2">Ejercicio</p>
-          <h2 className="font-bold text-lg mb-2">{courseModule.exerciseTitle}</h2>
+          <div className="flex items-center gap-4 mb-5">
+            <div className="shrink-0 w-14 h-14" style={{ filter: `hue-rotate(${(idx * 47) % 360}deg)` }}>
+              <PhotoSlot shape="rounded" alt="" className="w-14 h-14" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs uppercase tracking-widest text-accent mb-1">Ejercicio</p>
+              <h2 className="font-bold text-lg leading-tight">{courseModule.exerciseTitle}</h2>
+            </div>
+          </div>
           <TheoryText
             text={courseModule.exerciseDescription}
             usedTerms={usedTerms}
@@ -222,16 +234,31 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
           />
         </div>
 
-        {/* Progression thread: where you're going next. */}
-        <div className="rounded-lg border border-accent/40 bg-accent/10 p-5 mt-8">
-          <p className="text-xs uppercase tracking-widest text-accent mb-2">
-            {nextModule ? "Lo que sigue" : "Fin del curso"}
-          </p>
-          {nextModule ? (
-            <p className="font-bold text-base mb-2">
-              Módulo {nextModule.order}: {nextModule.title}
-            </p>
-          ) : null}
+        {/* Progression thread: where you're going next. Same icon+title
+            pattern as the exercise card and the module list — this is a
+            preview, not a link, since the next module stays gated by the
+            execution cycle regardless of what's shown here. */}
+        <div className="rounded-lg border border-accent/40 p-5 mt-8">
+          <div className="flex items-center gap-4 mb-2">
+            {nextModule ? (
+              <div
+                className="shrink-0 w-11 h-11"
+                style={{ filter: `hue-rotate(${(idx + 1) * 47 % 360}deg)` }}
+              >
+                <PhotoSlot shape="rounded" alt="" className="w-11 h-11" />
+              </div>
+            ) : null}
+            <div className="flex-1 min-w-0">
+              <p className="text-xs uppercase tracking-widest text-accent">
+                {nextModule ? "Lo que sigue" : "Fin del curso"}
+              </p>
+              {nextModule ? (
+                <p className="font-bold text-base leading-tight">
+                  Módulo {nextModule.order}: {nextModule.title}
+                </p>
+              ) : null}
+            </div>
+          </div>
           <p className="text-sm text-neutral-300 leading-relaxed">{courseModule.leadsTo}</p>
         </div>
       </main>
