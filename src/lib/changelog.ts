@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.87.0",
+    date: "2026-07-19",
+    changes: [
+      "El jardín zen ahora se ve como un jardín zen real: arena color tierra en vez de líneas blancas sobre negro, piedras con forma irregular y sombra propia, ondas concéntricas alrededor de cada piedra (como grava rastrillada de verdad), líneas peinadas que se abren paso alrededor de las piedras en vez de atravesarlas, y una bandeja de madera enmarcando todo. Al trazar, el rastrillo deja 4 surcos paralelos (como los dientes de un rastrillo real) en vez de una sola línea.",
+    ],
+  },
+  {
     version: "2.86.0",
     date: "2026-07-19",
     changes: [

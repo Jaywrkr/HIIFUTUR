@@ -4,34 +4,188 @@ import { useEffect, useRef, useState } from "react";
 
 type Point = { x: number; y: number; t: number };
 type Stroke = Point[];
+type Stone = { x: number; y: number; r: number; angleOffsets: number[]; hue: number };
+
+const TRAIL_LIFETIME_MS = 5000;
+const TINES = 4;
+const TINE_SPACING = 3.4;
+const RIDGE_SPACING = 7;
+
+const SAND_RIDGE = "rgba(255,255,255,0.16)";
+const SAND_GROOVE = "rgba(0,0,0,0.22)";
 
 /** Small stones scattered on the sand — count and position derived from the
  * user's own habit count, so the garden reflects what they're actually
- * tending, without turning it into another number to optimize. */
-function makeStones(habitCount: number, width: number, height: number) {
+ * tending, without turning it into another number to optimize. Shape is
+ * an irregular polygon (not a perfect ellipse) so it reads as a real rock. */
+function makeStones(habitCount: number, width: number, height: number): Stone[] {
   const count = Math.min(Math.max(habitCount, 1), 5);
-  const stones: { x: number; y: number; r: number }[] = [];
-  // Deterministic pseudo-random spread (no Math.random) so layout doesn't
-  // jump on re-render.
+  const stones: Stone[] = [];
   for (let i = 0; i < count; i++) {
     const seed = (i * 137.5) % 360;
     const rad = (seed * Math.PI) / 180;
-    const cx = width / 2 + Math.cos(rad) * width * 0.28;
+    const cx = width / 2 + Math.cos(rad) * width * 0.26;
     const cy = height / 2 + Math.sin(rad) * height * 0.22;
-    stones.push({ x: cx, y: cy, r: 10 + (i % 3) * 4 });
+    const r = 13 + (i % 3) * 6;
+    const angleOffsets = Array.from({ length: 10 }, () => 0.78 + Math.random() * 0.34);
+    stones.push({ x: cx, y: cy, r, angleOffsets, hue: 28 + Math.random() * 12 });
   }
   return stones;
 }
 
-const TRAIL_LIFETIME_MS = 4000;
-const STROKE_WIDTH = 14;
+function irregularRadius(stone: Stone, angle: number) {
+  const steps = stone.angleOffsets.length;
+  const pos = ((angle / (Math.PI * 2)) % 1) * steps;
+  const i0 = Math.floor(pos) % steps;
+  const i1 = (i0 + 1) % steps;
+  const t = pos - Math.floor(pos);
+  const factor = stone.angleOffsets[i0] * (1 - t) + stone.angleOffsets[i1] * t;
+  return stone.r * factor;
+}
+
+function drawStone(ctx: CanvasRenderingContext2D, stone: Stone) {
+  // Soft cast shadow on the sand first, offset toward "down-right" as if lit
+  // from the upper left — the one light-direction cue that sells volume.
+  ctx.save();
+  ctx.translate(stone.x + stone.r * 0.22, stone.y + stone.r * 0.3);
+  ctx.filter = "blur(3px)";
+  ctx.fillStyle = "rgba(20,15,8,0.35)";
+  ctx.beginPath();
+  for (let a = 0; a <= Math.PI * 2 + 0.01; a += Math.PI / 24) {
+    const rad = irregularRadius(stone, a) * 0.95;
+    const x = Math.cos(a) * rad;
+    const y = Math.sin(a) * rad * 0.75;
+    if (a === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+
+  // The stone itself: irregular rounded polygon, radial gradient for volume,
+  // muted warm gray-brown — real river-stone coloring, not a UI accent.
+  ctx.save();
+  ctx.translate(stone.x, stone.y);
+  ctx.beginPath();
+  for (let a = 0; a <= Math.PI * 2 + 0.01; a += Math.PI / 24) {
+    const rad = irregularRadius(stone, a);
+    const x = Math.cos(a) * rad;
+    const y = Math.sin(a) * rad * 0.82;
+    if (a === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+
+  const grad = ctx.createRadialGradient(-stone.r * 0.35, -stone.r * 0.35, 1, 0, 0, stone.r * 1.3);
+  grad.addColorStop(0, `hsl(${stone.hue}, 14%, 46%)`);
+  grad.addColorStop(0.6, `hsl(${stone.hue}, 12%, 34%)`);
+  grad.addColorStop(1, `hsl(${stone.hue}, 14%, 22%)`);
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // A faint cool rim on the shadow side, warm highlight on the lit side —
+  // cheap but effective volume cue on a flat canvas fill.
+  ctx.strokeStyle = "rgba(0,0,0,0.25)";
+  ctx.lineWidth = 1;
+  ctx.stroke();
+  ctx.restore();
+}
+
+/** The static base layer: sand grain, concentric ripples radiating from each
+ * stone (like real raked gravel around a rock), and combed straight lines
+ * filling the open field, bending out of the way of every stone instead of
+ * cutting through it. Rendered once per resize, not per frame. */
+function paintBase(canvas: HTMLCanvasElement, width: number, height: number, stones: Stone[]) {
+  const ctx2d = canvas.getContext("2d");
+  if (!ctx2d) return;
+  const ctx: CanvasRenderingContext2D = ctx2d;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  // Sand base with a soft vignette — light gathers toward the center.
+  const bg = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, Math.max(width, height) * 0.7);
+  bg.addColorStop(0, "#cdb98a");
+  bg.addColorStop(1, "#b8a274");
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, width, height);
+
+  function blockedByStone(x: number, y: number) {
+    return stones.some((s) => {
+      const maxRing = s.r + Math.min(width, height) * 0.16;
+      return Math.hypot(x - s.x, (y - s.y) / 0.82) < maxRing;
+    });
+  }
+
+  function ridgeLine(x0: number, y0: number, x1: number, y1: number) {
+    ctx.strokeStyle = SAND_RIDGE;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x1, y1);
+    ctx.stroke();
+    ctx.strokeStyle = SAND_GROOVE;
+    ctx.beginPath();
+    ctx.moveTo(x0, y0 + 1.6);
+    ctx.lineTo(x1, y1 + 1.6);
+    ctx.stroke();
+  }
+
+  // Concentric ripples around each stone.
+  for (const stone of stones) {
+    const maxRing = stone.r + Math.min(width, height) * 0.16;
+    for (let radius = stone.r + 5; radius < maxRing; radius += RIDGE_SPACING) {
+      const fade = 1 - (radius - stone.r) / (maxRing - stone.r);
+      ctx.globalAlpha = Math.max(0, fade);
+      ctx.beginPath();
+      ctx.ellipse(stone.x, stone.y, radius, radius * 0.82, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = SAND_RIDGE;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.ellipse(stone.x, stone.y + 1.3, radius, radius * 0.82, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = SAND_GROOVE;
+      ctx.stroke();
+    }
+  }
+  ctx.globalAlpha = 1;
+
+  // Combed straight lines filling the rest of the field, skipping any
+  // segment that falls inside a stone's ripple zone.
+  const step = 3;
+  for (let y = 6; y < height; y += RIDGE_SPACING) {
+    let segStart: number | null = null;
+    for (let x = 0; x <= width; x += step) {
+      const blocked = blockedByStone(x, y);
+      if (!blocked && segStart === null) segStart = x;
+      if (blocked && segStart !== null) {
+        ridgeLine(segStart, y, x, y);
+        segStart = null;
+      }
+    }
+    if (segStart !== null) ridgeLine(segStart, y, width, y);
+  }
+
+  // Grain: sparse fine speckle for texture, subtle enough to read as sand
+  // rather than noise.
+  const grains = Math.floor((width * height) / 900);
+  for (let i = 0; i < grains; i++) {
+    const x = Math.random() * width;
+    const y = Math.random() * height;
+    ctx.fillStyle = Math.random() > 0.5 ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.08)";
+    ctx.fillRect(x, y, 1, 1);
+  }
+
+  for (const stone of stones) drawStone(ctx, stone);
+}
 
 export function ZenGarden({ habitCount, onClose }: { habitCount: number; onClose: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const baseCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const strokesRef = useRef<Stroke[]>([]);
   const drawingRef = useRef(false);
-  const stonesRef = useRef<{ x: number; y: number; r: number }[]>([]);
   const reducedMotionRef = useRef(false);
   const [cleared, setCleared] = useState(false);
 
@@ -47,49 +201,34 @@ export function ZenGarden({ habitCount, onClose }: { habitCount: number; onClose
     const ctx: CanvasRenderingContext2D = ctx2d;
 
     let raf = 0;
+    let widthCss = 0;
+    let heightCss = 0;
 
     function resize() {
       if (!canvas || !container) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const { width, height } = container.getBoundingClientRect();
+      widthCss = width;
+      heightCss = height;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      stonesRef.current = makeStones(habitCount, width, height);
+
+      const base = document.createElement("canvas");
+      const stones = makeStones(habitCount, width, height);
+      paintBase(base, width, height, stones);
+      baseCanvasRef.current = base;
     }
     resize();
     window.addEventListener("resize", resize);
 
     function draw() {
-      if (!canvas) return;
-      const { width, height } = canvas.getBoundingClientRect();
-      ctx.clearRect(0, 0, width, height);
+      if (!canvas || !baseCanvasRef.current) return;
+      ctx.clearRect(0, 0, widthCss, heightCss);
+      ctx.drawImage(baseCanvasRef.current, 0, 0, widthCss, heightCss);
 
-      // Raked base lines — the "sand" texture.
-      ctx.strokeStyle = "rgba(255,255,255,0.045)";
-      ctx.lineWidth = 1;
-      for (let y = 10; y < height; y += 9) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
-      }
-
-      // Stones.
-      for (const s of stonesRef.current) {
-        const grad = ctx.createRadialGradient(s.x - s.r * 0.3, s.y - s.r * 0.3, 1, s.x, s.y, s.r);
-        grad.addColorStop(0, "rgba(255,255,255,0.35)");
-        grad.addColorStop(1, "rgba(255,255,255,0.08)");
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.ellipse(s.x, s.y, s.r, s.r * 0.8, 0, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // Raked grooves from user strokes. With reduced motion, grooves stay
-      // put (no auto-fading animation) until "alisar la arena" is pressed.
       const now = performance.now();
       if (!reducedMotionRef.current) {
         strokesRef.current = strokesRef.current.filter(
@@ -104,20 +243,35 @@ export function ZenGarden({ habitCount, onClose }: { habitCount: number; onClose
           const age = now - p1.t;
           const life = reducedMotionRef.current ? 1 : Math.max(0, 1 - age / TRAIL_LIFETIME_MS);
           if (life <= 0) continue;
-          ctx.strokeStyle = `rgba(245,245,245,${0.22 * life})`;
-          ctx.lineWidth = STROKE_WIDTH;
-          ctx.lineCap = "round";
-          ctx.beginPath();
-          ctx.moveTo(p0.x, p0.y);
-          ctx.lineTo(p1.x, p1.y);
-          ctx.stroke();
 
-          ctx.strokeStyle = `rgba(0,0,0,${0.18 * life})`;
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.moveTo(p0.x, p0.y - 3);
-          ctx.lineTo(p1.x, p1.y - 3);
-          ctx.stroke();
+          const dx = p1.x - p0.x;
+          const dy = p1.y - p0.y;
+          const len = Math.hypot(dx, dy) || 1;
+          const nx = -dy / len;
+          const ny = dx / len;
+
+          // A rake has teeth: draw several parallel grooves per stroke
+          // instead of one fat line.
+          for (let t = 0; t < TINES; t++) {
+            const offset = (t - (TINES - 1) / 2) * TINE_SPACING;
+            const ox = nx * offset;
+            const oy = ny * offset;
+
+            ctx.strokeStyle = `rgba(60,44,24,${0.32 * life})`;
+            ctx.lineWidth = 2.2;
+            ctx.lineCap = "round";
+            ctx.beginPath();
+            ctx.moveTo(p0.x + ox, p0.y + oy + 1);
+            ctx.lineTo(p1.x + ox, p1.y + oy + 1);
+            ctx.stroke();
+
+            ctx.strokeStyle = `rgba(255,246,224,${0.28 * life})`;
+            ctx.lineWidth = 1.4;
+            ctx.beginPath();
+            ctx.moveTo(p0.x + ox, p0.y + oy);
+            ctx.lineTo(p1.x + ox, p1.y + oy);
+            ctx.stroke();
+          }
         }
       }
 
@@ -172,8 +326,18 @@ export function ZenGarden({ habitCount, onClose }: { habitCount: number; onClose
           Cerrar
         </button>
       </div>
-      <div ref={containerRef} className="relative flex-1 touch-none select-none overflow-hidden">
-        <canvas ref={canvasRef} className="absolute inset-0 h-full w-full cursor-crosshair" />
+      <div
+        className="relative flex-1 m-3 sm:m-6 rounded-lg overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(120deg, #6b4a30, #543823 50%, #6b4a30), repeating-linear-gradient(98deg, rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 2px, transparent 2px, transparent 7px)",
+          padding: "14px",
+          boxShadow: "inset 0 2px 6px rgba(0,0,0,0.5)",
+        }}
+      >
+        <div ref={containerRef} className="relative h-full w-full touch-none select-none overflow-hidden rounded-md">
+          <canvas ref={canvasRef} className="absolute inset-0 h-full w-full cursor-crosshair" />
+        </div>
       </div>
       <div className="px-5 py-4 border-t border-line shrink-0 flex justify-center">
         <button
