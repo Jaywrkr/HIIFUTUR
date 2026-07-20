@@ -71,16 +71,28 @@ export const HABIT_CATEGORIES = [
   { id: "disciplina", label: "Disciplina" },
 ] as const;
 
-/** One muted, earthy tone per category — never saturated/primary, same rule
- * Open uses for its editorial color cards. A small dot next to the category
- * label, not a fill or a badge — color marks context, it doesn't shout. */
+/** The app's one named accent palette — muted, earthy, never saturated,
+ * same rule Open uses for its editorial color cards. Defined once here so
+ * every screen (hábitos, Wheel of Life, cuestionarios) draws from the same
+ * six tones instead of each inventing its own. */
+export const BRAND_PALETTE = {
+  oliva: "#9AA07A",
+  mostaza: "#D0A24A",
+  coral: "#D1948A",
+  cielo: "#8FB0C9",
+  salvia: "#A7C08A",
+  terracota: "#B5654A",
+} as const;
+
+/** One color per category, all the way down — a small dot next to a label,
+ * never a fill or a badge. Color marks context, it doesn't shout. */
 export const HABIT_CATEGORY_COLORS: Record<(typeof HABIT_CATEGORIES)[number]["id"], string> = {
-  salud: "#878B6C",
-  trabajo: "#6E7C8C",
-  finanzas: "#C99A3E",
-  relaciones: "#C98F80",
-  mentalidad: "#8C82A0",
-  disciplina: "#B5624A",
+  salud: BRAND_PALETTE.oliva,
+  trabajo: BRAND_PALETTE.cielo,
+  finanzas: BRAND_PALETTE.mostaza,
+  relaciones: BRAND_PALETTE.coral,
+  mentalidad: BRAND_PALETTE.salvia,
+  disciplina: BRAND_PALETTE.terracota,
 };
 
 export const MAX_HABITS = 5;
@@ -106,6 +118,15 @@ export const WHEEL_AREA_TO_CATEGORY: Record<string, (typeof HABIT_CATEGORIES)[nu
   descanso: "salud",
   crecimiento_personal: "mentalidad",
 };
+
+/** The color for a Wheel of Life area, inherited from its habit category —
+ * "Nutrición", "Ejercicio" y "Descanso" comparten el oliva de Salud a
+ * propósito: son la misma familia, y un color por cada una de las 10 áreas
+ * (contra solo 6 tonos definidos) hubiera forzado repeticiones sin sentido. */
+export function colorForWheelArea(areaId: string): string {
+  const category = WHEEL_AREA_TO_CATEGORY[areaId] ?? "disciplina";
+  return HABIT_CATEGORY_COLORS[category];
+}
 
 /** La cifra real detrás de EJECUTA — una sola redacción, usada en landing y
  * en el Módulo 1, para no mantener dos versiones del mismo dato. */

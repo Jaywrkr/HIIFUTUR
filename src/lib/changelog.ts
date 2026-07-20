@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.94.0",
+    date: "2026-07-20",
+    changes: [
+      "Se formaliza la paleta de marca (Oliva, Mostaza, Coral, Cielo, Salvia, Terracota): cada categoría de hábito tiene ahora un color fijo tomado de esa paleta, y el Wheel of Life se pinta con el mismo color que su categoría asociada — el punto activo, el radar y los sliders de la medición mensual. El cuestionario de cada módulo también usa esos tonos en los puntos junto a cada opción de respuesta, en vez de un color genérico.",
+    ],
+  },
+  {
     version: "2.93.0",
     date: "2026-07-20",
     changes: [

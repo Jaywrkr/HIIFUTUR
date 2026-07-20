@@ -5,6 +5,12 @@ import { useFormStatus } from "react-dom";
 import { completeModule } from "@/lib/module-actions";
 import type { ExerciseField } from "@/lib/modules-content";
 import type { HabitSuggestion } from "@/lib/habit-suggestions";
+import { HABIT_CATEGORY_COLORS } from "@/lib/constants";
+
+// Same muted, earthy palette as the habit category dots — reused here so a
+// question with multiple choices reads as "pick one" the way the reference
+// picker does (a row of colored circles), without inventing a second palette.
+const OPTION_COLORS = Object.values(HABIT_CATEGORY_COLORS);
 
 function SubmitButton({ shaking }: { shaking: boolean }) {
   const { pending } = useFormStatus();
@@ -176,11 +182,16 @@ export function ModuleExerciseForm({
             </div>
           ) : (
             <div className="flex flex-col gap-2 mt-1">
-              {field.options?.map((option) => (
+              {field.options?.map((option, i) => (
                 <label
                   key={option.value}
                   className="flex items-start gap-3 border border-line px-3 py-2 text-sm text-neutral-300 has-[:checked]:border-accent has-[:checked]:text-accent cursor-pointer"
                 >
+                  <span
+                    className="w-2.5 h-2.5 rounded-full shrink-0 mt-1.5"
+                    style={{ background: OPTION_COLORS[i % OPTION_COLORS.length] }}
+                    aria-hidden="true"
+                  />
                   <input
                     type="radio"
                     name={field.id}

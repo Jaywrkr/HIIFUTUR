@@ -15,6 +15,7 @@ import { computeLongestStreak, STREAK_MILESTONES } from "@/lib/habit-stats";
 import { computeLevel, POINTS_PER_CHECK } from "@/lib/leveling";
 import { daysLeftInTrial } from "@/lib/access";
 import { SUBSCRIPTION_PLANS, formatUsd } from "@/lib/subscription-plans";
+import { BRAND_PALETTE } from "@/lib/constants";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
@@ -68,7 +69,7 @@ export default async function CuentaPage() {
             matching the reference. */}
         <div
           className="rounded-lg mb-6 p-6 overflow-hidden"
-          style={{ background: "#878B6C", color: "#171712" }}
+          style={{ background: BRAND_PALETTE.oliva, color: "#171712" }}
         >
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
