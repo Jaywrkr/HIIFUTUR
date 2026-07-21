@@ -84,19 +84,25 @@ export async function getAchievementStats(user: {
 export async function evaluateAndGrantAchievements(
   userId: string,
   stats: AchievementStats
-): Promise<{ progress: AchievementProgress[]; newlyUnlocked: AchievementProgress[] }> {
+): Promise<{ progress: AchievementProgress[]; newlyUnlocked: AchievementProgress[]; bonusPoints: number }> {
   const existingRows = await db
     .select()
     .from(userAchievements)
     .where(eq(userAchievements.userId, userId));
   const existingKeys = new Set(existingRows.map((r) => `${r.achievementId}:${r.tier}`));
 
+  // One celebration card per achievement, even if a single evaluation jumps
+  // two tiers at once (e.g. a first visit long after crossing both
+  // thresholds) — the highest tier reached is what actually matters to see,
+  // not an intermediate one that was never really "just" earned.
   const newlyUnlocked: AchievementProgress[] = [];
   let bonusPoints = 0;
 
   for (const achievement of ACHIEVEMENTS) {
     const value = Number(stats[achievement.stat]);
     const tier = earnedTier(achievement.tiers, value);
+    let crossedNewGround = false;
+
     for (const t of achievement.tiers) {
       if (t.tier > tier) continue;
       const key = `${achievement.id}:${t.tier}`;
@@ -107,7 +113,12 @@ export async function evaluateAndGrantAchievements(
         .values({ userId, achievementId: achievement.id, tier: t.tier })
         .onConflictDoNothing();
       bonusPoints += t.points;
-      newlyUnlocked.push({ achievement, earnedTier: t.tier, currentValue: value, nextTier: null });
+      crossedNewGround = true;
+    }
+
+    if (crossedNewGround) {
+      const nextTier = achievement.tiers.find((t) => t.tier > tier) ?? null;
+      newlyUnlocked.push({ achievement, earnedTier: tier, currentValue: value, nextTier });
     }
   }
 
@@ -120,5 +131,5 @@ export async function evaluateAndGrantAchievements(
       .where(eq(users.id, userId));
   }
 
-  return { progress: getAchievementsProgress(stats), newlyUnlocked };
+  return { progress: getAchievementsProgress(stats), newlyUnlocked, bonusPoints };
 }
