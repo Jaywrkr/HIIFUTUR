@@ -29,11 +29,13 @@ import { ArrivalRitual } from "@/components/ArrivalRitual";
 import { ResetReentryRitual } from "@/components/ResetReentryRitual";
 import { CycleCompletionRitual } from "@/components/CycleCompletionRitual";
 import { ModuleUnlockedRitual } from "@/components/ModuleUnlockedRitual";
+import { AchievementUnlockedRitual } from "@/components/AchievementUnlockedRitual";
 import { PullToRefresh } from "@/components/PullToRefresh";
 import { hasActiveAccess, daysLeftInTrial } from "@/lib/access";
 import { IconSprout, IconFlame } from "@/components/icons";
 import { SubscriptionActivatedRitual } from "@/components/SubscriptionActivatedRitual";
 import { SUBSCRIPTION_PLANS, formatUsd } from "@/lib/subscription-plans";
+import { getAchievementStats, evaluateAndGrantAchievements } from "@/lib/achievement-actions";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
@@ -120,6 +122,22 @@ export default async function DashboardPage({
   const firstModuleDone = completedIds.has(MODULES[0].id);
 
   const bestStreak = habitsWithData.reduce((max, h) => Math.max(max, h.streak), 0);
+
+  // Achievements are evaluated (and granted) on every Hoy load, before the
+  // level is computed below, so newly-earned points already count toward
+  // it this same render — independent of ritual priority, so the points
+  // land immediately even if a bigger moment (subscription, reset, cycle)
+  // takes the celebration slot this visit. Only the celebration is deferred,
+  // same as module unlocks.
+  const achievementStats = await getAchievementStats(user);
+  const { newlyUnlocked: newlyUnlockedAchievements, bonusPoints } = await evaluateAndGrantAchievements(
+    user.id,
+    achievementStats
+  );
+  if (bonusPoints > 0) {
+    user.points += bonusPoints;
+  }
+
   const { level, pointsIntoLevel, nextLevelThreshold } = computeLevel(user.points);
   const levelPct = nextLevelThreshold === 0 ? 100 : Math.round((pointsIntoLevel / nextLevelThreshold) * 100);
 
@@ -148,6 +166,13 @@ export default async function DashboardPage({
       .where(eq(users.id, user.id));
   }
 
+  const showAchievementRitual =
+    !justActivated &&
+    !cycle.wasReset &&
+    !cycle.wasJustCompleted &&
+    !showModuleUnlockRitual &&
+    newlyUnlockedAchievements.length > 0;
+
   return (
     <>
       {justActivated ? (
@@ -161,6 +186,8 @@ export default async function DashboardPage({
         <CycleCompletionRitual />
       ) : showModuleUnlockRitual ? (
         <ModuleUnlockedRitual moduleId={nextModule!.id} order={nextModule!.order} title={nextModule!.title} />
+      ) : showAchievementRitual ? (
+        <AchievementUnlockedRitual unlocked={newlyUnlockedAchievements} />
       ) : (
         <ArrivalRitual mantra={getMantraOfTheDay()} />
       )}

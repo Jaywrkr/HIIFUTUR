@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.98.0",
+    date: "2026-07-21",
+    changes: [
+      "Los Logros ahora se celebran al instante: cuando entras a Hoy y acabas de cruzar un nivel nuevo, se muestra una pantalla completa con esa tarjeta — si desbloqueaste varios a la vez, puedes pasar de uno a otro antes de cerrar. Cede el paso a cualquier ritual de mayor prioridad ese mismo día (suscripción, reset, cierre de ciclo, módulo desbloqueado), igual que ya hacía la felicitación de módulos.",
+    ],
+  },
+  {
     version: "2.97.0",
     date: "2026-07-21",
     changes: [
