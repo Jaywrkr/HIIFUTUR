@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.97.0",
+    date: "2026-07-21",
+    changes: [
+      "Nuevo: Logros. 6 logros con hasta 3 niveles cada uno, medidos contra datos reales (racha más larga, módulos completados, mejora en el Wheel of Life, hábitos activos a la vez, congelamientos usados, ciclo de 30 días sostenido) — no son insignias decorativas, cada nivel suma puntos reales a tu nivel. El diseño de la tarjeta mezcla la estructura de las referencias que compartimos (arte arriba, insignia de rareza, progreso por puntos) con el sistema visual propio de EJECUTA: Geist Mono, bordes en vez de brillos, y el mismo PhotoSlot con hue-rotate que ya usan los módulos.",
+    ],
+  },
+  {
     version: "2.96.0",
     date: "2026-07-21",
     changes: [
