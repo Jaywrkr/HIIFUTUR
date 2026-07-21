@@ -242,7 +242,6 @@ export default async function DashboardPage({
                     key={habit.id}
                     id={habit.id}
                     name={habit.name}
-                    description={habit.description}
                     category={habit.category}
                     streak={streak}
                     doneToday={doneToday}

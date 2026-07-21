@@ -10,7 +10,6 @@ const HOLD_MS = 650;
 export function HabitCard({
   id,
   name,
-  description,
   category,
   streak,
   doneToday,
@@ -19,7 +18,6 @@ export function HabitCard({
 }: {
   id: string;
   name: string;
-  description: string;
   category: string;
   streak: number;
   doneToday: boolean;
@@ -120,7 +118,7 @@ export function HabitCard({
   }
 
   return (
-    <div className="card flex items-center justify-between gap-4 relative overflow-hidden">
+    <div className="border border-line bg-surface rounded-lg p-4 flex items-center justify-between gap-3 relative overflow-hidden">
       {milestone ? (
         <div
           role="status"
@@ -144,11 +142,10 @@ export function HabitCard({
             </span>
           ) : null}
         </div>
-        <p className="font-bold text-lg">{name}</p>
-        <p className="muted mt-1">{description}</p>
+        <p className="font-bold text-base">{name}</p>
         <p
           aria-live="polite"
-          className={`text-xs mt-2 uppercase tracking-widest ${streakAtRisk ? "text-amber-400" : "text-accent"}`}
+          className={`text-xs mt-1.5 uppercase tracking-widest ${streakAtRisk ? "text-amber-400" : "text-accent"}`}
         >
           Racha: {streak} {streak === 1 ? "día" : "días"}
           {streakAtRisk ? " · se te va a ir el día" : ""}
@@ -158,7 +155,7 @@ export function HabitCard({
         ) : null}
       </div>
 
-      <div className="flex flex-col items-center gap-1.5 shrink-0">
+      <div className="flex flex-col items-center gap-1 shrink-0">
         <button
           disabled={pending}
           onPointerDown={startHold}
@@ -172,7 +169,7 @@ export function HabitCard({
             WebkitUserSelect: "none",
             WebkitTouchCallout: "none",
           }}
-          className={`relative h-14 w-14 overflow-hidden border rounded-lg flex items-center justify-center text-lg transition-transform duration-200 ${
+          className={`relative h-11 w-11 overflow-hidden border rounded-lg flex items-center justify-center text-sm transition-transform duration-200 ${
             displayDone ? "border-accent bg-accent text-black" : "border-line text-neutral-500"
           } ${justCompleted ? "scale-110" : "scale-100"}`}
           aria-label={displayDone ? "Deshacer hábito de hoy" : "Mantén presionado para marcar hábito de hoy"}
@@ -189,8 +186,8 @@ export function HabitCard({
           )}
           <span className="relative z-10">{displayDone ? "X" : ""}</span>
         </button>
-        <span className="text-[10px] uppercase tracking-widest text-neutral-400 text-center leading-tight">
-          {displayDone ? "toca para deshacer" : "mantén para marcar"}
+        <span className="text-[9px] uppercase tracking-widest text-neutral-500 text-center leading-tight">
+          {displayDone ? "deshacer" : "mantén"}
         </span>
       </div>
     </div>

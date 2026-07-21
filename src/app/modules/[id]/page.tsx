@@ -120,13 +120,6 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
           </div>
         ) : null}
 
-        <blockquote className="border-l-2 border-l-accent pl-4 mb-8">
-          <p className="text-sm leading-relaxed text-neutral-300 italic">
-            {courseModule.narrative}
-          </p>
-          <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
-        </blockquote>
-
         <div className="mb-8">
           <div className="flex flex-col gap-4">
             {courseModule.theory.map((p, i) => (

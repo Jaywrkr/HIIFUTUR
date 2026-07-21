@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { FeedbackWidget } from "@/components/FeedbackWidget";
 
 const links = [
   { href: "/dashboard", label: "HOY" },
@@ -63,7 +62,10 @@ export function Nav() {
           </div>
         </div>
       </nav>
-      <FeedbackWidget />
+
+      {/* FeedbackWidget pausado por ahora — quitado de la UI a pedido del
+          dueño. El componente y la ruta de envío siguen intactos: para
+          reactivarlo, volver a montar <FeedbackWidget /> aquí. */}
 
       {/* Mobile: fixed bottom tab bar replaces the old hamburger menu — one
           tap to the 4 screens people open daily, instead of opening a menu

@@ -3,6 +3,15 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.99.0",
+    date: "2026-07-21",
+    changes: [
+      "Menos texto y menos peso visual en Hoy: cada hábito pierde su descripción (ya la ves en Hábitos) y el botón de marcar baja de tamaño — la tarjeta entera se siente más liviana en móvil, que es donde se usa a diario.",
+      "El interior de cada módulo ya no abre con la cita de Jay entre comillas — va directo del orbe al contenido del módulo.",
+      "Se quita el botón de Feedback de toda la app (pausado, no borrado — el componente y el envío siguen intactos por si se reactiva).",
+    ],
+  },
+  {
     version: "2.98.0",
     date: "2026-07-21",
     changes: [
