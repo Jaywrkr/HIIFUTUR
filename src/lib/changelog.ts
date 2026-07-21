@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.95.0",
+    date: "2026-07-21",
+    changes: [
+      "El paso 2 del onboarding (medir tu Wheel of Life inicial) ya no desperdicia media pantalla en desktop — pasa a 3 columnas y usa el ancho disponible en vez de quedarse en una columna angosta centrada. De paso se corrige la causa real: la tarjeta de autenticación (login, registro, onboarding) tenía su ancho fuera de la capa de componentes de Tailwind, así que ningún override de ancho que se le pusiera encima funcionaba de verdad — quedaba silenciosamente ignorado.",
+      "La entrada a cada módulo suma un orbe grande (el mismo círculo con degradado que ya usan los thumbnails de la lista de Módulos) antes del título — la sensación de 'sesión que estás por empezar' de la referencia de diseño, sin inventar audio o instructor que la app no tiene.",
+    ],
+  },
+  {
     version: "2.94.0",
     date: "2026-07-20",
     changes: [

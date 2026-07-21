@@ -35,8 +35,14 @@ select:focus-visible,
 .auth-shell {
   @apply min-h-screen flex items-center justify-center px-4 py-12 bg-ink;
 }
-.auth-card {
-  @apply w-full max-w-sm border border-line rounded-lg p-8 bg-surface;
+/* In the Tailwind components layer (not left bare) so a page can override
+ * max-w-sm with its own utility class — unlayered CSS always wins over any
+ * layered utility regardless of source order, which silently broke every
+ * width override attempted on this class before (onboarding step 2). */
+@layer components {
+  .auth-card {
+    @apply w-full max-w-sm border border-line rounded-lg p-8 bg-surface;
+  }
 }
 .auth-title {
   @apply text-2xl tracking-tight font-thin mb-1;
