@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
 import { PageHeader } from "@/components/PageHeader";
-import { AchievementCard } from "@/components/AchievementCard";
+import { AchievementsGallery } from "@/components/AchievementsGallery";
 import { requireUser } from "@/lib/session";
 import { getUserById, getAccessStatus } from "@/lib/queries";
 import { hasActiveAccess } from "@/lib/access";
@@ -33,11 +33,7 @@ export default async function LogrosPage() {
           subtitle="No son insignias por usar la app — son evidencia de lo que ya sostuviste. Cada uno tiene hasta 3 niveles, y suben con datos reales, no con calendario."
         />
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {progress.map((p, i) => (
-            <AchievementCard key={p.achievement.id} progress={p} index={i} />
-          ))}
-        </div>
+        <AchievementsGallery progress={progress} />
       </main>
     </>
   );

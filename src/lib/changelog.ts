@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.100.0",
+    date: "2026-07-21",
+    changes: [
+      "Logros se vuelve interactivo: cada tarjeta se levanta un poco al pasar el mouse, y tocarla abre una vista grande con la tarjeta inclinada, una barra de progreso real hacia el siguiente nivel (ej. \"15/30 días\"), y flechas para pasar de un logro a otro sin cerrar — o Escape / click afuera para salir.",
+    ],
+  },
+  {
     version: "2.99.0",
     date: "2026-07-21",
     changes: [
