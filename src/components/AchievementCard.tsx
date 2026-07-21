@@ -2,7 +2,7 @@ import { PhotoSlot } from "@/components/PhotoSlot";
 import { IconLock } from "@/components/icons";
 import type { AchievementProgress } from "@/lib/achievements";
 
-const TIER_LABELS: Record<number, string> = { 1: "Común", 2: "Raro", 3: "Legendario" };
+export const TIER_LABELS: Record<number, string> = { 1: "Común", 2: "Raro", 3: "Legendario" };
 
 /**
  * The card object from the reference (art up top, title, flavor line, a
