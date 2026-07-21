@@ -28,11 +28,15 @@ import { getMantraOfTheDay } from "@/lib/mantras";
 import { ArrivalRitual } from "@/components/ArrivalRitual";
 import { ResetReentryRitual } from "@/components/ResetReentryRitual";
 import { CycleCompletionRitual } from "@/components/CycleCompletionRitual";
+import { ModuleUnlockedRitual } from "@/components/ModuleUnlockedRitual";
 import { PullToRefresh } from "@/components/PullToRefresh";
 import { hasActiveAccess, daysLeftInTrial } from "@/lib/access";
 import { IconSprout, IconFlame } from "@/components/icons";
 import { SubscriptionActivatedRitual } from "@/components/SubscriptionActivatedRitual";
 import { SUBSCRIPTION_PLANS, formatUsd } from "@/lib/subscription-plans";
+import { db } from "@/db";
+import { users } from "@/db/schema";
+import { eq } from "drizzle-orm";
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
@@ -125,6 +129,25 @@ export default async function DashboardPage({
     user.subscriptionPlan &&
     user.subscriptionPriceTier;
 
+  // A module just became reachable (sequential + execution gate both
+  // cleared) and this account hasn't been congratulated for it yet. Only
+  // fires for modules 2+ — module 1 is available from day one, so "unlocked"
+  // has no meaning for it. Deferred to the lowest-priority ritual slot: a
+  // subscription/reset/cycle moment that same visit takes precedence, and
+  // this simply shows next time instead of being lost.
+  const nextModuleJustUnlocked =
+    !!nextModule && nextModuleIdx > 0 && !nextModuleGateLocked &&
+    user.lastUnlockedModuleNotifiedId !== nextModule.id;
+  const showModuleUnlockRitual =
+    !justActivated && !cycle.wasReset && !cycle.wasJustCompleted && nextModuleJustUnlocked;
+
+  if (showModuleUnlockRitual) {
+    await db
+      .update(users)
+      .set({ lastUnlockedModuleNotifiedId: nextModule!.id })
+      .where(eq(users.id, user.id));
+  }
+
   return (
     <>
       {justActivated ? (
@@ -136,6 +159,8 @@ export default async function DashboardPage({
         <ResetReentryRitual />
       ) : cycle.wasJustCompleted ? (
         <CycleCompletionRitual />
+      ) : showModuleUnlockRitual ? (
+        <ModuleUnlockedRitual moduleId={nextModule!.id} order={nextModule!.order} title={nextModule!.title} />
       ) : (
         <ArrivalRitual mantra={getMantraOfTheDay()} />
       )}

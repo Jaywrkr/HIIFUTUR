@@ -187,6 +187,7 @@ EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 UPDATE "users" SET "trial_ends_at" = now() + interval '7 days' WHERE "trial_ends_at" IS NULL;
+ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "last_unlocked_module_notified_id" text;
 `;
 
 export async function GET(request: NextRequest) {

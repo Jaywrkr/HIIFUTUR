@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.96.0",
+    date: "2026-07-21",
+    changes: [
+      "Cuando entras un día y hay un módulo nuevo disponible (porque sostuviste suficientes días reales), la app te lo dice al instante, a manera de felicitación — en vez de que te enteres solo si entras a Módulos por tu cuenta. Se muestra una sola vez por módulo, la primera vez que abres Hoy después de que se desbloqueó.",
+    ],
+  },
+  {
     version: "2.95.0",
     date: "2026-07-21",
     changes: [
