@@ -83,11 +83,11 @@ function AchievementDetail({
       role="dialog"
       aria-modal="true"
       aria-label={achievement.title}
-      className="fixed inset-0 z-50 bg-ink/95 flex items-center justify-center px-6 py-10 overflow-y-auto"
+      className="fixed inset-0 z-50 bg-ink flex items-center justify-center px-6 py-10 overflow-y-auto"
       onClick={onClose}
     >
       <div
-        className="absolute inset-0 -z-10 opacity-25 pointer-events-none"
+        className="absolute inset-0 -z-10 opacity-[0.12] pointer-events-none"
         style={{
           background: `radial-gradient(circle at 50% 45%, ${achievement.color}, transparent 60%)`,
           filter: "blur(80px)",
