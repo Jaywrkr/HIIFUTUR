@@ -91,6 +91,16 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
     <>
       <Nav />
       <main className="app-main max-w-3xl">
+        {/* Momento de entrada al módulo: un orbe grande (mismo PhotoSlot y
+            hue-rotate por índice que ya usan la lista de Módulos y las
+            miniaturas de esta misma página) antes del título — la sensación
+            de "sesión que estás por empezar" de la referencia, sin fingir
+            audio o un instructor que la app no tiene. */}
+        <div className="flex justify-center mb-6">
+          <div className="w-36 h-36 md:w-44 md:h-44" style={{ filter: `hue-rotate(${(idx * 47) % 360}deg)` }}>
+            <PhotoSlot shape="circle" alt="" className="w-full h-full" />
+          </div>
+        </div>
         <p className="kicker">
           {phase?.title} · MÓDULO {courseModule.order}
         </p>
