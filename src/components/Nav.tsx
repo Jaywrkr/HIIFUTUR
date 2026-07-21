@@ -11,6 +11,7 @@ const links = [
   { href: "/modules", label: "MÓDULOS" },
   { href: "/habits", label: "HÁBITOS" },
   { href: "/wheel", label: "WHEEL OF LIFE" },
+  { href: "/logros", label: "LOGROS" },
   { href: "/leaderboard", label: "LEADERBOARD" },
   { href: "/cuenta", label: "CUENTA" },
 ];
@@ -26,6 +27,7 @@ const TAB_ITEMS = [
 ];
 
 const MORE_ITEMS = [
+  { href: "/logros", label: "Logros" },
   { href: "/leaderboard", label: "Leaderboard" },
   { href: "/cuenta", label: "Cuenta" },
 ];
@@ -93,7 +95,10 @@ export function Nav() {
             aria-expanded={moreOpen}
             onClick={() => setMoreOpen((v) => !v)}
             className={`flex flex-col items-center justify-center gap-1 text-[10px] uppercase tracking-wide ${
-              moreOpen || pathname.startsWith("/leaderboard") || pathname.startsWith("/cuenta")
+              moreOpen ||
+              pathname.startsWith("/logros") ||
+              pathname.startsWith("/leaderboard") ||
+              pathname.startsWith("/cuenta")
                 ? "text-accent"
                 : "text-neutral-500"
             }`}

@@ -236,3 +236,23 @@ export const moduleProgress = pgTable(
     pk: primaryKey({ columns: [mp.userId, mp.moduleId] }),
   })
 );
+
+// One row per tier actually earned — never deleted, so a user's history of
+// evolutions stays intact even if the underlying stat later dips (e.g. an
+// active-habits count that drops below a tier's threshold after a habit
+// gets paused). Points are granted exactly once, the moment a row is
+// inserted (see evaluateAndGrantAchievements in achievement-actions.ts).
+export const userAchievements = pgTable(
+  "user_achievements",
+  {
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    achievementId: text("achievement_id").notNull(),
+    tier: integer("tier").notNull(),
+    unlockedAt: timestamp("unlocked_at").notNull().defaultNow(),
+  },
+  (ua) => ({
+    pk: primaryKey({ columns: [ua.userId, ua.achievementId, ua.tier] }),
+  })
+);
