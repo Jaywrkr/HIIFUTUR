@@ -45,6 +45,11 @@ export const users = pgTable(
       .default("trialing"),
     paypalSubscriptionId: text("paypal_subscription_id").unique(),
     subscriptionCurrentPeriodEnd: timestamp("subscription_current_period_end"),
+    // The last module the "nuevo módulo desbloqueado" celebration already
+    // fired for — so it shows exactly once per module, the instant it
+    // becomes reachable, instead of every time Hoy loads while it's unlocked
+    // but not yet started.
+    lastUnlockedModuleNotifiedId: text("last_unlocked_module_notified_id"),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     updatedAt: timestamp("updated_at").notNull().defaultNow(),
   },
