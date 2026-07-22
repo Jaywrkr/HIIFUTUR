@@ -76,3 +76,29 @@ export function IconSprout({ className }: IconProps) {
     </svg>
   );
 }
+
+export function IconCompress({ className }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M4 9h4V5" />
+      <path d="M4 9l6-6" />
+      <path d="M20 15h-4v4" />
+      <path d="M20 15l-6 6" />
+    </svg>
+  );
+}
+
+export function IconGrain({ className }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true" fill="currentColor" stroke="none">
+      <circle cx="7" cy="7" r="1" />
+      <circle cx="13.5" cy="5.5" r="1" />
+      <circle cx="17.5" cy="10.5" r="1" />
+      <circle cx="6" cy="13.5" r="1" />
+      <circle cx="11.5" cy="12" r="1" />
+      <circle cx="16.5" cy="16.5" r="1" />
+      <circle cx="9" cy="18" r="1" />
+      <circle cx="19" cy="18.5" r="1" />
+    </svg>
+  );
+}

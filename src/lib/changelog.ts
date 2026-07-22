@@ -3,6 +3,20 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.102.0",
+    date: "2026-07-22",
+    changes: [
+      "Nuevo: Grano de película, en Cuenta junto a Modo compacto. Una textura fina de ruido real (no un patrón repetido) sobre toda la pantalla — la misma técnica que ya usa el espacio de foto de perfil, esta vez sobre toda la app. Se recuerda entre visitas, sin parpadeo al cargar.",
+    ],
+  },
+  {
+    version: "2.101.0",
+    date: "2026-07-22",
+    changes: [
+      "Nuevo: Modo compacto, en Cuenta. Menos aire entre secciones y tarjetas más chicas, para ver más de un vistazo en pantallas chicas — se recuerda entre visitas y aplica al instante, sin parpadeo al cargar la página.",
+    ],
+  },
+  {
     version: "2.100.0",
     date: "2026-07-21",
     changes: [

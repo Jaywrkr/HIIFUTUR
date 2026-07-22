@@ -67,6 +67,16 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={geistMono.variable}>
+      <head>
+        {/* Reads display preferences before first paint, so compact mode and
+            film grain never flash back to their default state on load. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{if(localStorage.getItem("ejecuta_density")==="compact"){document.documentElement.setAttribute("data-density","compact");}if(localStorage.getItem("ejecuta_grain")==="on"){document.documentElement.setAttribute("data-grain","on");}}catch(e){}',
+          }}
+        />
+      </head>
       <body>
         <Providers>{children}</Providers>
         <VersionBadge />
