@@ -11,7 +11,7 @@ export function PageHeader({
     <div className="mb-10">
       <p className="kicker">{kicker}</p>
       <h1 className="text-3xl font-thin tracking-tight mb-2">{title}</h1>
-      {subtitle ? <p className="muted max-w-xl">{subtitle}</p> : null}
+      {subtitle ? <p className="muted max-w-xl compact-hide">{subtitle}</p> : null}
     </div>
   );
 }

@@ -138,12 +138,38 @@ function paintBase(canvas: HTMLCanvasElement, width: number, height: number, sto
   canvas.height = height * dpr;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-  // Sand base with a soft vignette — light gathers toward the center.
+  // Sand base with a soft vignette — light gathers toward the center. Real
+  // raked gravel is closer to gray-beige than golden tan; the old palette
+  // read more like a desert dune than crushed granite.
   const bg = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, Math.max(width, height) * 0.7);
-  bg.addColorStop(0, "#cdb98a");
-  bg.addColorStop(1, "#b8a274");
+  bg.addColorStop(0, "#c3bca0");
+  bg.addColorStop(1, "#a99f80");
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, width, height);
+
+  // Soft diagonal light wash, upper-left to lower-right — the same light
+  // direction the stone shadows already imply, now consistent across the
+  // whole scene instead of just around each rock.
+  const light = ctx.createLinearGradient(0, 0, width * 0.6, height * 0.6);
+  light.addColorStop(0, "rgba(255,250,235,0.10)");
+  light.addColorStop(1, "rgba(0,0,0,0.06)");
+  ctx.fillStyle = light;
+  ctx.fillRect(0, 0, width, height);
+
+  // Loose mottling — a handful of very faint, large soft patches so the
+  // sand isn't perfectly uniform in tone, the way real crushed stone never
+  // is once it's been walked and raked over time.
+  for (let i = 0; i < 10; i++) {
+    const mx = Math.random() * width;
+    const my = Math.random() * height;
+    const mr = 40 + Math.random() * 90;
+    const mg = ctx.createRadialGradient(mx, my, 0, mx, my, mr);
+    const darker = Math.random() > 0.5;
+    mg.addColorStop(0, darker ? "rgba(0,0,0,0.04)" : "rgba(255,255,255,0.05)");
+    mg.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = mg;
+    ctx.fillRect(0, 0, width, height);
+  }
 
   function blockedByStone(x: number, y: number) {
     return stones.some((s) => {
@@ -153,10 +179,13 @@ function paintBase(canvas: HTMLCanvasElement, width: number, height: number, sto
   }
 
   // A real rake is pulled by hand — no two passes are perfectly straight.
-  // Layering two sine waves at different frequencies per row avoids the
-  // "every line identical" look a single wave would give.
-  function wave(x: number, rowSeed: number) {
-    return Math.sin((x + rowSeed) * 0.045) * 1.1 + Math.sin((x + rowSeed) * 0.013) * 0.6;
+  // Two small sine waves give per-row hand imperfection; a third, much
+  // wider and lower-frequency one runs across the whole field so the
+  // pattern reads as flowing water (the actual motif karesansui gravel
+  // represents) instead of a rigid combed grid.
+  function wave(x: number, y: number, rowSeed: number) {
+    const flow = Math.sin(x * 0.008 + y * 0.02) * 4.5;
+    return flow + Math.sin((x + rowSeed) * 0.045) * 1.1 + Math.sin((x + rowSeed) * 0.013) * 0.6;
   }
 
   function strokePath(points: { x: number; y: number }[], color: string, dy: number) {
@@ -169,7 +198,23 @@ function paintBase(canvas: HTMLCanvasElement, width: number, height: number, sto
     ctx.stroke();
   }
 
-  // Concentric ripples around each stone.
+  // Concentric ripples around each stone, plus a contact shadow right at
+  // its base — real stones settle into sand and compress it, leaving a
+  // slightly darker ring distinct from the raked ripples further out.
+  ctx.globalAlpha = 1;
+  for (const stone of stones) {
+    ctx.beginPath();
+    ctx.ellipse(stone.x, stone.y + stone.r * 0.12, stone.r * 1.08, stone.r * 0.9, 0, 0, Math.PI * 2);
+    const contactShadow = ctx.createRadialGradient(
+      stone.x, stone.y, stone.r * 0.6,
+      stone.x, stone.y, stone.r * 1.15
+    );
+    contactShadow.addColorStop(0, "rgba(0,0,0,0)");
+    contactShadow.addColorStop(1, "rgba(20,15,8,0.22)");
+    ctx.fillStyle = contactShadow;
+    ctx.fill();
+  }
+
   for (const stone of stones) {
     const maxRing = stone.r + Math.min(width, height) * 0.16;
     for (let radius = stone.r + 5; radius < maxRing; radius += RIDGE_SPACING) {
@@ -190,8 +235,11 @@ function paintBase(canvas: HTMLCanvasElement, width: number, height: number, sto
 
   // Combed lines filling the rest of the field, gently wavy like a
   // hand-pulled rake, skipping any segment inside a stone's ripple zone.
+  // Row spacing itself is jittered a little — a real rake head drifts a
+  // few millimeters wider or narrower pass to pass, it's never a perfect
+  // grid of identical gaps.
   const step = 3;
-  for (let y = 6; y < height; y += RIDGE_SPACING) {
+  for (let y = 6; y < height; y += RIDGE_SPACING + (Math.random() - 0.5) * 2.2) {
     const rowSeed = y * 13.7 + Math.random() * 40;
     let segment: { x: number; y: number }[] = [];
     for (let x = 0; x <= width; x += step) {
@@ -201,7 +249,7 @@ function paintBase(canvas: HTMLCanvasElement, width: number, height: number, sto
         segment = [];
         continue;
       }
-      segment.push({ x, y: y + wave(x, rowSeed) });
+      segment.push({ x, y: y + wave(x, y, rowSeed) });
     }
     strokePath(segment, SAND_RIDGE, 0);
     strokePath(segment, SAND_GROOVE, 1.6);
@@ -274,6 +322,14 @@ export function ZenGarden({ habitCount, onClose }: { habitCount: number; onClose
       if (!canvas || !container) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const { width, height } = container.getBoundingClientRect();
+      // The modal's entrance transition can fire this effect a frame before
+      // the container has real layout size (width/height still 0) — painting
+      // a 0x0 base canvas then crashes draw()'s drawImage every frame after.
+      // Skip and retry on the next frame instead of caching a blank canvas.
+      if (width === 0 || height === 0) {
+        raf = requestAnimationFrame(resize);
+        return;
+      }
       widthCss = width;
       heightCss = height;
       canvas.width = width * dpr;
@@ -292,6 +348,7 @@ export function ZenGarden({ habitCount, onClose }: { habitCount: number; onClose
 
     function draw() {
       if (!canvas || !baseCanvasRef.current) return;
+      if (baseCanvasRef.current.width === 0 || baseCanvasRef.current.height === 0) return;
       ctx.clearRect(0, 0, widthCss, heightCss);
       ctx.drawImage(baseCanvasRef.current, 0, 0, widthCss, heightCss);
 

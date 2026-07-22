@@ -164,21 +164,35 @@ select:focus-visible,
 [data-density="compact"] .app-main .gap-4 {
   gap: 0.65rem;
 }
+/* Texto explicativo pero no esencial (subtítulos de pantalla, recaps de
+   módulo, descripciones de fase) — se marca con esta clase donde aparece
+   y desaparece entero en modo compacto, en vez de solo achicar el espacio
+   a su alrededor. La idea del dueño: "por default viene normal, uno puede
+   hacerlo simple" — quitar texto de verdad, no solo aire. */
+[data-density="compact"] .compact-hide {
+  display: none;
+}
 
 /* Grano de película (toggle en Cuenta): la misma técnica de ruido que ya
    usa PhotoSlot, pero sobre toda la pantalla en vez de sobre un solo
    degradado. Ruido real (feTurbulence), no un patrón repetido — se nota
    como textura, no como líneas. pointer-events: none para que nunca
    interfiera con clicks, encima de todo (incluidos los rituales) a
-   propósito, como el grano de una foto revelada. */
+   propósito, como el grano de una foto revelada.
+
+   mix-blend-mode: screen, no overlay — el fondo real de la app es negro
+   puro (#000), y "overlay" da resultado 0 sobre una base en 0 sin importar
+   el blend (por fórmula), así que el grano quedaba matemáticamente
+   invisible. "screen" sí ilumina sobre negro — es como funciona el grano
+   real de una foto oscura. */
 [data-grain="on"] body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
+  opacity: 0.09;
+  mix-blend-mode: screen;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .section-title {

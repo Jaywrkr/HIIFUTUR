@@ -34,7 +34,7 @@ export function DensityToggle() {
   return (
     <div className="flex items-center justify-between gap-4">
       <p className="text-sm text-neutral-400">
-        {compact ? "Menos aire, más contenido a la vez." : "Espaciado normal."}
+        {compact ? "Menos texto, menos aire — solo lo esencial." : "Vista normal."}
       </p>
       <button type="button" onClick={() => apply(!compact)} className="btn-secondary text-xs py-2 px-4">
         {compact ? "Desactivar" : "Activar"}

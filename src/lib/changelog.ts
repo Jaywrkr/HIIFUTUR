@@ -3,6 +3,15 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.103.0",
+    date: "2026-07-22",
+    changes: [
+      "Modo compacto ahora también oculta textos secundarios (subtítulos de pantalla, recaps de módulo, descripciones de fase), no solo achica los espacios — la vista normal se mantiene intacta.",
+      "Arreglo: el Grano de película ahora sí se ve — usaba un modo de mezcla que resultaba invisible sobre el fondo negro de la app.",
+      "Jardín zen más real: arena con más textura y luz direccional, líneas rastrilladas que fluyen como agua en vez de una grilla rígida, y sombra de contacto bajo cada piedra.",
+    ],
+  },
+  {
     version: "2.102.0",
     date: "2026-07-22",
     changes: [
