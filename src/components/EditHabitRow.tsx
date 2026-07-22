@@ -138,7 +138,7 @@ export function EditHabitRow({
     <div className="card">
       <div className="flex items-center justify-between">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 compact-hide">
             <span
               className="w-1.5 h-1.5 rounded-full shrink-0"
               style={{ background: HABIT_CATEGORY_COLORS[habit.category as keyof typeof HABIT_CATEGORY_COLORS] ?? "#737373" }}
@@ -152,7 +152,7 @@ export function EditHabitRow({
             ) : null}
           </div>
           <p className="font-bold">{habit.name}</p>
-          <p className="muted mt-1">{habit.description}</p>
+          <p className="muted mt-1 compact-hide">{habit.description}</p>
         </div>
         <div className="flex items-center gap-4">
           <div className="text-right">
@@ -196,13 +196,13 @@ export function EditHabitRow({
       ) : null}
       {freezeError ? <p className="form-error mt-3">{freezeError}</p> : null}
       {!canFreeze && nextFreezeLabel ? (
-        <p className="mt-3 text-[10px] text-neutral-400">
+        <p className="mt-3 text-[10px] text-neutral-400 compact-hide">
           Vuelves a poder congelar {nextFreezeLabel}.
         </p>
       ) : null}
 
       {streak > 0 ? (
-        <div className="mt-3">
+        <div className="mt-3 compact-hide">
           <ShareImageButton
             draw={(canvas) => drawStreakShareCard(canvas, { habitName: habit.name, streak })}
             fileName={`ejecuta-racha-${streak}-dias.png`}
@@ -212,12 +212,14 @@ export function EditHabitRow({
         </div>
       ) : null}
 
-      <div className="mt-4 flex items-center justify-between">
+      <div className="mt-4 flex items-center justify-between compact-hide">
         <p className="text-[10px] uppercase tracking-widest text-neutral-400">
           Últimas 12 semanas · mejor racha: {longestStreak} {longestStreak === 1 ? "día" : "días"}
         </p>
       </div>
-      <HabitHeatmap logDates={logDates} freezeDates={freezeDates} habitCreatedAt={habitCreatedAt} />
+      <div className="compact-hide">
+        <HabitHeatmap logDates={logDates} freezeDates={freezeDates} habitCreatedAt={habitCreatedAt} />
+      </div>
     </div>
   );
 }

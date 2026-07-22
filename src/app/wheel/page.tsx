@@ -89,8 +89,8 @@ export default async function WheelPage() {
               current={latest.areaScores as Record<string, number>}
               previous={previous ? (previous.areaScores as Record<string, number>) : undefined}
             />
-            {insight ? <p className="text-sm text-accent mt-4">{insight}</p> : null}
-            <div className="mt-4">
+            {insight ? <p className="text-sm text-accent mt-4 compact-hide">{insight}</p> : null}
+            <div className="mt-4 compact-hide">
               <ShareWheelButton
                 areaScores={latest.areaScores as Record<string, number>}
                 areaLabels={WHEEL_AREAS.map((a) => ({ id: a.id, label: a.label }))}

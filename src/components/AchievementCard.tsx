@@ -35,7 +35,7 @@ export function AchievementCard({ progress, index }: { progress: AchievementProg
         </div>
         <div className="p-4">
           <p className="font-bold text-base leading-tight">{achievement.title}</p>
-          <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
+          <p className="text-xs text-neutral-500 mt-1 leading-relaxed compact-hide">
             {locked ? achievement.narrative : `"${activeTier.name}" — ${activeTier.requirement}`}
           </p>
           <div className="flex items-center justify-between mt-3 pt-3 border-t border-line">
@@ -53,7 +53,7 @@ export function AchievementCard({ progress, index }: { progress: AchievementProg
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-1.5">
+      <div className="flex items-center justify-center gap-1.5 compact-hide">
         {achievement.tiers.map((t) => (
           <span
             key={t.tier}
@@ -64,7 +64,7 @@ export function AchievementCard({ progress, index }: { progress: AchievementProg
         ))}
       </div>
       {nextTier && !locked ? (
-        <p className="text-[10px] text-neutral-500 text-center">
+        <p className="text-[10px] text-neutral-500 text-center compact-hide">
           Siguiente: {nextTier.requirement}
         </p>
       ) : null}

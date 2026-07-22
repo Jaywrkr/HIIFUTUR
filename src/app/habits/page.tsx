@@ -119,7 +119,7 @@ export default async function HabitsPage() {
         />
 
         {habitsWithData.length > 0 ? (
-          <div className="flex gap-8 mb-10">
+          <div className="flex gap-8 mb-10 compact-hide">
             <div>
               <p className="text-2xl font-bold text-accent">{totalDaysCompleted}</p>
               <p className="text-xs uppercase tracking-widest text-neutral-500">Días completados</p>
