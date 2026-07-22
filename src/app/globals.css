@@ -136,6 +136,34 @@ select:focus-visible,
 .card {
   @apply border border-line bg-surface rounded-lg p-6;
 }
+
+/* Modo compacto (toggle en Cuenta): menos aire, no menos contenido. Estos
+   selectores ya tienen más especificidad que las utilidades de Tailwind que
+   pisan (atributo + clase gana a clase sola), así que no hace falta
+   !important ni envolver nada en @layer components. */
+[data-density="compact"] .app-main {
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+}
+[data-density="compact"] .card {
+  padding: 1rem;
+}
+[data-density="compact"] .list-row {
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+[data-density="compact"] .app-main .mb-14 {
+  margin-bottom: 2rem;
+}
+[data-density="compact"] .app-main .mb-10 {
+  margin-bottom: 1.5rem;
+}
+[data-density="compact"] .app-main .mb-8 {
+  margin-bottom: 1.25rem;
+}
+[data-density="compact"] .app-main .gap-4 {
+  gap: 0.65rem;
+}
 .section-title {
   @apply text-lg font-normal mb-4;
 }

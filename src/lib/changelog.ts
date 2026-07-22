@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.101.0",
+    date: "2026-07-22",
+    changes: [
+      "Nuevo: Modo compacto, en Cuenta. Menos aire entre secciones y tarjetas más chicas, para ver más de un vistazo en pantallas chicas — se recuerda entre visitas y aplica al instante, sin parpadeo al cargar la página.",
+    ],
+  },
+  {
     version: "2.100.0",
     date: "2026-07-21",
     changes: [

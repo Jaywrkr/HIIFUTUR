@@ -67,6 +67,16 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={geistMono.variable}>
+      <head>
+        {/* Reads the density preference before first paint, so compact mode
+            never flashes back to normal spacing on load. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{if(localStorage.getItem("ejecuta_density")==="compact"){document.documentElement.setAttribute("data-density","compact");}}catch(e){}',
+          }}
+        />
+      </head>
       <body>
         <Providers>{children}</Providers>
         <VersionBadge />
