@@ -117,7 +117,7 @@ export default async function ModulesPage({
                       {phaseDone}/{phaseModules.length}
                     </span>
                   </div>
-                  <p className="muted mt-0.5">{phase.description}</p>
+                  <p className="muted mt-0.5 compact-hide">{phase.description}</p>
                 </div>
               </div>
 

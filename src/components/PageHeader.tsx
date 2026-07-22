@@ -10,8 +10,8 @@ export function PageHeader({
   return (
     <div className="mb-10">
       <p className="kicker">{kicker}</p>
-      <h1 className="text-3xl font-thin tracking-tight mb-2">{title}</h1>
-      {subtitle ? <p className="muted max-w-xl">{subtitle}</p> : null}
+      <h1 className="text-2xl font-thin tracking-tight mb-2">{title}</h1>
+      {subtitle ? <p className="muted max-w-xl compact-hide">{subtitle}</p> : null}
     </div>
   );
 }

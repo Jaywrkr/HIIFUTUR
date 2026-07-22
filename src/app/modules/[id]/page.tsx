@@ -112,7 +112,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
 
         {/* Progression thread: where you're coming from. */}
         {courseModule.recap ? (
-          <div className="rounded-md border border-line bg-surface px-4 py-3 mb-8 flex gap-3">
+          <div className="rounded-md border border-line bg-surface px-4 py-3 mb-8 flex gap-3 compact-hide">
             <span className="text-xs uppercase tracking-widest text-neutral-500 shrink-0 mt-0.5">
               Vienes de
             </span>
@@ -127,7 +127,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
             ))}
           </div>
           {usedTerms.size > 0 ? (
-            <p className="text-xs text-neutral-500 mt-3">
+            <p className="text-xs text-neutral-500 mt-3 compact-hide">
               Los términos subrayados se pueden tocar para ver qué significan.
             </p>
           ) : null}
