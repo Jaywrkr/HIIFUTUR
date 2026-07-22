@@ -5,10 +5,11 @@ import { DeleteAccountSection } from "@/components/DeleteAccountSection";
 import { EditNameSection } from "@/components/EditNameSection";
 import { PushNotificationToggle } from "@/components/PushNotificationToggle";
 import { DensityToggle } from "@/components/DensityToggle";
+import { GrainToggle } from "@/components/GrainToggle";
 import { ZenGardenLauncher } from "@/components/ZenGardenLauncher";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import { MiPlanCard } from "@/components/MiPlanSection";
-import { IconUser, IconMail, IconLock, IconBell, IconFlame, IconCompress } from "@/components/icons";
+import { IconUser, IconMail, IconLock, IconBell, IconFlame, IconCompress, IconGrain } from "@/components/icons";
 import { requireUser } from "@/lib/session";
 import { getUserById, getHabitsForUser, getHabitLogs, getHabitFreezes } from "@/lib/queries";
 import { computeStreak, daysBetween, todayKey, addDays } from "@/lib/habit-utils";
@@ -239,6 +240,16 @@ export default async function CuentaPage() {
             <div className="flex-1 min-w-0">
               <p className="text-xs uppercase tracking-widest text-neutral-500 mb-2">Modo compacto</p>
               <DensityToggle />
+            </div>
+          </div>
+
+          <div className="px-6 py-5 flex items-center gap-4">
+            <span className="w-10 h-10 rounded-full border border-line flex items-center justify-center shrink-0">
+              <IconGrain className="w-5 h-5 text-accent" />
+            </span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs uppercase tracking-widest text-neutral-500 mb-2">Grano de película</p>
+              <GrainToggle />
             </div>
           </div>
         </div>

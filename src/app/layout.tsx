@@ -68,12 +68,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className={geistMono.variable}>
       <head>
-        {/* Reads the density preference before first paint, so compact mode
-            never flashes back to normal spacing on load. */}
+        {/* Reads display preferences before first paint, so compact mode and
+            film grain never flash back to their default state on load. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              'try{if(localStorage.getItem("ejecuta_density")==="compact"){document.documentElement.setAttribute("data-density","compact");}}catch(e){}',
+              'try{if(localStorage.getItem("ejecuta_density")==="compact"){document.documentElement.setAttribute("data-density","compact");}if(localStorage.getItem("ejecuta_grain")==="on"){document.documentElement.setAttribute("data-grain","on");}}catch(e){}',
           }}
         />
       </head>
