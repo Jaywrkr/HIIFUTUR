@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.106.0",
+    date: "2026-07-22",
+    changes: [
+      "El modo zen ahora aplica en toda la app, no solo en Hoy: Hábitos, Wheel of Life y Logros también se simplifican al activarlo — menos elementos en pantalla, no solo menos espacio.",
+    ],
+  },
+  {
     version: "2.105.0",
     date: "2026-07-22",
     changes: [

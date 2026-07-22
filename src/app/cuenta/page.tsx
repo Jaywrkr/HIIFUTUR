@@ -115,7 +115,7 @@ export default async function CuentaPage() {
             </div>
           </div>
 
-          <div className="mt-5 pt-5" style={{ borderTop: "1px solid rgba(0,0,0,0.15)" }}>
+          <div className="mt-5 pt-5 compact-hide" style={{ borderTop: "1px solid rgba(0,0,0,0.15)" }}>
             <div className="flex items-center justify-between text-xs mb-1" style={{ color: "rgba(0,0,0,0.55)" }}>
               <span>Progreso al Nv. {level + 1}</span>
               <span>{pointsIntoLevel}/{nextLevelThreshold}</span>
@@ -132,7 +132,7 @@ export default async function CuentaPage() {
         {/* Streak */}
         <div className="card mb-10">
           <p className="section-title">Tu racha</p>
-          <div className="flex items-center justify-between gap-2 mb-4">
+          <div className="flex items-center justify-between gap-2 mb-4 compact-hide">
             {last7.map((d) => {
               const key = d.toISOString().slice(0, 10);
               const hit = allLogDates.has(key);
@@ -163,7 +163,7 @@ export default async function CuentaPage() {
           </div>
 
           {nextMilestone ? (
-            <p className="text-xs text-neutral-400 mt-4">
+            <p className="text-xs text-neutral-400 mt-4 compact-hide">
               Siguiente meta: {nextMilestone} días seguidos ({nextMilestone - bestCurrentStreak} por delante)
             </p>
           ) : null}
