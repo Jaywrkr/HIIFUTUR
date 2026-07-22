@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.105.0",
+    date: "2026-07-22",
+    changes: [
+      "Modo compacto mucho más zen: los hábitos de hoy pierden su marco y pasan a ser una lista plana con un solo divisor, sin categoría, badge de ancla ni avisos secundarios. También desaparecen las flechas decorativas y el rótulo 'Tu camino' donde ya es obvio por el contenido.",
+    ],
+  },
+  {
     version: "2.104.0",
     date: "2026-07-22",
     changes: [

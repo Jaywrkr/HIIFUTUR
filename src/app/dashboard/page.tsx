@@ -264,7 +264,7 @@ export default async function DashboardPage({
             >
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-accent mb-1">
+                  <p className="text-xs uppercase tracking-widest text-accent mb-1 compact-hide">
                     Tu camino
                   </p>
                   <p className="font-bold text-xl mb-1">
@@ -287,7 +287,7 @@ export default async function DashboardPage({
             </Link>
           ) : nextModule && nextModuleGateLocked ? (
             <div className="rounded-lg border border-line p-6 mb-14">
-              <p className="text-xs uppercase tracking-widest text-neutral-400 mb-1">
+              <p className="text-xs uppercase tracking-widest text-neutral-400 mb-1 compact-hide">
                 Tu camino
               </p>
               <p className="font-bold text-xl mb-1">
@@ -309,7 +309,7 @@ export default async function DashboardPage({
             </div>
           ) : (
             <div className="rounded-lg border border-accent/50 p-6 mb-14">
-              <p className="text-xs uppercase tracking-widest text-accent mb-1">Tu camino</p>
+              <p className="text-xs uppercase tracking-widest text-accent mb-1 compact-hide">Tu camino</p>
               <p className="font-bold text-xl mb-1">Completaste los {MODULES.length} módulos</p>
               <p className="muted text-sm">
                 Ahora el sistema es tuyo. <Link href="/modules" className="link-accent">Vuelve a repasar</Link> cuando
@@ -366,7 +366,7 @@ export default async function DashboardPage({
                 href={userHabits.length === 0 && !firstModuleDone ? `/modules/${MODULES[0].id}` : "/habits"}
                 className="aspect-square flex flex-col justify-between rounded-lg border border-line p-6 hover:border-accent/40 transition-colors group"
               >
-                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
+                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end compact-hide">→</span>
                 <span>
                   <span className="block font-bold text-sm">
                     {userHabits.length === 0 && !firstModuleDone
@@ -393,7 +393,7 @@ export default async function DashboardPage({
                 href="/modules"
                 className="aspect-square flex flex-col justify-between rounded-lg border border-line p-6 hover:border-accent/40 transition-colors group"
               >
-                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
+                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end compact-hide">→</span>
                 <span>
                   <span className="block font-bold text-sm">Todos los módulos</span>
                   <span className="block text-xs text-neutral-500 mt-1">
@@ -406,7 +406,7 @@ export default async function DashboardPage({
                 href="/wheel"
                 className="aspect-square flex flex-col justify-between rounded-lg border border-line p-6 hover:border-accent/40 transition-colors group"
               >
-                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
+                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end compact-hide">→</span>
                 <span>
                   <span className="block font-bold text-sm">Wheel of Life</span>
                   <span
@@ -423,7 +423,7 @@ export default async function DashboardPage({
                 href="/leaderboard"
                 className="aspect-square flex flex-col justify-between rounded-lg border border-line p-6 hover:border-accent/40 transition-colors group"
               >
-                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end">→</span>
+                <span className="text-neutral-500 group-hover:text-accent transition-colors self-end compact-hide">→</span>
                 <span>
                   <span className="block font-bold text-sm">Leaderboard</span>
                   <span className="block text-xs text-neutral-500 mt-1">

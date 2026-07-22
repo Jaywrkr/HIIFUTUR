@@ -118,7 +118,7 @@ export function HabitCard({
   }
 
   return (
-    <div className="border border-line bg-surface rounded-lg p-3.5 flex items-center justify-between gap-3 relative overflow-hidden">
+    <div className="habit-card border border-line bg-surface rounded-lg p-3.5 flex items-center justify-between gap-3 relative overflow-hidden">
       {milestone ? (
         <div
           role="status"
@@ -129,7 +129,7 @@ export function HabitCard({
         </div>
       ) : null}
       <div className="flex-1">
-        <div className="flex items-center gap-2 mb-1">
+        <div className="flex items-center gap-2 mb-1 compact-hide">
           <span
             className="w-1.5 h-1.5 rounded-full shrink-0"
             style={{ background: HABIT_CATEGORY_COLORS[category as keyof typeof HABIT_CATEGORY_COLORS] ?? "#737373" }}
@@ -148,10 +148,10 @@ export function HabitCard({
           className={`text-xs mt-1.5 uppercase tracking-widest ${streakAtRisk ? "text-amber-400" : "text-accent"}`}
         >
           Racha: {streak} {streak === 1 ? "día" : "días"}
-          {streakAtRisk ? " · se te va a ir el día" : ""}
+          {streakAtRisk ? <span className="compact-hide"> · se te va a ir el día</span> : null}
         </p>
         {missedYesterday ? (
-          <p className="text-xs mt-1 text-amber-400">Ayer te quedaste sin marcar.</p>
+          <p className="text-xs mt-1 text-amber-400 compact-hide">Ayer te quedaste sin marcar.</p>
         ) : null}
       </div>
 
