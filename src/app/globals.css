@@ -182,13 +182,31 @@ select:focus-visible,
 [data-density="compact"] .app-main .gap-4 {
   gap: 0.6rem;
 }
-/* Texto explicativo pero no esencial (subtítulos de pantalla, recaps de
-   módulo, descripciones de fase) — se marca con esta clase donde aparece
-   y desaparece entero en modo compacto, en vez de solo achicar el espacio
-   a su alrededor. La idea del dueño: "por default viene normal, uno puede
-   hacerlo simple" — quitar texto de verdad, no solo aire. */
+/* Texto y elementos que no son esenciales (subtítulos de pantalla, recaps de
+   módulo, descripciones de fase, categoría/badge de cada hábito, detalles de
+   ciclo, avisos secundarios) — se marcan con esta clase donde aparecen y
+   desaparecen enteros en modo compacto, en vez de solo achicar el espacio a
+   su alrededor. La idea del dueño: "el modo zen debe ser mucho más zen...
+   quitar elementos que no se necesitan" — menos cosas en pantalla, no solo
+   más apretadas. */
 [data-density="compact"] .compact-hide {
   display: none;
+}
+
+/* Las tarjetas de hábito pierden su marco propio en compacto y pasan a ser
+   una fila plana con un solo divisor — la misma idea de .list-row, para que
+   la lista de hoy se sienta como una lista silenciosa y no como una pila de
+   cajas. */
+[data-density="compact"] .habit-card {
+  border-color: transparent;
+  background: transparent;
+  border-radius: 0;
+  border-bottom: 1px solid #262626;
+  padding-left: 0;
+  padding-right: 0;
+}
+[data-density="compact"] .habit-card:last-child {
+  border-bottom: none;
 }
 
 /* Grano de película (toggle en Cuenta): la misma técnica de ruido que ya
