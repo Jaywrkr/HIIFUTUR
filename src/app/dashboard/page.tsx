@@ -225,7 +225,7 @@ export default async function DashboardPage({
           ) : (
             <div className="mb-14">
               <div className="flex items-baseline justify-between mb-6">
-                <h1 className="text-3xl font-thin tracking-tight">Lo de hoy</h1>
+                <h1 className="text-2xl font-thin tracking-tight">Lo de hoy</h1>
                 <p
                   className={
                     doneCount === habitsWithData.length
@@ -274,7 +274,7 @@ export default async function DashboardPage({
                     {completedIds.size} de {MODULES.length} completados — continúa donde ibas.
                   </p>
                   {!cycle.completed && cycle.hasAnchor ? (
-                    <p className="text-xs uppercase tracking-widest mt-2 text-neutral-500">
+                    <p className="text-xs uppercase tracking-widest mt-2 text-neutral-500 compact-hide">
                       Ciclo: día {cycle.day}/{CYCLE_DAYS} ·{" "}
                       <span className={cycle.failsUsed >= MAX_CYCLE_FAILS ? "text-red-400 font-semibold" : ""}>
                         fallos {cycle.failsUsed}/{MAX_CYCLE_FAILS}
@@ -299,7 +299,7 @@ export default async function DashboardPage({
                 <Link href="/habits" className="link-accent">hábito cumplido</Link> para abrirlo.
               </p>
               {!cycle.completed && cycle.hasAnchor ? (
-                <p className="text-xs uppercase tracking-widest mt-2 text-neutral-500">
+                <p className="text-xs uppercase tracking-widest mt-2 text-neutral-500 compact-hide">
                   Ciclo: día {cycle.day}/{CYCLE_DAYS} ·{" "}
                   <span className={cycle.failsUsed >= MAX_CYCLE_FAILS ? "text-red-400 font-semibold" : ""}>
                     fallos {cycle.failsUsed}/{MAX_CYCLE_FAILS}
@@ -326,8 +326,8 @@ export default async function DashboardPage({
               href="/cuenta"
               className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center hover:border-accent/40 transition-colors"
             >
-              <p className="text-xl font-bold text-accent">Nv. {level}</p>
-              <div className="h-1 w-12 rounded-full bg-ink border border-line overflow-hidden">
+              <p className="text-lg font-bold text-accent">Nv. {level}</p>
+              <div className="h-1 w-12 rounded-full bg-ink border border-line overflow-hidden compact-hide">
                 <div className="h-full bg-accent rounded-full" style={{ width: `${levelPct}%` }} />
               </div>
               <p className="text-[10px] uppercase tracking-widest text-neutral-500">Nivel</p>
@@ -336,14 +336,14 @@ export default async function DashboardPage({
               href="/leaderboard"
               className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center hover:border-accent/40 transition-colors"
             >
-              <p className="text-xl font-bold">{user.points}</p>
+              <p className="text-lg font-bold">{user.points}</p>
               <p className="text-[10px] uppercase tracking-widest text-neutral-500">Puntos</p>
             </Link>
             <Link
               href="/cuenta"
               className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center hover:border-accent/40 transition-colors"
             >
-              <p className="text-xl font-bold flex items-center justify-center gap-1">
+              <p className="text-lg font-bold flex items-center justify-center gap-1">
                 {bestStreak > 0 ? (
                   <>
                     <IconFlame className="w-4 h-4 text-accent" /> {bestStreak}

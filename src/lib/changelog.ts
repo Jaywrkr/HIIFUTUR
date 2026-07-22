@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.104.0",
+    date: "2026-07-22",
+    changes: [
+      "Vista normal un poco más chica en toda la app: títulos, tarjetas y espacios entre secciones reducidos, sin llegar a lo agresivo del modo compacto.",
+      "Modo compacto va más lejos: además del texto secundario, ahora también oculta la barra de progreso de nivel, el detalle de ciclo y la etiqueta 'mantén/deshacer' de cada hábito.",
+    ],
+  },
+  {
     version: "2.103.0",
     date: "2026-07-22",
     changes: [
