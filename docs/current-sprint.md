@@ -76,4 +76,3 @@ final), no de código ni infraestructura.
 3. Resend funcionando (emails reales, no solo log).
 4. Triage de errores de Sentry.
 5. Todo lo demás (SEO, legal, marca, contenido).
--- test de branch protection, Fri Jul 24 15:55:15 UTC 2026 --
