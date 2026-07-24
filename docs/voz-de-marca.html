@@ -1,0 +1,140 @@
+<title>EJECUTA — Voz de marca</title>
+<style>
+  :root {
+    --ink: #f5f5f0; --muted: #9a978d; --faint: #6b6858; --line: #2a2822;
+    --panel: #17160f; --bg: #0d0c08; --accent: #c9a24a; --sage: #8fae82; --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --ink:#1c1a12; --muted:#5c594a; --faint:#8a8670; --line:#e3e0d2; --panel:#faf8f1; --bg:#fffdf7; --accent:#8a6d1f; --sage:#4f7a43; }
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--mono); margin: 0; padding: 3rem 1.5rem 6rem; line-height: 1.6; }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  .kicker { display:inline-block; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); border:1px solid var(--line); border-radius:999px; padding:0.25rem 0.7rem; margin-bottom:1rem; }
+  h1 { font-size: 2.1rem; font-weight: 300; letter-spacing:-0.01em; margin: 0 0 0.4rem; }
+  h1 b { color: var(--accent); font-weight: 700; }
+  .sub { color: var(--muted); font-size: 0.95rem; max-width: 56ch; margin: 0 0 3rem; }
+  h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); border-top: 1px solid var(--line); padding-top: 2rem; margin: 3rem 0 1.2rem; }
+  h2:first-of-type { margin-top: 0; }
+  p { font-size: 0.92rem; margin: 0 0 1rem; }
+  .principle { border: 1px solid var(--line); background: var(--panel); border-radius: 10px; padding: 1.1rem 1.3rem; margin-bottom: 0.9rem; }
+  .principle .n { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
+  .principle p.rule { font-weight: 700; font-size: 1rem; margin: 0.2rem 0 0.45rem; }
+  .principle p.why { color: var(--muted); font-size: 0.85rem; margin: 0; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
+  .col { border: 1px solid var(--line); border-radius: 10px; padding: 1.1rem 1.3rem; }
+  .col.yes { border-color: color-mix(in srgb, var(--sage) 45%, var(--line)); }
+  .col.no { border-color: color-mix(in srgb, #b85c4a 40%, var(--line)); }
+  .col h3 { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 0.7rem; }
+  .col.yes h3 { color: var(--sage); }
+  .col.no h3 { color: #c2705d; }
+  .col ul { margin: 0; padding-left: 1.1rem; }
+  .col li { font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--ink); }
+  .ex { border-left: 2px solid var(--accent); padding: 0.15rem 0 0.15rem 0.9rem; margin: 0 0 0.9rem; font-size: 0.88rem; }
+  .ex .src { display: block; color: var(--faint); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.2rem; }
+  .word-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .word { font-size: 0.8rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 0.8rem; }
+  .word.avoid { text-decoration: line-through; color: var(--faint); }
+  .word.use { color: var(--sage); border-color: color-mix(in srgb, var(--sage) 40%, var(--line)); }
+  code { font-family: var(--mono); background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 0.05em 0.4em; font-size: 0.85em; }
+  .foot { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--faint); font-size: 0.78rem; }
+</style>
+
+<div class="wrap">
+  <p class="kicker">Documento de marca · v1</p>
+  <h1>La voz de <b>EJECUTA</b> ya existe.<br>Esto solo la nombra.</h1>
+  <p class="sub">No es una voz nueva que hay que inventar — es la que ya está en cada pantalla de la app, sacada del copy real. Esto es para que cualquiera que escriba para la marca (redes, emails, ads) suene como si fuera la misma persona escribiendo, sin tener que adivinar.</p>
+
+  <h2>5 principios</h2>
+
+  <div class="principle">
+    <p class="n">01</p>
+    <p class="rule">Sistema, no motivación.</p>
+    <p class="why">La app existe porque la motivación falla. Nunca vendemos "date ganas" — vendemos algo tan pequeño que no necesitas ganas para hacerlo.</p>
+  </div>
+  <div class="principle">
+    <p class="n">02</p>
+    <p class="rule">Números reales, no promesas.</p>
+    <p class="why">"Pasé de un 3 a un 9 en 8 meses" convence más que "cambia tu vida". Siempre que se pueda, un dato concreto reemplaza un adjetivo.</p>
+  </div>
+  <div class="principle">
+    <p class="n">03</p>
+    <p class="rule">Directo a los ojos, no desde un podio.</p>
+    <p class="why">Segunda persona siempre. "Qué vas a cambiar", "Dónde estás hoy" — nunca "los usuarios podrán..." Nadie en EJECUTA le habla a una audiencia, le habla a una persona.</p>
+  </div>
+  <div class="principle">
+    <p class="n">04</p>
+    <p class="rule">Sin dramas, sin excusas — pero sin dureza vacía.</p>
+    <p class="why">Blunt cuando hace falta ("Te sientes mal porque sabes lo que debes hacer y no lo estás haciendo"), nunca cruel. Dice la verdad incómoda, no humilla.</p>
+  </div>
+  <div class="principle">
+    <p class="n">05</p>
+    <p class="rule">Frases cortas. Punto. Otra frase corta.</p>
+    <p class="why">El ritmo es tan parte de la voz como las palabras. Una idea, un punto, la siguiente. Nada de subordinadas de tres líneas.</p>
+  </div>
+
+  <h2>Se ve así en la práctica</h2>
+
+  <div class="ex">"No es disciplina. No es fuerza de voluntad. Es un sistema que no pueda fallar."<span class="src">Landing, hero</span></div>
+  <div class="ex">"Sin gurús, sin 47 hábitos a la vez, sin culpa cuando fallas un día."<span class="src">Landing, subtítulo</span></div>
+  <div class="ex">"Elige hasta 3 áreas. No más. El sistema funciona porque es pequeño."<span class="src">Onboarding, paso 1</span></div>
+  <div class="ex">"Del 1 al 10, sin filtro. Esta es tu línea base."<span class="src">Onboarding, paso 2</span></div>
+  <div class="ex">"El crecimiento real es cuando te cansas de tus mierdas."<span class="src">Mantra, Módulo 1</span></div>
+  <div class="ex">"Éxito es tener cada día menos arrepentimientos."<span class="src">Mantra, Módulo 11</span></div>
+
+  <h2>Vocabulario</h2>
+  <p style="margin-bottom:0.6rem; color:var(--muted); font-size:0.85rem;">Palabras que ya son de la marca, y las que no le pertenecen.</p>
+  <div class="cols">
+    <div class="col yes">
+      <h3>Usamos</h3>
+      <div class="word-grid">
+        <span class="word use">sistema</span>
+        <span class="word use">sostener</span>
+        <span class="word use">ejecución</span>
+        <span class="word use">real</span>
+        <span class="word use">pequeño</span>
+        <span class="word use">sin excusas</span>
+        <span class="word use">línea base</span>
+      </div>
+    </div>
+    <div class="col no">
+      <h3>Evitamos</h3>
+      <div class="word-grid">
+        <span class="word avoid">motivación</span>
+        <span class="word avoid">meta gigante</span>
+        <span class="word avoid">transforma tu vida</span>
+        <span class="word avoid">gurú</span>
+        <span class="word avoid">imparable</span>
+        <span class="word avoid">disciplina de hierro</span>
+        <span class="word avoid">emojis</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Antes / después</h2>
+  <div class="cols">
+    <div class="col no">
+      <h3>No suena a EJECUTA</h3>
+      <ul>
+        <li>"¡Transforma tu vida en 30 días! 🚀"</li>
+        <li>"Únete a miles de personas imparables"</li>
+        <li>"El secreto que los gurús no te cuentan"</li>
+      </ul>
+    </div>
+    <div class="col yes">
+      <h3>Sí suena a EJECUTA</h3>
+      <ul>
+        <li>"Un hábito. El más pequeño posible. 30 días."</li>
+        <li>"860 puntos, 20 días seguidos, dos fallos perdonados."</li>
+        <li>"Nadie te va a dar una fórmula. Esto es sostener algo chico."</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Cómo aplica a redes (para Luna)</h2>
+  <p>Un post de EJECUTA no abre con una pregunta genérica ("¿te cuesta ser constante?") — abre con un número o un hecho concreto, como hace la app. La foto o el video acompaña, no carga la idea: la idea va en el texto, corta, sin relleno. El cierre no es un llamado a la acción gritado — es la misma frase seca que usaría un mantra de módulo.</p>
+  <p>Si un texto suena a que podría estar en cualquier otra cuenta de "hábitos y productividad", no es la voz de EJECUTA todavía — hay que cortarlo hasta que sea imposible de copiar y pegar en otra marca.</p>
+
+  <div class="foot">EJECUTA — documento de voz de marca, versión 1. Sacado del copy real de la app (landing, onboarding, mantras de módulo) — no inventado desde cero.</div>
+</div>
