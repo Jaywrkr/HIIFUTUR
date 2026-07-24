@@ -4,6 +4,29 @@ Curso interactivo + habit tracker basado en el Principio de Pareto: el 20%
 de tus acciones genera el 80% de tus resultados. No es un curso de
 motivacion — es un sistema donde el contenido se gana con ejecucion real.
 
+## Problema que resuelve
+
+La mayoria de apps de habitos y cursos de productividad venden motivacion:
+listas gigantes de habitos, retos de 75 dias, gurus. La motivacion no dura.
+EJECUTA parte de un caso real (una persona que paso de 3 a 9 en su Wheel of
+Life en 8 meses) y lo convierte en sistema: **un solo habito ancla**, lo mas
+pequeno posible, sostenido con datos reales — no con fuerza de voluntad. El
+contenido del curso se desbloquea con ejecucion real (dias de habito
+cumplido), no con tiempo transcurrido, asi que no se puede "consumir" el
+curso sin sostener nada.
+
+## Arquitectura general
+
+Monolito Next.js (App Router) con Server Components/Actions — sin API
+separada ni backend independiente. El navegador pide una pagina, el
+servidor la renderiza consultando Postgres directo (via Drizzle), y las
+mutaciones (marcar un habito, guardar un ejercicio) son Server Actions, no
+endpoints REST hechos a mano. Los unicos endpoints HTTP reales son los que
+*tienen* que serlo: NextAuth, el cron diario, el webhook de PayPal y el
+endpoint de check de habito (llamado desde el Service Worker para
+notificaciones). Ver [`docs/architecture.md`](docs/architecture.md) para el
+detalle completo con diagramas.
+
 ## Stack
 
 - **Next.js 14** (App Router) + React + TypeScript
@@ -148,6 +171,67 @@ mas dias de margen.
 - `npm run dev` — servidor de desarrollo.
 - `npm run build` / `npm start` — build y servidor de produccion.
 - `npm test` / `npm run test:watch` — tests unitarios (Vitest).
+- `npm run test:e2e` — tests end-to-end (Playwright).
 - `npm run db:generate` — genera migraciones SQL a partir de `src/db/schema.ts`.
 - `npm run db:migrate` — aplica las migraciones contra `POSTGRES_URL`.
 - `npm run db:studio` — abre Drizzle Studio para inspeccionar la base de datos.
+
+## Estructura de carpetas
+
+```
+src/
+  app/            Rutas (App Router) — una carpeta por pantalla + api/
+    api/          Los unicos 6 endpoints HTTP reales (ver docs/api.md)
+    (paginas)/    Cada carpeta = una ruta; page.tsx es Server Component
+  components/     Componentes de React, uno por archivo, PascalCase
+  lib/            Server Actions, queries, logica de negocio pura (*.ts)
+                  Los *.test.ts junto a su archivo son los tests unitarios
+  db/             schema.ts (fuente de verdad), index.ts (cliente Drizzle)
+  auth.ts         Configuracion de NextAuth
+drizzle/          Migraciones SQL generadas (nunca editar a mano el
+                  contenido generado, solo agregar IF NOT EXISTS)
+scripts/          Scripts de una sola vez (ej. crear planes de PayPal)
+docs/             Esta documentacion
+tests/e2e/        Tests de Playwright
+```
+
+Ver [`docs/architecture.md`](docs/architecture.md) para el detalle de que
+hace cada modulo, y [`AGENTS.md`](AGENTS.md) para "donde busco X".
+
+## Convenciones del proyecto
+
+Resumen — el detalle completo vive en [`CLAUDE.md`](CLAUDE.md):
+
+- Componentes de servidor por defecto; `"use client"` solo cuando hay
+  estado, efectos o eventos.
+- Mutaciones via Server Actions en `src/lib/*-actions.ts`, no rutas API
+  hechas a mano (las 6 rutas que existen son excepciones justificadas).
+- Comentarios solo cuando explican un *porque* no obvio (una migracion,
+  un bug evitado, una decision de diseno) — nunca describen que hace el
+  codigo si el nombre ya lo dice.
+- Migraciones de schema siempre idempotentes (`IF NOT EXISTS`), y
+  espejadas en `src/app/api/setup/migrate/route.ts`.
+- Sin librerias de UI/componentes externas — todo con Tailwind + HTML
+  semantico propio.
+
+## Como contribuir
+
+Este es un proyecto con un solo dueño (Jay) y trabajo asistido por Claude
+Code. El flujo real:
+
+1. Cada tarea nueva parte de una rama nueva desde la rama por defecto.
+2. Commits descriptivos en espanol; un bump de version en `package.json`
+   por feature (minor) y una entrada en `src/lib/changelog.ts`.
+3. Antes de proponer un cambio: `npx tsc --noEmit`, `npx next lint`,
+   `npm test`, y `rm -rf .next && npx next build` deben pasar limpios. Para
+   cambios de UI, ademas probar el flujo real con Playwright.
+4. El dueño revisa y mergea el pull request — no se mergea sin su
+   aprobacion.
+
+Ver [`docs/contributing.md`](docs/contributing.md) para el detalle
+completo y el checklist pre-PR.
+
+## Licencia
+
+Software propietario. Todos los derechos reservados — no es codigo
+abierto, no hay licencia de uso o redistribucion otorgada.
