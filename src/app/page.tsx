@@ -56,7 +56,7 @@ const PRICING_PLANS = [
       "Los 11 módulos completos",
       "Tu hábito ancla activo",
       "Wheel of Life inicial",
-      "Recordatorios diarios",
+      "Recordatorios para empezar",
     ],
     cta: "Empezar gratis",
     highlight: false,
@@ -223,8 +223,11 @@ export default async function HomePage() {
               Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.
               Sin gurús, sin 47 hábitos a la vez, sin culpa cuando fallas un día.
             </p>
-            <p className="text-base mb-10">
+            <p className="text-base mb-2">
               Hoy, eso podría ser <span className="font-semibold text-accent">5 sentadillas.</span>
+            </p>
+            <p className="text-sm text-neutral-500 mb-10">
+              Empieza con algo que puedas hacer incluso en un día malo.
             </p>
             <div className="flex items-center gap-6">
               <Link href="/register" className="btn-primary">Empezar gratis</Link>
@@ -294,9 +297,12 @@ export default async function HomePage() {
           <p className="text-sm text-neutral-400 mb-6">
             Y de alguna forma... sigues sin sostener nada.
           </p>
-          <p className="text-2xl sm:text-3xl font-thin leading-relaxed">
+          <p className="text-2xl sm:text-3xl font-thin leading-relaxed mb-6">
             Tal vez el problema no eres tu.{" "}
             <span className="text-accent">Tal vez son las reglas.</span>
+          </p>
+          <p className="text-sm text-neutral-400">
+            Aquí fallar no te expulsa. Solo te dice cómo volver más pequeño.
           </p>
         </div>
       </Reveal>
@@ -419,7 +425,7 @@ export default async function HomePage() {
           <div className="lift-on-hover rounded-lg border border-accent/50 p-6">
             <p className="kicker">Tu ritmo</p>
             <p className="font-bold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
-            <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
+            <p className="muted">Los puntos son señal de avance, no una deuda. Tu progreso sigue siendo tuyo — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
           </div>
         </div>
       </Reveal>
