@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.107.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: 'Empezar gratis' ahora deja la expectativa explícita justo debajo ('7 días gratis. Sin tarjeta. Primero mides dónde estás.'), y los planes pagos usan 'Ver mensual'/'Ver anual' con un aviso de que todavía no eliges plan — ambos van a la misma prueba gratis.",
+    ],
+  },
+  {
     version: "2.106.0",
     date: "2026-07-22",
     changes: [

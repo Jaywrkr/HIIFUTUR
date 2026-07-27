@@ -54,7 +54,7 @@ const PRICING_PLANS = [
     tagline: "Sin tarjeta.",
     features: [
       "Los 11 módulos completos",
-      "Tu hábito ancla activo",
+      "Guía para encontrar tu hábito ancla",
       "Wheel of Life inicial",
       "Recordatorios diarios",
     ],
@@ -73,7 +73,7 @@ const PRICING_PLANS = [
       "Wheel of Life cada 30 días",
       "Cancela cuando quieras",
     ],
-    cta: "Empezar mensual",
+    cta: "Ver mensual",
     highlight: false,
   },
   {
@@ -87,7 +87,7 @@ const PRICING_PLANS = [
       "Casi 2 meses gratis vs. pagar mes a mes",
       "Acceso prioritario a lo nuevo",
     ],
-    cta: "Empezar anual",
+    cta: "Ver anual",
     highlight: true,
   },
 ];
@@ -232,7 +232,10 @@ export default async function HomePage() {
                 Ya tengo cuenta
               </Link>
             </div>
-            <p className="text-xs text-neutral-600 mt-6">iOS y Android, pronto.</p>
+            <p className="text-xs text-neutral-500 mt-4">
+              7 días gratis. Sin tarjeta. Primero mides dónde estás.
+            </p>
+            <p className="text-xs text-neutral-600 mt-2">iOS y Android, pronto.</p>
           </Reveal>
 
           <div className="relative h-[420px] hidden md:block">
@@ -434,9 +437,12 @@ export default async function HomePage() {
           <h2 className="text-4xl sm:text-5xl font-thin tracking-tight mb-4">
             Elige tu plan. Empieza tu sistema.
           </h2>
-          <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-12">
+          <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-2">
             7 días de prueba completa, sin tarjeta. Si decides seguir, activa dentro de esos 7
             días y el precio con descuento te queda fijo para siempre.
+          </p>
+          <p className="text-xs text-neutral-500 max-w-xl mx-auto mb-12">
+            No eliges plan todavía. Primero entras a la prueba gratis.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 text-left">
