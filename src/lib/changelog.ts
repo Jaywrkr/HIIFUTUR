@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.116.0",
+    date: "2026-07-27",
+    changes: [
+      "En Hoy, el color de marca de las tarjetas de Nivel, Puntos y Racha ahora solo aparece al pasar el mouse o enfocarlas con teclado — antes quedaba encendido todo el tiempo en una de las tres.",
+      "Arreglo: la línea que tacha 'culpable' en 'Por qué lo hicimos' ya no se extendía hacia la siguiente palabra.",
+    ],
+  },
+  {
     version: "2.115.0",
     date: "2026-07-27",
     changes: [
