@@ -225,7 +225,7 @@ export default async function HomePage() {
             <p className="kicker">Sistema de ejecución sostenible</p>
             <h1 className="text-4xl sm:text-5xl font-thin leading-[1.3] tracking-tight mb-5">
               No es disciplina. No es fuerza de voluntad.{" "}
-              <span className="text-accent font-black">Es un sistema que no pueda fallar.</span>
+              <span className="text-accent font-black">Es un sistema hecho para que puedas volver incluso cuando fallas.</span>
             </h1>
             <p className="text-sm leading-relaxed text-neutral-400 mb-8 max-w-lg">
               Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.

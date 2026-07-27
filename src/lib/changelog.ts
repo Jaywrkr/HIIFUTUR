@@ -3,6 +3,16 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.118.0",
+    date: "2026-07-27",
+    changes: [
+      "Términos: la sección de precios ahora detalla los montos reales ($6.99/mes o $59/año regular, $4.99/mes o $42/año fundador), nombra a PayPal como procesador y aclara que el precio fundador se pierde si cancelas y vuelves a activar después.",
+      "El copy del hero de la landing pasa de \"un sistema que no pueda fallar\" a \"un sistema hecho para que puedas volver incluso cuando fallas\" — mismo golpe, sin sonar a garantía absoluta.",
+      "La descripción del sitio (meta y OG) se actualiza para nombrar hábitos y Radar de Vida, no solo el Principio de Pareto.",
+      "Se agrega el link canonical faltante en el layout raíz.",
+    ],
+  },
+  {
     version: "2.117.0",
     date: "2026-07-27",
     changes: [
