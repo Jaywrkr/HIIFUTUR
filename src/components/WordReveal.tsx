@@ -66,11 +66,16 @@ export function WordReveal({ words, className }: { words: RevealWord[]; classNam
               color: active ? "#F5F5F5" : "#404040",
               filter: active ? "blur(0px)" : "blur(6px)",
               transition: reducedMotion ? "none" : "color 450ms ease-out, filter 450ms ease-out",
-              textDecorationLine: word.strike ? "line-through" : "none",
-              textDecorationColor: "#737373",
             }}
           >
-            {word.text}{" "}
+            <span
+              style={{
+                textDecorationLine: word.strike ? "line-through" : "none",
+                textDecorationColor: "#737373",
+              }}
+            >
+              {word.text}
+            </span>{" "}
           </span>
         );
       })}

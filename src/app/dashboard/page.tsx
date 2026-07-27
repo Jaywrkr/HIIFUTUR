@@ -146,12 +146,11 @@ export default async function DashboardPage({
   const { level, pointsIntoLevel, nextLevelThreshold } = computeLevel(user.points);
   const levelPct = nextLevelThreshold === 0 ? 100 : Math.round((pointsIntoLevel / nextLevelThreshold) * 100);
 
-  // Fresh on every visit to "Hoy": one of the three stat tiles gets a
-  // random brand-color highlight, chosen at request time.
+  // Each stat tile gets its own random brand color, chosen at request time,
+  // revealed only on hover — the resting state stays identical for all three.
   const paletteColors = Object.values(BRAND_PALETTE);
-  const highlightIndex = Math.floor(Math.random() * 3);
-  const highlightColor = paletteColors[Math.floor(Math.random() * paletteColors.length)];
-  const highlightIsLight = isLightColor(highlightColor);
+  const cardColors = [0, 1, 2].map(() => paletteColors[Math.floor(Math.random() * paletteColors.length)]);
+  const cardIsLight = cardColors.map(isLightColor);
 
   const justActivated =
     searchParams?.activated === "1" &&
@@ -332,34 +331,30 @@ export default async function DashboardPage({
 
           {/* Compact status band: level, points, streak — the game at a
               glance. Three separate square tiles, not one divided box — same
-              information, more air between each number. One tile gets a
-              random brand-color highlight each time this screen loads. */}
+              information, more air between each number. Each tile reveals
+              its own random brand color only while hovered/focused. */}
           <div className="grid grid-cols-3 gap-4 mb-14">
             <Link
               href="/cuenta"
-              className={`aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border text-center transition-colors ${
-                highlightIndex === 0
-                  ? `border-transparent ${highlightIsLight ? "text-black" : "text-white"}`
-                  : "border-line hover:border-accent/40"
+              className={`group aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center transition-colors hover:border-transparent focus-visible:border-transparent hover:[background-color:var(--h-bg)] focus-visible:[background-color:var(--h-bg)] ${
+                cardIsLight[0] ? "hover:text-black focus-visible:text-black" : "hover:text-white focus-visible:text-white"
               }`}
-              style={highlightIndex === 0 ? { backgroundColor: highlightColor } : undefined}
+              style={{ "--h-bg": cardColors[0] } as React.CSSProperties}
             >
-              <p className={`text-lg font-bold ${highlightIndex === 0 ? "" : "text-accent"}`}>Nv. {level}</p>
+              <p className={`text-lg font-bold text-accent ${cardIsLight[0] ? "group-hover:text-black" : "group-hover:text-white"}`}>Nv. {level}</p>
               <div
-                className={`h-1 w-12 rounded-full overflow-hidden compact-hide border ${
-                  highlightIndex === 0
-                    ? `${highlightIsLight ? "border-black/20" : "border-white/20"} bg-black/10`
-                    : "bg-ink border-line"
+                className={`h-1 w-12 rounded-full overflow-hidden compact-hide border bg-ink border-line ${
+                  cardIsLight[0] ? "group-hover:border-black/20 group-hover:bg-black/10" : "group-hover:border-white/20 group-hover:bg-black/10"
                 }`}
               >
                 <div
-                  className={`h-full rounded-full ${highlightIndex === 0 ? (highlightIsLight ? "bg-black/60" : "bg-white") : "bg-accent"}`}
+                  className={`h-full rounded-full bg-accent ${cardIsLight[0] ? "group-hover:bg-black/60" : "group-hover:bg-white"}`}
                   style={{ width: `${levelPct}%` }}
                 />
               </div>
               <p
-                className={`text-[10px] uppercase tracking-widest ${
-                  highlightIndex === 0 ? (highlightIsLight ? "text-black/60" : "text-white/70") : "text-neutral-500"
+                className={`text-[10px] uppercase tracking-widest text-neutral-500 ${
+                  cardIsLight[0] ? "group-hover:text-black/60" : "group-hover:text-white/70"
                 }`}
               >
                 Nivel
@@ -367,17 +362,15 @@ export default async function DashboardPage({
             </Link>
             <Link
               href="/leaderboard"
-              className={`aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border text-center transition-colors ${
-                highlightIndex === 1
-                  ? `border-transparent ${highlightIsLight ? "text-black" : "text-white"}`
-                  : "border-line hover:border-accent/40"
+              className={`group aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center transition-colors hover:border-transparent focus-visible:border-transparent hover:[background-color:var(--h-bg)] focus-visible:[background-color:var(--h-bg)] ${
+                cardIsLight[1] ? "hover:text-black focus-visible:text-black" : "hover:text-white focus-visible:text-white"
               }`}
-              style={highlightIndex === 1 ? { backgroundColor: highlightColor } : undefined}
+              style={{ "--h-bg": cardColors[1] } as React.CSSProperties}
             >
               <p className="text-lg font-bold">{user.points}</p>
               <p
-                className={`text-[10px] uppercase tracking-widest ${
-                  highlightIndex === 1 ? (highlightIsLight ? "text-black/60" : "text-white/70") : "text-neutral-500"
+                className={`text-[10px] uppercase tracking-widest text-neutral-500 ${
+                  cardIsLight[1] ? "group-hover:text-black/60" : "group-hover:text-white/70"
                 }`}
               >
                 Puntos
@@ -385,19 +378,15 @@ export default async function DashboardPage({
             </Link>
             <Link
               href="/cuenta"
-              className={`aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border text-center transition-colors ${
-                highlightIndex === 2
-                  ? `border-transparent ${highlightIsLight ? "text-black" : "text-white"}`
-                  : "border-line hover:border-accent/40"
+              className={`group aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center transition-colors hover:border-transparent focus-visible:border-transparent hover:[background-color:var(--h-bg)] focus-visible:[background-color:var(--h-bg)] ${
+                cardIsLight[2] ? "hover:text-black focus-visible:text-black" : "hover:text-white focus-visible:text-white"
               }`}
-              style={highlightIndex === 2 ? { backgroundColor: highlightColor } : undefined}
+              style={{ "--h-bg": cardColors[2] } as React.CSSProperties}
             >
               <p className="text-lg font-bold flex items-center justify-center gap-1">
                 {bestStreak > 0 ? (
                   <>
-                    <IconFlame
-                      className={`w-4 h-4 ${highlightIndex === 2 ? "" : "text-accent"}`}
-                    />{" "}
+                    <IconFlame className="w-4 h-4 text-accent" />{" "}
                     {bestStreak}
                   </>
                 ) : (
@@ -405,8 +394,8 @@ export default async function DashboardPage({
                 )}
               </p>
               <p
-                className={`text-[10px] uppercase tracking-widest ${
-                  highlightIndex === 2 ? (highlightIsLight ? "text-black/60" : "text-white/70") : "text-neutral-500"
+                className={`text-[10px] uppercase tracking-widest text-neutral-500 ${
+                  cardIsLight[2] ? "group-hover:text-black/60" : "group-hover:text-white/70"
                 }`}
               >
                 Racha
