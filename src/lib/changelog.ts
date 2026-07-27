@@ -3,6 +3,15 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.111.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: menos fricción para empezar — el hero deja claro que el primer hábito puede ser algo que hagas incluso en un día malo, y el bloque de 'Las reglas viejas' aclara que fallar no te expulsa del sistema.",
+      "Landing: 'Tu ritmo' ya no suena a deuda — los puntos se presentan como señal de avance, no como presión.",
+      "Landing: 'Recordatorios diarios' en la tarjeta de prueba gratis pasa a 'Recordatorios para empezar', menos dependiente.",
+    ],
+  },
+  {
     version: "2.110.0",
     date: "2026-07-27",
     changes: [
