@@ -3,6 +3,15 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.107.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: aclara que EJECUTA no es otro tracker suelto — es una secuencia guiada (mirar tu vida, aprender, ejecutar, revisar), justo antes del bloque Aprendizaje/Acción/Control.",
+      "Landing: el bloque 'Esto es para ti si...' ahora nombra directamente al enemigo (apps de rachas, cursos que abandonas, productividad de cambiarlo todo de golpe) y deja más claro a quién le sirve el sistema.",
+      "Landing: el hero conecta el Principio de Pareto con alivio, no solo eficiencia — 'Menos acciones. Menos culpa. Más continuidad.'",
+    ],
+  },
+  {
     version: "2.106.0",
     date: "2026-07-22",
     changes: [
