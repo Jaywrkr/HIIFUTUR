@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.114.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: el precio fundador ya no promete 'fijo para siempre' sin matiz — ahora dice 'mientras mantengas tu suscripción activa', en la tarjeta de pricing, la intro y el FAQ.",
+      "Landing: 'Recordatorios para empezar' pasa a 'Recordatorios para empezar, no muletas para siempre', más honesto sobre qué tan lejos llega el recordatorio.",
+    ],
+  },
+  {
     version: "2.113.0",
     date: "2026-07-27",
     changes: [

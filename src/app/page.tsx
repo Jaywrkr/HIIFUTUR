@@ -60,7 +60,7 @@ const PRICING_PLANS = [
       "Los 11 módulos completos",
       "Guía para encontrar tu hábito ancla",
       "Wheel of Life inicial",
-      "Recordatorios para empezar",
+      "Recordatorios para empezar, no muletas para siempre",
     ],
     cta: "Empezar gratis",
     highlight: false,
@@ -309,7 +309,7 @@ export default async function HomePage() {
             Y de alguna forma... sigues sin sostener nada.
           </p>
           <p className="text-2xl sm:text-3xl font-thin leading-relaxed mb-6">
-            Tal vez el problema no eres tu.{" "}
+            Tal vez el problema no eres tú.{" "}
             <span className="text-accent">Tal vez son las reglas.</span>
           </p>
           <p className="text-sm text-neutral-400">
