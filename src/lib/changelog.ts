@@ -3,6 +3,15 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.107.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: los efectos de scroll (Reveal, WordReveal, ScrollTextLine) ahora respetan 'reducir movimiento' del sistema — con esa preferencia activada, todo el contenido aparece de inmediato, sin blur ni transición.",
+      "Landing: marcas decorativas (✓ de pricing, — de 'Esto es para ti si...', el ticker de hábitos duplicado y las tarjetas flotantes del hero) ya no se leen con lector de pantalla.",
+      "Landing: sube el contraste de 'iOS y Android, pronto.' y de las reglas viejas tachadas, que quedaban por debajo del mínimo legible.",
+    ],
+  },
+  {
     version: "2.106.0",
     date: "2026-07-22",
     changes: [

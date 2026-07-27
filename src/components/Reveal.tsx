@@ -6,8 +6,15 @@ import { useEffect, useRef, useState } from "react";
 export function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setReducedMotion(true);
+      setVisible(true);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
 
@@ -28,12 +35,12 @@ export function Reveal({ children, delay = 0 }: { children: React.ReactNode; del
     <div
       ref={ref}
       style={{
-        transitionProperty: "opacity, transform",
-        transitionDuration: "1100ms",
+        transitionProperty: reducedMotion ? "none" : "opacity, transform",
+        transitionDuration: reducedMotion ? "0ms" : "1100ms",
         transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-        transitionDelay: `${delay}ms`,
+        transitionDelay: reducedMotion ? "0ms" : `${delay}ms`,
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(14px)",
+        transform: visible || reducedMotion ? "translateY(0)" : "translateY(14px)",
       }}
     >
       {children}
