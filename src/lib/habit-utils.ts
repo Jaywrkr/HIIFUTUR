@@ -2,6 +2,16 @@ function toDateKey(d: Date): string {
   return d.toISOString().slice(0, 10);
 }
 
+/** Relative luminance (YIQ) of a hex color, used to pick readable text over
+ * an arbitrary background — e.g. a randomly highlighted stat card. */
+export function isLightColor(hex: string): boolean {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return luminance > 0.55;
+}
+
 export function todayKey(): string {
   return toDateKey(new Date());
 }

@@ -13,8 +13,13 @@ import {
   getWheelMeasurements,
   getModuleProgressForUser,
 } from "@/lib/queries";
-import { addDays, computeStreak, daysBetween, relativeDayLabel, todayKey } from "@/lib/habit-utils";
-import { MAX_HABITS, DAYS_TO_UNLOCK_NEXT_HABIT, DAYS_BETWEEN_WHEEL_MEASUREMENTS } from "@/lib/constants";
+import { addDays, computeStreak, daysBetween, isLightColor, relativeDayLabel, todayKey } from "@/lib/habit-utils";
+import {
+  MAX_HABITS,
+  DAYS_TO_UNLOCK_NEXT_HABIT,
+  DAYS_BETWEEN_WHEEL_MEASUREMENTS,
+  BRAND_PALETTE,
+} from "@/lib/constants";
 import { MODULES } from "@/lib/modules-content";
 import { computeLevel } from "@/lib/leveling";
 import { evaluateCycle, executionLocked } from "@/lib/cycle-state";
@@ -140,6 +145,13 @@ export default async function DashboardPage({
 
   const { level, pointsIntoLevel, nextLevelThreshold } = computeLevel(user.points);
   const levelPct = nextLevelThreshold === 0 ? 100 : Math.round((pointsIntoLevel / nextLevelThreshold) * 100);
+
+  // Fresh on every visit to "Hoy": one of the three stat tiles gets a
+  // random brand-color highlight, chosen at request time.
+  const paletteColors = Object.values(BRAND_PALETTE);
+  const highlightIndex = Math.floor(Math.random() * 3);
+  const highlightColor = paletteColors[Math.floor(Math.random() * paletteColors.length)];
+  const highlightIsLight = isLightColor(highlightColor);
 
   const justActivated =
     searchParams?.activated === "1" &&
@@ -320,39 +332,85 @@ export default async function DashboardPage({
 
           {/* Compact status band: level, points, streak — the game at a
               glance. Three separate square tiles, not one divided box — same
-              information, more air between each number. */}
+              information, more air between each number. One tile gets a
+              random brand-color highlight each time this screen loads. */}
           <div className="grid grid-cols-3 gap-4 mb-14">
             <Link
               href="/cuenta"
-              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center hover:border-accent/40 transition-colors"
+              className={`aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border text-center transition-colors ${
+                highlightIndex === 0
+                  ? `border-transparent ${highlightIsLight ? "text-black" : "text-white"}`
+                  : "border-line hover:border-accent/40"
+              }`}
+              style={highlightIndex === 0 ? { backgroundColor: highlightColor } : undefined}
             >
-              <p className="text-lg font-bold text-accent">Nv. {level}</p>
-              <div className="h-1 w-12 rounded-full bg-ink border border-line overflow-hidden compact-hide">
-                <div className="h-full bg-accent rounded-full" style={{ width: `${levelPct}%` }} />
+              <p className={`text-lg font-bold ${highlightIndex === 0 ? "" : "text-accent"}`}>Nv. {level}</p>
+              <div
+                className={`h-1 w-12 rounded-full overflow-hidden compact-hide border ${
+                  highlightIndex === 0
+                    ? `${highlightIsLight ? "border-black/20" : "border-white/20"} bg-black/10`
+                    : "bg-ink border-line"
+                }`}
+              >
+                <div
+                  className={`h-full rounded-full ${highlightIndex === 0 ? (highlightIsLight ? "bg-black/60" : "bg-white") : "bg-accent"}`}
+                  style={{ width: `${levelPct}%` }}
+                />
               </div>
-              <p className="text-[10px] uppercase tracking-widest text-neutral-500">Nivel</p>
+              <p
+                className={`text-[10px] uppercase tracking-widest ${
+                  highlightIndex === 0 ? (highlightIsLight ? "text-black/60" : "text-white/70") : "text-neutral-500"
+                }`}
+              >
+                Nivel
+              </p>
             </Link>
             <Link
               href="/leaderboard"
-              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center hover:border-accent/40 transition-colors"
+              className={`aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border text-center transition-colors ${
+                highlightIndex === 1
+                  ? `border-transparent ${highlightIsLight ? "text-black" : "text-white"}`
+                  : "border-line hover:border-accent/40"
+              }`}
+              style={highlightIndex === 1 ? { backgroundColor: highlightColor } : undefined}
             >
               <p className="text-lg font-bold">{user.points}</p>
-              <p className="text-[10px] uppercase tracking-widest text-neutral-500">Puntos</p>
+              <p
+                className={`text-[10px] uppercase tracking-widest ${
+                  highlightIndex === 1 ? (highlightIsLight ? "text-black/60" : "text-white/70") : "text-neutral-500"
+                }`}
+              >
+                Puntos
+              </p>
             </Link>
             <Link
               href="/cuenta"
-              className="aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border border-line text-center hover:border-accent/40 transition-colors"
+              className={`aspect-square flex flex-col items-center justify-center gap-1.5 rounded-lg border text-center transition-colors ${
+                highlightIndex === 2
+                  ? `border-transparent ${highlightIsLight ? "text-black" : "text-white"}`
+                  : "border-line hover:border-accent/40"
+              }`}
+              style={highlightIndex === 2 ? { backgroundColor: highlightColor } : undefined}
             >
               <p className="text-lg font-bold flex items-center justify-center gap-1">
                 {bestStreak > 0 ? (
                   <>
-                    <IconFlame className="w-4 h-4 text-accent" /> {bestStreak}
+                    <IconFlame
+                      className={`w-4 h-4 ${highlightIndex === 2 ? "" : "text-accent"}`}
+                    />{" "}
+                    {bestStreak}
                   </>
                 ) : (
                   "—"
                 )}
               </p>
-              <p className="text-[10px] uppercase tracking-widest text-neutral-500">Racha</p>
+              <p
+                className={`text-[10px] uppercase tracking-widest ${
+                  highlightIndex === 2 ? (highlightIsLight ? "text-black/60" : "text-white/70") : "text-neutral-500"
+                }`}
+              >
+                Racha
+              </p>
             </Link>
           </div>
 

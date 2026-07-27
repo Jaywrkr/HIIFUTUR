@@ -48,11 +48,11 @@ export function ArrivalRitual({ mantra }: { mantra: string }) {
         dismissing ? "opacity-0" : "opacity-100"
       }`}
     >
-      <p className="text-xs uppercase tracking-widest text-accent mb-6">Mantra de hoy</p>
-      <p className="text-2xl md:text-3xl font-bold text-center leading-snug max-w-2xl">
+      <p className="text-xs uppercase tracking-widest text-accent mb-6 breathing-text">Mantra de hoy</p>
+      <p className="text-xl md:text-2xl font-bold text-center leading-snug max-w-2xl breathing-text">
         &ldquo;{mantra}&rdquo;
       </p>
-      <p className="text-xs uppercase tracking-widest text-neutral-500 mt-6">— Jay</p>
+      <p className="text-xs uppercase tracking-widest text-neutral-500 mt-6 breathing-text">— Jay</p>
       <p className="text-[10px] uppercase tracking-widest text-neutral-500 mt-16 animate-pulse">
         toca para entrar
       </p>
