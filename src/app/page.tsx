@@ -54,7 +54,7 @@ const PRICING_PLANS = [
     tagline: "Sin tarjeta.",
     features: [
       "Los 11 módulos completos",
-      "Tu hábito ancla activo",
+      "Guía para encontrar tu hábito ancla",
       "Wheel of Life inicial",
       "Recordatorios diarios",
     ],
@@ -73,7 +73,7 @@ const PRICING_PLANS = [
       "Wheel of Life cada 30 días",
       "Cancela cuando quieras",
     ],
-    cta: "Empezar mensual",
+    cta: "Ver mensual",
     highlight: false,
   },
   {
@@ -87,7 +87,7 @@ const PRICING_PLANS = [
       "Casi 2 meses gratis vs. pagar mes a mes",
       "Acceso prioritario a lo nuevo",
     ],
-    cta: "Empezar anual",
+    cta: "Ver anual",
     highlight: true,
   },
 ];
@@ -95,7 +95,7 @@ const PRICING_PLANS = [
 const OLD_RULES = [
   "Ten más disciplina.",
   "Hazlo todo o no hagas nada.",
-  "Sientete culpable si fallas.",
+  "Siéntete culpable si fallas.",
   "Empieza de nuevo el lunes.",
 ];
 
@@ -136,6 +136,10 @@ const FAQ = [
   {
     q: "¿Esto es otro curso que voy a abandonar?",
     a: "Puede ser. Depende de si empiezas tan pequeño que sea imposible fallar. Por eso el sistema está diseñado así, no al revés.",
+  },
+  {
+    q: "¿Qué pasa después de crear mi cuenta?",
+    a: "Primero mides cómo está tu vida hoy con el Wheel of Life. Después haces el primer módulo. Entonces eliges tu hábito ancla: pequeño, concreto y sostenible.",
   },
 ];
 
@@ -232,7 +236,10 @@ export default async function HomePage() {
                 Ya tengo cuenta
               </Link>
             </div>
-            <p className="text-xs text-neutral-600 mt-6">iOS y Android, pronto.</p>
+            <p className="text-xs text-neutral-500 mt-4">
+              7 días gratis. Sin tarjeta. Primero mides dónde estás.
+            </p>
+            <p className="text-xs text-neutral-600 mt-2">iOS y Android, pronto.</p>
           </Reveal>
 
           <div className="relative h-[420px] hidden md:block">
@@ -430,13 +437,16 @@ export default async function HomePage() {
           sistema, recién aquí llega el precio. */}
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-32 text-center">
-          <p className="kicker mx-auto">Empieza donde estes</p>
+          <p className="kicker mx-auto">Empieza donde estés</p>
           <h2 className="text-4xl sm:text-5xl font-thin tracking-tight mb-4">
             Elige tu plan. Empieza tu sistema.
           </h2>
-          <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-12">
+          <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-2">
             7 días de prueba completa, sin tarjeta. Si decides seguir, activa dentro de esos 7
             días y el precio con descuento te queda fijo para siempre.
+          </p>
+          <p className="text-xs text-neutral-500 max-w-xl mx-auto mb-12">
+            No eliges plan todavía. Primero entras a la prueba gratis.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 text-left">
@@ -508,6 +518,10 @@ export default async function HomePage() {
         <div className="max-w-2xl mx-auto px-6 border-t border-line pt-10 pb-10 text-center">
           <Link href="/register" className="btn-primary">Empezar gratis</Link>
           <p className="muted mt-6">Un sistema, no una promesa.</p>
+          <p className="text-xs text-neutral-600 mt-2">
+            Sin tarjeta para empezar. Sin testimonios inventados. Sin prometerte una vida nueva en
+            siete días.
+          </p>
         </div>
       </Reveal>
 

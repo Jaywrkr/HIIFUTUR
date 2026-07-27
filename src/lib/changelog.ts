@@ -3,6 +3,16 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.107.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: el hero ahora aclara junto al CTA principal que la prueba es de 7 días, sin tarjeta, y que primero mides dónde estás.",
+      "Landing: nueva pregunta en el FAQ sobre qué pasa justo después de crear la cuenta (Wheel of Life → primer módulo → hábito ancla), y una línea de cierre que deja explícito que no hay testimonios inventados.",
+      "Landing: la tarjeta de prueba gratis ya no promete 'Tu hábito ancla activo' (todavía no lo activaste) sino 'Guía para encontrar tu hábito ancla', y los planes pagos usan 'Ver mensual'/'Ver anual' en vez de 'Empezar...' ya que no cobran de inmediato.",
+      "Corrige tildes faltantes en microcopy de la landing (\"Siéntete\", \"estés\", \"línea\").",
+    ],
+  },
+  {
     version: "2.106.0",
     date: "2026-07-22",
     changes: [
