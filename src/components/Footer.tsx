@@ -17,6 +17,14 @@ const GROUPS = [
       { href: "mailto:jaywrkr@gmail.com", text: "Contacto" },
     ],
   },
+  {
+    label: "Redes",
+    links: [
+      { href: "https://instagram.com/jaywrkr", text: "Instagram", external: true },
+      { href: "https://x.com/jaywrkr", text: "X", external: true },
+      { href: "https://www.linkedin.com/in/jaywrkr/", text: "LinkedIn", external: true },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -27,7 +35,7 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-14">
         <p className="text-sm font-thin tracking-[0.3em] text-white mb-4">EJECUTA</p>
         <p className="text-sm text-neutral-400 max-w-md leading-relaxed mb-12">
-          Sistema de ejecución sostenible: aprendizaje, hábitos y Wheel of Life en un mismo lugar.
+          Sistema de ejecución sostenible: aprendizaje, hábitos y Radar de Vida en un mismo lugar.
           Un producto de HIIFUTUR, operado desde Ecuador.
         </p>
 
@@ -45,6 +53,9 @@ export function Footer() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    {...("external" in link && link.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                     className="text-sm text-neutral-300 hover:text-accent transition-colors inline-flex items-center gap-2 w-fit"
                   >
                     {link.text} <span aria-hidden="true">→</span>

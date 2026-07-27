@@ -29,7 +29,7 @@ sin cambiar una palabra? Si sí, no está terminado.
 - Cada paso explica **por qué** existe el límite o la regla, en una
   frase ("Elige hasta 3 áreas. No más. El sistema funciona porque es
   pequeño.") — no solo impone la restricción sin contexto.
-- El Wheel of Life inicial se presenta como línea base, no como examen:
+- El Radar de Vida inicial se presenta como línea base, no como examen:
   "Del 1 al 10, sin filtro. Esta es tu línea base." — nunca sugerir que
   hay una respuesta "correcta".
 

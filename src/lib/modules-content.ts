@@ -39,7 +39,7 @@ export type CourseModule = {
   phaseId: string;
   order: number;
   title: string;
-  /** Fragmento de la historia real de Jay (3 -> 9 en el Wheel of Life, 8 meses). */
+  /** Fragmento de la historia real de Jay (3 -> 9 en el Radar de Vida, 8 meses). */
   narrative: string;
   /** Una de las MANTRAS, la que más resuena con este módulo. */
   mantra: string;
@@ -630,7 +630,7 @@ export const MODULES: CourseModule[] = [
     recap:
       "Tu ancla ya es estable y sabes recuperarte de una recaída. Ahora usas ese hábito automático como disparador del siguiente, sin gastar más fuerza de voluntad.",
     leadsTo:
-      "Con tu cadena creciendo, el módulo 10 te enseña a leer, con datos y no con sensaciones, si de verdad está funcionando: tu Wheel of Life.",
+      "Con tu cadena creciendo, el módulo 10 te enseña a leer, con datos y no con sensaciones, si de verdad está funcionando: tu Radar de Vida.",
     callbacks: [
       { moduleId: "habito-ancla", fieldId: "habito_ancla", label: "Tu ancla (primer eslabón)" },
     ],
@@ -668,18 +668,18 @@ export const MODULES: CourseModule[] = [
     order: 10,
     concept: "compass",
     recap:
-      "Llevas semanas ejecutando y encadenando hábitos. Ahora usas tu Wheel of Life no como calificación, sino como brújula para decidir dónde apuntar el próximo mes.",
+      "Llevas semanas ejecutando y encadenando hábitos. Ahora usas tu Radar de Vida no como calificación, sino como brújula para decidir dónde apuntar el próximo mes.",
     leadsTo:
       "Solo queda el cierre del curso: quedarte con algo escrito por ti, para ti — tu mantra personal.",
     callbacks: [
       { moduleId: "pareto-en-tu-vida", fieldId: "accion_critica", label: "El 20% con el que empezaste" },
     ],
-    title: "Tu Wheel of Life como brujula",
+    title: "Tu Radar de Vida como brujula",
     narrative:
-      "El mes 8 medi mi Wheel of Life y marco un 9. No llore de felicidad — senti, simplemente, que por fin el número coincidia con lo que ya sabia por dentro desde hacia semanas.",
+      "El mes 8 medi mi Radar de Vida y marco un 9. No llore de felicidad — senti, simplemente, que por fin el número coincidia con lo que ya sabia por dentro desde hacia semanas.",
     mantra: "Exito es tener cada día menos arrepentimientos.",
     theory: [
-      "El Wheel of Life no es un examen que apruebas o repruebas. Es una brujula: te dice hacia donde te estás moviendo, no que tan 'bien' o 'mal' eres como persona.",
+      "El Radar de Vida no es un examen que apruebas o repruebas. Es una brujula: te dice hacia donde te estás moviendo, no que tan 'bien' o 'mal' eres como persona.",
       "Cada medición mensual es una fotografia. Comparar la foto de este mes con la anterior te dice, con datos y no con sensaciones, si el sistema está funcionando o si es momento de ajustar el hábito ancla.",
       "Es fácil obsesionarse con el área que menos sube. Pero éxito real no es tener un 10 en todo — es tener, cada día, menos cosas de las que te arrepientes al acostarte. Esa es una métrica más honesta que cualquier promedio.",
       "Usa esta revisión para preguntarte qué área está compitiendo por el mismo tiempo y energía que tu hábito ancla, y decide con calma — no con culpa — qué vas a hacer al respecto el próximo mes.",
@@ -714,7 +714,7 @@ export const MODULES: CourseModule[] = [
     recap:
       "Recorriste las cuatro fases: entendiste por qué fallabas, encontraste tu 20%, lo volviste sistema, sostuviste tu ancla, la volviste identidad y aprendiste a recuperarte. Este es el cierre.",
     leadsTo:
-      "Aquí termina la teoría, pero no el sistema: tu habit tracker y tu Wheel of Life siguen vivos, mes tras mes. El curso te dio el mapa; el camino lo sostienes tú.",
+      "Aquí termina la teoría, pero no el sistema: tu habit tracker y tu Radar de Vida siguen vivos, mes tras mes. El curso te dio el mapa; el camino lo sostienes tú.",
     title: "Tu mantra personal",
     narrative:
       "Con el tiempo, mis propias frases se volvieron parte del sistema. No las escribi para inspirar a nadie más — las escribi para recordarme a mi mismo, a las 6am, por que me estaba levantando.",
@@ -723,7 +723,7 @@ export const MODULES: CourseModule[] = [
       "Has leido, en cada módulo, una frase mia — un mantra que use en mis propios peores días. No te las comparti para que las repitas sin pensar. Te las comparti como ejemplo de algo más útil: tener las tuyas.",
       "Un mantra no es una frase bonita para colgar en la pared. Es la versión comprimida de una lección que ya te costo cara, lista para recordarte en 3 segundos por que sigues, justo cuando más fácil sería parar.",
       "El único atajo real que existe es no buscar atajos. Y ese, de hecho, puede ser un mantra en si mismo. Los tuyos van a salir de tus propias recaidas, tus propios módulos, tus propios meses buenos y malos.",
-      "Este es el último ejercicio del curso, pero no el final del sistema — el sistema sigue en tu habit tracker y en tu Wheel of Life, mes tras mes. Esto es solo el cierre de la parte teorica: quedarte con algo tuyo, escrito por ti, para ti.",
+      "Este es el último ejercicio del curso, pero no el final del sistema — el sistema sigue en tu habit tracker y en tu Radar de Vida, mes tras mes. Esto es solo el cierre de la parte teorica: quedarte con algo tuyo, escrito por ti, para ti.",
     ],
     exerciseTitle: "Escribe tu propio mantra",
     exerciseDescription: "No copies el mio. Escribe el tuyo, con tus palabras, sacado de lo que ya viviste en este curso.",

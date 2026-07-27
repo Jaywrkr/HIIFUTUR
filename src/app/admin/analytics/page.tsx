@@ -13,7 +13,7 @@ const FUNNEL_EVENTS = [
   { event: "onboarding_completed", label: "Termino onboarding" },
   { event: "habit_created", label: "Creo un hábito" },
   { event: "habit_checked", label: "Marco un hábito" },
-  { event: "wheel_measured", label: "Midio su Wheel of Life" },
+  { event: "wheel_measured", label: "Midio su Radar de Vida" },
   { event: "module_completed", label: "Completo un módulo" },
 ] as const;
 

@@ -73,7 +73,7 @@ export const HABIT_CATEGORIES = [
 
 /** The app's one named accent palette — muted, earthy, never saturated,
  * same rule Open uses for its editorial color cards. Defined once here so
- * every screen (hábitos, Wheel of Life, cuestionarios) draws from the same
+ * every screen (hábitos, Radar de Vida, cuestionarios) draws from the same
  * six tones instead of each inventing its own. */
 export const BRAND_PALETTE = {
   oliva: "#9AA07A",
@@ -105,7 +105,7 @@ export const DAYS_BETWEEN_HABIT_EDITS = 14;
 /** One missed day shouldn't erase weeks of consistency — but it's not free either. */
 export const DAYS_BETWEEN_STREAK_FREEZES = 30;
 
-/** Maps each Wheel of Life area to the closest habit category, used for the monthly insight. */
+/** Maps each Radar de Vida area to the closest habit category, used for the monthly insight. */
 export const WHEEL_AREA_TO_CATEGORY: Record<string, (typeof HABIT_CATEGORIES)[number]["id"]> = {
   salud_fisica: "salud",
   nutrición: "salud",
@@ -119,7 +119,7 @@ export const WHEEL_AREA_TO_CATEGORY: Record<string, (typeof HABIT_CATEGORIES)[nu
   crecimiento_personal: "mentalidad",
 };
 
-/** The color for a Wheel of Life area, inherited from its habit category —
+/** The color for a Radar de Vida area, inherited from its habit category —
  * "Nutrición", "Ejercicio" y "Descanso" comparten el oliva de Salud a
  * propósito: son la misma familia, y un color por cada una de las 10 áreas
  * (contra solo 6 tonos definidos) hubiera forzado repeticiones sin sentido. */
@@ -131,4 +131,4 @@ export function colorForWheelArea(areaId: string): string {
 /** La cifra real detrás de EJECUTA — una sola redacción, usada en landing y
  * en el Módulo 1, para no mantener dos versiones del mismo dato. */
 export const JAY_RESULT_LINE =
-  "Pasé de un 3 a un 9 en mi Wheel of Life, en 8 meses. Sistema pequeño, sostenido, mes tras mes.";
+  "Pasé de un 3 a un 9 en mi Radar de Vida, en 8 meses. Sistema pequeño, sostenido, mes tras mes.";

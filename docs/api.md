@@ -98,7 +98,7 @@ HTTP intermedia, Next.js serializa la llamada.
 | `habit-actions.ts` | Crear/editar hábito, `toggleHabitToday`, `markHabitDone`, congelar racha |
 | `onboarding-actions.ts` | Completar onboarding (áreas + Wheel inicial) |
 | `module-actions.ts` | Guardar respuestas de ejercicio, marcar módulo completado |
-| `wheel-actions.ts` | Registrar nueva medición del Wheel of Life |
+| `wheel-actions.ts` | Registrar nueva medición del Radar de Vida |
 | `account-actions.ts` | Editar nombre, borrar cuenta |
 | `password-reset-actions.ts` | Solicitar / confirmar reset de contraseña |
 | `push-actions.ts` | Suscribir/desuscribir un dispositivo a push |

@@ -311,7 +311,7 @@ export const CONCEPT_CAPTIONS: Record<ConceptKey, string> = {
   "habit-chain":
     "Un hábito ya automático dispara al siguiente. Encadenas sin gastar más fuerza de voluntad ni depender de la memoria.",
   compass:
-    "Tu Wheel of Life es una brújula, no un examen: compara mes contra mes y te dice si el sistema está funcionando.",
+    "Tu Radar de Vida es una brújula, no un examen: compara mes contra mes y te dice si el sistema está funcionando.",
   "mantra-collection":
     "Estas son las frases que te acompañaron en cada módulo. Ahora te toca escribir la tuya — comprimir tu propia lección.",
 };

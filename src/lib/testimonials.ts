@@ -2,7 +2,7 @@ export type Testimonial = {
   name: string;
   /** What changed for them, in their own words — not a marketing line. */
   quote: string;
-  /** Optional: something concrete, e.g. "3 → 8 en su Wheel of Life, 2 meses". */
+  /** Optional: something concrete, e.g. "3 → 8 en su Radar de Vida, 2 meses". */
   result?: string;
 };
 

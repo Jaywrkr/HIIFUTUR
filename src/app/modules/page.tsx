@@ -49,7 +49,7 @@ export default async function ModulesPage({
         <PageHeader
           kicker="APRENDIZAJE · 1 DE 3"
           title="El camino"
-          subtitle={`${completedIds.size} de ${MODULES.length} módulos completados. Aquí aprendes — la acción pasa en Hábitos, el control en Wheel of Life.`}
+          subtitle={`${completedIds.size} de ${MODULES.length} módulos completados. Aquí aprendes — la acción pasa en Hábitos, el control en Radar de Vida.`}
         />
 
         {cycle.wasReset ? (

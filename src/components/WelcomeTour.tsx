@@ -10,7 +10,7 @@ const STEPS = [
   },
   {
     title: "La metodología, en 3 partes",
-    body: "Curso + Hábitos + Wheel of Life. O dicho de otra forma: Aprendizaje + Acción + Control. Aprendes algo pequeño, lo conviertes en hábito, y cada 30 días mides si de verdad se movió algo.",
+    body: "Curso + Hábitos + Radar de Vida. O dicho de otra forma: Aprendizaje + Acción + Control. Aprendes algo pequeño, lo conviertes en hábito, y cada 30 días mides si de verdad se movió algo.",
   },
   {
     title: "Empieza por el curso",
@@ -22,7 +22,7 @@ const STEPS = [
   },
   {
     title: "Cada 30 días: tu rueda",
-    body: "Al cumplir el ciclo vuelves a medir tu Wheel of Life, contra tu línea base de hoy. Ahí ves — con números, no con sensaciones — qué movió tu hábito.",
+    body: "Al cumplir el ciclo vuelves a medir tu Radar de Vida, contra tu línea base de hoy. Ahí ves — con números, no con sensaciones — qué movió tu hábito.",
   },
 ];
 

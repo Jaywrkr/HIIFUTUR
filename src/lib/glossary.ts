@@ -16,9 +16,9 @@ export const GLOSSARY: GlossaryEntry[] = [
       "También llamado la regla 80/20: el 80% de tus resultados viene de solo el 20% de tus acciones. En el curso lo usas para encontrar esa acción pequeña que mueve todo lo demás, en vez de intentar cambiar diez cosas a la vez.",
   },
   {
-    term: "Wheel of Life",
+    term: "Radar de Vida",
     definition:
-      "La 'rueda de la vida': mides del 1 al 10 varias áreas (salud, dinero, relaciones, etc.) cada 30 días. Sirve como el control del sistema — te dice con números, no con sensaciones, si tus hábitos de verdad están moviendo algo.",
+      "Mides del 1 al 10 varias áreas de tu vida (salud, dinero, relaciones, etc.) cada 30 días. Sirve como el control del sistema — te dice con números, no con sensaciones, si tus hábitos de verdad están moviendo algo.",
   },
   {
     term: "fricción",

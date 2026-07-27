@@ -27,7 +27,7 @@ export const SUBSCRIPTION_PLANS: Record<
     features: [
       "Los 11 módulos completos",
       "Hasta 5 hábitos activos",
-      "Wheel of Life cada 30 días",
+      "Radar de Vida cada 30 días",
       "Recordatorios diarios",
     ],
     highlight: false,

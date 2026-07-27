@@ -12,13 +12,13 @@ hábito ancla como parte del ejercicio) → `/dashboard`.
 ```mermaid
 flowchart TD
   A[/register/] -->|cuenta creada| B[/onboarding paso 1\nelige hasta 3 áreas/]
-  B --> C[/onboarding paso 2\nWheel of Life inicial/]
+  B --> C[/onboarding paso 2\nRadar de Vida inicial/]
   C -->|ConfirmDialog: "no se puede editar después"| D[Módulo 1]
   D -->|elige hábito ancla como ejercicio| E[/dashboard/]
   E -->|trial de 7 días arranca| F[Ciclo de 30 días arranca\ncon el hábito ancla]
 ```
 
-**Decisiones clave**: el Wheel of Life inicial es irreversible una vez
+**Decisiones clave**: el Radar de Vida inicial es irreversible una vez
 confirmado (es la línea base para medir progreso real). El primer hábito
 NO se crea en un formulario aparte — se elige como parte del ejercicio
 del Módulo 1, a propósito, para que no sea una decisión aislada de la
@@ -77,7 +77,7 @@ algo distinto (ej. offline y la Server Action falla).
 no dispara "deshacer" — hay un guard de 400ms (`completedAt.current`)
 para el click fantasma que el navegador dispara tras soltar el pointer.
 
-## 4. Wheel of Life — medición periódica
+## 4. Radar de Vida — medición periódica
 
 **Objetivo**: la única fuente de verdad de "¿esto está funcionando de
 verdad?" — no autoreporte de sensación, sino un número comparable cada

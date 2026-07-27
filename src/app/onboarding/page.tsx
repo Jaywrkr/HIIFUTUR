@@ -85,10 +85,10 @@ export default function OnboardingPage() {
               </summary>
               <div className="mt-3 flex flex-col gap-3 text-sm text-neutral-300 leading-relaxed">
                 <p>
-                  Vas a medir tu <strong>Wheel of Life</strong> (rueda de la vida): una foto
-                  honesta de 10 áreas de tu vida, del 1 al 10. Es una herramienta clásica de
-                  coaching creada por Paul J. Meyer, y aquí es tu punto de partida — cada 30
-                  días la vuelves a medir para ver qué movió tu hábito.
+                  Vas a medir tu <strong>Radar de Vida</strong>: una foto honesta de 10 áreas de
+                  tu vida, del 1 al 10. Es una herramienta clásica de coaching creada por Paul J.
+                  Meyer, y aquí es tu punto de partida — cada 30 días la vuelves a medir para ver
+                  qué movió tu hábito.
                 </p>
                 <p>
                   No es un test psicológico, pero lo que hace sí tiene respaldo:

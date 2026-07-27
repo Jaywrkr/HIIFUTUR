@@ -9,7 +9,7 @@
 EJECUTA: curso interactivo + habit tracker basado en el Principio de
 Pareto. La idea central: la motivación falla, un sistema pequeño y
 sostenido no. Una persona elige **un solo hábito ancla** (el más pequeño
-posible), lo sostiene día a día, y cada 30 días mide con el Wheel of Life
+posible), lo sostiene día a día, y cada 30 días mide con el Radar de Vida
 si algo real se movió en su vida. El contenido del curso (11 módulos) se
 desbloquea con ejecución real — días de hábito cumplido — no con tiempo
 transcurrido ni con haber pagado más.
@@ -31,12 +31,12 @@ Credentials Provider, sesión JWT. Solo 6 rutas HTTP reales (ver
 ## Módulos existentes (funcionalidades)
 
 - Landing pública + registro/login + recuperación de contraseña.
-- Onboarding (áreas de vida + Wheel of Life inicial).
+- Onboarding (áreas de vida + Radar de Vida inicial).
 - 11 módulos de curso en 4 fases, desbloqueo secuencial.
 - Ciclo de formación de 30 días (2 fallos perdonados, el tercero resetea).
 - Habit tracker (hasta 5 hábitos, racha, freeze, heatmap).
 - Puntos y niveles (curva cuadrática).
-- Wheel of Life periódico con radar comparativo.
+- Radar de Vida periódico con radar comparativo.
 - Dashboard "Hoy" con rituales de celebración priorizados.
 - Leaderboard (solo nombre, nunca email).
 - Sistema de logros con tiers.

@@ -44,7 +44,7 @@ const SYSTEM_PARTS = [
   },
   {
     kicker: "Control",
-    title: "Wheel of Life cada 30 días",
+    title: "Radar de Vida cada 30 días",
     description: "Una foto honesta de las áreas que elegiste. No es examen, es brújula — te dice hacia dónde te estás moviendo.",
   },
 ];
@@ -59,7 +59,7 @@ const PRICING_PLANS = [
     features: [
       "Los 11 módulos completos",
       "Guía para encontrar tu hábito ancla",
-      "Wheel of Life inicial",
+      "Radar de Vida inicial",
       "Recordatorios para empezar, no muletas para siempre",
     ],
     cta: "Empezar gratis",
@@ -74,7 +74,7 @@ const PRICING_PLANS = [
     features: [
       "Todo el sistema, sin límite de tiempo",
       "Hasta 5 hábitos activos",
-      "Wheel of Life cada 30 días",
+      "Radar de Vida cada 30 días",
       "Cancela cuando quieras",
     ],
     cta: "Ver mensual",
@@ -119,7 +119,7 @@ const FOR_YOU_IF = [
 
 const JAY_STORY = [
   "Lo viví yo.",
-  "El Wheel of Life es la nota del 1 al 10 que le pongo a mi vida cada mes.",
+  "El Radar de Vida es la nota del 1 al 10 que le pongo a mi vida cada mes.",
   JAY_RESULT_LINE,
   "Esto es ese sistema. No una versión bonita de él.",
 ];
@@ -143,7 +143,7 @@ const FAQ = [
   },
   {
     q: "¿Qué pasa después de crear mi cuenta?",
-    a: "Primero mides cómo está tu vida hoy con el Wheel of Life. Después haces el primer módulo. Entonces eliges tu hábito ancla: pequeño, concreto y sostenible.",
+    a: "Primero mides cómo está tu vida hoy con el Radar de Vida. Después haces el primer módulo. Entonces eliges tu hábito ancla: pequeño, concreto y sostenible.",
   },
 ];
 
@@ -186,7 +186,7 @@ const STRUCTURED_DATA = {
   applicationCategory: "LifestyleApplication",
   operatingSystem: "Web",
   description:
-    "Curso interactivo basado en el Principio de Pareto, con seguimiento de hábitos y Wheel of Life — sistema de ejecución sostenible.",
+    "Curso interactivo basado en el Principio de Pareto, con seguimiento de hábitos y Radar de Vida — sistema de ejecución sostenible.",
   offers: PRICING_PLANS.filter((p) => p.id !== "prueba").map((p) => ({
     "@type": "Offer",
     name: p.label,
@@ -274,7 +274,7 @@ export default async function HomePage() {
             />
             <FloatingStat
               value="7/10"
-              label="Wheel of life"
+              label="Radar de vida"
               className="bottom-10 left-10"
               rotate="-3deg"
               duration="7s"
@@ -416,7 +416,7 @@ export default async function HomePage() {
           </h2>
           <p className="text-sm leading-relaxed text-neutral-300 max-w-xl mb-12">
             No es otro tracker. Es una secuencia guiada: miras tu vida, aprendes una idea, ejecutas
-            una acción pequeña y revisas sin castigarte. Curso, hábitos y Wheel of Life no son tres
+            una acción pequeña y revisas sin castigarte. Curso, hábitos y Radar de Vida no son tres
             apps distintas — son las tres partes del mismo sistema, no porque te obliguen, sino
             porque ya es parte de tu día.
           </p>

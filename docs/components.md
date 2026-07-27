@@ -71,7 +71,7 @@ agregar un toggle nuevo de este tipo, copiar este patrón exacto.
 ## `ConfirmDialog`
 
 **Propósito**: confirmación modal genérica antes de una acción
-irreversible (ej. guardar la línea base del Wheel of Life en onboarding).
+irreversible (ej. guardar la línea base del Radar de Vida en onboarding).
 
 **Props**: `open, title, body, confirmLabel, onConfirm, onCancel`.
 
@@ -80,7 +80,7 @@ no usar como confirmación decorativa de acciones triviales.
 
 ## `WheelRadarChart`
 
-**Propósito**: gráfica radar animada del Wheel of Life, con comparación
+**Propósito**: gráfica radar animada del Radar de Vida, con comparación
 opcional contra la medición anterior.
 
 **Props**: `current: Record<string, number>`, `previous?:
@@ -168,4 +168,4 @@ esos van inline con `.form-error` (ver `docs/ui-rules.md`).
   principalmente en la landing pública.
 - **Compartir** (`ShareImageButton`, `ShareWheelButton`) — generan una
   imagen a partir de un `<canvas>` (`src/lib/share-card.ts`) para
-  compartir racha o Wheel of Life.
+  compartir racha o Radar de Vida.

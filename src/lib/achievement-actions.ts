@@ -28,7 +28,7 @@ function averageScore(scores: Record<string, number> | null | undefined): number
 
 /** Gathers every real stat an achievement can measure, from the same
  * queries the rest of the app already uses (habits/logs/freezes, module
- * progress, Wheel of Life, cycle state) — nothing here is a new source of
+ * progress, Radar de Vida, cycle state) — nothing here is a new source of
  * truth, just a read across tables that already exist. */
 export async function getAchievementStats(user: {
   id: string;

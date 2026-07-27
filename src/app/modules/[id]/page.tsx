@@ -81,7 +81,7 @@ export default async function ModuleDetailPage({ params }: { params: { id: strin
 
   // Module 1 is the only place the anchor habit gets chosen — the 5
   // options shown are ranked by the areas this person picked at onboarding
-  // plus where their Wheel of Life scored lowest, not generic.
+  // plus where their Radar de Vida scored lowest, not generic.
   const anchorSuggestions =
     courseModule.id === MODULES[0].id
       ? { fieldId: "habito_1", options: getAnchorHabitOptions(prefs.selectedAreas, prefs.initialWheelScores) }

@@ -8,7 +8,7 @@ test.describe("Registro y onboarding", () => {
     expect(page.url()).toContain("/onboarding");
   });
 
-  test("el Wheel of Life inicial pide confirmar antes de guardar", async ({ page }) => {
+  test("el Radar de Vida inicial pide confirmar antes de guardar", async ({ page }) => {
     const user = freshUser("wheelconfirm");
     await register(page, user);
 

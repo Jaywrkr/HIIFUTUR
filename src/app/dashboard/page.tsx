@@ -466,7 +466,7 @@ export default async function DashboardPage({
               >
                 <span className="text-neutral-500 group-hover:text-accent transition-colors self-end compact-hide">→</span>
                 <span>
-                  <span className="block font-bold text-sm">Wheel of Life</span>
+                  <span className="block font-bold text-sm">Radar de Vida</span>
                   <span
                     className={`block text-xs mt-1 ${canMeasureWheel ? "text-accent" : "text-neutral-500"}`}
                   >
