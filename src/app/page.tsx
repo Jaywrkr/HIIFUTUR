@@ -54,7 +54,7 @@ const PRICING_PLANS = [
     tagline: "Sin tarjeta.",
     features: [
       "Los 11 módulos completos",
-      "Tu hábito ancla activo",
+      "Guía para encontrar tu hábito ancla",
       "Wheel of Life inicial",
       "Recordatorios diarios",
     ],
@@ -66,14 +66,14 @@ const PRICING_PLANS = [
     label: "Mensual",
     price: "$6.99",
     unit: "/ mes",
-    tagline: "$4.99/mes si activas en tus primeros 7 días — precio fijo para siempre.",
+    tagline: "$4.99/mes si activas en tus primeros 7 días — precio fijo mientras mantengas tu suscripción activa.",
     features: [
       "Todo el sistema, sin límite de tiempo",
       "Hasta 5 hábitos activos",
       "Wheel of Life cada 30 días",
       "Cancela cuando quieras",
     ],
-    cta: "Empezar mensual",
+    cta: "Ver mensual",
     highlight: false,
   },
   {
@@ -81,13 +81,13 @@ const PRICING_PLANS = [
     label: "Anual",
     price: "$59",
     unit: "/ año",
-    tagline: "$42/año si activas en tus primeros 7 días — precio fijo para siempre.",
+    tagline: "$42/año si activas en tus primeros 7 días — precio fijo mientras mantengas tu suscripción activa.",
     features: [
       "Todo lo del plan mensual",
-      "Casi 2 meses gratis vs. pagar mes a mes",
+      "Ahorras más de 3 meses frente a pagar mes a mes",
       "Acceso prioritario a lo nuevo",
     ],
-    cta: "Empezar anual",
+    cta: "Ver anual",
     highlight: true,
   },
 ];
@@ -127,7 +127,7 @@ const FAQ = [
   },
   {
     q: "¿Necesito comprar algo?",
-    a: "No para empezar — tienes 7 días gratis, sin tarjeta, con el sistema completo. Si decides seguir, activas un plan pago; si activas dentro de esos 7 días, te queda un precio más bajo para siempre.",
+    a: "No para empezar — tienes 7 días gratis, sin tarjeta, con el sistema completo. Si decides seguir dentro de esos 7 días, desbloqueas el precio fundador, fijo mientras mantengas tu suscripción activa; si no, el precio regular es $6.99/mes o $59/año.",
   },
   {
     q: "¿Y si fallo un día?",
@@ -434,9 +434,13 @@ export default async function HomePage() {
           <h2 className="text-4xl sm:text-5xl font-thin tracking-tight mb-4">
             Elige tu plan. Empieza tu sistema.
           </h2>
-          <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-12">
-            7 días de prueba completa, sin tarjeta. Si decides seguir, activa dentro de esos 7
-            días y el precio con descuento te queda fijo para siempre.
+          <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-2">
+            7 días de prueba completa, sin tarjeta. Si decides seguir durante tu prueba,
+            desbloqueas precio fundador — fijo mientras mantengas tu suscripción activa. Después
+            de la prueba, el precio regular es $6.99/mes o $59/año.
+          </p>
+          <p className="text-xs text-neutral-500 max-w-xl mx-auto mb-12">
+            No eliges plan todavía. Primero entras a la prueba gratis.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 text-left">

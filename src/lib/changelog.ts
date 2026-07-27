@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.108.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: la sección de precios ahora aclara el precio regular ($6.99/mes o $59/año) junto al precio fundador, y deja explícito que los botones de plan pago no cobran de inmediato — primero entras a la prueba gratis.",
+      "Landing: la tarjeta de prueba gratis ya no promete 'Tu hábito ancla activo' (todavía no lo activaste) sino 'Guía para encontrar tu hábito ancla'.",
+    ],
+  },
+  {
     version: "2.107.0",
     date: "2026-07-27",
     changes: [
