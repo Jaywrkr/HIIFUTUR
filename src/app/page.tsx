@@ -73,7 +73,7 @@ const PRICING_PLANS = [
       "Wheel of Life cada 30 días",
       "Cancela cuando quieras",
     ],
-    cta: "Empezar mensual",
+    cta: "Ver mensual",
     highlight: false,
   },
   {
@@ -87,7 +87,7 @@ const PRICING_PLANS = [
       "Casi 2 meses gratis vs. pagar mes a mes",
       "Acceso prioritario a lo nuevo",
     ],
-    cta: "Empezar anual",
+    cta: "Ver anual",
     highlight: true,
   },
 ];
@@ -223,8 +223,11 @@ export default async function HomePage() {
               Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.
               Sin gurús, sin 47 hábitos a la vez, sin culpa cuando fallas un día.
             </p>
-            <p className="text-base mb-10">
+            <p className="text-base mb-6">
               Hoy, eso podría ser <span className="font-semibold text-accent">5 sentadillas.</span>
+            </p>
+            <p className="text-sm text-neutral-500 mb-6">
+              7 días gratis. Sin tarjeta. Primero mides dónde estás.
             </p>
             <div className="flex items-center gap-6">
               <Link href="/register" className="btn-primary">Empezar gratis</Link>
@@ -232,7 +235,7 @@ export default async function HomePage() {
                 Ya tengo cuenta
               </Link>
             </div>
-            <p className="text-xs text-neutral-600 mt-6">iOS y Android, pronto.</p>
+            <p className="text-xs text-neutral-400 mt-6">iOS y Android, pronto.</p>
           </Reveal>
 
           <div className="relative h-[420px] hidden md:block">
@@ -434,9 +437,12 @@ export default async function HomePage() {
           <h2 className="text-4xl sm:text-5xl font-thin tracking-tight mb-4">
             Elige tu plan. Empieza tu sistema.
           </h2>
-          <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-12">
+          <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-2">
             7 días de prueba completa, sin tarjeta. Si decides seguir, activa dentro de esos 7
             días y el precio con descuento te queda fijo para siempre.
+          </p>
+          <p className="text-xs text-neutral-500 max-w-xl mx-auto mb-12">
+            No eliges plan todavía. Primero entras a la prueba gratis.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 text-left">

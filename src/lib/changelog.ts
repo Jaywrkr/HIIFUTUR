@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.107.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: el valor queda claro antes del primer CTA — se agrega '7 días gratis. Sin tarjeta. Primero mides dónde estás.' justo arriba de 'Empezar gratis' en el hero.",
+      "Landing: 'Ver mensual'/'Ver anual' reemplazan 'Empezar mensual'/'Empezar anual' en pricing, con un aviso de que todavía no se elige plan — los tres van al mismo registro.",
+    ],
+  },
+  {
     version: "2.106.0",
     date: "2026-07-22",
     changes: [
