@@ -25,6 +25,10 @@ const PHILOSOPHY = [
     title: "Si no lo disfrutas, no dura",
     description: "Elige el hábito que se sienta bien sostener, no el que se ve mejor en redes.",
   },
+  {
+    title: "No te conviertas en otra persona",
+    description: "Necesitas un entorno que haga más fácil volver, no una identidad nueva.",
+  },
 ];
 
 const SYSTEM_PARTS = [
@@ -36,7 +40,7 @@ const SYSTEM_PARTS = [
   {
     kicker: "Acción",
     title: "Hasta 5 hábitos, uno a la vez",
-    description: "Actívalos de a poco — el primero antes de pensar en el segundo. Marcarlos es literal: un tap, y tu racha sigue viva.",
+    description: "Actívalos de a poco — el primero antes de pensar en el segundo. Marcarlos es literal: un tap, y lo que ya sostuviste sigue contando.",
   },
   {
     kicker: "Control",
@@ -54,9 +58,9 @@ const PRICING_PLANS = [
     tagline: "Sin tarjeta.",
     features: [
       "Los 11 módulos completos",
-      "Tu hábito ancla activo",
+      "Guía para encontrar tu hábito ancla",
       "Wheel of Life inicial",
-      "Recordatorios diarios",
+      "Recordatorios para empezar, no muletas para siempre",
     ],
     cta: "Empezar gratis",
     highlight: false,
@@ -66,14 +70,14 @@ const PRICING_PLANS = [
     label: "Mensual",
     price: "$6.99",
     unit: "/ mes",
-    tagline: "$4.99/mes si activas en tus primeros 7 días — precio fijo para siempre.",
+    tagline: "$4.99/mes si activas en tus primeros 7 días — precio fijo mientras mantengas tu suscripción activa.",
     features: [
       "Todo el sistema, sin límite de tiempo",
       "Hasta 5 hábitos activos",
       "Wheel of Life cada 30 días",
       "Cancela cuando quieras",
     ],
-    cta: "Empezar mensual",
+    cta: "Ver mensual",
     highlight: false,
   },
   {
@@ -81,13 +85,13 @@ const PRICING_PLANS = [
     label: "Anual",
     price: "$59",
     unit: "/ año",
-    tagline: "$42/año si activas en tus primeros 7 días — precio fijo para siempre.",
+    tagline: "$42/año si activas en tus primeros 7 días — precio fijo mientras mantengas tu suscripción activa.",
     features: [
       "Todo lo del plan mensual",
-      "Casi 2 meses gratis vs. pagar mes a mes",
+      "Ahorras más de 3 meses frente a pagar mes a mes",
       "Acceso prioritario a lo nuevo",
     ],
-    cta: "Empezar anual",
+    cta: "Ver anual",
     highlight: true,
   },
 ];
@@ -95,7 +99,7 @@ const PRICING_PLANS = [
 const OLD_RULES = [
   "Ten más disciplina.",
   "Hazlo todo o no hagas nada.",
-  "Sientete culpable si fallas.",
+  "Siéntete culpable si fallas.",
   "Empieza de nuevo el lunes.",
 ];
 
@@ -108,9 +112,9 @@ const WHY_WE_BUILT_IT: RevealWord[] = [
 ];
 
 const FOR_YOU_IF = [
-  "Ya intentaste 100 apps de hábitos y las dejaste en la semana 2.",
+  "Ya sabes qué hacer, pero no logras sostenerlo sin pelear contigo.",
   MANTRAS[15], // "Te sientes mal porque sabes lo que se supone que debes hacer y no lo estás haciendo."
-  "Quieres resultados reales, no una racha de emojis.",
+  "Ya intentaste apps de rachas, cursos que abandonas y productividad que te pide cambiar todo de golpe — no funcionó.",
 ];
 
 const JAY_STORY = [
@@ -127,7 +131,7 @@ const FAQ = [
   },
   {
     q: "¿Necesito comprar algo?",
-    a: "No para empezar — tienes 7 días gratis, sin tarjeta, con el sistema completo. Si decides seguir, activas un plan pago; si activas dentro de esos 7 días, te queda un precio más bajo para siempre.",
+    a: "No para empezar — tienes 7 días gratis, sin tarjeta, con el sistema completo. Si decides seguir dentro de esos 7 días, desbloqueas el precio fundador, fijo mientras mantengas tu suscripción activa; si no, el precio regular es $6.99/mes o $59/año.",
   },
   {
     q: "¿Y si fallo un día?",
@@ -136,6 +140,10 @@ const FAQ = [
   {
     q: "¿Esto es otro curso que voy a abandonar?",
     a: "Puede ser. Depende de si empiezas tan pequeño que sea imposible fallar. Por eso el sistema está diseñado así, no al revés.",
+  },
+  {
+    q: "¿Qué pasa después de crear mi cuenta?",
+    a: "Primero mides cómo está tu vida hoy con el Wheel of Life. Después haces el primer módulo. Entonces eliges tu hábito ancla: pequeño, concreto y sostenible.",
   },
 ];
 
@@ -221,10 +229,13 @@ export default async function HomePage() {
             </h1>
             <p className="text-sm leading-relaxed text-neutral-400 mb-8 max-w-lg">
               Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.
-              Sin gurús, sin 47 hábitos a la vez, sin culpa cuando fallas un día.
+              Menos acciones. Menos culpa. Más continuidad. Sin gurús, sin 47 hábitos a la vez.
             </p>
-            <p className="text-base mb-10">
+            <p className="text-base mb-2">
               Hoy, eso podría ser <span className="font-semibold text-accent">5 sentadillas.</span>
+            </p>
+            <p className="text-sm text-neutral-500 mb-10">
+              Empieza con algo que puedas hacer incluso en un día malo.
             </p>
             <div className="flex items-center gap-6">
               <Link href="/register" className="btn-primary">Empezar gratis</Link>
@@ -232,10 +243,13 @@ export default async function HomePage() {
                 Ya tengo cuenta
               </Link>
             </div>
-            <p className="text-xs text-neutral-600 mt-6">iOS y Android, pronto.</p>
+            <p className="text-xs text-neutral-500 mt-4">
+              7 días gratis. Sin tarjeta. Primero mides dónde estás.
+            </p>
+            <p className="text-xs text-neutral-400 mt-2">iOS y Android, pronto.</p>
           </Reveal>
 
-          <div className="relative h-[420px] hidden md:block">
+          <div className="relative h-[420px] hidden md:block" aria-hidden="true">
             <div
               className="absolute inset-0 rounded-lg"
               style={{
@@ -283,7 +297,7 @@ export default async function HomePage() {
             {OLD_RULES.map((rule) => (
               <p
                 key={rule}
-                className="text-2xl sm:text-4xl font-thin uppercase tracking-tight text-neutral-600 line-through decoration-neutral-400/60"
+                className="text-2xl sm:text-4xl font-thin uppercase tracking-tight text-neutral-500 line-through decoration-neutral-400/60"
                 style={{ textDecorationThickness: "3px" }}
               >
                 {rule}
@@ -294,9 +308,12 @@ export default async function HomePage() {
           <p className="text-sm text-neutral-400 mb-6">
             Y de alguna forma... sigues sin sostener nada.
           </p>
-          <p className="text-2xl sm:text-3xl font-thin leading-relaxed">
-            Tal vez el problema no eres tu.{" "}
+          <p className="text-2xl sm:text-3xl font-thin leading-relaxed mb-6">
+            Tal vez el problema no eres tú.{" "}
             <span className="text-accent">Tal vez son las reglas.</span>
+          </p>
+          <p className="text-sm text-neutral-400">
+            Aquí fallar no te expulsa. Solo te dice cómo volver más pequeño.
           </p>
         </div>
       </Reveal>
@@ -334,7 +351,7 @@ export default async function HomePage() {
               <div className="flex flex-col gap-1 mt-4">
                 {FOR_YOU_IF.map((line) => (
                   <div key={line} className="group flex items-start gap-3 border-b border-line py-3 last:border-b-0">
-                    <span className="text-accent mt-0.5 shrink-0">—</span>
+                    <span className="text-accent mt-0.5 shrink-0" aria-hidden="true">—</span>
                     <p className="text-sm text-neutral-300 group-hover:text-white transition-colors">{line}</p>
                   </div>
                 ))}
@@ -343,9 +360,15 @@ export default async function HomePage() {
             <div className="lift-on-hover rounded-lg border border-accent/50 p-6 flex flex-col justify-center">
               <p className="kicker">El truco</p>
               <p className="font-bold text-2xl mb-2">Encuentra tu hábito ancla</p>
-              <p className="muted">
+              <p className="muted mb-3">
                 El único hábito que, sostenido, jala a todos los demás. No es el más vistoso —
                 es el que arrastra al resto.
+              </p>
+              <p className="muted mb-2">
+                No eliges un hábito en abstracto. Lo amarras a un momento real de tu día.
+              </p>
+              <p className="text-xs text-neutral-500">
+                Por ejemplo: después del café. Antes de la ducha. Al cerrar la laptop.
               </p>
             </div>
           </div>
@@ -392,9 +415,10 @@ export default async function HomePage() {
             Aprendizaje. Acción. Control.
           </h2>
           <p className="text-sm leading-relaxed text-neutral-300 max-w-xl mb-12">
-            Curso, hábitos y Wheel of Life no son tres apps distintas — son las tres partes del
-            mismo sistema. Aprendes, actúas, mides, y repites, no porque te obliguen, sino porque
-            ya es parte de tu día.
+            No es otro tracker. Es una secuencia guiada: miras tu vida, aprendes una idea, ejecutas
+            una acción pequeña y revisas sin castigarte. Curso, hábitos y Wheel of Life no son tres
+            apps distintas — son las tres partes del mismo sistema, no porque te obliguen, sino
+            porque ya es parte de tu día.
           </p>
 
           <div className="flex flex-col md:flex-row md:items-stretch gap-3 mb-6">
@@ -419,7 +443,7 @@ export default async function HomePage() {
           <div className="lift-on-hover rounded-lg border border-accent/50 p-6">
             <p className="kicker">Tu ritmo</p>
             <p className="font-bold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
-            <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
+            <p className="muted">Los puntos son señal de avance, no una deuda. Tu progreso sigue siendo tuyo — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
           </div>
         </div>
       </Reveal>
@@ -430,13 +454,17 @@ export default async function HomePage() {
           sistema, recién aquí llega el precio. */}
       <Reveal>
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-32 text-center">
-          <p className="kicker mx-auto">Empieza donde estes</p>
+          <p className="kicker mx-auto">Empieza donde estés</p>
           <h2 className="text-4xl sm:text-5xl font-thin tracking-tight mb-4">
             Elige tu plan. Empieza tu sistema.
           </h2>
-          <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-12">
-            7 días de prueba completa, sin tarjeta. Si decides seguir, activa dentro de esos 7
-            días y el precio con descuento te queda fijo para siempre.
+          <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-2">
+            7 días de prueba completa, sin tarjeta. Si decides seguir durante tu prueba,
+            desbloqueas precio fundador — fijo mientras mantengas tu suscripción activa. Después
+            de la prueba, el precio regular es $6.99/mes o $59/año.
+          </p>
+          <p className="text-xs text-neutral-500 max-w-xl mx-auto mb-12">
+            No eliges plan todavía. Primero entras a la prueba gratis.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 text-left">
@@ -461,7 +489,7 @@ export default async function HomePage() {
                 <div className="flex flex-col gap-3 mb-8 flex-1">
                   {plan.features.map((f) => (
                     <div key={f} className="flex items-start gap-2">
-                      <span className="text-accent mt-0.5 shrink-0">✓</span>
+                      <span className="text-accent mt-0.5 shrink-0" aria-hidden="true">✓</span>
                       <span className="text-sm text-neutral-300">{f}</span>
                     </div>
                   ))}
@@ -508,6 +536,10 @@ export default async function HomePage() {
         <div className="max-w-2xl mx-auto px-6 border-t border-line pt-10 pb-10 text-center">
           <Link href="/register" className="btn-primary">Empezar gratis</Link>
           <p className="muted mt-6">Un sistema, no una promesa.</p>
+          <p className="text-xs text-neutral-600 mt-2">
+            Sin tarjeta para empezar. Sin testimonios inventados. Sin prometerte una vida nueva en
+            siete días.
+          </p>
         </div>
       </Reveal>
 

@@ -14,8 +14,15 @@ export type RevealWord = { text: string; strike?: boolean };
 export function WordReveal({ words, className }: { words: RevealWord[]; className?: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const [progress, setProgress] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setReducedMotion(true);
+      setProgress(1);
+      return;
+    }
+
     let ticking = false;
 
     function update() {
@@ -58,7 +65,7 @@ export function WordReveal({ words, className }: { words: RevealWord[]; classNam
             style={{
               color: active ? "#F5F5F5" : "#404040",
               filter: active ? "blur(0px)" : "blur(6px)",
-              transition: "color 450ms ease-out, filter 450ms ease-out",
+              transition: reducedMotion ? "none" : "color 450ms ease-out, filter 450ms ease-out",
               textDecorationLine: word.strike ? "line-through" : "none",
               textDecorationColor: "#737373",
             }}

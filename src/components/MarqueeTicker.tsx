@@ -2,7 +2,7 @@ const ITEMS = [
   "Respirar 1 min",
   "Caminar 10 min",
   "Tomar agua",
-  "Escribir 1 linea",
+  "Escribir 1 línea",
   "Dormir a tiempo",
   "5 sentadillas",
 ];
@@ -24,7 +24,7 @@ function TickerContent() {
 
 export function MarqueeTicker() {
   return (
-    <div className="w-full overflow-hidden border-y border-line bg-surface/40 py-4">
+    <div className="w-full overflow-hidden border-y border-line bg-surface/40 py-4" aria-hidden="true">
       <div className="marquee-track flex w-max">
         <TickerContent />
         <TickerContent />

@@ -3,6 +3,74 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.115.0",
+    date: "2026-07-27",
+    changes: [
+      "Nuevo doc interno docs/landing-hipotesis.md: hipótesis de landing, preguntas cualitativas para entrevistas de usuarios y eventos sugeridos (sin implementar) para cuando se decida instrumentar analítica.",
+    ],
+  },
+  {
+    version: "2.114.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: el precio fundador ya no promete 'fijo para siempre' sin matiz — ahora dice 'mientras mantengas tu suscripción activa', en la tarjeta de pricing, la intro y el FAQ.",
+      "Landing: 'Recordatorios para empezar' pasa a 'Recordatorios para empezar, no muletas para siempre', más honesto sobre qué tan lejos llega el recordatorio.",
+    ],
+  },
+  {
+    version: "2.113.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: los efectos de scroll (Reveal, WordReveal, ScrollTextLine) ahora respetan 'reducir movimiento' del sistema — con esa preferencia activada, todo el contenido aparece de inmediato, sin blur ni transición.",
+      "Landing: marcas decorativas (✓ de pricing, — de 'Esto es para ti si...', el ticker de hábitos duplicado y las tarjetas flotantes del hero) ya no se leen con lector de pantalla.",
+      "Landing: sube el contraste de 'iOS y Android, pronto.' y de las reglas viejas tachadas, que quedaban por debajo del mínimo legible.",
+    ],
+  },
+  {
+    version: "2.112.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: el bloque del hábito ancla ahora deja claro que no es una elección abstracta — se amarra a un momento real del día, con ejemplos ilustrativos (después del café, antes de la ducha, al cerrar la laptop).",
+      "Landing: nueva idea en 'La forma EJECUTA' sobre no tener que convertirte en otra persona, solo necesitar un entorno que haga más fácil volver.",
+      "Landing: se matiza el lenguaje de racha en el bloque de Acción para que se sienta menos a app de streaks y más a progreso propio.",
+    ],
+  },
+  {
+    version: "2.111.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: menos fricción para empezar — el hero deja claro que el primer hábito puede ser algo que hagas incluso en un día malo, y el bloque de 'Las reglas viejas' aclara que fallar no te expulsa del sistema.",
+      "Landing: 'Tu ritmo' ya no suena a deuda — los puntos se presentan como señal de avance, no como presión.",
+      "Landing: 'Recordatorios diarios' en la tarjeta de prueba gratis pasa a 'Recordatorios para empezar', menos dependiente.",
+    ],
+  },
+  {
+    version: "2.110.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: aclara que EJECUTA no es otro tracker suelto — es una secuencia guiada (mirar tu vida, aprender, ejecutar, revisar), justo antes del bloque Aprendizaje/Acción/Control.",
+      "Landing: el bloque 'Esto es para ti si...' ahora nombra directamente al enemigo (apps de rachas, cursos que abandonas, productividad de cambiarlo todo de golpe) y deja más claro a quién le sirve el sistema.",
+      "Landing: el hero conecta el Principio de Pareto con alivio, no solo eficiencia — 'Menos acciones. Menos culpa. Más continuidad.'",
+    ],
+  },
+  {
+    version: "2.109.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: el hero ahora aclara junto al CTA principal que la prueba es de 7 días, sin tarjeta, y que primero mides dónde estás.",
+      "Landing: nueva pregunta en el FAQ sobre qué pasa justo después de crear la cuenta (Wheel of Life → primer módulo → hábito ancla), y una línea de cierre que deja explícito que no hay testimonios inventados.",
+      "Corrige tildes faltantes en microcopy de la landing (\"Siéntete\", \"estés\", \"línea\").",
+    ],
+  },
+  {
+    version: "2.108.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: la sección de precios ahora aclara el precio regular ($6.99/mes o $59/año) junto al precio fundador, y deja explícito que los botones de plan pago no cobran de inmediato — primero entras a la prueba gratis.",
+      "Landing: la tarjeta de prueba gratis ya no promete 'Tu hábito ancla activo' (todavía no lo activaste) sino 'Guía para encontrar tu hábito ancla'.",
+    ],
+  },
+  {
     version: "2.107.0",
     date: "2026-07-27",
     changes: [
