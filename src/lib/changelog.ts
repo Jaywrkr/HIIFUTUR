@@ -3,6 +3,15 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.112.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: el bloque del hábito ancla ahora deja claro que no es una elección abstracta — se amarra a un momento real del día, con ejemplos ilustrativos (después del café, antes de la ducha, al cerrar la laptop).",
+      "Landing: nueva idea en 'La forma EJECUTA' sobre no tener que convertirte en otra persona, solo necesitar un entorno que haga más fácil volver.",
+      "Landing: se matiza el lenguaje de racha en el bloque de Acción para que se sienta menos a app de streaks y más a progreso propio.",
+    ],
+  },
+  {
     version: "2.111.0",
     date: "2026-07-27",
     changes: [
