@@ -7,7 +7,7 @@ export const TIER_LABELS: Record<number, string> = { 1: "Común", 2: "Raro", 3: 
 /**
  * The card object from the reference (art up top, title, flavor line, a
  * rarity badge + reward in the footer, tier pips below) rebuilt entirely in
- * EJECUTA's own system: Geist Mono instead of serif, rounded-lg/borders
+ * Ankla's own system: Geist Mono instead of serif, rounded-lg/borders
  * instead of glossy rounded-3xl panels, the earthy accent per-achievement
  * instead of full-color art, and the same grayscale-lock treatment already
  * used for locked modules — no new visual language invented, just this

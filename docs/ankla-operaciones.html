@@ -1,4 +1,4 @@
-<title>EJECUTA — Deck de marca y visión</title>
+<title>Ankla — Operación y ejecución</title>
 <style>
 @font-face {
   font-family: "GeistMonoDeck";
@@ -181,9 +181,24 @@ a { color: var(--sky); }
 .legend { display: flex; gap: 1.4rem; flex-wrap: wrap; margin-top: 1.2rem; font-size: 0.72rem; color: var(--muted); }
 .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
 .legend .dot2 { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+
+.owner-filter { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+.owner-filter-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-right: 0.3rem; }
+.owner-chip {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--muted);
+  background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.85rem;
+  cursor: pointer; transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+}
+.owner-chip:hover { border-color: var(--accent, var(--olive)); color: var(--ink); }
+.owner-chip.active { border-color: var(--accent, var(--olive)); color: var(--accent, var(--olive)); background: color-mix(in srgb, var(--accent, var(--olive)) 12%, transparent); }
+.owner-filter-empty { margin: 1.2rem 0 0; font-size: 0.85rem; color: var(--muted); font-style: italic; }
+@media print { .owner-filter, .owner-filter-empty { display: none !important; } }
 .task code { font-size: 0.85em; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 0.05em 0.4em; color: var(--ink); }
 .task .body p.hint { margin: 0.55rem 0 0; padding-left: 0.85rem; border-left: 2px solid var(--accent); font-size: 0.79rem; color: var(--ink); opacity: 0.88; line-height: 1.55; }
-.task.done .body p.hint { color: var(--ink); opacity: 0.7; }
+.task.done .body small,
+.task.done .body p.hint,
+.task.done .body .prompt { display: none; }
+.task.done { padding: 0.55rem 0; }
 .hint b { color: var(--accent); font-weight: 700; }
 .hint code { font-size: 0.9em; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 0.05em 0.4em; }
 .hint a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
@@ -196,9 +211,12 @@ a { color: var(--sky); }
 #problema { --accent: var(--coral); }
 #creencia { --accent: var(--mustard); }
 #metodo { --accent: var(--sage); }
-#prueba { --accent: var(--olive); }
+#historia { --accent: var(--olive); }
 #audiencia { --accent: var(--sky); }
+#busca { --accent: var(--mustard); }
 #diseno { --accent: var(--coral); }
+#tecnologia { --accent: var(--sky); }
+#estado { --accent: var(--sage); }
 #equipo { --accent: var(--olive); }
 
 @media print {
@@ -214,84 +232,105 @@ a { color: var(--sky); }
 <div class="wrap">
 
   <section class="cover">
-    <span class="wordmark"><span class="dot"></span> EJECUTA</span>
-    <h1>No es disciplina.<br>Es un <b>sistema</b> hecho para<br>que puedas volver, incluso cuando fallas.</h1>
-    <p class="lede">Un curso, un tracker de hábitos y una brújula de vida — diseñados para que seguir sea más fácil que rendirse.</p>
+    <span class="wordmark"><span class="dot"></span> Ankla</span>
+    <h1>De "funciona en desarrollo"<br>a <b>cobra dinero real</b><br>a un desconocido.</h1>
+    <p class="lede">Documento de operación. Tarea por tarea, quién la toma, cómo se hace y con qué prompt — la contraparte de ejecución del deck de marca y visión.</p>
     <div class="meta">
-      <span><b>Deck de marca y visión</b> — para vender, alinear, comunicar</span>
-      <span><b>Jay + Luna</b></span>
+      <span><b>Documento</b> — interno, de equipo</span>
+      <span><b>Equipo</b> — Jay + Luna + Claudes</span>
+      <span><b>Estado</b> — camino a producción</span>
     </div>
   </section>
 
-  <!-- 01 PROBLEMA -->
-  <section id="problema">
-    <p class="eyebrow"><span class="num">01</span> El enemigo</p>
-    <h2>Las apps de hábitos están hechas para que te sientas <b>culpable</b>.</h2>
-    <p class="big muted">Rachas que castigan. Listas de 47 hábitos imposibles. El "todo o nada" que te hace empezar de cero cada lunes. Abandonas en la semana dos, y te sientes peor que antes de instalarlas.</p>
-  </section>
-
-  <!-- 02 CREENCIA -->
-  <section id="creencia">
-    <p class="eyebrow"><span class="num">02</span> La creencia</p>
-    <h2>El problema no eres tú. Son <b>las reglas</b>.</h2>
-    <p class="big">Los sistemas le ganan a la fuerza de voluntad. No premiamos la intensidad — premiamos que sigas ahí mañana.</p>
-    <blockquote class="pull" style="margin-top:2rem">Empieza tan pequeño que no puedas fallar. La consistencia le gana a la intensidad. Si no lo disfrutas, <b>no dura</b>.</blockquote>
-  </section>
-
-  <!-- 03 METODO -->
-  <section id="metodo">
-    <p class="eyebrow"><span class="num">03</span> El sistema</p>
-    <h2>Aprendizaje. Acción. <b>Control.</b></h2>
-    <div class="grid3">
-      <div class="cell"><div class="cell-num">01</div><h3>Aprendizaje</h3><p class="muted">Un curso que se gana con ejecución real, no leyendo de corrido.</p></div>
-      <div class="cell"><div class="cell-num">02</div><h3>Acción</h3><p class="muted">Un hábito ancla, tan pequeño que marcarlo es un tap.</p></div>
-      <div class="cell"><div class="cell-num">03</div><h3>Control</h3><p class="muted">Una foto honesta de tu vida, cada 30 días. No examen — brújula.</p></div>
-    </div>
-  </section>
-
-  <!-- 04 LA PRUEBA -->
-  <section id="prueba">
-    <p class="eyebrow"><span class="num">04</span> La prueba</p>
-    <blockquote class="pull">Pasé de un 3 a un 9 en mi Radar de Vida, en 8 meses. No fue un giro de un día para otro. <b>Este es ese sistema.</b></blockquote>
-    <p class="sig">— Jay, fundador</p>
-  </section>
-
-  <!-- 05 PARA QUIEN -->
-  <section id="audiencia">
-    <p class="eyebrow"><span class="num">05</span> Para quién · qué busca</p>
-    <h2>Para el que ya intentó todo y <b>se cansó de sentirse mal.</b></h2>
-    <p class="big muted">La misión no es que uses la app para siempre — es que el sistema se vuelva tuyo. Ganamos cuando ya no nos necesitas.</p>
-    <div class="tagrow">
-      <span class="tag">Sostenibilidad &gt; intensidad</span>
-      <span class="tag">Sin culpa</span>
-      <span class="tag">Autonomía, no dependencia</span>
-    </div>
-  </section>
-
-  <!-- 06 COMO SE SIENTE -->
-  <section id="diseno">
-    <p class="eyebrow"><span class="num">06</span> Cómo se siente</p>
-    <h2>Monocromo, calmo, editorial. El color vive en el <b>contenido</b>, no en el chrome.</h2>
-    <p class="muted">Negro/blanco, Geist Mono, un tono apagado y terroso por contexto — nunca saturado, nunca de fondo.</p>
-    <div class="swatches">
-      <span class="sw"><i style="background:#9aa07a"></i>Oliva</span>
-      <span class="sw"><i style="background:#d0a24a"></i>Mostaza</span>
-      <span class="sw"><i style="background:#d1948a"></i>Coral</span>
-      <span class="sw"><i style="background:#8fb0c9"></i>Cielo</span>
-      <span class="sw"><i style="background:#a7c08a"></i>Salvia</span>
-      <span class="sw"><i style="background:#b5654a"></i>Terracota</span>
-    </div>
-  </section>
-
-  <!-- 07 EQUIPO -->
   <section id="equipo">
-    <p class="eyebrow"><span class="num">07</span> Cómo trabajamos</p>
+    <p class="eyebrow"><span class="num">01</span> Cómo trabajamos · modelo operativo</p>
     <h2>Dos personas, tres Claudes, <b>un sistema.</b></h2>
-    <p class="muted">Este deck es el input para el Claude de estrategia — traduce concepto en guías concretas para desarrollo (Jay + Claude Code) y comunicación (Luna + Claude Design). El detalle operativo vive aparte, en el documento de ejecución.</p>
+    <p class="muted">La estrategia y la venta viven en el deck de marca y visión. Esto es lo operativo — quién hace qué, con qué guía:</p>
+    <div class="who">
+      <div>
+        <div class="role"><h3>Claude · Admin & Estrategia</h3><span class="owner">el traductor</span></div>
+        <p class="muted">Recibe este deck. Convierte filosofía + estado en prioridades, mensajes clave, voz de marca y guías para los otros frentes. El cerebro que mantiene todo alineado.</p>
+      </div>
+      <div>
+        <div class="role"><h3>Claude Code · Desarrollo</h3><span class="owner">Jay</span></div>
+        <p class="muted">Construye y prepara para producción. Recibe de estrategia: definición de “listo”, prioridades técnicas, criterios de UX y de lanzamiento.</p>
+      </div>
+      <div>
+        <div class="role"><h3>Claude Design · Comunicación visual</h3><span class="owner">Luna</span></div>
+        <p class="muted">Diseña las piezas de comunicación. Recibe de estrategia: identidad, guía de marca, y el brief creativo de cada pieza (landing, redes, assets).</p>
+      </div>
+      <div>
+        <div class="role"><h3>Jay · Desarrollo & Cloud</h3><span class="owner">persona</span></div>
+        <p class="muted">Dueño del producto y la infraestructura. Dirige a Claude Code y toma las decisiones técnicas y de negocio.</p>
+      </div>
+      <div>
+        <div class="role"><h3>Luna · Comunicación & Creatividad</h3><span class="owner">persona</span></div>
+        <p class="muted">Experiencia en agencias creativas. Dirige a Claude Design y da forma a la voz, el relato y la presencia de marca.</p>
+      </div>
+    </div>
   </section>
 
   <div class="foot wrap" style="padding-left:0;padding-right:0">
-    EJECUTA — Sistema de Ejecución Sostenible · Deck de marca y visión · la versión corta, para vender y alinear. El detalle de ejecución vive en el documento de Operación.
+    Ankla — Sistema de Ejecución Sostenible · Documento de operación · la contraparte de ejecución del deck de marca y visión.
   </div>
 
 </div>
+
+<script>
+(function () {
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".owner-chip"));
+  var tasks = Array.prototype.slice.call(document.querySelectorAll(".task"));
+  var phases = Array.prototype.slice.call(document.querySelectorAll(".phase"));
+  var emptyMsg = document.querySelector(".owner-filter-empty");
+  var active = new Set();
+
+  // Tasks can list more than one owner ("Jay + Cloud Code",
+  // "Luna → Claude Design → Cloud Code") — a task matches if ANY selected
+  // person appears anywhere in its owner text, so picking "Jay" surfaces
+  // every task Jay touches, solo or shared.
+  function taskOwnerText(task) {
+    var el = task.querySelector(".owner");
+    return el ? el.textContent.toLowerCase() : "";
+  }
+
+  function applyFilter() {
+    var anyVisible = false;
+    tasks.forEach(function (task) {
+      var text = taskOwnerText(task);
+      var show = active.size === 0;
+      active.forEach(function (person) {
+        if (text.indexOf(person) !== -1) show = true;
+      });
+      task.style.display = show ? "" : "none";
+      if (show) anyVisible = true;
+    });
+    phases.forEach(function (phase) {
+      var visible = phase.querySelectorAll(".task:not([style*='display: none'])").length > 0;
+      phase.style.display = visible ? "" : "none";
+    });
+    if (emptyMsg) emptyMsg.hidden = anyVisible || active.size === 0;
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      var person = chip.getAttribute("data-person");
+      if (person === "todos") {
+        active.clear();
+        chips.forEach(function (c) { c.classList.remove("active"); });
+        chip.classList.add("active");
+      } else {
+        chips[0].classList.remove("active"); // "Todos" chip
+        if (active.has(person)) {
+          active.delete(person);
+          chip.classList.remove("active");
+        } else {
+          active.add(person);
+          chip.classList.add("active");
+        }
+        if (active.size === 0) chips[0].classList.add("active");
+      }
+      applyFilter();
+    });
+  });
+})();
+</script>

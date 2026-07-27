@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { LoginForm } from "./LoginForm";
 
 export const metadata: Metadata = {
-  title: "Inicia sesión — EJECUTA",
-  description: "Entra a tu cuenta de EJECUTA: tu curso, tus hábitos y tu Radar de Vida.",
+  title: "Inicia sesión — Ankla",
+  description: "Entra a tu cuenta de Ankla: tu curso, tus hábitos y tu Radar de Vida.",
   alternates: { canonical: "/login" },
 };
 

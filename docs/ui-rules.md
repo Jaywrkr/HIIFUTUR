@@ -68,7 +68,7 @@ mismo orden.
 ## Tablas
 
 No hay tablas HTML en la app — donde otras apps usarían una tabla
-(leaderboard, historial), EJECUTA usa filas (`.list-row`) con columnas
+(leaderboard, historial), Ankla usa filas (`.list-row`) con columnas
 implícitas via flexbox. Mantener esa convención antes de introducir un
 `<table>` real.
 

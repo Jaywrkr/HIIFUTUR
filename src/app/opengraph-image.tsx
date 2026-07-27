@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "EJECUTA — Sistema de Ejecución Sostenible";
+export const alt = "Ankla — Sistema de Ejecución Sostenible";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -45,7 +45,7 @@ export default function Image() {
             letterSpacing: 2,
           }}
         >
-          EJECUTA
+          Ankla
         </div>
         <div style={{ display: "flex", color: "#A3A3A3", fontSize: 28, marginTop: 20 }}>
           Un sistema, no una promesa.

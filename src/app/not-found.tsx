@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Página no encontrada — EJECUTA" };
+export const metadata = { title: "Página no encontrada — Ankla" };
 
 export default function NotFound() {
   return (

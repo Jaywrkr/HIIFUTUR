@@ -26,7 +26,7 @@ const geistMono = localFont({
 });
 
 const SITE_URL = process.env.NEXTAUTH_URL ?? "https://hiifutur.vercel.app";
-const TITLE = "EJECUTA — Sistema de Ejecución Sostenible";
+const TITLE = "Ankla — Sistema de Ejecución Sostenible";
 const DESCRIPTION =
   "Sistema de ejecución sostenible basado en Pareto: aprendizaje, hábitos y Radar de Vida para sostener cambios pequeños sin culpa.";
 
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: SITE_URL,
-    siteName: "EJECUTA",
+    siteName: "Ankla",
     locale: "es",
     type: "website",
   },

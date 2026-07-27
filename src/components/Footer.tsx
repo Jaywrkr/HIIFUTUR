@@ -33,7 +33,7 @@ export function Footer() {
   return (
     <footer className="border-t border-line mt-4">
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-14">
-        <p className="text-sm font-thin tracking-[0.3em] text-white mb-4">EJECUTA</p>
+        <p className="text-sm font-thin tracking-[0.3em] text-white mb-4">Ankla</p>
         <p className="text-sm text-neutral-400 max-w-md leading-relaxed mb-12">
           Sistema de ejecución sostenible: aprendizaje, hábitos y Radar de Vida en un mismo lugar.
           Un producto de HIIFUTUR, operado desde Ecuador.
@@ -68,7 +68,7 @@ export function Footer() {
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-500 text-center sm:text-left">
           <p>© {year} HIIFUTUR. Todos los derechos reservados.</p>
-          <p>EJECUTA no es consejo médico, financiero ni psicológico.</p>
+          <p>Ankla no es consejo médico, financiero ni psicológico.</p>
         </div>
       </div>
     </footer>

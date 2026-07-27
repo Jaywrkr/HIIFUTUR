@@ -1,7 +1,14 @@
 export const CHANGELOG_DESCRIPTION =
-  "Todo lo que cambia en EJECUTA, versión por versión — features nuevas, arreglos y mejoras.";
+  "Todo lo que cambia en Ankla, versión por versión — features nuevas, arreglos y mejoras.";
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
+  {
+    version: "2.119.0",
+    date: "2026-07-27",
+    changes: [
+      "El producto se renombra de EJECUTA a Ankla en toda la app, la landing, los emails y los documentos públicos — mismo sistema, mismo precio, nuevo nombre. HIIFUTUR sigue siendo la marca operadora.",
+    ],
+  },
   {
     version: "2.118.0",
     date: "2026-07-27",

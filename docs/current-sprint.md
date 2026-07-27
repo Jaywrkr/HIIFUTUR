@@ -13,7 +13,7 @@ El producto (curso + hábitos + Radar de Vida + logros) ya está
 funcionalmente completo y en producción. El trabajo actual es **la
 transición de "app en modo prueba" a "app lista para cobrar a
 desconocidos"** — Fase A del documento de operaciones
-(`docs/ejecuta-operaciones.html` si existe en el repo, o el artifact
+(`docs/ankla-operaciones.html` si existe en el repo, o el artifact
 publicado equivalente).
 
 ## Qué ya está hecho (Fase A — Dinero y cuentas reales)

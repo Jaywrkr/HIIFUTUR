@@ -6,7 +6,7 @@
 
 ## Qué hace el producto
 
-EJECUTA: curso interactivo + habit tracker basado en el Principio de
+Ankla: curso interactivo + habit tracker basado en el Principio de
 Pareto. La idea central: la motivación falla, un sistema pequeño y
 sostenido no. Una persona elige **un solo hábito ancla** (el más pequeño
 posible), lo sostiene día a día, y cada 30 días mide con el Radar de Vida
