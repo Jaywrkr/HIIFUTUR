@@ -341,6 +341,9 @@ export default async function HomePage() {
                   </ScrollTextLine>
                 ))}
                 <p className="text-xs uppercase tracking-widest text-neutral-500 mt-2">— Jay</p>
+                <p className="text-xs text-neutral-500">
+                  Mi caso, mi ritmo. No es lo que te va a pasar a ti — es el sistema que usé yo.
+                </p>
               </div>
             </div>
           </div>

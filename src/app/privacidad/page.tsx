@@ -14,7 +14,7 @@ export default function PrivacidadPage() {
 
       <div className="flex flex-col gap-8 mb-16">
         <section>
-          <p className="font-bold mb-2">Quién es responsable de tus datos</p>
+          <h2 className="font-bold mb-2">Quién es responsable de tus datos</h2>
           <p className="muted">
             El responsable del tratamiento de tus datos es la marca{" "}
             <span className="text-neutral-300">HIIFUTUR</span>, que opera Ankla desde Ecuador. Para
@@ -24,7 +24,7 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Qué guardamos</p>
+          <h2 className="font-bold mb-2">Qué guardamos</h2>
           <p className="muted">
             Tu nombre, tu email, tu contraseña (encriptada, nunca en texto plano), los hábitos que
             creas y cuándo los marcas, tus respuestas en los módulos, y tus mediciones del Radar de
@@ -35,7 +35,7 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Para qué lo usamos</p>
+          <h2 className="font-bold mb-2">Para qué lo usamos</h2>
           <p className="muted">
             Para que la app funcione y mejore: mostrarte tu progreso, calcular tu racha, mandarte el
             correo de recuperación de contraseña si lo pides, avisarte por email si tienes un hábito
@@ -46,7 +46,7 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Con quién lo compartimos</p>
+          <h2 className="font-bold mb-2">Con quién lo compartimos</h2>
           <p className="muted">
             Con nadie para fines comerciales. No vendemos ni alquilamos tus datos. Usamos algunos
             proveedores que procesan datos solo para que el servicio funcione:
@@ -73,7 +73,7 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Cookies</p>
+          <h2 className="font-bold mb-2">Cookies</h2>
           <p className="muted">
             Usamos una sola cookie de sesión para saber que estás logeado. No hay cookies de
             publicidad ni de rastreo de terceros.
@@ -81,7 +81,7 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Cuánto tiempo lo guardamos</p>
+          <h2 className="font-bold mb-2">Cuánto tiempo lo guardamos</h2>
           <p className="muted">
             Conservamos tus datos mientras tengas la cuenta activa. Cuando la eliminas, se borran de
             inmediato. Los correos de recuperación de contraseña caducan solos al poco tiempo de
@@ -90,7 +90,7 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Cómo lo protegemos</p>
+          <h2 className="font-bold mb-2">Cómo lo protegemos</h2>
           <p className="muted">
             Las contraseñas se guardan encriptadas (hash bcrypt), la conexión va siempre por HTTPS y
             limitamos los intentos de inicio de sesión para frenar ataques. Ningún sistema es
@@ -99,7 +99,7 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Tus derechos</p>
+          <h2 className="font-bold mb-2">Tus derechos</h2>
           <p className="muted">
             Conforme a la Ley Orgánica de Protección de Datos Personales del Ecuador, puedes pedir
             acceso a tus datos, corregirlos, eliminarlos, llevarte una copia (portabilidad) u
@@ -111,7 +111,7 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Menores de edad</p>
+          <h2 className="font-bold mb-2">Menores de edad</h2>
           <p className="muted">
             Ankla es para mayores de 16 años. No recopilamos datos de menores de esa edad a
             sabiendas. Si crees que un menor nos dio sus datos, escríbenos y los eliminamos.
@@ -119,7 +119,7 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Borrar tus datos</p>
+          <h2 className="font-bold mb-2">Borrar tus datos</h2>
           <p className="muted">
             Puedes eliminar tu cuenta en cualquier momento desde{" "}
             <Link href="/cuenta" className="link-accent">Mi cuenta</Link>. Al hacerlo, se borra tu
@@ -129,7 +129,7 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Cambios</p>
+          <h2 className="font-bold mb-2">Cambios</h2>
           <p className="muted">
             Si cambiamos esta política de forma importante, lo vas a notar. La fecha de arriba te dice
             cuándo se actualizó por última vez.
@@ -137,7 +137,7 @@ export default function PrivacidadPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Contacto</p>
+          <h2 className="font-bold mb-2">Contacto</h2>
           <p className="muted">
             Preguntas sobre tus datos: escribe a{" "}
             <a href="mailto:jaywrkr@gmail.com" className="link-accent">jaywrkr@gmail.com</a>.

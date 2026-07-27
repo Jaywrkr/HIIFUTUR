@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.120.0",
+    date: "2026-07-27",
+    changes: [
+      "La historia de Jay en la landing aclara que es su caso personal, a su ritmo — no una promesa de resultado.",
+      "Accesibilidad: los títulos de sección en Términos y Privacidad pasan de párrafos a encabezados reales (h2), para navegación correcta con lector de pantalla.",
+    ],
+  },
+  {
     version: "2.119.0",
     date: "2026-07-27",
     changes: [
