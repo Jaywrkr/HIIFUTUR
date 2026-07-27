@@ -246,10 +246,10 @@ export default async function HomePage() {
             <p className="text-xs text-neutral-500 mt-4">
               7 días gratis. Sin tarjeta. Primero mides dónde estás.
             </p>
-            <p className="text-xs text-neutral-600 mt-2">iOS y Android, pronto.</p>
+            <p className="text-xs text-neutral-400 mt-2">iOS y Android, pronto.</p>
           </Reveal>
 
-          <div className="relative h-[420px] hidden md:block">
+          <div className="relative h-[420px] hidden md:block" aria-hidden="true">
             <div
               className="absolute inset-0 rounded-lg"
               style={{
@@ -297,7 +297,7 @@ export default async function HomePage() {
             {OLD_RULES.map((rule) => (
               <p
                 key={rule}
-                className="text-2xl sm:text-4xl font-thin uppercase tracking-tight text-neutral-600 line-through decoration-neutral-400/60"
+                className="text-2xl sm:text-4xl font-thin uppercase tracking-tight text-neutral-500 line-through decoration-neutral-400/60"
                 style={{ textDecorationThickness: "3px" }}
               >
                 {rule}
@@ -351,7 +351,7 @@ export default async function HomePage() {
               <div className="flex flex-col gap-1 mt-4">
                 {FOR_YOU_IF.map((line) => (
                   <div key={line} className="group flex items-start gap-3 border-b border-line py-3 last:border-b-0">
-                    <span className="text-accent mt-0.5 shrink-0">—</span>
+                    <span className="text-accent mt-0.5 shrink-0" aria-hidden="true">—</span>
                     <p className="text-sm text-neutral-300 group-hover:text-white transition-colors">{line}</p>
                   </div>
                 ))}
@@ -489,7 +489,7 @@ export default async function HomePage() {
                 <div className="flex flex-col gap-3 mb-8 flex-1">
                   {plan.features.map((f) => (
                     <div key={f} className="flex items-start gap-2">
-                      <span className="text-accent mt-0.5 shrink-0">✓</span>
+                      <span className="text-accent mt-0.5 shrink-0" aria-hidden="true">✓</span>
                       <span className="text-sm text-neutral-300">{f}</span>
                     </div>
                   ))}

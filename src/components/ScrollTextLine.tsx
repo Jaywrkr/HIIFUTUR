@@ -10,8 +10,15 @@ import { useEffect, useRef, useState } from "react";
 export function ScrollTextLine({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const [active, setActive] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setReducedMotion(true);
+      setActive(true);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
 
@@ -31,10 +38,10 @@ export function ScrollTextLine({ children }: { children: React.ReactNode }) {
   return (
     <p
       ref={ref}
-      className="transition-colors ease-out"
+      className={reducedMotion ? "" : "transition-colors ease-out"}
       style={{
         color: active ? "#F5F5F5" : "#525252",
-        transitionDuration: "600ms",
+        transitionDuration: reducedMotion ? "0ms" : "600ms",
       }}
     >
       {children}
