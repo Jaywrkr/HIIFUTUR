@@ -182,7 +182,7 @@ function FloatingStat({
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "EJECUTA",
+  name: "Ankla",
   applicationCategory: "LifestyleApplication",
   operatingSystem: "Web",
   description:
@@ -210,7 +210,7 @@ export default async function HomePage() {
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-8 flex items-center justify-between">
         <span className="inline-flex items-center gap-2.5 text-sm font-normal tracking-[0.3em] text-white">
           <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 breathing-dot" aria-hidden="true" />
-          EJECUTA
+          Ankla
         </span>
         <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
           Iniciar sesión
@@ -381,7 +381,7 @@ export default async function HomePage() {
           <div className="text-center mb-16">
             <p className="kicker mx-auto">Cómo vemos las cosas</p>
             <h2 className="text-4xl sm:text-5xl font-thin tracking-tight mb-4">
-              La forma <span className="text-accent">EJECUTA</span>
+              La forma <span className="text-accent">Ankla</span>
             </h2>
             <p className="text-sm text-neutral-400 max-w-xl mx-auto">
               Tres ideas. Si no es sostenible, no sirve.

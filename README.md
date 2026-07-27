@@ -1,4 +1,4 @@
-# EJECUTA — Sistema de Ejecucion Sostenible
+# Ankla — Sistema de Ejecucion Sostenible
 
 Curso interactivo + habit tracker basado en el Principio de Pareto: el 20%
 de tus acciones genera el 80% de tus resultados. No es un curso de
@@ -8,8 +8,8 @@ motivacion — es un sistema donde el contenido se gana con ejecucion real.
 
 La mayoria de apps de habitos y cursos de productividad venden motivacion:
 listas gigantes de habitos, retos de 75 dias, gurus. La motivacion no dura.
-EJECUTA parte de un caso real (una persona que paso de 3 a 9 en su Wheel of
-Life en 8 meses) y lo convierte en sistema: **un solo habito ancla**, lo mas
+Ankla parte de un caso real (una persona que paso de 3 a 9 en su Radar de
+Vida en 8 meses) y lo convierte en sistema: **un solo habito ancla**, lo mas
 pequeno posible, sostenido con datos reales — no con fuerza de voluntad. El
 contenido del curso se desbloquea con ejecucion real (dias de habito
 cumplido), no con tiempo transcurrido, asi que no se puede "consumir" el

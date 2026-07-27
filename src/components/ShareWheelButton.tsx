@@ -13,8 +13,8 @@ export function ShareWheelButton({
   return (
     <ShareImageButton
       draw={(canvas) => drawWheelShareCard(canvas, { areaScores, areaLabels })}
-      fileName="ejecuta-wheel-of-life.png"
-      shareText="Mi Radar de Vida en EJECUTA."
+      fileName="ankla-radar-de-vida.png"
+      shareText="Mi Radar de Vida en Ankla."
       label="Compartir mi Radar de Vida"
     />
   );

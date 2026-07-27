@@ -12,7 +12,7 @@ import type { AchievementProgress } from "@/lib/achievements";
  * hover language invented). Click opens a detail view: bigger tilted card,
  * a real progress bar toward the next tier, and prev/next to browse every
  * logro without closing — the "gallery" feel from the reference, in
- * EJECUTA's own visual system.
+ * Ankla's own visual system.
  */
 export function AchievementsGallery({ progress }: { progress: AchievementProgress[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);

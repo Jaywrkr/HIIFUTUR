@@ -82,7 +82,7 @@ export default async function CuentaPage() {
                 {user.name?.trim() || "Usuario"}
               </h1>
               <p className="text-sm" style={{ color: "rgba(0,0,0,0.6)" }}>
-                {daysTogether} días en EJECUTA
+                {daysTogether} días en Ankla
               </p>
               {anchorHabit ? (
                 <p className="text-sm mt-0.5" style={{ color: "rgba(0,0,0,0.6)" }}>

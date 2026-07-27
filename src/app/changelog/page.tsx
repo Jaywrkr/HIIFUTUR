@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CHANGELOG, CHANGELOG_DESCRIPTION } from "@/lib/changelog";
 
 export const metadata = {
-  title: "Changelog — EJECUTA",
+  title: "Changelog — Ankla",
   description: CHANGELOG_DESCRIPTION,
   alternates: { canonical: "/changelog" },
 };
@@ -11,7 +11,7 @@ export default function ChangelogPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-16">
       <Link href="/" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
-        ← EJECUTA
+        ← Ankla
       </Link>
       <p className="kicker mt-8">Changelog</p>
       <h1 className="text-3xl font-thin tracking-tight mb-2">Qué ha cambiado</h1>

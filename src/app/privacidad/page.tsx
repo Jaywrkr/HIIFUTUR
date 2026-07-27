@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-export const metadata = { title: "Privacidad — EJECUTA", alternates: { canonical: "/privacidad" } };
+export const metadata = { title: "Privacidad — Ankla", alternates: { canonical: "/privacidad" } };
 
 export default function PrivacidadPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-16">
       <Link href="/" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
-        ← EJECUTA
+        ← Ankla
       </Link>
       <p className="kicker mt-8">Legal</p>
       <h1 className="text-3xl font-thin tracking-tight mb-2">Política de privacidad</h1>
@@ -17,7 +17,7 @@ export default function PrivacidadPage() {
           <p className="font-bold mb-2">Quién es responsable de tus datos</p>
           <p className="muted">
             El responsable del tratamiento de tus datos es la marca{" "}
-            <span className="text-neutral-300">HIIFUTUR</span>, que opera EJECUTA desde Ecuador. Para
+            <span className="text-neutral-300">HIIFUTUR</span>, que opera Ankla desde Ecuador. Para
             cualquier tema de datos puedes escribir a{" "}
             <a href="mailto:jaywrkr@gmail.com" className="link-accent">jaywrkr@gmail.com</a>.
           </p>
@@ -113,7 +113,7 @@ export default function PrivacidadPage() {
         <section>
           <p className="font-bold mb-2">Menores de edad</p>
           <p className="muted">
-            EJECUTA es para mayores de 16 años. No recopilamos datos de menores de esa edad a
+            Ankla es para mayores de 16 años. No recopilamos datos de menores de esa edad a
             sabiendas. Si crees que un menor nos dio sus datos, escríbenos y los eliminamos.
           </p>
         </section>
