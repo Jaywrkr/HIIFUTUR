@@ -2,7 +2,7 @@ const ITEMS = [
   "Respirar 1 min",
   "Caminar 10 min",
   "Tomar agua",
-  "Escribir 1 linea",
+  "Escribir 1 línea",
   "Dormir a tiempo",
   "5 sentadillas",
 ];
