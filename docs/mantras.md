@@ -29,7 +29,8 @@ mantra de EJECUTA.
   el Módulo 1 a propósito, para no mantener dos versiones del mismo
   dato.
 - **La propuesta central**: *"No es disciplina. No es fuerza de
-  voluntad. Es un sistema que no pueda fallar."* — hero de la landing.
+  voluntad. Es un sistema hecho para que puedas volver incluso cuando
+  fallas."* — hero de la landing.
 - **El filtro anti-hype**: *"Sin gurús, sin 47 hábitos a la vez, sin
   culpa cuando fallas un día."*
 
