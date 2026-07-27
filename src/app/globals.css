@@ -344,6 +344,25 @@ select:focus-visible,
   }
 }
 
+/* Arrival ritual mantra: opacity-only variant of the same inhale/exhale
+   cadence above, for full lines of text where scaling would shift layout. */
+@keyframes breatheOpacity {
+  0%, 100% {
+    opacity: 0.72;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.breathing-text {
+  animation: breatheOpacity 4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .breathing-text {
+    animation: none;
+  }
+}
+
 /* Hero stat cards: a slow, independent drift so the hero doesn't sit
    completely still — each card gets its own duration/delay via inline
    style so the three don't move in lockstep. */

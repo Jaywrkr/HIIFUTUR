@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.107.0",
+    date: "2026-07-27",
+    changes: [
+      "El mantra de bienvenida ahora respira suavemente en vez de quedarse estático, y la frase principal se ve un poco más compacta.",
+      "En Hoy, una de las tres tarjetas de Nivel, Puntos o Racha aparece destacada con un color de marca aleatorio cada vez que entras.",
+    ],
+  },
+  {
     version: "2.106.0",
     date: "2026-07-22",
     changes: [
