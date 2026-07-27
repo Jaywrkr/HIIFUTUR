@@ -3,6 +3,27 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.118.0",
+    date: "2026-07-27",
+    changes: [
+      "Términos: la sección de precios ahora detalla los montos reales ($6.99/mes o $59/año regular, $4.99/mes o $42/año fundador), nombra a PayPal como procesador y aclara que el precio fundador se pierde si cancelas y vuelves a activar después.",
+      "El copy del hero de la landing pasa de \"un sistema que no pueda fallar\" a \"un sistema hecho para que puedas volver incluso cuando fallas\" — mismo golpe, sin sonar a garantía absoluta.",
+      "La descripción del sitio (meta y OG) se actualiza para nombrar hábitos y Radar de Vida, no solo el Principio de Pareto.",
+      "Se agrega el link canonical faltante en el layout raíz.",
+    ],
+  },
+  {
+    version: "2.117.0",
+    date: "2026-07-27",
+    changes: [
+      "Términos: se corrige la contradicción con la landing sobre pagos — los cobros de los planes de pago ya están activos, no una promesa futura.",
+      "Accesibilidad: el texto que se revela con scroll (WordReveal) ahora cumple contraste mínimo también en su estado \"todavía no leído\".",
+      "SEO: la descripción del sitio pasa de \"curso interactivo\" a \"sistema guiado de ejecución sostenible\", alineada con el posicionamiento de marca.",
+      "Se agregan aria-label contextuales a los botones \"Empezar gratis\" repetidos en la landing.",
+      "Limpieza de las últimas menciones a \"Wheel of Life\" en README, script de PayPal y notas del proyecto — quedan como \"Radar de Vida\".",
+    ],
+  },
+  {
     version: "2.116.0",
     date: "2026-07-27",
     changes: [

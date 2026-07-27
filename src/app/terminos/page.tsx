@@ -56,18 +56,23 @@ export default function TerminosPage() {
         <section>
           <p className="font-bold mb-2">Planes, precios y pagos</p>
           <p className="muted">
-            EJECUTA tiene un plan gratuito y planes de pago (mensual y anual). Hoy los cobros aún no
-            están activos: cualquier plan que elijas crea una cuenta gratis y te avisaremos antes de
-            empezar a cobrar. Cuando los pagos estén disponibles, aplicará lo siguiente:
+            EJECUTA tiene un plan gratuito y planes de pago (mensual y anual). Los cobros de los
+            planes de pago ya están activos. Toda cuenta empieza con 7 días de prueba gratis, sin
+            tarjeta, con el sistema completo. Si decides seguir dentro de esos 7 días, activas un
+            plan pago. El precio regular es $6.99/mes o $59/año. Si activas dentro de tus primeros
+            7 días desbloqueas el precio fundador — $4.99/mes o $42/año — fijo mientras mantengas
+            tu suscripción activa sin interrupción. Aplica lo siguiente:
           </p>
           <ul className="muted mt-3 flex flex-col gap-2 list-disc pl-5">
             <li>
               Las suscripciones se renuevan automáticamente al final de cada periodo (mensual o
-              anual) al precio vigente, hasta que las canceles.
+              anual) al precio vigente para tu cuenta, hasta que las canceles.
             </li>
             <li>
-              Puedes cancelar en cualquier momento desde tu cuenta. La cancelación detiene la
-              siguiente renovación; conservas el acceso hasta que termina el periodo ya pagado.
+              Puedes cancelar en cualquier momento desde{" "}
+              <Link href="/cuenta" className="link-accent">Mi cuenta</Link>. La cancelación detiene
+              la siguiente renovación; conservas el acceso hasta que termina el periodo ya pagado.
+              Si vuelves a activar después de cancelar, el precio fundador ya no aplica.
             </li>
             <li>
               Reembolsos: si algo sale mal o no quedaste conforme, escríbenos dentro de los primeros
@@ -75,8 +80,8 @@ export default function TerminosPage() {
               corresponda. Los impuestos aplicables no son reembolsables.
             </li>
             <li>
-              Los pagos se procesan a través de un proveedor externo de pagos. Nunca vemos ni
-              guardamos los datos completos de tu tarjeta.
+              Los pagos se procesan por PayPal. Puedes pagar con tu cuenta PayPal o con tarjeta sin
+              tener una. Nunca vemos ni guardamos los datos completos de tu tarjeta.
             </li>
             <li>Podemos cambiar los precios avisándote con antelación razonable antes de tu próxima renovación.</li>
           </ul>

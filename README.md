@@ -42,7 +42,7 @@ detalle completo con diagramas.
 2. Registro / login (nombre de usuario unico), recuperacion de contrasena
    por email y borrado de cuenta autoservicio.
 3. Onboarding: seleccion de hasta 3 areas de vida + primera medicion del
-   Wheel of Life.
+   Radar de Vida.
 4. **11 modulos** de aprendizaje interactivo en 4 fases (teoria + ejercicio
    escrito + progreso guardado), desbloqueados en orden.
 5. **Ciclo de formacion de 30 dias**: el modulo 1 es la entrada; despues,
@@ -56,7 +56,7 @@ detalle completo con diagramas.
 7. **Puntos y niveles**: cada check suma 10 puntos y cada modulo completado
    30; subir de nivel cuesta cada vez mas (curva cuadratica).
 8. **Leaderboard** top 10 (solo nombre, nunca email).
-9. Wheel of Life: medicion cada 30 dias con grafica radar animada y
+9. Radar de Vida: medicion cada 30 dias con grafica radar animada y
    comparacion contra la medicion anterior.
 10. Dashboard "Hoy": habitos a marcar primero, tarjeta del modulo en curso,
     nivel/puntos/racha de un vistazo.

@@ -63,7 +63,7 @@ export function WordReveal({ words, className }: { words: RevealWord[]; classNam
           <span
             key={i}
             style={{
-              color: active ? "#F5F5F5" : "#404040",
+              color: active ? "#F5F5F5" : "#737373",
               filter: active ? "blur(0px)" : "blur(6px)",
               transition: reducedMotion ? "none" : "color 450ms ease-out, filter 450ms ease-out",
             }}

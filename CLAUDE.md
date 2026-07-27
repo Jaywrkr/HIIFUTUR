@@ -5,7 +5,7 @@
 Curso interactivo + habit tracker. La idea central: la motivacion falla,
 un sistema pequeno y sostenido no. Una persona elige **un solo habito
 ancla** (el mas pequeno posible), lo sostiene dia a dia, y cada 30 dias
-mide con el Wheel of Life si algo real se movio. El contenido del curso
+mide con el Radar de Vida si algo real se movio. El contenido del curso
 (11 modulos) se desbloquea con ejecucion real — dias de habito cumplido —
 no con tiempo transcurrido ni con dinero pagado. Ver
 [`docs/context.md`](docs/context.md) para el estado actual completo y

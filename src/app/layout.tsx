@@ -28,13 +28,14 @@ const geistMono = localFont({
 const SITE_URL = process.env.NEXTAUTH_URL ?? "https://hiifutur.vercel.app";
 const TITLE = "EJECUTA — Sistema de Ejecución Sostenible";
 const DESCRIPTION =
-  "Curso interactivo basado en el Principio de Pareto: identifica el 20% de acciones que generan el 80% de tu cambio.";
+  "Sistema de ejecución sostenible basado en Pareto: aprendizaje, hábitos y Radar de Vida para sostener cambios pequeños sin culpa.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: TITLE,
   description: DESCRIPTION,
   manifest: "/manifest.webmanifest",
+  alternates: { canonical: "/" },
   icons: {
     icon: "/favicon.svg",
     apple: "/apple-touch-icon.png",
