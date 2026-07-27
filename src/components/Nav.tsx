@@ -9,7 +9,7 @@ const links = [
   { href: "/dashboard", label: "HOY" },
   { href: "/modules", label: "MÓDULOS" },
   { href: "/habits", label: "HÁBITOS" },
-  { href: "/wheel", label: "WHEEL OF LIFE" },
+  { href: "/wheel", label: "RADAR DE VIDA" },
   { href: "/logros", label: "LOGROS" },
   { href: "/leaderboard", label: "LEADERBOARD" },
   { href: "/cuenta", label: "CUENTA" },
@@ -22,7 +22,7 @@ const TAB_ITEMS = [
   { href: "/dashboard", label: "Hoy" },
   { href: "/modules", label: "Módulos" },
   { href: "/habits", label: "Hábitos" },
-  { href: "/wheel", label: "Wheel" },
+  { href: "/wheel", label: "Radar" },
 ];
 
 const MORE_ITEMS = [

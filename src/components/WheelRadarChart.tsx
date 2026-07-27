@@ -67,7 +67,7 @@ export function WheelRadarChart({
         className="w-full max-w-[420px]"
         style={{ overflow: "visible" }}
         role="img"
-        aria-label="Wheel of Life"
+        aria-label="Radar de Vida"
       >
         {/* Grid rings */}
         {RINGS.map((level) => (

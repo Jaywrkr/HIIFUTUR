@@ -82,7 +82,7 @@ vocabulario corporativo en inglés.
   nada.
 - El fallo tiene una regla explícita (2 se perdonan, el tercero resetea)
   en vez de una racha que se rompe silenciosamente y desmotiva.
-- Basado en un caso real medido (Wheel of Life, 3 → 9, 8 meses), no en
+- Basado en un caso real medido (Radar de Vida, 3 → 9, 8 meses), no en
   una promesa abstracta de "transformación".
 
 ## Palabras que sí usamos

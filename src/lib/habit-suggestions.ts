@@ -56,7 +56,7 @@ export function getAnchorHabitSuggestion(
 
 /**
  * Ranks all habit categories by how relevant they are to THIS user — the
- * areas they picked as priorities at onboarding, plus the Wheel of Life
+ * areas they picked as priorities at onboarding, plus the Radar de Vida
  * areas where they scored themselves lowest (most room to move) — and
  * returns one suggestion per category for the top 5. Used at Module 1,
  * where the anchor habit is chosen, so the options aren't generic: they're

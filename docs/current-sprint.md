@@ -9,7 +9,7 @@ pre-lanzamiento público (dominio aún pendiente).
 
 ## Qué se está construyendo
 
-El producto (curso + hábitos + Wheel of Life + logros) ya está
+El producto (curso + hábitos + Radar de Vida + logros) ya está
 funcionalmente completo y en producción. El trabajo actual es **la
 transición de "app en modo prueba" a "app lista para cobrar a
 desconocidos"** — Fase A del documento de operaciones

@@ -27,7 +27,7 @@ export type AchievementStats = {
   longestStreak: number;
   /** Modules completed, out of the full 11. */
   modulesCompleted: number;
-  /** Average Wheel of Life score now minus the average at onboarding —
+  /** Average Radar de Vida score now minus the average at onboarding —
    * can be negative; achievements only look at positive movement. */
   wheelAverageDelta: number;
   /** Habits currently active at once (not paused/locked). */
@@ -70,9 +70,9 @@ export const ACHIEVEMENTS: Achievement[] = [
     color: BRAND_PALETTE.salvia,
     stat: "wheelAverageDelta",
     tiers: [
-      { tier: 1, name: "Se mueve algo", requirement: "Tu Wheel of Life sube +1 en promedio", threshold: 1, points: 20 },
-      { tier: 2, name: "Se nota", requirement: "Tu Wheel of Life sube +2 en promedio", threshold: 2, points: 60 },
-      { tier: 3, name: "Es innegable", requirement: "Tu Wheel of Life sube +3 en promedio", threshold: 3, points: 150 },
+      { tier: 1, name: "Se mueve algo", requirement: "Tu Radar de Vida sube +1 en promedio", threshold: 1, points: 20 },
+      { tier: 2, name: "Se nota", requirement: "Tu Radar de Vida sube +2 en promedio", threshold: 2, points: 60 },
+      { tier: 3, name: "Es innegable", requirement: "Tu Radar de Vida sube +3 en promedio", threshold: 3, points: 150 },
     ],
   },
   {

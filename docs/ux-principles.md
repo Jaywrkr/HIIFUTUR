@@ -75,7 +75,7 @@ bajo, y la complejidad de manejar la reconciliación no se justifica.
 
 ## Progresivo, no abrumador, en el onboarding
 
-Una decisión a la vez (áreas de vida → Wheel of Life → hábito ancla, en
+Una decisión a la vez (áreas de vida → Radar de Vida → hábito ancla, en
 ese orden, cada uno en su propia pantalla) — nunca un formulario largo
 con todo junto. El límite explícito de 3 áreas ("no más — el sistema
 funciona porque es pequeño") es una regla de producto expresada

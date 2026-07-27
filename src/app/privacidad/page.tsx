@@ -27,8 +27,8 @@ export default function PrivacidadPage() {
           <p className="font-bold mb-2">Qué guardamos</p>
           <p className="muted">
             Tu nombre, tu email, tu contraseña (encriptada, nunca en texto plano), los hábitos que
-            creas y cuándo los marcas, tus respuestas en los módulos, y tus mediciones del Wheel of
-            Life. También guardamos eventos de uso del producto (por ejemplo: que te registraste o
+            creas y cuándo los marcas, tus respuestas en los módulos, y tus mediciones del Radar de
+            Vida. También guardamos eventos de uso del producto (por ejemplo: que te registraste o
             que completaste un módulo) asociados a tu cuenta, para entender cómo se usa la app y
             mejorarla.
           </p>

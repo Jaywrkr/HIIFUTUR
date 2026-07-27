@@ -32,7 +32,7 @@ export function CycleCompletionRitual() {
       <p className="text-sm text-neutral-300 leading-relaxed max-w-md mb-8">
         30 días, hábito ancla activo, sin que se te reiniciara. Eso ya no es suerte — es
         evidencia de que puedes sostener algo. El sistema sigue: tus hábitos, tu progreso y tu
-        Wheel of Life continúan igual, sin gating de ciclo desde ahora.
+        Radar de Vida continúan igual, sin gating de ciclo desde ahora.
       </p>
       <p className="text-sm italic text-neutral-400 leading-relaxed max-w-md mb-2">
         &ldquo;El crecimiento real es cuando te cansas de tus mierdas.&rdquo;
@@ -40,7 +40,7 @@ export function CycleCompletionRitual() {
       <p className="text-xs uppercase tracking-widest text-neutral-400 mb-10">— Jay</p>
       <div className="flex gap-3">
         <Link href="/wheel" className="btn-primary" onClick={dismiss}>
-          Mide tu Wheel of Life
+          Mide tu Radar de Vida
         </Link>
         <button type="button" onClick={dismiss} className="btn-secondary">
           Sigo en lo mío

@@ -3,12 +3,12 @@
 ## MVP (construido)
 
 - Registro / login / recuperación de contraseña.
-- Onboarding: áreas de vida + Wheel of Life inicial.
+- Onboarding: áreas de vida + Radar de Vida inicial.
 - 11 módulos de curso interactivo en 4 fases, desbloqueo secuencial.
 - Ciclo de formación de 30 días (ejecución real desbloquea contenido).
 - Habit tracker: hasta 5 hábitos, racha, congelador de racha, heatmap.
 - Puntos y niveles.
-- Wheel of Life periódico con radar comparativo.
+- Radar de Vida periódico con radar comparativo.
 - Dashboard "Hoy".
 - Leaderboard (top 10, solo nombre).
 - Landing pública, changelog público.

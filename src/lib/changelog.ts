@@ -6,8 +6,8 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.116.0",
     date: "2026-07-27",
     changes: [
-      "En Hoy, el color de marca de las tarjetas de Nivel, Puntos y Racha ahora solo aparece al pasar el mouse o enfocarlas con teclado — antes quedaba encendido todo el tiempo en una de las tres.",
-      "Arreglo: la línea que tacha 'culpable' en 'Por qué lo hicimos' ya no se extendía hacia la siguiente palabra.",
+      "\"Wheel of Life\" se renombra a \"Radar de Vida\" en toda la app, la landing, los emails y los docs de marca — mismo cuestionario, mismo gráfico, nuevo nombre.",
+      "Footer: se agregan los links a redes sociales (Instagram, X, LinkedIn).",
     ],
   },
   {
@@ -66,7 +66,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     date: "2026-07-27",
     changes: [
       "Landing: el hero ahora aclara junto al CTA principal que la prueba es de 7 días, sin tarjeta, y que primero mides dónde estás.",
-      "Landing: nueva pregunta en el FAQ sobre qué pasa justo después de crear la cuenta (Wheel of Life → primer módulo → hábito ancla), y una línea de cierre que deja explícito que no hay testimonios inventados.",
+      "Landing: nueva pregunta en el FAQ sobre qué pasa justo después de crear la cuenta (Radar de Vida → primer módulo → hábito ancla), y una línea de cierre que deja explícito que no hay testimonios inventados.",
       "Corrige tildes faltantes en microcopy de la landing (\"Siéntete\", \"estés\", \"línea\").",
     ],
   },
@@ -90,7 +90,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.106.0",
     date: "2026-07-22",
     changes: [
-      "El modo zen ahora aplica en toda la app, no solo en Hoy: Hábitos, Wheel of Life y Logros también se simplifican al activarlo — menos elementos en pantalla, no solo menos espacio.",
+      "El modo zen ahora aplica en toda la app, no solo en Hoy: Hábitos, Radar de Vida y Logros también se simplifican al activarlo — menos elementos en pantalla, no solo menos espacio.",
     ],
   },
   {
@@ -158,7 +158,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.97.0",
     date: "2026-07-21",
     changes: [
-      "Nuevo: Logros. 6 logros con hasta 3 niveles cada uno, medidos contra datos reales (racha más larga, módulos completados, mejora en el Wheel of Life, hábitos activos a la vez, congelamientos usados, ciclo de 30 días sostenido) — no son insignias decorativas, cada nivel suma puntos reales a tu nivel. El diseño de la tarjeta mezcla la estructura de las referencias que compartimos (arte arriba, insignia de rareza, progreso por puntos) con el sistema visual propio de EJECUTA: Geist Mono, bordes en vez de brillos, y el mismo PhotoSlot con hue-rotate que ya usan los módulos.",
+      "Nuevo: Logros. 6 logros con hasta 3 niveles cada uno, medidos contra datos reales (racha más larga, módulos completados, mejora en el Radar de Vida, hábitos activos a la vez, congelamientos usados, ciclo de 30 días sostenido) — no son insignias decorativas, cada nivel suma puntos reales a tu nivel. El diseño de la tarjeta mezcla la estructura de las referencias que compartimos (arte arriba, insignia de rareza, progreso por puntos) con el sistema visual propio de EJECUTA: Geist Mono, bordes en vez de brillos, y el mismo PhotoSlot con hue-rotate que ya usan los módulos.",
     ],
   },
   {
@@ -172,7 +172,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.95.0",
     date: "2026-07-21",
     changes: [
-      "El paso 2 del onboarding (medir tu Wheel of Life inicial) ya no desperdicia media pantalla en desktop — pasa a 3 columnas y usa el ancho disponible en vez de quedarse en una columna angosta centrada. De paso se corrige la causa real: la tarjeta de autenticación (login, registro, onboarding) tenía su ancho fuera de la capa de componentes de Tailwind, así que ningún override de ancho que se le pusiera encima funcionaba de verdad — quedaba silenciosamente ignorado.",
+      "El paso 2 del onboarding (medir tu Radar de Vida inicial) ya no desperdicia media pantalla en desktop — pasa a 3 columnas y usa el ancho disponible en vez de quedarse en una columna angosta centrada. De paso se corrige la causa real: la tarjeta de autenticación (login, registro, onboarding) tenía su ancho fuera de la capa de componentes de Tailwind, así que ningún override de ancho que se le pusiera encima funcionaba de verdad — quedaba silenciosamente ignorado.",
       "La entrada a cada módulo suma un orbe grande (el mismo círculo con degradado que ya usan los thumbnails de la lista de Módulos) antes del título — la sensación de 'sesión que estás por empezar' de la referencia de diseño, sin inventar audio o instructor que la app no tiene.",
     ],
   },
@@ -180,7 +180,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.94.0",
     date: "2026-07-20",
     changes: [
-      "Se formaliza la paleta de marca (Oliva, Mostaza, Coral, Cielo, Salvia, Terracota): cada categoría de hábito tiene ahora un color fijo tomado de esa paleta, y el Wheel of Life se pinta con el mismo color que su categoría asociada — el punto activo, el radar y los sliders de la medición mensual. El cuestionario de cada módulo también usa esos tonos en los puntos junto a cada opción de respuesta, en vez de un color genérico.",
+      "Se formaliza la paleta de marca (Oliva, Mostaza, Coral, Cielo, Salvia, Terracota): cada categoría de hábito tiene ahora un color fijo tomado de esa paleta, y el Radar de Vida se pinta con el mismo color que su categoría asociada — el punto activo, el radar y los sliders de la medición mensual. El cuestionario de cada módulo también usa esos tonos en los puntos junto a cada opción de respuesta, en vez de un color genérico.",
     ],
   },
   {
@@ -251,10 +251,10 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.84.0",
     date: "2026-07-19",
     changes: [
-      "Pasada de armonía en toda la app: el título principal de Módulos, Hábitos, Wheel, Upgrade, Leaderboard, Changelog, Términos, Privacidad y el detalle de cada módulo tenía un peso distinto (muy negrita) al de Hoy, Cuenta y la landing (delgado) — ahora todos usan el mismo peso, así que navegar entre pantallas no se siente como cambiar de app.",
-      "Hábitos y Wheel of Life ya usan íconos (racha y estado vacío), en vez de ser las únicas pantallas centrales sin ninguno.",
+      "Pasada de armonía en toda la app: el título principal de Módulos, Hábitos, Radar de Vida, Upgrade, Leaderboard, Changelog, Términos, Privacidad y el detalle de cada módulo tenía un peso distinto (muy negrita) al de Hoy, Cuenta y la landing (delgado) — ahora todos usan el mismo peso, así que navegar entre pantallas no se siente como cambiar de app.",
+      "Hábitos y Radar de Vida ya usan íconos (racha y estado vacío), en vez de ser las únicas pantallas centrales sin ninguno.",
       "Se corrige la tilde de \"Qué ha cambiado\" en Changelog y se recorta texto repetido en Upgrade (la nota de \"no guardamos tu tarjeta\" y \"precio fijo para siempre\" se decían hasta 3 veces en la misma pantalla).",
-      "La historia real de Jay (3 a 9 en el Wheel of Life, en 8 meses) ahora se escribe una sola vez y se reusa en landing y en Módulos, en vez de mantener dos redacciones distintas del mismo dato.",
+      "La historia real de Jay (3 a 9 en el Radar de Vida, en 8 meses) ahora se escribe una sola vez y se reusa en landing y en Módulos, en vez de mantener dos redacciones distintas del mismo dato.",
     ],
   },
   {
@@ -377,7 +377,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.67.0",
     date: "2026-07-18",
     changes: [
-      "Fase 3 de rediseño de marca: pantallas interiores (Hoy, Módulos, Hábitos, Wheel of Life) sin emojis decorativos — barra de navegación inferior, tarjetas de racha/ancla y el tour de bienvenida ahora en línea con el look monocromo de las fases anteriores.",
+      "Fase 3 de rediseño de marca: pantallas interiores (Hoy, Módulos, Hábitos, Radar de Vida) sin emojis decorativos — barra de navegación inferior, tarjetas de racha/ancla y el tour de bienvenida ahora en línea con el look monocromo de las fases anteriores.",
     ],
   },
   {
@@ -398,14 +398,14 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.64.0",
     date: "2026-07-15",
     changes: [
-      "Módulo 1: elegir el hábito ancla ahora muestra 5 opciones sugeridas — no genéricas, elegidas según las áreas que marcaste al empezar y dónde saliste más bajo en tu Wheel of Life. Sigue siendo 100% editable: son punto de partida, no obligación.",
+      "Módulo 1: elegir el hábito ancla ahora muestra 5 opciones sugeridas — no genéricas, elegidas según las áreas que marcaste al empezar y dónde saliste más bajo en tu Radar de Vida. Sigue siendo 100% editable: son punto de partida, no obligación.",
     ],
   },
   {
     version: "2.63.0",
     date: "2026-07-15",
     changes: [
-      "Cambio interno — preparación de marketing/lanzamiento: las tarjetas de compartir (racha, Wheel of Life) ahora llevan el dominio de la app abajo, para que alguien que las vea en una historia tenga cómo llegar. Sección de testimonios lista en la landing (apagada hasta que existan reales). Variables de entorno para PayPal, Google Search Console y Meta Pixel documentadas y con el código ya preparado para recibirlas sin más trabajo.",
+      "Cambio interno — preparación de marketing/lanzamiento: las tarjetas de compartir (racha, Radar de Vida) ahora llevan el dominio de la app abajo, para que alguien que las vea en una historia tenga cómo llegar. Sección de testimonios lista en la landing (apagada hasta que existan reales). Variables de entorno para PayPal, Google Search Console y Meta Pixel documentadas y con el código ya preparado para recibirlas sin más trabajo.",
     ],
   },
   {
@@ -507,7 +507,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
       "Cualquier lugar que hable de 'crear tu hábito' ahora deja claro que el primero se elige al terminar el Módulo 1 — no aparece la opción de crearlo antes de eso.",
       "En los módulos, si le das a \"Marcar como completado\" con algo sin llenar, el botón lo avisa: vibra, se pone rojo un segundo y te dice exactamente qué falta.",
       "La explicación extra de cada opción de respuesta ahora está oculta por defecto — la despliegas tocando \"¿Qué significa esto?\".",
-      "Los mensajes de \"vuelve en X días\" (Wheel of Life, hábitos, congelar racha) ya no muestran una fecha técnica: dicen \"hoy\", \"mañana\" o \"en X días\".",
+      "Los mensajes de \"vuelve en X días\" (Radar de Vida, hábitos, congelar racha) ya no muestran una fecha técnica: dicen \"hoy\", \"mañana\" o \"en X días\".",
       "Quitamos la etiqueta \"HOY\" arriba de la pantalla principal — ya era redundante.",
       "Cuando ayer se te pasó marcar un hábito, ahora lo dice directamente en la tarjeta: \"Ayer te quedaste sin marcar\".",
       "Arreglado: cuentas creadas antes de que existiera la prueba de 7 días se habían quedado sin fecha de prueba, así que nunca veían el precio de $4.99/$42 al activar. Ahora todas tienen su ventana de prueba.",
@@ -526,7 +526,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.47.0",
     date: "2026-07-13",
     changes: [
-      "Los módulos del curso ahora subrayan términos como \"hábito ancla\", \"Wheel of Life\" o \"Principio de Pareto\" la primera vez que aparecen — tócalos para ver una explicación corta sin salir de la lección.",
+      "Los módulos del curso ahora subrayan términos como \"hábito ancla\", \"Radar de Vida\" o \"Principio de Pareto\" la primera vez que aparecen — tócalos para ver una explicación corta sin salir de la lección.",
     ],
   },
   {
@@ -560,7 +560,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     changes: [
       "Cambio interno: índices nuevos en la base de datos para que el tablero, el leaderboard y el historial de hábitos respondan más rápido a medida que crece la cantidad de usuarios.",
       "Más límites de intentos (cambiar tu nombre, borrar tu cuenta, marcar un hábito desde una notificación) para frenar abuso.",
-      "Cambio interno: páginas internas (tablero, hábitos, Wheel of Life, módulos, cuenta, leaderboard) marcadas para que buscadores no las indexen — son privadas.",
+      "Cambio interno: páginas internas (tablero, hábitos, Radar de Vida, módulos, cuenta, leaderboard) marcadas para que buscadores no las indexen — son privadas.",
       "Login y registro ahora tienen su propio título al compartir el link o verlo en una pestaña.",
     ],
   },
@@ -608,7 +608,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.37.0",
     date: "2026-07-10",
     changes: [
-      "Nav móvil rediseñado: barra inferior fija con Hoy, Módulos, Hábitos y Wheel of Life a un toque, en vez del menú hamburguesa de antes.",
+      "Nav móvil rediseñado: barra inferior fija con Hoy, Módulos, Hábitos y Radar de Vida a un toque, en vez del menú hamburguesa de antes.",
       "\"Hábitos\" ahora tiene su propio link en el menú — antes solo se llegaba ahí desde el tablero.",
     ],
   },
@@ -623,15 +623,15 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.35.0",
     date: "2026-07-10",
     changes: [
-      "La página de Wheel of Life carga mucho más rápido: reemplazamos la librería de gráficos por una versión propia y liviana, sin cambiar cómo se ve ni cómo funciona.",
+      "La página de Radar de Vida carga mucho más rápido: reemplazamos la librería de gráficos por una versión propia y liviana, sin cambiar cómo se ve ni cómo funciona.",
     ],
   },
   {
     version: "2.34.0",
     date: "2026-07-10",
     changes: [
-      "Wheel of Life: cada área ahora explica qué mide, con un ejemplo (ej. Salud Física, Finanzas), tanto en la medición inicial como en las siguientes.",
-      "Antes de guardar cualquier medición del Wheel of Life, ahora se te avisa que no se podrá editar después y se te pide confirmar.",
+      "Radar de Vida: cada área ahora explica qué mide, con un ejemplo (ej. Salud Física, Finanzas), tanto en la medición inicial como en las siguientes.",
+      "Antes de guardar cualquier medición del Radar de Vida, ahora se te avisa que no se podrá editar después y se te pide confirmar.",
       "Footer nuevo en la landing: marca, contacto, Términos, Privacidad y aviso legal — antes solo había dos links sueltos.",
     ],
   },
@@ -639,7 +639,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.33.0",
     date: "2026-07-10",
     changes: [
-      "Módulos, Hábitos y Wheel of Life ahora se nombran como lo que son — Aprendizaje, Acción y Control (1, 2 y 3 de 3) — directo en el encabezado de cada página, para que el sistema se entienda sin depender solo del tour inicial.",
+      "Módulos, Hábitos y Radar de Vida ahora se nombran como lo que son — Aprendizaje, Acción y Control (1, 2 y 3 de 3) — directo en el encabezado de cada página, para que el sistema se entienda sin depender solo del tour inicial.",
     ],
   },
   {
@@ -647,7 +647,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     date: "2026-07-10",
     changes: [
       "\"Lo que sigue\" al final de cada módulo ahora es una tarjeta que te dice el módulo siguiente por nombre, no solo una línea de texto.",
-      "El testimonio de Jay en la landing explica qué es el Wheel of Life la primera vez que lo menciona, para que no tengas que adivinar.",
+      "El testimonio de Jay en la landing explica qué es el Radar de Vida la primera vez que lo menciona, para que no tengas que adivinar.",
     ],
   },
   {
@@ -663,7 +663,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     date: "2026-07-10",
     changes: [
       "Landing: la segunda mitad de la página se condensó en menos secciones (por qué lo hicimos, historia de Jay, para quién es y FAQ) con el mismo lenguaje visual — tarjetas y encabezados — que el resto de la página.",
-      "Bienvenida al curso: se agregó un paso que explica la metodología general (Curso + Hábitos + Wheel of Life = Aprendizaje + Acción + Control) antes de decirte por dónde empezar.",
+      "Bienvenida al curso: se agregó un paso que explica la metodología general (Curso + Hábitos + Radar de Vida = Aprendizaje + Acción + Control) antes de decirte por dónde empezar.",
     ],
   },
   {
@@ -798,7 +798,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
   {
     version: "2.11.0",
     date: "2026-07-08",
-    changes: ["Compartir tu racha o tu Wheel of Life como imagen."],
+    changes: ["Compartir tu racha o tu Radar de Vida como imagen."],
   },
   {
     version: "2.10.0",
@@ -808,7 +808,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
   {
     version: "2.9.0",
     date: "2026-07-08",
-    changes: ["Tu primer Wheel of Life ahora sugiere con qué hábito empezar."],
+    changes: ["Tu primer Radar de Vida ahora sugiere con qué hábito empezar."],
   },
   {
     version: "2.8.0",
@@ -839,7 +839,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "1.0.0",
     date: "2026-07-07",
     changes: [
-      "Lanzamiento inicial: cuenta, onboarding, 11 módulos, habit tracker y Wheel of Life.",
+      "Lanzamiento inicial: cuenta, onboarding, 11 módulos, habit tracker y Radar de Vida.",
       "Recuperación de contraseña.",
     ],
   },

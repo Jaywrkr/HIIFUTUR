@@ -4,7 +4,7 @@ import { LoginForm } from "./LoginForm";
 
 export const metadata: Metadata = {
   title: "Inicia sesión — EJECUTA",
-  description: "Entra a tu cuenta de EJECUTA: tu curso, tus hábitos y tu Wheel of Life.",
+  description: "Entra a tu cuenta de EJECUTA: tu curso, tus hábitos y tu Radar de Vida.",
   alternates: { canonical: "/login" },
 };
 

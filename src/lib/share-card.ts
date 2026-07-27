@@ -139,7 +139,7 @@ export function drawWheelShareCard(
     }
   }
 
-  drawKicker(ctx, "MI WHEEL OF LIFE", 90);
+  drawKicker(ctx, "MI RADAR DE VIDA", 90);
 
   const values = areaLabels.map((a) => areaScores[a.id] ?? 0);
   const average = values.reduce((sum, v) => sum + v, 0) / (values.length || 1);

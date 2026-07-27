@@ -78,7 +78,7 @@ export const passwordResetTokens = pgTable(
   })
 );
 
-// Selected life areas + the first Wheel of Life measurement from onboarding.
+// Selected life areas + the first Radar de Vida measurement from onboarding.
 export const userPreferences = pgTable("user_preferences", {
   userId: uuid("user_id")
     .primaryKey()

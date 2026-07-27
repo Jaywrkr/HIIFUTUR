@@ -21,7 +21,7 @@ export async function register(page: Page, user: ReturnType<typeof freshUser>) {
   await page.waitForURL("**/onboarding", { timeout: 15_000 });
 }
 
-/** Completes both onboarding steps, including confirming the Wheel of Life
+/** Completes both onboarding steps, including confirming the Radar de Vida
  * warning dialog, and lands on /modules. Dismisses the welcome tour by
  * default; pass skipTour: false to leave it up (e.g. to assert on it). */
 export async function completeOnboarding(

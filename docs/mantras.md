@@ -23,7 +23,7 @@ mantra de EJECUTA.
 
 ## Mensajes clave (los que sostienen todo lo demás)
 
-- **La cifra real**: *"Pasé de un 3 a un 9 en mi Wheel of Life, en 8
+- **La cifra real**: *"Pasé de un 3 a un 9 en mi Radar de Vida, en 8
   meses. Sistema pequeño, sostenido, mes tras mes."* — `JAY_RESULT_LINE`
   en `src/lib/constants.ts`. Una sola redacción, reusada en landing y en
   el Módulo 1 a propósito, para no mantener dos versiones del mismo
@@ -67,7 +67,7 @@ lección específica, no intercambiable con otro módulo:
   de tus mierdas."*
 - Módulo 4 (Las primeras 72 horas): *"¿Tienes una meta? Debes tener solo
   un plan. Nada de plan B."*
-- Módulo 10 (Wheel of Life como brújula): *"Piensa qué quieres que digan
+- Módulo 10 (Radar de Vida como brújula): *"Piensa qué quieres que digan
   en tu funeral. No te importará el dinero, sino la persona."*
 - Módulo 11 (Tu mantra personal): *"Éxito es tener cada día menos
   arrepentimientos."*

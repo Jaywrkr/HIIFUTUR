@@ -146,7 +146,7 @@ export function ModuleExerciseForm({
                     </button>
                   ))}
                   <p className="text-[11px] text-neutral-500">
-                    Son sugerencias según lo que elegiste al empezar y tu Wheel of Life — toca una
+                    Son sugerencias según lo que elegiste al empezar y tu Radar de Vida — toca una
                     para usarla, o escribe la tuya abajo.
                   </p>
                 </div>

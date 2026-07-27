@@ -138,7 +138,7 @@ sequenceDiagram
 - `habit-utils.ts` / `habit-stats.ts` — cálculo de rachas, streaks,
   mejores rachas. Testeados.
 - `habit-suggestions.ts` — sugerencias de hábito ancla según áreas de vida
-  + puntaje inicial del Wheel of Life. Testeado.
+  + puntaje inicial del Radar de Vida. Testeado.
 - `modules-content.ts` — contenido de los 11 módulos (teoría, ejercicios,
   mantras). Testeado por integridad de datos (`modules-content.test.ts`).
 - `access.ts` — lógica de acceso (trial activo / suscripción activa /

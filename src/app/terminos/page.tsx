@@ -17,7 +17,7 @@ export default function TerminosPage() {
           <p className="font-bold mb-2">Qué es EJECUTA y quién lo opera</p>
           <p className="muted">
             EJECUTA es un sistema de ejecución sostenible: módulos interactivos, un habit tracker
-            progresivo y mediciones periódicas (Wheel of Life). Es una herramienta de hábitos y
+            progresivo y mediciones periódicas (Radar de Vida). Es una herramienta de hábitos y
             productividad personal — no es consejo médico, financiero ni psicológico, y no
             sustituye la atención de un profesional. El servicio lo opera la marca{" "}
             <span className="text-neutral-300">HIIFUTUR</span>. Al crear una cuenta o usar el
