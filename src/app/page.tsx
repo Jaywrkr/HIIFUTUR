@@ -25,6 +25,10 @@ const PHILOSOPHY = [
     title: "Si no lo disfrutas, no dura",
     description: "Elige el hábito que se sienta bien sostener, no el que se ve mejor en redes.",
   },
+  {
+    title: "No te conviertas en otra persona",
+    description: "Necesitas un entorno que haga más fácil volver, no una identidad nueva.",
+  },
 ];
 
 const SYSTEM_PARTS = [
@@ -36,7 +40,7 @@ const SYSTEM_PARTS = [
   {
     kicker: "Acción",
     title: "Hasta 5 hábitos, uno a la vez",
-    description: "Actívalos de a poco — el primero antes de pensar en el segundo. Marcarlos es literal: un tap, y tu racha sigue viva.",
+    description: "Actívalos de a poco — el primero antes de pensar en el segundo. Marcarlos es literal: un tap, y lo que ya sostuviste sigue contando.",
   },
   {
     kicker: "Control",
@@ -343,9 +347,15 @@ export default async function HomePage() {
             <div className="lift-on-hover rounded-lg border border-accent/50 p-6 flex flex-col justify-center">
               <p className="kicker">El truco</p>
               <p className="font-bold text-2xl mb-2">Encuentra tu hábito ancla</p>
-              <p className="muted">
+              <p className="muted mb-3">
                 El único hábito que, sostenido, jala a todos los demás. No es el más vistoso —
                 es el que arrastra al resto.
+              </p>
+              <p className="muted mb-2">
+                No eliges un hábito en abstracto. Lo amarras a un momento real de tu día.
+              </p>
+              <p className="text-xs text-neutral-500">
+                Por ejemplo: después del café. Antes de la ducha. Al cerrar la laptop.
               </p>
             </div>
           </div>
@@ -419,7 +429,7 @@ export default async function HomePage() {
           <div className="lift-on-hover rounded-lg border border-accent/50 p-6">
             <p className="kicker">Tu ritmo</p>
             <p className="font-bold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
-            <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
+            <p className="muted">Tu avance sigue siendo tuyo. Los puntos son señal, no deuda. El leaderboard es opcional, no un feed de lo que hacen los demás.</p>
           </div>
         </div>
       </Reveal>
