@@ -108,9 +108,9 @@ const WHY_WE_BUILT_IT: RevealWord[] = [
 ];
 
 const FOR_YOU_IF = [
-  "Ya intentaste 100 apps de hábitos y las dejaste en la semana 2.",
+  "Ya sabes qué hacer, pero no logras sostenerlo sin pelear contigo.",
   MANTRAS[15], // "Te sientes mal porque sabes lo que se supone que debes hacer y no lo estás haciendo."
-  "Quieres resultados reales, no una racha de emojis.",
+  "Ya intentaste apps de rachas, cursos que abandonas y productividad que te pide cambiar todo de golpe — no funcionó.",
 ];
 
 const JAY_STORY = [
@@ -225,7 +225,7 @@ export default async function HomePage() {
             </h1>
             <p className="text-sm leading-relaxed text-neutral-400 mb-8 max-w-lg">
               Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.
-              Sin gurús, sin 47 hábitos a la vez, sin culpa cuando fallas un día.
+              Menos acciones. Menos culpa. Más continuidad. Sin gurús, sin 47 hábitos a la vez.
             </p>
             <p className="text-base mb-10">
               Hoy, eso podría ser <span className="font-semibold text-accent">5 sentadillas.</span>
@@ -399,9 +399,10 @@ export default async function HomePage() {
             Aprendizaje. Acción. Control.
           </h2>
           <p className="text-sm leading-relaxed text-neutral-300 max-w-xl mb-12">
-            Curso, hábitos y Wheel of Life no son tres apps distintas — son las tres partes del
-            mismo sistema. Aprendes, actúas, mides, y repites, no porque te obliguen, sino porque
-            ya es parte de tu día.
+            No es otro tracker. Es una secuencia guiada: miras tu vida, aprendes una idea, ejecutas
+            una acción pequeña y revisas sin castigarte. Curso, hábitos y Wheel of Life no son tres
+            apps distintas — son las tres partes del mismo sistema, no porque te obliguen, sino
+            porque ya es parte de tu día.
           </p>
 
           <div className="flex flex-col md:flex-row md:items-stretch gap-3 mb-6">
