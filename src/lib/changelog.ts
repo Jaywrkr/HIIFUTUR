@@ -3,6 +3,15 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.107.0",
+    date: "2026-07-27",
+    changes: [
+      "Landing: 'Tu ritmo' deja los puntos como señal de avance, no deuda, y el bloque de 'Las reglas viejas' aclara que fallar no te expulsa del sistema.",
+      "Landing: 'Recordatorios diarios' pasa a 'Recordatorios para empezar, no muletas para siempre' — más honesto sobre qué tan lejos llega el recordatorio.",
+      "Landing: el precio fundador ya no promete 'fijo para siempre' sin matiz — ahora dice 'mientras mantengas tu suscripción activa', en la tarjeta de pricing, la intro y el FAQ.",
+    ],
+  },
+  {
     version: "2.106.0",
     date: "2026-07-22",
     changes: [

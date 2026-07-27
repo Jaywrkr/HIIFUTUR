@@ -56,7 +56,7 @@ const PRICING_PLANS = [
       "Los 11 módulos completos",
       "Tu hábito ancla activo",
       "Wheel of Life inicial",
-      "Recordatorios diarios",
+      "Recordatorios para empezar, no muletas para siempre",
     ],
     cta: "Empezar gratis",
     highlight: false,
@@ -66,7 +66,7 @@ const PRICING_PLANS = [
     label: "Mensual",
     price: "$6.99",
     unit: "/ mes",
-    tagline: "$4.99/mes si activas en tus primeros 7 días — precio fijo para siempre.",
+    tagline: "$4.99/mes si activas en tus primeros 7 días — precio fijo mientras mantengas tu suscripción activa.",
     features: [
       "Todo el sistema, sin límite de tiempo",
       "Hasta 5 hábitos activos",
@@ -81,7 +81,7 @@ const PRICING_PLANS = [
     label: "Anual",
     price: "$59",
     unit: "/ año",
-    tagline: "$42/año si activas en tus primeros 7 días — precio fijo para siempre.",
+    tagline: "$42/año si activas en tus primeros 7 días — precio fijo mientras mantengas tu suscripción activa.",
     features: [
       "Todo lo del plan mensual",
       "Casi 2 meses gratis vs. pagar mes a mes",
@@ -127,7 +127,7 @@ const FAQ = [
   },
   {
     q: "¿Necesito comprar algo?",
-    a: "No para empezar — tienes 7 días gratis, sin tarjeta, con el sistema completo. Si decides seguir, activas un plan pago; si activas dentro de esos 7 días, te queda un precio más bajo para siempre.",
+    a: "No para empezar — tienes 7 días gratis, sin tarjeta, con el sistema completo. Si decides seguir, activas un plan pago; si activas dentro de esos 7 días, te queda un precio más bajo mientras mantengas tu suscripción activa.",
   },
   {
     q: "¿Y si fallo un día?",
@@ -294,9 +294,12 @@ export default async function HomePage() {
           <p className="text-sm text-neutral-400 mb-6">
             Y de alguna forma... sigues sin sostener nada.
           </p>
-          <p className="text-2xl sm:text-3xl font-thin leading-relaxed">
-            Tal vez el problema no eres tu.{" "}
+          <p className="text-2xl sm:text-3xl font-thin leading-relaxed mb-6">
+            Tal vez el problema no eres tú.{" "}
             <span className="text-accent">Tal vez son las reglas.</span>
+          </p>
+          <p className="text-sm text-neutral-400">
+            Aquí fallar no te expulsa. Solo te dice cómo volver más pequeño.
           </p>
         </div>
       </Reveal>
@@ -419,7 +422,7 @@ export default async function HomePage() {
           <div className="lift-on-hover rounded-lg border border-accent/50 p-6">
             <p className="kicker">Tu ritmo</p>
             <p className="font-bold text-2xl mb-2">A tu ritmo, con puntos por avanzar</p>
-            <p className="muted">Cada hábito marcado suma puntos y te acerca al siguiente nivel. Tu racha sigue siendo tuya — el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
+            <p className="muted">Los puntos son señal de avance, no una deuda. Tu progreso sigue siendo tuyo; el leaderboard es opcional, no un feed de lo que hacen los demás.</p>
           </div>
         </div>
       </Reveal>
@@ -436,7 +439,7 @@ export default async function HomePage() {
           </h2>
           <p className="text-sm text-neutral-400 max-w-xl mx-auto mb-12">
             7 días de prueba completa, sin tarjeta. Si decides seguir, activa dentro de esos 7
-            días y el precio con descuento te queda fijo para siempre.
+            días y el precio con descuento te queda fijo mientras mantengas tu suscripción activa.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 text-left">
