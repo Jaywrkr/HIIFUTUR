@@ -14,7 +14,7 @@ export default function TerminosPage() {
 
       <div className="flex flex-col gap-8 mb-16">
         <section>
-          <p className="font-bold mb-2">Qué es Ankla y quién lo opera</p>
+          <h2 className="font-bold mb-2">Qué es Ankla y quién lo opera</h2>
           <p className="muted">
             Ankla es un sistema de ejecución sostenible: módulos interactivos, un habit tracker
             progresivo y mediciones periódicas (Radar de Vida). Es una herramienta de hábitos y
@@ -26,7 +26,7 @@ export default function TerminosPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Edad mínima</p>
+          <h2 className="font-bold mb-2">Edad mínima</h2>
           <p className="muted">
             Debes tener al menos 16 años para usar Ankla. Si eres menor de esa edad, no crees una
             cuenta. Si detectamos una cuenta de un menor de 16, la eliminaremos.
@@ -34,7 +34,7 @@ export default function TerminosPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Tu cuenta</p>
+          <h2 className="font-bold mb-2">Tu cuenta</h2>
           <p className="muted">
             Eres responsable de mantener segura tu contraseña y de la actividad de tu cuenta. No
             compartas tu cuenta ni uses la de otra persona. Los datos que registras (nombre, email,
@@ -44,7 +44,7 @@ export default function TerminosPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Uso aceptable</p>
+          <h2 className="font-bold mb-2">Uso aceptable</h2>
           <p className="muted">
             No uses Ankla para nada ilegal, para intentar acceder a cuentas de otras personas,
             para saltarte límites técnicos, extraer datos de forma automatizada, o para interferir
@@ -54,7 +54,7 @@ export default function TerminosPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Planes, precios y pagos</p>
+          <h2 className="font-bold mb-2">Planes, precios y pagos</h2>
           <p className="muted">
             Ankla tiene un plan gratuito y planes de pago (mensual y anual). Los cobros de los
             planes de pago ya están activos. Toda cuenta empieza con 7 días de prueba gratis, sin
@@ -88,7 +88,7 @@ export default function TerminosPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Contenido y propiedad</p>
+          <h2 className="font-bold mb-2">Contenido y propiedad</h2>
           <p className="muted">
             El contenido del curso, los textos, el diseño y la marca son de HIIFUTUR y no puedes
             copiarlos ni revenderlos. Lo que tú escribes (tus respuestas, tus hábitos, tus
@@ -98,7 +98,7 @@ export default function TerminosPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Sin garantías</p>
+          <h2 className="font-bold mb-2">Sin garantías</h2>
           <p className="muted">
             Ankla se ofrece &ldquo;tal cual&rdquo; y &ldquo;según disponibilidad&rdquo;. Hacemos
             lo posible por mantenerlo funcionando de forma estable, pero no garantizamos que esté
@@ -108,7 +108,7 @@ export default function TerminosPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Límite de responsabilidad</p>
+          <h2 className="font-bold mb-2">Límite de responsabilidad</h2>
           <p className="muted">
             En la medida que permita la ley, HIIFUTUR no es responsable por daños indirectos,
             incidentales o consecuentes derivados del uso o la imposibilidad de usar el servicio. Si
@@ -118,7 +118,7 @@ export default function TerminosPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Suspensión y cierre</p>
+          <h2 className="font-bold mb-2">Suspensión y cierre</h2>
           <p className="muted">
             Puedes dejar de usar Ankla y borrar tu cuenta cuando quieras. Nosotros podemos
             suspender o cerrar el servicio, o una cuenta, si hay un uso indebido, un riesgo de
@@ -128,7 +128,7 @@ export default function TerminosPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Cambios</p>
+          <h2 className="font-bold mb-2">Cambios</h2>
           <p className="muted">
             Podemos actualizar estos términos conforme el producto evoluciona. Si el cambio es
             importante, lo vas a notar — no escondemos cambios relevantes en letra chica. La fecha de
@@ -137,7 +137,7 @@ export default function TerminosPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Ley aplicable</p>
+          <h2 className="font-bold mb-2">Ley aplicable</h2>
           <p className="muted">
             Estos términos se rigen por las leyes de la República del Ecuador. Cualquier disputa se
             resolverá ante los tribunales competentes del Ecuador, sin perjuicio de los derechos que
@@ -146,7 +146,7 @@ export default function TerminosPage() {
         </section>
 
         <section>
-          <p className="font-bold mb-2">Contacto</p>
+          <h2 className="font-bold mb-2">Contacto</h2>
           <p className="muted">
             Preguntas sobre estos términos: escribe a{" "}
             <a href="mailto:jaywrkr@gmail.com" className="link-accent">jaywrkr@gmail.com</a>.
