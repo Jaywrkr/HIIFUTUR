@@ -16,7 +16,7 @@ async function main() {
     method: "POST",
     body: JSON.stringify({
       name: "EJECUTA",
-      description: "Curso, hábitos y Wheel of Life — sistema de ejecución sostenible.",
+      description: "Curso, hábitos y Radar de Vida — sistema de ejecución sostenible.",
       type: "SERVICE",
       category: "SOFTWARE",
     }),

@@ -56,9 +56,10 @@ export default function TerminosPage() {
         <section>
           <p className="font-bold mb-2">Planes, precios y pagos</p>
           <p className="muted">
-            EJECUTA tiene un plan gratuito y planes de pago (mensual y anual). Hoy los cobros aún no
-            están activos: cualquier plan que elijas crea una cuenta gratis y te avisaremos antes de
-            empezar a cobrar. Cuando los pagos estén disponibles, aplicará lo siguiente:
+            EJECUTA tiene un plan gratuito y planes de pago (mensual y anual). Los cobros de los
+            planes de pago ya están activos. Empiezas siempre con 7 días de prueba gratis, sin
+            tarjeta; si decides seguir dentro de esos 7 días, se activa el cobro. Aplica lo
+            siguiente:
           </p>
           <ul className="muted mt-3 flex flex-col gap-2 list-disc pl-5">
             <li>

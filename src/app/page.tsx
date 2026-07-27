@@ -186,7 +186,7 @@ const STRUCTURED_DATA = {
   applicationCategory: "LifestyleApplication",
   operatingSystem: "Web",
   description:
-    "Curso interactivo basado en el Principio de Pareto, con seguimiento de hábitos y Radar de Vida — sistema de ejecución sostenible.",
+    "Sistema guiado de ejecución sostenible basado en el Principio de Pareto, con curso interactivo, seguimiento de hábitos y Radar de Vida.",
   offers: PRICING_PLANS.filter((p) => p.id !== "prueba").map((p) => ({
     "@type": "Offer",
     name: p.label,
@@ -238,7 +238,7 @@ export default async function HomePage() {
               Empieza con algo que puedas hacer incluso en un día malo.
             </p>
             <div className="flex items-center gap-6">
-              <Link href="/register" className="btn-primary">Empezar gratis</Link>
+              <Link href="/register" className="btn-primary" aria-label="Empezar gratis desde el inicio">Empezar gratis</Link>
               <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
                 Ya tengo cuenta
               </Link>
@@ -534,7 +534,7 @@ export default async function HomePage() {
 
       <Reveal>
         <div className="max-w-2xl mx-auto px-6 border-t border-line pt-10 pb-10 text-center">
-          <Link href="/register" className="btn-primary">Empezar gratis</Link>
+          <Link href="/register" className="btn-primary" aria-label="Empezar gratis desde el cierre">Empezar gratis</Link>
           <p className="muted mt-6">Un sistema, no una promesa.</p>
           <p className="text-xs text-neutral-600 mt-2">
             Sin tarjeta para empezar. Sin testimonios inventados. Sin prometerte una vida nueva en

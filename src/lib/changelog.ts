@@ -3,6 +3,17 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.117.0",
+    date: "2026-07-27",
+    changes: [
+      "Términos: se corrige la contradicción con la landing sobre pagos — los cobros de los planes de pago ya están activos, no una promesa futura.",
+      "Accesibilidad: el texto que se revela con scroll (WordReveal) ahora cumple contraste mínimo también en su estado \"todavía no leído\".",
+      "SEO: la descripción del sitio pasa de \"curso interactivo\" a \"sistema guiado de ejecución sostenible\", alineada con el posicionamiento de marca.",
+      "Se agregan aria-label contextuales a los botones \"Empezar gratis\" repetidos en la landing.",
+      "Limpieza de las últimas menciones a \"Wheel of Life\" en README, script de PayPal y notas del proyecto — quedan como \"Radar de Vida\".",
+    ],
+  },
+  {
     version: "2.116.0",
     date: "2026-07-27",
     changes: [
