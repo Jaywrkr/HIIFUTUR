@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.107.0",
+    date: "2026-07-27",
+    changes: [
+      "Nuevo doc interno docs/landing-hipotesis.md: hipótesis de landing, preguntas cualitativas para entrevistas de usuarios y eventos sugeridos (sin implementar) para cuando se decida instrumentar analítica.",
+    ],
+  },
+  {
     version: "2.106.0",
     date: "2026-07-22",
     changes: [
