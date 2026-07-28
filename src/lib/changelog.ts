@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.122.0",
+    date: "2026-07-27",
+    changes: [
+      "Términos, Privacidad y el footer ya no dicen que Ankla lo opera \"HIIFUTUR\" — dicen que lo opera Jay Jaramillo (jaywrkr), que es quien realmente está detrás.",
+    ],
+  },
+  {
     version: "2.121.0",
     date: "2026-07-27",
     changes: [
@@ -23,7 +30,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.119.0",
     date: "2026-07-27",
     changes: [
-      "El producto se renombra de EJECUTA a Ankla en toda la app, la landing, los emails y los documentos públicos — mismo sistema, mismo precio, nuevo nombre. HIIFUTUR sigue siendo la marca operadora.",
+      "El producto se renombra de EJECUTA a Ankla en toda la app, la landing, los emails y los documentos públicos — mismo sistema, mismo precio, nuevo nombre.",
     ],
   },
   {

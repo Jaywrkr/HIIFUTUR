@@ -19,8 +19,8 @@ export default function TerminosPage() {
             Ankla es un sistema de ejecución sostenible: módulos interactivos, un habit tracker
             progresivo y mediciones periódicas (Radar de Vida). Es una herramienta de hábitos y
             productividad personal — no es consejo médico, financiero ni psicológico, y no
-            sustituye la atención de un profesional. El servicio lo opera la marca{" "}
-            <span className="text-neutral-300">HIIFUTUR</span>. Al crear una cuenta o usar el
+            sustituye la atención de un profesional. El servicio lo opera{" "}
+            <span className="text-neutral-300">Jay Jaramillo (jaywrkr)</span>. Al crear una cuenta o usar el
             servicio aceptas estos términos.
           </p>
         </section>
@@ -90,7 +90,7 @@ export default function TerminosPage() {
         <section>
           <h2 className="font-bold mb-2">Contenido y propiedad</h2>
           <p className="muted">
-            El contenido del curso, los textos, el diseño y la marca son de HIIFUTUR y no puedes
+            El contenido del curso, los textos, el diseño y la marca son de Jay Jaramillo (jaywrkr) y no puedes
             copiarlos ni revenderlos. Lo que tú escribes (tus respuestas, tus hábitos, tus
             mediciones) es tuyo: solo lo usamos para hacer funcionar el servicio, como se explica en
             la <Link href="/privacidad" className="link-accent">Política de privacidad</Link>.
@@ -110,7 +110,7 @@ export default function TerminosPage() {
         <section>
           <h2 className="font-bold mb-2">Límite de responsabilidad</h2>
           <p className="muted">
-            En la medida que permita la ley, HIIFUTUR no es responsable por daños indirectos,
+            En la medida que permita la ley, Jay Jaramillo no es responsable por daños indirectos,
             incidentales o consecuentes derivados del uso o la imposibilidad de usar el servicio. Si
             alguna vez fuéramos responsables por algo, esa responsabilidad se limita a lo que hayas
             pagado por el servicio en los 12 meses previos.
