@@ -250,42 +250,20 @@ export default async function HomePage() {
             <p className="text-xs text-neutral-400 mt-2">iOS y Android, pronto.</p>
           </Reveal>
 
-          <div className="relative h-[420px] hidden md:block" aria-hidden="true">
+          <div className="relative hidden md:flex items-center rounded-lg border border-line bg-surface p-4" aria-hidden="true">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/hero-radar-ancla.png"
               alt=""
-              className="absolute inset-0 w-full h-full object-cover rounded-lg border border-line"
-            />
-            <div
-              className="absolute inset-0 rounded-lg"
-              style={{
-                background: "radial-gradient(circle at 60% 40%, rgba(255,255,255,0.06), transparent 65%)",
-              }}
+              className="w-full h-auto rounded"
             />
             <FloatingStat
               value="Día 1"
               label="Racha"
-              className="top-6 left-2"
+              className="top-2 left-2"
               rotate="-6deg"
               duration="6.5s"
               delay="0s"
-            />
-            <FloatingStat
-              value="1 hábito"
-              label="Hoy"
-              className="top-40 right-2"
-              rotate="3deg"
-              duration="7.5s"
-              delay="0.6s"
-            />
-            <FloatingStat
-              value="7/10"
-              label="Radar de vida"
-              className="bottom-10 left-10"
-              rotate="-3deg"
-              duration="7s"
-              delay="1.2s"
             />
           </div>
         </div>
