@@ -222,10 +222,10 @@ export default async function HomePage() {
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="grid md:grid-cols-2 gap-16 items-center py-14 md:py-28">
           <Reveal>
-            <p className="kicker">Sistema de ejecución sostenible</p>
+            <p className="kicker">Sistema guiado de ejecución sostenible</p>
             <h1 className="text-4xl sm:text-5xl font-thin leading-[1.3] tracking-tight mb-5">
               No es disciplina. No es fuerza de voluntad.{" "}
-              <span className="text-accent font-black">Es un sistema hecho para que puedas volver incluso cuando fallas.</span>
+              <span className="text-accent font-black">Es un sistema al que puedes volver cuando fallas.</span>
             </h1>
             <p className="text-sm leading-relaxed text-neutral-400 mb-8 max-w-lg">
               Basado en el Principio de Pareto: el 20% de tus acciones genera el 80% de tu cambio.
@@ -238,7 +238,7 @@ export default async function HomePage() {
               Empieza con algo que puedas hacer incluso en un día malo.
             </p>
             <div className="flex items-center gap-6">
-              <Link href="/register" className="btn-primary" aria-label="Empezar gratis desde el inicio">Empezar gratis</Link>
+              <Link href="/register" className="btn-primary" aria-label="Empezar gratis desde hero">Empezar gratis</Link>
               <Link href="/login" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
                 Ya tengo cuenta
               </Link>
@@ -418,10 +418,10 @@ export default async function HomePage() {
             Aprendizaje. Acción. Control.
           </h2>
           <p className="text-sm leading-relaxed text-neutral-300 max-w-xl mb-12">
-            No es otro tracker. Es una secuencia guiada: miras tu vida, aprendes una idea, ejecutas
-            una acción pequeña y revisas sin castigarte. Curso, hábitos y Radar de Vida no son tres
-            apps distintas — son las tres partes del mismo sistema, no porque te obliguen, sino
-            porque ya es parte de tu día.
+            Ankla no es otro tracker de rachas ni otro curso que abandonas. Es una secuencia guiada
+            para mirar tu vida, aprender lo importante, ejecutar algo pequeño y volver cuando
+            fallas. Curso, hábitos y Radar de Vida no son tres apps distintas — son las tres partes
+            del mismo sistema, no porque te obliguen, sino porque ya es parte de tu día.
           </p>
 
           <div className="flex flex-col md:flex-row md:items-stretch gap-3 mb-6">
@@ -500,6 +500,7 @@ export default async function HomePage() {
                 <Link
                   href="/register"
                   className={plan.highlight ? "btn-primary text-center" : "btn-secondary text-center"}
+                  {...(plan.id === "prueba" ? { "aria-label": "Empezar gratis desde pricing" } : {})}
                 >
                   {plan.cta}
                 </Link>
@@ -537,7 +538,7 @@ export default async function HomePage() {
 
       <Reveal>
         <div className="max-w-2xl mx-auto px-6 border-t border-line pt-10 pb-10 text-center">
-          <Link href="/register" className="btn-primary" aria-label="Empezar gratis desde el cierre">Empezar gratis</Link>
+          <Link href="/register" className="btn-primary" aria-label="Empezar gratis desde cierre">Empezar gratis</Link>
           <p className="muted mt-6">Un sistema, no una promesa.</p>
           <p className="text-xs text-neutral-600 mt-2">
             Sin tarjeta para empezar. Sin testimonios inventados. Sin prometerte una vida nueva en

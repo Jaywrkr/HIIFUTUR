@@ -3,6 +3,15 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.121.0",
+    date: "2026-07-27",
+    changes: [
+      "El kicker del hero pasa de \"Sistema de ejecución sostenible\" a \"Sistema guiado de ejecución sostenible\", para que el posicionamiento sea explícito desde el primer renglón.",
+      "La intro de \"Aprendizaje. Acción. Control.\" se reescribe para nombrar contra qué compite Ankla (apps de rachas, cursos que se abandonan) en vez de solo describirse a sí misma.",
+      "Accesibilidad: el botón \"Empezar gratis\" de la card de prueba gratis en pricing —el tercero de la landing— tenía el mismo texto que los otros dos sin aria-label propio; ahora los tres CTA \"Empezar gratis\" (hero, pricing, cierre) tienen labels contextuales distintos.",
+    ],
+  },
+  {
     version: "2.120.0",
     date: "2026-07-27",
     changes: [
