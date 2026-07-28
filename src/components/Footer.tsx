@@ -20,7 +20,7 @@ const GROUPS = [
   {
     label: "Redes",
     links: [
-      { href: "https://instagram.com/jaywrkr", text: "Instagram", external: true },
+      { href: "https://instagram.com/jaywrkr", text: "Jay Jaramillo (@jaywrkr)", external: true },
       { href: "https://x.com/jaywrkr", text: "X", external: true },
       { href: "https://www.linkedin.com/in/jaywrkr/", text: "LinkedIn", external: true },
     ],

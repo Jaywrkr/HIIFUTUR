@@ -26,14 +26,20 @@ const geistMono = localFont({
 });
 
 const SITE_URL = process.env.NEXTAUTH_URL ?? "https://hiifutur.vercel.app";
-const TITLE = "Ankla — Sistema de Ejecución Sostenible";
-const DESCRIPTION =
-  "Sistema de ejecución sostenible basado en Pareto: aprendizaje, hábitos y Radar de Vida para sostener cambios pequeños sin culpa.";
+const AUTHOR_NAME = "Jay Jaramillo";
+const AUTHOR_HANDLE = "@jaywrkr";
+const AUTHOR_SUFFIX = `${AUTHOR_NAME} (${AUTHOR_HANDLE})`;
+const TITLE = `Ankla — Sistema de Ejecución Sostenible · ${AUTHOR_SUFFIX}`;
+const DESCRIPTION = `Ankla es un sistema guiado de ejecución sostenible creado por ${AUTHOR_SUFFIX}: aprendizaje, hábitos y Radar de Vida para sostener cambios pequeños sin culpa.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: TITLE,
+  title: {
+    default: TITLE,
+    template: `%s · ${AUTHOR_SUFFIX}`,
+  },
   description: DESCRIPTION,
+  authors: [{ name: AUTHOR_NAME, url: "https://instagram.com/jaywrkr" }],
   manifest: "/manifest.webmanifest",
   alternates: { canonical: "/" },
   icons: {

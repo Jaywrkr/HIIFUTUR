@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.123.0",
+    date: "2026-07-27",
+    changes: [
+      "SEO: title, description y Open Graph de todo el sitio ahora nombran a Jay Jaramillo (@jaywrkr) como autor — se agrega también la etiqueta meta author y el link del footer a Instagram deja de decir solo \"Instagram\" para incluir el nombre.",
+    ],
+  },
+  {
     version: "2.122.0",
     date: "2026-07-27",
     changes: [
