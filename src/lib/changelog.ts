@@ -3,6 +3,15 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.124.0",
+    date: "2026-07-28",
+    changes: [
+      "La landing reemplaza las tarjetas flotantes de mentira del hero por una captura real del Radar de Vida y una tarjeta de hábito ancla.",
+      "La sección \"Aprendizaje. Acción. Control.\" suma una imagen que muestra las tres partes del método dentro de la app.",
+      "ankla.app ya es el dominio real del sitio, conectado y verificado.",
+    ],
+  },
+  {
     version: "2.123.0",
     date: "2026-07-27",
     changes: [

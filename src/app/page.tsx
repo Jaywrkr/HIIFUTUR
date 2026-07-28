@@ -217,8 +217,9 @@ export default async function HomePage() {
         </Link>
       </div>
 
-      {/* Hero: two columns, full width, floating stat mockups on the right
-          (illustrative example data, not a claim about any real user). */}
+      {/* Hero: two columns, full width, product screenshot on the right with
+          floating stat mockups layered on top (illustrative example data,
+          not a claim about any real user). */}
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="grid md:grid-cols-2 gap-16 items-center py-14 md:py-28">
           <Reveal>
@@ -250,6 +251,12 @@ export default async function HomePage() {
           </Reveal>
 
           <div className="relative h-[420px] hidden md:block" aria-hidden="true">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/hero-radar-ancla.png"
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover rounded-lg border border-line"
+            />
             <div
               className="absolute inset-0 rounded-lg"
               style={{
@@ -423,6 +430,15 @@ export default async function HomePage() {
             fallas. Curso, hábitos y Radar de Vida no son tres apps distintas — son las tres partes
             del mismo sistema, no porque te obliguen, sino porque ya es parte de tu día.
           </p>
+
+          <Reveal>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/metodo-aprender-hacer-control.png"
+              alt="Las tres partes del sistema en la app: Aprender, con la idea del módulo; Hacer, el hábito de 2 minutos; Control, el Radar de Vida de la semana."
+              className="w-full h-auto rounded-lg border border-line mb-10"
+            />
+          </Reveal>
 
           <div className="flex flex-col md:flex-row md:items-stretch gap-3 mb-6">
             {SYSTEM_PARTS.map((part, i) => (
