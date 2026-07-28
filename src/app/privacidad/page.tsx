@@ -16,8 +16,8 @@ export default function PrivacidadPage() {
         <section>
           <h2 className="font-bold mb-2">Quién es responsable de tus datos</h2>
           <p className="muted">
-            El responsable del tratamiento de tus datos es la marca{" "}
-            <span className="text-neutral-300">HIIFUTUR</span>, que opera Ankla desde Ecuador. Para
+            El responsable del tratamiento de tus datos es{" "}
+            <span className="text-neutral-300">Jay Jaramillo (jaywrkr)</span>, que opera Ankla desde Ecuador. Para
             cualquier tema de datos puedes escribir a{" "}
             <a href="mailto:jaywrkr@gmail.com" className="link-accent">jaywrkr@gmail.com</a>.
           </p>
