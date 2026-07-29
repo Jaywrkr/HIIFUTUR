@@ -22,13 +22,16 @@ El trabajo actual sigue el documento de operaciones, fase por fase
 (A → dinero y cuentas reales, B → observabilidad, C → legal, D → SEO,
 E → marca, F → salida al mundo, G → contenido, H → logros v2).
 
-> **Importante para una sesión nueva**: el documento de operaciones con
-> el checklist completo (`docs/ankla-operaciones.html` en este repo) es
-> una versión *liviana* que **no** tiene el detalle tarea por tarea — el
-> checklist real y actualizado vive como un **artifact publicado fuera
-> de este repo**, mantenido a mano en las sesiones de trabajo con Jay. Si
-> no tenés acceso a ese artifact, este archivo (`current-sprint.md`) es
-> la mejor fuente de verdad disponible en el repo mismo.
+> **Importante para una sesión nueva**: `docs/ankla-operaciones.html` en
+> este repo ya tiene el checklist completo tarea por tarea (fases A-H,
+> con quién la toma, cómo se hizo o el hint de cómo hacerla, y filtro por
+> owner) — dejó de ser una versión liviana. También está publicado como
+> [artifact](https://claude.ai/code/artifact/ea2bd95c-2a94-47e4-91dd-378118e51d82)
+> para compartir fuera del repo; ambas copias deberían mantenerse en
+> sync a mano. `docs/deck-ankla-vision.html` es el deck de marca y
+> visión (filosofía, método, para quién), también completo en el repo.
+> Si alguna sesión no tiene acceso al artifact, los dos `.html` del repo
+> son la fuente de verdad.
 
 ## Qué ya está hecho
 
