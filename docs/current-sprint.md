@@ -156,10 +156,25 @@ menos de lo que tenía al empezar), re-bloqueó los módulos
 "El ciclo se reinició. Tú no." — bien resuelta, coherente con la
 filosofía de que el fallo está incluido en el diseño.
 
+**Notificaciones push — probado hasta donde el entorno lo permite**:
+se generaron claves VAPID de prueba, se activó el toggle en Cuenta con
+permiso de notificación concedido, y no hubo ningún error 500 ni
+crash del servidor. Pero suscribirse de verdad requiere que el
+navegador alcance el servicio de push de Google/Mozilla por red, y este
+entorno de pruebas no tiene esa salida — la suscripción quedó en 0 en
+`push_subscriptions`. **Esto no es una confirmación de que funcione en
+producción**, solo de que el código no truena; falta probarlo en un
+dispositivo real con internet normal antes de darlo por bueno. De paso
+se encontró un ícono (`icon-192.png`) que a veces tira un warning de
+consola al navegar muy rápido entre páginas — confirmado con `curl`
+directo que el archivo es un PNG válido y se sirve con 200, así que es
+un artefacto de la velocidad de navegación automatizada, no un archivo
+roto.
+
 **Sin probar todavía**: pago real con PayPal, reset de contraseña
-(dejados para el final a pedido de Jay), notificaciones push, y un
-dispositivo mobile real (el viewport angosto se vio bien, pero eso no
-reemplaza un teléfono real).
+(dejados para el final a pedido de Jay), notificaciones push en un
+dispositivo real, y un mobile real (el viewport angosto se vio bien,
+pero eso no reemplaza un teléfono real).
 
 ## Qué falta (todo lo demás)
 
