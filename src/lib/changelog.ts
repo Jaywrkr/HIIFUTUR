@@ -3,6 +3,13 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.125.0",
+    date: "2026-07-29",
+    changes: [
+      "La imagen que se ve al compartir Ankla en redes (WhatsApp, X, LinkedIn, Facebook) deja de ser solo texto sobre fondo negro — ahora muestra el Radar de Vida y una tarjeta de hábito ancla reales de la app.",
+    ],
+  },
+  {
     version: "2.124.0",
     date: "2026-07-28",
     changes: [

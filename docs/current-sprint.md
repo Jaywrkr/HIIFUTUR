@@ -79,8 +79,13 @@ E → marca, F → salida al mundo, G → contenido, H → logros v2).
   las rutas), description, Open Graph, Twitter Card y
   `meta name="author"` nombran a Jay Jaramillo (@jaywrkr) en
   `src/app/layout.tsx`. Link del footer a Instagram con su nombre.
-- ⏳ En curso ahora mismo: validar `og:image` y JSON-LD de la landing
-  con el dominio real (Rich Results Test de Google + opengraph.xyz).
+- ✅ `og:image` (`src/app/opengraph-image.tsx`) rediseñada — antes era
+  solo texto sobre negro, ahora usa `public/hero-radar-ancla.png` (Radar
+  de Vida + tarjeta de hábito real) como fondo con degradado para
+  legibilidad.
+- ⏳ En curso ahora mismo: validar JSON-LD de la landing con el dominio
+  real (Rich Results Test de Google + opengraph.xyz para confirmar cómo
+  se ve la nueva `og:image`).
 - ⏳ Pendiente: Google Search Console + `GOOGLE_SITE_VERIFICATION`,
   enviar el sitemap ahí.
 
