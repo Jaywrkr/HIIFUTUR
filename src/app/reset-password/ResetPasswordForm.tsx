@@ -24,7 +24,7 @@ export function ResetPasswordForm() {
   if (!token) {
     return (
       <div className="auth-card">
-        <p className="kicker">Ankla</p>
+        <p className="kicker">ANKLA</p>
         <h1 className="auth-title">Enlace inválido</h1>
         <p className="auth-sub">Este enlace no trae la información necesaria.</p>
         <p className="auth-footer">
@@ -36,7 +36,7 @@ export function ResetPasswordForm() {
 
   return (
     <div className="auth-card">
-      <p className="kicker">Ankla</p>
+      <p className="kicker">ANKLA</p>
       <h1 className="auth-title">Elige tu nueva contraseña</h1>
       <p className="auth-sub">Mínimo 8 caracteres.</p>
 

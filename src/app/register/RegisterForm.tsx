@@ -47,7 +47,7 @@ export function RegisterForm() {
 
   return (
     <div className="auth-card">
-      <p className="kicker">Ankla</p>
+      <p className="kicker">ANKLA</p>
       <h1 className="auth-title">Crea tu cuenta</h1>
       <p className="auth-sub">Un sistema, no una promesa. Empieza aquí.</p>
 

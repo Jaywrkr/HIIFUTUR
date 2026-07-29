@@ -7,7 +7,7 @@ flujo de trabajo del dueño.
 
 ## Qué es esto
 
-Ankla: curso interactivo + habit tracker, Next.js 14 (App Router) +
+ANKLA: curso interactivo + habit tracker, Next.js 14 (App Router) +
 TypeScript + Postgres (Drizzle). Monolito — sin backend separado. Ver
 [`docs/architecture.md`](docs/architecture.md) para el detalle completo.
 

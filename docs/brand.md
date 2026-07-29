@@ -1,4 +1,4 @@
-# Marca — Ankla
+# Marca — ANKLA
 
 > Ver también [`docs/mantras.md`](mantras.md) (mensajes clave y copy
 > aprobado) y [`docs/content-guidelines.md`](content-guidelines.md) (guía
@@ -19,7 +19,7 @@ reales, no 47 hábitos a la vez ni un reto de 75 días.
 
 ## Personalidad de marca
 
-Si Ankla fuera una persona: alguien que ya pasó por el fracaso de
+Si ANKLA fuera una persona: alguien que ya pasó por el fracaso de
 intentarlo todo a la vez, encontró lo que sí funciona, y te lo cuenta sin
 venderte nada — directo, un poco seco, nunca cursi, y honesto incluso
 cuando la verdad incomoda ("te sientes mal porque sabes lo que debes

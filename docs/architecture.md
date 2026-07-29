@@ -2,7 +2,7 @@
 
 ## Vista general
 
-Ankla es un monolito Next.js 14 (App Router) — no hay backend separado ni
+ANKLA es un monolito Next.js 14 (App Router) — no hay backend separado ni
 API pública. El navegador pide una página, el servidor la arma leyendo
 Postgres directamente, y las mutaciones son Server Actions ejecutadas en el
 mismo proceso, no llamadas a un API REST propio.

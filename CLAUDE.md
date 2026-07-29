@@ -1,4 +1,4 @@
-# Ankla — notas para Claude
+# ANKLA — notas para Claude
 
 ## Objetivo del producto
 

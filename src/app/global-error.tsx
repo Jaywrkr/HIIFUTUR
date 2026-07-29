@@ -41,7 +41,7 @@ export default function GlobalError({
               fontWeight: 600,
             }}
           >
-            Ankla
+            ANKLA
           </p>
           <h1 style={{ fontSize: "22px", margin: 0 }}>Algo se rompio de nuestro lado.</h1>
           <p style={{ color: "#A3A3A3", fontSize: "14px", maxWidth: "320px" }}>

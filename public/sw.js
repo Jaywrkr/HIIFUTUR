@@ -34,7 +34,7 @@ self.addEventListener("push", (event) => {
     data = {};
   }
 
-  const title = data.title || "Ankla";
+  const title = data.title || "ANKLA";
   event.waitUntil(
     self.registration.showNotification(title, {
       body: data.body || "",

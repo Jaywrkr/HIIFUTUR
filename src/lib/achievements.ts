@@ -3,7 +3,7 @@ import { BRAND_PALETTE } from "@/lib/constants";
 /** A single evolution of an achievement — each one is a real threshold
  * against real data, never a vanity number. Points are real too: they land
  * in the same balance leveling.ts already uses, not a separate fake
- * currency (Ankla's own rule: números, no sensaciones). */
+ * currency (ANKLA's own rule: números, no sensaciones). */
 export type AchievementTier = {
   tier: 1 | 2 | 3;
   name: string;

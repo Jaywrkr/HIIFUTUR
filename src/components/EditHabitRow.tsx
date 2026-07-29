@@ -206,7 +206,7 @@ export function EditHabitRow({
           <ShareImageButton
             draw={(canvas) => drawStreakShareCard(canvas, { habitName: habit.name, streak })}
             fileName={`ankla-racha-${streak}-dias.png`}
-            shareText={`${streak} ${streak === 1 ? "día" : "días"} seguidos con "${habit.name}" en Ankla.`}
+            shareText={`${streak} ${streak === 1 ? "día" : "días"} seguidos con "${habit.name}" en ANKLA.`}
             label="Compartir racha"
           />
         </div>

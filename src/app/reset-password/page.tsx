@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { ResetPasswordForm } from "./ResetPasswordForm";
 
 export const metadata: Metadata = {
-  title: "Elige una contraseña nueva — Ankla",
+  title: "Elige una contraseña nueva — ANKLA",
   robots: { index: false, follow: false },
 };
 

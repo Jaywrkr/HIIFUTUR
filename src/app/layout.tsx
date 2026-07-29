@@ -29,8 +29,8 @@ const SITE_URL = process.env.NEXTAUTH_URL ?? "https://hiifutur.vercel.app";
 const AUTHOR_NAME = "Jay Jaramillo";
 const AUTHOR_HANDLE = "@jaywrkr";
 const AUTHOR_SUFFIX = `${AUTHOR_NAME} (${AUTHOR_HANDLE})`;
-const TITLE = `Ankla — Sistema de Ejecución Sostenible · ${AUTHOR_SUFFIX}`;
-const DESCRIPTION = `Ankla es un sistema guiado de ejecución sostenible creado por ${AUTHOR_SUFFIX}: aprendizaje, hábitos y Radar de Vida para sostener cambios pequeños sin culpa.`;
+const TITLE = `ANKLA — Sistema de Ejecución Sostenible · ${AUTHOR_SUFFIX}`;
+const DESCRIPTION = `ANKLA es un sistema guiado de ejecución sostenible creado por ${AUTHOR_SUFFIX}: aprendizaje, hábitos y Radar de Vida para sostener cambios pequeños sin culpa.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: SITE_URL,
-    siteName: "Ankla",
+    siteName: "ANKLA",
     locale: "es",
     type: "website",
   },

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-export const alt = "Ankla — Sistema de Ejecución Sostenible";
+export const alt = "ANKLA — Sistema de Ejecución Sostenible";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -81,7 +81,7 @@ export default async function Image() {
               lineHeight: 1,
             }}
           >
-            Ankla
+            ANKLA
           </div>
           <div style={{ display: "flex", color: "#D4D4D4", fontSize: 30, marginTop: 14 }}>
             Un sistema, no una promesa.
