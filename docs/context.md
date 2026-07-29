@@ -6,7 +6,7 @@
 
 ## Qué hace el producto
 
-Ankla: curso interactivo + habit tracker basado en el Principio de
+ANKLA: curso interactivo + habit tracker basado en el Principio de
 Pareto. La idea central: la motivación falla, un sistema pequeño y
 sostenido no. Una persona elige **un solo hábito ancla** (el más pequeño
 posible), lo sostiene día a día, y cada 30 días mide con el Radar de Vida
@@ -102,7 +102,7 @@ completo. Las que más importan para no repetir un error ya resuelto:
 3. Fase B (Sentry) completa: `SENTRY_AUTH_TOKEN` seteado, sourcemaps
    subiendo en cada build.
 4. Fase C (legal): decidido operar como persona natural — falta el RUC.
-5. Producto renombrado de "EJECUTA" a **Ankla** en toda la app, landing,
+5. Producto renombrado de "EJECUTA" a **ANKLA** en toda la app, landing,
    emails y docs públicos.
 6. "HIIFUTUR" reemplazado por **Jay Jaramillo (jaywrkr)** como operador
    público en Términos, Privacidad, footer y changelog.

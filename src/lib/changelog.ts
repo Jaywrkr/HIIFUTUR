@@ -1,7 +1,21 @@
 export const CHANGELOG_DESCRIPTION =
-  "Todo lo que cambia en Ankla, versión por versión — features nuevas, arreglos y mejoras.";
+  "Todo lo que cambia en ANKLA, versión por versión — features nuevas, arreglos y mejoras.";
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
+  {
+    version: "2.126.0",
+    date: "2026-07-29",
+    changes: [
+      "El nombre \"Ankla\" pasa a escribirse siempre en mayúsculas (ANKLA) en toda la app, la landing, los emails y los documentos públicos — consistencia de marca en todo el texto visible.",
+    ],
+  },
+  {
+    version: "2.125.0",
+    date: "2026-07-29",
+    changes: [
+      "La imagen que se ve al compartir ANKLA en redes (WhatsApp, X, LinkedIn, Facebook) deja de ser solo texto sobre fondo negro — ahora muestra el Radar de Vida y una tarjeta de hábito ancla reales de la app.",
+    ],
+  },
   {
     version: "2.124.0",
     date: "2026-07-28",
@@ -22,7 +36,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.122.0",
     date: "2026-07-27",
     changes: [
-      "Términos, Privacidad y el footer ya no dicen que Ankla lo opera \"HIIFUTUR\" — dicen que lo opera Jay Jaramillo (jaywrkr), que es quien realmente está detrás.",
+      "Términos, Privacidad y el footer ya no dicen que ANKLA lo opera \"HIIFUTUR\" — dicen que lo opera Jay Jaramillo (jaywrkr), que es quien realmente está detrás.",
     ],
   },
   {
@@ -30,7 +44,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     date: "2026-07-27",
     changes: [
       "El kicker del hero pasa de \"Sistema de ejecución sostenible\" a \"Sistema guiado de ejecución sostenible\", para que el posicionamiento sea explícito desde el primer renglón.",
-      "La intro de \"Aprendizaje. Acción. Control.\" se reescribe para nombrar contra qué compite Ankla (apps de rachas, cursos que se abandonan) en vez de solo describirse a sí misma.",
+      "La intro de \"Aprendizaje. Acción. Control.\" se reescribe para nombrar contra qué compite ANKLA (apps de rachas, cursos que se abandonan) en vez de solo describirse a sí misma.",
       "Accesibilidad: el botón \"Empezar gratis\" de la card de prueba gratis en pricing —el tercero de la landing— tenía el mismo texto que los otros dos sin aria-label propio; ahora los tres CTA \"Empezar gratis\" (hero, pricing, cierre) tienen labels contextuales distintos.",
     ],
   },
@@ -46,7 +60,7 @@ export const CHANGELOG: { version: string; date: string; changes: string[] }[] =
     version: "2.119.0",
     date: "2026-07-27",
     changes: [
-      "El producto se renombra de EJECUTA a Ankla en toda la app, la landing, los emails y los documentos públicos — mismo sistema, mismo precio, nuevo nombre.",
+      "El producto se renombra de EJECUTA a ANKLA en toda la app, la landing, los emails y los documentos públicos — mismo sistema, mismo precio, nuevo nombre.",
     ],
   },
   {

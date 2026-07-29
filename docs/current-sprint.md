@@ -10,7 +10,7 @@ documento de operaciones casi cerrada, arrancando Fase D (SEO).
 ## Qué se está construyendo
 
 El producto (curso + hábitos + Radar de Vida + logros) ya está
-funcionalmente completo y en producción bajo el nombre **Ankla** (antes
+funcionalmente completo y en producción bajo el nombre **ANKLA** (antes
 "EJECUTA" — renombrado en toda la app, landing, legal y docs). El
 operador/responsable público es **Jay Jaramillo (jaywrkr)** — ya no
 existe "HIIFUTUR" en ninguna superficie visible, era un nombre de marca
@@ -44,7 +44,7 @@ E → marca, F → salida al mundo, G → contenido, H → logros v2).
   `PAYPAL_ENV=live` en Production. Los cobros ya están activos.
 - ✅ Resend conectado: dominio `ankla.app` verificado (DKIM/SPF OK),
   `RESEND_API_KEY` seteado (reusa un key que ya existía), `EMAIL_FROM`
-  en `Ankla <hola@ankla.app>`. **Probado de punta a punta**: reset de
+  en `ANKLA <hola@ankla.app>`. **Probado de punta a punta**: reset de
   contraseña real llegó bien.
 - ✅ `CRON_SECRET` ya estaba seteado de antes. Confirmado en Vercel →
   Cron Jobs: `/api/cron/reminders` activo, invocación real registrada
@@ -79,8 +79,13 @@ E → marca, F → salida al mundo, G → contenido, H → logros v2).
   las rutas), description, Open Graph, Twitter Card y
   `meta name="author"` nombran a Jay Jaramillo (@jaywrkr) en
   `src/app/layout.tsx`. Link del footer a Instagram con su nombre.
-- ⏳ En curso ahora mismo: validar `og:image` y JSON-LD de la landing
-  con el dominio real (Rich Results Test de Google + opengraph.xyz).
+- ✅ `og:image` (`src/app/opengraph-image.tsx`) rediseñada — antes era
+  solo texto sobre negro, ahora usa `public/hero-radar-ancla.png` (Radar
+  de Vida + tarjeta de hábito real) como fondo con degradado para
+  legibilidad.
+- ⏳ En curso ahora mismo: validar JSON-LD de la landing con el dominio
+  real (Rich Results Test de Google + opengraph.xyz para confirmar cómo
+  se ve la nueva `og:image`).
 - ⏳ Pendiente: Google Search Console + `GOOGLE_SITE_VERIFICATION`,
   enviar el sitemap ahí.
 

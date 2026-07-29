@@ -3,7 +3,7 @@ export function PageSkeleton() {
     <>
       <nav className="app-nav">
         <div className="app-nav-inner">
-          <span className="app-logo">Ankla</span>
+          <span className="app-logo">ANKLA</span>
         </div>
       </nav>
       <main className="app-main animate-pulse">

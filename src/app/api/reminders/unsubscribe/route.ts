@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
   return new NextResponse(
     `<!DOCTYPE html>
     <html lang="es">
-      <head><meta charset="utf-8" /><title>Ankla</title></head>
+      <head><meta charset="utf-8" /><title>ANKLA</title></head>
       <body style="font-family: sans-serif; background: #000000; color: #F5F5F5; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0;">
         <p>Listo. No te vamos a mandar más recordatorios.</p>
       </body>

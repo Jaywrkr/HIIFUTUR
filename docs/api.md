@@ -1,6 +1,6 @@
 # API
 
-La mayoría de la escritura de datos en Ankla pasa por **Server Actions**,
+La mayoría de la escritura de datos en ANKLA pasa por **Server Actions**,
 no por rutas HTTP — ver la segunda mitad de este documento. Las rutas
 HTTP reales son solo 6, y cada una existe porque el caller no es el propio
 navegador de la app en un flujo normal de React.

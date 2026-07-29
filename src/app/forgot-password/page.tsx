@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ForgotPasswordForm } from "./ForgotPasswordForm";
 
 export const metadata: Metadata = {
-  title: "Recupera tu acceso — Ankla",
+  title: "Recupera tu acceso — ANKLA",
   description: "Te mandamos un enlace para elegir una contraseña nueva.",
   alternates: { canonical: "/forgot-password" },
 };

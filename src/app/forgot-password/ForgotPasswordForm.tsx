@@ -20,7 +20,7 @@ export function ForgotPasswordForm() {
 
   return (
     <div className="auth-card">
-      <p className="kicker">Ankla</p>
+      <p className="kicker">ANKLA</p>
       <h1 className="auth-title">Recupera tu acceso</h1>
       <p className="auth-sub">Te mandamos un enlace para elegir una contraseña nueva.</p>
 

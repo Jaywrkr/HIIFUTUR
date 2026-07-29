@@ -88,7 +88,7 @@ export async function cancelSubscription(): Promise<CancelSubscriptionState> {
   try {
     await paypalFetch(`/v1/billing/subscriptions/${paypalSubscriptionId}/cancel`, {
       method: "POST",
-      body: JSON.stringify({ reason: "Cancelado por el usuario desde Ankla." }),
+      body: JSON.stringify({ reason: "Cancelado por el usuario desde ANKLA." }),
     });
   } catch (err) {
     console.error("cancelSubscription: paypalFetch falló", err);

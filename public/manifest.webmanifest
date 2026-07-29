@@ -1,6 +1,6 @@
 {
-  "name": "Ankla — Sistema de Ejecucion Sostenible",
-  "short_name": "Ankla",
+  "name": "ANKLA — Sistema de Ejecucion Sostenible",
+  "short_name": "ANKLA",
   "description": "Sistema de ejecución sostenible basado en Pareto: aprendizaje, hábitos y Radar de Vida para sostener cambios pequeños sin culpa.",
   "start_url": "/dashboard",
   "scope": "/",

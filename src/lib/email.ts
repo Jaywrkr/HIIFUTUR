@@ -47,7 +47,7 @@ function emailShell({
           <table role="presentation" width="480" cellpadding="0" cellspacing="0" style="max-width: 480px; width: 100%; background:${COLORS.card}; border: 1px solid ${COLORS.border}; border-radius: 20px; overflow: hidden;">
             <tr>
               <td style="padding: 36px 32px 8px;">
-                <p style="margin:0; color:${COLORS.accent}; text-transform:uppercase; letter-spacing:0.2em; font-size:11px; font-weight:700;">Ankla</p>
+                <p style="margin:0; color:${COLORS.accent}; text-transform:uppercase; letter-spacing:0.2em; font-size:11px; font-weight:700;">ANKLA</p>
               </td>
             </tr>
             <tr>
@@ -64,7 +64,7 @@ function emailShell({
           <table role="presentation" width="480" cellpadding="0" cellspacing="0" style="max-width: 480px; width: 100%;">
             <tr>
               <td style="padding: 20px 8px 0; color:${COLORS.faint}; font-size:11px; line-height:1.6; text-align:center;">
-                ${footerHtml ?? "Ankla — Sistema de Ejecución Sostenible"}
+                ${footerHtml ?? "ANKLA — Sistema de Ejecución Sostenible"}
               </td>
             </tr>
           </table>
@@ -97,9 +97,9 @@ export async function sendPasswordResetEmail(to: string, resetUrl: string) {
   }
 
   await resend.emails.send({
-    from: process.env.EMAIL_FROM ?? "Ankla <onboarding@resend.dev>",
+    from: process.env.EMAIL_FROM ?? "ANKLA <onboarding@resend.dev>",
     to,
-    subject: "Recupera el acceso a tu cuenta de Ankla",
+    subject: "Recupera el acceso a tu cuenta de ANKLA",
     html: emailShell({
       preheader: "Elige una contraseña nueva — el enlace expira en 1 hora.",
       kicker: "Recuperar acceso",
@@ -128,7 +128,7 @@ export async function sendReminderEmail(
   }
 
   await resend.emails.send({
-    from: process.env.EMAIL_FROM ?? "Ankla <onboarding@resend.dev>",
+    from: process.env.EMAIL_FROM ?? "ANKLA <onboarding@resend.dev>",
     to,
     subject: `Hoy todavía no has hecho: ${habitName}`,
     html: emailShell({
@@ -169,10 +169,10 @@ export async function sendFeedbackNotification(
   }
 
   await resend.emails.send({
-    from: process.env.EMAIL_FROM ?? "Ankla <onboarding@resend.dev>",
+    from: process.env.EMAIL_FROM ?? "ANKLA <onboarding@resend.dev>",
     to,
     reply_to: userEmail,
-    subject: `Feedback en Ankla de ${userEmail}`,
+    subject: `Feedback en ANKLA de ${userEmail}`,
     html: emailShell({
       preheader: message.slice(0, 120),
       kicker: "Feedback recibido",

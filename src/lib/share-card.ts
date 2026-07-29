@@ -43,7 +43,7 @@ function drawWordmark(ctx: CanvasRenderingContext2D, y: number) {
   ctx.textBaseline = "alphabetic";
   ctx.save();
   ctx.letterSpacing = "10px";
-  ctx.fillText("Ankla", WIDTH / 2, y);
+  ctx.fillText("ANKLA", WIDTH / 2, y);
   ctx.restore();
 }
 

@@ -14,12 +14,12 @@ frase en la misma fecha).
 
 ## Principio detrás de los mantras
 
-Un mantra de Ankla nunca es una frase motivacional genérica que podría
+Un mantra de ANKLA nunca es una frase motivacional genérica que podría
 estar en cualquier cuenta de Instagram de productividad — es
 específico, a veces incómodo, siempre en primera persona real de
 alguien que ya pasó por esto. Si un mantra nuevo se siente
 intercambiable con "cree en ti mismo" o "el éxito es un viaje", no es un
-mantra de Ankla.
+mantra de ANKLA.
 
 ## Mensajes clave (los que sostienen todo lo demás)
 
@@ -56,7 +56,7 @@ del rango de tono permitido (de reflexivo a directo/incómodo):
 > "El único atajo que tienes que buscar es no buscar atajos."
 
 Ver el archivo completo para las 20 — sirven como calibre de tono antes
-de escribir cualquier frase nueva que pretenda sonar "a Ankla".
+de escribir cualquier frase nueva que pretenda sonar "a ANKLA".
 
 ## Copy aprobado — mantras por módulo (fragmento representativo)
 

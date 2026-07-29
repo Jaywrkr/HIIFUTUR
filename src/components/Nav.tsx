@@ -41,7 +41,7 @@ export function Nav() {
         <div className="app-nav-inner">
           <Link href="/dashboard" className="app-logo inline-flex items-center gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 breathing-dot" aria-hidden="true" />
-            Ankla
+            ANKLA
           </Link>
 
           {/* Desktop: inline links, all of them */}

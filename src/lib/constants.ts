@@ -128,7 +128,7 @@ export function colorForWheelArea(areaId: string): string {
   return HABIT_CATEGORY_COLORS[category];
 }
 
-/** La cifra real detrás de Ankla — una sola redacción, usada en landing y
+/** La cifra real detrás de ANKLA — una sola redacción, usada en landing y
  * en el Módulo 1, para no mantener dos versiones del mismo dato. */
 export const JAY_RESULT_LINE =
   "Pasé de un 3 a un 9 en mi Radar de Vida, en 8 meses. Sistema pequeño, sostenido, mes tras mes.";

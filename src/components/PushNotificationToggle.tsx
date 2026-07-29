@@ -73,7 +73,7 @@ export function PushNotificationToggle() {
   if (status === "unsupported") {
     return (
       <p className="text-sm text-neutral-500">
-        Tu navegador no soporta notificaciones push. En iPhone, agrega Ankla a tu pantalla de
+        Tu navegador no soporta notificaciones push. En iPhone, agrega ANKLA a tu pantalla de
         inicio primero.
       </p>
     );
@@ -82,7 +82,7 @@ export function PushNotificationToggle() {
   if (status === "denied") {
     return (
       <p className="text-sm text-neutral-500">
-        Bloqueaste las notificaciones para Ankla. Actívalas desde la configuración de tu
+        Bloqueaste las notificaciones para ANKLA. Actívalas desde la configuración de tu
         navegador si quieres recibirlas.
       </p>
     );

@@ -1,4 +1,4 @@
-/** One-time setup script: creates the Ankla product and its 4 billing
+/** One-time setup script: creates the ANKLA product and its 4 billing
  * plans (mensual/anual x normal/descuento) in PayPal, and prints the plan
  * IDs to paste into env vars (PAYPAL_PLAN_ID_MENSUAL_NORMAL, etc).
  *
@@ -15,7 +15,7 @@ async function main() {
   const product = await paypalFetch("/v1/catalogs/products", {
     method: "POST",
     body: JSON.stringify({
-      name: "Ankla",
+      name: "ANKLA",
       description: "Curso, hábitos y Radar de Vida — sistema de ejecución sostenible.",
       type: "SERVICE",
       category: "SOFTWARE",
@@ -39,7 +39,7 @@ async function main() {
         method: "POST",
         body: JSON.stringify({
           product_id: product.id,
-          name: `Ankla ${planId} (${tier})`,
+          name: `ANKLA ${planId} (${tier})`,
           billing_cycles: [
             {
               frequency: { interval_unit: intervalUnit[planId], interval_count: 1 },

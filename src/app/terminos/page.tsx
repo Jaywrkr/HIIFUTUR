@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-export const metadata = { title: "Términos — Ankla", alternates: { canonical: "/terminos" } };
+export const metadata = { title: "Términos — ANKLA", alternates: { canonical: "/terminos" } };
 
 export default function TerminosPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-16">
       <Link href="/" className="text-xs uppercase tracking-widest text-neutral-500 hover:text-accent transition-colors">
-        ← Ankla
+        ← ANKLA
       </Link>
       <p className="kicker mt-8">Legal</p>
       <h1 className="text-3xl font-thin tracking-tight mb-2">Términos de uso</h1>
@@ -14,9 +14,9 @@ export default function TerminosPage() {
 
       <div className="flex flex-col gap-8 mb-16">
         <section>
-          <h2 className="font-bold mb-2">Qué es Ankla y quién lo opera</h2>
+          <h2 className="font-bold mb-2">Qué es ANKLA y quién lo opera</h2>
           <p className="muted">
-            Ankla es un sistema de ejecución sostenible: módulos interactivos, un habit tracker
+            ANKLA es un sistema de ejecución sostenible: módulos interactivos, un habit tracker
             progresivo y mediciones periódicas (Radar de Vida). Es una herramienta de hábitos y
             productividad personal — no es consejo médico, financiero ni psicológico, y no
             sustituye la atención de un profesional. El servicio lo opera{" "}
@@ -28,7 +28,7 @@ export default function TerminosPage() {
         <section>
           <h2 className="font-bold mb-2">Edad mínima</h2>
           <p className="muted">
-            Debes tener al menos 16 años para usar Ankla. Si eres menor de esa edad, no crees una
+            Debes tener al menos 16 años para usar ANKLA. Si eres menor de esa edad, no crees una
             cuenta. Si detectamos una cuenta de un menor de 16, la eliminaremos.
           </p>
         </section>
@@ -46,7 +46,7 @@ export default function TerminosPage() {
         <section>
           <h2 className="font-bold mb-2">Uso aceptable</h2>
           <p className="muted">
-            No uses Ankla para nada ilegal, para intentar acceder a cuentas de otras personas,
+            No uses ANKLA para nada ilegal, para intentar acceder a cuentas de otras personas,
             para saltarte límites técnicos, extraer datos de forma automatizada, o para interferir
             con el funcionamiento del servicio. Podemos suspender o cerrar cuentas que incumplan
             estas reglas.
@@ -56,7 +56,7 @@ export default function TerminosPage() {
         <section>
           <h2 className="font-bold mb-2">Planes, precios y pagos</h2>
           <p className="muted">
-            Ankla tiene un plan gratuito y planes de pago (mensual y anual). Los cobros de los
+            ANKLA tiene un plan gratuito y planes de pago (mensual y anual). Los cobros de los
             planes de pago ya están activos. Toda cuenta empieza con 7 días de prueba gratis, sin
             tarjeta, con el sistema completo. Si decides seguir dentro de esos 7 días, activas un
             plan pago. El precio regular es $6.99/mes o $59/año. Si activas dentro de tus primeros
@@ -100,7 +100,7 @@ export default function TerminosPage() {
         <section>
           <h2 className="font-bold mb-2">Sin garantías</h2>
           <p className="muted">
-            Ankla se ofrece &ldquo;tal cual&rdquo; y &ldquo;según disponibilidad&rdquo;. Hacemos
+            ANKLA se ofrece &ldquo;tal cual&rdquo; y &ldquo;según disponibilidad&rdquo;. Hacemos
             lo posible por mantenerlo funcionando de forma estable, pero no garantizamos que esté
             libre de errores o interrupciones, ni que produzca un resultado específico en tu vida o
             en tus hábitos.
@@ -120,7 +120,7 @@ export default function TerminosPage() {
         <section>
           <h2 className="font-bold mb-2">Suspensión y cierre</h2>
           <p className="muted">
-            Puedes dejar de usar Ankla y borrar tu cuenta cuando quieras. Nosotros podemos
+            Puedes dejar de usar ANKLA y borrar tu cuenta cuando quieras. Nosotros podemos
             suspender o cerrar el servicio, o una cuenta, si hay un uso indebido, un riesgo de
             seguridad, o una obligación legal. Si cerramos el servicio por completo, te avisaremos
             con antelación razonable.

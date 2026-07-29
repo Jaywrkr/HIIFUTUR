@@ -1,8 +1,8 @@
 {
   "name": "ankla",
-  "version": "2.124.0",
+  "version": "2.126.0",
   "private": true,
-  "description": "Ankla: Sistema de Ejecucion Sostenible — MVP del curso interactivo basado en el Principio de Pareto.",
+  "description": "ANKLA: Sistema de Ejecucion Sostenible — MVP del curso interactivo basado en el Principio de Pareto.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
