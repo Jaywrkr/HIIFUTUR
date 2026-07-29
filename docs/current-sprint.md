@@ -145,11 +145,21 @@ transcurridos), pero puede sentirse raro para alguien que recién
 empezó. Fácil de cambiar si se prefiere que diga "Día 1" ese primer
 día.
 
+**Ciclo de 30 días con fallos perdonados — probado end-to-end**:
+además de los 19 tests unitarios que ya pasaban (`src/lib/cycle.test.ts`),
+se simuló el escenario real manipulando `cycle_started_at` en Postgres
+local (5 días atrás, sin logs de hábito → 3+ fallos). `evaluateCycle`
+detectó el tercer fallo al cargar `/dashboard` solo, sin cron: reseteó
+puntos a la fórmula esperada (mitad de lo ganado en el ciclo, nunca
+menos de lo que tenía al empezar), re-bloqueó los módulos
+(`0 de 11 completados`), y mostró la pantalla de reset con el mensaje
+"El ciclo se reinició. Tú no." — bien resuelta, coherente con la
+filosofía de que el fallo está incluido en el diseño.
+
 **Sin probar todavía**: pago real con PayPal, reset de contraseña
-(dejados para el final a pedido de Jay), ciclo de 30 días con los 2
-fallos perdonados, notificaciones push, y un dispositivo mobile real
-(el viewport angosto se vio bien, pero eso no reemplaza un teléfono
-real).
+(dejados para el final a pedido de Jay), notificaciones push, y un
+dispositivo mobile real (el viewport angosto se vio bien, pero eso no
+reemplaza un teléfono real).
 
 ## Qué falta (todo lo demás)
 
@@ -162,17 +172,15 @@ real).
 - ⏳ Fase G — contenido diario y distribución (cadencia, calendario de
   4 semanas, convertir la historia de Jay en pieza real de contenido).
 - ⏳ Fase H — evoluciones de Logros (no bloquea el lanzamiento).
-- ⏳ Terminar el QA manual de la app: ciclo de 30 días con fallos,
-  reset de contraseña, pago real, push, mobile en dispositivo real.
+- ⏳ Terminar el QA manual de la app: reset de contraseña, pago real,
+  push, mobile en dispositivo real.
 
 ## Próximos pasos (en orden sugerido)
 
-1. Terminar el QA manual de la app (ciclo de 30 días con fallos
-   perdonados — se puede simular con fechas en Postgres local).
-2. Probar un pago real de punta a punta (Fase A, el último pendiente) y
+1. Probar un pago real de punta a punta (Fase A, el último pendiente) y
    reset de contraseña real.
-3. Sacar el RUC (Fase C) cuando Jay tenga el trámite hecho.
-4. Fase E en adelante (marca, contenido, lanzamiento) — depende de
+2. Sacar el RUC (Fase C) cuando Jay tenga el trámite hecho.
+3. Fase E en adelante (marca, contenido, lanzamiento) — depende de
    disponibilidad de Luna, no es técnico.
 
 ## Bloqueos
