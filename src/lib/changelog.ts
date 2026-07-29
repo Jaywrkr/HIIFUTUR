@@ -3,6 +3,14 @@ export const CHANGELOG_DESCRIPTION =
 
 export const CHANGELOG: { version: string; date: string; changes: string[] }[] = [
   {
+    version: "2.127.0",
+    date: "2026-07-29",
+    changes: [
+      "Se corrige un bug de producción: el sitio tenía activada una protección de Vercel que exigía estar logueado en la cuenta de Vercel para poder entrar — bloqueaba a cualquier visitante nuevo (y a Google) con un error. Ya es completamente público, como corresponde a un sitio en producción.",
+      "ankla.app queda verificado en Google Search Console y con el sitemap enviado.",
+    ],
+  },
+  {
     version: "2.126.0",
     date: "2026-07-29",
     changes: [
