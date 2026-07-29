@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>ANKLA — Operación y ejecución</title>
 <style>
 @font-face {
@@ -242,8 +243,411 @@ a { color: var(--sky); }
     </div>
   </section>
 
+  <section id="estado">
+    <p class="eyebrow"><span class="num">01</span> Estado actual · camino a producción</p>
+    <h2>El producto está construido. Falta la capa de <b>lanzamiento</b>, tarea por tarea.</h2>
+    <p class="muted">Auditado contra el código real, no una lista genérica. Ocho fases: seis bloquean el lanzamiento en orden, la G (contenido y distribución) corre en paralelo desde antes, y la H son evoluciones futuras de algo que ya está construido y funcionando. Cada tarea trae, además del qué y el por qué, un detalle de cómo se hizo (o un hint de cómo hacerla si sigue pendiente).</p>
+    <div class="legend">
+      <span><i class="dot2" style="background:var(--sage)"></i> Ya construido en el código</span>
+      <span><i class="dot2" style="background:transparent;border:1px solid var(--mustard)"></i> Pendiente</span>
+    </div>
+    <div class="owner-filter">
+      <span class="owner-filter-label">Ver solo:</span>
+      <button class="owner-chip active" data-person="todos">Todos</button>
+      <button class="owner-chip" data-person="jay">Jay</button>
+      <button class="owner-chip" data-person="luna">Luna</button>
+      <button class="owner-chip" data-person="cloud code">Cloud Code</button>
+      <button class="owner-chip" data-person="claude design">Claude Design</button>
+      <button class="owner-chip" data-person="claude admin">Claude admin</button>
+    </div>
+    <p class="owner-filter-empty" hidden>Nadie tiene tareas asignadas con este filtro todavía.</p>
+
+  <div class="phase">
+    <div class="phase-head">
+      <h3><span class="phase-num">FASE A</span> Dinero y cuentas reales</h3>
+    </div>
+    <p class="phase-why">Sin esto la app no puede cobrar ni mandar un solo email real. Bloquea todo lo demás — es lo primero.</p>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Comprar el dominio real y conectarlo en Vercel (DNS + HTTPS)</p>
+        <small>ankla.app comprado en GoDaddy, registro A en <code>@</code> → <code>216.198.79.1</code> y CNAME en <code>www</code> → <code>cname.vercel-dns.com</code>. Vercel muestra "Valid Configuration" y el dominio carga.</small>
+      </div>
+      <span class="owner">Jay</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Setear <code>NEXTAUTH_URL</code> y <code>NEXT_PUBLIC_SITE_URL</code> al dominio real en Vercel</p>
+        <small>Ambas en <code>https://ankla.app</code> en Production, redeploy hecho — robots.txt y sitemap.xml ya sirven URLs de ankla.app, verificado directo en el navegador.</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Generar un <code>AUTH_SECRET</code> nuevo para producción (no reusar el de desarrollo)</p>
+        <small>Rotado en Production, distinto al de desarrollo.</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Crear cuenta PayPal Business y obtener credenciales Live</p>
+        <small>Cuenta Business verificada, credenciales Live obtenidas.</small>
+      </div>
+      <span class="owner">Jay</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Correr <code>scripts/create-paypal-plans.ts</code> contra las credenciales Live</p>
+        <small>4 planes creados (mensual/anual × normal/descuento), Plan IDs guardados.</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Configurar el webhook real en el dashboard de PayPal apuntando a <code>/api/webhooks/paypal</code> y guardar el <code>PAYPAL_WEBHOOK_ID</code></p>
+        <small>Webhook real verificado, eventos BILLING.SUBSCRIPTION.* activados.</small>
+      </div>
+      <span class="owner">Jay</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Pasar <code>PAYPAL_ENV=live</code> y los <code>PAYPAL_PLAN_ID_*</code> reales en Vercel</p>
+        <small>Seteado en Production, redeploy hecho. Los cobros ya están activos.</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Probar el flujo de pago completo con dinero real (una suscripción chica, cancelarla después)</p>
+        <small>Sandbox no garantiza que el webhook y el dashboard real de PayPal se comporten igual.</small>
+        <p class="hint">Suscribirse al plan mensual con una tarjeta propia, confirmar en la app que el estado pasa a activo, confirmar en el dashboard de PayPal que aparece el pago, y recién ahí cancelar desde Mi Cuenta y verificar que también se refleja del lado de PayPal.</p>
+      </div>
+      <span class="owner">Jay</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Crear cuenta Resend, verificar el dominio de envío (SPF/DKIM) y setear <code>RESEND_API_KEY</code> + <code>EMAIL_FROM</code></p>
+        <small>ankla.app verificado en Resend (DKIM verified). EMAIL_FROM en "ANKLA &lt;hola@ankla.app&gt;", redeploy hecho. Probado de punta a punta: reset de contraseña real llegó bien.</small>
+      </div>
+      <span class="owner">Jay</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Generar <code>CRON_SECRET</code> y confirmar que el cron diario de recordatorios corre en producción</p>
+        <small>Confirmado en Vercel → Cron Jobs: /api/cron/reminders activo, invocación real registrada (~2.9s de duración).</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head">
+      <h3><span class="phase-num">FASE B</span> Observabilidad</h3>
+    </div>
+    <p class="phase-why">Lanzar sin esto es lanzar a ciegas — no bloquea el lanzamiento, pero debería pasar antes de tener usuarios reales pagando.</p>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Crear proyecto en Sentry y setear <code>SENTRY_DSN</code> / <code>NEXT_PUBLIC_SENTRY_DSN</code></p>
+        <small>Conectado, redeploy hecho.</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Setear <code>SENTRY_AUTH_TOKEN</code> para subir sourcemaps</p>
+        <small>Token con permisos granulares creado, sourcemaps subiendo en cada build.</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Definir qué métricas mirar la primera semana en <code>/admin/analytics</code></p>
+        <small>Ya existe el embudo (registro → onboarding → primer hábito → primer check → Radar de Vida → módulo completado).</small>
+        <p class="hint">Entrar a <code>/admin/analytics</code> con la cuenta de <code>ADMIN_EMAIL</code> y decidir qué 3-4 números son la señal de "está funcionando" — por ejemplo "registrados → pagaron" y "racha promedio a 7 días".</p>
+      </div>
+      <span class="owner">Jay + Claude admin</span>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head">
+      <h3><span class="phase-num">FASE C</span> Legal</h3>
+    </div>
+    <p class="phase-why">No bloquea técnicamente el deploy, pero sí debería resolverse antes de cobrar a desconocidos.</p>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Dejar de operar bajo "la marca HIIFUTUR" y nombrar al responsable real en todas las superficies públicas</p>
+        <small>Términos, Privacidad, footer y changelog ya identifican directamente a Jay Jaramillo (jaywrkr).</small>
+      </div>
+      <span class="owner">Jay + Cloud Code</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Decidir si Jay Jaramillo opera como persona natural o si conviene una entidad formal (RUC/sociedad)</p>
+        <small>Decidido: persona natural. No se constituye sociedad.</small>
+      </div>
+      <span class="owner">Jay</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Sacar el RUC de persona natural y agregarlo a Términos y Privacidad</p>
+        <small>Falta solo el número de RUC (y opcionalmente una dirección), no una entidad nueva.</small>
+        <p class="hint">sri.gob.ec → Servicios en línea → RUC → inscripción de persona natural con actividad económica (código CIIU cercano a "desarrollo de software"). Una vez que exista el número, es una línea de código en <code>src/app/terminos/page.tsx</code> y <code>src/app/privacidad/page.tsx</code>.</p>
+      </div>
+      <span class="owner">Jay + Cloud Code</span>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head">
+      <h3><span class="phase-num">FASE D</span> SEO y descubribilidad</h3>
+    </div>
+    <p class="phase-why">Rápido de cerrar, y solo tiene sentido una vez que el dominio real (Fase A) ya existe.</p>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Metadata que posicione a Jay Jaramillo (@jaywrkr) como autor, no solo el nombre del producto</p>
+        <small>Title, description, Open Graph, Twitter Card y <code>meta name="author"</code> ya nombran a Jay Jaramillo (@jaywrkr) en <code>src/app/layout.tsx</code>. El link del footer a Instagram incluye su nombre.</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Rediseñar la og:image con un visual real del producto</p>
+        <small>Antes era solo texto sobre negro — ahora usa <code>public/hero-radar-ancla.png</code> (Radar de Vida + tarjeta de hábito real) como fondo, con degradado para legibilidad.</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Confirmar que el og:image y el JSON-LD de la landing se ven bien con el dominio real</p>
+        <small>Validado con Rich Results Test de Google (1 valid item, Software Apps, sin errores críticos) y opengraph.xyz.</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Configurar Google Search Console y setear <code>GOOGLE_SITE_VERIFICATION</code></p>
+        <small>Propiedad <code>https://ankla.app/</code> verificada por HTML tag. Variable seteada en Vercel Production.</small>
+      </div>
+      <span class="owner">Jay + Cloud Code</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Encontrar y corregir el bug real que bloqueaba a Google (y a cualquier visitante) — no estaba en la lista original</p>
+        <small>"Vercel Authentication" (Deployment Protection) estaba activo en producción: cualquier visita sin sesión de Vercel recibía un 403, incluido Googlebot y cualquier usuario nuevo. Se encontró al intentar verificar Search Console y se desactivó de inmediato.</small>
+      </div>
+      <span class="owner">Jay + Cloud Code</span>
+    </div>
+    <div class="task done">
+      <div class="box"></div>
+      <div class="body">
+        <p>Enviar el sitemap real a Search Console</p>
+        <small><code>sitemap.xml</code> enviado en Search Console.</small>
+      </div>
+      <span class="owner">Jay</span>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head">
+      <h3><span class="phase-num">FASE E</span> Marca y comunicación</h3>
+    </div>
+    <p class="phase-why">Puede avanzar en paralelo a las Fases A-D — no depende de ellas, pero el lanzamiento público sí depende de esto.</p>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Definir voz y tono de marca como documento</p>
+        <small>Hoy vive implícito en el copy de la app — directo, sin culpa, "lo viví yo".</small>
+        <p class="hint">No arrancar de cero — extraer del copy que ya funciona en la app (los mantras, el testimonio de Jay) los patrones reales de voz, y formalizarlos en un documento corto que Claude Design pueda citar.</p>
+      </div>
+      <span class="owner">Luna + Claude admin</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Fotografía real para los espacios de foto ya construidos (perfil, y donde más se decida)</p>
+        <small>El componente <code>PhotoSlot</code> ya existe — recibir un <code>src</code> real es el único paso que falta, sin tocar layout.</small>
+      </div>
+      <span class="owner">Luna → Claude Design → Cloud Code</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Mensajes clave / taglines por canal</p>
+        <small>La landing ya tiene los propios — decidir cuáles se reusan en redes.</small>
+        <p class="hint">Auditar el copy actual de la landing y el onboarding primero — frases como "no es disciplina, es un sistema" ya están probadas ahí.</p>
+      </div>
+      <span class="owner">Claude admin + Luna</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Kit de assets para redes (plantillas de post, formatos por plataforma)</p>
+        <small>Primero decidir en qué 1-2 plataformas van a publicar de verdad los primeros meses.</small>
+      </div>
+      <span class="owner">Claude Design</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Landing o pieza de pre-lanzamiento si quieren generar lista de espera antes del dominio final</p>
+        <small>Ya no aplica — el dominio real (Fase A) ya está listo y activo.</small>
+      </div>
+      <span class="owner">Claude Design + Cloud Code</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Contenido inicial de lanzamiento (la historia de Jay como pieza real de contenido)</p>
+        <small>El testimonio ya está escrito y probado dentro de la app (Módulo 1, landing) — es material crudo listo para convertir en post o reel.</small>
+      </div>
+      <span class="owner">Luna + Jay</span>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head">
+      <h3><span class="phase-num">FASE F</span> Salida al mundo</h3>
+    </div>
+    <p class="phase-why">La última fase — todo lo anterior existe para que esto funcione el día 1.</p>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Fecha objetivo de lanzamiento</p>
+        <small>Fijarla después de completar la Fase A, no antes.</small>
+      </div>
+      <span class="owner">Jay + Luna</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Plan de adquisición inicial: qué canales, en qué orden</p>
+        <small>La app ya tiene leaderboard y gamificación — eso favorece contenido + boca a boca por sobre ads pagados desde el día uno.</small>
+      </div>
+      <span class="owner">Claude admin + Luna</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Quién responde soporte/feedback los primeros días</p>
+        <small>El widget de feedback ya existe dentro de la app y guarda todo en base de datos.</small>
+      </div>
+      <span class="owner">Jay</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>QA final de punta a punta en producción real: registro → pago real → primer módulo → primer hábito</p>
+        <small>Usar una cuenta y una tarjeta nuevas, no una cuenta vieja de desarrollo con datos ya cargados.</small>
+      </div>
+      <span class="owner">Jay + Cloud Code</span>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head">
+      <h3><span class="phase-num">FASE G</span> Contenido diario y distribución</h3>
+    </div>
+    <p class="phase-why">El deck no vende — el contenido diario atrae, el deck solo cierra. Sin esta fase corriendo en paralelo desde antes del lanzamiento, nadie llega a ver el deck.</p>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Definir la cadencia real de publicación (ej: 3x por semana) y quién la sostiene</p>
+        <small>Sin una frecuencia fija por escrito, "vamos a publicar seguido" se convierte en publicar cuando hay tiempo — que es nunca.</small>
+      </div>
+      <span class="owner">Luna</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Convertir la historia de Jay (3 a 9 en 8 meses) en la primera pieza real de contenido</p>
+        <small>Hoy vive como testimonio dentro de la app y como cita en el deck — en ningún lado existe todavía como post o reel publicado.</small>
+      </div>
+      <span class="owner">Luna + Jay</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Calendario de contenido de las primeras 4 semanas, con el testimonio de Jay como ancla</p>
+        <small>Partir de los mensajes clave de la Fase E y asignar uno por semana.</small>
+      </div>
+      <span class="owner">Luna + Claude admin</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Decidir qué pasa con alguien que ve el contenido antes de que exista el dominio/pago real</p>
+        <small>Ya no aplica — dominio y pagos reales ya están activos, se puede publicar en serio.</small>
+      </div>
+      <span class="owner">Jay + Luna</span>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head">
+      <h3><span class="phase-num">FASE H</span> Logros — siguientes evoluciones</h3>
+    </div>
+    <p class="phase-why">v1 ya está construida y sirviendo puntos reales (6 logros, hasta 3 niveles, tarjeta propia en /logros). Esto es lo que falta para que el sistema crezca sin rehacer lo ya hecho.</p>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Contar cuántos ciclos de 30 días completos lleva una persona</p>
+        <small>Con ese conteo, "30 de 30" deja de ser un logro de un solo nivel y puede crecer a 3.</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Arte propio por logro</p>
+        <small>Hoy cada tarjeta usa el mismo PhotoSlot con degradado, solo cambia el hue — funciona bien como v1.</small>
+      </div>
+      <span class="owner">Luna + Claude Design</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Más logros — la lista actual es un v1 deliberadamente corto, no el techo</p>
+        <small>Candidatos ya identificados: participación en el leaderboard, consistencia sin congelamientos, primer feedback enviado, cuenta con más de N meses activa.</small>
+      </div>
+      <span class="owner">Jay + Claude admin</span>
+    </div>
+    <div class="task">
+      <div class="box"></div>
+      <div class="body">
+        <p>Mostrar logros de otros en el leaderboard (badge de logro más alto junto al nombre)</p>
+        <small>El leaderboard ya existe y ya muestra nombre/puntos — esto es una columna más, no una pantalla nueva.</small>
+      </div>
+      <span class="owner">Cloud Code</span>
+    </div>
+  </div>
+
+    <p class="muted" style="margin-top:2.6rem">Lo ya construido (curso completo, hábito tracker, Radar de Vida, gamificación, suscripciones con PayPal Live conectado, rebrand a ANKLA, jardín zen, perfil editorial, sistema de Logros) no está en esta lista — está hecho. Esta es solo la distancia entre "funciona en desarrollo" y "cobra dinero real a un desconocido".</p>
+  </section>
+
   <section id="equipo">
-    <p class="eyebrow"><span class="num">01</span> Cómo trabajamos · modelo operativo</p>
+    <p class="eyebrow"><span class="num">02</span> Cómo trabajamos · modelo operativo</p>
     <h2>Dos personas, tres Claudes, <b>un sistema.</b></h2>
     <p class="muted">La estrategia y la venta viven en el deck de marca y visión. Esto es lo operativo — quién hace qué, con qué guía:</p>
     <div class="who">
