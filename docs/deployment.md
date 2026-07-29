@@ -41,18 +41,29 @@ aplica sola, requiere un redeploy.
 
 ## Dominios
 
-Al momento de este documento, la app corre sobre los dominios `.vercel.app`
-generados automáticamente — el dominio real está pendiente (ver
-[`docs/current-sprint.md`](current-sprint.md)). Al conectar el dominio
-final:
+El dominio real es **`ankla.app`** (comprado en GoDaddy), conectado en
+Vercel y verificado:
+
+- Registro `A` en `@` → `216.198.79.1`.
+- Registro `CNAME` en `www` → `cname.vercel-dns.com`.
+- `NEXTAUTH_URL` y `NEXT_PUBLIC_SITE_URL` en `https://ankla.app` en
+  Production.
+
+El fallback en el código (`hiifutur.vercel.app`, el dominio `.vercel.app`
+del proyecto) sigue ahí como valor por defecto si esas env vars no
+estuvieran seteadas en algún ambiente — no se tocó ni hace falta
+tocarlo, solo importa que las env vars de Production tengan el valor
+real.
+
+Si en el futuro se conecta un dominio nuevo (poco probable, pero por si
+pasa):
 
 1. Vercel → `Project → Settings → Domains → Add`, seguir las
    instrucciones DNS que muestra ahí (típicamente `A` o `CNAME`).
 2. Actualizar `NEXTAUTH_URL` y `NEXT_PUBLIC_SITE_URL` al dominio nuevo.
 3. Redeploy.
 4. Confirmar que `sitemap.xml`, `robots.txt` y el `og:image` de la
-   landing ya apuntan al dominio nuevo (tienen fallback al `.vercel.app`
-   en el código, así que no rompen, pero hay que verificar que cambiaron).
+   landing ya apuntan al dominio nuevo.
 
 ## Build
 
