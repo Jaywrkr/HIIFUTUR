@@ -6,8 +6,10 @@
 
 **Última actualización**: Fase D (SEO) cerrada — Search Console
 verificado, sitemap enviado, y se corrigió un bug de producción
-("Vercel Authentication" bloqueaba todo el sitio con 403). Fase A casi
-cerrada, falta solo probar un pago real.
+("Vercel Authentication" bloqueaba todo el sitio con 403). Primer QA
+manual real de la app (no solo landing/decks) hecho contra Postgres
+local, sin bugs bloqueantes. Sentry ya revisado por Jay — no es un
+pendiente técnico de esta sesión.
 
 ## Qué se está construyendo
 
@@ -106,6 +108,49 @@ E → marca, F → salida al mundo, G → contenido, H → logros v2).
 - ✅ La sección "Aprendizaje. Acción. Control." suma una imagen real del
   flujo (`public/metodo-aprender-hacer-control.png`).
 
+## QA manual de la app (no landing/decks) — sesión actual
+
+Primera pasada real de la app en sí, contra Postgres local, con
+Playwright simulando un usuario nuevo: registro → onboarding (áreas +
+Radar de Vida baseline) → Módulo 1 (ejercicio interactivo, hábito
+ancla) → marcar hábito (mantener presionado, no un click) → dashboard →
+hábitos → editar hábito → jardín zen → modo compacto → leaderboard →
+cuenta → mobile viewport.
+
+**Resultado: cero errores 500 del servidor, cero errores de consola
+reales en todo el recorrido.** Todo lo probado funciona como se
+diseñó:
+- Onboarding completo, con su modal de confirmación de línea base
+  ("una vez guardada, no la puedes editar").
+- Módulo 1: causa raíz + hábito ancla (sugerencia o texto propio) +
+  creencia limitante, con validación de campos faltantes.
+- Marcar hábito: gesto de mantener presionado 650ms (con vibración en
+  móvil), no un tap simple — deliberado, evita marcar sin querer.
+- Edición de hábito: cambia nombre, pero bloquea la edición por 14 días
+  después de guardar (anti-abuso).
+- Agregar un segundo hábito: no hay botón — es intencional, se
+  desbloquea a los 30 días de sostener el primero.
+- Jardín zen: modal con canvas de arena rastrillada, sin errores.
+- Modo compacto: aplica `data-density="compact"` al `<html>` y de
+  verdad saca elementos (no solo los achica), tal como pide el
+  CLAUDE.md.
+- Registro: nombres únicos globalmente (por el leaderboard compartido)
+  y rate limit de 10 registros/hora por IP — ambos confirmados como
+  decisiones de diseño en `auth-actions.ts`, no bugs.
+
+**Hallazgo menor, para criterio de Jay (no es un bug de código)**:
+en Cuenta dice "0 días en ANKLA" el mismo día del registro —
+matemáticamente correcto (`daysBetween` cuenta días completos
+transcurridos), pero puede sentirse raro para alguien que recién
+empezó. Fácil de cambiar si se prefiere que diga "Día 1" ese primer
+día.
+
+**Sin probar todavía**: pago real con PayPal, reset de contraseña
+(dejados para el final a pedido de Jay), ciclo de 30 días con los 2
+fallos perdonados, notificaciones push, y un dispositivo mobile real
+(el viewport angosto se vio bien, pero eso no reemplaza un teléfono
+real).
+
 ## Qué falta (todo lo demás)
 
 - ⏳ Probar pago real con PayPal (Fase A, el único punto que queda ahí).
@@ -117,27 +162,15 @@ E → marca, F → salida al mundo, G → contenido, H → logros v2).
 - ⏳ Fase G — contenido diario y distribución (cadencia, calendario de
   4 semanas, convertir la historia de Jay en pieza real de contenido).
 - ⏳ Fase H — evoluciones de Logros (no bloquea el lanzamiento).
-- ⏳ Triage completo de los bugs conocidos de Sentry (ver abajo).
-
-## Bugs conocidos (Sentry, producción)
-
-Vistos en el dashboard de Sentry en una sesión previa, sin triage
-completo todavía — revisar si siguen ocurriendo ahora que hay más
-tráfico real:
-
-- `Connection terminated unexpectedly` en `/dashboard` (10 eventos al
-  momento de verlo) — posible problema recurrente de conexión a
-  Postgres.
-- `Unknown root exit status` en `/dashboard`.
-- `TypeError: null is not an object (evaluating 't.parallelRoutes.get')`
-  en `/onboarding`.
-- Error en Server Components render en `/onboarding` (mensaje omitido en
-  build de producción).
+- ⏳ Terminar el QA manual de la app: ciclo de 30 días con fallos,
+  reset de contraseña, pago real, push, mobile en dispositivo real.
 
 ## Próximos pasos (en orden sugerido)
 
-1. Probar un pago real de punta a punta (Fase A, el último pendiente).
-2. Triage de los errores conocidos en Sentry.
+1. Terminar el QA manual de la app (ciclo de 30 días con fallos
+   perdonados — se puede simular con fechas en Postgres local).
+2. Probar un pago real de punta a punta (Fase A, el último pendiente) y
+   reset de contraseña real.
 3. Sacar el RUC (Fase C) cuando Jay tenga el trámite hecho.
 4. Fase E en adelante (marca, contenido, lanzamiento) — depende de
    disponibilidad de Luna, no es técnico.
@@ -149,6 +182,6 @@ de código) es el RUC (SRI) para Fase C.
 
 ## Prioridades (en orden)
 
-1. Probar pago real de punta a punta.
-2. Triage de errores de Sentry.
+1. Terminar QA manual de la app.
+2. Probar pago real de punta a punta + reset de contraseña.
 3. Todo lo demás (legal/RUC, marca, contenido, logros v2).

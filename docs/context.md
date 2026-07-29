@@ -21,10 +21,11 @@ Producto funcionalmente completo y en producción bajo el dominio real
 con PayPal Live, emails reales funcionando (Resend + `ankla.app`
 verificado), errores monitoreados (Sentry con sourcemaps). El operador
 público es **Jay Jaramillo (jaywrkr)** — ya no existe "HIIFUTUR" en
-ninguna superficie. Ver [`docs/current-sprint.md`](current-sprint.md)
-para el detalle vivo, fase por fase, de qué falta (el pendiente más
-cercano es probar un pago real de punta a punta, y terminar la Fase D de
-SEO).
+ninguna superficie. Fase D (SEO) ya cerrada. Primer QA manual real de la
+app (no solo landing) hecho, sin bugs bloqueantes. Ver
+[`docs/current-sprint.md`](current-sprint.md) para el detalle vivo,
+fase por fase, de qué falta (el pendiente más cercano es probar un pago
+real de punta a punta).
 
 ## Arquitectura (resumen — detalle en `docs/architecture.md`)
 
@@ -55,9 +56,9 @@ Credentials Provider, sesión JWT. Solo 6 rutas HTTP reales (ver
 ## Funcionalidades pendientes
 
 Ver [`docs/roadmap.md`](roadmap.md) para el detalle completo por fase.
-Lo inmediato: probar un pago real end-to-end, terminar SEO (Search
-Console + validación og:image/JSON-LD), RUC de persona natural, triage
-de errores conocidos en Sentry.
+Lo inmediato: probar un pago real end-to-end, RUC de persona natural,
+terminar el QA manual de la app (ciclo de 30 días con fallos, reset de
+contraseña, push, mobile real).
 
 ## Convenciones (resumen — detalle en `CLAUDE.md`)
 
@@ -70,10 +71,12 @@ compartida.
 
 ## Errores conocidos
 
-Ver [`docs/current-sprint.md`](current-sprint.md), sección "Bugs
-conocidos" — errores reales vistos en Sentry sin triage completo aún
-(`Connection terminated unexpectedly` en `/dashboard`, un par de errores
-en `/onboarding`).
+Ninguno bloqueante. Sentry ya revisado por Jay. Primer QA manual real de
+la app (registro → onboarding → módulo 1 → hábito ancla → marcar hábito
+→ editar hábito → jardín zen → modo compacto → leaderboard → cuenta)
+hecho en esta sesión, contra Postgres local: cero errores 500, cero
+errores de consola. Detalle en [`docs/current-sprint.md`](current-sprint.md),
+sección "QA manual de la app".
 
 ## Decisiones importantes
 
@@ -93,32 +96,44 @@ completo. Las que más importan para no repetir un error ya resuelto:
 
 ## Últimos cambios (más reciente primero)
 
-1. Landing: hero y sección de método suman imágenes reales del producto
+1. Primer QA manual real de la app (no solo landing/decks): registro,
+   onboarding, Módulo 1, hábito ancla, marcar hábito, editar hábito,
+   jardín zen, modo compacto, leaderboard, cuenta — cero errores 500,
+   cero errores de consola. Un hallazgo menor sin resolver: "0 días en
+   ANKLA" en Cuenta el mismo día del registro (correcto matemáticamente,
+   pendiente de criterio de Jay sobre si vale la pena cambiarlo).
+2. Fase D (SEO) cerrada: JSON-LD validado (Rich Results Test), og:image
+   rediseñada con visual real del producto, Google Search Console
+   verificado (HTML tag) y sitemap enviado. De paso se encontró y
+   corrigió un bug real de producción: "Vercel Authentication"
+   (Deployment Protection) estaba activo, devolviendo 403 a cualquier
+   visita sin sesión de Vercel — bloqueaba a Googlebot y a usuarios
+   nuevos. Se desactivó.
+3. El nombre "Ankla" pasa a escribirse siempre en mayúsculas (ANKLA) en
+   todo el texto visible de la app, landing, emails y docs.
+4. Landing: hero y sección de método suman imágenes reales del producto
    (`public/hero-radar-ancla.png`, `public/metodo-aprender-hacer-control.png`).
-2. Fase A del doc de operaciones casi completa: dominio `ankla.app`
+5. Fase A del doc de operaciones casi completa: dominio `ankla.app`
    comprado y conectado, `NEXTAUTH_URL`/`NEXT_PUBLIC_SITE_URL`
    actualizadas, Resend verificado y probado (emails reales llegando),
    `CRON_SECRET` confirmado activo. Solo falta probar un pago real.
-3. Fase B (Sentry) completa: `SENTRY_AUTH_TOKEN` seteado, sourcemaps
+6. Fase B (Sentry) completa: `SENTRY_AUTH_TOKEN` seteado, sourcemaps
    subiendo en cada build.
-4. Fase C (legal): decidido operar como persona natural — falta el RUC.
-5. Producto renombrado de "EJECUTA" a **ANKLA** en toda la app, landing,
+7. Fase C (legal): decidido operar como persona natural — falta el RUC.
+8. Producto renombrado de "EJECUTA" a **ANKLA** en toda la app, landing,
    emails y docs públicos.
-6. "HIIFUTUR" reemplazado por **Jay Jaramillo (jaywrkr)** como operador
+9. "HIIFUTUR" reemplazado por **Jay Jaramillo (jaywrkr)** como operador
    público en Términos, Privacidad, footer y changelog.
-7. SEO: metadata de autor (title, description, OG, `meta author`)
-   nombrando a Jay Jaramillo (@jaywrkr) en todo el sitio.
-8. PayPal Live conectado de punta a punta: credenciales reales, 4 planes
-   de suscripción, webhook verificado, cobros activos.
-9. `AUTH_SECRET` de producción rotado.
+10. PayPal Live conectado de punta a punta: credenciales reales, 4 planes
+    de suscripción, webhook verificado, cobros activos.
+11. `AUTH_SECRET` de producción rotado.
 
 ## Próximas prioridades
 
-1. Terminar Fase D (SEO): validar og:image/JSON-LD con el dominio real,
-   Google Search Console + envío del sitemap.
-2. Probar un pago real de punta a punta (último pendiente de Fase A).
-3. RUC de persona natural (Fase C) cuando esté el trámite.
-4. Triage de los errores conocidos en Sentry.
-5. Fases de marca/contenido con Luna (voz de marca ya documentada en
+1. Terminar el QA manual de la app: ciclo de 30 días con fallos
+   perdonados, reset de contraseña real, pago real con PayPal,
+   notificaciones push, mobile en dispositivo real.
+2. RUC de persona natural (Fase C) cuando esté el trámite.
+3. Fases de marca/contenido con Luna (voz de marca ya documentada en
    `docs/brand.md` — falta fotografía real, contenido de lanzamiento,
    calendario de 4 semanas).
