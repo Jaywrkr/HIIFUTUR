@@ -4,8 +4,10 @@
 > automático. Si estás leyendo esto en una sesión futura y no coincide con
 > `git log`, el código y el historial de commits mandan, no este archivo.
 
-**Última actualización**: dominio real conectado y verificado, Fase A del
-documento de operaciones casi cerrada, arrancando Fase D (SEO).
+**Última actualización**: Fase D (SEO) cerrada — Search Console
+verificado, sitemap enviado, y se corrigió un bug de producción
+("Vercel Authentication" bloqueaba todo el sitio con 403). Fase A casi
+cerrada, falta solo probar un pago real.
 
 ## Qué se está construyendo
 
@@ -83,11 +85,16 @@ E → marca, F → salida al mundo, G → contenido, H → logros v2).
   solo texto sobre negro, ahora usa `public/hero-radar-ancla.png` (Radar
   de Vida + tarjeta de hábito real) como fondo con degradado para
   legibilidad.
-- ⏳ En curso ahora mismo: validar JSON-LD de la landing con el dominio
-  real (Rich Results Test de Google + opengraph.xyz para confirmar cómo
-  se ve la nueva `og:image`).
-- ⏳ Pendiente: Google Search Console + `GOOGLE_SITE_VERIFICATION`,
-  enviar el sitemap ahí.
+- ✅ JSON-LD de la landing validado con el dominio real (Rich Results
+  Test de Google: 1 valid item, Software Apps, sin errores críticos).
+- ✅ Google Search Console: propiedad `https://ankla.app/` verificada
+  por HTML tag (`GOOGLE_SITE_VERIFICATION` seteada en Vercel Production).
+  De paso se encontró y corrigió un bug real: **"Vercel Authentication"
+  (Deployment Protection) estaba activo en producción**, devolviendo 403
+  a cualquier visita sin sesión de Vercel — bloqueaba a Googlebot y a
+  cualquier usuario nuevo sin loguearse. Se desactivó.
+- ✅ Sitemap (`sitemap.xml`) enviado en Search Console.
+- Fase D: **completa.**
 
 **Landing** (fuera del checklist de operación, pero reciente):
 - ✅ El hero reemplazó las tarjetas flotantes de mentira por una imagen
@@ -100,7 +107,6 @@ E → marca, F → salida al mundo, G → contenido, H → logros v2).
 
 - ⏳ Probar pago real con PayPal (Fase A, el único punto que queda ahí).
 - ⏳ RUC de persona natural (Fase C).
-- ⏳ Terminar Fase D (validación og:image/JSON-LD, Search Console).
 - ⏳ Fase E — marca y comunicación (voz/tono documentado, fotografía
   real, taglines por canal, kit de assets, contenido de lanzamiento).
 - ⏳ Fase F — salida al mundo (fecha de lanzamiento, plan de
@@ -127,11 +133,10 @@ tráfico real:
 
 ## Próximos pasos (en orden sugerido)
 
-1. Terminar Fase D: validar og:image/JSON-LD, Search Console + sitemap.
-2. Probar un pago real de punta a punta (Fase A, el último pendiente).
+1. Probar un pago real de punta a punta (Fase A, el último pendiente).
+2. Triage de los errores conocidos en Sentry.
 3. Sacar el RUC (Fase C) cuando Jay tenga el trámite hecho.
-4. Triage de los errores conocidos en Sentry.
-5. Fase E en adelante (marca, contenido, lanzamiento) — depende de
+4. Fase E en adelante (marca, contenido, lanzamiento) — depende de
    disponibilidad de Luna, no es técnico.
 
 ## Bloqueos
@@ -141,7 +146,6 @@ de código) es el RUC (SRI) para Fase C.
 
 ## Prioridades (en orden)
 
-1. Cerrar Fase D (SEO) — en curso.
-2. Probar pago real de punta a punta.
-3. Triage de errores de Sentry.
-4. Todo lo demás (legal/RUC, marca, contenido, logros v2).
+1. Probar pago real de punta a punta.
+2. Triage de errores de Sentry.
+3. Todo lo demás (legal/RUC, marca, contenido, logros v2).
