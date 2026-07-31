@@ -171,8 +171,19 @@ directo que el archivo es un PNG válido y se sirve con 200, así que es
 un artefacto de la velocidad de navegación automatizada, no un archivo
 roto.
 
-**Sin probar todavía**: pago real con PayPal, reset de contraseña
-(dejados para el final a pedido de Jay), notificaciones push en un
+**Reset de contraseña — probado end-to-end, funciona perfecto**: pedido
+del reset (mensaje genérico, no revela si el email existe — correcto
+por seguridad), link real con token (visible en consola local sin
+`RESEND_API_KEY`, en producción va por email real ya probado antes),
+cambio de contraseña, login con la nueva funciona, login con la vieja
+lo rechaza ("Email o contraseña incorrectos"), y **reusar el mismo
+link ya usado lo rechaza** ("Ese enlace es inválido o ya expiró") — el
+token es de un solo uso, validado en el server action
+(`isNull(usedAt)` + expiración), aunque la página del formulario se
+renderiza igual sin chequear antes (el rechazo pasa recién al enviar,
+lo cual es un comportamiento aceptable, no un bug).
+
+**Sin probar todavía**: pago real con PayPal, notificaciones push en un
 dispositivo real, y un mobile real (el viewport angosto se vio bien,
 pero eso no reemplaza un teléfono real).
 
