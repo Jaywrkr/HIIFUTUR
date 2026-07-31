@@ -65,6 +65,25 @@ body {
   letter-spacing: -0.01em;
 }
 .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.5rem; }
+/* ---- mobile legibility: el tamaño pensado para desktop es ilegible en
+   un telefono real en la mano — sube la base de rem y refuerza las
+   etiquetas mas chicas (0.6-0.78rem), que son las que menos aguantan. ---- */
+@media (max-width: 620px) {
+  html { font-size: 18px; }
+  body { line-height: 1.75; }
+  .eyebrow, .cover .meta, .cell-num, .sig, .tag, .sw, .stack-col h4,
+  .status-row .badge, .who .role .owner, .phase-head .phase-why, .phase-num,
+  .task .owner, .legend, .owner-filter-label, .owner-chip,
+  .prompt .plabel, .faq-cat, .word-cols h4 {
+    font-size: 0.82rem;
+  }
+  .task .body small, .task .body p.hint, .prompt .ptext, .faq .a {
+    font-size: 0.95rem;
+  }
+  .task .body p, .who .role + p, .stack-col li, .word-cols li, .faq summary {
+    font-size: 1rem;
+  }
+}
 
 /* ---- rhythm ---- */
 section { padding: 5rem 0; border-top: 1px solid var(--line); }
