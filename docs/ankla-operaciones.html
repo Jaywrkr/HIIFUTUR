@@ -65,25 +65,7 @@ body {
   letter-spacing: -0.01em;
 }
 .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.5rem; }
-/* ---- mobile legibility: el tamaño pensado para desktop es ilegible en
-   un telefono real en la mano — sube la base de rem y refuerza las
-   etiquetas mas chicas (0.6-0.78rem), que son las que menos aguantan. ---- */
-@media (max-width: 620px) {
-  html { font-size: 18px; }
-  body { line-height: 1.75; }
-  .eyebrow, .cover .meta, .cell-num, .sig, .tag, .sw, .stack-col h4,
-  .status-row .badge, .who .role .owner, .phase-head .phase-why, .phase-num,
-  .task .owner, .legend, .owner-filter-label, .owner-chip,
-  .prompt .plabel, .faq-cat, .word-cols h4 {
-    font-size: 0.82rem;
-  }
-  .task .body small, .task .body p.hint, .prompt .ptext, .faq .a {
-    font-size: 0.95rem;
-  }
-  .task .body p, .who .role + p, .stack-col li, .word-cols li, .faq summary {
-    font-size: 1rem;
-  }
-}
+
 
 /* ---- rhythm ---- */
 section { padding: 5rem 0; border-top: 1px solid var(--line); }
@@ -246,6 +228,44 @@ a { color: var(--sky); }
   section:first-of-type { break-before: auto; }
   .task, .who > div, .grid3 > div, .grid2 > div { break-inside: avoid; }
   a { color: var(--sky) !important; text-decoration: underline; }
+}
+/* ---- mobile legibility: la primera pasada (18px + 0.82rem en labels)
+   seguia siendo chica para un ojo humano leyendo con el telefono en la
+   mano, no en un monitor. Segunda pasada, bastante mas generosa. ---- */
+@media (max-width: 620px) {
+  html { font-size: 21px; }
+  body { line-height: 1.8; letter-spacing: 0; }
+  p, .cell p, .rule-list .v, .stack-col li, .who .role + p,
+  .task .body p, .word-cols li, .faq summary, .faq .a, .ptext,
+  .task .body small, .task .body p.hint {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  .eyebrow, .cover .meta, .cell-num, .sig, .tag, .sw, .stack-col h4,
+  .status-row .badge, .who .role .owner, .phase-head .phase-why, .phase-num,
+  .task .owner, .legend, .owner-filter-label, .owner-chip,
+  .prompt .plabel, .faq-cat, .word-cols h4 {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+  }
+  h2 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .cover h1 { font-size: clamp(2.3rem, 11vw, 3.4rem); }
+  .cover .lede { font-size: 1.15rem; }
+  .task code, .hint code { font-size: 1em; }
+  .task .owner {
+    white-space: normal;
+    text-align: left;
+    max-width: calc(100% - 1.85rem);
+    flex-basis: calc(100% - 1.85rem);
+    width: fit-content;
+    border-radius: 6px;
+    margin: 0.5rem 0 0 1.85rem;
+    order: 3;
+  }
+  .task { flex-wrap: wrap; }
+  .task code, .hint code, .task .body p, .task .body small {
+    overflow-wrap: anywhere;
+  }
 }
 </style>
 
