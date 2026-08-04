@@ -303,12 +303,18 @@ a { color: var(--sky); }
     </div>
     <div class="owner-filter">
       <span class="owner-filter-label">Ver solo:</span>
-      <button class="owner-chip active" data-person="todos">Todos</button>
-      <button class="owner-chip" data-person="jay">Jay</button>
-      <button class="owner-chip" data-person="luna">Luna</button>
-      <button class="owner-chip" data-person="cloud code">Cloud Code</button>
-      <button class="owner-chip" data-person="claude design">Claude Design</button>
-      <button class="owner-chip" data-person="claude admin">Claude admin</button>
+      <button class="owner-chip person-chip active" data-person="todos">Todos</button>
+      <button class="owner-chip person-chip" data-person="jay">Jay</button>
+      <button class="owner-chip person-chip" data-person="luna">Luna</button>
+      <button class="owner-chip person-chip" data-person="cloud code">Cloud Code</button>
+      <button class="owner-chip person-chip" data-person="claude design">Claude Design</button>
+      <button class="owner-chip person-chip" data-person="claude admin">Claude admin</button>
+    </div>
+    <div class="owner-filter status-filter">
+      <span class="owner-filter-label">Estado:</span>
+      <button class="owner-chip status-chip active" data-status="todos">Todos</button>
+      <button class="owner-chip status-chip" data-status="hecho">Hecho</button>
+      <button class="owner-chip status-chip" data-status="pendiente">Pendiente</button>
     </div>
     <p class="owner-filter-empty" hidden>Nadie tiene tareas asignadas con este filtro todavía.</p>
 
@@ -697,11 +703,39 @@ a { color: var(--sky); }
       </div>
       <span class="owner">Luna + Jay</span>
     </div>
-    <div class="task">
+    <div class="task done">
       <div class="box"></div>
       <div class="body">
         <p>Calendario de contenido de las primeras 4 semanas, con el testimonio de Jay como ancla</p>
         <small>Partir de los mensajes clave de la Fase E y asignar uno por semana.</small>
+        <div class="deliverable">
+          <h5>Calendario 4 semanas — Instagram (@jaywrkr)</h5>
+          <p>Un solo canal, un solo hilo narrativo: problema → sistema → prueba → misión.</p>
+          <h5>Semana 1 — El problema</h5>
+          <ul>
+            <li><b>Post fijo</b> (frase, estética @jaywrkr): "El problema son las reglas."</li>
+            <li><b>Reel corto</b> (10-15s, texto en pantalla, sin hablar a cámara): "Las apps de hábitos te culpan." + visual simple (notificación de racha rota).</li>
+            <li><b>Story:</b> pregunta a la audiencia — "¿Sentís que fallar te hace sentir peor que no intentarlo?"</li>
+          </ul>
+          <h5>Semana 2 — El sistema</h5>
+          <ul>
+            <li><b>Reel hablado a cámara</b> (60-90s): el guion completo del testimonio, cierra con "no es disciplina, es un sistema."</li>
+            <li><b>Post fijo:</b> "No es disciplina. Es un sistema." (mismo texto del hero, estética de marca)</li>
+            <li><b>Story:</b> detrás de cámara del reel / adelanto.</li>
+          </ul>
+          <h5>Semana 3 — La prueba</h5>
+          <ul>
+            <li><b>Carousel</b> (3-4 slides): mantra desglosado — "Empieza pequeño." / "La consistencia gana." / "Si no disfrutas, no dura."</li>
+            <li><b>Reel corto:</b> "Pasé de un 3 a un 9 en 8 meses. Sin giros de un día." con captura del Radar de Vida.</li>
+            <li><b>Story:</b> repost del reel de la semana 2 con nuevo hook.</li>
+          </ul>
+          <h5>Semana 4 — La misión</h5>
+          <ul>
+            <li><b>Post fijo:</b> "Ganamos cuando no nos necesitas."</li>
+            <li><b>Reel:</b> recorte de 15-20s del testimonio (el momento "pasé de un 3 a un 9"), como gancho de cierre de mes.</li>
+            <li><b>Story:</b> link en bio directo a la app, con el hero como copy.</li>
+          </ul>
+        </div>
       </div>
       <span class="owner">Luna + Claude admin</span>
     </div>
@@ -793,11 +827,13 @@ a { color: var(--sky); }
 
 <script>
 (function () {
-  var chips = Array.prototype.slice.call(document.querySelectorAll(".owner-chip"));
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".person-chip"));
+  var statusChips = Array.prototype.slice.call(document.querySelectorAll(".status-chip"));
   var tasks = Array.prototype.slice.call(document.querySelectorAll(".task"));
   var phases = Array.prototype.slice.call(document.querySelectorAll(".phase"));
   var emptyMsg = document.querySelector(".owner-filter-empty");
   var active = new Set();
+  var activeStatus = "todos";
 
   // Tasks can list more than one owner ("Jay + Cloud Code",
   // "Luna → Claude Design → Cloud Code") — a task matches if ANY selected
@@ -808,14 +844,21 @@ a { color: var(--sky); }
     return el ? el.textContent.toLowerCase() : "";
   }
 
+  function matchesStatus(task) {
+    if (activeStatus === "todos") return true;
+    var isDone = task.classList.contains("done");
+    return activeStatus === "hecho" ? isDone : !isDone;
+  }
+
   function applyFilter() {
     var anyVisible = false;
     tasks.forEach(function (task) {
       var text = taskOwnerText(task);
-      var show = active.size === 0;
+      var showOwner = active.size === 0;
       active.forEach(function (person) {
-        if (text.indexOf(person) !== -1) show = true;
+        if (text.indexOf(person) !== -1) showOwner = true;
       });
+      var show = showOwner && matchesStatus(task);
       task.style.display = show ? "" : "none";
       if (show) anyVisible = true;
     });
@@ -823,7 +866,7 @@ a { color: var(--sky); }
       var visible = phase.querySelectorAll(".task:not([style*='display: none'])").length > 0;
       phase.style.display = visible ? "" : "none";
     });
-    if (emptyMsg) emptyMsg.hidden = anyVisible || active.size === 0;
+    if (emptyMsg) emptyMsg.hidden = anyVisible || (active.size === 0 && activeStatus === "todos");
   }
 
   chips.forEach(function (chip) {
@@ -844,6 +887,15 @@ a { color: var(--sky); }
         }
         if (active.size === 0) chips[0].classList.add("active");
       }
+      applyFilter();
+    });
+  });
+
+  statusChips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      activeStatus = chip.getAttribute("data-status");
+      statusChips.forEach(function (c) { c.classList.remove("active"); });
+      chip.classList.add("active");
       applyFilter();
     });
   });
