@@ -209,6 +209,16 @@ a { color: var(--sky); }
 .prompt .plabel { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
 .prompt .plabel::before { content: "›_"; opacity: 0.55; font-weight: 400; }
 .prompt .ptext { margin: 0; font-size: 0.82rem; color: var(--ink); font-style: italic; line-height: 1.6; }
+.task .body .deliverable { margin-top: 0.6rem; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 0.9rem 1.1rem; }
+.deliverable h5 { margin: 0 0 0.4rem; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.deliverable h5:not(:first-child) { margin-top: 0.9rem; }
+.deliverable p { margin: 0 0 0.5rem; font-size: 0.85rem; line-height: 1.6; color: var(--ink); }
+.deliverable p:last-child { margin-bottom: 0; }
+.deliverable ul, .deliverable ol { margin: 0 0 0.5rem; padding-left: 1.2rem; font-size: 0.85rem; line-height: 1.6; color: var(--ink); }
+.deliverable ul:last-child, .deliverable ol:last-child { margin-bottom: 0; }
+.deliverable li { margin-bottom: 0.3rem; }
+.task.done .body .deliverable p,
+.task.done .body .deliverable li { color: var(--ink); }
 
 /* section accent colors */
 #problema { --accent: var(--coral); }
@@ -385,13 +395,51 @@ a { color: var(--sky); }
         <h3><span class="phase-num">FASE E</span> Marca y comunicación</h3>
       </div>
       <p class="phase-why">Puede avanzar ya mismo — no depende de nada técnico, pero el lanzamiento público sí depende de esto.</p>
-      <div class="task">
+      <div class="task done">
         <div class="box"></div>
         <div class="body">
           <p>Definir voz y tono de marca como documento formal</p>
           <small>Ya existe el material crudo: <code>docs/brand.md</code> (el porqué) y <code>docs/content-guidelines.md</code> (el cómo, superficie por superficie) — este trabajo es formalizarlo en algo que se pueda compartir fuera del repo.</small>
           <p class="hint">No arrancar de cero — extraer del copy que ya funciona en la app (los mantras, "no es disciplina", el testimonio de Jay) los patrones reales de voz.</p>
           <div class="prompt"><p class="plabel">Prompt</p><p class="ptext">"Te paso el deck de ANKLA. A partir del copy que ya existe en la app — los mantras, el hero de landing ('No es disciplina, es un sistema'), el testimonio de Jay — escribe un documento corto de voz y tono: qué decimos, qué no decimos, y 5 ejemplos de frases 'sí' junto a 5 de 'no'."</p></div>
+          <div class="deliverable">
+            <h5>Principio base</h5>
+            <p>No hablamos de fuerza de voluntad. Hablamos de sistemas. La marca nunca culpa, nunca exige intensidad, y nunca promete magia. Promete que volver es más fácil que rendirse.</p>
+            <h5>Qué decimos</h5>
+            <ul>
+              <li><b>El sistema, no la disciplina.</b> Siempre enmarcamos el logro como resultado de reglas bien diseñadas, no de "echarle ganas".</li>
+              <li><b>Consistencia por encima de intensidad.</b> Lo pequeño y sostenido gana. Lo explosivo e insostenible no cuenta.</li>
+              <li><b>Volver es el punto.</b> Fallar no rompe el sistema — el sistema está hecho para que sigas después de fallar.</li>
+              <li><b>Autonomía como meta.</b> El objetivo final es que la persona ya no necesite la app.</li>
+              <li><b>Honestidad sin drama.</b> Los hechos se muestran tal como son, sin adornarlos ni dramatizarlos.</li>
+              <li><b>Tono calmo y editorial.</b> Frases cortas, directas, sin exclamaciones vacías.</li>
+            </ul>
+            <h5>Qué no decimos</h5>
+            <ul>
+              <li>No usamos culpa ni vergüenza como motor ("fallaste", "te rendiste", "otra vez no cumpliste").</li>
+              <li>No prometemos transformación instantánea ni "de un día para otro".</li>
+              <li>No usamos lenguaje de intensidad o exigencia ("date con todo", "sin excusas", "al límite").</li>
+              <li>No hablamos de rachas como castigo ni de "todo o nada".</li>
+              <li>No usamos metáforas motivacionales genéricas ni frases de póster de gimnasio.</li>
+              <li>No saturamos con color ni con exclamaciones — el impacto viene del contenido, no del envoltorio.</li>
+            </ul>
+            <h5>5 frases sí</h5>
+            <ol>
+              <li>"Empieza tan pequeño que no puedas fallar."</li>
+              <li>"No es examen. Es una brújula."</li>
+              <li>"El sistema le gana a la fuerza de voluntad."</li>
+              <li>"Volver es parte del sistema, no una excepción."</li>
+              <li>"Ganamos cuando ya no nos necesitas."</li>
+            </ol>
+            <h5>5 frases no</h5>
+            <ol>
+              <li>"¡Hoy es el día! ¡Sin excusas!"</li>
+              <li>"No rompas la racha, no te rindas."</li>
+              <li>"Transforma tu vida en 30 días."</li>
+              <li>"Todo o nada: comprométete de verdad."</li>
+              <li>"Fallaste otra vez — vuelve a empezar de cero."</li>
+            </ol>
+          </div>
         </div>
         <span class="owner">Luna + Claude admin</span>
       </div>
@@ -405,13 +453,25 @@ a { color: var(--sky); }
         </div>
         <span class="owner">Luna → Claude Design → Cloud Code</span>
       </div>
-      <div class="task">
+      <div class="task done">
         <div class="box"></div>
         <div class="body">
           <p>Mensajes clave / taglines por canal</p>
           <small>La landing ya tiene los propios ("No es disciplina, es un sistema", "Menos acciones. Menos culpa. Más continuidad.") — decidir cuáles se reusan en redes.</small>
           <p class="hint">Auditar el copy actual de landing y onboarding primero — es más barato reusar frases ya probadas que inventar mensajes nuevos desde cero.</p>
           <div class="prompt"><p class="plabel">Prompt</p><p class="ptext">"Con el deck de ANKLA como contexto, extrae del copy actual de la landing los 5-6 mensajes que ya funcionan, y adáptalos a versiones cortas para Instagram/TikTok — mismo tono, la mitad de palabras."</p></div>
+          <div class="deliverable">
+            <h5>Versiones cortas — IG / TikTok</h5>
+            <p>Mismos mensajes de la landing, a la mitad de palabras. Para caption o texto en pantalla.</p>
+            <ol>
+              <li><i>Hero:</i> "No es disciplina, es un sistema hecho para que puedas volver, incluso cuando fallas." → <b>"No es disciplina. Es un sistema."</b></li>
+              <li><i>El enemigo:</i> "Las apps de hábitos están hechas para que te sientas culpable." → <b>"Las apps de hábitos te culpan."</b></li>
+              <li><i>La creencia:</i> "El problema no eres tú. Son las reglas." → <b>"El problema son las reglas."</b></li>
+              <li><i>Mantra:</i> "Empieza tan pequeño que no puedas fallar. La consistencia le gana a la intensidad. Si no lo disfrutas, no dura." → <b>"Empieza pequeño. La consistencia gana. Si no disfrutas, no dura."</b></li>
+              <li><i>Testimonio:</i> "Pasé de un 3 a un 9 en mi Radar de Vida, en 8 meses. No fue un giro de un día para otro." → <b>"Pasé de un 3 a un 9 en 8 meses. Sin giros de un día."</b></li>
+              <li><i>Misión:</i> "Ganamos cuando ya no nos necesitas." → <b>"Ganamos cuando no nos necesitas."</b></li>
+            </ol>
+          </div>
         </div>
         <span class="owner">Luna + Claude admin</span>
       </div>
@@ -424,13 +484,24 @@ a { color: var(--sky); }
         </div>
         <span class="owner">Claude Design</span>
       </div>
-      <div class="task">
+      <div class="task done">
         <div class="box"></div>
         <div class="body">
           <p>Contenido inicial de lanzamiento: la historia de Jay como pieza real</p>
           <small>El testimonio ya está escrito y probado dentro de la app (Módulo 1, landing) — es material crudo, no hay que reescribirlo, solo adaptarlo a formato reel/post.</small>
           <p class="hint">No producir de más — cámara al hombro, sin edición pesada. La autenticidad es el argumento de venta; una versión demasiado pulida la mataría.</p>
           <div class="prompt"><p class="plabel">Prompt</p><p class="ptext">"Con la historia de Jay como base (3 a 9 en el Radar de Vida, 8 meses), dame un guion corto de 60-90 segundos para un reel hablado a cámara — primera persona, sin narrador externo, terminando en 'no es disciplina, es un sistema'."</p></div>
+          <div class="deliverable">
+            <h5>Guion — Reel a cámara (60-90 seg)</h5>
+            <p>Primera persona, sin narrador externo. Tono calmo, directo, sin dramatizar.</p>
+            <p>"Hace un tiempo hice algo simple: le puse un número a mi vida. Del 1 al 10. Salud, dinero, relaciones, todo. Me dio un 3.</p>
+            <p>No fue un golpe. Fue solo un dato. Y ese dato me mostró algo: no tenía un problema de fuerza de voluntad. Tenía un problema de reglas.</p>
+            <p>Intenté cambiar todo de golpe, como siempre. Duró una semana. Lo de siempre.</p>
+            <p>Entonces cambié de método. Empecé tan pequeño que no podía fallar. Un solo hábito. Sin rachas que castigar, sin culpa cuando fallaba un día.</p>
+            <p>Ocho meses después me volví a medir. Pasé de un 3 a un 9.</p>
+            <p>No fue un giro de un día para otro. Fue seguir apareciendo, incluso los días malos.</p>
+            <p>Y esa es la diferencia: no es disciplina, es un sistema."</p>
+          </div>
         </div>
         <span class="owner">Luna + Jay</span>
       </div>
